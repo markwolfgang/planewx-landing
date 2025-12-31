@@ -302,28 +302,22 @@ export function LandingPage() {
             {/* Story Text */}
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Since getting my PPL last July, then subsequently getting IFR, commercial, and multi, I've logged over 400 hours of cross-country PIC in the last year. I was baffled that long-range flight planning tools didn't exist, so I decided to build <strong className="text-foreground">PlaneWX.ai</strong> — an AI-powered, GA-focused long-range aviation weather flight planning app.
+                PlaneWX was founded in 2025 by Mark Wolfgang, an experienced technology entrepreneur and General Aviation pilot.
               </p>
               <p>
-                <strong className="text-foreground">Here's how it works:</strong>
+                After selling his Information Security consulting company in December 2022, Mark retired and bought his first airplane—a Diamond DA40 NG. Retirement initially delayed his flight training, but he began training in mid-June 2024. He earned his Private Pilot's license six weeks later and started flying his wife and dog around the country, visiting family, friends, and exploring new destinations.
               </p>
               <p>
-                <strong className="text-foreground">#1) Build your profile</strong> — Set your experience, ratings, and global personal minimums.
+                Recognizing the need for an Instrument Rating, Mark completed an accelerated IFR program in just five days. While the rating improved safety, it also introduced more complex weather challenges and required deeper weather knowledge.
               </p>
               <p>
-                <strong className="text-foreground">#2) Set up your aircraft</strong> — Define capabilities (FIKI, weather radar, data link, etc.) and aircraft-specific personal minimums.
+                Mark continued studying weather, flying frequently, and taking long cross-country trips in his new Cirrus SR22T, building experience in trip planning, weather analysis, and pilot skills. He was surprised by the lack of long-range aviation weather forecasting tools and grew frustrated having to tell his wife, "Yeah, the flight should happen—we'll know about 85% the night before, and 100% the day of the flight."
               </p>
               <p>
-                <strong className="text-foreground">#3) Create your flight</strong> — Let's say you're planning a trip 10 days out. PlaneWX continuously caches all publicly available, official weather products (METARs, TAFs, PIREPs, G-AIRMETs, SIGMETs, CWAs, AFDs, GFS, NBM, CPC outlooks, and more). Depending on which products are relevant for your timeframe, it presents a <strong className="text-foreground">GO Score</strong> (0–100%) — the probability your flight will happen safely within your personal minimums for the aircraft you're flying.
+                Drawing on his technical and business background, Mark started building PlaneWX to solve this problem and is now fully unretired and can firmly answer his wife's question about the likelihood of the flight.
               </p>
-              <p>
-                <strong className="text-foreground">#4) Continuous updates</strong> — PlaneWX continuously updates the weather briefing and alerts you to meaningful changes in the GO Score, so you can see days in advance how the trip is trending. As you get within the 24-hour timeframe, the forecast becomes highly accurate using TAFs, PIREPs, AIRMETs, SIGMETs, CWAs, and real-time observations.
-              </p>
-              <p>
-                <strong className="text-foreground">#5) PAVE Risk Assessment</strong> — Within 12 hours of planned departure, the integrated PAVE Risk Assessment Questionnaire becomes available. It uses the weather briefing data to help you evaluate Pilot, Aircraft, enVironment, and External Pressures factors.
-              </p>
-              <p>
-                <strong className="text-foreground">The tagline:</strong> <em>"The confidence to go, or the courage to stay™"</em>
+              <p className="pt-4 border-t border-border">
+                <strong className="text-foreground">Mark is a Commercially Rated Instrument pilot</strong> with single and multiengine ratings, with over 800 hours total time and 620 hours XC PIC in the past 18 months.
               </p>
             </div>
           </div>
