@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.planewx.ai",
     siteName: "PlaneWX",
-    title: "PlaneWX - AI-Powered Aviation Weather Intelligence",
+    title: "PlaneWX - AI-Powered Aviation Weather Intelligence for General Aviation",
     description: "The confidence to go, or the courage to stay™. AI-powered long-range weather forecasting for general aviation pilots.",
     images: [
       {
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PlaneWX - AI-Powered Aviation Weather Intelligence",
+    title: "PlaneWX - AI-Powered Aviation Weather Intelligence for General Aviation",
     description: "The confidence to go, or the courage to stay™. Get weather briefings days in advance with GO Score probability metrics.",
     images: ["/screenshots/planeWX-dashboard.png"],
     creator: "@planewx",
