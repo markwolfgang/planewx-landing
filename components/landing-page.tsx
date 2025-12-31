@@ -242,6 +242,13 @@ export function LandingPage() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Footer */}
+        <footer className="mt-16 pt-8 border-t border-border">
+          <div className="text-center text-sm text-muted-foreground">
+            <p>© {new Date().getFullYear()} PlaneWX, LLC. All rights reserved.</p>
+          </div>
+        </footer>
       </div>
     </div>
   )
