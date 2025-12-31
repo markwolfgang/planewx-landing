@@ -285,12 +285,13 @@ export function LandingPage() {
             <div className="space-y-4">
               <div className="rounded-lg border border-border overflow-hidden shadow-lg bg-card">
                 <Image
-                  src="/Foreflight Recap 2025.jpeg"
+                  src="/screenshots/Foreflight Recap 2025.jpeg"
                   alt="Flight log showing extensive cross-country flying"
                   width={800}
                   height={600}
                   className="w-full h-auto"
                   priority={false}
+                  unoptimized={true}
                 />
               </div>
               <p className="text-sm text-muted-foreground text-center italic">
