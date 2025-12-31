@@ -73,7 +73,8 @@ export function LandingPage() {
       const response = await fetch("/api/waitlist/count")
       if (response.ok) {
         const data = await response.json()
-        setWaitlistCount(data.count)
+        // Start counter at 250 for social proof
+        setWaitlistCount(250 + (data.count || 0))
       }
     } catch (error) {
       console.error("[LandingPage] Error fetching waitlist count:", error)
@@ -263,13 +264,7 @@ export function LandingPage() {
                   {/* Waitlist Count */}
                   {waitlistCount !== null && (
                     <p className="text-center text-sm text-muted-foreground pt-2">
-                      {waitlistCount === 0 ? (
-                        "Be the first to join!"
-                      ) : waitlistCount === 1 ? (
-                        "1 person on the waitlist"
-                      ) : (
-                        `${waitlistCount.toLocaleString()} people on the waitlist`
-                      )}
+                      {waitlistCount.toLocaleString()} people on the waitlist
                     </p>
                   )}
                 </form>
@@ -327,10 +322,10 @@ export function LandingPage() {
             <div className="space-y-4">
               <div 
                 className="rounded-lg border border-border overflow-hidden shadow-lg bg-card cursor-pointer"
-                onClick={() => setZoomedImage("/screenshots/Foreflight Recap 2025.jpeg")}
+                onClick={() => setZoomedImage("/screenshots/foreflight.jpeg")}
               >
                 <Image
-                  src="/screenshots/Foreflight Recap 2025.jpeg"
+                  src="/screenshots/foreflight.jpeg"
                   alt="Flight log showing extensive cross-country flying"
                   width={800}
                   height={600}
