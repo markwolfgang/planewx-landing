@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Plane, CheckCircle2, AlertCircle } from "lucide-react"
+import { Plane, CheckCircle2, AlertCircle, X } from "lucide-react"
 
 export function LandingPage() {
   const [email, setEmail] = useState("")
@@ -22,6 +22,7 @@ export function LandingPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
   const [errorMessage, setErrorMessage] = useState("")
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -251,7 +252,10 @@ export function LandingPage() {
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {/* Screenshot 1 - Dashboard */}
-            <div className="rounded-lg border border-border overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-card">
+            <div 
+              className="rounded-lg border border-border overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-card cursor-pointer"
+              onClick={() => setZoomedImage("/screenshots/planeWX-dashboard.png")}
+            >
               <Image
                 src="/screenshots/planeWX-dashboard.png"
                 alt="PlaneWX dashboard showing trip overview and GO Scores"
@@ -259,10 +263,14 @@ export function LandingPage() {
                 height={800}
                 className="w-full h-auto"
                 priority={false}
+                unoptimized={true}
               />
             </div>
             {/* Screenshot 2 - Briefing Page */}
-            <div className="rounded-lg border border-border overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-card">
+            <div 
+              className="rounded-lg border border-border overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-card cursor-pointer"
+              onClick={() => setZoomedImage("/screenshots/PlaneWX Briefing Page.png")}
+            >
               <Image
                 src="/screenshots/PlaneWX Briefing Page.png"
                 alt="PlaneWX detailed weather briefing with GO Score breakdown and weather analysis"
@@ -270,6 +278,7 @@ export function LandingPage() {
                 height={800}
                 className="w-full h-auto"
                 priority={false}
+                unoptimized={true}
               />
             </div>
           </div>
@@ -283,7 +292,10 @@ export function LandingPage() {
           <div className="grid md:grid-cols-2 gap-8 items-start">
             {/* Image */}
             <div className="space-y-4">
-              <div className="rounded-lg border border-border overflow-hidden shadow-lg bg-card">
+              <div 
+                className="rounded-lg border border-border overflow-hidden shadow-lg bg-card cursor-pointer"
+                onClick={() => setZoomedImage("/screenshots/Foreflight Recap 2025.jpeg")}
+              >
                 <Image
                   src="/screenshots/Foreflight Recap 2025.jpeg"
                   alt="Flight log showing extensive cross-country flying"
@@ -314,10 +326,10 @@ export function LandingPage() {
                 Mark continued studying weather, flying frequently, and taking long cross-country trips in his new Cirrus SR22T, building experience in trip planning, weather analysis, and pilot skills. He was surprised by the lack of long-range aviation weather forecasting tools and grew frustrated having to tell his wife, "Yeah, the flight should happen—we'll know about 85% the night before, and 100% the day of the flight."
               </p>
               <p>
-                Drawing on his technical and business background, Mark started building PlaneWX to solve this problem and is now fully unretired and can firmly answer his wife's question about the likelihood of the flight.
+                Drawing on his technical and business background, Mark started building PlaneWX to solve this problem. What started as a solution to his own frustration has become his new venture, and he can now firmly answer his wife's question about the likelihood of the flight.
               </p>
               <p className="pt-4 border-t border-border">
-                <strong className="text-foreground">Mark is a Commercially Rated Instrument pilot</strong> with single and multiengine ratings, with over 800 hours total time and 620 hours XC PIC in the past 18 months.
+                <strong className="text-foreground">Mark is a Commercially Rated Instrument pilot</strong> with single and multiengine ratings, with over 800 hours total time—including 620 hours of cross-country PIC in the past 18 months.
               </p>
             </div>
           </div>
@@ -330,6 +342,33 @@ export function LandingPage() {
           </div>
         </footer>
       </div>
+
+      {/* Image Zoom Modal */}
+      {zoomedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          onClick={() => setZoomedImage(null)}
+        >
+          <div className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center">
+            <button
+              onClick={() => setZoomedImage(null)}
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-colors"
+              aria-label="Close image"
+            >
+              <X className="h-6 w-6" />
+            </button>
+            <Image
+              src={zoomedImage}
+              alt="Zoomed view"
+              width={2000}
+              height={1500}
+              className="max-w-full max-h-full object-contain rounded-lg"
+              unoptimized={true}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
