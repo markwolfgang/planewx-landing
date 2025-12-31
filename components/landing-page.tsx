@@ -324,14 +324,10 @@ export function LandingPage() {
                 className="rounded-lg border border-border overflow-hidden shadow-lg bg-card cursor-pointer"
                 onClick={() => setZoomedImage("/screenshots/foreflight.jpeg")}
               >
-                <Image
+                <img
                   src="/screenshots/foreflight.jpeg"
                   alt="Flight log showing extensive cross-country flying"
-                  width={800}
-                  height={600}
                   className="w-full h-auto"
-                  priority={false}
-                  unoptimized={true}
                 />
               </div>
               <p className="text-sm text-muted-foreground text-center italic">
@@ -385,13 +381,10 @@ export function LandingPage() {
             >
               <X className="h-6 w-6" />
             </button>
-            <Image
-              src={zoomedImage}
+            <img
+              src={zoomedImage || ""}
               alt="Zoomed view"
-              width={2000}
-              height={1500}
               className="max-w-full max-h-full object-contain rounded-lg"
-              unoptimized={true}
               onClick={(e) => e.stopPropagation()}
             />
           </div>
