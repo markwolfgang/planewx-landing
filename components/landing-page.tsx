@@ -275,6 +275,59 @@ export function LandingPage() {
           </div>
         </div>
 
+        {/* Founder's Story Section */}
+        <div className="max-w-4xl mx-auto mt-24 mb-16">
+          <h2 className="text-3xl font-semibold text-foreground text-center mb-12">
+            Founder's Story
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 items-start">
+            {/* Image */}
+            <div className="space-y-4">
+              <div className="rounded-lg border border-border overflow-hidden shadow-lg bg-card">
+                <Image
+                  src="/Foreflight Recap 2025.jpeg"
+                  alt="Flight log showing extensive cross-country flying"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto"
+                  priority={false}
+                />
+              </div>
+              <p className="text-sm text-muted-foreground text-center italic">
+                "I Built PlaneWX Because I needed it!"
+              </p>
+            </div>
+            
+            {/* Story Text */}
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p>
+                Since getting my PPL last July, then subsequently getting IFR, commercial, and multi, I've logged over 400 hours of cross-country PIC in the last year. I was baffled that long-range flight planning tools didn't exist, so I decided to build <strong className="text-foreground">PlaneWX.ai</strong> — an AI-powered, GA-focused long-range aviation weather flight planning app.
+              </p>
+              <p>
+                <strong className="text-foreground">Here's how it works:</strong>
+              </p>
+              <p>
+                <strong className="text-foreground">#1) Build your profile</strong> — Set your experience, ratings, and global personal minimums.
+              </p>
+              <p>
+                <strong className="text-foreground">#2) Set up your aircraft</strong> — Define capabilities (FIKI, weather radar, data link, etc.) and aircraft-specific personal minimums.
+              </p>
+              <p>
+                <strong className="text-foreground">#3) Create your flight</strong> — Let's say you're planning a trip 10 days out. PlaneWX continuously caches all publicly available, official weather products (METARs, TAFs, PIREPs, G-AIRMETs, SIGMETs, CWAs, AFDs, GFS, NBM, CPC outlooks, and more). Depending on which products are relevant for your timeframe, it presents a <strong className="text-foreground">GO Score</strong> (0–100%) — the probability your flight will happen safely within your personal minimums for the aircraft you're flying.
+              </p>
+              <p>
+                <strong className="text-foreground">#4) Continuous updates</strong> — PlaneWX continuously updates the weather briefing and alerts you to meaningful changes in the GO Score, so you can see days in advance how the trip is trending. As you get within the 24-hour timeframe, the forecast becomes highly accurate using TAFs, PIREPs, AIRMETs, SIGMETs, CWAs, and real-time observations.
+              </p>
+              <p>
+                <strong className="text-foreground">#5) PAVE Risk Assessment</strong> — Within 12 hours of planned departure, the integrated PAVE Risk Assessment Questionnaire becomes available. It uses the weather briefing data to help you evaluate Pilot, Aircraft, enVironment, and External Pressures factors.
+              </p>
+              <p>
+                <strong className="text-foreground">The tagline:</strong> <em>"The confidence to go, or the courage to stay™"</em>
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Footer */}
         <footer className="mt-16 pt-8 border-t border-border">
           <div className="text-center text-sm text-muted-foreground">
