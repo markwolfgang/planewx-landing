@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "PlaneWX - AI-Powered Aviation Weather Intelligence",
+    default: "PlaneWX - AI-Powered Aviation Weather Intelligence for General Aviation",
     template: "%s | PlaneWX",
   },
   description: "The confidence to go, or the courage to stay™. PlaneWX provides AI-powered long-range aviation weather forecasting for general aviation pilots. Get weather briefings days in advance with GO Score probability metrics.",
