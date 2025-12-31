@@ -72,7 +72,7 @@ export function LandingPage() {
             <h1 className="text-5xl font-bold text-foreground">PlaneWX</h1>
           </div>
           <p className="text-2xl font-semibold text-sky-700 dark:text-sky-300 mb-4">
-            The confidence to go, or the courage to stay.
+            The confidence to go, or the courage to stay™
           </p>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             AI-powered weather intelligence for general aviation pilots. Know if your flight is a go—days in advance.
