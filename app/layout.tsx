@@ -82,6 +82,11 @@ export const metadata: Metadata = {
     // yandex: "your-yandex-verification-code",
     // yahoo: "your-yahoo-verification-code",
   },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 }
 
 export default function RootLayout({
