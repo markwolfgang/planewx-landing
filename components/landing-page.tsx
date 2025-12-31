@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -23,6 +23,7 @@ export function LandingPage() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
   const [errorMessage, setErrorMessage] = useState("")
   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
+  const [waitlistCount, setWaitlistCount] = useState<number | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -55,6 +56,8 @@ export function LandingPage() {
       setEmail("")
       setHomeAirport("")
       setXcFlightsPerWeek("")
+      // Refresh waitlist count after successful signup
+      fetchWaitlistCount()
     } catch (error) {
       console.error("[LandingPage] Error submitting:", error)
       setStatus("error")
