@@ -67,6 +67,23 @@ export function LandingPage() {
     }
   }
 
+  // Fetch waitlist count on component mount
+  const fetchWaitlistCount = async () => {
+    try {
+      const response = await fetch("/api/waitlist/count")
+      if (response.ok) {
+        const data = await response.json()
+        setWaitlistCount(data.count)
+      }
+    } catch (error) {
+      console.error("[LandingPage] Error fetching waitlist count:", error)
+    }
+  }
+
+  useEffect(() => {
+    fetchWaitlistCount()
+  }, [])
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-sky-50 via-white to-sky-50 dark:from-sky-950 dark:via-slate-900 dark:to-sky-950">
       <div className="container mx-auto px-4 py-16">
@@ -242,6 +259,19 @@ export function LandingPage() {
                   >
                     {isSubmitting ? "Joining..." : "Join Waitlist"}
                   </Button>
+
+                  {/* Waitlist Count */}
+                  {waitlistCount !== null && (
+                    <p className="text-center text-sm text-muted-foreground pt-2">
+                      {waitlistCount === 0 ? (
+                        "Be the first to join!"
+                      ) : waitlistCount === 1 ? (
+                        "1 person on the waitlist"
+                      ) : (
+                        `${waitlistCount.toLocaleString()} people on the waitlist`
+                      )}
+                    </p>
+                  )}
                 </form>
               )}
             </CardContent>
