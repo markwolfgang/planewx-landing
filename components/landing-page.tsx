@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -241,6 +242,37 @@ export function LandingPage() {
               )}
             </CardContent>
           </Card>
+        </div>
+
+        {/* Screenshots Section */}
+        <div className="max-w-6xl mx-auto mt-24 mb-16">
+          <h2 className="text-3xl font-semibold text-foreground text-center mb-8">
+            See PlaneWX in Action
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Screenshot 1 - Dashboard */}
+            <div className="rounded-lg border border-border overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-card">
+              <Image
+                src="/screenshots/planeWX-dashboard.png"
+                alt="PlaneWX dashboard showing trip overview and GO Scores"
+                width={1200}
+                height={800}
+                className="w-full h-auto"
+                priority={false}
+              />
+            </div>
+            {/* Screenshot 2 - Briefing Page */}
+            <div className="rounded-lg border border-border overflow-hidden shadow-lg hover:shadow-xl transition-shadow bg-card">
+              <Image
+                src="/screenshots/PlaneWX Briefing Page.png"
+                alt="PlaneWX detailed weather briefing with GO Score breakdown and weather analysis"
+                width={1200}
+                height={800}
+                className="w-full h-auto"
+                priority={false}
+              />
+            </div>
+          </div>
         </div>
 
         {/* Footer */}
