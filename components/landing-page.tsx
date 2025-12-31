@@ -15,6 +15,9 @@ import {
 } from "@/components/ui/select"
 import { Plane, CheckCircle2, AlertCircle, X } from "lucide-react"
 
+// Base count for social proof - change this to restart the counter
+const WAITLIST_BASE_COUNT = 12
+
 export function LandingPage() {
   const [email, setEmail] = useState("")
   const [homeAirport, setHomeAirport] = useState("")
@@ -73,8 +76,7 @@ export function LandingPage() {
       const response = await fetch("/api/waitlist/count")
       if (response.ok) {
         const data = await response.json()
-        // Start counter at 250 for social proof
-        setWaitlistCount(250 + (data.count || 0))
+        setWaitlistCount(WAITLIST_BASE_COUNT + (data.count || 0))
       }
     } catch (error) {
       console.error("[LandingPage] Error fetching waitlist count:", error)
