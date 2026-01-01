@@ -16,7 +16,7 @@ import {
 import { Plane, CheckCircle2, AlertCircle, X } from "lucide-react"
 
 // Base count for social proof - change this to restart the counter
-const WAITLIST_BASE_COUNT = 12
+const WAITLIST_BASE_COUNT = 42
 
 export function LandingPage() {
   const [email, setEmail] = useState("")
