@@ -20,7 +20,7 @@ interface WaitlistEntry {
 
 export default function WaitlistAdminPage() {
   const [entries, setEntries] = useState<WaitlistEntry[]>([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [adminSecret, setAdminSecret] = useState("")
   const [authenticated, setAuthenticated] = useState(false)
@@ -34,10 +34,12 @@ export default function WaitlistAdminPage() {
         if (response.status === 401) {
           setError("Invalid admin secret")
           setAuthenticated(false)
+          setLoading(false)
           return
         }
         const data = await response.json()
         setError(data.error || "Failed to fetch waitlist")
+        setLoading(false)
         return
       }
       const data = await response.json()
