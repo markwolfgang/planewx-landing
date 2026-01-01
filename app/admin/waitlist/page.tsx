@@ -107,6 +107,15 @@ export default function WaitlistAdminPage() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
+              {/* Hidden username field for accessibility */}
+              <input
+                type="text"
+                name="username"
+                autoComplete="username"
+                className="sr-only"
+                tabIndex={-1}
+                aria-hidden="true"
+              />
               <div className="space-y-2">
                 <Label htmlFor="secret">Admin Secret</Label>
                 <Input
