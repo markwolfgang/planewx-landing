@@ -134,13 +134,20 @@ export function LandingPage() {
             <span className="text-2xl font-bold tracking-tight">PlaneWX</span>
           </div>
           <div className="flex items-center gap-4">
-            <a href="#features" className="text-sm text-white/60 hover:text-white transition-colors">Features</a>
+            <button 
+              onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-sm text-white/60 hover:text-white transition-colors"
+            >
+              Features
+            </button>
             <a href="#founder" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
-            <a href="#waitlist">
-              <Button size="sm" className="bg-sky-500 hover:bg-sky-400 text-white">
-                Join Waitlist
-              </Button>
-            </a>
+            <Button 
+              size="sm" 
+              className="bg-sky-500 hover:bg-sky-400 text-white"
+              onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Join Waitlist
+            </Button>
           </div>
         </div>
       </nav>
@@ -178,17 +185,22 @@ export function LandingPage() {
             
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <a href="#waitlist">
-                <Button size="lg" className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-8 py-6 text-lg font-semibold shadow-lg shadow-sky-500/25">
-                  Join the Waitlist
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </a>
-              <a href="#features">
-                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-lg">
-                  See How It Works
-                </Button>
-              </a>
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-8 py-6 text-lg font-semibold shadow-lg shadow-sky-500/25"
+                onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Join the Waitlist
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-lg"
+                onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                See How It Works
+              </Button>
             </div>
             
             {/* Social proof */}
