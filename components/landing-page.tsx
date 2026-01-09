@@ -1291,7 +1291,7 @@ export function LandingPage() {
             <div className="flex items-center gap-4 text-sm text-white/40">
               <a href="#" className="hover:text-white transition-colors">Privacy</a>
               <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Contact</a>
+              <a href="mailto:contact@planewx.ai?subject=PlaneWX%20Inquiry" className="hover:text-white transition-colors">Contact</a>
       </div>
           </div>
         </div>
