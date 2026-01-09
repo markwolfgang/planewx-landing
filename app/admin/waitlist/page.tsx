@@ -459,14 +459,19 @@ export default function WaitlistAdminPage() {
                           <td className="p-2">
                             <div className="flex items-center gap-2">
                               <Calendar className="h-4 w-4 text-muted-foreground" />
-                              {new Date(entry.created_at).toLocaleDateString()}
+                              <div>
+                                <div>{new Date(entry.created_at).toLocaleDateString()}</div>
+                                <div className="text-xs text-muted-foreground">
+                                  {new Date(entry.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                </div>
+                              </div>
                             </div>
                           </td>
                           <td className="p-2">
                             {getStatusBadge(entry)}
                             {entry.invited_at && entry.status === 'invited' && (
                               <div className="text-xs text-muted-foreground mt-1">
-                                Sent {new Date(entry.invited_at).toLocaleDateString()}
+                                Sent {new Date(entry.invited_at).toLocaleDateString()} {new Date(entry.invited_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                               </div>
                             )}
                           </td>
