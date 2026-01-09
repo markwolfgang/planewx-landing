@@ -136,9 +136,11 @@ export function LandingPage() {
           <div className="flex items-center gap-4">
             <a href="#features" className="text-sm text-white/60 hover:text-white transition-colors">Features</a>
             <a href="#founder" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
-            <Button size="sm" className="bg-sky-500 hover:bg-sky-400 text-white">
-              Join Waitlist
-            </Button>
+            <a href="#waitlist">
+              <Button size="sm" className="bg-sky-500 hover:bg-sky-400 text-white">
+                Join Waitlist
+              </Button>
+            </a>
           </div>
         </div>
       </nav>
@@ -176,13 +178,17 @@ export function LandingPage() {
             
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button size="lg" className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-8 py-6 text-lg font-semibold shadow-lg shadow-sky-500/25">
-                Join the Waitlist
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-lg">
-                See How It Works
-              </Button>
+              <a href="#waitlist">
+                <Button size="lg" className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-8 py-6 text-lg font-semibold shadow-lg shadow-sky-500/25">
+                  Join the Waitlist
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
+              <a href="#features">
+                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/5 px-8 py-6 text-lg">
+                  See How It Works
+                </Button>
+              </a>
             </div>
             
             {/* Social proof */}
@@ -1099,7 +1105,7 @@ export function LandingPage() {
       </section>
 
       {/* Waitlist Form Section */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
+      <section id="waitlist" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
         <div className="container mx-auto max-w-xl">
           <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
             <CardHeader className="text-center">
