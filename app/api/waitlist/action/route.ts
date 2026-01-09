@@ -17,6 +17,9 @@ interface ActionRequest {
   secret: string
 }
 
+// Delay helper to respect Resend rate limit (2 req/sec)
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
 function generateInviteToken(): string {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
   let token = ''
@@ -218,6 +221,8 @@ export async function POST(request: Request) {
             } else {
               results.failed++
             }
+            // Rate limit: wait 600ms between emails (Resend allows 2/sec)
+            await delay(600)
             break
           }
 
@@ -242,6 +247,8 @@ export async function POST(request: Request) {
             } else {
               results.failed++
             }
+            // Rate limit: wait 600ms between emails (Resend allows 2/sec)
+            await delay(600)
             break
           }
 
