@@ -88,3 +88,5 @@ SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 - DNS changes can take up to 48 hours to propagate
 - Use Vercel's domain verification tool
 
+
+

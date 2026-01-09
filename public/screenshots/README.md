@@ -20,3 +20,5 @@ The landing page will automatically display screenshots from this directory. Upd
 - Keep file sizes reasonable (< 500KB per image) for fast loading
 - Use descriptive alt text for accessibility
 
+
+

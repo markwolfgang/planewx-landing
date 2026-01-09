@@ -89,3 +89,5 @@ planewx-landing/
 - The waitlist table stores signups that can be managed from your main app's admin panel
 - The landing page is completely independent and can be deployed separately
 
+
+
