@@ -1289,10 +1289,11 @@ export function LandingPage() {
               © {new Date().getFullYear()} PlaneWX, LLC. All rights reserved.
             </p>
             <div className="flex items-center gap-4 text-sm text-white/40">
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
+              <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
+              <a href="/terms" className="hover:text-white transition-colors">Terms</a>
+              <a href="/cookies" className="hover:text-white transition-colors">Cookies</a>
               <a href="mailto:contact@planewx.ai?subject=PlaneWX%20Inquiry" className="hover:text-white transition-colors">Contact</a>
-      </div>
+            </div>
           </div>
         </div>
       </footer>
