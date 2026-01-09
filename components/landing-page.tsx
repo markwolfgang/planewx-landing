@@ -729,7 +729,7 @@ export function LandingPage() {
               Your Briefing <span className="text-emerald-400">Evolves</span> With the Weather
             </h2>
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
-              Plan a trip 14 days out? We&apos;ll update your briefing <strong className="text-white">36+ times</strong> before departure — 
+              Plan a trip 14 days out? We&apos;ll update your briefing <strong className="text-white">40+ times</strong> before departure — 
               automatically, every time new weather products are issued.
             </p>
           </div>
@@ -737,7 +737,7 @@ export function LandingPage() {
           {/* The big number */}
           <div className="text-center mb-12">
             <div className="inline-block p-8 rounded-3xl bg-gradient-to-br from-emerald-500/20 to-teal-500/10 border border-emerald-500/30">
-              <div className="text-6xl md:text-8xl font-bold text-emerald-400 mb-2">36+</div>
+              <div className="text-6xl md:text-8xl font-bold text-emerald-400 mb-2">40+</div>
               <div className="text-lg text-white/60">briefing updates for a 14-day trip</div>
             </div>
           </div>
