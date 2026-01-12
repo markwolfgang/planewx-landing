@@ -177,6 +177,38 @@ export default function WaitlistAdminPage() {
     window.URL.revokeObjectURL(url)
   }
 
+  const [syncing, setSyncing] = useState(false)
+
+  const handleSyncJoined = async () => {
+    setSyncing(true)
+    setError(null)
+    setSuccessMessage(null)
+    try {
+      const response = await fetch("/api/waitlist/sync-joined", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ secret: adminSecret })
+      })
+      const data = await response.json()
+      if (!response.ok) {
+        setError(data.error || "Failed to sync")
+        return
+      }
+      if (data.synced > 0) {
+        setSuccessMessage(`Synced ${data.synced} user(s) as joined: ${data.emails?.join(", ")}`)
+        // Refresh the list
+        await fetchWaitlist(adminSecret)
+      } else {
+        setSuccessMessage(data.message || "No users to sync")
+      }
+    } catch (err) {
+      console.error("[SyncJoined] Error:", err)
+      setError("Failed to sync joined users")
+    } finally {
+      setSyncing(false)
+    }
+  }
+
   const formatXcFlights = (value: string | null) => {
     if (!value) return "Not specified"
     const map: Record<string, string> = {
@@ -381,6 +413,10 @@ export default function WaitlistAdminPage() {
                 <Button variant="outline" onClick={handleExport} disabled={entries.length === 0}>
                   <Download className="h-4 w-4 mr-2" />
                   Export CSV
+                </Button>
+                <Button variant="outline" onClick={handleSyncJoined} disabled={syncing}>
+                  <UserCheck className={`h-4 w-4 mr-2 ${syncing ? "animate-spin" : ""}`} />
+                  Sync Joined
                 </Button>
               </div>
             </div>
