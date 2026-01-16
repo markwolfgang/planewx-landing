@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { RefreshCw, Download, Users, Mail, MapPin, Calendar, Send, CheckCircle, Clock, UserCheck, Trash2, RotateCcw, XCircle, ChevronDown } from "lucide-react"
+import { RefreshCw, Download, Users, Mail, MapPin, Calendar, Send, CheckCircle, Clock, UserCheck, Trash2, RotateCcw, XCircle, ChevronDown, Link } from "lucide-react"
 
 interface WaitlistEntry {
   id: string
@@ -18,6 +18,7 @@ interface WaitlistEntry {
   signed_up_at: string | null
   approval_token: string | null
   approval_token_expires_at: string | null
+  referral_code: string | null
 }
 
 type ActionType = 'invite' | 'resend' | 'reset' | 'revoke' | 'delete' | 'mark_joined'
@@ -152,12 +153,13 @@ export default function WaitlistAdminPage() {
 
   const handleExport = () => {
     const csv = [
-      ["Email", "Home Airport", "XC Flights/Week", "Status", "Created At", "Invited At", "Signed Up At"].join(","),
+      ["Email", "Home Airport", "XC Flights/Week", "Referred By", "Status", "Created At", "Invited At", "Signed Up At"].join(","),
       ...entries.map((entry) =>
         [
           entry.email,
           entry.home_airport || "",
           entry.xc_flights_per_week || "",
+          entry.referral_code || "",
           entry.status || "pending",
           new Date(entry.created_at).toLocaleString(),
           entry.invited_at ? new Date(entry.invited_at).toLocaleString() : "",
@@ -456,6 +458,7 @@ export default function WaitlistAdminPage() {
                       <th className="text-left p-2 font-semibold">Email</th>
                       <th className="text-left p-2 font-semibold">Home Airport</th>
                       <th className="text-left p-2 font-semibold">XC Flights/Week</th>
+                      <th className="text-left p-2 font-semibold">Referred By</th>
                       <th className="text-left p-2 font-semibold">Created At</th>
                       <th className="text-left p-2 font-semibold">Status</th>
                     </tr>
@@ -492,6 +495,18 @@ export default function WaitlistAdminPage() {
                             )}
                           </td>
                           <td className="p-2">{formatXcFlights(entry.xc_flights_per_week)}</td>
+                          <td className="p-2">
+                            {entry.referral_code ? (
+                              <div className="flex items-center gap-2">
+                                <Link className="h-4 w-4 text-emerald-500" />
+                                <span className="font-mono text-xs bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded">
+                                  {entry.referral_code}
+                                </span>
+                              </div>
+                            ) : (
+                              <span className="text-muted-foreground">—</span>
+                            )}
+                          </td>
                           <td className="p-2">
                             <div className="flex items-center gap-2">
                               <Calendar className="h-4 w-4 text-muted-foreground" />
