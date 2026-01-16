@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json()
-    const { email, homeAirport, xcFlightsPerWeek } = body
+    const { email, homeAirport, xcFlightsPerWeek, referralCode } = body
 
     // Validate required fields
     if (!email || !email.trim()) {
@@ -75,6 +75,7 @@ export async function POST(request: Request) {
         email: email.trim().toLowerCase(),
         home_airport: homeAirport ? homeAirport.trim().toUpperCase() : null,
         xc_flights_per_week: xcFlightsPerWeek || null,
+        referral_code: referralCode ? referralCode.trim().toUpperCase() : null,
       })
       .select()
       .single()
@@ -129,6 +130,12 @@ export async function POST(request: Request) {
                   <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">XC Flights/Week</td>
                   <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${xcFlightsPerWeek || "Not provided"}</td>
                 </tr>
+                ${referralCode ? `
+                <tr>
+                  <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Referred By</td>
+                  <td style="padding: 8px 12px; border: 1px solid #e2e8f0; color: #10b981; font-weight: bold;">🎯 ${referralCode.trim().toUpperCase()}</td>
+                </tr>
+                ` : ''}
                 <tr>
                   <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Total Waitlist</td>
                   <td style="padding: 8px 12px; border: 1px solid #e2e8f0; color: #0ea5e9; font-weight: bold;">${count || "?"} users</td>

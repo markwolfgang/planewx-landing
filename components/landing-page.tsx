@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -46,6 +47,7 @@ import {
 const WAITLIST_BASE_COUNT = 42
 
 export function LandingPage() {
+  const searchParams = useSearchParams()
   const [email, setEmail] = useState("")
   const [homeAirport, setHomeAirport] = useState("")
   const [xcFlightsPerWeek, setXcFlightsPerWeek] = useState("")
@@ -55,6 +57,23 @@ export function LandingPage() {
   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
   const [waitlistCount, setWaitlistCount] = useState<number | null>(null)
   const [synopticExpanded, setSynopticExpanded] = useState(false)
+  const [referralCode, setReferralCode] = useState<string | null>(null)
+
+  // Capture referral code from URL (?ref=CODE) and persist in localStorage
+  useEffect(() => {
+    const refParam = searchParams.get("ref")
+    if (refParam) {
+      // Store in localStorage so it persists if they browse around
+      localStorage.setItem("planewx_referral", refParam.toUpperCase())
+      setReferralCode(refParam.toUpperCase())
+    } else {
+      // Check localStorage for previously stored referral
+      const storedRef = localStorage.getItem("planewx_referral")
+      if (storedRef) {
+        setReferralCode(storedRef)
+      }
+    }
+  }, [searchParams])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -72,6 +91,7 @@ export function LandingPage() {
           email,
           homeAirport: homeAirport.trim() || null,
           xcFlightsPerWeek: xcFlightsPerWeek || null,
+          referralCode: referralCode || null,
         }),
       })
 
