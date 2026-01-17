@@ -40,7 +40,8 @@ import {
   Zap,
   Radio,
   RefreshCw,
-  ChevronDown
+  ChevronDown,
+  Globe
 } from "lucide-react"
 
 // Base count for social proof - change this to restart the counter
@@ -241,7 +242,7 @@ export function LandingPage() {
               What is <span className="text-sky-400">Synoptic Intelligence</span>™?
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Our proprietary AI technology that no other aviation weather platform has
+              <strong className="text-white">PlaneWX is the first and only AI-powered aviation weather product.</strong> Synoptic Intelligence™ is our proprietary technology that makes this possible—no other platform synthesizes weather data like we do.
             </p>
           </div>
           
@@ -288,6 +289,58 @@ export function LandingPage() {
                   Cross-references forecaster narratives with probabilistic model data (NBM) 
                   to give you calibrated confidence levels you can actually trust.
                 </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Where It's Used */}
+          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-indigo-950/50 to-purple-950/50 border border-indigo-700/30">
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <Globe className="h-5 w-5 text-indigo-400" />
+              Where Synoptic Intelligence Powers PlaneWX
+            </h3>
+            <div className="grid sm:grid-cols-2 gap-4 text-sm">
+              <div className="flex items-start gap-2">
+                <span className="text-indigo-400 font-bold mt-0.5">•</span>
+                <span><strong className="text-white">National Watch</strong> <span className="text-white/60">— Continental weather synopsis synthesized from all 22 regions</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-indigo-400 font-bold mt-0.5">•</span>
+                <span><strong className="text-white">Regional Watch</strong> <span className="text-white/60">— AI-synthesized regional summaries with VFR probabilities</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-indigo-400 font-bold mt-0.5">•</span>
+                <span><strong className="text-white">Corridor Watch</strong> <span className="text-white/60">— Route-specific weather intelligence for saved corridors</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-indigo-400 font-bold mt-0.5">•</span>
+                <span><strong className="text-white">Every Flight Briefing</strong> <span className="text-white/60">— Route-aware analysis with personalized GO scores</span></span>
+              </div>
+            </div>
+          </div>
+
+          {/* What Makes Us Different */}
+          <div className="mt-6 p-6 rounded-2xl bg-gradient-to-r from-emerald-950/50 to-teal-950/50 border border-emerald-700/30">
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-emerald-400" />
+              What Makes PlaneWX Different
+            </h3>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">AI Synthesis:</strong> <span className="text-white/60">We don't just show data — we analyze and explain it in plain language. Unlike ForeFlight and Garmin Pilot, we synthesize, not just display.</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">72-Hour Forecasting:</strong> <span className="text-white/60">Extends reliable planning beyond the 24-hour TAF window with 71% accuracy</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">Personalized:</strong> <span className="text-white/60">GO scores calibrated to <em>your</em> aircraft and <em>your</em> minimums, not generic thresholds</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">Route-Aware:</strong> <span className="text-white/60">Synthesizes conditions along your entire flight path, not just point-to-point</span></span>
               </div>
             </div>
           </div>
@@ -384,9 +437,13 @@ export function LandingPage() {
                     <h3 className="text-lg font-semibold">What is Synoptic Intelligence™?</h3>
                 </div>
                   <p className="text-white/70 mb-4">
-                    <strong className="text-white">Synoptic Intelligence™</strong> is our proprietary AI engine that powers every PlaneWX briefing. 
-                    It fuses multiple weather sources — human forecaster narratives <em className="text-white/90">and</em> numerical models — 
-                    to give you the complete picture. You get the <em className="text-white/90">why</em> behind the weather, not just the data.
+                    <strong className="text-white">PlaneWX is the first and only AI-powered aviation weather product.</strong> Synoptic Intelligence™ is our proprietary technology that makes this possible. 
+                    Unlike ForeFlight, Garmin Pilot, and others that simply display raw weather data, Synoptic Intelligence <em className="text-white/90">synthesizes</em> multiple sources — 
+                    human forecaster narratives <em className="text-white/90">and</em> numerical models — 
+                    into actionable intelligence. You get the <em className="text-white/90">why</em> behind the weather, not just the data.
+                  </p>
+                  <p className="text-xs text-white/40 italic mb-4">
+                    While competitors show you METARs, TAFs, and charts, PlaneWX tells you what it all means for <em>your</em> flight, <em>your</em> aircraft, and <em>your</em> personal minimums.
                   </p>
                   <div className="p-4 rounded-xl bg-sky-500/10 border border-sky-500/20">
                     <p className="text-sm text-sky-200">
@@ -551,14 +608,8 @@ export function LandingPage() {
                 <h4 className="font-semibold">Always Fresh Data</h4>
               </div>
               <p className="text-sm text-white/60 mb-3">
-                Regional summaries refresh every <strong className="text-sky-400">6 hours</strong>, synchronized with AFD updates:
+                Regional summaries refresh every <strong className="text-sky-400">6 hours</strong>, synchronized with AFD updates (4 times daily).
               </p>
-              <div className="flex flex-wrap gap-2 mb-3">
-                <span className="px-3 py-1 rounded-full bg-sky-500/20 text-sky-400 text-sm font-medium">~4:00 AM local</span>
-                <span className="px-3 py-1 rounded-full bg-sky-500/20 text-sky-400 text-sm font-medium">~10:00 AM local</span>
-                <span className="px-3 py-1 rounded-full bg-sky-500/20 text-sky-400 text-sm font-medium">~4:00 PM local</span>
-                <span className="px-3 py-1 rounded-full bg-sky-500/20 text-sky-400 text-sm font-medium">~10:00 PM local</span>
-              </div>
               <p className="text-xs text-white/40">
                 NBM data is fetched fresh for each briefing to ensure the latest model guidance.
               </p>
@@ -721,9 +772,9 @@ export function LandingPage() {
             </div>
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
               <MapPin className="h-8 w-8 text-teal-400 mb-4" />
-              <h3 className="font-semibold mb-2">Regional Weather Maps</h3>
+              <h3 className="font-semibold mb-2">Weather Watch</h3>
               <p className="text-sm text-white/50">
-                See VFR probabilities across 22 custom aviation regions at a glance
+                National Watch, Regional Watch with VFR probabilities, and Corridor Watch for route-specific intelligence
               </p>
             </div>
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
