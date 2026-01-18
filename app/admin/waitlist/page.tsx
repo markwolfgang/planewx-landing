@@ -7,6 +7,15 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RefreshCw, Download, Users, Mail, MapPin, Calendar, Send, CheckCircle, Clock, UserCheck, Trash2, RotateCcw, XCircle, ChevronDown, Link } from "lucide-react"
 
+interface ReferrerInfo {
+  id: string
+  user_id: string
+  first_name: string | null
+  last_name: string | null
+  name: string | null
+  referral_code: string
+}
+
 interface WaitlistEntry {
   id: string
   email: string
@@ -19,6 +28,7 @@ interface WaitlistEntry {
   approval_token: string | null
   approval_token_expires_at: string | null
   referral_code: string | null
+  referrer?: ReferrerInfo | null
 }
 
 type ActionType = 'invite' | 'resend' | 'reset' | 'revoke' | 'delete' | 'mark_joined'
@@ -497,11 +507,20 @@ export default function WaitlistAdminPage() {
                           <td className="p-2">{formatXcFlights(entry.xc_flights_per_week)}</td>
                           <td className="p-2">
                             {entry.referral_code ? (
-                              <div className="flex items-center gap-2">
-                                <Link className="h-4 w-4 text-emerald-500" />
-                                <span className="font-mono text-xs bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded">
-                                  {entry.referral_code}
-                                </span>
+                              <div className="flex flex-col gap-1">
+                                <div className="flex items-center gap-2">
+                                  <Link className="h-4 w-4 text-emerald-500" />
+                                  <span className="font-mono text-xs bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 px-2 py-0.5 rounded">
+                                    {entry.referral_code}
+                                  </span>
+                                </div>
+                                {entry.referrer && (
+                                  <div className="text-xs text-muted-foreground pl-6">
+                                    {entry.referrer.first_name && entry.referrer.last_name
+                                      ? `${entry.referrer.first_name} ${entry.referrer.last_name}`
+                                      : entry.referrer.name || 'Unknown'}
+                                  </div>
+                                )}
                               </div>
                             ) : (
                               <span className="text-muted-foreground">—</span>

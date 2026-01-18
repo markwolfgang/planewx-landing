@@ -35,22 +35,60 @@ export async function GET(request: Request) {
     })
 
     // Fetch all waitlist entries, ordered by created_at (newest first)
-    const { data, error } = await supabase
+    const { data: waitlistData, error: waitlistError } = await supabase
       .from("waitlist")
       .select("*")
       .order("created_at", { ascending: false })
 
-    if (error) {
-      console.error("[Waitlist List] Error:", error)
+    if (waitlistError) {
+      console.error("[Waitlist List] Error:", waitlistError)
       return NextResponse.json(
         { error: "Failed to fetch waitlist" },
         { status: 500 }
       )
     }
 
+    // If no entries, return early
+    if (!waitlistData || waitlistData.length === 0) {
+      return NextResponse.json({
+        entries: [],
+        count: 0,
+      })
+    }
+
+    // Get unique referral codes that are not null
+    const referralCodes = [...new Set(waitlistData
+      .map(entry => entry.referral_code)
+      .filter(code => code !== null && code !== undefined))] as string[]
+
+    // Fetch referrer information for all unique codes
+    let referrersMap: Record<string, any> = {}
+    if (referralCodes.length > 0) {
+      const { data: referrerData, error: referrerError } = await supabase
+        .from("profiles")
+        .select("id, user_id, first_name, last_name, name, referral_code")
+        .in("referral_code", referralCodes)
+
+      if (!referrerError && referrerData) {
+        // Build a map of referral_code -> referrer info
+        referrersMap = referrerData.reduce((acc, profile) => {
+          if (profile.referral_code) {
+            acc[profile.referral_code] = profile
+          }
+          return acc
+        }, {} as Record<string, any>)
+      }
+    }
+
+    // Combine waitlist entries with referrer information
+    const entries = waitlistData.map(entry => ({
+      ...entry,
+      referrer: entry.referral_code ? referrersMap[entry.referral_code] || null : null,
+    }))
+
     return NextResponse.json({
-      entries: data || [],
-      count: data?.length || 0,
+      entries,
+      count: entries.length,
     })
   } catch (error) {
     console.error("[Waitlist List] Unexpected error:", error)
