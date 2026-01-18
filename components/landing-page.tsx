@@ -336,7 +336,7 @@ export function LandingPage() {
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">Personalized:</strong> <span className="text-white/60">GO scores calibrated to <em>your</em> aircraft and <em>your</em> minimums, not generic thresholds</span></span>
+                <span><strong className="text-white">Per-Aircraft Minimums:</strong> <span className="text-white/60">Ceilings, visibility, crosswind, turbulence, icing — all customizable per aircraft you fly</span></span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-emerald-400 font-bold">→</span>
@@ -645,21 +645,25 @@ export function LandingPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-3">Personalized GO Score</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
-                  A clear 0-100% metric calculated against <em>your</em> personal minimums and aircraft 
-                  capabilities—not generic VFR/IFR categories. Evolves as departure approaches.
+                  A clear 0-100% metric calculated against <em>your</em> personal minimums—not generic VFR/IFR categories. 
+                  Each aircraft you fly gets its own tailored minimums.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-emerald-400" />
-                    Based on your ceiling, visibility, and crosswind limits
+                    Ceiling, visibility, and crosswind limits — your numbers
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-emerald-400" />
-                    Accounts for aircraft TAS, FIKI, and equipment
+                    Turbulence & icing tolerance tailored to each aircraft
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-emerald-400" />
-                    Shows breakdown of each scoring factor
+                    Aircraft-aware: FIKI, TAS, autopilot, weather radar
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-emerald-400" />
+                    Transparent breakdown of every deduction
                   </li>
                 </ul>
               </div>
@@ -761,6 +765,51 @@ export function LandingPage() {
             </div>
           </div>
           
+          {/* Personal Minimums Highlight */}
+          <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-violet-950/50 to-indigo-950/50 border border-violet-500/30">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-violet-500/20 flex items-center justify-center shrink-0">
+                <Target className="h-6 w-6 text-violet-400" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Your Minimums. Your Aircraft. Your Analysis.</h3>
+                <p className="text-white/60 text-sm mb-4">
+                  PlaneWX doesn&apos;t use generic VFR/IFR thresholds. Every briefing is analyzed against YOUR personal minimums — 
+                  and they can be different for each aircraft you fly.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-3 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-violet-400" />
+                    <span className="text-white/70">Departure & arrival ceilings</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-violet-400" />
+                    <span className="text-white/70">Departure & arrival visibility</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-violet-400" />
+                    <span className="text-white/70">Crosswind component limits</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-violet-400" />
+                    <span className="text-white/70">Turbulence tolerance (per aircraft)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-violet-400" />
+                    <span className="text-white/70">Icing tolerance (per aircraft)</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-violet-400" />
+                    <span className="text-white/70">Aircraft-specific overrides</span>
+                  </div>
+                </div>
+                <p className="text-xs text-white/40 mt-3 italic">
+                  Flying a well-equipped SR22T with FIKI? Set tighter minimums. Renting a basic 172? Different aircraft, different limits.
+                </p>
+              </div>
+            </div>
+          </div>
+
           {/* Additional features row */}
           <div className="grid md:grid-cols-3 gap-6 mt-8">
             <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
@@ -784,6 +833,109 @@ export function LandingPage() {
                 Briefings auto-update on schedules optimized for your departure time
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How We Use AI Section */}
+      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 mb-6">
+              <Brain className="h-4 w-4 text-indigo-400" />
+              <span className="text-sm text-indigo-400 font-medium">AI-Powered Intelligence</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              How PlaneWX Uses <span className="text-indigo-400">AI</span>
+            </h2>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              AI that synthesizes and explains — not AI that decides for you.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* What AI Does */}
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-indigo-950/50 to-purple-950/50 border border-indigo-500/30">
+              <h3 className="font-semibold mb-4 flex items-center gap-2 text-indigo-300">
+                <Sparkles className="h-5 w-5" />
+                What Our AI Does
+              </h3>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Ingests & Synthesizes</strong> — METARs, TAFs, NBM, GFS MOS, AFDs, PIREPs, AIRMETs, SIGMETs, and more into unified intelligence</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Extends Your Horizon</strong> — Reliable forecasts from 14 days out to imminent departure</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Auto-Refreshes</strong> — 40+ updates as new products are issued, without you lifting a finger</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Powers Synoptic Intelligence™</strong> — Synthesizes NWS forecaster narratives into regional summaries</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Suggests Alternatives</strong> — Better departure times and routing options when conditions are marginal</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Knows Your Aircraft</strong> — FIKI, TAS, equipment, service ceiling — all factored in</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Integrates PAVE</strong> — Risk assessment pre-filled from your trip context</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* What AI Doesn't Do */}
+            <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-700">
+              <h3 className="font-semibold mb-4 flex items-center gap-2 text-amber-300">
+                <AlertCircle className="h-5 w-5" />
+                What Our AI Does NOT Do
+              </h3>
+              <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 mb-4">
+                <p className="text-amber-200 font-medium">
+                  PlaneWX does NOT make the GO/NO-GO decision for you.
+                </p>
+              </div>
+              <p className="text-white/60 text-sm mb-4">
+                You are the pilot in command. Our AI provides intelligence and analysis — you provide the judgment.
+              </p>
+              <ul className="space-y-2 text-sm text-white/50">
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-400 mt-1">•</span>
+                  <span>We give you <strong className="text-white">confidence levels</strong>, not commands</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-400 mt-1">•</span>
+                  <span>GO Score is <strong className="text-white">input to your decision</strong>, not the decision itself</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-400 mt-1">•</span>
+                  <span>We surface <strong className="text-white">risks and gotchas</strong> — you decide what to do about them</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-amber-400 mt-1">•</span>
+                  <span>Personal minimums are <strong className="text-white">your standards</strong>, not ours</span>
+                </li>
+              </ul>
+              <p className="text-xs text-white/40 mt-4 italic">
+                PlaneWX is not a substitute for a proper weather briefing or professional judgment. Always file a flight plan and obtain an official briefing.
+              </p>
+            </div>
+          </div>
+
+          {/* Simple Summary */}
+          <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/50 to-sky-950/50 border border-emerald-500/20 text-center">
+            <p className="text-lg text-white/80">
+              <strong className="text-white">Bottom line:</strong> PlaneWX gives you the intelligence to decide confidently — 
+              <span className="text-sky-400"> the confidence to GO</span> or <span className="text-amber-400">the courage to stay</span>.
+            </p>
           </div>
         </div>
       </section>
