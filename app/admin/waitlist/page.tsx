@@ -19,6 +19,8 @@ interface ReferrerInfo {
 interface WaitlistEntry {
   id: string
   email: string
+  first_name: string | null
+  last_name: string | null
   home_airport: string | null
   xc_flights_per_week: string | null
   created_at: string
@@ -163,9 +165,11 @@ export default function WaitlistAdminPage() {
 
   const handleExport = () => {
     const csv = [
-      ["Email", "Home Airport", "XC Flights/Week", "Referred By", "Status", "Created At", "Invited At", "Signed Up At"].join(","),
+      ["First Name", "Last Name", "Email", "Home Airport", "XC Flights/Week", "Referred By", "Status", "Created At", "Invited At", "Signed Up At"].join(","),
       ...entries.map((entry) =>
         [
+          entry.first_name || "",
+          entry.last_name || "",
           entry.email,
           entry.home_airport || "",
           entry.xc_flights_per_week || "",
@@ -465,6 +469,7 @@ export default function WaitlistAdminPage() {
                           title="Select all"
                         />
                       </th>
+                      <th className="text-left p-2 font-semibold">Name</th>
                       <th className="text-left p-2 font-semibold">Email</th>
                       <th className="text-left p-2 font-semibold">Home Airport</th>
                       <th className="text-left p-2 font-semibold">XC Flights/Week</th>
@@ -487,6 +492,15 @@ export default function WaitlistAdminPage() {
                               onChange={() => toggleSelection(entry.id)}
                               className="h-4 w-4 rounded border-gray-300"
                             />
+                          </td>
+                          <td className="p-2">
+                            {entry.first_name || entry.last_name ? (
+                              <span className="font-medium">
+                                {[entry.first_name, entry.last_name].filter(Boolean).join(' ')}
+                              </span>
+                            ) : (
+                              <span className="text-muted-foreground">—</span>
+                            )}
                           </td>
                           <td className="p-2">
                             <div className="flex items-center gap-2">
