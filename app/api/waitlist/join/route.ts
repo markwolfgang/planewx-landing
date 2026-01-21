@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json()
-    const { email, homeAirport, xcFlightsPerWeek, referralCode } = body
+    const { firstName, lastName, email, homeAirport, xcFlightsPerWeek, referralCode } = body
 
     // Validate required fields
     if (!email || !email.trim()) {
@@ -72,6 +72,8 @@ export async function POST(request: Request) {
     const { data, error } = await supabase
       .from("waitlist")
       .insert({
+        first_name: firstName ? firstName.trim() : null,
+        last_name: lastName ? lastName.trim() : null,
         email: email.trim().toLowerCase(),
         home_airport: homeAirport ? homeAirport.trim().toUpperCase() : null,
         xc_flights_per_week: xcFlightsPerWeek || null,
@@ -109,15 +111,27 @@ export async function POST(request: Request) {
           .from("waitlist")
           .select("*", { count: "exact", head: true })
         
+        const displayName = firstName && lastName 
+          ? `${firstName.trim()} ${lastName.trim()}` 
+          : firstName 
+            ? firstName.trim() 
+            : email.trim().toLowerCase()
+        
         await resend.emails.send({
           from: process.env.FROM_EMAIL || "PlaneWX <hello@planewx.ai>",
           to: adminEmail,
-          subject: `🎉 New Waitlist Signup: ${email.trim().toLowerCase()}`,
+          subject: `🎉 New Waitlist Signup: ${displayName}`,
           html: `
             <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
               <h2 style="color: #0ea5e9;">New Waitlist Signup!</h2>
               <p>Someone just joined the PlaneWX waitlist:</p>
               <table style="border-collapse: collapse; width: 100%; margin: 20px 0;">
+                ${firstName || lastName ? `
+                <tr>
+                  <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Name</td>
+                  <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${firstName ? firstName.trim() : ""} ${lastName ? lastName.trim() : ""}</td>
+                </tr>
+                ` : ''}
                 <tr>
                   <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Email</td>
                   <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${email.trim().toLowerCase()}</td>

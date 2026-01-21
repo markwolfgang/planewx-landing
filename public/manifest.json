@@ -1,0 +1,20 @@
+{
+  "name": "PlaneWX - Aviation Weather Intelligence",
+  "short_name": "PlaneWX",
+  "description": "AI-powered aviation weather intelligence for general aviation pilots. Know if your flight is a GO, days in advance.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0ea5e9",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["weather", "utilities", "lifestyle"],
+  "lang": "en-US"
+}

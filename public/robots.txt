@@ -1,0 +1,15 @@
+# PlaneWX Robots.txt
+# https://www.planewx.ai
+
+User-agent: *
+Allow: /
+
+# Disallow admin and API routes
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.planewx.ai/sitemap.xml
+
+# Crawl-delay (optional, some bots respect this)
+Crawl-delay: 1
