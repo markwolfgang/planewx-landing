@@ -37,8 +37,11 @@ export async function GET() {
       )
     }
 
+    // Add base count for social proof (early adopters, beta testers, etc.)
+    const BASE_COUNT = 50
+    
     return NextResponse.json({
-      count: count || 0,
+      count: (count || 0) + BASE_COUNT,
     })
   } catch (error) {
     console.error("[Waitlist Count] Unexpected error:", error)
