@@ -45,7 +45,7 @@ import {
 } from "lucide-react"
 
 // Base count for social proof - change this to restart the counter
-const WAITLIST_BASE_COUNT = 42
+const WAITLIST_BASE_COUNT = 69
 
 export function LandingPage() {
   const searchParams = useSearchParams()
@@ -684,11 +684,11 @@ export function LandingPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div 
               className="group rounded-2xl border border-white/10 overflow-hidden shadow-2xl shadow-black/50 hover:border-sky-500/50 transition-all cursor-pointer"
-              onClick={() => setZoomedImage("/screenshots/planeWX-dashboard.png")}
+              onClick={() => setZoomedImage("/screenshots/homepage.png")}
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/screenshots/planeWX-dashboard.png"
+                  src="/screenshots/homepage.png"
                   alt="PlaneWX dashboard showing trip overview and GO Scores"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -703,11 +703,11 @@ export function LandingPage() {
             </div>
             <div 
               className="group rounded-2xl border border-white/10 overflow-hidden shadow-2xl shadow-black/50 hover:border-sky-500/50 transition-all cursor-pointer"
-              onClick={() => setZoomedImage("/screenshots/PlaneWX Briefing Page.png")}
+              onClick={() => setZoomedImage("/screenshots/briefing 1.png")}
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/screenshots/PlaneWX Briefing Page.png"
+                  src="/screenshots/briefing 1.png"
                   alt="PlaneWX detailed weather briefing"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -1225,12 +1225,12 @@ export function LandingPage() {
             {/* Synoptic Map */}
             <div 
               className="group rounded-2xl border border-white/10 overflow-hidden shadow-2xl shadow-black/50 hover:border-sky-500/50 transition-all cursor-pointer"
-              onClick={() => setZoomedImage("/screenshots/synoptic-map.png")}
+              onClick={() => setZoomedImage("/screenshots/national_watch.png")}
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/screenshots/synoptic-map.png"
-                  alt="Synoptic Intelligence Map showing VFR probabilities across US regions"
+                  src="/screenshots/national_watch.png"
+                  alt="National Watch showing weather patterns across the US"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   unoptimized
@@ -1239,9 +1239,9 @@ export function LandingPage() {
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="px-2 py-0.5 rounded bg-sky-500/80 text-xs font-medium">LIVE</span>
-                    <span className="text-sm font-medium">Synoptic Intelligence™ Map</span>
+                    <span className="text-sm font-medium">National Watch</span>
                   </div>
-                  <p className="text-xs text-white/60">22 regions with AI-synthesized VFR probabilities</p>
+                  <p className="text-xs text-white/60">Continental weather synthesis powered by Synoptic Intelligence™</p>
                 </div>
               </div>
             </div>
@@ -1249,12 +1249,12 @@ export function LandingPage() {
             {/* Region Forecast Detail */}
             <div 
               className="group rounded-2xl border border-white/10 overflow-hidden shadow-2xl shadow-black/50 hover:border-sky-500/50 transition-all cursor-pointer"
-              onClick={() => setZoomedImage("/screenshots/synoptic-region-tomorrow.png")}
+              onClick={() => setZoomedImage("/screenshots/corridor_watch.png")}
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/screenshots/synoptic-region-tomorrow.png"
-                  alt="Regional weather forecast with hazards, synopsis, and best flying windows"
+                  src="/screenshots/corridor_watch.png"
+                  alt="Corridor Watch showing route-specific weather intelligence"
                   fill
                   className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   unoptimized
@@ -1262,10 +1262,10 @@ export function LandingPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="px-2 py-0.5 rounded bg-sky-500/80 text-xs font-medium">Click Any Region</span>
-                    <span className="text-sm font-medium">Detailed Regional Forecast</span>
+                    <span className="px-2 py-0.5 rounded bg-sky-500/80 text-xs font-medium">Route Intelligence</span>
+                    <span className="text-sm font-medium">Corridor Watch</span>
                   </div>
-                  <p className="text-xs text-white/60">Hazards, synopsis, best flying windows, and avoid times</p>
+                  <p className="text-xs text-white/60">Weather conditions along your saved routes</p>
                 </div>
               </div>
             </div>
@@ -1606,10 +1606,10 @@ export function LandingPage() {
             <div className="md:col-span-2 space-y-4">
               <div 
                 className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl cursor-pointer hover:border-sky-500/50 transition-colors"
-                onClick={() => setZoomedImage("/screenshots/foreflight.jpeg")}
+                onClick={() => setZoomedImage("/screenshots/foreflight.png")}
               >
                 <img
-                  src="/screenshots/foreflight.jpeg"
+                  src="/screenshots/foreflight.png"
                   alt="Flight log showing extensive cross-country flying"
                   className="w-full h-auto"
                 />
@@ -1667,21 +1667,21 @@ export function LandingPage() {
       {/* Image Zoom Modal */}
       {zoomedImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm overflow-auto"
           onClick={() => setZoomedImage(null)}
         >
-          <div className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center">
-            <button
-              onClick={() => setZoomedImage(null)}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-              aria-label="Close image"
-            >
-              <X className="h-6 w-6" />
-            </button>
+          <button
+            onClick={() => setZoomedImage(null)}
+            className="fixed top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+            aria-label="Close image"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <div className="min-h-full flex items-center justify-center p-4">
             <img
               src={zoomedImage || ""}
               alt="Zoomed view"
-              className="max-w-full max-h-full object-contain rounded-lg"
+              className="max-w-[95vw] w-auto h-auto rounded-lg shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
           </div>
