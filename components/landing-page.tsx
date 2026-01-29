@@ -190,9 +190,9 @@ export function LandingPage() {
             </div>
             
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-sm font-medium">
-              <Sparkles className="h-4 w-4" />
-              <span>Powered by Synoptic Intelligence™</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-sm font-medium">
+              <Shield className="h-4 w-4" />
+              <span>Built for Safety. Powered by Synoptic Intelligence™</span>
             </div>
             
             {/* Main headline */}
@@ -204,11 +204,19 @@ export function LandingPage() {
               <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 bg-clip-text text-transparent">stay</span>
             </h1>
             
-            {/* Subheadline */}
+            {/* Subheadline - Safety focused */}
             <p className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto leading-relaxed">
-              AI-powered weather intelligence that synthesizes expert meteorological insights 
-              into actionable briefings—so you know if your flight is a GO, <strong className="text-white/80">days in advance</strong>.
+              Know if your flight will happen <strong className="text-white/80">days in advance</strong>—before 
+              you're at the airport with bags packed, facing pressure to fly in conditions you shouldn't.
             </p>
+            
+            {/* Safety message */}
+            <div className="max-w-2xl mx-auto p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
+              <p className="text-sm text-amber-200">
+                <strong className="text-amber-100">The safest decision is the one made early.</strong> PlaneWX gives you 
+                weather intelligence up to 14 days out, so you never face a last-minute go/no-go under pressure.
+              </p>
+            </div>
             
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -236,6 +244,213 @@ export function LandingPage() {
                 Join <span className="text-sky-400 font-semibold">{waitlistCount.toLocaleString()}+</span> pilots on the waitlist
               </p>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* Safety First Section */}
+      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-rose-950/20 to-transparent">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/30 mb-6">
+              <Shield className="h-4 w-4 text-rose-400" />
+              <span className="text-sm text-rose-400 font-medium">Why PlaneWX Exists</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              The Most Dangerous Decision is the <span className="text-rose-400">Last-Minute</span> One
+            </h2>
+            <p className="text-lg text-white/60 max-w-3xl mx-auto">
+              The FAA identifies external pressure and "get-there-itis" as leading contributors to GA accidents. 
+              PlaneWX exists to eliminate that pressure by giving you visibility <strong className="text-white">before</strong> you're locked into a decision.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* The Problem */}
+            <div className="p-8 rounded-2xl bg-rose-950/30 border border-rose-500/20">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2 text-rose-300">
+                <AlertCircle className="h-5 w-5" />
+                The Pattern That Kills
+              </h3>
+              <ul className="space-y-4 text-white/70">
+                <li className="flex items-start gap-3">
+                  <span className="text-rose-400 font-bold mt-1">1.</span>
+                  <span>Plans made days or weeks in advance — flights booked, hotels reserved, family waiting</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-rose-400 font-bold mt-1">2.</span>
+                  <span>Weather monitored, but TAFs only go 24 hours — "we'll know the night before"</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-rose-400 font-bold mt-1">3.</span>
+                  <span>Morning of departure: conditions marginal, but bags are packed, commitments made</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-rose-400 font-bold mt-1">4.</span>
+                  <span><strong className="text-white">The pressure to go is immense.</strong> The decision feels impossible.</span>
+                </li>
+              </ul>
+              <p className="mt-4 text-sm text-rose-300/70 italic">
+                This is when accidents happen. Not because pilots lack skill, but because they're forced into decisions when the stakes are highest.
+              </p>
+            </div>
+
+            {/* The Solution */}
+            <div className="p-8 rounded-2xl bg-emerald-950/30 border border-emerald-500/20">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2 text-emerald-300">
+                <CheckCircle2 className="h-5 w-5" />
+                How PlaneWX Changes This
+              </h3>
+              <ul className="space-y-4 text-white/70">
+                <li className="flex items-start gap-3">
+                  <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
+                  <span><strong className="text-white">Know 7+ days out</strong> — See weather trends and GO Score before you commit</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
+                  <span><strong className="text-white">40+ automatic updates</strong> — Watch conditions evolve, not scramble the night before</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
+                  <span><strong className="text-white">Alternative departure times</strong> — "Friday looks bad, but Thursday afternoon shows 85%"</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
+                  <span><strong className="text-white">Trip Crew reduces external pressure</strong> — Stakeholders see the data, so rescheduling is shared</span>
+                </li>
+              </ul>
+              <p className="mt-4 text-sm text-emerald-300/70 italic">
+                The safest pilots aren't the ones who can fly in anything — they're the ones who never put themselves in that position.
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom line */}
+          <div className="p-6 rounded-2xl bg-gradient-to-r from-sky-950/50 to-indigo-950/50 border border-sky-500/20 text-center">
+            <p className="text-lg text-white/80">
+              <strong className="text-white">PlaneWX doesn't tell you not to fly.</strong> It gives you the information 
+              to make that decision yourself — <span className="text-sky-400">days earlier</span>, when you still have options.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* What is Synoptic Intelligence Section */}
+      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              What is <span className="text-sky-400">Synoptic Intelligence</span>™?
+            </h2>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-4">
+              "Synoptic Intelligence captures what human forecasters know but models don't — 
+              then calibrates it with what models can quantify."
+            </p>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              <strong className="text-white">PlaneWX is the first and only AI-powered aviation weather product.</strong> No other 
+              platform combines human forecaster insight with quantitative model data beyond 24 hours.
+            </p>
+          </div>
+
+          {/* The Gap Explanation */}
+          <div className="mb-12 p-6 rounded-2xl bg-slate-900/80 border border-slate-700">
+            <h3 className="text-lg font-semibold mb-4 text-center">The Gap in Aviation Weather Today</h3>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20">
+                <div className="font-semibold text-rose-300 mb-2">TAFs</div>
+                <p className="text-white/60">Human insight + quantitative</p>
+                <p className="text-rose-400 font-medium mt-2">But only 24 hours</p>
+              </div>
+              <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
+                <div className="font-semibold text-amber-300 mb-2">MOS / NBM</div>
+                <p className="text-white/60">Quantitative out to 7+ days</p>
+                <p className="text-amber-400 font-medium mt-2">But pure model — no human reasoning</p>
+              </div>
+              <div className="p-4 rounded-xl bg-sky-500/10 border border-sky-500/20">
+                <div className="font-semibold text-sky-300 mb-2">AFDs (Area Forecast Discussions)</div>
+                <p className="text-white/60">Human insight out to 7 days</p>
+                <p className="text-sky-400 font-medium mt-2">But qualitative & written for meteorologists</p>
+              </div>
+            </div>
+            <div className="mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center">
+              <p className="text-emerald-300 font-medium">
+                <strong className="text-white">Synoptic Intelligence</strong> = Human forecaster insight (from AFDs) synthesized by AI, 
+                calibrated with quantitative model data (NBM days 1-3, GFS MEX days 4-7) = <span className="text-emerald-400">Accurate VFR probabilities out to 7 days</span>
+              </p>
+            </div>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Card 1 */}
+            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-sky-500/50 transition-all duration-300">
+              <div className="absolute inset-0 rounded-2xl bg-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-sky-500/20 flex items-center justify-center mb-4">
+                  <Brain className="h-6 w-6 text-sky-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Human Insight Synthesis</h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  AI synthesizes expert forecaster narratives from 122 NWS offices — capturing the <em>why</em> behind weather patterns 
+                  that pure model data misses.
+                </p>
+              </div>
+            </div>
+            
+            {/* Card 2 */}
+            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="absolute inset-0 rounded-2xl bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4">
+                  <Route className="h-6 w-6 text-cyan-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Route-Aware Analysis</h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  Samples your flight path every 75nm to identify all weather regions along your 
+                  route—not just origin and destination like traditional briefings.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-emerald-500/50 transition-all duration-300">
+              <div className="absolute inset-0 rounded-2xl bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
+                  <TrendingUp className="h-6 w-6 text-emerald-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Quantitative Calibration</h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  Cross-references qualitative forecaster narratives with objective NBM/GFS model data 
+                  to produce calibrated VFR probability estimates you can trust.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Why This Matters for Safety */}
+          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-emerald-950/50 to-teal-950/50 border border-emerald-700/30">
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-emerald-400" />
+              Why This Matters for Safety
+            </h3>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">Know 7 days out:</strong> <span className="text-white/60">See deteriorating conditions before you're committed — not the night before departure</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">Understand the "why":</strong> <span className="text-white/60">Human forecaster reasoning explains why conditions are evolving, not just model numbers</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">Trust the numbers:</strong> <span className="text-white/60">Calibrated with objective model data — 71% accuracy at 72 hours in backtesting</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">Make early decisions:</strong> <span className="text-white/60">The safest decision is the one made when you still have options</span></span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -359,26 +574,26 @@ export function LandingPage() {
               </div>
               <div className="relative">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-medium mb-4">
-                  <Users className="h-3 w-3" />
-                  Peace of Mind
+                  <Shield className="h-3 w-3" />
+                  Reduce External Pressure
                 </div>
                 <h3 className="text-2xl font-bold mb-3">Trip Crew</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
-                  Share trip updates with family, friends, and mentors. They get progressive 
-                  notifications as departure approaches—and you get accountability.
+                  The FAA identifies external pressure as a leading cause of GA accidents. Trip Crew 
+                  reduces that pressure by keeping stakeholders informed — so rescheduling is a shared decision, not a confrontation.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-amber-400" />
-                    Email alerts at 14d, 7d, 3d, 1d, and departure
+                    Family, passengers, and schedulers see the same data
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-amber-400" />
-                    Quick-response buttons for watchers
+                    Alerts when conditions deteriorate — days in advance
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-amber-400" />
-                    Auto-add your crew to new trips
+                    You're not the one "breaking bad news" at the last minute
                   </li>
                 </ul>
               </div>
@@ -412,19 +627,19 @@ export function LandingPage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-violet-400" />
-                    <span className="text-white/70">Turbulence tolerance (per aircraft)</span>
+                    <span className="text-white/70">Turbulence tolerance</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-violet-400" />
-                    <span className="text-white/70">Icing tolerance (per aircraft)</span>
+                    <span className="text-white/70">Icing tolerance</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-violet-400" />
-                    <span className="text-white/70">Aircraft-specific overrides</span>
+                    <span className="text-white/70">Night/IMC comfort level</span>
                   </div>
                 </div>
-                <p className="text-xs text-white/40 mt-3 italic">
-                  Flying a well-equipped SR22T with FIKI? Set tighter minimums. Renting a basic 172? Different aircraft, different limits.
+                <p className="text-xs text-violet-300/70 mt-3">
+                  All minimums are set per aircraft — because your limits in a well-equipped SR22T are different from a rental 172.
                 </p>
               </div>
             </div>
@@ -506,6 +721,143 @@ export function LandingPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Waitlist Form Section */}
+      <section id="waitlist" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
+        <div className="container mx-auto max-w-xl">
+          <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl text-white">Join the Waitlist</CardTitle>
+              <CardDescription className="text-white/60">
+                Be among the first to experience PlaneWX. We'll notify you when access is available.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {status === "success" ? (
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 p-4 rounded-lg bg-emerald-500/20 border border-emerald-500/30">
+                    <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0" />
+                    <div>
+                      <p className="font-semibold text-emerald-400">You're on the list!</p>
+                      <p className="text-sm text-white/60">
+                        We'll send you an email when access is available.
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    onClick={() => setStatus("idle")}
+                    variant="outline"
+                    className="w-full border-white/20 text-white hover:bg-white/5"
+                  >
+                    Add Another Email
+                  </Button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName" className="text-white/80">First Name</Label>
+                      <Input
+                        id="firstName"
+                        type="text"
+                        placeholder="John"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        disabled={isSubmitting}
+                        className="bg-white/5 border-white/20 text-white placeholder:text-white/30"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName" className="text-white/80">Last Name</Label>
+                      <Input
+                        id="lastName"
+                        type="text"
+                        placeholder="Pilot"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        disabled={isSubmitting}
+                        className="bg-white/5 border-white/20 text-white placeholder:text-white/30"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-white/80">Email *</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="pilot@example.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      disabled={isSubmitting}
+                      className="bg-white/5 border-white/20 text-white placeholder:text-white/30"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="homeAirport" className="text-white/80">Home Airport (Optional)</Label>
+                    <Input
+                      id="homeAirport"
+                      type="text"
+                      placeholder="KABC"
+                      value={homeAirport}
+                      onChange={(e) => setHomeAirport(e.target.value.toUpperCase())}
+                      maxLength={4}
+                      pattern="[A-Z]{3,4}"
+                      disabled={isSubmitting}
+                      className="bg-white/5 border-white/20 text-white placeholder:text-white/30 uppercase"
+                    />
+                    <p className="text-xs text-white/40">
+                      Your home base ICAO code (e.g., KABC)
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="xcFlightsPerWeek" className="text-white/80">Cross-Country Flights Per Week (Optional)</Label>
+                    <Select
+                      value={xcFlightsPerWeek}
+                      onValueChange={setXcFlightsPerWeek}
+                      disabled={isSubmitting}
+                    >
+                      <SelectTrigger id="xcFlightsPerWeek" className="w-full bg-white/5 border-white/20 text-white">
+                        <SelectValue placeholder="Select frequency..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="less_than_1">Less than 1</SelectItem>
+                        <SelectItem value="1_to_2">1-2 flights</SelectItem>
+                        <SelectItem value="3_to_5">3-5 flights</SelectItem>
+                        <SelectItem value="more_than_5">More than 5 flights</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {status === "error" && (
+                    <div className="flex items-center gap-2 p-3 rounded-lg bg-rose-500/20 border border-rose-500/30">
+                      <AlertCircle className="h-4 w-4 text-rose-400 flex-shrink-0" />
+                      <p className="text-sm text-rose-400">{errorMessage}</p>
+                    </div>
+                  )}
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white font-semibold"
+                    disabled={isSubmitting || !email.trim()}
+                  >
+                    {isSubmitting ? "Joining..." : "Join Waitlist"}
+                  </Button>
+
+                  {waitlistCount !== null && (
+                    <p className="text-center text-sm text-white/40 pt-2">
+                      {waitlistCount.toLocaleString()} pilots on the waitlist
+                    </p>
+                  )}
+                </form>
+              )}
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -741,7 +1093,7 @@ export function LandingPage() {
               </div>
               <div className="mt-4 p-3 rounded-lg bg-sky-500/10 border border-sky-500/20">
                 <p className="text-xs text-sky-300">
-                  💡 Your Trip Crew watchers get the same alerts — so family knows when your GO Score drops.
+                  💡 Your Trip Crew gets the same alerts — so the conversation about rescheduling starts early, not at the airport.
                 </p>
               </div>
             </div>
@@ -842,313 +1194,17 @@ export function LandingPage() {
             </div>
           </div>
 
-          {/* Simple Summary */}
+          {/* Simple Summary - Safety Focus */}
           <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/50 to-sky-950/50 border border-emerald-500/20 text-center">
-            <p className="text-lg text-white/80">
+            <p className="text-lg text-white/80 mb-3">
               <strong className="text-white">Bottom line:</strong> PlaneWX gives you the intelligence to decide confidently — 
               <span className="text-sky-400"> the confidence to GO</span> or <span className="text-amber-400">the courage to stay</span>.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Founder's Story Section */}
-      <section id="founder" className="relative py-24 px-4">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Founder's <span className="text-sky-400">Story</span>
-          </h2>
-        </div>
-
-          <div className="grid md:grid-cols-5 gap-8 items-start">
-            {/* Image */}
-            <div className="md:col-span-2 space-y-4">
-              <div 
-                className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl cursor-pointer hover:border-sky-500/50 transition-colors"
-                onClick={() => setZoomedImage("/screenshots/foreflight.jpeg")}
-              >
-                <img
-                  src="/screenshots/foreflight.jpeg"
-                  alt="Flight log showing extensive cross-country flying"
-                  className="w-full h-auto"
-                />
-              </div>
-              <p className="text-sm text-white/40 text-center italic">
-                "I built PlaneWX because I needed it!"
-              </p>
-            </div>
-            
-            {/* Story Text */}
-            <div className="md:col-span-3 space-y-4 text-white/60 leading-relaxed">
-              <p>
-                PlaneWX was founded in 2025 by <strong className="text-white">Mark Wolfgang</strong>, an experienced technology entrepreneur and General Aviation pilot.
-              </p>
-              <p>
-                After selling his Information Security consulting company in December 2022, Mark retired and bought his first airplane—a Diamond DA40 NG. He earned his Private Pilot's license in just six weeks and started flying his wife and dog around the country.
-              </p>
-              <p>
-                After completing an accelerated IFR program in five days, Mark discovered the complexities of weather planning for instrument flying. He grew frustrated having to tell his wife, <em className="text-white/80">"Yeah, the flight should happen—we'll know about 85% the night before."</em>
-              </p>
-              <p>
-                Now flying a Cirrus SR22T with over 800 hours total time—including 620 hours of cross-country PIC in 18 months—Mark built PlaneWX to solve his own problem. What started as personal frustration became a mission to help every pilot answer the question: <em className="text-sky-400">"Is this flight going to happen?"</em>
-              </p>
-              <div className="pt-4 border-t border-white/10">
-                <p className="text-sm">
-                  <strong className="text-white">Mark Wolfgang</strong> is a Commercially Rated Instrument pilot with single and multiengine ratings.
-              </p>
-            </div>
-          </div>
-        </div>
-        </div>
-      </section>
-
-      {/* Waitlist Form Section */}
-      <section id="waitlist" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
-        <div className="container mx-auto max-w-xl">
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-white">Join the Waitlist</CardTitle>
-              <CardDescription className="text-white/60">
-                Be among the first to experience PlaneWX. We'll notify you when access is available.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {status === "success" ? (
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-4 rounded-lg bg-emerald-500/20 border border-emerald-500/30">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-emerald-400">You're on the list!</p>
-                      <p className="text-sm text-white/60">
-                        We'll send you an email when access is available.
-                      </p>
-                    </div>
-                  </div>
-                  <Button
-                    onClick={() => setStatus("idle")}
-                    variant="outline"
-                    className="w-full border-white/20 text-white hover:bg-white/5"
-                  >
-                    Add Another Email
-                  </Button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName" className="text-white/80">First Name</Label>
-                      <Input
-                        id="firstName"
-                        type="text"
-                        placeholder="John"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                        disabled={isSubmitting}
-                        className="bg-white/5 border-white/20 text-white placeholder:text-white/30"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName" className="text-white/80">Last Name</Label>
-                      <Input
-                        id="lastName"
-                        type="text"
-                        placeholder="Pilot"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                        disabled={isSubmitting}
-                        className="bg-white/5 border-white/20 text-white placeholder:text-white/30"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-white/80">Email *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="pilot@example.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      disabled={isSubmitting}
-                      className="bg-white/5 border-white/20 text-white placeholder:text-white/30"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="homeAirport" className="text-white/80">Home Airport (Optional)</Label>
-                    <Input
-                      id="homeAirport"
-                      type="text"
-                      placeholder="KABC"
-                      value={homeAirport}
-                      onChange={(e) => setHomeAirport(e.target.value.toUpperCase())}
-                      maxLength={4}
-                      pattern="[A-Z]{3,4}"
-                      disabled={isSubmitting}
-                      className="bg-white/5 border-white/20 text-white placeholder:text-white/30 uppercase"
-                    />
-                    <p className="text-xs text-white/40">
-                      Your home base ICAO code (e.g., KABC)
-                    </p>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="xcFlightsPerWeek" className="text-white/80">Cross-Country Flights Per Week (Optional)</Label>
-                    <Select
-                      value={xcFlightsPerWeek}
-                      onValueChange={setXcFlightsPerWeek}
-                      disabled={isSubmitting}
-                    >
-                      <SelectTrigger id="xcFlightsPerWeek" className="w-full bg-white/5 border-white/20 text-white">
-                        <SelectValue placeholder="Select frequency..." />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="less_than_1">Less than 1</SelectItem>
-                        <SelectItem value="1_to_2">1-2 flights</SelectItem>
-                        <SelectItem value="3_to_5">3-5 flights</SelectItem>
-                        <SelectItem value="more_than_5">More than 5 flights</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {status === "error" && (
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-rose-500/20 border border-rose-500/30">
-                      <AlertCircle className="h-4 w-4 text-rose-400 flex-shrink-0" />
-                      <p className="text-sm text-rose-400">{errorMessage}</p>
-                    </div>
-                  )}
-
-                  <Button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white font-semibold"
-                    disabled={isSubmitting || !email.trim()}
-                  >
-                    {isSubmitting ? "Joining..." : "Join Waitlist"}
-                  </Button>
-
-                  {waitlistCount !== null && (
-                    <p className="text-center text-sm text-white/40 pt-2">
-                      {waitlistCount.toLocaleString()} pilots on the waitlist
-                    </p>
-                  )}
-                </form>
-              )}
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* What is Synoptic Intelligence Section */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
-        <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What is <span className="text-sky-400">Synoptic Intelligence</span>™?
-            </h2>
-            <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              <strong className="text-white">PlaneWX is the first and only AI-powered aviation weather product.</strong> Synoptic Intelligence™ is our proprietary technology that makes this possible—no other platform synthesizes weather data like we do.
+            <p className="text-sm text-white/60">
+              The safest pilots aren't the ones who can fly in anything — they're the ones who 
+              <strong className="text-white"> never put themselves in that position</strong>. 
+              PlaneWX helps you make that decision days earlier, when you still have options.
             </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Card 1 */}
-            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-sky-500/50 transition-all duration-300">
-              <div className="absolute inset-0 rounded-2xl bg-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-sky-500/20 flex items-center justify-center mb-4">
-                  <Brain className="h-6 w-6 text-sky-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Multi-Source Synthesis</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Aggregates expert meteorological insights from multiple National Weather Service 
-                  offices into unified regional summaries—something no other tool does.
-                </p>
-              </div>
-            </div>
-            
-            {/* Card 2 */}
-            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-cyan-500/50 transition-all duration-300">
-              <div className="absolute inset-0 rounded-2xl bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4">
-                  <Route className="h-6 w-6 text-cyan-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Route-Aware Analysis</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Samples your flight path every 75nm to identify all weather regions along your 
-                  route—not just origin and destination like traditional briefings.
-                </p>
-              </div>
-        </div>
-
-            {/* Card 3 */}
-            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-emerald-500/50 transition-all duration-300">
-              <div className="absolute inset-0 rounded-2xl bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
-                  <TrendingUp className="h-6 w-6 text-emerald-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Confidence Calibration</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Cross-references forecaster narratives with probabilistic model data (NBM) 
-                  to give you calibrated confidence levels you can actually trust.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Where It's Used */}
-          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-indigo-950/50 to-purple-950/50 border border-indigo-700/30">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <Globe className="h-5 w-5 text-indigo-400" />
-              Where Synoptic Intelligence Powers PlaneWX
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-4 text-sm">
-              <div className="flex items-start gap-2">
-                <span className="text-indigo-400 font-bold mt-0.5">•</span>
-                <span><strong className="text-white">National Watch</strong> <span className="text-white/60">— Continental weather synopsis synthesized from all 22 regions</span></span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-indigo-400 font-bold mt-0.5">•</span>
-                <span><strong className="text-white">Regional Watch</strong> <span className="text-white/60">— AI-synthesized regional summaries with VFR probabilities</span></span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-indigo-400 font-bold mt-0.5">•</span>
-                <span><strong className="text-white">Corridor Watch</strong> <span className="text-white/60">— Route-specific weather intelligence for saved corridors</span></span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-indigo-400 font-bold mt-0.5">•</span>
-                <span><strong className="text-white">Every Flight Briefing</strong> <span className="text-white/60">— Route-aware analysis with personalized GO scores</span></span>
-              </div>
-            </div>
-          </div>
-
-          {/* What Makes Us Different */}
-          <div className="mt-6 p-6 rounded-2xl bg-gradient-to-r from-emerald-950/50 to-teal-950/50 border border-emerald-700/30">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-emerald-400" />
-              What Makes PlaneWX Different
-            </h3>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">AI Synthesis:</strong> <span className="text-white/60">We don't just show data — we analyze and explain it in plain language. Unlike ForeFlight and Garmin Pilot, we synthesize, not just display.</span></span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">72-Hour Forecasting:</strong> <span className="text-white/60">Extends reliable planning beyond the 24-hour TAF window with 71% accuracy</span></span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">Per-Aircraft Minimums:</strong> <span className="text-white/60">Ceilings, visibility, crosswind, turbulence, icing — all customizable per aircraft you fly</span></span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">Route-Aware:</strong> <span className="text-white/60">Synthesizes conditions along your entire flight path, not just point-to-point</span></span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -1241,25 +1297,28 @@ export function LandingPage() {
                   <div className="flex items-center gap-3 mb-4">
                     <Brain className="h-5 w-5 text-sky-400" />
                     <h3 className="text-lg font-semibold">What is Synoptic Intelligence™?</h3>
-                </div>
+                  </div>
+                  <p className="text-white/90 text-lg mb-4 italic">
+                    "Synoptic Intelligence captures what human forecasters know but models don't — 
+                    then calibrates it with what models can quantify."
+                  </p>
                   <p className="text-white/70 mb-4">
-                    <strong className="text-white">PlaneWX is the first and only AI-powered aviation weather product.</strong> Synoptic Intelligence™ is our proprietary technology that makes this possible. 
-                    Unlike ForeFlight, Garmin Pilot, and others that simply display raw weather data, Synoptic Intelligence <em className="text-white/90">synthesizes</em> multiple sources — 
-                    human forecaster narratives <em className="text-white/90">and</em> numerical models — 
-                    into actionable intelligence. You get the <em className="text-white/90">why</em> behind the weather, not just the data.
+                    <strong className="text-white">No existing product combines human forecaster insight with quantitative data beyond 24 hours.</strong> TAFs 
+                    give you human insight — but only for 24 hours. MOS and NBM go further, but they're pure model output with no forecaster reasoning. 
+                    AFDs contain 7-day human insight, but they're written for meteorologists and scattered across 122 offices.
                   </p>
-                  <p className="text-xs text-white/40 italic mb-4">
-                    While competitors show you METARs, TAFs, and charts, PlaneWX tells you what it all means for <em>your</em> flight, <em>your</em> aircraft, and <em>your</em> personal minimums.
+                  <p className="text-white/70 mb-4">
+                    Synoptic Intelligence uses AI to synthesize AFD narratives — capturing pattern-level reasoning and uncertainty — 
+                    then calibrates with objective NBM/GFS model data to produce quantified VFR probability estimates out to 7 days.
                   </p>
-                  <div className="p-4 rounded-xl bg-sky-500/10 border border-sky-500/20">
-                    <p className="text-sm text-sky-200">
-                      <strong className="text-white">Regional Weather</strong> is what Synoptic Intelligence produces — 
-                      AI-synthesized weather summaries for 22 custom aviation regions across the US. Each briefing includes 
-                      Regional Weather for your <strong>origin</strong>, <strong>en-route</strong>, and <strong>destination</strong> — 
-                      updated 4× daily as NWS forecasters issue new guidance.
-                  </p>
+                  <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                    <p className="text-sm text-emerald-200">
+                      <strong className="text-white">Why this matters for safety:</strong> You see weather trends deteriorating 
+                      <strong> days before departure</strong>, not the night before — when you still have options to delay, 
+                      reschedule, or find better departure windows.
+                    </p>
+                  </div>
                 </div>
-              </div>
 
             {/* Multi-Source Verification */}
             <div className="p-6 rounded-2xl bg-slate-900/80 border border-slate-700">
@@ -1533,7 +1592,58 @@ export function LandingPage() {
         </div>
       </section>
 
-        {/* Footer */}
+      {/* Founder's Story Section */}
+      <section id="founder" className="relative py-24 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Founder's <span className="text-sky-400">Story</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-5 gap-8 items-start">
+            {/* Image */}
+            <div className="md:col-span-2 space-y-4">
+              <div 
+                className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl cursor-pointer hover:border-sky-500/50 transition-colors"
+                onClick={() => setZoomedImage("/screenshots/foreflight.jpeg")}
+              >
+                <img
+                  src="/screenshots/foreflight.jpeg"
+                  alt="Flight log showing extensive cross-country flying"
+                  className="w-full h-auto"
+                />
+              </div>
+              <p className="text-sm text-white/40 text-center italic">
+                "I built PlaneWX because I needed it!"
+              </p>
+            </div>
+            
+            {/* Story Text */}
+            <div className="md:col-span-3 space-y-4 text-white/60 leading-relaxed">
+              <p>
+                PlaneWX was founded in 2025 by <strong className="text-white">Mark Wolfgang</strong>, an experienced technology entrepreneur and General Aviation pilot.
+              </p>
+              <p>
+                After selling his Information Security consulting company in December 2022, Mark retired and bought his first airplane—a Diamond DA40 NG. He earned his Private Pilot's license in just six weeks and started flying his wife and dog around the country.
+              </p>
+              <p>
+                After completing an accelerated IFR program in five days, Mark discovered the complexities of weather planning for instrument flying. He grew frustrated having to tell his wife, <em className="text-white/80">"Yeah, the flight should happen—we'll know about 85% the night before."</em>
+              </p>
+              <p>
+                Now flying a Cirrus SR22T with over 800 hours total time—including 620 hours of cross-country PIC in 18 months—Mark built PlaneWX to solve his own problem. What started as personal frustration became a mission to help every pilot answer the question: <em className="text-sky-400">"Is this flight going to happen?"</em>
+              </p>
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-sm">
+                  <strong className="text-white">Mark Wolfgang</strong> is a Commercially Rated Instrument pilot with single and multiengine ratings.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
       <footer className="relative py-12 px-4 border-t border-white/10">
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
