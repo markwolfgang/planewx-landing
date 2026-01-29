@@ -339,6 +339,9 @@ export function LandingPage() {
       <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-medium mb-4">
+              <span>Patent Pending • US App. 63/970,803</span>
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               What is <span className="text-sky-400">Synoptic Intelligence</span>™?
             </h2>
@@ -1219,6 +1222,7 @@ export function LandingPage() {
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               See how we synthesize weather data across regions into actionable briefings
             </p>
+            <p className="text-xs text-amber-400/60 mt-2">Patent Pending</p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -1652,7 +1656,7 @@ export function LandingPage() {
               <span className="font-bold">PlaneWX</span>
           </div>
             <p className="text-sm text-white/40">
-              © {new Date().getFullYear()} PlaneWX, LLC. All rights reserved.
+              © {new Date().getFullYear()} PlaneWX, LLC. All rights reserved. • Patent Pending
             </p>
             <div className="flex items-center gap-4 text-sm text-white/40">
               <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
