@@ -4,16 +4,6 @@ import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { 
   Plane, 
   CheckCircle2, 
@@ -41,104 +31,25 @@ import {
   Radio,
   RefreshCw,
   ChevronDown,
-  Globe
+  Globe,
+  Crown,
+  Minus,
+  Plus
 } from "lucide-react"
 
-// Base count for social proof - change this to restart the counter
-const WAITLIST_BASE_COUNT = 69
 
 export function LandingPage() {
   const searchParams = useSearchParams()
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [email, setEmail] = useState("")
-  const [homeAirport, setHomeAirport] = useState("")
-  const [xcFlightsPerWeek, setXcFlightsPerWeek] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
-  const [errorMessage, setErrorMessage] = useState("")
   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
-  const [waitlistCount, setWaitlistCount] = useState<number | null>(null)
   const [synopticExpanded, setSynopticExpanded] = useState(false)
-  const [referralCode, setReferralCode] = useState<string | null>(null)
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
-  // Capture referral code from URL (?ref=CODE) and persist in localStorage
   useEffect(() => {
     const refParam = searchParams.get("ref")
     if (refParam) {
-      // Store in localStorage so it persists if they browse around
       localStorage.setItem("planewx_referral", refParam.toUpperCase())
-      setReferralCode(refParam.toUpperCase())
-    } else {
-      // Check localStorage for previously stored referral
-      const storedRef = localStorage.getItem("planewx_referral")
-      if (storedRef) {
-        setReferralCode(storedRef)
-      }
     }
   }, [searchParams])
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setStatus("idle")
-    setErrorMessage("")
-
-    try {
-      const response = await fetch("/api/waitlist/join", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName: firstName.trim() || null,
-          lastName: lastName.trim() || null,
-          email,
-          homeAirport: homeAirport.trim() || null,
-          xcFlightsPerWeek: xcFlightsPerWeek || null,
-          referralCode: referralCode || null,
-        }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        setStatus("error")
-        setErrorMessage(data.error || "Failed to join waitlist. Please try again.")
-        return
-      }
-
-      setStatus("success")
-      setFirstName("")
-      setLastName("")
-      setEmail("")
-      setHomeAirport("")
-      setXcFlightsPerWeek("")
-      fetchWaitlistCount()
-    } catch (error) {
-      console.error("[LandingPage] Error submitting:", error)
-      setStatus("error")
-      setErrorMessage("An unexpected error occurred. Please try again.")
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const fetchWaitlistCount = async () => {
-    try {
-      const response = await fetch("/api/waitlist/count")
-      if (response.ok) {
-        const data = await response.json()
-        setWaitlistCount(WAITLIST_BASE_COUNT + (data.count || 0))
-      }
-    } catch (error) {
-      console.error("[LandingPage] Error fetching waitlist count:", error)
-    }
-  }
-
-  useEffect(() => {
-    fetchWaitlistCount()
-  }, [])
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
@@ -167,14 +78,22 @@ export function LandingPage() {
             >
               Features
             </button>
-            <a href="#founder" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
-            <Button 
-              size="sm" 
-              className="bg-sky-500 hover:bg-sky-400 text-white"
-              onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+            <button 
+              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-sm text-white/60 hover:text-white transition-colors"
             >
-              Join Waitlist
-            </Button>
+              Pricing
+            </button>
+            <a href="#founder" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
+            <a href="https://app.planewx.ai" className="text-sm text-white/60 hover:text-white transition-colors">
+              Log In
+            </a>
+            <a 
+              href="https://app.planewx.ai"
+              className="inline-flex items-center justify-center rounded-md text-xs font-medium h-9 px-3 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
+            >
+              Get Started Free
+            </a>
           </div>
         </div>
       </nav>
@@ -220,14 +139,13 @@ export function LandingPage() {
             
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-8 py-6 text-lg font-semibold shadow-lg shadow-sky-500/25"
-                onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+              <a 
+                href="https://app.planewx.ai"
+                className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-8 py-6 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-colors"
               >
-                Join the Waitlist
+                Get Started Free
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              </a>
               <Button 
                 size="lg" 
                 variant="outline" 
@@ -238,12 +156,9 @@ export function LandingPage() {
               </Button>
             </div>
             
-            {/* Social proof */}
-            {waitlistCount !== null && (
-              <p className="text-sm text-white/40 pt-4">
-                Join <span className="text-sky-400 font-semibold">{waitlistCount.toLocaleString()}+</span> pilots on the waitlist
-              </p>
-            )}
+            <p className="text-sm text-white/40 pt-4">
+              14-day Pro trial — no credit card required
+            </p>
           </div>
         </div>
       </section>
@@ -316,7 +231,7 @@ export function LandingPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">Trip Crew reduces external pressure</strong> — Stakeholders see the data, so rescheduling is shared</span>
+                  <span><strong className="text-white">Trip Watchers reduces external pressure</strong> — Stakeholders see the data, so rescheduling is shared</span>
                 </li>
               </ul>
               <p className="mt-4 text-sm text-emerald-300/70 italic">
@@ -507,7 +422,7 @@ export function LandingPage() {
               </div>
             </div>
             
-            {/* Trip Wizard */}
+            {/* Trip Planner */}
             <div className="relative p-8 rounded-3xl bg-gradient-to-br from-violet-950/50 to-violet-950/20 border border-violet-500/20 overflow-hidden">
               <div className="absolute top-4 right-4 w-24 h-24 opacity-20">
                 <Sparkles className="w-full h-full text-violet-400" />
@@ -515,9 +430,9 @@ export function LandingPage() {
               <div className="relative">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/20 text-violet-400 text-xs font-medium mb-4">
                   <Sparkles className="h-3 w-3" />
-                  New Feature
+                  Core Feature
                 </div>
-                <h3 className="text-2xl font-bold mb-3">Trip Wizard</h3>
+                <h3 className="text-2xl font-bold mb-3">Trip Planner</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
                   Two mission paths for two types of flights. Weather-aware planning that works the way pilots actually think.
                 </p>
@@ -570,7 +485,7 @@ export function LandingPage() {
               </div>
             </div>
             
-            {/* Trip Crew */}
+            {/* Trip Watchers */}
             <div className="relative p-8 rounded-3xl bg-gradient-to-br from-amber-950/50 to-amber-950/20 border border-amber-500/20 overflow-hidden">
               <div className="absolute top-4 right-4 w-24 h-24 opacity-20">
                 <Users className="w-full h-full text-amber-400" />
@@ -580,9 +495,9 @@ export function LandingPage() {
                   <Shield className="h-3 w-3" />
                   Reduce External Pressure
                 </div>
-                <h3 className="text-2xl font-bold mb-3">Trip Crew</h3>
+                <h3 className="text-2xl font-bold mb-3">Trip Watchers</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
-                  The FAA identifies external pressure as a leading cause of GA accidents. Trip Crew 
+                  The FAA identifies external pressure as a leading cause of GA accidents. Trip Watchers 
                   reduces that pressure by keeping stakeholders informed — so rescheduling is a shared decision, not a confrontation.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
@@ -597,6 +512,70 @@ export function LandingPage() {
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-amber-400" />
                     You're not the one "breaking bad news" at the last minute
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Multi-City Optimizer */}
+            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-cyan-950/50 to-cyan-950/20 border border-cyan-500/20 overflow-hidden">
+              <div className="absolute top-4 right-4 w-24 h-24 opacity-20">
+                <Globe className="w-full h-full text-cyan-400" />
+              </div>
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-medium mb-4">
+                  <Sparkles className="h-3 w-3" />
+                  Pro Feature
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Multi-City Optimizer</h3>
+                <p className="text-white/60 mb-4 leading-relaxed">
+                  Planning a multi-leg trip? Enter all your stops and PlaneWX finds the optimal departure 
+                  sequence based on weather windows across every leg.
+                </p>
+                <ul className="space-y-2 text-sm text-white/50">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-cyan-400" />
+                    Weather-optimized leg sequencing
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-cyan-400" />
+                    GO Scores for every leg at a glance
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-cyan-400" />
+                    Flexible timing across multiple destinations
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Corridor Watch */}
+            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-rose-950/50 to-rose-950/20 border border-rose-500/20 overflow-hidden">
+              <div className="absolute top-4 right-4 w-24 h-24 opacity-20">
+                <Route className="w-full h-full text-rose-400" />
+              </div>
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-medium mb-4">
+                  <Radio className="h-3 w-3" />
+                  Pro Feature
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Corridor Watch</h3>
+                <p className="text-white/60 mb-4 leading-relaxed">
+                  Route-specific weather intelligence along your flight path. See conditions at departure, 
+                  en route waypoints, and arrival — all in one view.
+                </p>
+                <ul className="space-y-2 text-sm text-white/50">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-rose-400" />
+                    Waypoint-by-waypoint weather analysis
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-rose-400" />
+                    TFR and NOTAM awareness along route
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-rose-400" />
+                    Turbulence and icing corridor overlays
                   </li>
                 </ul>
               </div>
@@ -727,140 +706,187 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Waitlist Form Section */}
-      <section id="waitlist" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
-        <div className="container mx-auto max-w-xl">
-          <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-white">Join the Waitlist</CardTitle>
-              <CardDescription className="text-white/60">
-                Be among the first to experience PlaneWX. We'll notify you when access is available.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {status === "success" ? (
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-4 rounded-lg bg-emerald-500/20 border border-emerald-500/30">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-emerald-400">You're on the list!</p>
-                      <p className="text-sm text-white/60">
-                        We'll send you an email when access is available.
-                      </p>
-                    </div>
-                  </div>
-                  <Button
-                    onClick={() => setStatus("idle")}
-                    variant="outline"
-                    className="w-full border-white/20 text-white hover:bg-white/5"
-                  >
-                    Add Another Email
-                  </Button>
+      {/* Pricing Section */}
+      <section id="pricing" className="relative py-24 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Simple, <span className="text-sky-400">Transparent</span> Pricing
+            </h2>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              Start with a 14-day Pro trial. No credit card required.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Free Tier */}
+            <div className="relative p-8 rounded-3xl bg-white/5 border border-white/10">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold mb-1">Free</h3>
+                <p className="text-white/50 text-sm">For students and occasional flyers</p>
+              </div>
+              <div className="mb-6">
+                <span className="text-4xl font-bold">$0</span>
+                <span className="text-white/40 ml-1">/forever</span>
+              </div>
+              <a
+                href="https://app.planewx.ai"
+                className="inline-flex items-center justify-center rounded-md w-full py-3 text-sm font-semibold border border-white/20 text-white hover:bg-white/5 transition-colors mb-8"
+              >
+                Get Started
+              </a>
+              <div className="space-y-3 text-sm">
+                <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">What&apos;s included</p>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span className="text-white/70">2 active flights</span>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName" className="text-white/80">First Name</Label>
-                      <Input
-                        id="firstName"
-                        type="text"
-                        placeholder="John"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
-                        disabled={isSubmitting}
-                        className="bg-white/5 border-white/20 text-white placeholder:text-white/30"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName" className="text-white/80">Last Name</Label>
-                      <Input
-                        id="lastName"
-                        type="text"
-                        placeholder="Pilot"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
-                        disabled={isSubmitting}
-                        className="bg-white/5 border-white/20 text-white placeholder:text-white/30"
-                      />
-                    </div>
-                  </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span className="text-white/70">1 aircraft profile</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span className="text-white/70">Synoptic Intelligence™</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span className="text-white/70">Full GO Score breakdown</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span className="text-white/70">Per-aircraft personal minimums</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span className="text-white/70">PAVE Risk Assessment</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span className="text-white/70">14-day planning horizon</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span className="text-white/70">Trip Planner</span>
+                </div>
+                <div className="flex items-center gap-3 pt-2 border-t border-white/5">
+                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
+                  <span className="text-white/30">No auto-refresh</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
+                  <span className="text-white/30">No email alerts</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
+                  <span className="text-white/30">No Trip Watchers</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
+                  <span className="text-white/30">No Corridor Watch</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
+                  <span className="text-white/30">No Multi-City Optimizer</span>
+                </div>
+              </div>
+            </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-white/80">Email *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="pilot@example.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      disabled={isSubmitting}
-                      className="bg-white/5 border-white/20 text-white placeholder:text-white/30"
-                    />
-                  </div>
+            {/* Pro Tier */}
+            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border-2 border-sky-500/40 shadow-lg shadow-sky-500/10">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-sky-500 text-white text-xs font-semibold">
+                  <Crown className="h-3 w-3" />
+                  Most Popular
+                </div>
+              </div>
+              <div className="mb-6">
+                <h3 className="text-xl font-bold mb-1">Pro</h3>
+                <p className="text-white/50 text-sm">For active GA pilots</p>
+              </div>
+              <div className="mb-2">
+                <span className="text-4xl font-bold">$11.99</span>
+                <span className="text-white/40 ml-1">/month</span>
+              </div>
+              <p className="text-sm text-sky-400 mb-6">
+                or $99/year <span className="text-emerald-400 font-medium">(save 31%)</span>
+              </p>
+              <a
+                href="https://app.planewx.ai"
+                className="inline-flex items-center justify-center rounded-md w-full py-3 text-sm font-semibold bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white shadow-lg shadow-sky-500/25 transition-colors mb-8"
+              >
+                Start 14-Day Free Trial
+              </a>
+              <div className="space-y-3 text-sm">
+                <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">Everything in Free, plus</p>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
+                  <span className="text-white/70">10 active flights</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
+                  <span className="text-white/70">5 aircraft profiles</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Auto-refresh</strong> — briefings update automatically</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Email alerts</strong> — weather changes sent to your inbox</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Trip Watchers</strong> — share live trip status</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Corridor Watch</strong> — route-specific weather monitoring</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Multi-City Optimizer</strong> — up to 6 destinations</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="homeAirport" className="text-white/80">Home Airport (Optional)</Label>
-                    <Input
-                      id="homeAirport"
-                      type="text"
-                      placeholder="KABC"
-                      value={homeAirport}
-                      onChange={(e) => setHomeAirport(e.target.value.toUpperCase())}
-                      maxLength={4}
-                      pattern="[A-Z]{3,4}"
-                      disabled={isSubmitting}
-                      className="bg-white/5 border-white/20 text-white placeholder:text-white/30 uppercase"
-                    />
-                    <p className="text-xs text-white/40">
-                      Your home base ICAO code (e.g., KABC)
-                    </p>
-                  </div>
+          <p className="text-center text-sm text-white/40 mt-8">
+            All plans include Synoptic Intelligence™, PAVE Risk Assessment, and 14-day planning. No credit card required to start.
+          </p>
+        </div>
+      </section>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="xcFlightsPerWeek" className="text-white/80">Cross-Country Flights Per Week (Optional)</Label>
-                    <Select
-                      value={xcFlightsPerWeek}
-                      onValueChange={setXcFlightsPerWeek}
-                      disabled={isSubmitting}
-                    >
-                      <SelectTrigger id="xcFlightsPerWeek" className="w-full bg-white/5 border-white/20 text-white">
-                        <SelectValue placeholder="Select frequency..." />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="less_than_1">Less than 1</SelectItem>
-                        <SelectItem value="1_to_2">1-2 flights</SelectItem>
-                        <SelectItem value="3_to_5">3-5 flights</SelectItem>
-                        <SelectItem value="more_than_5">More than 5 flights</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {status === "error" && (
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-rose-500/20 border border-rose-500/30">
-                      <AlertCircle className="h-4 w-4 text-rose-400 flex-shrink-0" />
-                      <p className="text-sm text-rose-400">{errorMessage}</p>
-                    </div>
-                  )}
-
-                  <Button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white font-semibold"
-                    disabled={isSubmitting || !email.trim()}
-                  >
-                    {isSubmitting ? "Joining..." : "Join Waitlist"}
-                  </Button>
-
-                  {waitlistCount !== null && (
-                    <p className="text-center text-sm text-white/40 pt-2">
-                      {waitlistCount.toLocaleString()} pilots on the waitlist
-                    </p>
-                  )}
-                </form>
-              )}
-            </CardContent>
-          </Card>
+      {/* Get Started CTA Section */}
+      <section id="get-started" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
+        <div className="container mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Fly <span className="text-sky-400">Smarter</span>?
+          </h2>
+          <p className="text-lg text-white/60 mb-8 max-w-xl mx-auto">
+            Create your free account and start your 14-day Pro trial. No credit card required.
+          </p>
+          <a 
+            href="https://app.planewx.ai"
+            className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-6 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-colors"
+          >
+            Get Started Free
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8 text-sm text-white/50">
+            <div className="flex items-center gap-2">
+              <Shield className="h-4 w-4 text-emerald-400" />
+              <span>30-day money-back guarantee</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+              <span>Cancel your subscription anytime</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Zap className="h-4 w-4 text-emerald-400" />
+              <span>Secure payments powered by Stripe</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1096,7 +1122,7 @@ export function LandingPage() {
               </div>
               <div className="mt-4 p-3 rounded-lg bg-sky-500/10 border border-sky-500/20">
                 <p className="text-xs text-sky-300">
-                  💡 Your Trip Crew gets the same alerts — so the conversation about rescheduling starts early, not at the airport.
+                  💡 Your Trip Watchers get the same alerts — so the conversation about rescheduling starts early, not at the airport.
                 </p>
               </div>
             </div>
@@ -1592,6 +1618,72 @@ export function LandingPage() {
                 <span className="text-white/70"><strong className="text-white">98% in stable climates</strong> proves the methodology works</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="relative py-24 px-4">
+        <div className="container mx-auto max-w-3xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Frequently Asked <span className="text-sky-400">Questions</span>
+            </h2>
+          </div>
+
+          <div className="space-y-3">
+            {[
+              {
+                q: "Is PlaneWX an official weather briefing?",
+                a: "No. PlaneWX is an advisory and planning tool — not a substitute for an FAA/NWS official weather briefing. You should always obtain an official briefing (e.g., 1800wxbrief.com) before every flight, as required by FAR 91.103."
+              },
+              {
+                q: "What happens after my 14-day Pro trial?",
+                a: "Your account automatically moves to the Free plan — no charge, no action needed. You keep your trips, aircraft, and settings. You can subscribe to Pro anytime to unlock auto-refresh, email alerts, Trip Watchers, Corridor Watch, and Multi-City Optimizer."
+              },
+              {
+                q: "Do I need a credit card to start?",
+                a: "No. You can create an account and start your 14-day Pro trial without entering any payment information."
+              },
+              {
+                q: "Can I cancel my subscription anytime?",
+                a: "Yes. You can cancel directly from your profile in the app — no emails, no phone calls. Your Pro access continues until the end of your billing period, then you move to the Free plan."
+              },
+              {
+                q: "What weather data sources does PlaneWX use?",
+                a: "PlaneWX ingests official NWS products including METARs, TAFs, Area Forecast Discussions (AFDs), SIGMETs, AIRMETs, PIREPs, and the National Blend of Models (NBM). Our Synoptic Intelligence™ AI synthesizes these into clear, actionable summaries."
+              },
+              {
+                q: "What's the difference between Free and Pro?",
+                a: "Free gives you full-quality briefings with personal minimums, GO Scores, and PAVE — but you're limited to 2 active flights and 1 aircraft. Pro adds auto-refresh, email alerts, Trip Watchers, Corridor Watch, Multi-City Optimizer, and expands to 10 active flights and 5 aircraft."
+              },
+              {
+                q: "Is there a money-back guarantee?",
+                a: "Yes. If you subscribe to Pro and it's not right for you, contact us within 30 days for a full refund — no questions asked."
+              },
+            ].map((faq, i) => (
+              <div
+                key={i}
+                className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-white/5 transition-colors"
+                >
+                  <span className="font-medium text-white/90">{faq.q}</span>
+                  {openFaq === i ? (
+                    <Minus className="h-5 w-5 text-sky-400 shrink-0" />
+                  ) : (
+                    <Plus className="h-5 w-5 text-white/40 shrink-0" />
+                  )}
+                </button>
+                {openFaq === i && (
+                  <div className="px-5 pb-5">
+                    <p className="text-white/60 leading-relaxed">{faq.a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>

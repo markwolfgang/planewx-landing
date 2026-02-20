@@ -148,9 +148,9 @@ function InviteContent() {
           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-sky-500 to-cyan-500 flex items-center justify-center mx-auto mb-4">
             <Plane className="h-10 w-10 text-white" />
           </div>
-          <CardTitle className="text-2xl text-white">Welcome to the PlaneWX Beta! 🧪</CardTitle>
+          <CardTitle className="text-2xl text-white">Welcome to PlaneWX!</CardTitle>
           <CardDescription className="text-white/60 text-base mt-2">
-            You&apos;ve been selected as one of our first beta testers. Help us build the smartest weather briefings in aviation!
+            AI-powered trip planning and weather intelligence for pilots. Your 14-day Pro trial starts when you create your account.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -165,46 +165,41 @@ function InviteContent() {
           <div className="space-y-3 text-sm text-white/70">
             <div className="flex items-start gap-3">
               <CheckCircle className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
-              <span>Get AI-powered weather briefings with GO scores</span>
+              <span>Trip Planner — weather-aware planning for flexible and fixed trips</span>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
-              <span>See regional weather patterns via Synoptic Intelligence™</span>
+              <span>Multi-City Optimizer — best departure sequence for multi-leg trips</span>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
-              <span>Automatic briefing updates as weather evolves</span>
+              <span>Personalized GO Score — 0-100% metric against your personal minimums</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
+              <span>Corridor Watch — route-specific weather along your flight path</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
+              <span>Trip Watchers — keep stakeholders informed, reduce external pressure</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
+              <span>PAVE Risk Assessment — integrated checklist pre-filled from your trip</span>
             </div>
           </div>
 
-          {/* Beta Tester Info */}
-          <div className="p-5 rounded-xl bg-amber-500/10 border border-amber-500/30">
-            <h3 className="text-base font-semibold text-amber-400 mb-3 flex items-center gap-2">
-              <span>🧪</span> As a Beta Tester
+          {/* Pro Trial Info */}
+          <div className="p-5 rounded-xl bg-blue-500/10 border border-blue-500/20">
+            <h3 className="text-base font-semibold text-blue-400 mb-3 flex items-center gap-2">
+              <span>🎁</span> 14-Day Pro Trial
             </h3>
-            <p className="text-white/70 text-sm mb-4">
-              You may encounter bugs or rough edges — that&apos;s expected! Your feedback directly shapes the product.
+            <p className="text-white/70 text-sm mb-3">
+              Full access to everything — auto-refresh briefings, unlimited trips, Trip Planner, Multi-City Optimizer, email alerts, and more.
             </p>
-            <p className="text-white font-medium text-sm mb-2">Ways to share feedback:</p>
-            <ul className="space-y-2 text-white/70 text-sm">
-              <li className="flex items-start gap-3">
-                <span>📝</span>
-                <span><strong className="text-white">Feedback button</strong> in the top menu</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span>👍👎</span>
-                <span><strong className="text-white">Thumbs up/down</strong> on each briefing section</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span>📧</span>
-                <span>
-                  <strong className="text-white">Email with screenshots</strong> to{" "}
-                  <a href="mailto:mark@planewx.ai" className="text-blue-400 hover:underline">
-                    mark@planewx.ai
-                  </a>
-                </span>
-              </li>
-            </ul>
+            <p className="text-white/50 text-xs">
+              After your trial, stay on the Free plan or subscribe to Pro ($11.99/mo or $99/yr).
+            </p>
           </div>
 
           <Button 
@@ -212,7 +207,7 @@ function InviteContent() {
             className="w-full bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white font-semibold py-6"
             size="lg"
           >
-            Join the Beta →
+            Create Your Account →
           </Button>
           
           <p className="text-xs text-center text-white/40">

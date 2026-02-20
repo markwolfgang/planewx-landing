@@ -44,9 +44,9 @@ async function sendInviteEmail(email: string, inviteToken: string): Promise<bool
           </tr>
           <tr>
             <td style="padding: 20px 40px;">
-              <h2 style="margin: 0 0 16px; font-size: 24px; color: #22c55e; text-align: center;">🧪 Welcome to the PlaneWX Beta!</h2>
+              <h2 style="margin: 0 0 16px; font-size: 24px; color: #22c55e; text-align: center;">You're In — Welcome to PlaneWX!</h2>
               <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #d1d5db; text-align: center;">
-                You've been selected as one of our first beta testers! We're building the smartest weather briefings in aviation, and we need your help to make it great.
+                You signed up for the waitlist, and we're ready for you. PlaneWX is the first AI-powered aviation trip planning and decision support system — built by a pilot, for pilots.
               </p>
             </td>
           </tr>
@@ -57,9 +57,13 @@ async function sendInviteEmail(email: string, inviteToken: string): Promise<bool
                   <td style="padding: 24px;">
                     <p style="margin: 0 0 16px; font-size: 14px; font-weight: 600; color: #60a5fa; text-transform: uppercase; letter-spacing: 1px;">What You'll Get</p>
                     <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
-                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Synoptic Intelligence™</strong> – AI-synthesized regional weather</td></tr>
-                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Smart Refresh</strong> – Briefings update automatically with new products</td></tr>
-                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Personal Minimums</strong> – GO Score calibrated to your limits</td></tr>
+                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Trip Planner</strong> – Weather-aware planning for flexible and fixed trips</td></tr>
+                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Multi-City Optimizer</strong> – Optimal sequencing for multi-leg trips</td></tr>
+                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Personalized GO Score</strong> – 0-100% metric against your personal minimums</td></tr>
+                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Corridor Watch</strong> – Route-specific weather along your flight path</td></tr>
+                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Trip Watchers</strong> – Keep stakeholders informed, reduce external pressure</td></tr>
+                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">PAVE Risk Assessment</strong> – Integrated checklist pre-filled from your trip</td></tr>
+                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Synoptic Intelligence™</strong> – AI-synthesized regional weather analysis</td></tr>
                       <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">14-Day Planning</strong> – Plan trips up to two weeks ahead</td></tr>
                     </table>
                   </td>
@@ -69,18 +73,15 @@ async function sendInviteEmail(email: string, inviteToken: string): Promise<bool
           </tr>
           <tr>
             <td style="padding: 0 40px 30px;">
-              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: rgba(234, 179, 8, 0.1); border-radius: 12px; border: 1px solid rgba(234, 179, 8, 0.3);">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background: rgba(59, 130, 246, 0.1); border-radius: 12px; border: 1px solid rgba(59, 130, 246, 0.2);">
                 <tr>
                   <td style="padding: 24px;">
-                    <p style="margin: 0 0 12px; font-size: 14px; font-weight: 600; color: #facc15; text-transform: uppercase; letter-spacing: 1px;">🧪 As a Beta Tester</p>
+                    <p style="margin: 0 0 12px; font-size: 14px; font-weight: 600; color: #60a5fa; text-transform: uppercase; letter-spacing: 1px;">🎁 14-Day Pro Trial</p>
                     <p style="margin: 0 0 16px; font-size: 15px; line-height: 1.6; color: #d1d5db;">
-                      You may encounter bugs or rough edges — that's expected! Your feedback helps us improve.
+                      Your account starts with a <strong style="color: #ffffff;">14-day Pro trial</strong> — full access to everything including auto-refresh, unlimited briefings, Trip Planner, and Multi-City Optimizer.
                     </p>
-                    <p style="margin: 0 0 8px; font-size: 14px; font-weight: 600; color: #ffffff;">Ways to share feedback:</p>
-                    <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #d1d5db;">
-                      📝 <strong style="color: #ffffff;">Feedback button</strong> in the top menu<br>
-                      👍👎 <strong style="color: #ffffff;">Thumbs up/down</strong> on each briefing section<br>
-                      📧 <strong style="color: #ffffff;">Email with screenshots</strong> to <a href="mailto:mark@planewx.ai" style="color: #60a5fa;">mark@planewx.ai</a>
+                    <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #9ca3af;">
+                      After your trial, stay on the Free plan or subscribe to Pro ($11.99/mo or $99/yr).
                     </p>
                   </td>
                 </tr>
@@ -89,7 +90,7 @@ async function sendInviteEmail(email: string, inviteToken: string): Promise<bool
           </tr>
           <tr>
             <td align="center" style="padding: 0 40px 40px;">
-              <a href="${inviteUrl}" style="display: inline-block; padding: 16px 48px; background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: #ffffff; font-size: 18px; font-weight: 600; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4);">Join the Beta →</a>
+              <a href="${inviteUrl}" style="display: inline-block; padding: 16px 48px; background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: #ffffff; font-size: 18px; font-weight: 600; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4);">Create Your Account →</a>
               <p style="margin: 16px 0 0; font-size: 13px; color: #9ca3af;">This invite link is unique to you and expires in 7 days.</p>
             </td>
           </tr>
@@ -118,7 +119,7 @@ async function sendInviteEmail(email: string, inviteToken: string): Promise<bool
       body: JSON.stringify({
         from: FROM_EMAIL,
         to: [email],
-        subject: "🧪 You're Invited to Beta Test PlaneWX!",
+        subject: "✈️ You're in — PlaneWX is ready for you",
         html: emailHtml,
       }),
     })
