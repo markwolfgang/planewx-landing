@@ -591,7 +591,7 @@ export function LandingPage() {
               <div className="relative">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-400 text-xs font-medium mb-4">
                   <Users className="h-3 w-3" />
-                  Pro Feature
+                  Free + Pro
                 </div>
                 <h3 className="text-2xl font-bold mb-3">Ask a Mentor</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
@@ -609,7 +609,11 @@ export function LandingPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-teal-400" />
-                    &quot;Need a Mentor Now&quot; broadcast for urgent decisions
+                    <span><strong className="text-white">Free:</strong> &quot;Need Help Now&quot; broadcast to matching mentors</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-teal-400" />
+                    <span><strong className="text-white">Pro:</strong> Browse the directory and pick a specific mentor</span>
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-teal-400" />
