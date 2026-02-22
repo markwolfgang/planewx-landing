@@ -4,20 +4,9 @@ import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { 
   Plane, 
-  CheckCircle2, 
-  AlertCircle, 
   X, 
   Brain, 
   Route, 
@@ -40,19 +29,9 @@ import {
   BarChart3
 } from "lucide-react"
 
-// Base count for social proof
-const WAITLIST_BASE_COUNT = 42
-
 export function LandingPageV2() {
   const searchParams = useSearchParams()
-  const [email, setEmail] = useState("")
-  const [homeAirport, setHomeAirport] = useState("")
-  const [xcFlightsPerWeek, setXcFlightsPerWeek] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
-  const [errorMessage, setErrorMessage] = useState("")
   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
-  const [waitlistCount, setWaitlistCount] = useState<number | null>(null)
   const [referralCode, setReferralCode] = useState<string | null>(null)
 
   // Capture referral code from URL
@@ -68,62 +47,6 @@ export function LandingPageV2() {
       }
     }
   }, [searchParams])
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setStatus("idle")
-    setErrorMessage("")
-
-    try {
-      const response = await fetch("/api/waitlist/join", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          homeAirport: homeAirport.trim() || null,
-          xcFlightsPerWeek: xcFlightsPerWeek || null,
-          referralCode: referralCode || null,
-        }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        setStatus("error")
-        setErrorMessage(data.error || "Failed to join waitlist. Please try again.")
-        return
-      }
-
-      setStatus("success")
-      setEmail("")
-      setHomeAirport("")
-      setXcFlightsPerWeek("")
-      fetchWaitlistCount()
-    } catch (error) {
-      console.error("[LandingPage] Error submitting:", error)
-      setStatus("error")
-      setErrorMessage("An unexpected error occurred. Please try again.")
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const fetchWaitlistCount = async () => {
-    try {
-      const response = await fetch("/api/waitlist/count")
-      if (response.ok) {
-        const data = await response.json()
-        setWaitlistCount(WAITLIST_BASE_COUNT + (data.count || 0))
-      }
-    } catch (error) {
-      console.error("[LandingPage] Error fetching waitlist count:", error)
-    }
-  }
-
-  useEffect(() => {
-    fetchWaitlistCount()
-  }, [])
 
   return (
     <div className="min-h-screen bg-slate-950 text-white overflow-hidden">
@@ -166,9 +89,11 @@ export function LandingPageV2() {
           <Button 
             size="sm" 
             className="bg-white text-slate-950 hover:bg-white/90 font-medium"
-            onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+            asChild
           >
-            Get Early Access
+            <a href={`https://app.planewx.ai/auth/sign-up${referralCode ? `?ref=${referralCode}` : ""}`}>
+              Sign Up Free
+            </a>
           </Button>
         </div>
       </nav>
@@ -203,10 +128,12 @@ export function LandingPageV2() {
               <Button 
                 size="lg" 
                 className="bg-white text-slate-950 hover:bg-white/90 px-8 py-6 text-lg font-semibold"
-                onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+                asChild
               >
-                Join {waitlistCount?.toLocaleString()}+ Pilots
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <a href={`https://app.planewx.ai/auth/sign-up${referralCode ? `?ref=${referralCode}` : ""}`}>
+                  Start Your Free Trial
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </Button>
             </div>
           </div>
@@ -555,82 +482,32 @@ export function LandingPageV2() {
         </div>
       </section>
 
-      {/* Waitlist Form */}
-      <section id="waitlist" className="relative py-24 px-6 bg-gradient-to-b from-transparent via-sky-950/20 to-transparent">
+      {/* Sign Up CTA */}
+      <section id="signup" className="relative py-24 px-6 bg-gradient-to-b from-transparent via-sky-950/20 to-transparent">
         <div className="container mx-auto max-w-md">
           <Card className="bg-white/5 border-white/10 backdrop-blur-sm">
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-white">Get Early Access</CardTitle>
+              <CardTitle className="text-2xl text-white">Ready to Fly Smarter?</CardTitle>
               <CardDescription className="text-white/60">
-                Join {waitlistCount?.toLocaleString()}+ pilots on the waitlist
+                Sign up free and get a 14-day Pro trial — no credit card required.
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              {status === "success" ? (
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-4 rounded-lg bg-emerald-500/20 border border-emerald-500/30">
-                    <CheckCircle2 className="h-5 w-5 text-emerald-400 flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-emerald-400">You're on the list!</p>
-                      <p className="text-sm text-white/60">
-                        We'll send you an email when access is available.
-                      </p>
-                    </div>
-                  </div>
-                  <Button
-                    onClick={() => setStatus("idle")}
-                    variant="outline"
-                    className="w-full border-white/20 text-white hover:bg-white/5"
-                  >
-                    Add Another Email
-                  </Button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-white/80">Email *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="pilot@example.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      disabled={isSubmitting}
-                      className="bg-white/5 border-white/20 text-white placeholder:text-white/30"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="homeAirport" className="text-white/80">Home Airport</Label>
-                    <Input
-                      id="homeAirport"
-                      type="text"
-                      placeholder="KABC"
-                      value={homeAirport}
-                      onChange={(e) => setHomeAirport(e.target.value.toUpperCase())}
-                      maxLength={4}
-                      disabled={isSubmitting}
-                      className="bg-white/5 border-white/20 text-white placeholder:text-white/30 uppercase"
-                    />
-                  </div>
-
-                  {status === "error" && (
-                    <div className="flex items-center gap-2 p-3 rounded-lg bg-rose-500/20 border border-rose-500/30">
-                      <AlertCircle className="h-4 w-4 text-rose-400 flex-shrink-0" />
-                      <p className="text-sm text-rose-400">{errorMessage}</p>
-                    </div>
-                  )}
-
-                  <Button
-                    type="submit"
-                    className="w-full bg-white text-slate-950 hover:bg-white/90 font-semibold"
-                    disabled={isSubmitting || !email.trim()}
-                  >
-                    {isSubmitting ? "Joining..." : "Join Waitlist"}
-                  </Button>
-                </form>
-              )}
+            <CardContent className="space-y-4">
+              <Button
+                className="w-full bg-white text-slate-950 hover:bg-white/90 font-semibold py-6 text-lg"
+                asChild
+              >
+                <a href={`https://app.planewx.ai/auth/sign-up${referralCode ? `?ref=${referralCode}` : ""}`}>
+                  Create Your Account
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
+              </Button>
+              <p className="text-center text-sm text-white/40">
+                Already have an account?{" "}
+                <a href="https://app.planewx.ai/auth/login" className="text-sky-400 hover:text-sky-300 underline underline-offset-4">
+                  Sign in
+                </a>
+              </p>
             </CardContent>
           </Card>
         </div>
