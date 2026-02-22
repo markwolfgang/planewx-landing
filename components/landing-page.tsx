@@ -34,7 +34,9 @@ import {
   Globe,
   Crown,
   Minus,
-  Plus
+  Plus,
+  HeartHandshake,
+  Phone
 } from "lucide-react"
 
 
@@ -576,6 +578,78 @@ export function LandingPage() {
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-rose-400" />
                     Turbulence and icing corridor overlays
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Mentor System */}
+            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-teal-950/50 to-teal-950/20 border border-teal-500/20 overflow-hidden">
+              <div className="absolute top-4 right-4 w-24 h-24 opacity-20">
+                <HeartHandshake className="w-full h-full text-teal-400" />
+              </div>
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-400 text-xs font-medium mb-4">
+                  <Users className="h-3 w-3" />
+                  Pro Feature
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Ask a Mentor</h3>
+                <p className="text-white/60 mb-4 leading-relaxed">
+                  Connect with experienced pilots for go/no-go decision support. Unlike a phone call to a friend, 
+                  your mentor sees your full briefing — GO Score, personal minimums, aircraft profile — so advice is grounded in shared data, not guesswork.
+                </p>
+                <ul className="space-y-2 text-sm text-white/50">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-teal-400" />
+                    Matched by aircraft type and specialty
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-teal-400" />
+                    Mentor sees your full briefing — shared context, not verbal descriptions
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-teal-400" />
+                    &quot;Need a Mentor Now&quot; broadcast for urgent decisions
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-teal-400" />
+                    Community-rated mentors — the best rise to the top
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Become a Mentor */}
+            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-indigo-950/50 to-indigo-950/20 border border-indigo-500/20 overflow-hidden">
+              <div className="absolute top-4 right-4 w-24 h-24 opacity-20">
+                <Phone className="w-full h-full text-indigo-400" />
+              </div>
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-400 text-xs font-medium mb-4">
+                  <HeartHandshake className="h-3 w-3" />
+                  Community
+                </div>
+                <h3 className="text-2xl font-bold mb-3">Become a Mentor</h3>
+                <p className="text-white/60 mb-4 leading-relaxed">
+                  Experienced pilots already help strangers with go/no-go calls — on forums, in hangars, over the phone. 
+                  PlaneWX formalizes it with shared briefing context, aircraft-type matching, and community ratings.
+                </p>
+                <ul className="space-y-2 text-sm text-white/50">
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-indigo-400" />
+                    Set your specialties: mountain, icing, IFR, night ops
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-indigo-400" />
+                    Control your availability and Do Not Disturb
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-indigo-400" />
+                    Conversations happen off-platform — phone, text, WhatsApp
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-indigo-400" />
+                    Top mentors earn free Pro access
                   </li>
                 </ul>
               </div>
