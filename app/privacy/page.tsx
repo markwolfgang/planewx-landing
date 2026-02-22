@@ -102,35 +102,55 @@ export default function PrivacyPolicyPage() {
           </ul>
         </Section>
 
-        <Section title="9. Regional Rights (if applicable)">
+        <Section title="9. SMS Communications">
+          <ul className="list-disc space-y-2 pl-6">
+            <li>
+              <strong className="text-white">Opt-in:</strong> PlaneWX may send transactional SMS messages to users who opt in through their account settings. SMS is used for time-sensitive notifications, such as alerting volunteer mentors when a pilot requests flight decision support. You opt in to SMS by selecting &quot;Phone / Text&quot; or &quot;Phone &amp; Email&quot; as your preferred contact method in your Mentor profile settings and providing your phone number.
+            </li>
+            <li>
+              <strong className="text-white">Message frequency:</strong> SMS messages are infrequent and event-driven, typically 1–3 messages per mentor request. We do not send marketing messages via SMS.
+            </li>
+            <li>
+              <strong className="text-white">Opt-out:</strong> You can stop SMS at any time by changing your contact preference to &quot;Email&quot; in your profile settings, enabling &quot;Do Not Disturb,&quot; or replying STOP to any message. Email <a href="mailto:support@planewx.ai" className="text-sky-400 hover:underline">support@planewx.ai</a> for assistance.
+            </li>
+            <li>
+              <strong className="text-white">Message and data rates may apply.</strong> Your mobile carrier&apos;s standard messaging and data rates apply. PlaneWX is not responsible for carrier charges.
+            </li>
+            <li>
+              <strong className="text-white">Supported carriers:</strong> Major US carriers are supported. Carrier availability may vary.
+            </li>
+          </ul>
+        </Section>
+
+        <Section title="10. Regional Rights (if applicable)">
           <p className="text-sm leading-relaxed text-white/70">
             Depending on your region (e.g., EU/UK/California), you may have rights to access, correct, delete, or request a copy of your data,
             and to object or restrict certain processing. To exercise rights, contact privacy@planewx.ai. We may need to verify your identity.
           </p>
         </Section>
 
-        <Section title="10. International Transfers">
+        <Section title="11. International Transfers">
           <p className="text-sm leading-relaxed text-white/70">
             We may process and store information in the United States and other countries. Where required, we will use appropriate safeguards
             (e.g., Standard Contractual Clauses) for cross-border transfers.
           </p>
         </Section>
 
-        <Section title="11. Children">
+        <Section title="12. Children">
           <p className="text-sm leading-relaxed text-white/70">
             The Services are not directed to children under 13 (or under 16 where applicable). Do not use the Services if you are under the
             applicable age. If we learn we have collected data from a child, we will delete it.
           </p>
         </Section>
 
-        <Section title="12. Changes to This Policy">
+        <Section title="13. Changes to This Policy">
           <p className="text-sm leading-relaxed text-white/70">
             We may update this Policy. The &quot;Effective&quot; date will change. Where required, we will provide notice or request consent.
             Continued use after changes means you accept the updated Policy.
           </p>
         </Section>
 
-        <Section title="13. Contact">
+        <Section title="14. Contact">
           <p className="text-sm leading-relaxed text-white/70">
             Questions about this Policy? Contact us at <a href="mailto:privacy@planewx.ai" className="text-sky-400 hover:underline">privacy@planewx.ai</a>.
           </p>

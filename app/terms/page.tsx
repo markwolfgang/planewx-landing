@@ -55,6 +55,12 @@ export default function TermsOfServicePage() {
           </ul>
         </Section>
 
+        <Section title="2a. SMS Notifications">
+          <p className="text-sm leading-relaxed text-white/70">
+            Certain features, such as the Mentor System, use SMS to deliver time-sensitive notifications. By selecting SMS as your contact method in your profile settings, you consent to receive transactional text messages from PlaneWX at the phone number you provide. You may opt out at any time by updating your contact preferences, enabling Do Not Disturb, or replying STOP. Standard message and data rates may apply. SMS is not used for marketing.
+          </p>
+        </Section>
+
         <Section title="3. Acceptable Use">
           <ul className="list-disc space-y-2 pl-6">
             <li>No unlawful, unsafe, or misleading use; no use that would violate aviation regulations.</li>
