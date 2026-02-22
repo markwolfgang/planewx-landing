@@ -847,6 +847,10 @@ export function LandingPage() {
                   <Check className="h-4 w-4 text-emerald-400 shrink-0" />
                   <span className="text-white/70">Trip Planner</span>
                 </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Need Help Now</strong> — broadcast to volunteer mentors</span>
+                </div>
                 <div className="flex items-center gap-3 pt-2 border-t border-white/5">
                   <Minus className="h-4 w-4 text-white/20 shrink-0" />
                   <span className="text-white/30">No auto-refresh</span>
@@ -866,6 +870,10 @@ export function LandingPage() {
                 <div className="flex items-center gap-3">
                   <Minus className="h-4 w-4 text-white/20 shrink-0" />
                   <span className="text-white/30">No Multi-City Optimizer</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
+                  <span className="text-white/30">No Browse Mentors</span>
                 </div>
               </div>
             </div>
@@ -925,12 +933,16 @@ export function LandingPage() {
                   <Check className="h-4 w-4 text-sky-400 shrink-0" />
                   <span className="text-white/70"><strong className="text-white">Multi-City Optimizer</strong> — up to 6 destinations</span>
                 </div>
+                <div className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
+                  <span className="text-white/70"><strong className="text-white">Browse Mentors</strong> — find and connect with experienced pilots</span>
+                </div>
               </div>
             </div>
           </div>
 
           <p className="text-center text-sm text-white/40 mt-8">
-            All plans include Synoptic Intelligence™, PAVE Risk Assessment, and 14-day planning. No credit card required to start.
+            All plans include Synoptic Intelligence™, PAVE Risk Assessment, Mentor Broadcast, and 14-day planning. No credit card required to start.
           </p>
         </div>
       </section>

@@ -86,15 +86,12 @@ export function LandingPageV2() {
               About
             </button>
           </div>
-          <Button 
-            size="sm" 
-            className="bg-white text-slate-950 hover:bg-white/90 font-medium"
-            asChild
+          <a 
+            href={`https://app.planewx.ai/auth/sign-up${referralCode ? `?ref=${referralCode}` : ""}`}
+            className="inline-flex items-center justify-center rounded-md px-4 py-2 text-sm bg-white text-slate-950 hover:bg-white/90 font-medium transition-colors"
           >
-            <a href={`https://app.planewx.ai/auth/sign-up${referralCode ? `?ref=${referralCode}` : ""}`}>
-              Sign Up Free
-            </a>
-          </Button>
+            Sign Up Free
+          </a>
         </div>
       </nav>
 
@@ -125,16 +122,13 @@ export function LandingPageV2() {
             
             {/* CTA */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button 
-                size="lg" 
-                className="bg-white text-slate-950 hover:bg-white/90 px-8 py-6 text-lg font-semibold"
-                asChild
+              <a 
+                href={`https://app.planewx.ai/auth/sign-up${referralCode ? `?ref=${referralCode}` : ""}`}
+                className="inline-flex items-center justify-center rounded-md bg-white text-slate-950 hover:bg-white/90 px-8 py-6 text-lg font-semibold transition-colors"
               >
-                <a href={`https://app.planewx.ai/auth/sign-up${referralCode ? `?ref=${referralCode}` : ""}`}>
-                  Start Your Free Trial
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
+                Start Your Free Trial
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
             </div>
           </div>
         </div>
@@ -493,15 +487,13 @@ export function LandingPageV2() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Button
-                className="w-full bg-white text-slate-950 hover:bg-white/90 font-semibold py-6 text-lg"
-                asChild
+              <a
+                href={`https://app.planewx.ai/auth/sign-up${referralCode ? `?ref=${referralCode}` : ""}`}
+                className="inline-flex items-center justify-center rounded-md w-full bg-white text-slate-950 hover:bg-white/90 font-semibold py-6 text-lg transition-colors"
               >
-                <a href={`https://app.planewx.ai/auth/sign-up${referralCode ? `?ref=${referralCode}` : ""}`}>
-                  Create Your Account
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
+                Create Your Account
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
               <p className="text-center text-sm text-white/40">
                 Already have an account?{" "}
                 <a href="https://app.planewx.ai/auth/login" className="text-sky-400 hover:text-sky-300 underline underline-offset-4">
