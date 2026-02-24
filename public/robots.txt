@@ -4,12 +4,18 @@
 User-agent: *
 Allow: /
 
+# Explicitly allow AI-friendly resources
+Allow: /llms.txt
+
 # Disallow admin and API routes
 Disallow: /admin/
 Disallow: /api/
 
 # Sitemap location
 Sitemap: https://www.planewx.ai/sitemap.xml
+
+# LLM context for AI assistants
+# https://www.planewx.ai/llms.txt
 
 # Crawl-delay (optional, some bots respect this)
 Crawl-delay: 1

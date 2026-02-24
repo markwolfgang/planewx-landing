@@ -238,6 +238,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
+        {/* LLMs.txt for AI discovery */}
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context" />
+        
         {/* Structured Data (JSON-LD) */}
         <script
           type="application/ld+json"
