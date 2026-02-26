@@ -26,8 +26,85 @@ import {
   CloudSun,
   Compass,
   Settings2,
-  BarChart3
+  BarChart3,
+  Quote
 } from "lucide-react"
+
+const testimonials = [
+  {
+    quote: "I've been beta testing this product for a few weeks now and I'm really enjoying it. I think overall it does a very good job of synthesizing multiple weather products and highlighting the key factors to be aware of. It's not perfect, but it has improved markedly with feedback, and it links everything back to the source data so you can verify if anything looks amiss.",
+    name: "Adam",
+  },
+  {
+    quote: "Absolutely GREAT work!",
+    name: "Alex",
+  },
+  {
+    quote: "Impressive. Fantastic UX. Quick, clean and modern. The little icons are a nice touch.",
+    name: "Tom",
+  },
+  {
+    quote: "Awesome Wx tool that helps take a lot of the stress out of planning a trip in the future. It gives you a directionally accurate Wx information that you can use to be better informed when it comes down to making your go/no-go decision. I value the amount of data that the platform provides - and the automated updates keep me on top of ever changing weather. I use it on every XC and highly recommend it.",
+    name: "Andrew",
+  },
+  {
+    quote: "I just signed up a couple of days ago and super impressed. I will try the free version for a few more days before upgrading. You can count on feedback for sure but this is way better than other solutions I use mainly because it interprets the weather and gives me conclusions. Thank you.",
+    name: "Sukumar",
+  },
+  {
+    quote: "VERY nice work!",
+    name: "Paul",
+  },
+  {
+    quote: "Just signed up and tried it for a flight tomorrow from KTEX to KGEU (PHX area). Very impressive. I will be using this on every flight and will report back to you any issues or recommendations. Amazing work!",
+    name: "William",
+  },
+  {
+    quote: "I've been using this for several weeks and agree that it is very helpful. For big trips that are a week away it helps me stay aware of the outlook and sometimes highlights things that I'm not seeing that I need to be aware of. Also, Mark has been very responsive with bug reports and updates. I like it.",
+    name: "Roy",
+  },
+  {
+    quote: "This tool has a great flow to it, and tells me what I want to know. I'm by no means a weather geek. I'm looking to assess risk. This looks promising.",
+    name: "Vas",
+  },
+  {
+    quote: "Your tool is amazing. Thank you for the beta access and I plan to sign up for the full product soon!",
+    name: "Mukul",
+  },
+  {
+    quote: "I'm a beta tester. I've been impressed with the accuracy. The daily updates of home airport is pretty slick too, gives you a quick glance at a 3 day outlook. I think it's an outstanding product. I use it any time I do a trip away from home field. Gives me a great synopsis that I can dive deeper into by getting a weather briefing.",
+    name: "Logan",
+  },
+  {
+    quote: "Very impressive and helpful. Great use of A.I. - thanks for making this. I can relate to your comments about going to many different websites piecing things together.",
+    name: "Forrest",
+  },
+  {
+    quote: "The morning updates are very cool.",
+    name: "Teresa",
+  },
+  {
+    quote: "This is amazing. I signed up out of curiosity, but really like it. I'm a big fan of NWS discussions and I like how they're displayed.",
+    name: "Nicholas",
+  },
+  {
+    quote: "I fly an SF50 and own a business that operates in multiple states. I also have 9 years experience as a Nav on C130s in the Marine Corps. This is the best product for long range weather planning — what's going to happen 1-2 weeks out to start planning a trip. As an early beta tester and business owner that operates in multiple states, here is how I use PlaneWX: Executive time is valuable — schedules are tight and full. Having weather outlook 2 weeks out helps drive internal conversations if plans need to change early. Flight decision making — multiple instances, I've proactively changed flights to be sooner or later than intended to get more predictable weather. Daily weather email — one of my favorite parts is the daily email on local weather. Much better and more concise than any other product. I could talk about so much more of this product. It's certainly worth a try!",
+    name: "Clark",
+    highlight: true,
+  },
+  {
+    quote: "Just downloaded and absolutely love the UI. Very well laid out, concise and easy to navigate. Love the information and how it's presented, colors used, etc. Really looking forward to trying it out in real world situations. We have definitely been missing an app/program like this for our flight planning. I will likely sign up for a subscription once the trial ends. Thanks for creating!",
+    name: "Russell",
+  },
+  {
+    quote: "Just signed up out of curiosity... WOW... what an amazing product! Kudos, and this just seems to be the beginning. This makes me want to plan a long XC!",
+    name: "Ashit",
+  },
+  {
+    quote: "Signed up for a trial yesterday and devised a test flight. Fantastic tool you've developed. I look forward to using it on my next cross country.",
+    name: "Mark",
+  },
+]
 
 export function LandingPageV2() {
   const searchParams = useSearchParams()
@@ -78,6 +155,12 @@ export function LandingPageV2() {
               className="text-sm text-white/60 hover:text-white transition-colors"
             >
               Features
+            </button>
+            <button 
+              onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-sm text-white/60 hover:text-white transition-colors"
+            >
+              Testimonials
             </button>
             <button 
               onClick={() => document.getElementById('founder')?.scrollIntoView({ behavior: 'smooth' })}
@@ -472,6 +555,48 @@ export function LandingPageV2() {
               <div className="text-4xl font-bold text-amber-400 mb-2">61%</div>
               <div className="text-sm text-white/60">72 Hours Out</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section id="testimonials" className="relative py-24 px-6 bg-gradient-to-b from-transparent via-slate-900/50 to-transparent">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm mb-6">
+              <Users className="h-4 w-4" />
+              From the Community
+            </div>
+            <h2 className="text-4xl font-bold tracking-tight mb-4">
+              What Pilots Are Saying
+            </h2>
+            <p className="text-lg text-white/50 max-w-2xl mx-auto">
+              Real feedback from GA pilots using PlaneWX for cross-country planning.
+            </p>
+          </div>
+
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+            {testimonials.map((t) => (
+              <div
+                key={t.name}
+                className={`break-inside-avoid p-6 rounded-2xl border space-y-4 ${
+                  t.highlight
+                    ? "bg-gradient-to-br from-sky-950/60 to-emerald-950/40 border-sky-500/20"
+                    : "bg-white/5 border-white/10"
+                }`}
+              >
+                <Quote className={`h-5 w-5 ${t.highlight ? "text-sky-400" : "text-white/20"}`} />
+                <p className="text-sm text-white/70 leading-relaxed">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+                <div className="flex items-center gap-2 pt-2 border-t border-white/5">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-sky-500/30 to-emerald-500/30 flex items-center justify-center text-xs font-semibold text-white/80">
+                    {t.name[0]}
+                  </div>
+                  <span className="text-sm font-medium text-white/60">{t.name}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
