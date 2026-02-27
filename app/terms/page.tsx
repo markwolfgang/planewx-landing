@@ -46,8 +46,8 @@ export default function TermsOfServicePage() {
 
         <Section title="2. Service Description and Aviation-Specific Disclaimers">
           <ul className="list-disc space-y-2 pl-6">
-            <li>PlaneWX is an advisory and planning tool. It is <strong className="text-white">not</strong> an official weather briefing and is <strong className="text-white">not</strong> FAA-approved for primary flight planning, dispatch, or navigation.</li>
-            <li>You must obtain an official FAA/NWS weather briefing (e.g., 1800wxbrief.com or FSS) before every flight and comply with all applicable regulations, including FAR 91.103.</li>
+            <li>PlaneWX provides weather information from federal regulatory agencies to help pilots meet the requirements of 14 CFR §91.103. The GO Score and AI analysis are decision-support tools.</li>
+            <li>You are responsible for complying with all applicable regulations, including 14 CFR §91.103, which requires pilots to obtain all available information concerning the flight before departure.</li>
             <li>All operational decisions remain your responsibility as Pilot in Command (PIC). Use the Services at your own risk.</li>
             <li>Weather data can be delayed, incomplete, or incorrect. Alerts and notifications may be late or fail to send.</li>
             <li>Do not use the Services for real-time tactical avoidance or life-safety-critical decision making.</li>

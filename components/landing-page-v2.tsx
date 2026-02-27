@@ -334,7 +334,7 @@ export function LandingPageV2() {
           <div className="mt-12 p-5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-center">
             <p className="text-amber-200 text-sm">
               <strong>Important:</strong> PlaneWX does NOT make the GO/NO-GO decision for you. 
-              We provide intelligence — you provide the judgment. Always file a flight plan and obtain an official briefing.
+              We provide intelligence — you provide the judgment. The pilot in command always makes the final call.
             </p>
           </div>
         </div>

@@ -1391,7 +1391,7 @@ export function LandingPage() {
                 </li>
               </ul>
               <p className="text-xs text-white/40 mt-4 italic">
-                PlaneWX is not a substitute for a proper weather briefing or professional judgment. Always file a flight plan and obtain an official briefing.
+                Weather data sourced from federal regulatory agencies. The pilot in command always makes the final go/no-go decision.
               </p>
             </div>
           </div>
@@ -1807,8 +1807,8 @@ export function LandingPage() {
           <div className="space-y-3">
             {[
               {
-                q: "Is PlaneWX an official weather briefing?",
-                a: "No. PlaneWX is an advisory and planning tool — not a substitute for an FAA/NWS official weather briefing. You should always obtain an official briefing (e.g., 1800wxbrief.com) before every flight, as required by FAR 91.103."
+                q: "Does PlaneWX meet the requirements of 14 CFR §91.103?",
+                a: "PlaneWX provides weather information from federal regulatory agencies (NOAA, NWS, FAA) to help pilots obtain all available information before a flight. There is no regulatory requirement to obtain a briefing from any specific source — FAA Advisory Circular 91-92 endorses pilot self-briefing. The GO Score and AI analysis are decision-support tools — as pilot in command, you always make the final go/no-go decision."
               },
               {
                 q: "What happens after my 14-day Pro trial?",
