@@ -73,7 +73,7 @@ async function sendInviteEmail(email: string, inviteToken: string): Promise<bool
                     <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                       <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Synoptic Intelligence™</strong> – AI-synthesized regional weather</td></tr>
                       <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Smart Refresh</strong> – Briefings update automatically with new products</td></tr>
-                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Personal Minimums</strong> – GO Score calibrated to your limits</td></tr>
+                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Personal Minimums</strong> – WX Score calibrated to your limits</td></tr>
                       <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">14-Day Planning</strong> – Plan trips up to two weeks ahead</td></tr>
                     </table>
                   </td>

@@ -46,7 +46,7 @@ export default function TermsOfServicePage() {
 
         <Section title="2. Service Description and Aviation-Specific Disclaimers">
           <ul className="list-disc space-y-2 pl-6">
-            <li>PlaneWX provides weather information from federal regulatory agencies to help pilots meet the requirements of 14 CFR §91.103. The GO Score and AI analysis are decision-support tools.</li>
+            <li>PlaneWX provides weather information from federal regulatory agencies to help pilots meet the requirements of 14 CFR §91.103. The WX Score and AI analysis are decision-support tools.</li>
             <li>You are responsible for complying with all applicable regulations, including 14 CFR §91.103, which requires pilots to obtain all available information concerning the flight before departure.</li>
             <li>All operational decisions remain your responsibility as Pilot in Command (PIC). Use the Services at your own risk.</li>
             <li>Weather data can be delayed, incomplete, or incorrect. Alerts and notifications may be late or fail to send.</li>

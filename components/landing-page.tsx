@@ -304,7 +304,7 @@ export function LandingPage() {
               <ul className="space-y-4 text-white/70">
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">Know 7+ days out</strong> — See weather trends and GO Score before you commit</span>
+                  <span><strong className="text-white">Know 7+ days out</strong> — See weather trends and WX Score before you commit</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
@@ -471,7 +471,7 @@ export function LandingPage() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            {/* GO Score */}
+            {/* WX Score */}
             <div className="relative p-8 rounded-3xl bg-gradient-to-br from-emerald-950/50 to-emerald-950/20 border border-emerald-500/20 overflow-hidden">
               <div className="absolute top-4 right-4 w-24 h-24 opacity-20">
                 <Gauge className="w-full h-full text-emerald-400" />
@@ -481,7 +481,7 @@ export function LandingPage() {
                   <CheckCircle2 className="h-3 w-3" />
                   Core Feature
                 </div>
-                <h3 className="text-2xl font-bold mb-3">Personalized GO Score</h3>
+                <h3 className="text-2xl font-bold mb-3">Personalized WX Score</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
                   A clear 0-100% metric calculated against <em>your</em> personal minimums—not generic VFR/IFR categories. 
                   Each aircraft you fly gets its own tailored minimums.
@@ -624,7 +624,7 @@ export function LandingPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-cyan-400" />
-                    GO Scores for every leg at a glance
+                    WX Scores for every leg at a glance
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-cyan-400" />
@@ -679,7 +679,7 @@ export function LandingPage() {
                 <h3 className="text-2xl font-bold mb-3">Ask a Mentor</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
                   Connect with experienced pilots for go/no-go decision support. Unlike a phone call to a friend, 
-                  your mentor sees your full briefing — GO Score, personal minimums, aircraft profile — so advice is grounded in shared data, not guesswork.
+                  your mentor sees your full briefing — WX Score, personal minimums, aircraft profile — so advice is grounded in shared data, not guesswork.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-center gap-2">
@@ -832,7 +832,7 @@ export function LandingPage() {
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src="/screenshots/homepage.png"
-                  alt="PlaneWX dashboard showing trip overview and GO Scores"
+                  alt="PlaneWX dashboard showing trip overview and WX Scores"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   unoptimized
@@ -840,7 +840,7 @@ export function LandingPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="text-sm font-medium">Trip Dashboard</p>
-                  <p className="text-xs text-white/60">All your trips with live GO Scores</p>
+                  <p className="text-xs text-white/60">All your trips with live WX Scores</p>
                 </div>
               </div>
             </div>
@@ -912,7 +912,7 @@ export function LandingPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70">Full GO Score breakdown</span>
+                  <span className="text-white/70">Full WX Score breakdown</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Check className="h-4 w-4 text-emerald-400 shrink-0" />
@@ -1237,7 +1237,7 @@ export function LandingPage() {
                 <span className="text-sm text-white/60">Certainty</span>
               </div>
               <p className="text-xs text-center text-white/40">
-                As departure approaches, more weather products become available → your GO Score becomes more precise
+                As departure approaches, more weather products become available → your WX Score becomes more precise
               </p>
             </div>
           </div>
@@ -1288,7 +1288,7 @@ export function LandingPage() {
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">GO Score changes</strong> — up or down, you&apos;ll know immediately</span>
+                  <span className="text-white/70"><strong className="text-white">WX Score changes</strong> — up or down, you&apos;ll know immediately</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
@@ -1385,7 +1385,7 @@ export function LandingPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-amber-400 mt-1">•</span>
-                  <span>GO Score is <strong className="text-white">input to your decision</strong>, not the decision itself</span>
+                  <span>WX Score is <strong className="text-white">input to your decision</strong>, not the decision itself</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-amber-400 mt-1">•</span>
@@ -1618,7 +1618,7 @@ export function LandingPage() {
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <ArrowRight className="h-4 w-4 text-sky-400" />
-                  <span><strong className="text-white">GO Score</strong> <span className="text-white/60">— calibrated against your personal minimums</span></span>
+                  <span><strong className="text-white">WX Score</strong> <span className="text-white/60">— calibrated against your personal minimums</span></span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <ArrowRight className="h-4 w-4 text-sky-400" />
@@ -1814,7 +1814,7 @@ export function LandingPage() {
             {[
               {
                 q: "Does PlaneWX meet the requirements of 14 CFR §91.103?",
-                a: "PlaneWX provides weather information from federal regulatory agencies (NOAA, NWS, FAA) to help pilots obtain all available information before a flight. There is no regulatory requirement to obtain a briefing from any specific source — FAA Advisory Circular 91-92 endorses pilot self-briefing. The GO Score and AI analysis are decision-support tools — as pilot in command, you always make the final go/no-go decision."
+                a: "PlaneWX provides weather information from federal regulatory agencies (NOAA, NWS, FAA) to help pilots obtain all available information before a flight. There is no regulatory requirement to obtain a briefing from any specific source — FAA Advisory Circular 91-92 endorses pilot self-briefing. The WX Score and AI analysis are decision-support tools — as pilot in command, you always make the final go/no-go decision."
               },
               {
                 q: "What happens after my 14-day Pro trial?",
@@ -1834,7 +1834,7 @@ export function LandingPage() {
               },
               {
                 q: "What's the difference between Free and Pro?",
-                a: "Free gives you full-quality briefings with personal minimums, GO Scores, and PAVE — but you're limited to 2 active flights and 1 aircraft. Pro adds auto-refresh, email alerts, Trip Watchers, Corridor Watch, Multi-City Optimizer, and expands to 10 active flights and 5 aircraft."
+                a: "Free gives you full-quality briefings with personal minimums, WX Scores, and PAVE — but you're limited to 2 active flights and 1 aircraft. Pro adds auto-refresh, email alerts, Trip Watchers, Corridor Watch, Multi-City Optimizer, and expands to 10 active flights and 5 aircraft."
               },
               {
                 q: "Is there a money-back guarantee?",

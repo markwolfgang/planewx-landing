@@ -47,7 +47,7 @@ export async function GET(request: Request) {
                     <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                       <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Trip Planner</strong> – Weather-aware planning for flexible and fixed trips</td></tr>
                       <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Multi-City Optimizer</strong> – Optimal sequencing for multi-leg trips</td></tr>
-                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Personalized GO Score</strong> – 0-100% metric against your personal minimums</td></tr>
+                      <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Personalized WX Score</strong> – 0-100% metric against your personal minimums</td></tr>
                       <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Corridor Watch</strong> – Route-specific weather along your flight path</td></tr>
                       <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">Trip Watchers</strong> – Keep stakeholders informed, reduce external pressure</td></tr>
                       <tr><td style="padding: 8px 0; color: #d1d5db; font-size: 15px;">✓ <strong style="color: #ffffff;">PAVE Risk Assessment</strong> – Integrated checklist pre-filled from your trip</td></tr>

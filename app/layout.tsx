@@ -68,7 +68,7 @@ const jsonLd = {
       "featureList": [
         "AI-powered weather briefings",
         "14-day advance forecasting",
-        "Personalized GO Score",
+        "Personalized WX Score",
         "Synoptic Intelligence™ technology",
         "40+ automatic briefing updates",
         "Personal minimums tracking",
@@ -85,7 +85,7 @@ const jsonLd = {
           "name": "What is PlaneWX?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PlaneWX is an AI-powered aviation weather intelligence platform for general aviation pilots. It synthesizes multiple weather data sources to provide actionable briefings and GO Score probability metrics, helping you know if your flight will happen days in advance."
+            "text": "PlaneWX is an AI-powered aviation weather intelligence platform for general aviation pilots. It synthesizes multiple weather data sources to provide actionable briefings and WX Score probability metrics, helping you know if your flight will happen days in advance."
           }
         },
         {
@@ -98,10 +98,10 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          "name": "What is the GO Score?",
+          "name": "What is the WX Score?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The GO Score is a personalized 0-100% metric calculated against YOUR personal minimums, not generic VFR/IFR categories. It tells you the probability that weather conditions will meet your specific standards for the flight."
+            "text": "The WX Score is a personalized 0-100% metric calculated against YOUR personal minimums, not generic VFR/IFR categories. It tells you the probability that weather conditions will meet your specific standards for the flight."
           }
         },
         {
@@ -122,7 +122,7 @@ export const metadata: Metadata = {
     default: "PlaneWX - AI-Powered Aviation Weather Intelligence for General Aviation",
     template: "%s | PlaneWX",
   },
-  description: "The confidence to go, or the courage to stay™. PlaneWX provides AI-powered long-range aviation weather forecasting for general aviation pilots. Get weather briefings days in advance with GO Score probability metrics.",
+  description: "The confidence to go, or the courage to stay™. PlaneWX provides AI-powered long-range aviation weather forecasting for general aviation pilots. Get weather briefings days in advance with WX Score probability metrics.",
   keywords: [
     "aviation weather",
     "flight planning",
@@ -131,7 +131,7 @@ export const metadata: Metadata = {
     "long range forecast",
     "aviation weather app",
     "pilot weather",
-    "GO Score",
+    "WX Score",
     "PAVE risk assessment",
     "cross country flight planning",
     "IFR weather",
@@ -190,7 +190,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "PlaneWX - AI-Powered Aviation Weather Intelligence for General Aviation",
-    description: "The confidence to go, or the courage to stay™. Get weather briefings days in advance with GO Score probability metrics.",
+    description: "The confidence to go, or the courage to stay™. Get weather briefings days in advance with WX Score probability metrics.",
     // Twitter image is auto-generated from app/twitter-image.tsx
     creator: "@planewx",
   },

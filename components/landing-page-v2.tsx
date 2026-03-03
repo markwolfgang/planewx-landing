@@ -199,7 +199,7 @@ export function LandingPageV2() {
             
             {/* Subheadline */}
             <p className="text-xl text-white/50 max-w-2xl mx-auto leading-relaxed">
-              AI synthesizes 15+ weather sources into one personalized GO Score. 
+              AI synthesizes 15+ weather sources into one personalized WX Score. 
               Plan trips up to 14 days out with 40+ automatic updates.
             </p>
             
@@ -322,7 +322,7 @@ export function LandingPageV2() {
               <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center">
                 <Gauge className="h-6 w-6 text-emerald-400" />
               </div>
-              <h3 className="text-xl font-semibold">Calculate Your GO Score</h3>
+              <h3 className="text-xl font-semibold">Calculate Your WX Score</h3>
               <p className="text-white/50 text-sm leading-relaxed">
                 A clear 0-100% metric that evolves with every update. Transparent breakdown shows exactly 
                 what's impacting your flight. <strong className="text-white">You</strong> make the final call.
@@ -418,7 +418,7 @@ export function LandingPageV2() {
               <Zap className="h-8 w-8 text-cyan-400" />
               <h3 className="font-semibold">Smart Alerts</h3>
               <p className="text-sm text-white/50">
-                Email when GO score changes or new hazards appear. No constant app checking.
+                Email when WX score changes or new hazards appear. No constant app checking.
               </p>
             </div>
           </div>

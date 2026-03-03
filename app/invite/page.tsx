@@ -173,7 +173,7 @@ function InviteContent() {
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />
-              <span>Personalized GO Score — 0-100% metric against your personal minimums</span>
+              <span>Personalized WX Score — 0-100% metric against your personal minimums</span>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle className="h-5 w-5 text-emerald-400 shrink-0 mt-0.5" />

@@ -224,7 +224,7 @@ export default async function Image() {
                   }}
                 />
                 <span style={{ fontSize: '16px', color: 'rgba(255, 255, 255, 0.7)' }}>
-                  Personal GO Score
+                  Personal WX Score
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

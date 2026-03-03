@@ -183,7 +183,7 @@ export async function GET() {
               }}
             >
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e" }} />
-              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.8)" }}>Personal GO Score</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.8)" }}>Personal WX Score</span>
             </div>
             <div
               style={{
