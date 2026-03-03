@@ -980,9 +980,10 @@ export function LandingPage() {
               <p className="text-sm text-sky-400 mb-4">
                 or $99/year <span className="text-emerald-400 font-medium">(save 31%)</span>
               </p>
-              <div className="mb-6 px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/20">
-                <p className="text-xs text-amber-300">
+              <div className="mb-6 px-3 py-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                <p className="text-xs text-amber-300 leading-relaxed">
                   <strong className="text-amber-200">Introductory pricing</strong> — rates increase April 1. Subscribe now to lock in this rate.
+                  <strong className="text-white block mt-1">First 500 subscribers are grandfathered in for life.</strong>
                 </p>
               </div>
               <a
