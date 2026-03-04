@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { 
   Plane, 
@@ -37,7 +38,11 @@ import {
   Plus,
   HeartHandshake,
   Phone,
-  Quote
+  Quote,
+  Snowflake,
+  Wind,
+  Layers,
+  Eye,
 } from "lucide-react"
 
 
@@ -149,6 +154,7 @@ export function LandingPage() {
               <div className="absolute inset-0 blur-sm bg-sky-400/30 rounded-full" />
             </div>
             <span className="hidden sm:inline text-2xl font-bold tracking-tight">PlaneWX</span>
+            <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-2">Weather Intelligence for Pilots</span>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
             <button 
@@ -188,9 +194,12 @@ export function LandingPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center space-y-8">
             {/* Logo */}
-            <div className="flex items-center justify-center gap-4">
-              <Plane className="h-16 w-16 md:h-20 md:w-20 text-sky-400" />
-              <span className="text-5xl md:text-7xl font-bold text-sky-400">PlaneWX</span>
+            <div className="flex flex-col items-center gap-2">
+              <div className="flex items-center gap-4">
+                <Plane className="h-16 w-16 md:h-20 md:w-20 text-sky-400" />
+                <span className="text-5xl md:text-7xl font-bold text-sky-400">PlaneWX</span>
+              </div>
+              <span className="text-sm md:text-base text-white/40 font-medium tracking-widest uppercase">Weather Intelligence for Pilots</span>
             </div>
             
             {/* Badge */}
@@ -454,6 +463,211 @@ export function LandingPage() {
                 <span><strong className="text-white">Make early decisions:</strong> <span className="text-white/60">The safest decision is the one made when you still have options</span></span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Multi-Model Icing & Turbulence Analysis */}
+      <section className="relative py-24 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-4">
+              <Layers className="h-3 w-3" />
+              Nobody Else Does This
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Three Models. <span className="text-sky-400">One Confident Answer.</span>
+            </h2>
+            <p className="text-lg text-white/60 max-w-3xl mx-auto">
+              PlaneWX queries three independent weather models at multiple points along your route, 
+              builds consensus with confidence scoring, and corroborates with real-world PIREPs and 
+              government advisories — giving you icing and turbulence intelligence no other tool provides.
+            </p>
+          </div>
+
+          {/* Model Cards */}
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
+            <div className="p-5 rounded-2xl bg-blue-500/5 border border-blue-500/20 text-center">
+              <div className="bg-blue-500/20 rounded-lg px-3 py-1.5 inline-block mb-3">
+                <span className="text-lg font-bold text-blue-400">HRRR</span>
+              </div>
+              <p className="text-sm text-white/70 font-medium">3 km • Hourly • 0–18h</p>
+              <p className="text-xs text-white/40 mt-1">NOAA high-resolution</p>
+            </div>
+            <div className="p-5 rounded-2xl bg-purple-500/5 border border-purple-500/20 text-center">
+              <div className="bg-purple-500/20 rounded-lg px-3 py-1.5 inline-block mb-3">
+                <span className="text-lg font-bold text-purple-400">GFS</span>
+              </div>
+              <p className="text-sm text-white/70 font-medium">~13 km • 4×/day • 0–16 days</p>
+              <p className="text-xs text-white/40 mt-1">NOAA global model</p>
+            </div>
+            <div className="p-5 rounded-2xl bg-amber-500/5 border border-amber-500/20 text-center">
+              <div className="bg-amber-500/20 rounded-lg px-3 py-1.5 inline-block mb-3">
+                <span className="text-lg font-bold text-amber-400">ECMWF</span>
+              </div>
+              <p className="text-sm text-white/70 font-medium">~9 km • 4×/day • 0–10 days</p>
+              <p className="text-xs text-white/40 mt-1">World&rsquo;s most accurate global model</p>
+            </div>
+          </div>
+
+          {/* Stats Row */}
+          <div className="grid grid-cols-3 gap-4 mb-8 p-6 rounded-2xl bg-white/5 border border-white/10">
+            <div className="text-center">
+              <p className="text-3xl md:text-4xl font-bold text-sky-400">3–7</p>
+              <p className="text-xs text-white/50 mt-1">Sample points along your route</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl md:text-4xl font-bold text-sky-400">8</p>
+              <p className="text-xs text-white/50 mt-1">Altitude levels per point</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl md:text-4xl font-bold text-sky-400">~120</p>
+              <p className="text-xs text-white/50 mt-1">Data points per flight</p>
+            </div>
+          </div>
+
+          {/* Icing + Turbulence Side by Side */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-sky-950/50 to-blue-950/50 border border-sky-500/20">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-sky-500/20 flex items-center justify-center">
+                  <Snowflake className="h-5 w-5 text-sky-400" />
+                </div>
+                <h3 className="text-xl font-semibold">Icing Analysis</h3>
+              </div>
+              <ul className="space-y-2 text-sm text-white/60">
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
+                  <span>Layer boundaries — exact entry/exit altitudes</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
+                  <span>Ice type prediction — clear, rime, or mixed</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
+                  <span>SLD &amp; warm nose detection</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
+                  <span>Total exposure — climb, cruise, descent minutes</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
+                  <span>Worst-case consensus (safety-first)</span>
+                </li>
+              </ul>
+            </div>
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-amber-950/50 to-orange-950/50 border border-amber-500/20">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                  <Wind className="h-5 w-5 text-amber-400" />
+                </div>
+                <h3 className="text-xl font-semibold">Turbulence Analysis</h3>
+              </div>
+              <ul className="space-y-2 text-sm text-white/60">
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
+                  <span>Physics-based — vertical wind shear + Richardson number</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
+                  <span>Altitude-specific severity at 8 pressure levels</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
+                  <span>Calibrated against ForeFlight&rsquo;s GTG product</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
+                  <span>CAT detection at jet stream and frontal zones</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
+                  <span>Median consensus (reduces false alarms)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Corroboration + Confidence */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+              <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                <Plane className="h-5 w-5 text-emerald-400" />
+                Corroborated by Real-World Observations
+              </h3>
+              <p className="text-sm text-white/60 mb-3">
+                Model predictions are validated, adjusted, or overridden by PIREPs, AIRMETs, G-AIRMETs, and SIGMETs.
+              </p>
+              <ul className="space-y-2 text-sm text-white/50">
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
+                  <span>PIREPs confirm model → confidence boosted</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
+                  <span>PIREPs contradict model → assessment adjusted</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
+                  <span>SIGMETs always override model predictions</span>
+                </li>
+              </ul>
+            </div>
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                <Eye className="h-5 w-5 text-sky-400" />
+                Full Data Transparency
+              </h3>
+              <p className="text-sm text-white/60 mb-3">
+                Most aviation weather apps present conclusions without evidence. PlaneWX shows you everything.
+              </p>
+              <ul className="space-y-2 text-sm text-white/50">
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
+                  <span>Per-model columns — see each model&rsquo;s assessment</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
+                  <span>Raw data tables at every altitude and sample point</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
+                  <span>Disagree with the consensus? The data is there.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Confidence Badges */}
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-center">
+              <p className="text-green-400 font-bold mb-0.5">HIGH</p>
+              <p className="text-xs text-green-400/60">Unanimous</p>
+              <p className="text-xs text-white/40 mt-1">All models agree</p>
+            </div>
+            <div className="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20 text-center">
+              <p className="text-yellow-400 font-bold mb-0.5">MODERATE</p>
+              <p className="text-xs text-yellow-400/60">Majority</p>
+              <p className="text-xs text-white/40 mt-1">Most agree, one differs</p>
+            </div>
+            <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20 text-center">
+              <p className="text-orange-400 font-bold mb-0.5">LOW</p>
+              <p className="text-xs text-orange-400/60">Split</p>
+              <p className="text-xs text-white/40 mt-1">Models disagree — plan conservatively</p>
+            </div>
+          </div>
+
+          {/* Deep Dive CTA */}
+          <div className="text-center">
+            <Link 
+              href="/multi-model-analysis"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/20 hover:border-sky-500/40 text-sky-400 font-medium rounded-xl transition-all"
+            >
+              Deep dive: How multi-model analysis works
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
@@ -1967,6 +2181,7 @@ export function LandingPage() {
             <div className="flex items-center gap-3">
               <Plane className="h-6 w-6 text-sky-400" />
               <span className="font-bold">PlaneWX</span>
+              <span className="text-xs text-white/30 hidden sm:inline">Weather Intelligence for Pilots</span>
           </div>
             <p className="text-sm text-white/40">
               © {new Date().getFullYear()} PlaneWX, LLC. All rights reserved. • Patent Pending

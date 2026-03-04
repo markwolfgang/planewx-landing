@@ -15,7 +15,7 @@ const jsonLd = {
       "@id": "https://www.planewx.ai/#website",
       "url": "https://www.planewx.ai",
       "name": "PlaneWX",
-      "description": "AI-powered aviation weather intelligence for general aviation pilots",
+      "description": "Weather intelligence for pilots — know if your flight is a go, days in advance",
       "publisher": {
         "@id": "https://www.planewx.ai/#organization"
       },
@@ -67,6 +67,7 @@ const jsonLd = {
       },
       "featureList": [
         "AI-powered weather briefings",
+        "Multi-model icing and turbulence analysis (HRRR, GFS, ECMWF)",
         "14-day advance forecasting",
         "Personalized WX Score",
         "Synoptic Intelligence™ technology",
@@ -74,6 +75,7 @@ const jsonLd = {
         "Personal minimums tracking",
         "Aircraft-specific analysis",
         "PAVE risk assessment",
+        "Peer mentoring system",
         "Trip Crew sharing"
       ]
     },
@@ -119,7 +121,7 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "PlaneWX - AI-Powered Aviation Weather Intelligence for General Aviation",
+    default: "PlaneWX — Weather Intelligence for Pilots",
     template: "%s | PlaneWX",
   },
   description: "The confidence to go, or the courage to stay™. PlaneWX provides AI-powered long-range aviation weather forecasting for general aviation pilots. Get weather briefings days in advance with WX Score probability metrics.",
