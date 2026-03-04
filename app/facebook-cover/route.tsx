@@ -117,7 +117,7 @@ export async function GET() {
               }}
             >
               <span style={{ fontSize: 11, color: "#0ea5e9", fontWeight: 600, letterSpacing: 0.5 }}>
-                AI-POWERED AVIATION INTELLIGENCE
+                WEATHER INTELLIGENCE FOR PILOTS
               </span>
             </div>
           </div>
