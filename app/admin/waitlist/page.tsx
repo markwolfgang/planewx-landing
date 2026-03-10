@@ -163,6 +163,11 @@ export default function WaitlistAdminPage() {
     }
   }
 
+  const selectAllInvitedNotJoined = () => {
+    const invitedNotJoined = entries.filter(e => e.status === 'invited' && !e.signed_up_at)
+    setSelectedIds(new Set(invitedNotJoined.map(e => e.id)))
+  }
+
   const handleExport = () => {
     const csv = [
       ["First Name", "Last Name", "Email", "Home Airport", "XC Flights/Week", "Referred By", "Status", "Created At", "Invited At", "Signed Up At"].join(","),
@@ -350,7 +355,17 @@ export default function WaitlistAdminPage() {
                   )}
                 </CardDescription>
               </div>
-              <div className="flex gap-2 flex-wrap">
+              <div className="flex gap-2 flex-wrap items-center">
+                {invitedCount > 0 && (
+                  <Button
+                    variant="outline"
+                    onClick={selectAllInvitedNotJoined}
+                    className="border-blue-500/50 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                  >
+                    <Send className="h-4 w-4 mr-2" />
+                    Select Invited ({invitedCount})
+                  </Button>
+                )}
                 {selectedIds.size > 0 && (
                   <div className="relative" ref={actionsMenuRef}>
                     <Button 

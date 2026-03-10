@@ -55,20 +55,32 @@ export async function POST(request: Request) {
       })
     }
 
-    // Get all users from auth.users
-    const { data: authData, error: authError } = await supabase.auth.admin.listUsers()
+    // Get ALL users from auth.users (paginate to avoid missing users beyond page 1)
+    const allAuthUsers: { email?: string }[] = []
+    let page = 1
+    while (true) {
+      const { data: authPage, error: authError } = await supabase.auth.admin.listUsers({
+        page,
+        perPage: 1000,
+      })
 
-    if (authError) {
-      console.error("[Sync Joined] Auth error:", authError)
-      return NextResponse.json(
-        { error: "Failed to fetch auth users" },
-        { status: 500 }
-      )
+      if (authError) {
+        console.error("[Sync Joined] Auth error:", authError)
+        return NextResponse.json(
+          { error: "Failed to fetch auth users" },
+          { status: 500 }
+        )
+      }
+
+      if (!authPage?.users?.length) break
+      allAuthUsers.push(...authPage.users)
+      if (authPage.users.length < 1000) break
+      page++
     }
 
     // Create a set of signed-up emails (lowercase for comparison)
     const signedUpEmails = new Set(
-      authData.users.map(u => u.email?.toLowerCase()).filter(Boolean)
+      allAuthUsers.map(u => u.email?.toLowerCase()).filter(Boolean)
     )
 
     // Find invited users who have signed up
