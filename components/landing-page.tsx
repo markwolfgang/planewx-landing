@@ -344,129 +344,6 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* What is Synoptic Intelligence Section */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-medium mb-4">
-              <span>Patent Pending • US App. 63/970,803</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What is <span className="text-sky-400">Synoptic Intelligence</span>™?
-            </h2>
-            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-4">
-              "Synoptic Intelligence captures what human forecasters know but models don't — 
-              then calibrates it with what models can quantify."
-            </p>
-            <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              <strong className="text-white">PlaneWX is the first and only AI-powered aviation weather product.</strong> No other 
-              platform combines human forecaster insight with quantitative model data beyond 24 hours.
-            </p>
-          </div>
-
-          {/* The Gap Explanation */}
-          <div className="mb-12 p-6 rounded-2xl bg-slate-900/80 border border-slate-700">
-            <h3 className="text-lg font-semibold mb-4 text-center">The Gap in Aviation Weather Today</h3>
-            <div className="grid md:grid-cols-3 gap-4 text-sm">
-              <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20">
-                <div className="font-semibold text-rose-300 mb-2">TAFs</div>
-                <p className="text-white/60">Human insight + quantitative</p>
-                <p className="text-rose-400 font-medium mt-2">But only 24 hours</p>
-              </div>
-              <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
-                <div className="font-semibold text-amber-300 mb-2">MOS / NBM</div>
-                <p className="text-white/60">Quantitative out to 7+ days</p>
-                <p className="text-amber-400 font-medium mt-2">But pure model — no human reasoning</p>
-              </div>
-              <div className="p-4 rounded-xl bg-sky-500/10 border border-sky-500/20">
-                <div className="font-semibold text-sky-300 mb-2">AFDs (Area Forecast Discussions)</div>
-                <p className="text-white/60">Human insight out to 7 days</p>
-                <p className="text-sky-400 font-medium mt-2">But qualitative & written for meteorologists</p>
-              </div>
-            </div>
-            <div className="mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center">
-              <p className="text-emerald-300 font-medium">
-                <strong className="text-white">Synoptic Intelligence</strong> = Human forecaster insight (from AFDs) synthesized by AI, 
-                calibrated with quantitative model data (NBM days 1-3, GFS MEX days 4-7) = <span className="text-emerald-400">Accurate VFR probabilities out to 7 days</span>
-              </p>
-            </div>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Card 1 */}
-            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-sky-500/50 transition-all duration-300">
-              <div className="absolute inset-0 rounded-2xl bg-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-sky-500/20 flex items-center justify-center mb-4">
-                  <Brain className="h-6 w-6 text-sky-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Human Insight Synthesis</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  AI synthesizes expert forecaster narratives from 122 NWS offices — capturing the <em>why</em> behind weather patterns 
-                  that pure model data misses.
-                </p>
-              </div>
-            </div>
-            
-            {/* Card 2 */}
-            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-cyan-500/50 transition-all duration-300">
-              <div className="absolute inset-0 rounded-2xl bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4">
-                  <Route className="h-6 w-6 text-cyan-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Route-Aware Analysis</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Samples your flight path every 75nm to identify all weather regions along your 
-                  route—not just origin and destination like traditional briefings.
-                </p>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-emerald-500/50 transition-all duration-300">
-              <div className="absolute inset-0 rounded-2xl bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="relative">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
-                  <TrendingUp className="h-6 w-6 text-emerald-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Quantitative Calibration</h3>
-                <p className="text-white/60 text-sm leading-relaxed">
-                  Cross-references qualitative forecaster narratives with objective NBM/GFS model data 
-                  to produce calibrated VFR probability estimates you can trust.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Why This Matters for Safety */}
-          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-emerald-950/50 to-teal-950/50 border border-emerald-700/30">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-emerald-400" />
-              Why This Matters for Safety
-            </h3>
-            <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">Know 7 days out:</strong> <span className="text-white/60">See deteriorating conditions before you're committed — not the night before departure</span></span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">Understand the "why":</strong> <span className="text-white/60">Human forecaster reasoning explains why conditions are evolving, not just model numbers</span></span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">Trust the numbers:</strong> <span className="text-white/60">Calibrated with objective model data — 71% accuracy at 72 hours in backtesting</span></span>
-              </div>
-              <div className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">Make early decisions:</strong> <span className="text-white/60">The safest decision is the one made when you still have options</span></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Multi-Model Icing & Turbulence Analysis */}
       <section className="relative py-24 px-4">
         <div className="container mx-auto max-w-6xl">
@@ -1025,6 +902,23 @@ export function LandingPage() {
                 Briefings auto-update on schedules optimized for your departure time
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* YouTube Video Section */}
+      <section className="relative py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+            <iframe
+              className="absolute inset-0 w-full h-full rounded-2xl shadow-2xl shadow-black/50"
+              src="https://www.youtube.com/embed/qu7ppznhcGM?si=MnoooX_Fu66IxwRg"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
           </div>
         </div>
       </section>
@@ -1631,6 +1525,129 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* What is Synoptic Intelligence Section */}
+      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-medium mb-4">
+              <span>Patent Pending • US App. 63/970,803</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              What is <span className="text-sky-400">Synoptic Intelligence</span>™?
+            </h2>
+            <p className="text-xl text-white/80 max-w-3xl mx-auto mb-4">
+              "Synoptic Intelligence captures what human forecasters know but models don't —
+              then calibrates it with what models can quantify."
+            </p>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              <strong className="text-white">PlaneWX is the first and only AI-powered aviation weather product.</strong> No other
+              platform combines human forecaster insight with quantitative model data beyond 24 hours.
+            </p>
+          </div>
+
+          {/* The Gap Explanation */}
+          <div className="mb-12 p-6 rounded-2xl bg-slate-900/80 border border-slate-700">
+            <h3 className="text-lg font-semibold mb-4 text-center">The Gap in Aviation Weather Today</h3>
+            <div className="grid md:grid-cols-3 gap-4 text-sm">
+              <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20">
+                <div className="font-semibold text-rose-300 mb-2">TAFs</div>
+                <p className="text-white/60">Human insight + quantitative</p>
+                <p className="text-rose-400 font-medium mt-2">But only 24 hours</p>
+              </div>
+              <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
+                <div className="font-semibold text-amber-300 mb-2">MOS / NBM</div>
+                <p className="text-white/60">Quantitative out to 7+ days</p>
+                <p className="text-amber-400 font-medium mt-2">But pure model — no human reasoning</p>
+              </div>
+              <div className="p-4 rounded-xl bg-sky-500/10 border border-sky-500/20">
+                <div className="font-semibold text-sky-300 mb-2">AFDs (Area Forecast Discussions)</div>
+                <p className="text-white/60">Human insight out to 7 days</p>
+                <p className="text-sky-400 font-medium mt-2">But qualitative & written for meteorologists</p>
+              </div>
+            </div>
+            <div className="mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-center">
+              <p className="text-emerald-300 font-medium">
+                <strong className="text-white">Synoptic Intelligence</strong> = Human forecaster insight (from AFDs) synthesized by AI,
+                calibrated with quantitative model data (NBM days 1-3, GFS MEX days 4-7) = <span className="text-emerald-400">Accurate VFR probabilities out to 7 days</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Card 1 */}
+            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-sky-500/50 transition-all duration-300">
+              <div className="absolute inset-0 rounded-2xl bg-sky-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-sky-500/20 flex items-center justify-center mb-4">
+                  <Brain className="h-6 w-6 text-sky-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Human Insight Synthesis</h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  AI synthesizes expert forecaster narratives from 122 NWS offices — capturing the <em>why</em> behind weather patterns
+                  that pure model data misses.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-cyan-500/50 transition-all duration-300">
+              <div className="absolute inset-0 rounded-2xl bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-4">
+                  <Route className="h-6 w-6 text-cyan-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Route-Aware Analysis</h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  Samples your flight path every 75nm to identify all weather regions along your
+                  route—not just origin and destination like traditional briefings.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group relative p-6 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-emerald-500/50 transition-all duration-300">
+              <div className="absolute inset-0 rounded-2xl bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
+                  <TrendingUp className="h-6 w-6 text-emerald-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Quantitative Calibration</h3>
+                <p className="text-white/60 text-sm leading-relaxed">
+                  Cross-references qualitative forecaster narratives with objective NBM/GFS model data
+                  to produce calibrated VFR probability estimates you can trust.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Why This Matters for Safety */}
+          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-emerald-950/50 to-teal-950/50 border border-emerald-700/30">
+            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-emerald-400" />
+              Why This Matters for Safety
+            </h3>
+            <div className="space-y-3 text-sm">
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">Know 7 days out:</strong> <span className="text-white/60">See deteriorating conditions before you're committed — not the night before departure</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">Understand the "why":</strong> <span className="text-white/60">Human forecaster reasoning explains why conditions are evolving, not just model numbers</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">Trust the numbers:</strong> <span className="text-white/60">Calibrated with objective model data — 71% accuracy at 72 hours in backtesting</span></span>
+              </div>
+              <div className="flex items-start gap-2">
+                <span className="text-emerald-400 font-bold">→</span>
+                <span><strong className="text-white">Make early decisions:</strong> <span className="text-white/60">The safest decision is the one made when you still have options</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Synoptic Intelligence in Action */}
       <section className="relative py-24 px-4">
         <div className="container mx-auto max-w-6xl">
@@ -2159,14 +2176,14 @@ export function LandingPage() {
                 After selling his Information Security consulting company in December 2022, Mark retired and bought his first airplane—a Diamond DA40 NG. He earned his Private Pilot's license in just six weeks and started flying his wife and dog around the country.
               </p>
               <p>
-                After completing an accelerated IFR program in five days, Mark discovered the complexities of weather planning for instrument flying. He grew frustrated having to tell his wife, <em className="text-white/80">"Yeah, the flight should happen—we'll know about 85% the night before."</em>
+                After completing an accelerated IFR program in five days, Mark discovered the complexities of weather planning for instrument flying. He grew frustrated having to tell his wife, <em className="text-white/80">"Yeah, we should be good. I'll let you know after the TAF comes out tonight."</em>
               </p>
               <p>
                 Now flying a Cirrus SR22T with over 800 hours total time—including 620 hours of cross-country PIC in 18 months—Mark built PlaneWX to solve his own problem. What started as personal frustration became a mission to help every pilot answer the question: <em className="text-sky-400">"Is this flight going to happen?"</em>
               </p>
               <div className="pt-4 border-t border-white/10">
                 <p className="text-sm">
-                  <strong className="text-white">Mark Wolfgang</strong> is a Commercially Rated Instrument pilot with single and multiengine ratings.
+                  <strong className="text-white">Mark Wolfgang</strong> is a Commercial Instrument pilot with single and multiengine ratings. Mark is a veteran of the U.S. Navy.
                 </p>
               </div>
             </div>
@@ -2190,7 +2207,7 @@ export function LandingPage() {
               <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
               <a href="/terms" className="hover:text-white transition-colors">Terms</a>
               <a href="/cookies" className="hover:text-white transition-colors">Cookies</a>
-              <a href="mailto:contact@planewx.ai?subject=PlaneWX%20Inquiry" className="hover:text-white transition-colors">Contact</a>
+              <a href="mailto:hello@planewx.ai" className="hover:text-white transition-colors">Contact</a>
             </div>
           </div>
         </div>
