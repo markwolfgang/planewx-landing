@@ -42,7 +42,7 @@ const jsonLd = {
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "email": "contact@planewx.ai"
+        "email": "hello@planewx.ai"
       }
     },
     {

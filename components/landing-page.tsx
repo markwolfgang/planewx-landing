@@ -1091,7 +1091,7 @@ export function LandingPage() {
               <div className="mb-6 px-3 py-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
                 <p className="text-xs text-amber-300 leading-relaxed">
                   <strong className="text-amber-200">Introductory pricing</strong> — rates increase April 1. Subscribe now to lock in this rate.
-                  <strong className="text-white block mt-1">First 500 subscribers are grandfathered in for life.</strong>
+                  <strong className="text-white block mt-1">First 500 annual subscribers are grandfathered at this price for life.</strong>
                 </p>
               </div>
               <a

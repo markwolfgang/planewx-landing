@@ -1,10 +1,10 @@
 import { Suspense } from "react"
-import { LandingPageV2 } from "@/components/landing-page-v2"
+import { LandingPage } from "@/components/landing-page"
 
-export default function V2Page() {
+export default function V2Archive() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-slate-950" />}>
-      <LandingPageV2 />
+    <Suspense fallback={<div className="min-h-screen bg-[#0a0f1a]" />}>
+      <LandingPage />
     </Suspense>
   )
 }
