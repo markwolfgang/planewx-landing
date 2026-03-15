@@ -188,9 +188,9 @@ export default function BrandPortalPage() {
         </div>
         <div className="grid sm:grid-cols-3 gap-4 mb-6">
           <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-            <div className="text-2xl font-bold text-sky-400">35</div>
-            <div className="text-sm text-white/60 mt-1">Net Promoter Score</div>
-            <div className="text-xs text-white/30 mt-1">8.2 avg (177 responses)</div>
+            <div className="text-2xl font-bold text-sky-400">8.2 / 10</div>
+            <div className="text-sm text-white/60 mt-1">likelihood to recommend</div>
+            <div className="text-xs text-white/30 mt-1">177 pilot responses</div>
           </div>
           <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
             <div className="text-2xl font-bold text-sky-400">70%</div>
