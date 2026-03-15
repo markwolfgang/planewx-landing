@@ -1,0 +1,45 @@
+"use client"
+
+import { ArrowRight, Check } from "lucide-react"
+
+export function FooterCTA({ variant }: { variant: string }) {
+  const appUrl = `https://app.planewx.ai?lp=${variant}`
+
+  return (
+    <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
+      <div className="container mx-auto max-w-2xl text-center">
+        <h2 className="text-4xl md:text-5xl font-bold mb-5">
+          Stop being your own{" "}
+          <span className="bg-gradient-to-r from-sky-400 to-cyan-400 bg-clip-text text-transparent">
+            meteorologist.
+          </span>
+        </h2>
+        <p className="text-lg text-white/60 mb-10 max-w-lg mx-auto">
+          Join over 500 pilots — from students to 30,000-hour ATP captains — who use PlaneWX
+          to make better decisions.
+        </p>
+        <a
+          href={appUrl}
+          className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-12 py-5 text-xl font-semibold shadow-2xl shadow-sky-500/30 transition-all"
+        >
+          Start Your Free 14-Day Trial
+          <ArrowRight className="ml-3 h-6 w-6" />
+        </a>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8 text-sm text-white/40">
+          <div className="flex items-center gap-2">
+            <Check className="h-4 w-4 text-emerald-400" />
+            No credit card required
+          </div>
+          <div className="flex items-center gap-2">
+            <Check className="h-4 w-4 text-emerald-400" />
+            Full Pro access for 14 days
+          </div>
+          <div className="flex items-center gap-2">
+            <Check className="h-4 w-4 text-emerald-400" />
+            Cancel anytime
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

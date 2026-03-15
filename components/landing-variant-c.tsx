@@ -1,0 +1,460 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
+import {
+  ArrowRight,
+  Check,
+  X,
+  Plane,
+  Quote,
+  Gauge,
+  Clock,
+  Shield,
+  HeartHandshake,
+  Users,
+  Brain,
+} from "lucide-react"
+import {
+  YouTubeSection,
+  PricingSection,
+  FaqSection,
+  FooterCTA,
+  SiteFooter,
+  VariantTracker,
+  STATS,
+  TESTIMONIALS,
+} from "./shared"
+
+const VARIANT = "c"
+
+export function LandingVariantC() {
+  const searchParams = useSearchParams()
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null)
+
+  useEffect(() => {
+    const refParam = searchParams.get("ref")
+    if (refParam) {
+      localStorage.setItem("planewx_referral", refParam.toUpperCase())
+    }
+  }, [searchParams])
+
+  const appUrl = `https://app.planewx.ai?lp=${VARIANT}`
+  const featuredTestimonial = TESTIMONIALS.find(t => t.featured)
+
+  return (
+    <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
+      <VariantTracker variant={VARIANT} />
+
+      {/* Background */}
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0d1f3c] to-[#0a0f1a]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-sky-500/10 rounded-full blur-[120px] animate-pulse" />
+        <div
+          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px] animate-pulse"
+          style={{ animationDelay: "1s" }}
+        />
+        <div
+          className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[80px] animate-pulse"
+          style={{ animationDelay: "2s" }}
+        />
+      </div>
+
+      {/* NAV */}
+      <nav className="relative z-10 border-b border-white/5">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Plane className="h-7 w-7 text-sky-400" />
+            <span className="text-2xl font-bold tracking-tight">PlaneWX</span>
+            <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
+              The Pilot&apos;s Decision Support System
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => document.getElementById("community")?.scrollIntoView({ behavior: "smooth" })}
+              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
+            >
+              Community
+            </button>
+            <button
+              onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
+              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
+            >
+              Features
+            </button>
+            <button
+              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
+            >
+              Pricing
+            </button>
+            <a href={appUrl} className="text-sm text-white/60 hover:text-white transition-colors">
+              Log In
+            </a>
+            <a
+              href={appUrl}
+              className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
+            >
+              Start Free Trial
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* HERO — Community-first */}
+      <section className="relative pt-24 pb-20 px-4">
+        <div className="container mx-auto max-w-5xl text-center space-y-8">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
+            Trusted by pilots with{" "}
+            <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+              {STATS.cumulativeHours}
+            </span>{" "}
+            flight hours
+          </h1>
+
+          <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed">
+            From student pilots to 30,000-hour ATP captains. From Cessna 172s to Gulfstreams.{" "}
+            <strong className="text-white">{STATS.instrumentRated} instrument rated.</strong>
+          </p>
+
+          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+            We didn&apos;t build a weather display. We built the{" "}
+            <strong className="text-sky-400">decision support system</strong> that serious
+            pilots asked for.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <a
+              href={appUrl}
+              className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all"
+            >
+              Join the Community — Free
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+            <button
+              onClick={() => document.getElementById("demo-video")?.scrollIntoView({ behavior: "smooth" })}
+              className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all"
+            >
+              Watch the Demo
+            </button>
+          </div>
+
+          <p className="text-sm text-white/30">No credit card required · Cancel anytime</p>
+        </div>
+      </section>
+
+      {/* FEATURED TESTIMONIAL — Clark */}
+      <section className="relative py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="p-[1px] rounded-2xl bg-gradient-to-br from-sky-500/40 via-indigo-500/20 to-cyan-500/40">
+            <div className="p-8 md:p-10 rounded-2xl bg-[#0c1425]">
+              <Quote className="h-10 w-10 text-sky-400/30 mb-5" />
+              <p className="text-lg md:text-xl text-white/85 leading-relaxed italic mb-8">
+                &ldquo;{featuredTestimonial?.quote}&rdquo;
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-sky-500/20 flex items-center justify-center text-sky-400 font-bold text-lg">
+                  {featuredTestimonial?.name[0]}
+                </div>
+                <div>
+                  <p className="font-semibold text-lg">{featuredTestimonial?.name}</p>
+                  <p className="text-sm text-white/40">{featuredTestimonial?.cert}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-3 mt-8">
+            {TESTIMONIALS.filter(t => !t.featured).map((t, i) => (
+              <div
+                key={i}
+                className="w-9 h-9 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-white/50 text-xs font-bold"
+                title={`${t.name} — ${t.cert}`}
+              >
+                {t.name[0]}
+              </div>
+            ))}
+            <span className="text-sm text-white/30 ml-2">and hundreds more</span>
+          </div>
+        </div>
+      </section>
+
+      {/* YOUTUBE VIDEO */}
+      <div id="demo-video">
+        <YouTubeSection variant={VARIANT} />
+      </div>
+
+      {/* STATS GRID */}
+      <section className="relative py-20 px-4 border-y border-white/5 bg-white/[0.02]">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              A community of <span className="text-sky-400">serious pilots</span>
+            </h2>
+            <p className="text-white/50">The pilots who demand more from their weather tools.</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+            {[
+              { value: STATS.cumulativeHours, label: "Cumulative Flight Hours", color: "text-sky-400", border: "border-sky-500/20" },
+              { value: STATS.instrumentRated, label: "Instrument Rated", color: "text-emerald-400", border: "border-emerald-500/20" },
+              { value: STATS.jetAircraft, label: "Jet Aircraft", color: "text-violet-400", border: "border-violet-500/20" },
+              { value: STATS.atpPilots, label: "ATP Pilots", color: "text-amber-400", border: "border-amber-500/20" },
+              { value: "2,000+", label: "Average Hours per Pilot", color: "text-cyan-400", border: "border-cyan-500/20" },
+              { value: STATS.maxPilotHours, label: "Highest-Time Pilot", color: "text-rose-400", border: "border-rose-500/20" },
+            ].map(({ value, label, color, border }) => (
+              <div key={label} className={`p-6 rounded-2xl bg-white/[0.03] border ${border} text-center`}>
+                <div className={`text-4xl md:text-5xl font-bold ${color} mb-2`}>{value}</div>
+                <div className="text-sm text-white/50">{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT PILOTS ARE SAYING — Full testimonials */}
+      <section id="community" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              What pilots are saying
+            </h2>
+            <p className="text-white/50">From students building hours to ATP captains flying jets.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {TESTIMONIALS.map((t, i) => (
+              <div
+                key={i}
+                className={`p-6 rounded-2xl border ${
+                  t.featured
+                    ? "bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border-sky-500/30"
+                    : "bg-white/[0.03] border-white/10"
+                }`}
+              >
+                <Quote className={`h-5 w-5 mb-3 ${t.featured ? "text-sky-400/40" : "text-white/20"}`} />
+                <p className="text-sm text-white/70 leading-relaxed italic mb-5">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center gap-3">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
+                    t.featured
+                      ? "bg-sky-500/20 text-sky-400"
+                      : "bg-white/10 text-white/60"
+                  }`}>
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium">{t.name}</p>
+                    <p className="text-xs text-white/30">{t.cert}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT ARE THEY ALL USING? */}
+      <section className="relative py-24 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-5">
+              The Product
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-5">
+              What are they all <span className="text-sky-400">using?</span>
+            </h2>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              PlaneWX is the first decision support system built specifically for GA pilots.
+              It doesn&apos;t just show weather — it tells you what it means for{" "}
+              <strong className="text-white">your aircraft</strong> and{" "}
+              <strong className="text-white">your minimums</strong>.
+            </p>
+          </div>
+
+          {/* Comparison table */}
+          <div className="rounded-2xl overflow-hidden border border-white/10 mb-10">
+            <div className="grid grid-cols-2">
+              <div className="bg-rose-950/40 border-b border-r border-white/10 px-6 py-4 text-center">
+                <p className="text-sm font-semibold text-rose-300 uppercase tracking-wider">Every EFB & Weather Tool</p>
+              </div>
+              <div className="bg-sky-950/40 border-b border-white/10 px-6 py-4 text-center">
+                <p className="text-sm font-semibold text-sky-300 uppercase tracking-wider">PlaneWX</p>
+              </div>
+
+              {[
+                ["Displays raw METARs, TAFs, PIREPs", "Synthesizes all of it using AI"],
+                ["Generic VFR / IFR categories", "Your personal minimums + your aircraft"],
+                ["You formulate the risk in your head", "WX Score — quantified risk, done for you"],
+                ["Data only", "WX Score feeds into the PAVE framework"],
+                ["You decide alone", "Connects you to a mentor who sees your full briefing"],
+              ].map(([left, right], i) => (
+                <div key={i} className="contents">
+                  <div className="bg-rose-950/20 border-b border-r border-white/10 px-6 py-4 flex items-center gap-3">
+                    <X className="h-4 w-4 text-rose-500 shrink-0" />
+                    <span className="text-sm text-white/60">{left}</span>
+                  </div>
+                  <div className="bg-sky-950/20 border-b border-white/10 px-6 py-4 flex items-center gap-3">
+                    <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                    <span className="text-sm text-white/80">{right}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* WX Score card */}
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-2xl font-bold mb-4">
+                The <span className="text-emerald-400">WX Score</span>: weather risk, quantified
+              </h3>
+              <p className="text-white/60 leading-relaxed mb-4">
+                A 0&ndash;100% risk metric calculated against your personal minimums and your specific
+                aircraft. Not generic VFR/IFR categories. Every deduction is transparent and explained.
+              </p>
+              <p className="text-white/60 leading-relaxed">
+                It updates automatically as weather evolves &mdash; 40+ times over 14 days &mdash; so
+                you never face a last-minute go/no-go scramble.
+              </p>
+            </div>
+            <div className="space-y-4">
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-sm font-medium text-white/60">WX Score</span>
+                  <span className="text-xs text-emerald-400">SR22T · KPAO → KSBA</span>
+                </div>
+                <div className="text-center py-4">
+                  <div className="text-7xl font-bold text-emerald-400">86</div>
+                  <div className="text-sm text-emerald-400/60 mt-1">Good conditions for your minimums</div>
+                </div>
+                <div className="h-3 rounded-full bg-white/10 overflow-hidden mt-2">
+                  <div className="h-full bg-gradient-to-r from-emerald-500 to-sky-500 rounded-full" style={{ width: "86%" }} />
+                </div>
+              </div>
+              <p className="text-xs text-white/25 text-center">
+                Illustrative example. Your score reflects your aircraft and minimums.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* KEY FEATURES — Compact 6-card layout */}
+      <section id="features" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-5">
+              Why they <span className="text-sky-400">stay</span>
+            </h2>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              The features that make PlaneWX the decision support system pilots won&apos;t fly without.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0–100% risk metric calculated against your minimums and your aircraft — not generic VFR/IFR thresholds." },
+              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute go/no-go with bags packed and commitments made." },
+              { icon: <Brain className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across sample points along your route with confidence scoring." },
+              { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "PAVE Risk Assessment", desc: "The FAA's decision-making framework, pre-filled from your trip context — all four quadrants in one view." },
+              { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Ask a Mentor", desc: "Connect with experienced pilots who see your full briefing — WX Score, aircraft profile, minimums." },
+              { icon: <Users className="h-6 w-6" />, color: "text-amber-400 bg-amber-500/20", title: "Trip Watchers", desc: "Family and schedulers see live data. Rescheduling becomes a shared decision — not a confrontation at 6 AM." },
+            ].map(({ icon, color, title, desc }, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors">
+                <div className={`w-10 h-10 rounded-lg ${color.split(" ")[1]} ${color.split(" ")[0]} flex items-center justify-center mb-4`}>
+                  {icon}
+                </div>
+                <h3 className="font-semibold mb-2">{title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <PricingSection variant={VARIANT} />
+      <FaqSection variant={VARIANT} />
+
+      {/* FOUNDER */}
+      <section id="founder" className="relative py-24 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/50 text-xs font-medium mb-5">
+              <Plane className="h-3.5 w-3.5" />
+              Built by a pilot
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Founder&apos;s <span className="text-sky-400">Story</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-5 gap-10 items-start">
+            <div className="md:col-span-2 space-y-3">
+              <div
+                className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl cursor-pointer hover:border-sky-500/50 transition-colors"
+                onClick={() => setZoomedImage("/screenshots/foreflight.png")}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/screenshots/foreflight.png"
+                  alt="Mark's flight log showing extensive cross-country flying"
+                  className="w-full h-auto"
+                />
+              </div>
+              <p className="text-sm text-white/30 text-center italic">&ldquo;I built PlaneWX because I needed it.&rdquo;</p>
+            </div>
+
+            <div className="md:col-span-3 space-y-5 text-white/60 leading-relaxed">
+              <p>
+                PlaneWX was founded in 2025 by <strong className="text-white">Mark Wolfgang</strong>, an
+                experienced technology entrepreneur and General Aviation pilot.
+              </p>
+              <p>
+                After selling his Information Security consulting company in December 2022, Mark retired
+                and bought his first airplane — a Diamond DA40 NG. He earned his Private Pilot&apos;s license
+                in just six weeks and started flying his wife and dog around the country.
+              </p>
+              <p>
+                After completing an accelerated IFR program in five days, Mark discovered the complexities
+                of weather planning for instrument flying. He grew frustrated having to tell his wife,{" "}
+                <em className="text-white/80">
+                  &ldquo;Yeah, we should be good. I&apos;ll let you know after the TAF comes out tonight.&rdquo;
+                </em>
+              </p>
+              <p>
+                Now flying a Cirrus SR22T with over 800 hours total time — including 620 hours of
+                cross-country PIC in 18 months — Mark built PlaneWX to solve his own problem. What
+                started as personal frustration became a mission to help every pilot answer the question:{" "}
+                <em className="text-sky-400">&ldquo;Is this flight going to happen?&rdquo;</em>
+              </p>
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-sm text-white/50">
+                  <strong className="text-white">Mark Wolfgang</strong> is a Commercial Instrument pilot
+                  with single and multiengine ratings, and a veteran of the U.S. Navy.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <FooterCTA variant={VARIANT} />
+      <SiteFooter variant={VARIANT} />
+
+      {/* ZOOM OVERLAY */}
+      {zoomedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setZoomedImage(null)}
+        >
+          <button className="absolute top-4 right-4 text-white/60 hover:text-white">
+            <X className="h-8 w-8" />
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={zoomedImage} alt="Screenshot" className="max-w-full max-h-full rounded-xl" />
+        </div>
+      )}
+    </div>
+  )
+}

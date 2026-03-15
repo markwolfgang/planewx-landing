@@ -1,0 +1,76 @@
+import { NextRequest, NextResponse } from "next/server"
+
+const VARIANT_WEIGHTS: Record<string, number> = {
+  a: 25,
+  b: 25,
+  c: 25,
+  d: 25,
+}
+
+const COOKIE_NAME = "planewx-variant"
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 30 // 30 days
+
+const BOT_UA_PATTERN =
+  /Googlebot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|facebookexternalhit|Twitterbot|LinkedInBot/i
+
+function pickVariant(): string {
+  const active = Object.entries(VARIANT_WEIGHTS).filter(([, w]) => w > 0)
+  const total = active.reduce((sum, [, w]) => sum + w, 0)
+  let r = Math.random() * total
+  for (const [variant, weight] of active) {
+    r -= weight
+    if (r <= 0) return variant
+  }
+  return active[active.length - 1][0]
+}
+
+export function middleware(request: NextRequest) {
+  const { searchParams } = request.nextUrl
+  const ua = request.headers.get("user-agent") ?? ""
+
+  // Admin override via query param
+  const forced = searchParams.get("variant")
+  if (forced && forced in VARIANT_WEIGHTS) {
+    const url = request.nextUrl.clone()
+    url.pathname = `/variants/${forced}`
+    url.searchParams.delete("variant")
+    const res = NextResponse.rewrite(url)
+    res.cookies.set(COOKIE_NAME, forced, {
+      maxAge: COOKIE_MAX_AGE,
+      sameSite: "lax",
+      path: "/",
+    })
+    return res
+  }
+
+  // Pin bots/crawlers to variant A for consistent SEO
+  if (BOT_UA_PATTERN.test(ua)) {
+    const url = request.nextUrl.clone()
+    url.pathname = "/variants/a"
+    return NextResponse.rewrite(url)
+  }
+
+  // Existing cookie — honour it if the variant is still active
+  const existing = request.cookies.get(COOKIE_NAME)?.value
+  if (existing && VARIANT_WEIGHTS[existing] > 0) {
+    const url = request.nextUrl.clone()
+    url.pathname = `/variants/${existing}`
+    return NextResponse.rewrite(url)
+  }
+
+  // No cookie (or stale variant) — assign randomly by weight
+  const assigned = pickVariant()
+  const url = request.nextUrl.clone()
+  url.pathname = `/variants/${assigned}`
+  const res = NextResponse.rewrite(url)
+  res.cookies.set(COOKIE_NAME, assigned, {
+    maxAge: COOKIE_MAX_AGE,
+    sameSite: "lax",
+    path: "/",
+  })
+  return res
+}
+
+export const config = {
+  matcher: "/",
+}

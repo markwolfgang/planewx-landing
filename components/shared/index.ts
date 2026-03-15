@@ -1,0 +1,7 @@
+export { YouTubeSection } from "./youtube-section"
+export { PricingSection } from "./pricing-section"
+export { FaqSection } from "./faq-section"
+export { FooterCTA } from "./footer-cta"
+export { SiteFooter } from "./site-footer"
+export { VariantTracker } from "./variant-tracker"
+export { STATS, TESTIMONIALS, FAQS } from "./landing-data"
