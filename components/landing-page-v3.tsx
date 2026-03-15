@@ -77,7 +77,7 @@ const TESTIMONIALS = [
 const FAQS = [
   {
     q: "How is PlaneWX different from ForeFlight or aviationweather.gov?",
-    a: "EFBs and weather portals display raw data — METARs, TAFs, winds aloft — and hand the analysis back to you. PlaneWX synthesizes that same federal data using AI, cross-references it against your aircraft capabilities and personal minimums, and produces a WX Score: a single quantified risk number integrated into the PAVE decision framework. It's the difference between a data display and a decision support system.",
+    a: "EFBs and weather portals display raw data — METARs, TAFs, winds aloft — and hand the analysis back to you. PlaneWX synthesizes that same data using AI, cross-references it against your aircraft capabilities and personal minimums, and produces a WX Score: a single quantified risk number integrated into the PAVE decision framework. It's the difference between a data display and a decision support system.",
   },
   {
     q: "What is the WX Score?",
@@ -198,7 +198,7 @@ export function LandingPageV3() {
           </p>
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            We synthesize the same federal weather data every EFB uses — against{" "}
+            We synthesize the same authoritative weather data every EFB uses — against{" "}
             <strong className="text-white">your aircraft</strong> and{" "}
             <strong className="text-white">your personal minimums</strong> — into a{" "}
             <strong className="text-sky-400">WX Score</strong>: a quantified risk assessment
@@ -223,6 +223,11 @@ export function LandingPageV3() {
           </div>
 
           <p className="text-sm text-white/30">No credit card required · Cancel anytime</p>
+
+          <div className="flex items-center justify-center gap-2 mt-4 text-sm text-emerald-400/80">
+            <Shield className="h-4 w-4" />
+            <span>Full safety analysis on every plan — <strong className="text-emerald-300">free forever</strong></span>
+          </div>
         </div>
       </section>
 
@@ -787,11 +792,29 @@ export function LandingPageV3() {
             <p className="text-white/50">No credit card required. Cancel anytime.</p>
           </div>
 
+          <div className="max-w-2xl mx-auto text-center mb-10 p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+            <Shield className="h-8 w-8 text-emerald-400 mx-auto mb-3" />
+            <h3 className="text-xl font-bold text-emerald-300 mb-2">
+              Safety is not a premium feature.
+            </h3>
+            <p className="text-white/60 text-sm leading-relaxed">
+              Every free briefing uses the same AI engine, the same weather models, and the same
+              scoring methodology as a Pro briefing. We limit how much you can use PlaneWX,
+              not how well it works. Paid plans unlock convenience and scale &mdash; not the
+              quality of the analysis that keeps you safe.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {/* Free */}
             <div className="p-8 rounded-3xl bg-white/[0.03] border border-white/10">
               <h3 className="text-xl font-bold mb-1">Free</h3>
-              <p className="text-white/40 text-sm mb-6">For students and occasional flyers</p>
+              <p className="text-white/40 text-sm mb-4">For students and occasional flyers</p>
+              <div className="px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 mb-6">
+                <p className="text-xs text-emerald-300 font-medium text-center">
+                  Full safety analysis &mdash; same engine as Pro
+                </p>
+              </div>
               <div className="mb-6">
                 <span className="text-5xl font-bold">$0</span>
                 <span className="text-white/30 ml-2">/forever</span>
