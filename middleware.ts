@@ -10,6 +10,9 @@ const VARIANT_WEIGHTS: Record<string, number> = {
 const COOKIE_NAME = "planewx-variant"
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 30 // 30 days
 
+const BRAND_AUTH_COOKIE = "planewx-brand-auth"
+const BRAND_AUTH_MAX_AGE = 60 * 60 * 24 * 90 // 90 days
+
 const BOT_UA_PATTERN =
   /Googlebot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|facebookexternalhit|Twitterbot|LinkedInBot/i
 
@@ -24,7 +27,35 @@ function pickVariant(): string {
   return active[active.length - 1][0]
 }
 
+function handleBrandAuth(request: NextRequest): NextResponse | null {
+  const password = process.env.BRAND_PORTAL_PASSWORD
+  if (!password) return null // no password set = no protection
+
+  const authed = request.cookies.get(BRAND_AUTH_COOKIE)?.value
+  if (authed === "true") return null // already authenticated
+
+  // Check if this is a password submission
+  if (request.method === "POST") return null // let the API route handle it
+
+  // Redirect to the brand login page
+  const loginUrl = request.nextUrl.clone()
+  loginUrl.pathname = "/brand-login"
+  loginUrl.searchParams.set("next", request.nextUrl.pathname)
+  return NextResponse.redirect(loginUrl)
+}
+
 export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl
+
+  // Brand portal password protection (skip the login page itself)
+  if (pathname.startsWith("/brand") && !pathname.startsWith("/brand-login")) {
+    const authResponse = handleBrandAuth(request)
+    if (authResponse) return authResponse
+  }
+
+  // A/B variant routing (root path only)
+  if (pathname !== "/") return NextResponse.next()
+
   const { searchParams } = request.nextUrl
   const ua = request.headers.get("user-agent") ?? ""
 
@@ -72,5 +103,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/",
+  matcher: ["/", "/brand/:path*"],
 }
