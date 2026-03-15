@@ -281,15 +281,19 @@ export default function SocialMediaPlaybookPage() {
           Approved Social Proof
         </h2>
         <p className="text-white/60 mb-8">
-          Stats to cite. Lead with these, follow with specific testimonials.
+          Stats to cite. All numbers backed by production data (March 2026).
         </p>
+
+        <h3 className="text-lg font-semibold text-white mb-4">
+          Community Stats
+        </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
           {[
-            { value: "500+", label: "pilots" },
+            { value: "600+", label: "pilots" },
             { value: "1.1M+", label: "cumulative hours" },
             { value: "85%", label: "instrument rated" },
             { value: "120+", label: "jet aircraft" },
-            { value: "51", label: "ATPs" },
+            { value: "102", label: "aircraft types" },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -302,10 +306,34 @@ export default function SocialMediaPlaybookPage() {
             </div>
           ))}
         </div>
+
+        <h3 className="text-lg font-semibold text-white mb-4">
+          Safety Impact (177 post-flight surveys)
+        </h3>
+        <div className="grid sm:grid-cols-2 gap-4 mb-6">
+          {[
+            { value: "28 pilots", desc: "said PlaneWX gave them permission to cancel a flight they might have otherwise attempted" },
+            { value: "92%", desc: "of pilots who flew said the WX Score was accurate or conservative — only 8% said conditions were worse than predicted" },
+            { value: "3.4 days", desc: "average planning horizon — pilots are using PlaneWX for advance planning, not day-of" },
+            { value: "8.3 briefings", desc: "per trip on average — pilots check back repeatedly as departure approaches" },
+          ].map((stat) => (
+            <div
+              key={stat.value}
+              className="p-5 rounded-2xl bg-white/[0.03] border border-white/10"
+            >
+              <div className="text-xl font-bold text-emerald-400 mb-2">{stat.value}</div>
+              <p className="text-white/60 text-sm leading-relaxed">{stat.desc}</p>
+            </div>
+          ))}
+        </div>
+
         <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4">
           <p className="text-white/80 text-sm">
-            <strong className="text-amber-400/90">Tip:</strong> Lead with stats,
-            follow with specific testimonials. Avoid cherry-picking outliers.
+            <strong className="text-amber-400/90">Usage guidelines:</strong> Lead
+            with the &quot;28 pilots&quot; stat for safety messaging, community
+            stats for credibility, and 3.4-day planning horizon for the advance
+            planning value prop. Always cite &quot;from post-flight feedback&quot;
+            for the safety numbers.
           </p>
         </div>
       </section>

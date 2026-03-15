@@ -165,6 +165,54 @@ export default function BrandPortalPage() {
         </div>
       </section>
 
+      {/* Safety Impact */}
+      <section>
+        <h2 className="text-3xl font-bold text-white mb-2">
+          Measured Safety Impact
+        </h2>
+        <p className="text-white/60 mb-8">
+          Real data from 177 post-flight feedback submissions (March 2026).
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          {[
+            { value: "28", label: "pilots said PlaneWX gave them permission to cancel a flight", color: "text-emerald-400" },
+            { value: "92%", label: "of pilots who flew said the WX Score was accurate or conservative", color: "text-sky-400" },
+            { value: "3.4 days", label: "average planning horizon per trip", color: "text-sky-400" },
+            { value: "8.3", label: "average briefing updates per trip", color: "text-sky-400" },
+          ].map((stat) => (
+            <div key={stat.label} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
+              <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
+              <div className="text-sm text-white/60 mt-2 leading-snug">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+        <div className="grid sm:grid-cols-3 gap-4 mb-6">
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+            <div className="text-2xl font-bold text-sky-400">35</div>
+            <div className="text-sm text-white/60 mt-1">Net Promoter Score</div>
+            <div className="text-xs text-white/30 mt-1">8.2 avg (177 responses)</div>
+          </div>
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+            <div className="text-2xl font-bold text-sky-400">70%</div>
+            <div className="text-sm text-white/60 mt-1">of pilots flew as planned</div>
+            <div className="text-xs text-white/30 mt-1">124 of 177 trips</div>
+          </div>
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+            <div className="text-2xl font-bold text-amber-400">30%</div>
+            <div className="text-sm text-white/60 mt-1">cancelled — 64% due to weather</div>
+            <div className="text-xs text-white/30 mt-1">34 of 53 cancellations</div>
+          </div>
+        </div>
+        <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
+          <p className="text-white/80 text-sm leading-relaxed">
+            <strong className="text-emerald-400">The key stat:</strong> Of the 34 weather-related
+            cancellations, 28 pilots (82%) said PlaneWX gave them the confidence to make
+            that no-go call. These are flights where a pilot might have pushed into marginal
+            weather without the data PlaneWX provided.
+          </p>
+        </div>
+      </section>
+
       {/* Community Stats */}
       <section>
         <h2 className="text-3xl font-bold text-white mb-2">Community</h2>
