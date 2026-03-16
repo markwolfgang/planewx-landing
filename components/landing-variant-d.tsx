@@ -131,6 +131,9 @@ export function LandingVariantD() {
             >
               Pricing
             </button>
+            <a href="/research/turbulence-safety" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
+              Research
+            </a>
             <a href={appUrl} className="text-sm text-white/60 hover:text-white transition-colors">
               Log In
             </a>

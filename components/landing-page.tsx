@@ -176,6 +176,9 @@ export function LandingPage() {
               Testimonials
             </button>
             <a href="#founder" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
+            <a href="/research/turbulence-safety" className="text-sm text-white/60 hover:text-white transition-colors">
+              Research
+            </a>
             <a href="https://app.planewx.ai" className="text-sm text-white/60 hover:text-white transition-colors">
               Log In
             </a>
@@ -2207,6 +2210,7 @@ export function LandingPage() {
               <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
               <a href="/terms" className="hover:text-white transition-colors">Terms</a>
               <a href="/cookies" className="hover:text-white transition-colors">Cookies</a>
+              <a href="/research/turbulence-safety" className="hover:text-white transition-colors">Research</a>
               <a href="mailto:hello@planewx.ai" className="hover:text-white transition-colors">Contact</a>
             </div>
           </div>

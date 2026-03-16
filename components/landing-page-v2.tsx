@@ -660,6 +660,7 @@ export function LandingPageV2() {
               <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
               <a href="/terms" className="hover:text-white transition-colors">Terms</a>
               <a href="/cookies" className="hover:text-white transition-colors">Cookies</a>
+              <a href="/research/turbulence-safety" className="hover:text-white transition-colors">Research</a>
               <a href="mailto:contact@planewx.ai?subject=PlaneWX%20Inquiry" className="hover:text-white transition-colors">Contact</a>
             </div>
           </div>
