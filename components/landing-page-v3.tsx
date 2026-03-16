@@ -158,6 +158,9 @@ export function LandingPageV3() {
             >
               Pricing
             </button>
+            <a href="/research/turbulence-safety" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
+              Research
+            </a>
             <a href="https://app.planewx.ai" className="text-sm text-white/60 hover:text-white transition-colors">
               Log In
             </a>
@@ -1050,6 +1053,7 @@ export function LandingPageV3() {
           </div>
           <div className="flex items-center gap-6">
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
+            <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
             <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">Contact</a>
             <span>© 2026 PlaneWX, LLC</span>
           </div>
