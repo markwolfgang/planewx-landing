@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { BrandLogo } from "@/components/shared/brand-logo"
 import { 
   Plane, 
   X, 
@@ -138,10 +139,7 @@ export function LandingPageV2() {
       <nav className="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="relative p-2 rounded-xl bg-gradient-to-br from-sky-500 to-emerald-500">
-              <Plane className="h-6 w-6 text-white" />
-            </div>
-            <span className="text-2xl font-bold tracking-tight">PlaneWX</span>
+            <BrandLogo className="h-9 w-auto" priority />
           </div>
           <div className="hidden md:flex items-center gap-8">
             <button 
@@ -650,8 +648,7 @@ export function LandingPageV2() {
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <Plane className="h-6 w-6 text-sky-400" />
-              <span className="font-bold">PlaneWX</span>
+              <BrandLogo className="h-7 w-auto" />
             </div>
             <p className="text-sm text-white/40">
               © {new Date().getFullYear()} PlaneWX, LLC. All rights reserved.

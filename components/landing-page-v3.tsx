@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
+import { BrandLogo } from "@/components/shared/brand-logo"
 import {
   ArrowRight,
   Check,
@@ -133,8 +134,7 @@ export function LandingPageV3() {
       <nav className="relative z-10 border-b border-white/5">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Plane className="h-7 w-7 text-sky-400" />
-            <span className="text-2xl font-bold tracking-tight">PlaneWX</span>
+            <BrandLogo className="h-9 w-auto" priority />
             <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
               The Pilot's Decision Support System
             </span>
@@ -1047,8 +1047,7 @@ export function LandingPageV3() {
       <footer className="relative py-10 px-4 border-t border-white/5">
         <div className="container mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/30">
           <div className="flex items-center gap-2">
-            <Plane className="h-4 w-4 text-sky-400" />
-            <span className="font-semibold text-white/50">PlaneWX</span>
+            <BrandLogo className="h-5 w-auto" />
             <span>· The Pilot's Decision Support System</span>
           </div>
           <div className="flex items-center gap-6">
