@@ -76,14 +76,21 @@ export function LandingVariantD() {
   const searchParams = useSearchParams()
   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
 
+  const [referralCode, setReferralCode] = useState<string | null>(null)
+
   useEffect(() => {
     const refParam = searchParams.get("ref")
     if (refParam) {
       localStorage.setItem("planewx_referral", refParam.toUpperCase())
+      setReferralCode(refParam.toUpperCase())
+    } else {
+      const storedRef = localStorage.getItem("planewx_referral")
+      if (storedRef) setReferralCode(storedRef)
     }
   }, [searchParams])
 
   const appUrl = `https://app.planewx.ai?lp=${VARIANT}`
+  const signUpUrl = `https://app.planewx.ai/auth/sign-up?lp=${VARIANT}${referralCode ? `&ref=${referralCode}` : ""}`
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
@@ -138,7 +145,7 @@ export function LandingVariantD() {
               Log In
             </a>
             <a
-              href={appUrl}
+              href={signUpUrl}
               className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-emerald-500 hover:bg-emerald-400 text-white transition-colors"
             >
               Get Started Free
@@ -171,7 +178,7 @@ export function LandingVariantD() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <a
-              href={appUrl}
+              href={signUpUrl}
               className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-emerald-500/25 transition-all"
             >
               Start for Free — No Credit Card

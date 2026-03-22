@@ -33,14 +33,21 @@ export function LandingVariantC() {
   const searchParams = useSearchParams()
   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
 
+  const [referralCode, setReferralCode] = useState<string | null>(null)
+
   useEffect(() => {
     const refParam = searchParams.get("ref")
     if (refParam) {
       localStorage.setItem("planewx_referral", refParam.toUpperCase())
+      setReferralCode(refParam.toUpperCase())
+    } else {
+      const storedRef = localStorage.getItem("planewx_referral")
+      if (storedRef) setReferralCode(storedRef)
     }
   }, [searchParams])
 
   const appUrl = `https://app.planewx.ai?lp=${VARIANT}`
+  const signUpUrl = `https://app.planewx.ai/auth/sign-up?lp=${VARIANT}${referralCode ? `&ref=${referralCode}` : ""}`
   const featuredTestimonial = TESTIMONIALS.find(t => t.featured)
 
   return (
@@ -96,7 +103,7 @@ export function LandingVariantC() {
               Log In
             </a>
             <a
-              href={appUrl}
+              href={signUpUrl}
               className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
             >
               Start Free Trial
@@ -129,7 +136,7 @@ export function LandingVariantC() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <a
-              href={appUrl}
+              href={signUpUrl}
               className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
               Join the Community — Free

@@ -128,13 +128,20 @@ export function LandingPage() {
   const [zoomedImage, setZoomedImage] = useState<string | null>(null)
   const [synopticExpanded, setSynopticExpanded] = useState(false)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [referralCode, setReferralCode] = useState<string | null>(null)
 
   useEffect(() => {
     const refParam = searchParams.get("ref")
     if (refParam) {
       localStorage.setItem("planewx_referral", refParam.toUpperCase())
+      setReferralCode(refParam.toUpperCase())
+    } else {
+      const storedRef = localStorage.getItem("planewx_referral")
+      if (storedRef) setReferralCode(storedRef)
     }
   }, [searchParams])
+
+  const signUpUrl = `https://app.planewx.ai/auth/sign-up${referralCode ? `?ref=${referralCode}` : ""}`
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
@@ -180,7 +187,7 @@ export function LandingPage() {
               Log In
             </a>
             <a 
-              href="https://app.planewx.ai"
+              href={signUpUrl}
               className="hidden sm:inline-flex items-center justify-center rounded-md text-xs font-medium h-9 px-3 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
             >
               Get Started Free
@@ -231,7 +238,7 @@ export function LandingPage() {
             {/* CTA buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <a 
-                href="https://app.planewx.ai"
+                href={signUpUrl}
                 className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-8 py-6 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-colors"
               >
                 Get Started Free
@@ -996,7 +1003,7 @@ export function LandingPage() {
                 <span className="text-white/40 ml-1">/forever</span>
               </div>
               <a
-                href="https://app.planewx.ai"
+                href={signUpUrl}
                 className="inline-flex items-center justify-center rounded-md w-full py-3 text-sm font-semibold border border-white/20 text-white hover:bg-white/5 transition-colors mb-8"
               >
                 Get Started
@@ -1092,7 +1099,7 @@ export function LandingPage() {
                 </p>
               </div>
               <a
-                href="https://app.planewx.ai"
+                href={signUpUrl}
                 className="inline-flex items-center justify-center rounded-md w-full py-3 text-sm font-semibold bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white shadow-lg shadow-sky-500/25 transition-colors mb-8"
               >
                 Start 14-Day Free Trial
@@ -1151,7 +1158,7 @@ export function LandingPage() {
             Create your free account and start your 14-day Pro trial. No credit card required.
           </p>
           <a 
-            href="https://app.planewx.ai"
+            href={signUpUrl}
             className="inline-flex items-center justify-center rounded-md bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-6 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-colors"
           >
             Get Started Free
