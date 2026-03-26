@@ -1,7 +1,3 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import {
@@ -15,7 +11,6 @@ import {
   CalendarClock,
   Eye,
   Plane,
-  X,
   Quote,
 } from "lucide-react"
 import {
@@ -25,25 +20,15 @@ import {
   FooterCTA,
   SiteFooter,
   VariantTracker,
+  FounderImageModal,
   STATS,
   TESTIMONIALS,
 } from "./shared"
 
 const VARIANT = "b"
+const appUrl = `https://app.planewx.ai?lp=${VARIANT}`
 
 export function LandingVariantB() {
-  const searchParams = useSearchParams()
-  const [zoomedImage, setZoomedImage] = useState<string | null>(null)
-
-  useEffect(() => {
-    const refParam = searchParams.get("ref")
-    if (refParam) {
-      localStorage.setItem("planewx_referral", refParam.toUpperCase())
-    }
-  }, [searchParams])
-
-  const appUrl = `https://app.planewx.ai?lp=${VARIANT}`
-
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
       <VariantTracker variant={VARIANT} />
@@ -66,24 +51,24 @@ export function LandingVariantB() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <button
-              onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
+            <a
+              href="#how-it-works"
               className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
             >
               How It Works
-            </button>
-            <button
-              onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
+            </a>
+            <a
+              href="#features"
               className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
             >
               Features
-            </button>
-            <button
-              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+            </a>
+            <a
+              href="#pricing"
               className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
             >
               Pricing
-            </button>
+            </a>
             <a href="/research/turbulence-safety" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
               Research
             </a>
@@ -131,12 +116,12 @@ export function LandingVariantB() {
               Get Early Warning — Free
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
-            <button
-              onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
+            <a
+              href="#how-it-works"
               className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all"
             >
               See How It Works
-            </button>
+            </a>
           </div>
 
           <p className="text-sm text-white/30">
@@ -495,19 +480,7 @@ export function LandingVariantB() {
 
           <div className="grid md:grid-cols-5 gap-10 items-start">
             <div className="md:col-span-2 space-y-3">
-              <div
-                className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl cursor-pointer hover:border-sky-500/50 transition-colors"
-                onClick={() => setZoomedImage("/screenshots/foreflight.png")}
-              >
-                <Image
-                  src="/screenshots/foreflight.png"
-                  alt="Mark's flight log showing extensive cross-country flying"
-                  width={800}
-                  height={1000}
-                  sizes="(max-width: 768px) 100vw, 40vw"
-                  className="w-full h-auto"
-                />
-              </div>
+              <FounderImageModal hoverColor="sky" />
               <p className="text-sm text-white/30 text-center italic">&ldquo;I built PlaneWX because I needed it.&rdquo;</p>
             </div>
 
@@ -547,20 +520,6 @@ export function LandingVariantB() {
 
       <FooterCTA variant={VARIANT} />
       <SiteFooter variant={VARIANT} />
-
-      {/* ZOOM OVERLAY */}
-      {zoomedImage && (
-        <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-          onClick={() => setZoomedImage(null)}
-        >
-          <button className="absolute top-4 right-4 text-white/60 hover:text-white">
-            <X className="h-8 w-8" />
-          </button>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={zoomedImage} alt="Screenshot" className="max-w-full max-h-full rounded-xl" />
-        </div>
-      )}
     </div>
   )
 }

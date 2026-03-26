@@ -11,6 +11,11 @@ declare global {
 
 export function VariantTracker({ variant }: { variant: string }) {
   useEffect(() => {
+    const refParam = new URLSearchParams(window.location.search).get("ref")
+    if (refParam) {
+      localStorage.setItem("planewx_referral", refParam.toUpperCase())
+    }
+
     if (window.gtag) {
       window.gtag("event", "landing_variant_view", { variant })
     }
