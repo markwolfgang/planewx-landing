@@ -6,6 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { BrandLogo } from "@/components/shared/brand-logo"
+import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { 
   Plane, 
   CheckCircle2, 
@@ -914,14 +915,10 @@ export function LandingPage() {
       <section className="relative py-16 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-            <iframe
-              className="absolute inset-0 w-full h-full rounded-2xl shadow-2xl shadow-black/50"
-              src="https://www.youtube.com/embed/qu7ppznhcGM?si=MnoooX_Fu66IxwRg"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
+            <YouTubeFacade
+              videoId="qu7ppznhcGM"
+              title="Pilots: Meet PlaneWX — The AI Tool That Scores Your Flight Risk"
+              className="rounded-2xl shadow-2xl shadow-black/50"
             />
           </div>
         </div>
@@ -2160,9 +2157,12 @@ export function LandingPage() {
                 className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl cursor-pointer hover:border-sky-500/50 transition-colors"
                 onClick={() => setZoomedImage("/screenshots/foreflight.png")}
               >
-                <img
+                <Image
                   src="/screenshots/foreflight.png"
                   alt="Flight log showing extensive cross-country flying"
+                  width={800}
+                  height={1000}
+                  sizes="(max-width: 768px) 100vw, 40vw"
                   className="w-full h-auto"
                 />
               </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
+import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import {
   ArrowRight,
@@ -504,10 +505,12 @@ export function LandingVariantB() {
                 className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl cursor-pointer hover:border-sky-500/50 transition-colors"
                 onClick={() => setZoomedImage("/screenshots/foreflight.png")}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/screenshots/foreflight.png"
                   alt="Mark's flight log showing extensive cross-country flying"
+                  width={800}
+                  height={1000}
+                  sizes="(max-width: 768px) 100vw, 40vw"
                   className="w-full h-auto"
                 />
               </div>
