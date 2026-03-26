@@ -8,7 +8,7 @@ type Props = {
   hoverColor?: "sky" | "emerald"
 }
 
-const SRC = "/screenshots/foreflight.png"
+const SRC = "/screenshots/foreflight.jpeg"
 
 export function FounderImageModal({ hoverColor = "sky" }: Props) {
   const [zoomed, setZoomed] = useState(false)
