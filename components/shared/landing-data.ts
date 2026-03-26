@@ -1,5 +1,5 @@
 export const STATS = {
-  cumulativeHours: "1.1M+",
+  cumulativeHours: "1.5M+",
   instrumentRated: "85%",
   jetAircraft: "120+",
   maxPilotHours: "30,000+",

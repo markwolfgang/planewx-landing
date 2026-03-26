@@ -29,7 +29,7 @@ import {
 
 // ── Real production stats (as of March 2026) ──────────────────────────────────
 const STATS = {
-  cumulativeHours: "1.1M+",
+  cumulativeHours: "1.5M+",
   instrumentRated: "85%",
   jetAircraft: "120+",
   maxPilotHours: "30,000+",
@@ -1016,7 +1016,7 @@ export function LandingPageV3() {
             </span>
           </h2>
           <p className="text-lg text-white/60 mb-10 max-w-lg mx-auto">
-            Join over 500 pilots — from students to 30,000-hour ATP captains — who use PlaneWX
+            Join over 800 pilots — from students to 30,000-hour ATP captains — who use PlaneWX
             to make better decisions.
           </p>
           <a

@@ -95,11 +95,11 @@ export function LandingVariantC() {
       <section className="relative pt-24 pb-20 px-4">
         <div className="container mx-auto max-w-5xl text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            Trusted by pilots with{" "}
+            Trusted by over 800 pilots —{" "}
             <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              {STATS.cumulativeHours}
+              {STATS.cumulativeHours} flight hours
             </span>{" "}
-            flight hours
+            across our community
           </h1>
 
           <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed">
@@ -154,18 +154,6 @@ export function LandingVariantC() {
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-3 mt-8">
-            {TESTIMONIALS.filter(t => !t.featured).map((t, i) => (
-              <div
-                key={i}
-                className="w-9 h-9 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-white/50 text-xs font-bold"
-                title={`${t.name} — ${t.cert}`}
-              >
-                {t.name[0]}
-              </div>
-            ))}
-            <span className="text-sm text-white/30 ml-2">and hundreds more</span>
-          </div>
         </div>
       </section>
 
