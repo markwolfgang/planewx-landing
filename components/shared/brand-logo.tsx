@@ -7,11 +7,11 @@ type BrandLogoProps = {
 
 const brandAssets = {
   wordmark: {
-    src: "/brand/planewx-wordmark.svg",
+    src: "/logos/planewx-wordmark.svg",
     alt: "PlaneWX",
   },
   icon: {
-    src: "/brand/planewx-icon.svg",
+    src: "/logos/planewx-icon.svg",
     alt: "PlaneWX icon",
   },
 } as const
