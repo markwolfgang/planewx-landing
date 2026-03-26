@@ -8,8 +8,8 @@ export default function SoroBlogEmbed() {
     if (existing) return
 
     const p = new URLSearchParams(window.location.search)
-    let u = "https://app.trysoro.com/api/embed/732fc303-3b9b-4f2b-a629-ca12722565ce"
-    if (p.get("post")) u += "?post=" + encodeURIComponent(p.get("post")!)
+    let u = "https://app.trysoro.com/api/embed/732fc303-3b9b-4f2b-a629-ca12722565ce?theme=dark"
+    if (p.get("post")) u += "&post=" + encodeURIComponent(p.get("post")!)
 
     const s = document.createElement("script")
     s.id = "soro-embed-script"

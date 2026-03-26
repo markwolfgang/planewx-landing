@@ -19,6 +19,42 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white">
+      <style>{`
+        /* Remap Soro embed colors to PlaneWX palette */
+        #soro-blog,
+        #soro-blog * {
+          color-scheme: dark;
+        }
+        #soro-blog a,
+        #soro-blog h1,
+        #soro-blog h2,
+        #soro-blog h3 {
+          color: #38bdf8 !important; /* sky-400 */
+        }
+        #soro-blog a:hover {
+          color: #7dd3fc !important; /* sky-300 */
+        }
+        #soro-blog p,
+        #soro-blog li,
+        #soro-blog span,
+        #soro-blog time {
+          color: rgba(255,255,255,0.7) !important;
+        }
+        #soro-blog button,
+        #soro-blog [class*="btn"],
+        #soro-blog [class*="tag"],
+        #soro-blog [class*="badge"],
+        #soro-blog [class*="pill"] {
+          background: transparent !important;
+          border-color: rgba(255,255,255,0.15) !important;
+          color: rgba(255,255,255,0.6) !important;
+        }
+        #soro-blog [style*="background"],
+        #soro-blog [style*="background-color"] {
+          background: transparent !important;
+          background-color: transparent !important;
+        }
+      `}</style>
       {/* Nav */}
       <header className="border-b border-white/10 px-6 py-4">
         <div className="mx-auto flex max-w-5xl items-center justify-between">
