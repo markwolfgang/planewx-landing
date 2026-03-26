@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
+import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import {
   ArrowRight,
   Check,
@@ -426,14 +428,9 @@ export function LandingPageV3() {
             </h2>
           </div>
           <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl shadow-black/60 border border-white/10" style={{ paddingBottom: "56.25%" }}>
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/qu7ppznhcGM?si=MnoooX_Fu66IxwRg"
+            <YouTubeFacade
+              videoId="qu7ppznhcGM"
               title="Pilots: Meet PlaneWX — The AI Tool That Scores Your Flight Risk"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
             />
           </div>
         </div>
@@ -968,10 +965,12 @@ export function LandingPageV3() {
                 className="rounded-2xl border border-white/10 overflow-hidden shadow-2xl cursor-pointer hover:border-sky-500/50 transition-colors"
                 onClick={() => setZoomedImage("/screenshots/foreflight.png")}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/screenshots/foreflight.png"
                   alt="Mark's flight log showing extensive cross-country flying"
+                  width={800}
+                  height={1000}
+                  sizes="(max-width: 768px) 100vw, 40vw"
                   className="w-full h-auto"
                 />
               </div>
