@@ -47,8 +47,9 @@ function handleBrandAuth(request: NextRequest): NextResponse | null {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Brand portal password protection (skip the login page itself)
-  if (pathname.startsWith("/brand") && !pathname.startsWith("/brand-login")) {
+  // Brand portal password protection (skip the login page and static assets like SVGs)
+  const isStaticAsset = /\.\w+$/.test(pathname)
+  if (pathname.startsWith("/brand") && !pathname.startsWith("/brand-login") && !isStaticAsset) {
     const authResponse = handleBrandAuth(request)
     if (authResponse) return authResponse
   }
