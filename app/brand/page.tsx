@@ -276,8 +276,8 @@ export default function BrandPortalPage() {
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { value: "350+", label: "paying subscribers" },
-            { value: "~18%", label: "conversion rate (oldest cohort)" },
+            { value: "143", label: "paying subscribers" },
+            { value: "24%", label: "conversion rate (best cohort)" },
             { value: "800+", label: "total pilot accounts" },
             { value: "Annual", label: "most subscribers buying yearly" },
           ].map((stat) => (
