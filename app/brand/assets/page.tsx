@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 export const metadata = {
   title: "Assets & Colors | PlaneWX Brand Portal",
   description: "PlaneWX brand assets, color palette, typography, and usage guidelines.",
@@ -145,22 +147,108 @@ export default function AssetsPage() {
 
       {/* Logo */}
       <section>
-        <h2 className="text-2xl font-bold tracking-tight text-white mb-6">
+        <h2 className="text-2xl font-bold tracking-tight text-white mb-2">
           Logo
         </h2>
-        <div className="p-8 rounded-2xl bg-white/[0.03] border border-white/10 border-dashed">
-          <p className="text-lg font-medium text-white/80 mb-2">
-            Logo files coming soon
-          </p>
-          <p className="text-white/70 leading-relaxed">
-            Contact{" "}
+        <p className="text-white/60 mb-8 leading-relaxed">
+          Always use the official files below. Do not recreate, distort, recolor,
+          or alter the logo in any way.
+        </p>
+
+        {/* Wordmark — dark background */}
+        <div className="space-y-4 mb-8">
+          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Wordmark</h3>
+
+          <div className="rounded-2xl bg-[#0a0f1a] border border-white/10 p-10 flex items-center justify-center">
+            <Image
+              src="/brand/planewx-og-wordmark.png"
+              alt="PlaneWX wordmark — dark background"
+              width={400}
+              height={80}
+              className="max-w-full h-auto"
+            />
+          </div>
+
+          <div className="rounded-2xl bg-white border border-white/10 p-10 flex items-center justify-center">
+            <Image
+              src="/brand/planewx-og-wordmark.png"
+              alt="PlaneWX wordmark — light background"
+              width={400}
+              height={80}
+              className="max-w-full h-auto"
+            />
+          </div>
+
+          <div className="flex flex-wrap gap-3 pt-1">
             <a
-              href="mailto:hello@planewx.ai"
-              className="text-sky-400 hover:text-sky-300 transition-colors"
+              href="/brand/planewx-og-wordmark.png"
+              download="planewx-wordmark.png"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium hover:bg-sky-500/20 transition-colors"
             >
+              ↓ Download PNG
+            </a>
+            <a
+              href="/brand/planewx-wordmark.svg"
+              download="planewx-wordmark.svg"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
+            >
+              ↓ Download SVG
+            </a>
+          </div>
+        </div>
+
+        {/* Icon */}
+        <div className="space-y-4 mb-8">
+          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Icon mark</h3>
+
+          <div className="flex gap-4">
+            <div className="rounded-2xl bg-[#0a0f1a] border border-white/10 p-8 flex items-center justify-center flex-1">
+              <Image
+                src="/brand/planewx-icon.svg"
+                alt="PlaneWX icon — dark background"
+                width={80}
+                height={80}
+                className="h-16 w-auto"
+              />
+            </div>
+            <div className="rounded-2xl bg-white border border-white/10 p-8 flex items-center justify-center flex-1">
+              <Image
+                src="/brand/planewx-icon.svg"
+                alt="PlaneWX icon — light background"
+                width={80}
+                height={80}
+                className="h-16 w-auto"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-wrap gap-3 pt-1">
+            <a
+              href="/brand/planewx-icon.svg"
+              download="planewx-icon.svg"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
+            >
+              ↓ Download SVG
+            </a>
+          </div>
+        </div>
+
+        {/* Usage rules */}
+        <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+          <p className="text-sm font-semibold text-white">Usage rules</p>
+          <ul className="space-y-2 text-sm text-white/60">
+            <li className="flex items-start gap-2"><span className="text-emerald-400 mt-0.5">✓</span> Use the wordmark on dark navy or white backgrounds only</li>
+            <li className="flex items-start gap-2"><span className="text-emerald-400 mt-0.5">✓</span> Maintain clear space equal to the height of the &ldquo;P&rdquo; on all sides</li>
+            <li className="flex items-start gap-2"><span className="text-emerald-400 mt-0.5">✓</span> Use SVG files for print and large-format digital</li>
+            <li className="flex items-start gap-2"><span className="text-rose-400 mt-0.5">✗</span> Do not recolor, stretch, rotate, or add effects</li>
+            <li className="flex items-start gap-2"><span className="text-rose-400 mt-0.5">✗</span> Do not place on busy photographic backgrounds</li>
+            <li className="flex items-start gap-2"><span className="text-rose-400 mt-0.5">✗</span> Do not use the wordmark at sizes below 120px wide</li>
+          </ul>
+          <p className="text-xs text-white/30 pt-2">
+            Questions?{" "}
+            <a href="mailto:hello@planewx.ai" className="text-sky-400 hover:text-sky-300 transition-colors">
               hello@planewx.ai
-            </a>{" "}
-            for current logo assets.
+            </a>
           </p>
         </div>
       </section>
