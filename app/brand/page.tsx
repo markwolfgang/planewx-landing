@@ -234,6 +234,93 @@ export default function BrandPortalPage() {
         </div>
       </section>
 
+      {/* Pilot Testimonials */}
+      <section>
+        <h2 className="text-3xl font-bold text-white mb-2">What Pilots Are Saying</h2>
+        <p className="text-white/60 mb-8">
+          Real post-flight feedback from our pilot community, collected after the trip.
+        </p>
+        <div className="space-y-4">
+
+          {/* Safety — Chris */}
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 border-l-4 border-l-emerald-500/60">
+            <div className="flex items-start gap-3">
+              <Quote className="h-4 w-4 text-emerald-400/60 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-white/85 text-sm leading-relaxed italic mb-3">
+                  &ldquo;You were right on. I should not have flown. I tuned around within 30 mins and barely made it back in VMC. I should have listened to the 0% rating for the flight!&rdquo;
+                </p>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-white/40">
+                  <span className="text-emerald-400/80 font-medium">Chris</span>
+                  <span>&middot;</span>
+                  <span>Private · IR · 282 hrs · C172</span>
+                  <span>&middot;</span>
+                  <span>NPS 10/10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Planning horizon — Roy */}
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 border-l-4 border-l-sky-500/60">
+            <div className="flex items-start gap-3">
+              <Quote className="h-4 w-4 text-sky-400/60 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-white/85 text-sm leading-relaxed italic mb-3">
+                  &ldquo;I made my decision not to make the trip a week in advance. This does a good job of highlighting when the weather could be bad, then I can do my homework to figure out how and when to make a safe flight. I also like the daily updates.&rdquo;
+                </p>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-white/40">
+                  <span className="text-sky-400/80 font-medium">Roy</span>
+                  <span>&middot;</span>
+                  <span>Private · IR · 3,000 hrs · SR22T</span>
+                  <span>&middot;</span>
+                  <span>NPS 10/10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Stress reduction — Andrew */}
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 border-l-4 border-l-sky-500/60">
+            <div className="flex items-start gap-3">
+              <Quote className="h-4 w-4 text-sky-400/60 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-white/85 text-sm leading-relaxed italic mb-3">
+                  &ldquo;Fills a need for comprehensive weather forecasting all in one place leading up to your day of departure. I think it reduces overall risk because you can have a sense of what the weather will be like well in advance — and avoid being stressed on the day of departure.&rdquo;
+                </p>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-white/40">
+                  <span className="text-sky-400/80 font-medium">Andrew</span>
+                  <span>&middot;</span>
+                  <span>Private · IR · 420 hrs · SR22T</span>
+                  <span>&middot;</span>
+                  <span>NPS 10/10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Game changer — Paul */}
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 border-l-4 border-l-violet-500/60">
+            <div className="flex items-start gap-3">
+              <Quote className="h-4 w-4 text-violet-400/60 shrink-0 mt-0.5" />
+              <div>
+                <p className="text-white/85 text-sm leading-relaxed italic mb-3">
+                  &ldquo;I&apos;ve already shared this with my pilot friends based on my experience and they&apos;re already excited — &lsquo;this is a game changer.&rsquo;&rdquo;
+                </p>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-white/40">
+                  <span className="text-violet-400/80 font-medium">Paul</span>
+                  <span>&middot;</span>
+                  <span>Private · IR · 700 hrs · C182</span>
+                  <span>&middot;</span>
+                  <span>NPS 10/10</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* Community Stats */}
       <section>
         <h2 className="text-3xl font-bold text-white mb-2">Community</h2>
