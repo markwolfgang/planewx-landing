@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og'
-
-export const runtime = 'edge'
+import fs from 'fs'
+import path from 'path'
 
 export const alt = 'PlaneWX — Weather Intelligence for Confident Decisions'
 export const size = {
@@ -10,11 +10,9 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image() {
-  const logoData = await fetch('https://www.planewx.ai/brand/planewx-og-wordmark.png')
-    .then(r => r.arrayBuffer())
-    .catch(() => null)
-  const logoSrc = logoData
-    ? `data:image/png;base64,${Buffer.from(logoData).toString('base64')}`
+  const logoPath = path.join(process.cwd(), 'public', 'brand', 'planewx-og-wordmark.png')
+  const logoSrc = fs.existsSync(logoPath)
+    ? `data:image/png;base64,${fs.readFileSync(logoPath).toString('base64')}`
     : null
 
   return new ImageResponse(
