@@ -169,9 +169,11 @@ export default function AssetsPage() {
             />
           </div>
 
+          {/* SVG version on white — PNG "Plane" text is light and designed for dark bg */}
           <div className="rounded-2xl bg-white border border-white/10 p-10 flex items-center justify-center">
-            <Image
-              src="/brand/planewx-og-wordmark.png"
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/planewx-wordmark.svg"
               alt="PlaneWX wordmark — light background"
               width={400}
               height={80}
@@ -203,7 +205,8 @@ export default function AssetsPage() {
 
           <div className="flex gap-4">
             <div className="rounded-2xl bg-[#0a0f1a] border border-white/10 p-8 flex items-center justify-center flex-1">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/brand/planewx-icon.svg"
                 alt="PlaneWX icon — dark background"
                 width={80}
@@ -212,7 +215,8 @@ export default function AssetsPage() {
               />
             </div>
             <div className="rounded-2xl bg-white border border-white/10 p-8 flex items-center justify-center flex-1">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/brand/planewx-icon.svg"
                 alt="PlaneWX icon — light background"
                 width={80}
