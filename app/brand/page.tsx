@@ -171,14 +171,14 @@ export default function BrandPortalPage() {
           Measured Safety Impact
         </h2>
         <p className="text-white/60 mb-8">
-          Real data from 177 post-flight feedback submissions (March 2026).
+          Real data from 244 post-flight feedback submissions (March 2026).
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {[
-            { value: "28", label: "pilots said PlaneWX gave them permission to cancel a flight", color: "text-emerald-400" },
-            { value: "92%", label: "of pilots who flew said the WX Score was accurate or conservative", color: "text-sky-400" },
-            { value: "3.4 days", label: "average planning horizon per trip", color: "text-sky-400" },
-            { value: "8.3", label: "average briefing updates per trip", color: "text-sky-400" },
+            { value: "32", label: "pilots said PlaneWX gave them permission to cancel a flight", color: "text-emerald-400" },
+            { value: "89%", label: "of pilots who flew said the WX Score was accurate or conservative", color: "text-sky-400" },
+            { value: "3.8 days", label: "average planning horizon per trip", color: "text-sky-400" },
+            { value: "~8", label: "average briefing updates per trip", color: "text-sky-400" },
           ].map((stat) => (
             <div key={stat.label} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
               <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
@@ -188,28 +188,49 @@ export default function BrandPortalPage() {
         </div>
         <div className="grid sm:grid-cols-3 gap-4 mb-6">
           <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-            <div className="text-2xl font-bold text-sky-400">8.2 / 10</div>
+            <div className="text-2xl font-bold text-sky-400">8.4 / 10</div>
             <div className="text-sm text-white/60 mt-1">likelihood to recommend</div>
-            <div className="text-xs text-white/30 mt-1">177 pilot responses</div>
+            <div className="text-xs text-white/30 mt-1">244 pilot responses</div>
           </div>
           <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-            <div className="text-2xl font-bold text-sky-400">70%</div>
+            <div className="text-2xl font-bold text-sky-400">71%</div>
             <div className="text-sm text-white/60 mt-1">of pilots flew as planned</div>
-            <div className="text-xs text-white/30 mt-1">124 of 177 trips</div>
+            <div className="text-xs text-white/30 mt-1">173 of 244 trips</div>
           </div>
           <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-            <div className="text-2xl font-bold text-amber-400">30%</div>
-            <div className="text-sm text-white/60 mt-1">cancelled — 64% due to weather</div>
-            <div className="text-xs text-white/30 mt-1">34 of 53 cancellations</div>
+            <div className="text-2xl font-bold text-amber-400">29%</div>
+            <div className="text-sm text-white/60 mt-1">cancelled — 61% due to weather</div>
+            <div className="text-xs text-white/30 mt-1">43 of 71 cancellations</div>
           </div>
         </div>
-        <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
+        <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20 mb-6">
           <p className="text-white/80 text-sm leading-relaxed">
-            <strong className="text-emerald-400">The key stat:</strong> Of the 34 weather-related
-            cancellations, 28 pilots (82%) said PlaneWX gave them the confidence to make
+            <strong className="text-emerald-400">The key stat:</strong> Of the 43 weather-related
+            cancellations, 32 pilots (74%) said PlaneWX gave them the confidence to make
             that no-go call. These are flights where a pilot might have pushed into marginal
             weather without the data PlaneWX provided.
           </p>
+        </div>
+
+        {/* Real-world testimonial */}
+        <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 border-l-4 border-l-emerald-500/60">
+          <div className="flex items-start gap-3">
+            <Quote className="h-5 w-5 text-emerald-400/60 shrink-0 mt-0.5" />
+            <div>
+              <p className="text-white/85 text-sm leading-relaxed italic mb-3">
+                &ldquo;You were right on. I should not have flown. I tuned around within 30 mins and barely made it back in VMC. I should have listened to the 0% rating for the flight!&rdquo;
+              </p>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-white/40">
+                <span className="text-emerald-400/80 font-medium">Chris</span>
+                <span>&middot;</span>
+                <span>Private · Instrument Rated · C172</span>
+                <span>&middot;</span>
+                <span>KANP → KOXB</span>
+                <span>&middot;</span>
+                <span>NPS 10/10</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -222,11 +243,11 @@ export default function BrandPortalPage() {
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
           {[
-            { value: "600+", label: "pilots" },
-            { value: "1.1M+", label: "cumulative flight hours" },
-            { value: "85%", label: "instrument rated" },
-            { value: "120+", label: "jet aircraft" },
-            { value: "102", label: "unique aircraft types" },
+            { value: "800+", label: "pilots" },
+            { value: "1.4M+", label: "cumulative flight hours" },
+            { value: "80%", label: "instrument rated" },
+            { value: "110+", label: "jet aircraft" },
+            { value: "92", label: "unique aircraft types" },
           ].map((stat) => (
             <div key={stat.label} className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
               <div className="text-2xl sm:text-3xl font-bold text-sky-400">
@@ -255,9 +276,9 @@ export default function BrandPortalPage() {
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { value: "~100", label: "paying customers in first 3 weeks" },
+            { value: "350+", label: "paying subscribers" },
             { value: "~18%", label: "conversion rate (oldest cohort)" },
-            { value: "600+", label: "accounts from 130 beta testers" },
+            { value: "800+", label: "total pilot accounts" },
             { value: "Annual", label: "most subscribers buying yearly" },
           ].map((stat) => (
             <div key={stat.label} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">

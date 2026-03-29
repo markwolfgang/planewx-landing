@@ -27,13 +27,13 @@ import {
   Quote,
 } from "lucide-react"
 
-// ── Real production stats (as of March 2026) ──────────────────────────────────
+// ── Real production stats (as of March 2026, sourced from production DB) ──────
 const STATS = {
-  cumulativeHours: "1.5M+",
-  instrumentRated: "85%",
-  jetAircraft: "120+",
+  cumulativeHours: "1.4M+",
+  instrumentRated: "80%",
+  jetAircraft: "110+",
   maxPilotHours: "30,000+",
-  atpPilots: "51",
+  atpPilots: "67",
 }
 
 // ── Testimonials ──────────────────────────────────────────────────────────────
