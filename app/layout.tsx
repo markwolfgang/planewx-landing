@@ -183,16 +183,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.planewx.ai",
+    url: "https://planewx.ai",
     siteName: "PlaneWX",
-    title: "PlaneWX - AI-Powered Aviation Weather Intelligence for General Aviation",
-    description: "The confidence to go, or the courage to stay™. AI-powered long-range weather forecasting for general aviation pilots.",
+    title: "PlaneWX — Weather Intelligence for Confident Decisions",
+    description: "Know your WX Score 14 days out. The confidence to go, or the courage to stay.™",
     // OG image is auto-generated from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "PlaneWX - AI-Powered Aviation Weather Intelligence for General Aviation",
-    description: "The confidence to go, or the courage to stay™. Get weather briefings days in advance with WX Score probability metrics.",
+    title: "PlaneWX — Weather Intelligence for Confident Decisions",
+    description: "Know your WX Score 14 days out. The confidence to go, or the courage to stay.™",
     // Twitter image is auto-generated from app/twitter-image.tsx
     creator: "@planewx",
   },

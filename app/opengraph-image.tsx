@@ -10,6 +10,12 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image() {
+  const baseUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'http://localhost:3000'
+  const logoData = await fetch(`${baseUrl}/brand/planewx-og-wordmark.png`).then(r => r.arrayBuffer())
+  const logoSrc = `data:image/png;base64,${Buffer.from(logoData).toString('base64')}`
+
   return new ImageResponse(
     (
       <div
@@ -36,43 +42,9 @@ export default async function Image() {
           }}
         />
         
-        {/* Logo and brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div
-            style={{
-              width: '56px',
-              height: '56px',
-              background: 'linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)',
-              borderRadius: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
-            </svg>
-          </div>
-          <span
-            style={{
-              fontSize: '32px',
-              fontWeight: 700,
-              color: '#0ea5e9',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            PlaneWX
-          </span>
-        </div>
+        {/* Logo */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={logoSrc} width={350} height={70} style={{ objectFit: 'contain', objectPosition: 'left' }} alt="PlaneWX" />
 
         {/* Badge */}
         <div
