@@ -134,7 +134,7 @@ export function LandingPageV3() {
       </div>
 
       {/* ── NAV ────────────────────────────────────────────────────────────────── */}
-      <nav className="relative z-10 border-b border-white/5">
+      <nav className="sticky top-0 z-10 border-b border-white/5 bg-[#0a0f1a]/80 backdrop-blur-md">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <BrandLogo className="h-9 w-auto" priority />
@@ -178,8 +178,8 @@ export function LandingPageV3() {
       </nav>
 
       {/* ── HERO ───────────────────────────────────────────────────────────────── */}
-      <section className="relative pt-24 pb-20 px-4">
-        <div className="container mx-auto max-w-5xl text-center space-y-8">
+      <section className="relative pt-14 sm:pt-24 pb-14 sm:pb-20 px-4">
+        <div className="container mx-auto max-w-5xl text-center space-y-6 sm:space-y-8">
           {/* Category claim */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-sm font-medium">
             <Brain className="h-4 w-4" />
@@ -203,7 +203,7 @@ export function LandingPageV3() {
             "The confidence to go, or the courage to stay™"
           </p>
 
-          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             We synthesize the same authoritative weather data every EFB uses — against{" "}
             <strong className="text-white">your aircraft</strong> and{" "}
             <strong className="text-white">your personal minimums</strong> — into a{" "}
@@ -215,14 +215,14 @@ export function LandingPageV3() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <a
               href={signUpUrl}
-              className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
               Start Free 14-Day Trial
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
             <button
               onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
-              className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all"
             >
               See How It Works
             </button>
@@ -268,7 +268,7 @@ export function LandingPageV3() {
       </section>
 
       {/* ── THE PROBLEM WITH EVERY OTHER TOOL ─────────────────────────────────── */}
-      <section className="relative py-24 px-4">
+      <section className="relative py-16 sm:py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-medium mb-5">
@@ -289,34 +289,34 @@ export function LandingPageV3() {
           <div className="rounded-2xl overflow-hidden border border-white/10">
             <div className="grid grid-cols-2">
               {/* Headers */}
-              <div className="bg-rose-950/40 border-b border-r border-white/10 px-6 py-4 text-center">
-                <p className="text-sm font-semibold text-rose-300 uppercase tracking-wider">Every EFB & Weather Tool</p>
+              <div className="bg-rose-950/40 border-b border-r border-white/10 px-3 sm:px-6 py-3 sm:py-4 text-center">
+                <p className="text-xs sm:text-sm font-semibold text-rose-300 uppercase tracking-wider">Every EFB & Weather Tool</p>
               </div>
-              <div className="bg-sky-950/40 border-b border-white/10 px-6 py-4 text-center">
-                <p className="text-sm font-semibold text-sky-300 uppercase tracking-wider">PlaneWX</p>
+              <div className="bg-sky-950/40 border-b border-white/10 px-3 sm:px-6 py-3 sm:py-4 text-center">
+                <p className="text-xs sm:text-sm font-semibold text-sky-300 uppercase tracking-wider">PlaneWX</p>
               </div>
 
               {[
-                ["Displays raw METARs, TAFs, PIREPs", "Synthesizes all of it using AI"],
-                ["Generic VFR / IFR categories", "Your personal minimums + your aircraft"],
-                ["You formulate the risk in your head", "WX Score — quantified risk, done for you"],
-                ["Data only", "WX Score feeds into the PAVE framework"],
-                ["You decide alone", "Connects you to a mentor who sees your full briefing"],
+                ["Raw METARs, TAFs, PIREPs", "Synthesizes all of it using AI"],
+                ["Generic VFR / IFR categories", "Your minimums + your aircraft"],
+                ["You formulate the risk yourself", "WX Score — quantified, done for you"],
+                ["Data only", "WX Score feeds into PAVE framework"],
+                ["You decide alone", "Mentor who sees your full briefing"],
               ].map(([left, right], i) => (
                 <>
                   <div
                     key={`left-${i}`}
-                    className="bg-rose-950/20 border-b border-r border-white/10 px-6 py-4 flex items-center gap-3"
+                    className="bg-rose-950/20 border-b border-r border-white/10 px-3 sm:px-6 py-3 sm:py-4 flex items-start gap-2 sm:gap-3"
                   >
-                    <X className="h-4 w-4 text-rose-500 shrink-0" />
-                    <span className="text-sm text-white/60">{left}</span>
+                    <X className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-rose-500 shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm text-white/60">{left}</span>
                   </div>
                   <div
                     key={`right-${i}`}
-                    className="bg-sky-950/20 border-b border-white/10 px-6 py-4 flex items-center gap-3"
+                    className="bg-sky-950/20 border-b border-white/10 px-3 sm:px-6 py-3 sm:py-4 flex items-start gap-2 sm:gap-3"
                   >
-                    <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                    <span className="text-sm text-white/80">{right}</span>
+                    <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm text-white/80">{right}</span>
                   </div>
                 </>
               ))}
@@ -333,7 +333,7 @@ export function LandingPageV3() {
       </section>
 
       {/* ── HOW IT WORKS ───────────────────────────────────────────────────────── */}
-      <section id="how-it-works" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+      <section id="how-it-works" className="relative py-16 sm:py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-5">
@@ -350,7 +350,7 @@ export function LandingPageV3() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Step 1 */}
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-blue-950/60 to-blue-950/20 border border-blue-500/20">
+            <div className="relative p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-blue-950/60 to-blue-950/20 border border-blue-500/20">
               <div className="text-6xl font-bold text-blue-500/20 absolute top-4 right-6 select-none">1</div>
               <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-5">
                 <Brain className="h-6 w-6 text-blue-400" />
@@ -370,7 +370,7 @@ export function LandingPageV3() {
             </div>
 
             {/* Step 2 */}
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
+            <div className="relative p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
               <div className="text-6xl font-bold text-violet-500/20 absolute top-4 right-6 select-none">2</div>
               <div className="w-12 h-12 rounded-xl bg-violet-500/20 flex items-center justify-center mb-5">
                 <Target className="h-6 w-6 text-violet-400" />
@@ -390,7 +390,7 @@ export function LandingPageV3() {
             </div>
 
             {/* Step 3 */}
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
+            <div className="relative p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
               <div className="text-6xl font-bold text-emerald-500/20 absolute top-4 right-6 select-none">3</div>
               <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-5">
                 <Gauge className="h-6 w-6 text-emerald-400" />
@@ -431,7 +431,7 @@ export function LandingPageV3() {
       </section>
 
       {/* ── WX SCORE ───────────────────────────────────────────────────────────── */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-emerald-950/20 to-transparent">
+      <section className="relative py-16 sm:py-24 px-4 bg-gradient-to-b from-transparent via-emerald-950/20 to-transparent">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -506,7 +506,7 @@ export function LandingPageV3() {
       </section>
 
       {/* ── PAVE FRAMEWORK ─────────────────────────────────────────────────────── */}
-      <section className="relative py-24 px-4">
+      <section className="relative py-16 sm:py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-medium mb-5">
@@ -565,7 +565,7 @@ export function LandingPageV3() {
                 note: "Trip Watchers helps — stakeholders see the same data.",
               },
             ].map(({ letter, label, color, accent, bg, items, filled, note }) => (
-              <div key={letter} className={`p-7 rounded-2xl bg-gradient-to-br ${color} border relative overflow-hidden`}>
+              <div key={letter} className={`p-5 sm:p-7 rounded-2xl bg-gradient-to-br ${color} border relative overflow-hidden`}>
                 {filled && (
                   <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-xs text-emerald-400 font-medium">
                     Auto-filled
@@ -593,10 +593,10 @@ export function LandingPageV3() {
       </section>
 
       {/* ── SAFETY STORY ───────────────────────────────────────────────────────── */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-rose-950/20 to-transparent">
+      <section className="relative py-16 sm:py-24 px-4 bg-gradient-to-b from-transparent via-rose-950/20 to-transparent">
         <div className="container mx-auto max-w-5xl">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 rounded-2xl bg-rose-950/30 border border-rose-500/20">
+            <div className="p-5 sm:p-8 rounded-2xl bg-rose-950/30 border border-rose-500/20">
               <h3 className="text-xl font-semibold mb-5 flex items-center gap-2 text-rose-300">
                 <span className="text-2xl">⚠️</span>
                 The Pattern That Kills
@@ -620,7 +620,7 @@ export function LandingPageV3() {
               </p>
             </div>
 
-            <div className="p-8 rounded-2xl bg-emerald-950/30 border border-emerald-500/20">
+            <div className="p-5 sm:p-8 rounded-2xl bg-emerald-950/30 border border-emerald-500/20">
               <h3 className="text-xl font-semibold mb-5 flex items-center gap-2 text-emerald-300">
                 <span className="text-2xl">✅</span>
                 How PlaneWX Changes This
@@ -650,7 +650,7 @@ export function LandingPageV3() {
       </section>
 
       {/* ── FEATURES ───────────────────────────────────────────────────────────── */}
-      <section id="features" className="relative py-24 px-4">
+      <section id="features" className="relative py-16 sm:py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-bold mb-5">
@@ -732,7 +732,7 @@ export function LandingPageV3() {
       </section>
 
       {/* ── TESTIMONIALS ───────────────────────────────────────────────────────── */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+      <section className="relative py-16 sm:py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -742,7 +742,7 @@ export function LandingPageV3() {
           </div>
 
           {/* Featured testimonial */}
-          <div className="mb-8 p-8 rounded-2xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border border-sky-500/30">
+          <div className="mb-8 p-5 sm:p-8 rounded-2xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border border-sky-500/30">
             <Quote className="h-8 w-8 text-sky-400/40 mb-4" />
             <p className="text-lg text-white/80 leading-relaxed mb-6 italic">
               "{TESTIMONIALS.find(t => t.featured)?.quote}"
@@ -780,7 +780,7 @@ export function LandingPageV3() {
       </section>
 
       {/* ── PRICING ────────────────────────────────────────────────────────────── */}
-      <section id="pricing" className="relative py-24 px-4">
+      <section id="pricing" className="relative py-16 sm:py-24 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm font-medium mb-6">
@@ -808,7 +808,7 @@ export function LandingPageV3() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {/* Free */}
-            <div className="p-8 rounded-3xl bg-white/[0.03] border border-white/10">
+            <div className="p-5 sm:p-8 rounded-3xl bg-white/[0.03] border border-white/10">
               <h3 className="text-xl font-bold mb-1">Free</h3>
               <p className="text-white/40 text-sm mb-4">For students and occasional flyers</p>
               <div className="px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 mb-6">
@@ -854,7 +854,7 @@ export function LandingPageV3() {
             </div>
 
             {/* Pro */}
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border-2 border-sky-500/40 shadow-xl shadow-sky-500/10">
+            <div className="relative p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border-2 border-sky-500/40 shadow-xl shadow-sky-500/10">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                 <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-sky-500 text-white text-xs font-semibold">
                   <Crown className="h-3 w-3" />
@@ -911,7 +911,7 @@ export function LandingPageV3() {
       </section>
 
       {/* ── FAQ ────────────────────────────────────────────────────────────────── */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+      <section className="relative py-16 sm:py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold">Frequently asked questions</h2>
@@ -940,7 +940,7 @@ export function LandingPageV3() {
       </section>
 
       {/* ── FOUNDER ────────────────────────────────────────────────────────────── */}
-      <section id="founder" className="relative py-24 px-4">
+      <section id="founder" className="relative py-16 sm:py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/50 text-xs font-medium mb-5">
@@ -1007,7 +1007,7 @@ export function LandingPageV3() {
       </section>
 
       {/* ── FINAL CTA ──────────────────────────────────────────────────────────── */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
+      <section className="relative py-16 sm:py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
         <div className="container mx-auto max-w-2xl text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-5">
             Stop being your own{" "}
@@ -1021,7 +1021,7 @@ export function LandingPageV3() {
           </p>
           <a
             href={signUpUrl}
-            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-12 py-5 text-xl font-semibold shadow-2xl shadow-sky-500/30 transition-all"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 sm:px-12 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-2xl shadow-sky-500/30 transition-all"
           >
             Start Your Free 14-Day Trial
             <ArrowRight className="ml-3 h-6 w-6" />
@@ -1045,12 +1045,13 @@ export function LandingPageV3() {
 
       {/* ── FOOTER ─────────────────────────────────────────────────────────────── */}
       <footer className="relative py-10 px-4 border-t border-white/5">
-        <div className="container mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/30">
+        <div className="container mx-auto max-w-5xl flex flex-col items-center gap-5 text-sm text-white/30 sm:flex-row sm:justify-between">
           <div className="flex items-center gap-2">
             <BrandLogo className="h-5 w-auto" />
             <span>· The Pilot's Decision Support System</span>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <a href="/blog" className="hover:text-white/60 transition-colors">Blog</a>
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
             <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
             <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">Contact</a>
