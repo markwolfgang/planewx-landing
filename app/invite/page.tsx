@@ -198,7 +198,7 @@ function InviteContent() {
               Full access to everything — auto-refresh briefings, unlimited trips, Trip Planner, Multi-City Optimizer, email alerts, and more.
             </p>
             <p className="text-white/50 text-xs">
-              After your trial, stay on the Free plan or subscribe to Pro ($11.99/mo or $99/yr).
+              After your trial, stay on the Free plan or subscribe to Pro ($14.99/mo or $119/yr).
             </p>
           </div>
 

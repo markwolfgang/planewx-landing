@@ -783,9 +783,6 @@ export function LandingPageV3() {
       <section id="pricing" className="relative py-16 sm:py-24 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm font-medium mb-6">
-              ⏰ Introductory rates end April 1 — lock in your price now
-            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Start with full Pro access.{" "}
               <span className="text-sky-400">Free for 14 days.</span>
@@ -864,19 +861,13 @@ export function LandingPageV3() {
               <h3 className="text-xl font-bold mb-1">Pro</h3>
               <p className="text-white/40 text-sm mb-6">For active GA pilots</p>
               <div className="mb-2">
-                <span className="text-5xl font-bold">$11.99</span>
+                <span className="text-5xl font-bold">$14.99</span>
                 <span className="text-white/30 ml-2">/month</span>
               </div>
-              <p className="text-sm text-sky-400 mb-4">
-                or $99/year{" "}
-                <span className="text-emerald-400 font-medium">(save 31%)</span>
+              <p className="text-sm text-sky-400 mb-6">
+                or $119/year{" "}
+                <span className="text-emerald-400 font-medium">(4 months free)</span>
               </p>
-              <div className="mb-6 px-3 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20">
-                <p className="text-xs text-amber-300 leading-relaxed">
-                  <strong className="text-amber-200">Introductory pricing ends April 1.</strong> Subscribe now to lock in this rate forever.{" "}
-                  <strong className="text-white block mt-1">First 500 annual subscribers are grandfathered at this price for life.</strong>
-                </p>
-              </div>
               <a
                 href={signUpUrl}
                 className="block text-center py-3 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white font-semibold transition-colors mb-8 shadow-lg shadow-sky-500/25"

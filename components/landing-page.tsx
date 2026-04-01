@@ -984,7 +984,7 @@ export function LandingPage() {
               Simple, <span className="text-sky-400">Transparent</span> Pricing
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Start with a 14-day Pro trial. No credit card required. <span className="text-amber-400">Introductory rates end April 1.</span>
+              Start with a 14-day Pro trial. No credit card required. Cancel anytime.
             </p>
           </div>
 
@@ -1083,18 +1083,12 @@ export function LandingPage() {
                 <p className="text-white/50 text-sm">For active GA pilots</p>
               </div>
               <div className="mb-2">
-                <span className="text-4xl font-bold">$11.99</span>
+                <span className="text-4xl font-bold">$14.99</span>
                 <span className="text-white/40 ml-1">/month</span>
               </div>
-              <p className="text-sm text-sky-400 mb-4">
-                or $99/year <span className="text-emerald-400 font-medium">(save 31%)</span>
+              <p className="text-sm text-sky-400 mb-6">
+                or $119/year <span className="text-emerald-400 font-medium">(4 months free)</span>
               </p>
-              <div className="mb-6 px-3 py-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
-                <p className="text-xs text-amber-300 leading-relaxed">
-                  <strong className="text-amber-200">Introductory pricing</strong> — rates increase April 1. Subscribe now to lock in this rate.
-                  <strong className="text-white block mt-1">First 500 annual subscribers are grandfathered at this price for life.</strong>
-                </p>
-              </div>
               <a
                 href={signUpUrl}
                 className="inline-flex items-center justify-center rounded-md w-full py-3 text-sm font-semibold bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white shadow-lg shadow-sky-500/25 transition-colors mb-8"
