@@ -81,7 +81,7 @@ async function sendInviteEmail(email: string, inviteToken: string): Promise<bool
                       Your account starts with a <strong style="color: #ffffff;">14-day Pro trial</strong> — full access to everything including auto-refresh, unlimited briefings, Trip Planner, and Multi-City Optimizer.
                     </p>
                     <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #9ca3af;">
-                      After your trial, stay on the Free plan or subscribe to Pro ($11.99/mo or $99/yr).
+                      After your trial, stay on the Free plan or subscribe to Pro ($14.99/mo or $119/yr).
                     </p>
                   </td>
                 </tr>
