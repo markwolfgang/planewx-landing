@@ -5,6 +5,7 @@ const VARIANT_WEIGHTS: Record<string, number> = {
   b: 25,
   c: 25,
   d: 25,
+  e: 0,   // 0 = excluded from random rotation; still reachable via ?variant=e
 }
 
 const COOKIE_NAME = "planewx-variant"
