@@ -267,6 +267,96 @@ export function LandingVariantE() {
         </div>
       </section>
 
+      {/* ── Trip Watchers ────────────────────────────────────────────────── */}
+      <section className="py-24 px-6 border-t border-white/5">
+        <div className="max-w-3xl mx-auto">
+
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/50 text-xs font-medium mb-4">
+              Trip Watchers
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              The question that might{" "}
+              <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
+                save your life.
+              </span>
+            </h2>
+            <p className="text-white/50 text-lg max-w-2xl mx-auto">
+              Share your trip with anyone. They'll follow along as conditions evolve —
+              without needing to understand a TAF.
+            </p>
+          </div>
+
+          {/* Email timeline */}
+          <div className="space-y-3 mb-12">
+            {[
+              {
+                day: "5 days out",
+                dot: "bg-emerald-400",
+                border: "border-emerald-500/20",
+                bg: "from-emerald-950/30 to-teal-950/10",
+                subject: "✈️ Your trip is looking great",
+                body: "Conditions for Saturday's flight are shaping up well. We'll keep watching and let you know if anything changes.",
+              },
+              {
+                day: "3 days out",
+                dot: "bg-amber-400",
+                border: "border-amber-500/20",
+                bg: "from-amber-950/30 to-orange-950/10",
+                subject: "⚠️ Heads up — conditions are shifting",
+                body: "The weather picture for Saturday has changed. Your pilot is aware and monitoring closely.",
+              },
+              {
+                day: "1 day out",
+                dot: "bg-red-400",
+                border: "border-red-500/20",
+                bg: "from-red-950/30 to-orange-950/10",
+                subject: "🔴 Saturday's trip may need reconsideration",
+                body: "Conditions have deteriorated significantly. Your pilot will make the final call — but this one is worth a conversation.",
+              },
+            ].map((email) => (
+              <div
+                key={email.day}
+                className={`rounded-2xl bg-gradient-to-br ${email.bg} border ${email.border} p-5`}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <div className={`w-2 h-2 rounded-full ${email.dot}`} />
+                  <span className="text-white/40 text-xs font-medium uppercase tracking-wider">{email.day}</span>
+                </div>
+                <p className="text-white font-medium text-sm mb-1">{email.subject}</p>
+                <p className="text-white/50 text-sm leading-relaxed">{email.body}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* The dinner table moment */}
+          <div className="rounded-2xl bg-gradient-to-br from-amber-950/50 to-orange-950/20 border border-amber-500/30 p-8 sm:p-10">
+            <p className="text-white/50 text-sm mb-6 uppercase tracking-wider font-medium">That evening</p>
+            <blockquote className="text-2xl sm:text-3xl text-white font-light italic leading-relaxed mb-6">
+              "So… what are you going to do?"
+            </blockquote>
+            <p className="text-white/60 leading-relaxed">
+              She's not a pilot. She doesn't know what a TAF is. But she's been getting
+              those emails — and she can feel the tone shifting. She's not asking out of
+              fear. She's asking because she knows something has changed, and she loves you.
+            </p>
+            <div className="mt-6 pt-6 border-t border-white/10">
+              <p className="text-white/80 font-medium">
+                That question — asked by someone who loves you, with just enough information
+                to ask it — is one of the most powerful safety mechanisms a pilot can have.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-center text-white/30 text-sm mt-6">
+            This is the inversion of the story PlaneWX was built on.<br />
+            She used to buckle her seatbelt and trust you completely.<br />
+            Now she's part of the system.
+          </p>
+
+        </div>
+      </section>
+
       {/* ── Real feedback ────────────────────────────────────────────────── */}
       <section className="py-20 px-6">
         <div className="max-w-3xl mx-auto">
