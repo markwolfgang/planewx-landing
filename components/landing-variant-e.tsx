@@ -306,7 +306,7 @@ export function LandingVariantE() {
       </section>
 
       {/* ── Video ────────────────────────────────────────────────────────── */}
-      <YouTubeSection />
+      <YouTubeSection variant={VARIANT} />
 
       {/* ── The System ───────────────────────────────────────────────────── */}
       <section id="system" className="py-24 px-6 border-y border-white/5 bg-white/[0.02]">
@@ -522,7 +522,7 @@ export function LandingVariantE() {
       </div>
 
       {/* ── FAQ ──────────────────────────────────────────────────────────── */}
-      <FaqSection />
+      <FaqSection variant={VARIANT} />
 
       {/* ── Founder story ────────────────────────────────────────────────── */}
       <section className="py-24 px-6 border-t border-white/5 bg-white/[0.02]">
@@ -579,10 +579,10 @@ export function LandingVariantE() {
       </section>
 
       {/* ── Footer CTA ───────────────────────────────────────────────────── */}
-      <FooterCTA />
+      <FooterCTA variant={VARIANT} />
 
       {/* ── Site Footer ──────────────────────────────────────────────────── */}
-      <SiteFooter />
+      <SiteFooter variant={VARIANT} />
 
     </div>
   )
