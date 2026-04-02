@@ -97,7 +97,7 @@ export function LandingVariantE() {
           </p>
 
           <p className="text-white/40 text-sm mb-12 tracking-wide">
-            — Mark Wolfgang, Founder · SR22 Pilot · ~900 hours
+            — Mark Wolfgang, Founder · SR22T Pilot · ~900 hours
           </p>
 
           {/* CTAs */}
@@ -130,7 +130,7 @@ export function LandingVariantE() {
             <div className="hidden sm:block w-px h-4 bg-white/10" />
             <span>800+ active pilots</span>
             <div className="hidden sm:block w-px h-4 bg-white/10" />
-            <span>28 pilots said PlaneWX gave them courage to cancel</span>
+            <span>64% of weather cancellations — pilots found the courage to stay</span>
           </div>
         </div>
       </section>
@@ -154,7 +154,7 @@ export function LandingVariantE() {
               listening to AOPA's{" "}
               <em className="text-white not-italic font-medium">"And There I Was"</em>{" "}
               — a podcast about mishaps, near-misses, and accidents. I watched every
-              episode of Hoover's Pilot Debrief. I wanted to understand exactly
+              aviation accident/mishap video I could find. I wanted to understand exactly
               what separated the pilots who came home from the ones who didn't.
             </p>
 
@@ -238,12 +238,12 @@ export function LandingVariantE() {
                 sub: "Nobody made them. They turned that on themselves.",
               },
               {
-                value: "28",
+                value: "64%",
                 color: "text-amber-400",
                 bg: "from-amber-950/60 to-orange-950/20",
                 border: "border-amber-500/20",
-                label: "pilots said PlaneWX gave them permission to cancel",
-                sub: "From 177 post-flight submissions. 64% of weather cancellations.",
+                label: "of weather cancellations — pilots found the courage to stay",
+                sub: "Every cancelled flight is a story that didn't end badly.",
               },
               {
                 value: "92%",
@@ -560,10 +560,10 @@ export function LandingVariantE() {
             <div className="rounded-2xl bg-gradient-to-br from-amber-950/40 to-orange-950/10 border border-amber-500/20 p-8">
               <div className="space-y-4 text-sm">
                 {[
-                  { label: "Aircraft", value: "Cirrus SR22" },
+                  { label: "Aircraft", value: "Cirrus SR22T" },
                   { label: "Total hours", value: "~900" },
-                  { label: "Ratings", value: "Private · Instrument" },
-                  { label: "Home base", value: "Bentonville, AR (KVBT)" },
+                  { label: "Ratings", value: "Commercial · Instrument · Multi-Engine" },
+                  { label: "Home base", value: "Rogers, AR (KROG)" },
                   { label: "Why he built it", value: "Needed a system that took it as seriously as he did" },
                 ].map(item => (
                   <div key={item.label} className="flex justify-between items-start gap-4 py-3 border-b border-white/5 last:border-0">
