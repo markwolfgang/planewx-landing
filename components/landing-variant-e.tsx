@@ -503,10 +503,10 @@ export function LandingVariantE() {
       <section className="py-16 px-6 border-y border-white/5">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { value: `${STATS.cumulativeHours.toLocaleString()}+`, label: "Hours of experience in our community" },
-            { value: `${STATS.instrumentRated}%`, label: "Instrument rated" },
-            { value: `${STATS.jetAircraft}%`, label: "Fly turbine or jet aircraft" },
-            { value: `${STATS.maxPilotHours.toLocaleString()}+`, label: "Hours, our most experienced pilot" },
+            { value: STATS.cumulativeHours, label: "Hours of experience in our community" },
+            { value: STATS.instrumentRated, label: "Instrument rated" },
+            { value: STATS.jetAircraft, label: "Aircraft in our community" },
+            { value: STATS.maxPilotHours, label: "Hours, our most experienced pilot" },
           ].map(s => (
             <div key={s.label}>
               <div className="text-3xl sm:text-4xl font-bold text-amber-400 mb-2">{s.value}</div>
@@ -518,7 +518,7 @@ export function LandingVariantE() {
 
       {/* ── Pricing ──────────────────────────────────────────────────────── */}
       <div id="pricing">
-        <PricingSection />
+        <PricingSection variant={VARIANT} />
       </div>
 
       {/* ── FAQ ──────────────────────────────────────────────────────────── */}
