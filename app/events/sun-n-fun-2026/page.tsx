@@ -248,7 +248,7 @@ export default async function SunNFun2026() {
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             Flying into KLAL?<br />
-            <span className="text-sky-400">We&apos;ve been watching<br />the weather.</span>
+            <span className="text-sky-400">We are watching<br />the weather.</span>
           </h1>
 
           <p className="text-xl text-white/60 leading-relaxed max-w-2xl">
