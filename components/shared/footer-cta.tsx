@@ -1,9 +1,23 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { ArrowRight, Check } from "lucide-react"
 
 export function FooterCTA({ variant }: { variant: string }) {
-  const appUrl = `https://app.planewx.ai?lp=${variant}`
+  const baseUrl = `https://app.planewx.ai?lp=${variant}`
+  const [href, setHref] = useState(baseUrl)
+
+  useEffect(() => {
+    const refParam = new URLSearchParams(window.location.search).get("ref")
+    if (refParam) {
+      const code = refParam.trim().toUpperCase()
+      localStorage.setItem("planewx_referral", code)
+      setHref(`${baseUrl}&ref=${code}`)
+    } else {
+      const stored = localStorage.getItem("planewx_referral")
+      if (stored) setHref(`${baseUrl}&ref=${stored}`)
+    }
+  }, [baseUrl])
 
   return (
     <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
@@ -19,7 +33,7 @@ export function FooterCTA({ variant }: { variant: string }) {
           to make better decisions.
         </p>
         <a
-          href={appUrl}
+          href={href}
           className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-12 py-5 text-xl font-semibold shadow-2xl shadow-sky-500/30 transition-all"
         >
           Start Your Free 14-Day Trial
