@@ -10,6 +10,7 @@ Allow: /llms.txt
 # Disallow admin and API routes
 Disallow: /admin/
 Disallow: /api/
+Disallow: /eaa/
 
 # Sitemap location
 Sitemap: https://www.planewx.ai/sitemap.xml
