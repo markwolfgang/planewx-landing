@@ -1,9 +1,11 @@
+// Last updated: May 2026 — sourced from production DB (community_stats, computed 2026-05-10)
 export const STATS = {
-  cumulativeHours: "1.5M+",
-  instrumentRated: "85%",
-  jetAircraft: "120+",
+  totalPilots: "1,100+",
+  cumulativeHours: "2.1M+",
+  instrumentRated: "78%",
+  jetAircraft: "130+",
   maxPilotHours: "30,000+",
-  atpPilots: "51",
+  atpPilots: "101",
 }
 
 export const TESTIMONIALS = [

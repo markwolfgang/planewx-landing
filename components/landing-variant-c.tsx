@@ -95,7 +95,7 @@ export function LandingVariantC() {
       <section className="relative pt-24 pb-20 px-4">
         <div className="container mx-auto max-w-5xl text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            Trusted by over 800 pilots —{" "}
+            Trusted by {STATS.totalPilots} pilots —{" "}
             <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
               {STATS.cumulativeHours} flight hours
             </span>{" "}
