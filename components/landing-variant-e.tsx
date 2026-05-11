@@ -128,7 +128,7 @@ export function LandingVariantE() {
               <span>8.2 / 10 recommendation score</span>
             </div>
             <div className="hidden sm:block w-px h-4 bg-white/10" />
-            <span>800+ active pilots</span>
+            <span>{STATS.totalPilots} active pilots</span>
             <div className="hidden sm:block w-px h-4 bg-white/10" />
             <span>64% of weather cancellations — pilots found the courage to stay</span>
           </div>

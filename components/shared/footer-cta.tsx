@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { ArrowRight, Check } from "lucide-react"
+import { STATS } from "@/components/shared/landing-data"
 
 export function FooterCTA({ variant }: { variant: string }) {
   const baseUrl = `https://app.planewx.ai?lp=${variant}`
@@ -29,7 +30,7 @@ export function FooterCTA({ variant }: { variant: string }) {
           </span>
         </h2>
         <p className="text-lg text-white/60 mb-10 max-w-lg mx-auto">
-          Join over 800 pilots — from students to 30,000-hour ATP captains — who use PlaneWX
+          Join {STATS.totalPilots} pilots — from students to 30,000-hour ATP captains — who use PlaneWX
           to make better decisions.
         </p>
         <a

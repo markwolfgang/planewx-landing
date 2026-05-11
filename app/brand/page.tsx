@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { STATS } from "@/components/shared/landing-data"
 import {
   Target,
   Eye,
@@ -6,16 +7,17 @@ import {
   Lightbulb,
   Sparkles,
   DollarSign,
-  Users,
   User,
   Compass,
   Mic2,
   BookOpen,
   MessageSquare,
   Palette,
-  TrendingUp,
   ArrowRight,
   Quote,
+  Handshake,
+  GraduationCap,
+  Plane,
 } from "lucide-react"
 
 export const metadata = {
@@ -330,11 +332,11 @@ export default function BrandPortalPage() {
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
           {[
-            { value: "800+", label: "pilots" },
-            { value: "1.4M+", label: "cumulative flight hours" },
-            { value: "80%", label: "instrument rated" },
-            { value: "110+", label: "jet aircraft" },
-            { value: "92", label: "unique aircraft types" },
+            { value: STATS.totalPilots, label: "pilots" },
+            { value: STATS.cumulativeHours, label: "cumulative flight hours" },
+            { value: STATS.instrumentRated, label: "instrument rated" },
+            { value: STATS.jetAircraft, label: "jet aircraft" },
+            { value: "98", label: "unique aircraft types" },
           ].map((stat) => (
             <div key={stat.label} className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
               <div className="text-2xl sm:text-3xl font-bold text-sky-400">
@@ -347,8 +349,9 @@ export default function BrandPortalPage() {
         <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
           <p className="text-white/50 text-sm">
             Cirrus aircraft (SR22T, SR22, SF50) represent over half the fleet.
-            The product is largely shaped by COPA members — extremely experienced,
-            extremely detail-oriented pilots who expect precision.
+            The fleet spans C172 trainers through Gulfstream G500 — 98 unique
+            aircraft types. The product is largely shaped by COPA members —
+            extremely experienced, extremely detail-oriented pilots who expect precision.
           </p>
         </div>
       </section>
@@ -358,19 +361,22 @@ export default function BrandPortalPage() {
         <h2 className="text-3xl font-bold text-white mb-2">
           Traction
         </h2>
-        <p className="text-white/60 mb-8">
-          Early validation as of March 2026.
+        <p className="text-white/60 mb-2">
+          Since public launch on March 1, 2026.
+        </p>
+        <p className="text-white/40 text-sm mb-8">
+          Public launch was March 1, 2026 — figures below reflect post-launch momentum.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { value: "143", label: "paying subscribers" },
-            { value: "24%", label: "conversion rate (best cohort)" },
-            { value: "800+", label: "total pilot accounts" },
-            { value: "Annual", label: "most subscribers buying yearly" },
+            { value: "197", label: "paying subscribers" },
+            { value: "31%", label: "conversion rate (best cohort)" },
+            { value: "752", label: "trips under active monitoring" },
+            { value: "681", label: "monthly active pilots" },
           ].map((stat) => (
             <div key={stat.label} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
               <div className="text-xl font-bold text-sky-400">{stat.value}</div>
-              <div className="text-xs text-white/50 mt-1">{stat.label}</div>
+              <div className="text-xs text-white/50 mt-1 leading-snug">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -438,7 +444,38 @@ export default function BrandPortalPage() {
         </div>
       </section>
 
-      {/* Key Messaging */}
+      {/* Audience Hooks — for creators & partners */}
+      <section>
+        <h2 className="text-3xl font-bold text-white mb-2">Audience Hooks</h2>
+        <p className="text-white/60 mb-8">
+          Ready-made angles for different pilot audiences — use what fits your channel.
+        </p>
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <Plane className="h-8 w-8 text-sky-400 mb-4" />
+            <h3 className="text-lg font-semibold text-white mb-2">Real-world flying</h3>
+            <p className="text-white/70 text-sm leading-relaxed mb-3">
+              The courage to stay — pilots who share mistakes and lessons. Pair with the Chris testimonial and the stat that 32 of 43 weather cancellations came with confidence to no-go.
+            </p>
+          </div>
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <GraduationCap className="h-8 w-8 text-sky-400 mb-4" />
+            <h3 className="text-lg font-semibold text-white mb-2">IFR training</h3>
+            <p className="text-white/70 text-sm leading-relaxed mb-3">
+              Structured weather decision-making that complements the FAA PAVE framework — natural for instrument students and CFIs.
+            </p>
+          </div>
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <Sparkles className="h-8 w-8 text-sky-400 mb-4" />
+            <h3 className="text-lg font-semibold text-white mb-2">Owner & type-specific</h3>
+            <p className="text-white/70 text-sm leading-relaxed mb-3">
+              Aircraft-specific minimums beyond generic ceiling, visibility, and crosswind. Cirrus-heavy fleet; 98 unique types from trainers to jets.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Messaging & Quote Bank */}
       <section>
         <h2 className="text-3xl font-bold text-white mb-2">
           Key Messaging
@@ -461,6 +498,64 @@ export default function BrandPortalPage() {
               <span className="text-xs text-white/30 shrink-0 mt-1">{item.note}</span>
             </div>
           ))}
+        </div>
+        <p className="text-white/50 text-sm mt-10 mb-4">
+          Sound bites — feel free to use any of these on-air or in copy.
+        </p>
+        <div className="space-y-3">
+          {[
+            { line: "TAFs end at 24 hours. Your trip doesn't.", note: "Planning horizon" },
+            { line: "Built by a pilot, for pilots — and flown every day in his own plane.", note: "Founder credibility" },
+            { line: "Aircraft-specific minimums, not one-size-fits-all weather.", note: "Differentiation" },
+            { line: "Decision support, not data dump.", note: "Category" },
+            { line: "Days of warning instead of hours of stress.", note: "Stress framing" },
+          ].map((item) => (
+            <div key={item.line} className="flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/10">
+              <div className="flex-1">
+                <p className="text-white/90 font-medium">&ldquo;{item.line}&rdquo;</p>
+              </div>
+              <span className="text-xs text-white/30 shrink-0 mt-1">{item.note}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* For Partners & Creators */}
+      <section>
+        <h2 className="text-3xl font-bold text-white mb-2">For Partners &amp; Creators</h2>
+        <p className="text-white/60 mb-6">
+          Working with aviation creators who care about decision-making and safety — not gear porn.
+        </p>
+        <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+          <Handshake className="h-8 w-8 text-sky-400 mb-4" />
+          <p className="text-white/70 leading-relaxed mb-6">
+            PlaneWX is built by a working instrument-rated pilot and shaped by one of GA&apos;s most demanding communities. We love partners who try the product on real trips and share an honest take with their audience.
+          </p>
+          <p className="text-white/80 text-sm mb-6 p-4 rounded-xl bg-sky-500/5 border border-sky-500/20">
+            <strong className="text-sky-400">Partner offer:</strong> Promo code coming soon — email{" "}
+            <a href="mailto:mark@planewx.ai" className="text-sky-400 hover:text-sky-300">
+              mark@planewx.ai
+            </a>{" "}
+            for an early partner code.
+          </p>
+          <p className="text-white/50 text-sm mb-3">Direct line to the founder</p>
+          <a
+            href="mailto:mark@planewx.ai"
+            className="text-sky-400 hover:text-sky-300 font-medium"
+          >
+            mark@planewx.ai
+          </a>
+          <p className="text-white/40 text-sm mt-4 mb-3">
+            General inquiries:{" "}
+            <a href="mailto:hello@planewx.ai" className="text-sky-400/80 hover:text-sky-300">
+              hello@planewx.ai
+            </a>
+          </p>
+          <ul className="text-white/70 text-sm space-y-2 list-disc list-inside mt-6">
+            <li>Try PlaneWX on a real upcoming trip</li>
+            <li>Share an honest take with your audience</li>
+            <li>Tell us what&apos;s missing — feature ideas often ship same day</li>
+          </ul>
         </div>
       </section>
 

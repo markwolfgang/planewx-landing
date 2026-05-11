@@ -13,6 +13,7 @@ import {
   Lock,
 } from "lucide-react"
 import Link from "next/link"
+import { STATS } from "@/components/shared/landing-data"
 
 export const metadata = {
   title: "Social Media Playbook | PlaneWX Brand Portal",
@@ -257,7 +258,7 @@ export default function SocialMediaPlaybookPage() {
             },
             {
               q: "This is just for inexperienced pilots, right?",
-              a: "We have 120+ jet pilots and 51 ATPs on the platform. For experienced pilots, it's not a knowledge problem — it's a workload problem. A professional flying 5-6 trips a week can't manually monitor weather across all of them. PlaneWX gives them at-a-glance WX Scores for every active trip.",
+              a: `We have ${STATS.jetAircraft} jet pilots and ${STATS.atpPilots} ATPs on the platform. For experienced pilots, it's not a knowledge problem — it's a workload problem. A professional flying 5-6 trips a week can't manually monitor weather across all of them. PlaneWX gives them at-a-glance WX Scores for every active trip.`,
             },
             {
               q: "Someone mentions a competitor negatively",
@@ -289,10 +290,10 @@ export default function SocialMediaPlaybookPage() {
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
           {[
-            { value: "600+", label: "pilots" },
-            { value: "1.1M+", label: "cumulative hours" },
-            { value: "85%", label: "instrument rated" },
-            { value: "120+", label: "jet aircraft" },
+            { value: STATS.totalPilots, label: "pilots" },
+            { value: STATS.cumulativeHours, label: "cumulative hours" },
+            { value: STATS.instrumentRated, label: "instrument rated" },
+            { value: STATS.jetAircraft, label: "jet aircraft" },
             { value: "102", label: "aircraft types" },
           ].map((stat) => (
             <div
