@@ -243,6 +243,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        <link rel="dns-prefetch" href="https://www.redditstatic.com" />
         <link rel="dns-prefetch" href="https://img.youtube.com" />
         
         {/* LLMs.txt for AI discovery */}
@@ -285,6 +286,20 @@ export default function RootLayout({
         <noscript>
           <img height="1" width="1" style={{display:"none"}} src="https://www.facebook.com/tr?id=1236857811920781&ev=PageView&noscript=1" alt="" />
         </noscript>
+
+        {/* Reddit Pixel — lazyOnload fires after page is fully loaded and idle */}
+        <Script id="reddit-pixel" strategy="lazyOnload">
+          {`
+            !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?
+            p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};
+            p.callQueue=[];var t=d.createElement("script");
+            t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_iy53y8iesnik";
+            t.async=!0;var s=d.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(t,s)}}(window,document);
+            rdt('init','a2_iy53y8iesnik');
+            rdt('track', 'PageVisit');
+          `}
+        </Script>
       </head>
       <body className={inter.className}>
         <SnfBanner />
