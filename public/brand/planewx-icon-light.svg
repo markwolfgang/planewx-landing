@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="243.4" y1="150.28" x2="243.4" y2="352.36" gradientTransform="translate(68.59) skewX(-15)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00b6d1"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="337.14" y1="150.28" x2="337.14" y2="352.36" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="256" y1="150.28" x2="256" y2="352.36" xlink:href="#linear-gradient"/>
+  </defs>
+  <g>
+    <polygon class="cls-3" points="303.68 191.27 269.49 216.29 228.59 151.07 280.52 151.07 303.68 191.27"/>
+    <polygon class="cls-2" points="373.84 290.97 318.79 290.97 291.77 253.35 328.21 228.28 373.84 290.97"/>
+    <polygon class="cls-1" points="367.53 151.05 367.15 151.08 80.52 360.95 190.74 316.69 431.48 151.05 367.53 151.05"/>
+  </g>
+</svg>
