@@ -293,11 +293,11 @@ export default function RootLayout({
             !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?
             p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};
             p.callQueue=[];var t=d.createElement("script");
-            t.src="https://www.redditstatic.com/ads/v2.js";t.async=!0;
-            var s=d.getElementsByTagName("script")[0];
+            t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_iy53y8iesnik";
+            t.async=!0;var s=d.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(t,s)}}(window,document);
-            rdt('init','a2_iy53y8iesnik', {optOut: false, useGlobalOptOut: true});
-            rdt('track', 'PageView');
+            rdt('init','a2_iy53y8iesnik');
+            rdt('track', 'PageVisit');
           `}
         </Script>
       </head>
