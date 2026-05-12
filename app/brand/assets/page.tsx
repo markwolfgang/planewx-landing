@@ -1,4 +1,5 @@
 import Image from "next/image"
+import DownloadAllButton from "./DownloadAllButton"
 
 export const metadata = {
   title: "Assets & Colors | PlaneWX Brand Portal",
@@ -147,18 +148,20 @@ export default function AssetsPage() {
 
       {/* Logo */}
       <section>
-        <h2 className="text-2xl font-bold tracking-tight text-white mb-2">
-          Logo
-        </h2>
+        <div className="flex flex-wrap items-start justify-between gap-4 mb-2">
+          <h2 className="text-2xl font-bold tracking-tight text-white">
+            Logo
+          </h2>
+          <DownloadAllButton />
+        </div>
         <p className="text-white/60 mb-8 leading-relaxed">
           Always use the official files below. Do not recreate, distort, recolor,
           or alter the logo in any way.
         </p>
 
         {/* Wordmark — dark background */}
-        <div className="space-y-4 mb-8">
-          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Wordmark</h3>
-
+        <div className="space-y-4 mb-10">
+          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Wordmark — Dark Background</h3>
           <div className="rounded-2xl bg-[#0a0f1a] border border-white/10 p-10 flex items-center justify-center">
             <Image
               src="/brand/planewx-og-wordmark.png"
@@ -168,8 +171,27 @@ export default function AssetsPage() {
               className="max-w-full h-auto"
             />
           </div>
+          <div className="flex flex-wrap gap-3 pt-1">
+            <a
+              href="/brand/planewx-og-wordmark.png"
+              download="planewx-wordmark-dark.png"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium hover:bg-sky-500/20 transition-colors"
+            >
+              ↓ Download PNG
+            </a>
+            <a
+              href="/brand/planewx-wordmark-dark.svg"
+              download="planewx-wordmark-dark.svg"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
+            >
+              ↓ Download SVG
+            </a>
+          </div>
+        </div>
 
-          {/* SVG version on white — PNG "Plane" text is light and designed for dark bg */}
+        {/* Wordmark — light background */}
+        <div className="space-y-4 mb-10">
+          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Wordmark — Light Background</h3>
           <div className="rounded-2xl bg-white border border-white/10 p-10 flex items-center justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -180,18 +202,17 @@ export default function AssetsPage() {
               className="max-w-full h-auto"
             />
           </div>
-
           <div className="flex flex-wrap gap-3 pt-1">
             <a
-              href="/brand/planewx-og-wordmark.png"
-              download="planewx-wordmark.png"
+              href="/brand/planewx-wordmark-light.png"
+              download="planewx-wordmark-light.png"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium hover:bg-sky-500/20 transition-colors"
             >
               ↓ Download PNG
             </a>
             <a
               href="/brand/planewx-wordmark.svg"
-              download="planewx-wordmark.svg"
+              download="planewx-wordmark-light.svg"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
             >
               ↓ Download SVG
@@ -199,37 +220,61 @@ export default function AssetsPage() {
           </div>
         </div>
 
-        {/* Icon */}
-        <div className="space-y-4 mb-8">
-          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Icon mark</h3>
-
-          <div className="flex gap-4">
-            <div className="rounded-2xl bg-[#0a0f1a] border border-white/10 p-8 flex items-center justify-center flex-1">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/brand/planewx-icon.svg"
-                alt="PlaneWX icon — dark background"
-                width={80}
-                height={80}
-                className="h-16 w-auto"
-              />
-            </div>
-            <div className="rounded-2xl bg-white border border-white/10 p-8 flex items-center justify-center flex-1">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/brand/planewx-icon.svg"
-                alt="PlaneWX icon — light background"
-                width={80}
-                height={80}
-                className="h-16 w-auto"
-              />
-            </div>
+        {/* Icon — dark background */}
+        <div className="space-y-4 mb-10">
+          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Icon Mark — Dark Background</h3>
+          <div className="rounded-2xl bg-[#0a0f1a] border border-white/10 p-10 flex items-center justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/planewx-icon.svg"
+              alt="PlaneWX icon — dark background"
+              width={120}
+              height={120}
+              className="h-24 w-auto"
+            />
           </div>
-
           <div className="flex flex-wrap gap-3 pt-1">
             <a
+              href="/brand/planewx-icon-dark.png"
+              download="planewx-icon-dark.png"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium hover:bg-sky-500/20 transition-colors"
+            >
+              ↓ Download PNG
+            </a>
+            <a
               href="/brand/planewx-icon.svg"
-              download="planewx-icon.svg"
+              download="planewx-icon-dark.svg"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
+            >
+              ↓ Download SVG
+            </a>
+          </div>
+        </div>
+
+        {/* Icon — light background */}
+        <div className="space-y-4 mb-8">
+          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Icon Mark — Light Background</h3>
+          <div className="rounded-2xl bg-white border border-white/10 p-10 flex items-center justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/planewx-icon-light.svg"
+              alt="PlaneWX icon — light background"
+              width={120}
+              height={120}
+              className="h-24 w-auto"
+            />
+          </div>
+          <div className="flex flex-wrap gap-3 pt-1">
+            <a
+              href="/brand/planewx-icon-light.png"
+              download="planewx-icon-light.png"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium hover:bg-sky-500/20 transition-colors"
+            >
+              ↓ Download PNG
+            </a>
+            <a
+              href="/brand/planewx-icon-light.svg"
+              download="planewx-icon-light.svg"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
             >
               ↓ Download SVG
