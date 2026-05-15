@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<base href="/eaa/">
 <title>PlaneWX × EAA AirVenture — Ad Creative Package</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  background: #dde3ea;
+  background: #fff;
   font-family: 'Inter', -apple-system, system-ui, sans-serif;
   padding: 48px 48px 80px;
   min-width: 760px;
@@ -18,7 +17,7 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
 .subtitle { font-size: 13px; color: #64748b; margin-bottom: 8px; }
 .ad-row { display: flex; align-items: flex-start; gap: 0; flex-wrap: wrap; margin-bottom: 0; }
 /* Ad delivery cards */
-.ad-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,.07); }
+.ad-card { background: none; border: none; border-radius: 0; overflow: visible; margin-bottom: 48px; box-shadow: none; border-bottom: 1px solid #e2e8f0; padding-bottom: 32px; }
 .ad-card-header { display: flex; align-items: center; gap: 16px; padding: 16px 24px; border-bottom: 1px solid #f1f5f9; background: #fff; flex-wrap: wrap; }
 .ad-card-meta { flex: 1; min-width: 0; }
 .ad-card-title { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 3px; }
@@ -30,9 +29,9 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
 .card-dl-btn { display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(135deg,#00b6d1 0%,#2563eb 100%); color: #fff; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; padding: 9px 18px; border-radius: 7px; text-decoration: none; white-space: nowrap; flex-shrink: 0; letter-spacing: -0.01em; }
 
 /* Page header */
-.page-header { background: #0f172a; border-radius: 12px; padding: 32px 36px; margin-bottom: 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-.page-header-text h1 { color: #fff; margin-bottom: 6px; }
-.page-header-text .subtitle { color: #94a3b8; margin-bottom: 0; }
+.page-header { background: none; border-radius: 0; padding: 0 0 32px; margin-bottom: 40px; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.page-header-text h1 { color: #0f172a; margin-bottom: 6px; }
+.page-header-text .subtitle { color: #64748b; margin-bottom: 0; }
 .page-header-text .contact { font-size: 12px; color: #475569; margin-top: 10px; }
 .page-header-text .contact a { color: #00b6d1; text-decoration: none; }
 
@@ -61,16 +60,17 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
 .deadlines { display:none; }
 
 /* Two-column card body */
+.ad-card-header { display: flex; align-items: center; gap: 16px; padding: 10px 0 14px; border-bottom: none; background: none; flex-wrap: wrap; }
 .ad-card-body { display: flex; align-items: stretch; }
 .ad-creative-col {
-  background: linear-gradient(160deg, #1e2d47 0%, #0f172a 55%, #070e1a 100%);
+  background: none;
   display: flex; align-items: center; justify-content: center;
-  padding: 32px 28px; flex-shrink: 0;
+  padding: 0 28px 0 0; flex-shrink: 0;
 }
 .ad-info-col {
-  flex: 1; min-width: 280px; padding: 28px 32px;
+  flex: 1; min-width: 280px; padding: 0 0 0 32px;
   display: flex; flex-direction: column; justify-content: center; gap: 22px;
-  background: #fff; border-left: 1px solid #f1f5f9;
+  background: none; border-left: 1px solid #e2e8f0;
 }
 .info-section { display: flex; flex-direction: column; }
 .info-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #94a3b8; margin-bottom: 7px; }
@@ -87,7 +87,7 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
 .run-date-chip { font-size: 10px; font-weight: 700; color: #475569; background: #f1f5f9; border-radius: 20px; padding: 3px 10px; }
 /* Stacked layout for wide ads */
 .ad-card-body--stack { flex-direction: column; }
-.ad-card-body--stack .ad-creative-col { width: 100%; background: #f8fafc; padding: 24px 28px; }
+.ad-card-body--stack .ad-creative-col { width: 100%; }
 .ad-card-body--stack .ad-info-col { flex-direction: row; flex-wrap: wrap; gap: 0; padding: 0; border-left: none; border-top: 1px solid #f1f5f9; min-width: 0; }
 .ad-card-body--stack .info-section { flex: 1; min-width: 240px; padding: 20px 28px; border-right: 1px solid #f1f5f9; }
 .ad-card-body--stack .info-section:last-child { border-right: none; }
@@ -243,6 +243,7 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
     <p class="subtitle">Ad Creative Package · AirVenture Oshkosh · July 19–25, 2026</p>
     <p class="contact">Questions: <a href="mailto:mark@planewx.ai">mark@planewx.ai</a> &nbsp;·&nbsp; <a href="https://www.planewx.ai" target="_blank">www.planewx.ai</a></p>
   </div>
+  </div>
 </div>
 
 <div class="instructions">
@@ -334,72 +335,7 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
   </div>
   <div class="ad-card-body">
     <div class="ad-creative-col">
-      <div class="sidebar">
-      <div class="atmo1"></div>
-      <div class="atmo2"></div>
-
-      <!-- Logo: wordmark with white text, gradient WX mark (IDs prefixed "a") -->
-      <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="150 430 720 140" style="display:block;width:162px;height:auto;">
-          <defs>
-            <style>.a5{fill:#fff}.a4{fill:url(#ag1)}.a3{fill:url(#ag2)}.a2{fill:url(#ag3)}.a1{fill:url(#ag4)}</style>
-            <linearGradient id="ag1" x1="650.11" y1="442.09" x2="650.11" y2="552.78" gradientTransform="translate(133.97) skewX(-15)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00b6d1"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
-            <linearGradient id="ag2" x1="748.57" y1="442.09" x2="748.57" y2="552.78" xlink:href="#ag1"/>
-            <linearGradient id="ag3" x1="799.92" y1="442.09" x2="799.92" y2="552.78" xlink:href="#ag1"/>
-            <linearGradient id="ag4" x1="755.47" y1="442.09" x2="755.47" y2="552.78" xlink:href="#ag1"/>
-          </defs>
-          <path class="a5" d="M566.58,505l-25.94-.24c-6.73-.06-13.13,0-19.68-.41l2.83-9.98c3.96-.52,28.03-.19,37.81-.5l.34-1.16,3.08-11.48-8.18-.14-29.52-.06,2.54-9.12,46.23-.5,3.79-14.13-65.59.04c-1.41,5.27-16.25,60.39-16.25,60.39,1.93.12,3.98.21,6.09.29h58.99l3.48-12.99Z"/>
-          <path class="a5" d="M426.42,518l3.9-14.27,6.92-27.3c3.7,5.16,6.44,10.45,9.62,15.83l14.48,24.44c.41.69.81,1.31.81,1.31h18.25c1.27-.05,2.54-.1,3.83-.16,0,0,15.65-58.56,16.53-60.57l-17.47-.18c-.55,2.64-10.12,37.85-10.98,41.52l-14.05-24.33-9.66-17-22.86-.15-16.65,60.78,3.23.08h14.1Z"/>
-          <path class="a5" d="M260.91,518h47.98l3.74-13.96c-12.78-.01-24.31-.21-37.38-.21,2.72-11.63,11.69-46.69,11.69-46.69l-19.66-.17-15.57,60.99,9.19.05Z"/>
-          <path class="a5" d="M333.01,518l9.12-10.79h36.98s2.66,10.7,2.66,10.7c.45.04.9.06,1.35.1h17.96c.36-.03.72-.05,1.09-.09l-8.02-32.06-6.93-28.56-25.13.03s-46.81,58.31-48.32,60.68h19.24ZM370.59,470.48l6.21,22.72-24.41-.06,18.2-22.67Z"/>
-          <path class="a5" d="M252.95,469.83c1.31-5.27,1.32-10.31.16-14.87-1.29-5.1-6.08-6.62-11.83-6.6l-63.69.21-17.67,65.96-.88,3.38c.78.04,1.56.06,2.34.09h15.18c.67-.02,1.34-.04,2.02-.06l5.42-21.12,42.38-.4c8.65-.08,17.67-3.16,22.04-12.46,2.21-4.68,3.34-9.29,4.54-14.12ZM230.33,476.95c-1.63,3.26-5.04,5.7-8.64,5.67l-33.49-.19s4.12-16.12,5.09-19.74l35.11-.31c7.31-.06,4.19,10.04,1.94,14.56Z"/>
-          <polygon class="a4" points="593.68 442.52 602.47 518.37 623.92 518.37 657.3 468.64 660.91 518.37 682.52 518.37 737.35 442.52 711.73 442.52 678.88 495.99 676.81 442.52 655.14 442.52 621.4 494.13 619.3 442.52 593.68 442.52"/>
-          <polygon class="a3" points="781.59 464.54 762.86 478.25 740.45 442.52 768.9 442.52 781.59 464.54"/>
-          <polygon class="a2" points="820.02 519.16 789.87 519.16 775.07 498.55 795.03 484.82 820.02 519.16"/>
-          <polygon class="a1" points="816.57 442.51 816.36 442.53 659.34 557.49 719.72 533.24 851.6 442.51 816.57 442.51"/>
-        </svg>
-      </div>
-
-      <hr class="gdiv">
-      <p class="hed">You've been planning this trip for months.</p>
-      <p class="sub">Don't leave the weather to chance.</p>
-      <div class="bullets">
-        <div class="bl"><span class="arr">→</span><span class="bt">Create your full route in minutes.</span></div>
-        <div class="bl"><span class="arr">→</span><span class="bt">Personalized weather assessment for every leg.</span></div>
-        <div class="bl"><span class="arr">→</span><span class="bt">Continuous monitoring as departure day approaches.</span></div>
-      </div>
-
-      <!-- Live score card mock — KVBT→KOSH, Sun Jul 19, 74% Caution -->
-      <div class="score-card">
-        <p class="sc-route">KVBT <span class="arr">→</span> KOSH</p>
-        <div class="sc-badges">
-          <span class="badge badge-ac">N17DA</span>
-          <span class="badge badge-vfr">VFR</span>
-        </div>
-        <!-- Circular gauge: 74% amber. r=38, circ=238.76, 74%=176.7, gap=62.1, offset=-59.7 -->
-        <div class="sc-gauge">
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="38" stroke="#1e293b" stroke-width="7"/>
-            <circle cx="50" cy="50" r="38" stroke="#f59e0b" stroke-width="7"
-              stroke-linecap="round"
-              stroke-dasharray="176.7 62.1"
-              stroke-dashoffset="-59.7"
-              transform="rotate(-90 50 50)"/>
-          </svg>
-          <div class="sc-gauge-text">
-            <span class="sc-pct">74<sup>%</sup></span>
-          </div>
-        </div>
-        <p class="sc-lbl">WX Score</p>
-        <p class="sc-trend">↓ Trending Down</p>
-        <p class="sc-date">Sun, Jul 19 at 07:00</p>
-        <p class="sc-tz">CDT (12:00Z)</p>
-      </div>
-
-      <a class="btn" href="https://www.planewx.ai">Start Planning Free</a>
-      <p class="nc">No credit card required.</p>
-      <p class="domain">www.planewx.ai</p>
-    </div>
+      <img src="sidebard.jpeg" style="display:block;width:190px;height:600px;" alt="Desktop Sidebar Ad">
     </div><!-- end sidebar -->
     </div><!-- end ad-creative-col -->
     <div class="ad-info-col">
@@ -481,6 +417,7 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
         </div>
         <a class="m-btn" href="https://www.planewx.ai">Start Planning Free →</a>
       </div>
+
     </div><!-- end mobile -->
     </div><!-- end ad-creative-col -->
     <div class="ad-info-col">
@@ -565,6 +502,17 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
         <a class="btn" href="https://www.planewx.ai">Start Planning Free</a>
         <span class="nc">No credit card required.</span>
         <span class="nc" style="margin-top:3px;color:#00b6d1;font-weight:500;">www.planewx.ai</span>
+        <!-- Flight Chops Endorsement — logo + stamp -->
+        <div style="position:relative;width:50px;height:50px;margin-top:3px;flex-shrink:0;">
+          <img src="flightchops-logo-transparent.png" style="width:50px;height:50px;object-fit:contain;display:block;">
+          <svg style="position:absolute;top:-5%;left:46%;width:58%;height:58%" viewBox="0 0 300 300" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+            <defs><path id="te1" d="M 50,150 A 100,100 0 0,1 250,150"/><path id="be1" d="M 57,163 A 100,100 0 0,0 243,163"/></defs>
+            <circle cx="150" cy="150" r="128" fill="none" stroke="#00b6d1" stroke-width="10"/>
+            <circle cx="150" cy="150" r="112" fill="none" stroke="#00b6d1" stroke-width="3"/>
+            <circle cx="150" cy="150" r="112" fill="#00b6d1" opacity="0.08"/>
+            <text x="150" y="150" text-anchor="middle" dominant-baseline="central" font-size="220" fill="#00b6d1" font-family="Arial" font-weight="900">✓</text>
+          </svg>
+        </div>
       </div>
     </div><!-- end ehot -->
     </div><!-- end ad-creative-col -->
@@ -607,6 +555,10 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Download PDF
     </a>
+    <a class="card-dl-btn" href="exports/planewx-eaa-magazine-quarter-page.jpg" download style="background:linear-gradient(135deg,#475569 0%,#1e293b 100%);">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download JPEG
+    </a>
   </div>
   <div class="ad-card-body">
     <div class="ad-creative-col">
@@ -648,13 +600,27 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
           <p class="nc">No credit card required.</p>
           <p class="domain">www.planewx.ai</p>
         </div>
-        <div class="qr-wrap">
-          <div class="qr-box">
+        <div class="qr-wrap" style="flex-direction:row;align-items:flex-end;gap:8px;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;">
+            <div class="qr-box">
             <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 41 41" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h41v41H0z"/><path stroke="#0f172a" d="M0 0.5h7m1 0h3m1 0h2m2 0h6m1 0h1m1 0h2m1 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m1 0h1m1 0h1m3 0h2m2 0h1m4 0h3m3 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m4 0h1m2 0h1m2 0h3m4 0h2m4 0h1m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m6 0h2m1 0h2m1 0h1m1 0h2m2 0h5m1 0h1m2 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m6 0h3m1 0h1m1 0h1m2 0h1m1 0h3m2 0h3m2 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m1 0h4m1 0h1m1 0h1m1 0h1m3 0h2m1 0h2m1 0h3M0 8.5h1m1 0h2m1 0h3m5 0h10m1 0h1m1 0h1m1 0h5m1 0h1m2 0h1m1 0h2M12 9.5h2m4 0h3m2 0h1m1 0h1m2 0h1m2 0h2m1 0h3m1 0h1m1 0h1M1 10.5h2m3 0h1m4 0h3m1 0h1m1 0h2m3 0h4m3 0h2m2 0h2m3 0h2M1 11.5h1m1 0h1m3 0h1m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h4m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1M6 12.5h1m2 0h1m1 0h7m1 0h2m1 0h1m1 0h6m1 0h2m3 0h3m1 0h1M2 13.5h1m2 0h1m2 0h2m1 0h1m1 0h6m1 0h1m2 0h2m4 0h2m1 0h3m2 0h2m1 0h1M4 14.5h1m1 0h2m1 0h1m1 0h2m1 0h1m1 0h5m1 0h2m1 0h2m2 0h1m1 0h1m2 0h2m3 0h2M0 15.5h1m2 0h3m1 0h1m1 0h1m2 0h5m4 0h3m2 0h2m2 0h1m3 0h2m1 0h1m2 0h1M1 16.5h2m3 0h2m1 0h2m1 0h1m5 0h1m1 0h3m2 0h1m4 0h1m5 0h1m1 0h3M0 17.5h1m2 0h1m1 0h1m6 0h1m2 0h2m3 0h10m2 0h2m1 0h1m2 0h1m1 0h1M1 18.5h1m1 0h2m1 0h1m4 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h2M2 19.5h2m4 0h2m2 0h1m4 0h2m1 0h2m2 0h1m3 0h2m3 0h1m1 0h1m1 0h3M3 20.5h1m2 0h1m12 0h1m3 0h1m1 0h1m3 0h2m2 0h2m1 0h4M0 21.5h1m4 0h1m2 0h3m1 0h3m1 0h1m2 0h1m3 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h2m2 0h2M2 22.5h3m1 0h1m1 0h1m4 0h2m1 0h3m2 0h4m1 0h1m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1M0 23.5h5m4 0h2m4 0h2m1 0h2m2 0h2m1 0h3m2 0h1m1 0h3m1 0h1m2 0h1M1 24.5h2m1 0h1m1 0h1m2 0h5m2 0h2m2 0h1m1 0h1m2 0h2m1 0h2m8 0h1M0 25.5h2m1 0h3m3 0h3m1 0h3m1 0h1m1 0h2m3 0h1m1 0h7m1 0h1m2 0h2m1 0h1M0 26.5h2m2 0h3m1 0h2m2 0h1m1 0h3m1 0h3m3 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h2M0 27.5h6m2 0h1m6 0h2m1 0h1m2 0h2m3 0h1m1 0h1m1 0h3m1 0h4M2 28.5h6m2 0h1m7 0h8m1 0h1m2 0h2m1 0h1m1 0h3m1 0h2M2 29.5h2m1 0h1m1 0h1m4 0h1m1 0h1m1 0h2m1 0h4m2 0h2m2 0h1m1 0h1m5 0h1m1 0h2M0 30.5h1m1 0h2m1 0h5m3 0h2m1 0h2m1 0h1m1 0h2m3 0h1m3 0h1m2 0h5M7 31.5h5m2 0h4m1 0h1m2 0h2m2 0h5m1 0h1m1 0h2m1 0h3M1 32.5h2m1 0h3m1 0h1m1 0h2m3 0h1m1 0h1m3 0h1m2 0h1m1 0h2m1 0h2m1 0h6m1 0h1M8 33.5h5m4 0h1m1 0h4m2 0h1m2 0h1m1 0h3m3 0h2m2 0h1M0 34.5h7m1 0h6m1 0h2m1 0h1m1 0h1m2 0h3m3 0h1m1 0h2m1 0h1m1 0h3M0 35.5h1m5 0h1m1 0h1m1 0h4m2 0h2m1 0h1m4 0h1m2 0h1m3 0h2m3 0h1M0 36.5h1m1 0h3m1 0h1m3 0h2m1 0h2m6 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h5m1 0h1M0 37.5h1m1 0h3m1 0h1m1 0h2m3 0h1m2 0h1m2 0h1m2 0h1m1 0h3m1 0h2m1 0h2m3 0h1m2 0h1M0 38.5h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h1m2 0h1m1 0h2m1 0h1m3 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h2M0 39.5h1m5 0h1m3 0h4m1 0h1m5 0h4m2 0h2m4 0h1m2 0h2m1 0h1M0 40.5h7m1 0h1m1 0h4m1 0h2m3 0h4m1 0h1m1 0h1m3 0h3m5 0h1"/></svg>
           </div>
           <span class="qr-lbl">Scan to start free</span>
+          </div><!-- end qr column -->
+          <!-- Flight Chops Endorsement — beside QR code -->
+          <div style="position:relative;width:60px;height:60px;flex-shrink:0;">
+            <img src="flightchops-logo-transparent.png" style="width:60px;height:60px;object-fit:contain;display:block;">
+            <svg style="position:absolute;top:-5%;left:46%;width:58%;height:58%" viewBox="0 0 300 300" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+              <defs><path id="tm4" d="M 50,150 A 100,100 0 0,1 250,150"/><path id="bm4" d="M 57,163 A 100,100 0 0,0 243,163"/></defs>
+              <circle cx="150" cy="150" r="128" fill="none" stroke="#00b6d1" stroke-width="10"/>
+              <circle cx="150" cy="150" r="112" fill="none" stroke="#00b6d1" stroke-width="3"/>
+              <circle cx="150" cy="150" r="112" fill="#00b6d1" opacity="0.08"/>
+              <text x="150" y="150" text-anchor="middle" dominant-baseline="central" font-size="220" fill="#00b6d1" font-family="Arial" font-weight="900">✓</text>
+            </svg>
+          </div>
         </div>
       </div>
+
     </div><!-- end mag -->
     </div><!-- end ad-creative-col -->
     <div class="ad-info-col">
