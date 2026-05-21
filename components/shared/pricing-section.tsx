@@ -11,11 +11,19 @@ export function PricingSection({ variant }: { variant: string }) {
     const refParam = new URLSearchParams(window.location.search).get("ref")
     if (refParam) {
       const code = refParam.toUpperCase()
-      localStorage.setItem("planewx_referral", code)
+      try {
+        localStorage.setItem("planewx_referral", code)
+      } catch {
+        // Fail silently if localStorage is blocked or full
+      }
       setAppUrl(`${baseUrl}&ref=${code}`)
     } else {
-      const stored = localStorage.getItem("planewx_referral")
-      if (stored) setAppUrl(`${baseUrl}&ref=${stored}`)
+      try {
+        const stored = localStorage.getItem("planewx_referral")
+        if (stored) setAppUrl(`${baseUrl}&ref=${stored}`)
+      } catch {
+        // Fail silently if localStorage is blocked
+      }
     }
   }, [baseUrl])
 
