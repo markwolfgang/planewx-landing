@@ -21,6 +21,7 @@ import {
   SiteFooter,
   VariantTracker,
   FounderImageModal,
+  SignUpButton,
   STATS,
   TESTIMONIALS,
 } from "./shared"
@@ -80,12 +81,12 @@ export function LandingVariantB() {
             <a href={appUrl} className="text-sm text-white/60 hover:text-white transition-colors">
               Log In
             </a>
-            <a
-              href={appUrl}
+            <SignUpButton
+              variant={VARIANT}
               className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
             >
               Start Free Trial
-            </a>
+            </SignUpButton>
           </div>
         </div>
       </nav>
@@ -114,13 +115,13 @@ export function LandingVariantB() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <a
-              href={appUrl}
+            <SignUpButton
+              variant={VARIANT}
               className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
               Get Early Warning — Free
               <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
+            </SignUpButton>
             <a
               href="#how-it-works"
               className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all"

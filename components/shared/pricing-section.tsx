@@ -1,9 +1,31 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { Check, Crown, Minus, Shield } from "lucide-react"
 
 export function PricingSection({ variant }: { variant: string }) {
-  const appUrl = `https://app.planewx.ai?lp=${variant}`
+  const baseUrl = `https://app.planewx.ai?lp=${variant}`
+  const [appUrl, setAppUrl] = useState(baseUrl)
+
+  useEffect(() => {
+    const refParam = new URLSearchParams(window.location.search).get("ref")
+    if (refParam) {
+      const code = refParam.toUpperCase()
+      try {
+        localStorage.setItem("planewx_referral", code)
+      } catch {
+        // Fail silently if localStorage is blocked or full
+      }
+      setAppUrl(`${baseUrl}&ref=${code}`)
+    } else {
+      try {
+        const stored = localStorage.getItem("planewx_referral")
+        if (stored) setAppUrl(`${baseUrl}&ref=${stored}`)
+      } catch {
+        // Fail silently if localStorage is blocked
+      }
+    }
+  }, [baseUrl])
 
   return (
     <section id="pricing" className="relative py-24 px-4">
