@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PlaneWX Brochure — Back</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"/>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+}
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+}
+
+/* ── PAGE ── */
+.page {
+  width: 850px;
+  height: 1100px;
+  background: #09101e;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ── TOP BAR: logo left, headline right ── */
+.top-bar {
+  position: absolute;
+  top: 40px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo-block { flex-shrink: 0; }
+.tagline-back {
+  font-size: 11px;
+  font-weight: 500;
+  color: #ffffff;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+  text-shadow: none;
+}
+.headline-block { text-align: right; }
+.headline-back-1 {
+  font-size: 34px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.headline-back-2 {
+  font-size: 34px;
+  font-weight: 900;
+  color: #00b6d1;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* ── DASHBOARD SCREENSHOT ── */
+.dashboard-wrap {
+  position: absolute;
+  top: 120px;
+  left: 0; right: 0;
+  height: 620px;
+  overflow: hidden;
+}
+.dashboard-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.dashboard-fade-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50px;
+  background: linear-gradient(to top, #09101e, transparent);
+  pointer-events: none;
+}
+/* leftover dash-shell styles — unused now */
+.dash-shell {
+  display: flex;
+  height: 100%;
+  background: #0d1625;
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Left panel */
+.dash-left {
+  flex: 1;
+  padding: 14px 12px;
+  overflow: hidden;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.dash-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.dash-panel-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.dash-new-trip-btn {
+  font-size: 10px;
+  font-weight: 600;
+  color: #0d1625;
+  background: #00b6d1;
+  border-radius: 6px;
+  padding: 4px 10px;
+  white-space: nowrap;
+}
+
+/* Trip groups */
+.trip-group {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.trip-group-header {
+  padding: 10px 12px 6px;
+}
+.trip-group-meta {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.journey-badge {
+  font-size: 9px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.tail-badge {
+  font-size: 9px;
+  font-weight: 600;
+  color: #64748b;
+  background: rgba(255,255,255,0.07);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+.vfr-badge {
+  font-size: 9px;
+  font-weight: 700;
+  color: oklch(0.75 0.18 145);
+  background: oklch(0.75 0.18 145 / 0.12);
+  padding: 1px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.trip-group-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 1px;
+}
+.trip-group-route {
+  font-size: 10px;
+  color: #475569;
+  margin-bottom: 8px;
+}
+.route-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 3px;
+}
+.route-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.route-dot.red   { background: oklch(0.60 0.22 25); box-shadow: 0 0 5px oklch(0.60 0.22 25 / 0.6); }
+.route-dot.green { background: oklch(0.75 0.18 145); box-shadow: 0 0 5px oklch(0.75 0.18 145 / 0.6); }
+.route-dot.yellow { background: oklch(0.80 0.18 85); box-shadow: 0 0 5px oklch(0.80 0.18 85 / 0.6); }
+.route-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+.route-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #475569;
+  font-size: 9px;
+  padding: 0 0 2px;
+}
+.leg-label {
+  color: #334155;
+  font-size: 8px;
+}
+
+/* Leg cards */
+.leg-cards-row {
+  display: flex;
+  gap: 6px;
+  padding: 0 8px 10px;
+}
+.leg-card {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+.leg-card.red-border    { border-left: 2px solid oklch(0.60 0.22 25); }
+.leg-card.yellow-border { border-left: 2px solid oklch(0.80 0.18 85); }
+.leg-card.green-border  { border-left: 2px solid oklch(0.75 0.18 145); }
+.leg-card-top {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.leg-num-badge {
+  font-size: 8px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.vfr-badge-sm {
+  font-size: 8px;
+  font-weight: 700;
+  color: oklch(0.75 0.18 145);
+  background: oklch(0.75 0.18 145 / 0.12);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+.leg-date {
+  font-size: 8px;
+  color: #475569;
+  margin-left: auto;
+}
+.leg-airports {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 6px;
+}
+.leg-arrow { color: #475569; font-weight: 400; }
+.leg-score-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.score-ring-wrap {
+  position: relative;
+  width: 56px; height: 56px;
+  flex-shrink: 0;
+}
+.score-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.score-pct { font-size: 9px; font-weight: 600; opacity: 0.7; }
+.score-meta { flex: 1; }
+.score-label { font-size: 9px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; }
+.score-time  { font-size: 9px; color: #475569; }
+.score-trend { font-size: 9px; color: #475569; }
+.leg-view-btn {
+  font-size: 10px;
+  font-weight: 600;
+  color: #00b6d1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Right panel */
+.dash-right {
+  width: 240px;
+  flex-shrink: 0;
+  padding: 12px 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.15);
+}
+.home-airport-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.home-apt-icon { font-size: 16px; color: #00b6d1; }
+.home-apt-id {
+  font-size: 15px;
+  font-weight: 800;
+  color: #f1f5f9;
+}
+.home-edit { font-size: 10px; color: #475569; }
+.home-apt-sub { font-size: 9px; color: #475569; }
+.home-apt-badges { display: flex; gap: 4px; margin-left: auto; align-items: center; }
+.raw-badge {
+  font-size: 9px;
+  font-weight: 600;
+  color: #475569;
+  background: rgba(255,255,255,0.07);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.wx-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.wx-cell {}
+.wx-label { font-size: 8px; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+.wx-val { font-size: 10px; font-weight: 600; color: #e2e8f0; }
+.green-val { color: oklch(0.75 0.18 145); }
+.rwy { display: flex; gap: 4px; align-items: baseline; }
+.rwy-cross { font-size: 8px; color: oklch(0.75 0.18 145); }
+
+.right-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin: 8px 0;
+}
+
+.regional-watch {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.regional-label { font-size: 8px; color: #64748b; text-transform: uppercase; letter-spacing: 0.07em; }
+.regional-region { font-size: 10px; font-weight: 600; color: #e2e8f0; }
+.stable-badge {
+  font-size: 8px;
+  font-weight: 600;
+  color: oklch(0.75 0.18 145);
+  background: oklch(0.75 0.18 145 / 0.12);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+.regional-desc { font-size: 9px; color: #64748b; line-height: 1.4; }
+
+.seven-day-header {
+  font-size: 9px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 6px;
+}
+.seven-day-row {
+  display: flex;
+  gap: 4px;
+}
+.day-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.day-score-bar {
+  width: 100%;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 700;
+  color: #09101e;
+  padding: 4px 2px;
+  border-radius: 4px;
+}
+.day-label { font-size: 8px; color: #475569; }
+
+.best-window-card {
+  background: oklch(0.75 0.18 145 / 0.08);
+  border: 1px solid oklch(0.75 0.18 145 / 0.25);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+.best-window-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: oklch(0.75 0.18 145);
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.confidence-badge {
+  font-size: 8px;
+  font-weight: 600;
+  color: #09101e;
+  background: oklch(0.75 0.18 145);
+  padding: 1px 5px;
+  border-radius: 10px;
+}
+.best-window-val {
+  font-size: 13px;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin-bottom: 3px;
+}
+.best-window-desc {
+  font-size: 9px;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size: 9px;
+  font-weight: 700;
+  color: #00b6d1;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+
+/* ── EMAIL ALERT STRIP ── */
+.email-strip {
+  position: absolute;
+  top: 660px;
+  left: 52px;
+  right: 52px;
+}
+.email-card {
+  background: #0f1e35;
+  border: 1px solid rgba(0,182,209,0.2);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.email-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(0,182,209,0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #00b6d1;
+  font-size: 18px;
+}
+.email-content { flex: 1; }
+.email-subject {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+.email-from {
+  font-size: 10px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+.email-body {
+  font-size: 11px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+.email-body strong { color: #e2e8f0; font-weight: 600; }
+.email-scores {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.score-chip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+.score-ring {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.score-ring.red   { background: conic-gradient(#ef4444 180deg, #1e293b 0deg); color: #fff; }
+.score-ring.green { background: conic-gradient(#22c55e 288deg, #1e293b 0deg); color: #fff; }
+.score-chip-label { font-size: 10px; color: #94a3b8; line-height: 1.3; }
+.score-chip-label strong { display: block; color: #ffffff; font-size: 11px; font-weight: 700; }
+
+/* ── FEATURES ROW ── */
+.features-row {
+  position: absolute;
+  top: 760px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  gap: 16px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  padding-top: 20px;
+}
+.feature {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.feature-icon {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+.feature-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+.feature-desc {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+/* ── SOCIAL PROOF ── */
+.social-proof {
+  position: absolute;
+  top: 908px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.sp-stars {
+  font-size: 16px;
+  color: #f59e0b;
+  letter-spacing: 2px;
+}
+.sp-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+}
+
+/* ── CTA BAR ── */
+.cta-bar {
+  position: absolute;
+  bottom: 36px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+.cta-left {}
+.cta-trial {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 3px;
+}
+.cta-details {
+  font-size: 11px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+.cta-url {
+  font-size: 13px;
+  font-weight: 600;
+  color: #00b6d1;
+  letter-spacing: 0.02em;
+}
+.cta-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.qr-back {
+  width: 72px;
+  height: 72px;
+  background: #fff;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  flex-shrink: 0;
+}
+.scan-label {
+  font-size: 10px;
+  color: #475569;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 60px;
+}
+</style>
+</head>
+<body>
+
+<p class="label">Back Side — PlaneWX Brochure · 8.5" × 11"</p>
+
+<div class="page">
+
+  <!-- Top bar: logo left, headline right -->
+  <div class="top-bar">
+    <div class="logo-block">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="150 430 720 140" style="display:block;width:220px;height:auto;">
+        <defs>
+          <style>.wa{fill:#fff}.wb{fill:url(#wg1b)}.wc{fill:url(#wg2b)}.wd{fill:url(#wg3b)}.we{fill:url(#wg4b)}</style>
+          <linearGradient id="wg1b" x1="650.11" y1="442.09" x2="650.11" y2="552.78" gradientTransform="translate(133.97) skewX(-15)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00b6d1"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+          <linearGradient id="wg2b" x1="748.57" y1="442.09" x2="748.57" y2="552.78" xlink:href="#wg1b"/>
+          <linearGradient id="wg3b" x1="799.92" y1="442.09" x2="799.92" y2="552.78" xlink:href="#wg1b"/>
+          <linearGradient id="wg4b" x1="755.47" y1="442.09" x2="755.47" y2="552.78" xlink:href="#wg1b"/>
+        </defs>
+        <path class="wa" d="M566.58,505l-25.94-.24c-6.73-.06-13.13,0-19.68-.41l2.83-9.98c3.96-.52,28.03-.19,37.81-.5l.34-1.16,3.08-11.48-8.18-.14-29.52-.06,2.54-9.12,46.23-.5,3.79-14.13-65.59.04c-1.41,5.27-16.25,60.39-16.25,60.39,1.93.12,3.98.21,6.09.29h58.99l3.48-12.99Z"/>
+        <path class="wa" d="M426.42,518l3.9-14.27,6.92-27.3c3.7,5.16,6.44,10.45,9.62,15.83l14.48,24.44c.41.69.81,1.31.81,1.31h18.25c1.27-.05,2.54-.1,3.83-.16,0,0,15.65-58.56,16.53-60.57l-17.47-.18c-.55,2.64-10.12,37.85-10.98,41.52l-14.05-24.33-9.66-17-22.86-.15-16.65,60.78,3.23.08h14.1Z"/>
+        <path class="wa" d="M260.91,518h47.98l3.74-13.96c-12.78-.01-24.31-.21-37.38-.21,2.72-11.63,11.69-46.69,11.69-46.69l-19.66-.17-15.57,60.99,9.19.05Z"/>
+        <path class="wa" d="M333.01,518l9.12-10.79h36.98s2.66,10.7,2.66,10.7c.45.04.9.06,1.35.1h17.96c.36-.03.72-.05,1.09-.09l-8.02-32.06-6.93-28.56-25.13.03s-46.81,58.31-48.32,60.68h19.24ZM370.59,470.48l6.21,22.72-24.41-.06,18.2-22.67Z"/>
+        <path class="wa" d="M252.95,469.83c1.31-5.27,1.32-10.31.16-14.87-1.29-5.1-6.08-6.62-11.83-6.6l-63.69.21-17.67,65.96-.88,3.38c.78.04,1.56.06,2.34.09h15.18c.67-.02,1.34-.04,2.02-.06l5.42-21.12,42.38-.4c8.65-.08,17.67-3.16,22.04-12.46,2.21-4.68,3.34-9.29,4.54-14.12ZM230.33,476.95c-1.63,3.26-5.04,5.7-8.64,5.67l-33.49-.19s4.12-16.12,5.09-19.74l35.11-.31c7.31-.06,4.19,10.04,1.94,14.56Z"/>
+        <polygon class="wb" points="593.68 442.52 602.47 518.37 623.92 518.37 657.3 468.64 660.91 518.37 682.52 518.37 737.35 442.52 711.73 442.52 678.88 495.99 676.81 442.52 655.14 442.52 621.4 494.13 619.3 442.52 593.68 442.52"/>
+        <polygon class="wc" points="781.59 464.54 762.86 478.25 740.45 442.52 768.9 442.52 781.59 464.54"/>
+        <polygon class="wd" points="820.02 519.16 789.87 519.16 775.07 498.55 795.03 484.82 820.02 519.16"/>
+        <polygon class="we" points="816.57 442.51 816.36 442.53 659.34 557.49 719.72 533.24 851.6 442.51 816.57 442.51"/>
+      </svg>
+      <p class="tagline-back">The Confidence to Go, or the Courage to Stay.</p>
+    </div>
+    <div class="headline-block">
+      <p class="headline-back-1">Your flight home.</p>
+      <p class="headline-back-2">We'll find it.</p>
+    </div>
+  </div>
+
+
+  <!-- Dashboard screenshot -->
+  <div class="dashboard-wrap">
+    <img src="dashboard-screenshot.png" alt="PlaneWX dashboard showing KOSH departure trips"/>
+    <div class="dashboard-fade-bottom"></div>
+  </div>
+
+  <!-- Features row -->
+  <div class="features-row">
+    <div class="feature">
+      <div class="feature-icon">🎯</div>
+      <p class="feature-title">WX Score for every leg</p>
+      <p class="feature-desc">A single 0–100 score weighs ceiling, visibility, wind, icing, and turbulence for your exact route.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔄</div>
+      <p class="feature-title">Compare departure days</p>
+      <p class="feature-desc">Score Thursday vs. Friday side by side. See which window is safer before you pack up.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📬</div>
+      <p class="feature-title">Alerts when things change</p>
+      <p class="feature-desc">PlaneWX monitors the forecast while you enjoy the show and emails you when your window shifts.</p>
+    </div>
+  </div>
+
+  <!-- Social proof -->
+  <div class="social-proof">
+    <span class="sp-stars">★★★★★</span>
+    <span class="sp-text">Trusted by thousands of pilots</span>
+  </div>
+
+  <!-- CTA bar -->
+  <div class="cta-bar">
+    <div class="cta-left">
+      <p class="cta-trial">Start free — 14 days, no credit card</p>
+      <p class="cta-details">Pro from $14.99/mo after trial · Annual plan $119/yr</p>
+      <p class="cta-url">www.planewx.ai</p>
+    </div>
+    <div class="cta-right">
+      <div class="scan-label">Scan to<br>start free</div>
+      <div class="qr-back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 41 41" shape-rendering="crispEdges">
+          <path fill="#ffffff" d="M0 0h41v41H0z"/>
+          <path stroke="#0f172a" d="M0 0.5h7m1 0h3m1 0h2m2 0h6m1 0h1m1 0h2m1 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m1 0h1m1 0h1m3 0h2m2 0h1m4 0h3m3 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m3 0h2m5 0h3m4 0h2m4 0h1m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m4 0h1m1 0h2m1 0h2m1 0h1m1 0h2m2 0h5m1 0h1m2 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m4 0h7m1 0h1m2 0h1m1 0h3m2 0h3m2 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m1 0h4m3 0h1m1 0h1m3 0h2m1 0h2m1 0h3M0 8.5h1m1 0h2m1 0h3m3 0h1m1 0h2m1 0h7m1 0h1m1 0h1m1 0h5m1 0h1m2 0h1m1 0h2M9 9.5h1m2 0h1m5 0h3m2 0h1m1 0h1m2 0h1m2 0h2m1 0h3m1 0h1m1 0h1M1 10.5h2m3 0h1m4 0h2m2 0h1m1 0h2m3 0h4m3 0h2m2 0h2m3 0h2M1 11.5h1m1 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m2 0h4m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1M3 12.5h1m2 0h1m4 0h2m2 0h3m1 0h2m1 0h1m1 0h6m1 0h2m3 0h3m1 0h1M5 13.5h1m1 0h5m1 0h1m1 0h4m1 0h1m2 0h2m4 0h2m1 0h3m2 0h2m1 0h1M2 14.5h1m1 0h1m1 0h4m1 0h2m1 0h1m1 0h5m1 0h2m1 0h2m2 0h1m1 0h1m2 0h2m3 0h2M0 15.5h1m1 0h4m2 0h2m2 0h5m4 0h3m2 0h2m2 0h1m3 0h2m1 0h1m2 0h1M1 16.5h1m4 0h1m2 0h2m1 0h1m5 0h1m1 0h3m2 0h1m4 0h1m5 0h1m1 0h3M3 17.5h1m1 0h1m6 0h1m2 0h2m3 0h10m2 0h2m1 0h1m2 0h1m1 0h1M1 18.5h1m1 0h1m2 0h1m4 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m4 0h1m1 0h2m1 0h2m2 0h2M2 19.5h3m3 0h2m2 0h1m4 0h2m1 0h2m2 0h1m3 0h2m4 0h2m1 0h3M0 20.5h1m2 0h2m1 0h1m5 0h1m6 0h1m3 0h1m1 0h1m3 0h2m2 0h2m1 0h4M0 21.5h2m6 0h3m2 0h3m3 0h1m3 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h2m2 0h2M2 22.5h3m1 0h1m1 0h1m4 0h2m1 0h3m2 0h4m1 0h1m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1M0 23.5h5m4 0h3m6 0h2m2 0h2m1 0h3m2 0h1m1 0h3m1 0h1m2 0h1M1 24.5h2m1 0h1m1 0h1m2 0h5m2 0h2m2 0h1m1 0h1m2 0h2m1 0h2m8 0h1M0 25.5h2m1 0h3m3 0h3m1 0h3m1 0h1m1 0h2m3 0h1m1 0h7m1 0h1m2 0h2m1 0h1M0 26.5h2m2 0h3m1 0h3m1 0h1m2 0h2m1 0h3m3 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h2M0 27.5h6m2 0h1m6 0h2m1 0h1m2 0h2m3 0h1m1 0h1m1 0h3m1 0h4M2 28.5h1m1 0h4m1 0h2m7 0h8m1 0h1m2 0h2m1 0h1m1 0h3m1 0h2M3 29.5h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h2m1 0h4m2 0h2m2 0h1m1 0h1m5 0h1m1 0h2M0 30.5h1m4 0h2m1 0h2m3 0h2m1 0h2m1 0h1m1 0h2m3 0h1m3 0h1m2 0h5M2 31.5h2m5 0h3m2 0h4m1 0h1m2 0h2m2 0h5m1 0h1m1 0h2m1 0h3M1 32.5h1m2 0h5m1 0h2m3 0h1m1 0h1m3 0h1m2 0h1m1 0h2m1 0h2m1 0h6m1 0h1M8 33.5h5m4 0h1m1 0h4m2 0h1m2 0h1m1 0h3m3 0h2m2 0h1M0 34.5h7m1 0h6m1 0h2m1 0h1m1 0h1m2 0h3m3 0h1m1 0h2m1 0h1m1 0h3M0 35.5h1m5 0h1m1 0h1m1 0h4m2 0h2m1 0h1m4 0h1m2 0h1m3 0h2m3 0h1M0 36.5h1m1 0h3m1 0h1m3 0h2m1 0h2m1 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h5m1 0h1M0 37.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h1m3 0h1m2 0h1m1 0h3m1 0h2m1 0h2m3 0h1m2 0h1M0 38.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h4m1 0h2m1 0h1m3 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h2M0 39.5h1m5 0h1m3 0h1m1 0h2m2 0h1m4 0h4m2 0h2m4 0h1m2 0h2m1 0h1M0 40.5h7m1 0h1m1 0h4m1 0h2m3 0h4m1 0h1m1 0h1m3 0h3m5 0h1"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+</body>
+</html>

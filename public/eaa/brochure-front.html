@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #111;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 40px;
+}
+.version-label {
+  color: #666;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: -apple-system, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── BROCHURE PAGE ── */
+.page {
+  width: 850px;
+  height: 1100px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #09101e; /* solid dark below the photo */
+}
+
+.photo-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 62%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* overlay covers full page; gradient completes exactly at the photo's bottom edge */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(9,16,30,0.0)  0%,
+    rgba(9,16,30,0.0)  42%,
+    rgba(9,16,30,0.55) 54%,
+    rgba(9,16,30,1.00) 63%
+  );
+}
+
+/* subtle dark scrim top-left so PlaneWX logo is readable */
+.top-scrim {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, rgba(9,16,30,0.60) 0%, rgba(9,16,30,0) 100%);
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 44px 52px 42px;
+}
+
+/* ── LOGO AREA (absolute top-left) ── */
+.logo-area {
+  position: absolute;
+  top: 44px;
+  left: 52px;
+}
+.logo-wrap { width: 320px; }
+
+/* tagline under logo */
+.tagline {
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  margin-top: 1px;
+  font-style: italic;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+}
+
+/* ── TEXT ZONE — sits in solid dark zone below the plane (~63% down) ── */
+.text-zone {
+  position: absolute;
+  top: 63%;
+  left: 52px;
+  right: 52px;
+}
+
+/* ── TEXT ZONE ── */
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  color: #00b6d1;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+  text-shadow: none;
+}
+.headline-1 {
+  font-size: 46px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-shadow: none;
+}
+.headline-2 {
+  font-size: 46px;
+  font-weight: 900;
+  color: #00b6d1;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin-bottom: 10px;
+  text-shadow: none;
+}
+.subline {
+  font-size: 13px;
+  font-weight: 400;
+  color: #cbd5e1;
+  line-height: 1.45;
+  max-width: 620px;
+  margin-bottom: 14px;
+  text-shadow: none;
+}
+.bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 0;
+}
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.arr {
+  color: #00b6d1;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.bt {
+  font-size: 13px;
+  color: #e2e8f0;
+  line-height: 1.45;
+  text-shadow: none;
+}
+.bt strong { color: #fff; font-weight: 700; }
+
+/* ── BOTTOM BAR — pinned to bottom of page ── */
+.bottom-bar {
+  position: absolute;
+  bottom: 30px;
+  left: 52px;
+  right: 52px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.13);
+  gap: 20px;
+}
+
+/* QR side */
+.qr-block {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.qr-box {
+  width: 88px;
+  height: 88px;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  flex-shrink: 0;
+}
+.qr-text { display: flex; flex-direction: column; gap: 4px; }
+.qr-headline {
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+.qr-sub {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+.qr-url {
+  font-size: 13px;
+  font-weight: 700;
+  color: #00b6d1;
+  margin-top: 2px;
+}
+.qr-price {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* FC endorsement */
+.fc-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.fc-label {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.fc-logo-wrap {
+  position: relative;
+  width: 130px;
+  height: 124px;
+}
+.fc-logo-img {
+  width: 130px;
+  height: 124px;
+  object-fit: contain;
+  display: block;
+}
+.fc-stamp-svg {
+  position: absolute;
+  top: -6%;
+  right: -4%;
+  width: 44%;
+  height: 44%;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     VERSION A — STORM / OVERCAST PHOTO
+═══════════════════════════════════════════ -->
+<div>
+  <div class="version-label">Version A — Overcast / Storm Photo</div>
+  <div class="page">
+    <div class="photo-bg" style="background-image:url('fc-photo-storm.png'); background-position: center 35%;"></div>
+    <div class="overlay" style=""></div>
+    <div class="top-scrim"></div>
+    <div class="content">
+
+      <!-- Logo + tagline -->
+      <div class="logo-area">
+        <div class="logo-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="150 430 720 140" style="display:block;width:320px;height:auto;">
+          <defs>
+            <style>.wa{fill:#fff}.wb{fill:url(#wg1)}.wc{fill:url(#wg2)}.wd{fill:url(#wg3)}.we{fill:url(#wg4)}</style>
+            <linearGradient id="wg1" x1="650.11" y1="442.09" x2="650.11" y2="552.78" gradientTransform="translate(133.97) skewX(-15)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00b6d1"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+            <linearGradient id="wg2" x1="748.57" y1="442.09" x2="748.57" y2="552.78" xlink:href="#wg1"/>
+            <linearGradient id="wg3" x1="799.92" y1="442.09" x2="799.92" y2="552.78" xlink:href="#wg1"/>
+            <linearGradient id="wg4" x1="755.47" y1="442.09" x2="755.47" y2="552.78" xlink:href="#wg1"/>
+          </defs>
+          <path class="wa" d="M566.58,505l-25.94-.24c-6.73-.06-13.13,0-19.68-.41l2.83-9.98c3.96-.52,28.03-.19,37.81-.5l.34-1.16,3.08-11.48-8.18-.14-29.52-.06,2.54-9.12,46.23-.5,3.79-14.13-65.59.04c-1.41,5.27-16.25,60.39-16.25,60.39,1.93.12,3.98.21,6.09.29h58.99l3.48-12.99Z"/>
+          <path class="wa" d="M426.42,518l3.9-14.27,6.92-27.3c3.7,5.16,6.44,10.45,9.62,15.83l14.48,24.44c.41.69.81,1.31.81,1.31h18.25c1.27-.05,2.54-.1,3.83-.16,0,0,15.65-58.56,16.53-60.57l-17.47-.18c-.55,2.64-10.12,37.85-10.98,41.52l-14.05-24.33-9.66-17-22.86-.15-16.65,60.78,3.23.08h14.1Z"/>
+          <path class="wa" d="M260.91,518h47.98l3.74-13.96c-12.78-.01-24.31-.21-37.38-.21,2.72-11.63,11.69-46.69,11.69-46.69l-19.66-.17-15.57,60.99,9.19.05Z"/>
+          <path class="wa" d="M333.01,518l9.12-10.79h36.98s2.66,10.7,2.66,10.7c.45.04.9.06,1.35.1h17.96c.36-.03.72-.05,1.09-.09l-8.02-32.06-6.93-28.56-25.13.03s-46.81,58.31-48.32,60.68h19.24ZM370.59,470.48l6.21,22.72-24.41-.06,18.2-22.67Z"/>
+          <path class="wa" d="M252.95,469.83c1.31-5.27,1.32-10.31.16-14.87-1.29-5.1-6.08-6.62-11.83-6.6l-63.69.21-17.67,65.96-.88,3.38c.78.04,1.56.06,2.34.09h15.18c.67-.02,1.34-.04,2.02-.06l5.42-21.12,42.38-.4c8.65-.08,17.67-3.16,22.04-12.46,2.21-4.68,3.34-9.29,4.54-14.12ZM230.33,476.95c-1.63,3.26-5.04,5.7-8.64,5.67l-33.49-.19s4.12-16.12,5.09-19.74l35.11-.31c7.31-.06,4.19,10.04,1.94,14.56Z"/>
+          <polygon class="wb" points="593.68 442.52 602.47 518.37 623.92 518.37 657.3 468.64 660.91 518.37 682.52 518.37 737.35 442.52 711.73 442.52 678.88 495.99 676.81 442.52 655.14 442.52 621.4 494.13 619.3 442.52 593.68 442.52"/>
+          <polygon class="wc" points="781.59 464.54 762.86 478.25 740.45 442.52 768.9 442.52 781.59 464.54"/>
+          <polygon class="wd" points="820.02 519.16 789.87 519.16 775.07 498.55 795.03 484.82 820.02 519.16"/>
+          <polygon class="we" points="816.57 442.51 816.36 442.53 659.34 557.49 719.72 533.24 851.6 442.51 816.57 442.51"/>
+        </svg>
+        </div><!-- /logo-wrap -->
+        <p class="tagline">The Confidence to Go, or the Courage to Stay.</p>
+      </div><!-- /logo-area -->
+
+      <!-- Text zone — sits in sky above the plane -->
+      <div class="text-zone">
+        <p class="eyebrow">The Pilot's Decision Support System</p>
+        <p class="headline-1">Enjoy the show.</p>
+        <p class="headline-2">We'll watch the weather.</p>
+        <p class="subline">Set your departure from KOSH — PlaneWX watches the forecast all week and tells you when your window opens.</p>
+
+        <div class="bullets">
+          <div class="bullet">
+            <span class="arr">→</span>
+            <span class="bt"><strong>Set KOSH as your home airport.</strong> Get a morning weather update every day of the show.</span>
+          </div>
+          <div class="bullet">
+            <span class="arr">→</span>
+            <span class="bt"><strong>Compare departure day options side by side</strong> — Thursday vs. Friday, with WX scores for every leg.</span>
+          </div>
+          <div class="bullet">
+            <span class="arr">→</span>
+            <span class="bt"><strong>Get email alerts if your window changes.</strong> We watch while you enjoy the show.</span>
+          </div>
+        </div>
+      </div><!-- /text-zone -->
+        <div class="bottom-bar">
+          <!-- QR code -->
+          <div class="qr-block">
+            <div class="qr-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 41 41" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h41v41H0z"/><path stroke="#0f172a" d="M0 0.5h7m1 0h3m1 0h2m2 0h6m1 0h1m1 0h2m1 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m1 0h1m1 0h1m3 0h2m2 0h1m4 0h3m3 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m3 0h2m5 0h3m4 0h2m4 0h1m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m4 0h1m1 0h2m1 0h2m1 0h1m1 0h2m2 0h5m1 0h1m2 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m4 0h7m1 0h1m2 0h1m1 0h3m2 0h3m2 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m1 0h4m3 0h1m1 0h1m3 0h2m1 0h2m1 0h3M0 8.5h1m1 0h2m1 0h3m3 0h1m1 0h2m1 0h7m1 0h1m1 0h1m1 0h5m1 0h1m2 0h1m1 0h2M9 9.5h1m2 0h1m5 0h3m2 0h1m1 0h1m2 0h1m2 0h2m1 0h3m1 0h1m1 0h1M1 10.5h2m3 0h1m4 0h2m2 0h1m1 0h2m3 0h4m3 0h2m2 0h2m3 0h2M1 11.5h1m1 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m2 0h4m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1M3 12.5h1m2 0h1m4 0h2m2 0h3m1 0h2m1 0h1m1 0h6m1 0h2m3 0h3m1 0h1M5 13.5h1m1 0h5m1 0h1m1 0h4m1 0h1m2 0h2m4 0h2m1 0h3m2 0h2m1 0h1M2 14.5h1m1 0h1m1 0h4m1 0h2m1 0h1m1 0h5m1 0h2m1 0h2m2 0h1m1 0h1m2 0h2m3 0h2M0 15.5h1m1 0h4m2 0h2m2 0h5m4 0h3m2 0h2m2 0h1m3 0h2m1 0h1m2 0h1M1 16.5h1m4 0h1m2 0h2m1 0h1m5 0h1m1 0h3m2 0h1m4 0h1m5 0h1m1 0h3M3 17.5h1m1 0h1m6 0h1m2 0h2m3 0h10m2 0h2m1 0h1m2 0h1m1 0h1M1 18.5h1m1 0h1m2 0h1m4 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m4 0h1m1 0h2m1 0h2m2 0h2M2 19.5h3m3 0h2m2 0h1m4 0h2m1 0h2m2 0h1m3 0h2m4 0h2m1 0h3M0 20.5h1m2 0h2m1 0h1m5 0h1m6 0h1m3 0h1m1 0h1m3 0h2m2 0h2m1 0h4M0 21.5h2m6 0h3m2 0h3m3 0h1m3 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h2m2 0h2M2 22.5h3m1 0h1m1 0h1m4 0h2m1 0h3m2 0h4m1 0h1m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1M0 23.5h5m4 0h3m6 0h2m2 0h2m1 0h3m2 0h1m1 0h3m1 0h1m2 0h1M1 24.5h2m1 0h1m1 0h1m2 0h5m2 0h2m2 0h1m1 0h1m2 0h2m1 0h2m8 0h1M0 25.5h2m1 0h3m3 0h3m1 0h3m1 0h1m1 0h2m3 0h1m1 0h7m1 0h1m2 0h2m1 0h1M0 26.5h2m2 0h3m1 0h3m1 0h1m2 0h2m1 0h3m3 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h2M0 27.5h6m2 0h1m6 0h2m1 0h1m2 0h2m3 0h1m1 0h1m1 0h3m1 0h4M2 28.5h1m1 0h4m1 0h2m7 0h8m1 0h1m2 0h2m1 0h1m1 0h3m1 0h2M3 29.5h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h2m1 0h4m2 0h2m2 0h1m1 0h1m5 0h1m1 0h2M0 30.5h1m4 0h2m1 0h2m3 0h2m1 0h2m1 0h1m1 0h2m3 0h1m3 0h1m2 0h5M2 31.5h2m5 0h3m2 0h4m1 0h1m2 0h2m2 0h5m1 0h1m1 0h2m1 0h3M1 32.5h1m2 0h5m1 0h2m3 0h1m1 0h1m3 0h1m2 0h1m1 0h2m1 0h2m1 0h6m1 0h1M8 33.5h5m4 0h1m1 0h4m2 0h1m2 0h1m1 0h3m3 0h2m2 0h1M0 34.5h7m1 0h6m1 0h2m1 0h1m1 0h1m2 0h3m3 0h1m1 0h2m1 0h1m1 0h3M0 35.5h1m5 0h1m1 0h1m1 0h4m2 0h2m1 0h1m4 0h1m2 0h1m3 0h2m3 0h1M0 36.5h1m1 0h3m1 0h1m3 0h2m1 0h2m1 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h5m1 0h1M0 37.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h1m3 0h1m2 0h1m1 0h3m1 0h2m1 0h2m3 0h1m2 0h1M0 38.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h4m1 0h2m1 0h1m3 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h2M0 39.5h1m5 0h1m3 0h1m1 0h2m2 0h1m4 0h4m2 0h2m4 0h1m2 0h2m1 0h1M0 40.5h7m1 0h1m1 0h4m1 0h2m3 0h4m1 0h1m1 0h1m3 0h3m5 0h1"/></svg>
+            </div>
+            <div class="qr-text">
+              <span class="qr-headline">Start your free trial</span>
+              <span class="qr-sub">14 days free · No credit card required</span>
+              <span class="qr-url">www.planewx.ai</span>
+              <span class="qr-price">Pro from $14.99/mo after trial</span>
+            </div>
+          </div>
+
+          <!-- FC Endorsement -->
+          <div class="fc-block">
+            <span class="fc-label">Recommended by</span>
+            <div class="fc-logo-wrap">
+              <img class="fc-logo-img" src="fc-logo-wordmark.png" alt="Flight Chops">
+              <svg class="fc-stamp-svg" viewBox="0 0 300 300" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="150" cy="150" r="128" fill="none" stroke="#00b6d1" stroke-width="10"/>
+                <circle cx="150" cy="150" r="112" fill="none" stroke="#00b6d1" stroke-width="3"/>
+                <circle cx="150" cy="150" r="112" fill="#00b6d1" opacity="0.10"/>
+                <text x="150" y="150" text-anchor="middle" dominant-baseline="central" font-size="220" fill="#00b6d1" font-family="Arial" font-weight="900">✓</text>
+              </svg>
+            </div>
+          </div>
+        </div><!-- /bottom-bar -->
+    </div><!-- /content -->
+  </div><!-- /page -->
+</div>
+
+<!-- ═══════════════════════════════════════════
+     VERSION B — BLUE SKY / "SURFING" PHOTO
+═══════════════════════════════════════════ -->
+<div>
+  <div class="version-label">Version B — Blue Sky Photo</div>
+  <div class="page">
+    <div class="photo-bg" style="background-image:url('fc-photo-bluesky.png'); background-position: center 25%;"></div>
+    <div class="overlay"></div>
+    <div class="top-scrim"></div>
+    <div class="content">
+
+      <!-- Logo + tagline -->
+      <div class="logo-area">
+        <div class="logo-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="150 430 720 140" style="display:block;width:320px;height:auto;">
+          <defs>
+            <linearGradient id="bg1b" x1="650.11" y1="442.09" x2="650.11" y2="552.78" gradientTransform="translate(133.97) skewX(-15)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00b6d1"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+            <linearGradient id="bg2b" x1="748.57" y1="442.09" x2="748.57" y2="552.78" xlink:href="#bg1b"/>
+            <linearGradient id="bg3b" x1="799.92" y1="442.09" x2="799.92" y2="552.78" xlink:href="#bg1b"/>
+            <linearGradient id="bg4b" x1="755.47" y1="442.09" x2="755.47" y2="552.78" xlink:href="#bg1b"/>
+          </defs>
+          <path fill="#fff" d="M566.58,505l-25.94-.24c-6.73-.06-13.13,0-19.68-.41l2.83-9.98c3.96-.52,28.03-.19,37.81-.5l.34-1.16,3.08-11.48-8.18-.14-29.52-.06,2.54-9.12,46.23-.5,3.79-14.13-65.59.04c-1.41,5.27-16.25,60.39-16.25,60.39,1.93.12,3.98.21,6.09.29h58.99l3.48-12.99Z"/>
+          <path fill="#fff" d="M426.42,518l3.9-14.27,6.92-27.3c3.7,5.16,6.44,10.45,9.62,15.83l14.48,24.44c.41.69.81,1.31.81,1.31h18.25c1.27-.05,2.54-.1,3.83-.16,0,0,15.65-58.56,16.53-60.57l-17.47-.18c-.55,2.64-10.12,37.85-10.98,41.52l-14.05-24.33-9.66-17-22.86-.15-16.65,60.78,3.23.08h14.1Z"/>
+          <path fill="#fff" d="M260.91,518h47.98l3.74-13.96c-12.78-.01-24.31-.21-37.38-.21,2.72-11.63,11.69-46.69,11.69-46.69l-19.66-.17-15.57,60.99,9.19.05Z"/>
+          <path fill="#fff" d="M333.01,518l9.12-10.79h36.98s2.66,10.7,2.66,10.7c.45.04.9.06,1.35.1h17.96c.36-.03.72-.05,1.09-.09l-8.02-32.06-6.93-28.56-25.13.03s-46.81,58.31-48.32,60.68h19.24ZM370.59,470.48l6.21,22.72-24.41-.06,18.2-22.67Z"/>
+          <path fill="#fff" d="M252.95,469.83c1.31-5.27,1.32-10.31.16-14.87-1.29-5.1-6.08-6.62-11.83-6.6l-63.69.21-17.67,65.96-.88,3.38c.78.04,1.56.06,2.34.09h15.18c.67-.02,1.34-.04,2.02-.06l5.42-21.12,42.38-.4c8.65-.08,17.67-3.16,22.04-12.46,2.21-4.68,3.34-9.29,4.54-14.12ZM230.33,476.95c-1.63,3.26-5.04,5.7-8.64,5.67l-33.49-.19s4.12-16.12,5.09-19.74l35.11-.31c7.31-.06,4.19,10.04,1.94,14.56Z"/>
+          <polygon fill="url(#bg1b)" points="593.68 442.52 602.47 518.37 623.92 518.37 657.3 468.64 660.91 518.37 682.52 518.37 737.35 442.52 711.73 442.52 678.88 495.99 676.81 442.52 655.14 442.52 621.4 494.13 619.3 442.52 593.68 442.52"/>
+          <polygon fill="url(#bg2b)" points="781.59 464.54 762.86 478.25 740.45 442.52 768.9 442.52 781.59 464.54"/>
+          <polygon fill="url(#bg3b)" points="820.02 519.16 789.87 519.16 775.07 498.55 795.03 484.82 820.02 519.16"/>
+          <polygon fill="url(#bg4b)" points="816.57 442.51 816.36 442.53 659.34 557.49 719.72 533.24 851.6 442.51 816.57 442.51"/>
+        </svg>
+        </div><!-- /logo-wrap -->
+        <p class="tagline">The Confidence to Go, or the Courage to Stay.</p>
+      </div><!-- /logo-area -->
+
+      <!-- Text zone — sits in sky above the plane -->
+      <div class="text-zone">
+        <p class="eyebrow">The Pilot's Decision Support System</p>
+        <p class="headline-1">Enjoy the show.</p>
+        <p class="headline-2">We'll watch the weather.</p>
+        <p class="subline">Set your departure from KOSH — PlaneWX watches the forecast all week and tells you when your window opens.</p>
+
+        <div class="bullets">
+          <div class="bullet">
+            <span class="arr">→</span>
+            <span class="bt"><strong>Set KOSH as your home airport.</strong> Get a morning weather update every day of the show.</span>
+          </div>
+          <div class="bullet">
+            <span class="arr">→</span>
+            <span class="bt"><strong>Compare departure day options side by side</strong> — Thursday vs. Friday, with WX scores for every leg.</span>
+          </div>
+          <div class="bullet">
+            <span class="arr">→</span>
+            <span class="bt"><strong>Get email alerts if your window changes.</strong> We watch while you enjoy the show.</span>
+          </div>
+        </div><!-- /bullets -->
+      </div><!-- /text-zone -->
+
+        <div class="bottom-bar">
+          <div class="qr-block">
+            <div class="qr-box">
+              <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" viewBox="0 0 41 41" shape-rendering="crispEdges"><path fill="#ffffff" d="M0 0h41v41H0z"/><path stroke="#0f172a" d="M0 0.5h7m1 0h3m1 0h2m2 0h6m1 0h1m1 0h2m1 0h1m2 0h2m1 0h7M0 1.5h1m5 0h1m1 0h1m1 0h1m3 0h2m2 0h1m4 0h3m3 0h1m2 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m3 0h2m5 0h3m4 0h2m4 0h1m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m4 0h1m1 0h2m1 0h2m1 0h1m1 0h2m2 0h5m1 0h1m2 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m4 0h7m1 0h1m2 0h1m1 0h3m2 0h3m2 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m1 0h4m3 0h1m1 0h1m3 0h2m1 0h2m1 0h3M0 8.5h1m1 0h2m1 0h3m3 0h1m1 0h2m1 0h7m1 0h1m1 0h1m1 0h5m1 0h1m2 0h1m1 0h2M9 9.5h1m2 0h1m5 0h3m2 0h1m1 0h1m2 0h1m2 0h2m1 0h3m1 0h1m1 0h1M1 10.5h2m3 0h1m4 0h2m2 0h1m1 0h2m3 0h4m3 0h2m2 0h2m3 0h2M1 11.5h1m1 0h1m3 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m2 0h4m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1M3 12.5h1m2 0h1m4 0h2m2 0h3m1 0h2m1 0h1m1 0h6m1 0h2m3 0h3m1 0h1M5 13.5h1m1 0h5m1 0h1m1 0h4m1 0h1m2 0h2m4 0h2m1 0h3m2 0h2m1 0h1M2 14.5h1m1 0h1m1 0h4m1 0h2m1 0h1m1 0h5m1 0h2m1 0h2m2 0h1m1 0h1m2 0h2m3 0h2M0 15.5h1m1 0h4m2 0h2m2 0h5m4 0h3m2 0h2m2 0h1m3 0h2m1 0h1m2 0h1M1 16.5h1m4 0h1m2 0h2m1 0h1m5 0h1m1 0h3m2 0h1m4 0h1m5 0h1m1 0h3M3 17.5h1m1 0h1m6 0h1m2 0h2m3 0h10m2 0h2m1 0h1m2 0h1m1 0h1M1 18.5h1m1 0h1m2 0h1m4 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m4 0h1m1 0h2m1 0h2m2 0h2M2 19.5h3m3 0h2m2 0h1m4 0h2m1 0h2m2 0h1m3 0h2m4 0h2m1 0h3M0 20.5h1m2 0h2m1 0h1m5 0h1m6 0h1m3 0h1m1 0h1m3 0h2m2 0h2m1 0h4M0 21.5h2m6 0h3m2 0h3m3 0h1m3 0h1m2 0h1m1 0h1m1 0h2m1 0h1m1 0h2m2 0h2M2 22.5h3m1 0h1m1 0h1m4 0h2m1 0h3m2 0h4m1 0h1m1 0h1m1 0h1m2 0h1m2 0h2m1 0h1M0 23.5h5m4 0h3m6 0h2m2 0h2m1 0h3m2 0h1m1 0h3m1 0h1m2 0h1M1 24.5h2m1 0h1m1 0h1m2 0h5m2 0h2m2 0h1m1 0h1m2 0h2m1 0h2m8 0h1M0 25.5h2m1 0h3m3 0h3m1 0h3m1 0h1m1 0h2m3 0h1m1 0h7m1 0h1m2 0h2m1 0h1M0 26.5h2m2 0h3m1 0h3m1 0h1m2 0h2m1 0h3m3 0h3m1 0h1m1 0h3m1 0h1m2 0h1m1 0h2M0 27.5h6m2 0h1m6 0h2m1 0h1m2 0h2m3 0h1m1 0h1m1 0h3m1 0h4M2 28.5h1m1 0h4m1 0h2m7 0h8m1 0h1m2 0h2m1 0h1m1 0h3m1 0h2M3 29.5h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h2m1 0h4m2 0h2m2 0h1m1 0h1m5 0h1m1 0h2M0 30.5h1m4 0h2m1 0h2m3 0h2m1 0h2m1 0h1m1 0h2m3 0h1m3 0h1m2 0h5M2 31.5h2m5 0h3m2 0h4m1 0h1m2 0h2m2 0h5m1 0h1m1 0h2m1 0h3M1 32.5h1m2 0h5m1 0h2m3 0h1m1 0h1m3 0h1m2 0h1m1 0h2m1 0h2m1 0h6m1 0h1M8 33.5h5m4 0h1m1 0h4m2 0h1m2 0h1m1 0h3m3 0h2m2 0h1M0 34.5h7m1 0h6m1 0h2m1 0h1m1 0h1m2 0h3m3 0h1m1 0h2m1 0h1m1 0h3M0 35.5h1m5 0h1m1 0h1m1 0h4m2 0h2m1 0h1m4 0h1m2 0h1m3 0h2m3 0h1M0 36.5h1m1 0h3m1 0h1m3 0h2m1 0h2m1 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h5m1 0h1M0 37.5h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h1m3 0h1m2 0h1m1 0h3m1 0h2m1 0h2m3 0h1m2 0h1M0 38.5h1m1 0h3m1 0h1m1 0h1m2 0h1m2 0h4m1 0h2m1 0h1m3 0h1m2 0h2m1 0h1m2 0h1m1 0h1m1 0h2M0 39.5h1m5 0h1m3 0h1m1 0h2m2 0h1m4 0h4m2 0h2m4 0h1m2 0h2m1 0h1M0 40.5h7m1 0h1m1 0h4m1 0h2m3 0h4m1 0h1m1 0h1m3 0h3m5 0h1"/></svg>
+            </div>
+            <div class="qr-text">
+              <span class="qr-headline">Start your free trial</span>
+              <span class="qr-sub">14 days free · No credit card required</span>
+              <span class="qr-url">www.planewx.ai</span>
+              <span class="qr-price">Pro from $14.99/mo after trial</span>
+            </div>
+          </div>
+
+          <div class="fc-block">
+            <span class="fc-label">Recommended by</span>
+            <div class="fc-logo-wrap">
+              <img class="fc-logo-img" src="fc-logo-wordmark.png" alt="Flight Chops">
+              <svg class="fc-stamp-svg" viewBox="0 0 300 300" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="150" cy="150" r="128" fill="none" stroke="#00b6d1" stroke-width="10"/>
+                <circle cx="150" cy="150" r="112" fill="none" stroke="#00b6d1" stroke-width="3"/>
+                <circle cx="150" cy="150" r="112" fill="#00b6d1" opacity="0.10"/>
+                <text x="150" y="150" text-anchor="middle" dominant-baseline="central" font-size="220" fill="#00b6d1" font-family="Arial" font-weight="900">✓</text>
+              </svg>
+            </div>
+          </div>
+        </div><!-- /bottom-bar -->
+    </div><!-- /content -->
+  </div><!-- /page -->
+</div>
+
+</body>
+</html>
