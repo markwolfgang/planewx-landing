@@ -38,11 +38,29 @@ export function LandingPageV3() {
   useEffect(() => {
     const refParam = searchParams.get("ref")
     if (refParam) {
-      localStorage.setItem("planewx_referral", refParam.toUpperCase())
-      setReferralCode(refParam.toUpperCase())
+      const code = refParam.toUpperCase()
+      try {
+        localStorage.setItem("planewx_referral", code)
+      } catch {}
+      setReferralCode(code)
+
+      // Fire one anonymous visit event per browser session per campaign code.
+      const sessionKey = `planewx_visit_fired_${code}`
+      try {
+        if (!sessionStorage.getItem(sessionKey)) {
+          sessionStorage.setItem(sessionKey, "1")
+          fetch("/api/campaign-visit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code, lp: "v3" }),
+          }).catch(() => {})
+        }
+      } catch {}
     } else {
-      const storedRef = localStorage.getItem("planewx_referral")
-      if (storedRef) setReferralCode(storedRef)
+      try {
+        const storedRef = localStorage.getItem("planewx_referral")
+        if (storedRef) setReferralCode(storedRef)
+      } catch {}
     }
   }, [searchParams])
 
