@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PlaneWX — FBO Postcard Creative Package</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #fff;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  padding: 48px 48px 80px;
+  min-width: 760px;
+}
+h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em; margin-bottom: 6px; }
+.subtitle { font-size: 13px; color: #64748b; margin-bottom: 8px; }
+
+.page-header { padding: 0 0 32px; margin-bottom: 40px; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.page-header-text .subtitle { color: #64748b; margin-bottom: 0; }
+.page-header-text .contact { font-size: 12px; color: #475569; margin-top: 10px; }
+.page-header-text .contact a { color: #00b6d1; text-decoration: none; }
+
+.instructions { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px 28px; margin-bottom: 48px; }
+.instructions h2 { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.06em; }
+.instructions ol { padding-left: 18px; }
+.instructions li { font-size: 12px; color: #475569; line-height: 1.7; }
+.instructions li strong { color: #0f172a; }
+
+/* Section header */
+.section-header {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #94a3b8;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Ad card */
+.ad-card { background: none; border: none; overflow: visible; margin-bottom: 48px; border-bottom: 1px solid #e2e8f0; padding-bottom: 32px; border-top: 3px solid #00b6d1; }
+.ad-card-header { display: flex; align-items: center; gap: 16px; padding: 10px 0 14px; flex-wrap: wrap; }
+.ad-card-meta { flex: 1; min-width: 0; }
+.ad-card-title { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 3px; }
+.ad-card-specs { font-size: 11px; color: #94a3b8; }
+.due-badge { display: inline-flex; align-items: center; gap: 5px; padding: 5px 13px; border-radius: 20px; font-size: 11px; font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+.card-dl-btn { display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(135deg,#00b6d1 0%,#2563eb 100%); color: #fff; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; padding: 9px 18px; border-radius: 7px; text-decoration: none; white-space: nowrap; flex-shrink: 0; letter-spacing: -0.01em; }
+
+/* Card body */
+.ad-card-body { display: flex; align-items: stretch; }
+.ad-creative-col { display: flex; align-items: flex-start; justify-content: center; padding: 0 28px 0 0; flex-shrink: 0; }
+.ad-info-col { flex: 1; min-width: 280px; padding: 0 0 0 32px; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px; border-left: 1px solid #e2e8f0; }
+.info-section { display: flex; flex-direction: column; }
+.info-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #94a3b8; margin-bottom: 6px; }
+.info-value { font-size: 12px; color: #475569; line-height: 1.5; }
+.info-divider { height: 1px; background: #f1f5f9; }
+
+.bleed-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 10px 14px; font-size: 10.5px; color: #92400e; line-height: 1.6; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-header-text">
+    <h1>PlaneWX — FBO Postcard</h1>
+    <p class="subtitle">4" × 6" two-sided print · In-person distribution at FBOs</p>
+    <p class="contact">Questions? <a href="mailto:mark@planewx.ai">mark@planewx.ai</a></p>
+  </div>
+  <!-- PlaneWX wordmark -->
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="150 430 720 140" style="display:block;width:200px;height:auto;flex-shrink:0;">
+    <defs>
+      <linearGradient id="pg1" x1="650.11" y1="442.09" x2="650.11" y2="552.78" gradientTransform="translate(133.97) skewX(-15)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00b6d1"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+      <linearGradient id="pg2" x1="748.57" y1="442.09" x2="748.57" y2="552.78" xlink:href="#pg1"/>
+      <linearGradient id="pg3" x1="799.92" y1="442.09" x2="799.92" y2="552.78" xlink:href="#pg1"/>
+      <linearGradient id="pg4" x1="755.47" y1="442.09" x2="755.47" y2="552.78" xlink:href="#pg1"/>
+    </defs>
+    <path fill="#0f172a" d="M566.58,505l-25.94-.24c-6.73-.06-13.13,0-19.68-.41l2.83-9.98c3.96-.52,28.03-.19,37.81-.5l.34-1.16,3.08-11.48-8.18-.14-29.52-.06,2.54-9.12,46.23-.5,3.79-14.13-65.59.04c-1.41,5.27-16.25,60.39-16.25,60.39,1.93.12,3.98.21,6.09.29h58.99l3.48-12.99Z"/>
+    <path fill="#0f172a" d="M426.42,518l3.9-14.27,6.92-27.3c3.7,5.16,6.44,10.45,9.62,15.83l14.48,24.44c.41.69.81,1.31.81,1.31h18.25c1.27-.05,2.54-.1,3.83-.16,0,0,15.65-58.56,16.53-60.57l-17.47-.18c-.55,2.64-10.12,37.85-10.98,41.52l-14.05-24.33-9.66-17-22.86-.15-16.65,60.78,3.23.08h14.1Z"/>
+    <path fill="#0f172a" d="M260.91,518h47.98l3.74-13.96c-12.78-.01-24.31-.21-37.38-.21,2.72-11.63,11.69-46.69,11.69-46.69l-19.66-.17-15.57,60.99,9.19.05Z"/>
+    <path fill="#0f172a" d="M333.01,518l9.12-10.79h36.98s2.66,10.7,2.66,10.7c.45.04.9.06,1.35.1h17.96c.36-.03.72-.05,1.09-.09l-8.02-32.06-6.93-28.56-25.13.03s-46.81,58.31-48.32,60.68h19.24ZM370.59,470.48l6.21,22.72-24.41-.06,18.2-22.67Z"/>
+    <path fill="#0f172a" d="M252.95,469.83c1.31-5.27,1.32-10.31.16-14.87-1.29-5.1-6.08-6.62-11.83-6.6l-63.69.21-17.67,65.96-.88,3.38c.78.04,1.56.06,2.34.09h15.18c.67-.02,1.34-.04,2.02-.06l5.42-21.12,42.38-.4c8.65-.08,17.67-3.16,22.04-12.46,2.21-4.68,3.34-9.29,4.54-14.12ZM230.33,476.95c-1.63,3.26-5.04,5.7-8.64,5.67l-33.49-.19s4.12-16.12,5.09-19.74l35.11-.31c7.31-.06,4.19,10.04,1.94,14.56Z"/>
+    <polygon fill="url(#pg1)" points="593.68 442.52 602.47 518.37 623.92 518.37 657.3 468.64 660.91 518.37 682.52 518.37 737.35 442.52 711.73 442.52 678.88 495.99 676.81 442.52 655.14 442.52 621.4 494.13 619.3 442.52 593.68 442.52"/>
+    <polygon fill="url(#pg2)" points="781.59 464.54 762.86 478.25 740.45 442.52 768.9 442.52 781.59 464.54"/>
+    <polygon fill="url(#pg3)" points="820.02 519.16 789.87 519.16 775.07 498.55 795.03 484.82 820.02 519.16"/>
+    <polygon fill="url(#pg4)" points="816.57 442.51 816.36 442.53 659.34 557.49 719.72 533.24 851.6 442.51 816.57 442.51"/>
+  </svg>
+</div>
+
+<!-- Instructions -->
+<div class="instructions">
+  <h2>Print Instructions</h2>
+  <ol>
+    <li>Download the <strong>PDF (Print)</strong> for each side — PDFs include bleed and crop marks and are preferred by most print vendors.</li>
+    <li>Upload both front and back PDFs to your print vendor (e.g. UPrinting, Moo, Vistaprint).</li>
+    <li><strong>Specify: 4" × 6" postcard · Full bleed · 300 DPI · CMYK (vendor will convert from RGB — approve the digital proof before printing).</strong></li>
+    <li>The QR code on the back tracks signups via <code>planewx.ai?ref=FBO</code>.</li>
+  </ol>
+</div>
+
+<!-- ── POSTCARD FRONT ── -->
+<p class="section-header">FBO In-Person Postcard</p>
+
+<div class="ad-card">
+  <div class="ad-card-header">
+    <div class="ad-card-meta">
+      <div class="ad-card-title">Postcard — Front</div>
+      <div class="ad-card-specs">4" × 6" portrait · 0.125" bleed · 300 DPI · Print-ready</div>
+    </div>
+    <span class="due-badge" style="background:rgba(34,197,94,0.15);color:#22c55e;border-color:rgba(34,197,94,0.3);border:1px solid;">✓ Final</span>
+    <a class="card-dl-btn" href="planewx-fbo-postcard-front.pdf" download>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      PDF (Print)
+    </a>
+    <a class="card-dl-btn" href="planewx-fbo-postcard-front.jpg" download
+       style="background:linear-gradient(135deg,#475569 0%,#1e293b 100%);">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      JPEG
+    </a>
+  </div>
+  <div class="ad-card-body">
+    <div class="ad-creative-col">
+      <img src="planewx-fbo-postcard-front.jpg" alt="FBO Postcard Front" style="max-height:340px;width:auto;border-radius:4px;display:block;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+    </div>
+    <div class="ad-info-col">
+      <div class="info-section">
+        <div class="info-label">Headline</div>
+        <div class="info-value">"You fly. We watch the weather."</div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-section">
+        <div class="info-label">Tagline</div>
+        <div class="info-value">"The confidence to go, or the courage to stay."™</div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-section">
+        <div class="info-label">Dimensions</div>
+        <div class="info-value">4" × 6" portrait trim · 4.25" × 6.25" with bleed<br>1275 × 1875 px @ 300 DPI</div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-section">
+        <div class="info-label">Endorsement</div>
+        <div class="info-value">Flight Chops — Recommended by badge (top right)</div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-section">
+        <div class="info-label">Call to Action</div>
+        <div class="info-value">14-day free trial · No credit card required · www.planewx.ai</div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-section">
+        <div class="info-label">Print Notes</div>
+        <div class="info-value">
+          <div class="bleed-note">Crop marks embedded in artwork. File is RGB — print vendor will convert to CMYK. Approve digital proof before final print run.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── POSTCARD BACK ── -->
+<div class="ad-card">
+  <div class="ad-card-header">
+    <div class="ad-card-meta">
+      <div class="ad-card-title">Postcard — Back</div>
+      <div class="ad-card-specs">4" × 6" portrait · 0.125" bleed · 300 DPI · Print-ready</div>
+    </div>
+    <span class="due-badge" style="background:rgba(34,197,94,0.15);color:#22c55e;border-color:rgba(34,197,94,0.3);border:1px solid;">✓ Final</span>
+    <a class="card-dl-btn" href="planewx-fbo-postcard-back.pdf" download>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      PDF (Print)
+    </a>
+    <a class="card-dl-btn" href="planewx-fbo-postcard-back.jpg" download
+       style="background:linear-gradient(135deg,#475569 0%,#1e293b 100%);">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      JPEG
+    </a>
+  </div>
+  <div class="ad-card-body">
+    <div class="ad-creative-col">
+      <img src="planewx-fbo-postcard-back.jpg" alt="FBO Postcard Back" style="max-height:340px;width:auto;border-radius:4px;display:block;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+    </div>
+    <div class="ad-info-col">
+      <div class="info-section">
+        <div class="info-label">Headline</div>
+        <div class="info-value">"Your first briefing in under 5 minutes."</div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-section">
+        <div class="info-label">Body Copy</div>
+        <div class="info-value">Sign up, configure your aircraft and personal minimums — then brief any flight in seconds.</div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-section">
+        <div class="info-label">Features</div>
+        <div class="info-value">WX Score for every leg · Email alerts when your score changes</div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-section">
+        <div class="info-label">Call to Action</div>
+        <div class="info-value">Free 14-Day Trial · No credit card required · Pro from $14.99/mo</div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-section">
+        <div class="info-label">Tracking</div>
+        <div class="info-value">QR code → <strong>planewx.ai?ref=FBO</strong><br>UTM: source=fbo · medium=print · campaign=fbo-postcard-2026</div>
+      </div>
+      <div class="info-divider"></div>
+      <div class="info-section">
+        <div class="info-label">Dimensions</div>
+        <div class="info-value">4" × 6" portrait trim · 4.25" × 6.25" with bleed<br>1275 × 1875 px @ 300 DPI · Crop marks included</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
