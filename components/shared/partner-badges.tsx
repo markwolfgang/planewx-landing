@@ -14,9 +14,9 @@ export function PartnerBadges() {
             <Image
               src="/logos/eaa-proud-supporter.png"
               alt="Proud Supporter of EAA AirVenture"
-              width={80}
-              height={80}
-              className="w-16 h-16 sm:w-20 sm:h-20 opacity-90 hover:opacity-100 transition-opacity"
+              width={112}
+              height={112}
+              className="w-24 h-24 sm:w-28 sm:h-28 opacity-90 hover:opacity-100 transition-opacity"
             />
           </div>
         </div>
