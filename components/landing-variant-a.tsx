@@ -25,6 +25,7 @@ import {
   SiteFooter,
   VariantTracker,
   FlightChopsEndorsement,
+  PartnerBadges,
   SignUpButton,
   FounderImageModal,
   STATS,
@@ -156,6 +157,7 @@ export function LandingVariantA() {
 
       {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
       <FlightChopsEndorsement />
+      <PartnerBadges />
 
 
       {/* STATS BAR */}

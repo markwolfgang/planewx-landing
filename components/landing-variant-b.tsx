@@ -21,6 +21,7 @@ import {
   SiteFooter,
   VariantTracker,
   FlightChopsEndorsement,
+  PartnerBadges,
   FounderImageModal,
   SignUpButton,
   STATS,
@@ -139,6 +140,7 @@ export function LandingVariantB() {
 
       {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
       <FlightChopsEndorsement />
+      <PartnerBadges />
 
 
       {/* THE PATTERN THAT KILLS */}

@@ -20,6 +20,7 @@ import {
   SiteFooter,
   VariantTracker,
   FlightChopsEndorsement,
+  PartnerBadges,
   SignUpButton,
   FounderImageModal,
   STATS,
@@ -136,6 +137,7 @@ export function LandingVariantC() {
 
       {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
       <FlightChopsEndorsement />
+      <PartnerBadges />
 
 
       {/* FEATURED TESTIMONIAL — Clark */}

@@ -8,6 +8,7 @@ import { BrandLogo } from "@/components/shared/brand-logo"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { STATS, TESTIMONIALS, FAQS } from "@/components/shared/landing-data"
 import { FlightChopsEndorsement } from "@/components/shared/flight-chops-endorsement"
+import { PartnerBadges } from "@/components/shared/partner-badges"
 import {
   ArrowRight,
   Check,
@@ -213,6 +214,7 @@ export function LandingPageV3() {
 
       {/* ── FLIGHT CHOPS ENDORSEMENT ────────────────────────────────────────────── */}
       <FlightChopsEndorsement />
+      <PartnerBadges />
 
       {/* ── THE PROBLEM WITH EVERY OTHER TOOL ─────────────────────────────────── */}
       <section className="relative py-16 sm:py-24 px-4">

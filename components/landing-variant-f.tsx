@@ -7,6 +7,7 @@ import {
   SiteFooter,
   VariantTracker,
   FlightChopsEndorsement,
+  PartnerBadges,
   SignUpButton,
   STATS,
   TESTIMONIALS,
@@ -184,6 +185,7 @@ export function LandingVariantF() {
 
       {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
       <FlightChopsEndorsement />
+      <PartnerBadges />
 
 
       {/* ── Problem Section ───────────────────────────────────────────────── */}

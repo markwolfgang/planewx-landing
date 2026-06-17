@@ -18,6 +18,7 @@ import {
   SiteFooter,
   VariantTracker,
   FlightChopsEndorsement,
+  PartnerBadges,
   SignUpButton,
   FounderImageModal,
   STATS,
@@ -177,6 +178,7 @@ export function LandingVariantD() {
 
       {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
       <FlightChopsEndorsement />
+      <PartnerBadges />
 
 
       {/* YOUTUBE */}
