@@ -7,6 +7,7 @@ import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { STATS, TESTIMONIALS, FAQS } from "@/components/shared/landing-data"
+import { FlightChopsEndorsement } from "@/components/shared/flight-chops-endorsement"
 import {
   ArrowRight,
   Check,
@@ -209,6 +210,9 @@ export function LandingPageV3() {
           </p>
         </div>
       </section>
+
+      {/* ── FLIGHT CHOPS ENDORSEMENT ────────────────────────────────────────────── */}
+      <FlightChopsEndorsement />
 
       {/* ── THE PROBLEM WITH EVERY OTHER TOOL ─────────────────────────────────── */}
       <section className="relative py-16 sm:py-24 px-4">

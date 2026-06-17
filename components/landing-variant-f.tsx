@@ -6,6 +6,7 @@ import {
   FaqSection,
   SiteFooter,
   VariantTracker,
+  FlightChopsEndorsement,
   SignUpButton,
   STATS,
   TESTIMONIALS,
@@ -180,6 +181,10 @@ export function LandingVariantF() {
           </div>
         </div>
       </section>
+
+      {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
+      <FlightChopsEndorsement />
+
 
       {/* ── Problem Section ───────────────────────────────────────────────── */}
       <section className="py-24 px-6 border-t border-white/5">

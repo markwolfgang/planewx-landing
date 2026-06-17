@@ -8,6 +8,7 @@ import {
   FooterCTA,
   SiteFooter,
   VariantTracker,
+  FlightChopsEndorsement,
   SignUpButton,
   STATS,
   TESTIMONIALS,
@@ -134,6 +135,10 @@ export function LandingVariantE() {
           </div>
         </div>
       </section>
+
+      {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
+      <FlightChopsEndorsement />
+
 
       {/* ── The Story ────────────────────────────────────────────────────── */}
       <section id="story" className="py-24 px-6 border-t border-white/5">

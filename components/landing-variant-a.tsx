@@ -24,6 +24,7 @@ import {
   FooterCTA,
   SiteFooter,
   VariantTracker,
+  FlightChopsEndorsement,
   SignUpButton,
   FounderImageModal,
   STATS,
@@ -152,6 +153,10 @@ export function LandingVariantA() {
           </div>
         </div>
       </section>
+
+      {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
+      <FlightChopsEndorsement />
+
 
       {/* STATS BAR */}
       <section className="relative py-12 px-4 border-y border-white/5 bg-white/[0.02]">

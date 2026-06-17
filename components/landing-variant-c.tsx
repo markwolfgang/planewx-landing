@@ -19,6 +19,7 @@ import {
   FooterCTA,
   SiteFooter,
   VariantTracker,
+  FlightChopsEndorsement,
   SignUpButton,
   FounderImageModal,
   STATS,
@@ -132,6 +133,10 @@ export function LandingVariantC() {
           <p className="text-sm text-white/30">No credit card required · Cancel anytime</p>
         </div>
       </section>
+
+      {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
+      <FlightChopsEndorsement />
+
 
       {/* FEATURED TESTIMONIAL — Clark */}
       <section className="relative py-16 px-4">

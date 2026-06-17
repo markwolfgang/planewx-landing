@@ -20,6 +20,7 @@ import {
   FooterCTA,
   SiteFooter,
   VariantTracker,
+  FlightChopsEndorsement,
   FounderImageModal,
   SignUpButton,
   STATS,
@@ -135,6 +136,10 @@ export function LandingVariantB() {
           </p>
         </div>
       </section>
+
+      {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
+      <FlightChopsEndorsement />
+
 
       {/* THE PATTERN THAT KILLS */}
       <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-rose-950/20 to-transparent">
