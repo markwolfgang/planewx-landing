@@ -65,6 +65,14 @@ export const FAQS = [
   },
   {
     q: "Is there a free plan?",
-    a: "Yes. The free plan includes 2 active flights, full WX Score breakdowns, personal minimums, PAVE risk assessment, 14-day planning, and the ability to broadcast a help request to volunteer mentors. The Pro plan adds auto-refresh, email alerts, Trip Watchers, Corridor Watch, Multi-City Optimizer, and mentor directory access.",
+    a: "Yes. The free plan includes 2 active flights, full WX Score breakdowns, personal minimums, PAVE risk assessment, 14-day planning, and the ability to broadcast a help request to volunteer mentors. Every paid plan uses the identical AI engine — limits are on quantity, not quality.",
+  },
+  {
+    q: "What's the difference between Casual and Pro?",
+    a: "Casual ($7.99/mo or $59.99/yr) is for pilots who fly a few times a month and want PlaneWX to watch the weather automatically: auto-refresh, email alerts, Flight Window Explorer, and Trip Watchers. Pro ($14.99/mo or $119/yr) adds route-scale tools for frequent flyers: Corridor Watch, Multi-City Optimizer (up to 6 destinations), and the ability to browse and connect directly with mentors.",
+  },
+  {
+    q: "What happens after the 14-day free trial?",
+    a: "Your trial gives you full Pro access with no credit card required. After 14 days you choose: stay on the free plan at no cost, subscribe to Casual for $7.99/month for auto-monitoring, or subscribe to Pro for the full toolkit. There's no pressure — the free plan is genuinely useful and never expires.",
   },
 ]

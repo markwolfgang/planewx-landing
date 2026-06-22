@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Check, Crown, Minus, Shield } from "lucide-react"
+import { Check, Crown, Minus, Shield, Zap } from "lucide-react"
 
 export function PricingSection({ variant }: { variant: string }) {
   const baseUrl = `https://app.planewx.ai?lp=${variant}`
@@ -29,13 +29,15 @@ export function PricingSection({ variant }: { variant: string }) {
 
   return (
     <section id="pricing" className="relative py-24 px-4">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-14">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Start with full Pro access.{" "}
             <span className="text-sky-400">Free for 14 days.</span>
           </h2>
-          <p className="text-white/50">No credit card required. Cancel anytime.</p>
+          <p className="text-white/50">
+            No credit card required. After your trial, choose the plan that fits how you fly.
+          </p>
         </div>
 
         <div className="max-w-2xl mx-auto text-center mb-10 p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
@@ -44,16 +46,19 @@ export function PricingSection({ variant }: { variant: string }) {
             Safety is not a premium feature.
           </h3>
           <p className="text-white/60 text-sm leading-relaxed">
-            Every free briefing uses the same AI engine, the same weather models, and the same
-            scoring methodology as a Pro briefing. We limit how much you can use PlaneWX,
-            not how well it works. Paid plans unlock convenience and scale &mdash; not the
-            quality of the analysis that keeps you safe.
+            Every briefing — free, Casual, or Pro — uses the same AI engine, the same weather
+            models, and the same scoring methodology. We limit how much you can use PlaneWX,
+            not how well it works. Paid plans unlock{" "}
+            <span className="text-teal-300 font-medium">automation</span> and{" "}
+            <span className="text-sky-300 font-medium">scale</span> &mdash; not the quality of
+            the analysis that keeps you safe.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-          {/* Free */}
-          <div className="p-8 rounded-3xl bg-white/[0.03] border border-white/10">
+        <div className="grid md:grid-cols-3 gap-6 items-start">
+
+          {/* ── Free ── */}
+          <div className="p-7 rounded-3xl bg-white/[0.03] border border-white/10">
             <h3 className="text-xl font-bold mb-1">Free</h3>
             <p className="text-white/40 text-sm mb-4">For students and occasional flyers</p>
             <div className="px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 mb-6">
@@ -67,7 +72,7 @@ export function PricingSection({ variant }: { variant: string }) {
             </div>
             <a
               href={appUrl}
-              className="block text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors mb-8 font-medium"
+              className="block text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors mb-8 font-medium text-sm"
             >
               Get Started
             </a>
@@ -80,6 +85,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 "PAVE Risk Assessment",
                 "14-day planning horizon",
                 "Synoptic Intelligence™",
+                "Visual Briefing",
                 "Need Help Now — mentor broadcast",
               ].map((f, i) => (
                 <div key={i} className="flex items-center gap-3">
@@ -98,16 +104,73 @@ export function PricingSection({ variant }: { variant: string }) {
             </div>
           </div>
 
-          {/* Pro */}
-          <div className="relative p-8 rounded-3xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border-2 border-sky-500/40 shadow-xl shadow-sky-500/10">
+          {/* ── Casual ── Most Popular ── */}
+          <div className="relative p-7 rounded-3xl bg-gradient-to-br from-teal-950/60 to-emerald-950/40 border-2 border-teal-500/40 shadow-xl shadow-teal-500/10">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-              <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-sky-500 text-white text-xs font-semibold">
-                <Crown className="h-3 w-3" />
+              <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-teal-500 text-white text-xs font-semibold">
+                <Zap className="h-3 w-3" />
                 Most Popular
               </div>
             </div>
+            <h3 className="text-xl font-bold mb-1">Casual</h3>
+            <p className="text-white/40 text-sm mb-6">
+              Auto-monitoring for pilots who fly a few times a month
+            </p>
+            <div className="mb-2">
+              <span className="text-5xl font-bold">$7.99</span>
+              <span className="text-white/30 ml-2">/month</span>
+            </div>
+            <p className="text-sm text-teal-400 mb-6">
+              or $59.99/year{" "}
+              <span className="text-emerald-400 font-medium">(save 37%)</span>
+            </p>
+            <a
+              href={appUrl}
+              className="block text-center py-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white font-semibold transition-colors mb-8 shadow-lg shadow-teal-500/25 text-sm"
+            >
+              Start 14-Day Free Trial
+            </a>
+            <div className="space-y-3 text-sm">
+              <p className="text-xs text-white/30 uppercase tracking-wider font-medium mb-4">
+                Everything in Free, plus
+              </p>
+              {[
+                ["10 active flights", false],
+                ["5 auto-monitored trips", false],
+                ["3 aircraft profiles", false],
+                ["Auto-refresh — briefings update automatically", true],
+                ["Email alerts — weather changes to your inbox", true],
+                ["Flight Window Explorer", true],
+                ["Trip Watchers — share live trip status", true],
+              ].map(([f, bold], i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <Check className="h-4 w-4 text-teal-400 shrink-0" />
+                  <span className={bold ? "text-white" : "text-white/70"}>{f as string}</span>
+                </div>
+              ))}
+              <div className="pt-3 border-t border-white/5 space-y-3">
+                {["Corridor Watch", "Multi-City Optimizer", "Browse Mentors"].map((f, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <Minus className="h-4 w-4 text-white/20 shrink-0" />
+                    <span className="text-white/25">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── Pro ── */}
+          <div className="relative p-7 rounded-3xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border border-sky-500/30">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+              <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-sky-900/80 border border-sky-500/40 text-sky-300 text-xs font-semibold">
+                <Crown className="h-3 w-3" />
+                Full Toolkit
+              </div>
+            </div>
             <h3 className="text-xl font-bold mb-1">Pro</h3>
-            <p className="text-white/40 text-sm mb-6">For active GA pilots</p>
+            <p className="text-white/40 text-sm mb-6">
+              Weekly flying, multi-leg routes, and mentor access
+            </p>
             <div className="mb-2">
               <span className="text-5xl font-bold">$14.99</span>
               <span className="text-white/30 ml-2">/month</span>
@@ -118,18 +181,18 @@ export function PricingSection({ variant }: { variant: string }) {
             </p>
             <a
               href={appUrl}
-              className="block text-center py-3 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white font-semibold transition-colors mb-8 shadow-lg shadow-sky-500/25"
+              className="block text-center py-3 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white font-semibold transition-colors mb-8 shadow-lg shadow-sky-500/25 text-sm"
             >
               Start 14-Day Free Trial
             </a>
             <div className="space-y-3 text-sm">
-              <p className="text-xs text-white/30 uppercase tracking-wider font-medium mb-4">Everything in Free, plus</p>
+              <p className="text-xs text-white/30 uppercase tracking-wider font-medium mb-4">
+                Everything in Casual, plus
+              </p>
               {[
-                ["10 active flights", false],
+                ["25+ active flights", false],
+                ["10 auto-monitored trips", false],
                 ["5 aircraft profiles", false],
-                ["Auto-refresh — briefings update automatically", true],
-                ["Email alerts — weather changes to your inbox", true],
-                ["Trip Watchers — share live trip status", true],
                 ["Corridor Watch — route-specific monitoring", true],
                 ["Multi-City Optimizer — up to 6 destinations", true],
                 ["Browse Mentors — find and connect directly", true],
@@ -141,6 +204,7 @@ export function PricingSection({ variant }: { variant: string }) {
               ))}
             </div>
           </div>
+
         </div>
 
         <p className="text-center text-xs text-white/30 mt-8">

@@ -51,7 +51,7 @@ export function FooterCTA({ variant }: { variant: string }) {
           </div>
           <div className="flex items-center gap-2">
             <Check className="h-4 w-4 text-emerald-400" />
-            Cancel anytime
+            Then choose: Free, Casual, or Pro
           </div>
         </div>
       </div>
