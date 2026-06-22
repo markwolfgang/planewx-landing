@@ -85,6 +85,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 "PAVE Risk Assessment",
                 "14-day planning horizon",
                 "Synoptic Intelligence™",
+                "Visual Briefing",
                 "Need Help Now — mentor broadcast",
               ].map((f, i) => (
                 <div key={i} className="flex items-center gap-3">
@@ -141,7 +142,6 @@ export function PricingSection({ variant }: { variant: string }) {
                 ["Email alerts — weather changes to your inbox", true],
                 ["Flight Window Explorer", true],
                 ["Trip Watchers — share live trip status", true],
-                ["Visual Briefing view", false],
               ].map(([f, bold], i) => (
                 <div key={i} className="flex items-center gap-3">
                   <Check className="h-4 w-4 text-teal-400 shrink-0" />

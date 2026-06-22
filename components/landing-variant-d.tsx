@@ -56,6 +56,7 @@ const SAME_ROWS = [
   "Alternate departures",
   "Raw data",
   "14-day planning",
+  "Visual Briefing",
 ]
 
 const DIFF_ROWS: [string, string, string, string][] = [
@@ -63,7 +64,6 @@ const DIFF_ROWS: [string, string, string, string][] = [
   ["Email alerts", "\u2014", "\u2713", "\u2713"],
   ["Trip Watchers", "\u2014", "4 per flight", "Unlimited"],
   ["Flight Window Explorer", "\u2014", "\u2713", "\u2713"],
-  ["Visual Briefing", "\u2014", "\u2713", "\u2713"],
   ["Corridor Watch", "\u2014", "\u2014", "\u2713"],
   ["Multi-City Optimizer", "\u2014", "\u2014", "\u2713"],
   ["Browse Mentors", "Broadcast only", "Broadcast only", "Browse + select"],
@@ -240,7 +240,8 @@ export function LandingVariantD() {
             </p>
           </div>
 
-          <div className="rounded-2xl overflow-hidden border border-white/10">
+          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="rounded-2xl overflow-hidden border border-white/10 min-w-[560px]">
             {/* Header */}
             <div className="grid grid-cols-4">
               <div className="bg-white/[0.03] border-b border-r border-white/10 px-5 py-4">
@@ -346,6 +347,7 @@ export function LandingVariantD() {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </section>
