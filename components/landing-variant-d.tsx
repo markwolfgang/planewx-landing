@@ -9,6 +9,7 @@ import {
   GraduationCap,
   Calendar,
   Search,
+  Zap,
 } from "lucide-react"
 import {
   YouTubeSection,
@@ -57,19 +58,22 @@ const SAME_ROWS = [
   "14-day planning",
 ]
 
-const DIFF_ROWS: [string, string, string][] = [
-  ["Auto-refresh", "Manual only", "Automatic"],
-  ["Email alerts", "\u2014", "\u2713"],
-  ["Trip Watchers", "\u2014", "\u2713"],
-  ["Corridor Watch", "\u2014", "\u2713"],
-  ["Multi-City Optimizer", "\u2014", "\u2713"],
-  ["Browse Mentors", "Broadcast", "Browse + select"],
+const DIFF_ROWS: [string, string, string, string][] = [
+  ["Auto-refresh", "Manual only", "Automatic", "Automatic"],
+  ["Email alerts", "\u2014", "\u2713", "\u2713"],
+  ["Trip Watchers", "\u2014", "4 per flight", "Unlimited"],
+  ["Flight Window Explorer", "\u2014", "\u2713", "\u2713"],
+  ["Visual Briefing", "\u2014", "\u2713", "\u2713"],
+  ["Corridor Watch", "\u2014", "\u2014", "\u2713"],
+  ["Multi-City Optimizer", "\u2014", "\u2014", "\u2713"],
+  ["Browse Mentors", "Broadcast only", "Broadcast only", "Browse + select"],
 ]
 
-const SCALE_ROWS: [string, string, string][] = [
-  ["Active flights", "2", "10"],
-  ["Aircraft profiles", "1", "5"],
-  ["Weekly briefings", "15", "Unlimited"],
+const SCALE_ROWS: [string, string, string, string][] = [
+  ["Active flights", "2", "10", "25+"],
+  ["Auto-monitored trips", "0", "5", "10"],
+  ["Aircraft profiles", "1", "3", "5"],
+  ["Weekly briefings", "15", "Unlimited", "Unlimited"],
 ]
 
 export function LandingVariantD() {
@@ -104,7 +108,7 @@ export function LandingVariantD() {
               href="#free-vs-pro"
               className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
             >
-              Free vs Pro
+              Compare Plans
             </a>
             <a
               href="#philosophy"
@@ -168,7 +172,7 @@ export function LandingVariantD() {
               href="#free-vs-pro"
               className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all"
             >
-              See What&apos;s Included
+              Compare Plans
             </a>
           </div>
 
@@ -224,98 +228,120 @@ export function LandingVariantD() {
         </div>
       </section>
 
-      {/* FREE vs PRO */}
+      {/* FREE vs CASUAL vs PRO */}
       <section id="free-vs-pro" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-emerald-950/20 to-transparent">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-bold mb-5">
-              Free vs <span className="text-emerald-400">Pro</span>
+              Free vs <span className="text-teal-400">Casual</span> vs <span className="text-sky-400">Pro</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Same engine. Same analysis. Pro adds convenience and scale.
+              Same engine. Same analysis. Paid plans add automation and scale.
             </p>
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-white/10">
             {/* Header */}
-            <div className="grid grid-cols-3">
-              <div className="bg-white/[0.03] border-b border-r border-white/10 px-6 py-4">
+            <div className="grid grid-cols-4">
+              <div className="bg-white/[0.03] border-b border-r border-white/10 px-5 py-4">
                 <p className="text-sm font-semibold text-white/50 uppercase tracking-wider">Feature</p>
               </div>
-              <div className="bg-emerald-950/40 border-b border-r border-white/10 px-6 py-4 text-center">
+              <div className="bg-emerald-950/40 border-b border-r border-white/10 px-5 py-4 text-center">
                 <p className="text-sm font-semibold text-emerald-300 uppercase tracking-wider">Free</p>
               </div>
-              <div className="bg-sky-950/40 border-b border-white/10 px-6 py-4 text-center">
+              <div className="bg-teal-950/40 border-b border-r border-white/10 px-5 py-4 text-center">
+                <p className="text-sm font-semibold text-teal-300 uppercase tracking-wider">Casual</p>
+                <p className="text-xs text-teal-400/60 mt-0.5">$7.99/mo</p>
+              </div>
+              <div className="bg-sky-950/40 border-b border-white/10 px-5 py-4 text-center">
                 <p className="text-sm font-semibold text-sky-300 uppercase tracking-wider">Pro</p>
+                <p className="text-xs text-sky-400/60 mt-0.5">$14.99/mo</p>
               </div>
             </div>
 
             {/* Section: Safety & Analysis */}
-            <div className="grid grid-cols-3 border-b border-white/10 bg-emerald-500/5">
-              <div className="col-span-3 px-6 py-2">
+            <div className="grid grid-cols-4 border-b border-white/10 bg-emerald-500/5">
+              <div className="col-span-4 px-5 py-2">
                 <p className="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Safety &amp; Analysis</p>
               </div>
             </div>
 
             {SAME_ROWS.map((label, i) => (
-              <div key={i} className="grid grid-cols-3 border-b border-white/5">
-                <div className="px-6 py-3 border-r border-white/5 flex items-center">
+              <div key={i} className="grid grid-cols-4 border-b border-white/5">
+                <div className="px-5 py-3 border-r border-white/5 flex items-center">
                   <span className="text-sm text-white/70">{label}</span>
                 </div>
-                <div className="px-6 py-3 border-r border-white/5 flex items-center justify-center">
+                <div className="px-5 py-3 border-r border-white/5 flex items-center justify-center">
                   <Check className="h-4 w-4 text-emerald-400" />
                 </div>
-                <div className="px-6 py-3 flex items-center justify-center">
+                <div className="px-5 py-3 border-r border-white/5 flex items-center justify-center">
+                  <Check className="h-4 w-4 text-emerald-400" />
+                </div>
+                <div className="px-5 py-3 flex items-center justify-center">
                   <Check className="h-4 w-4 text-emerald-400" />
                 </div>
               </div>
             ))}
 
             {/* Section: Convenience & Automation */}
-            <div className="grid grid-cols-3 border-b border-white/10 bg-amber-500/5">
-              <div className="col-span-3 px-6 py-2">
+            <div className="grid grid-cols-4 border-b border-white/10 bg-amber-500/5">
+              <div className="col-span-4 px-5 py-2">
                 <p className="text-xs font-semibold text-amber-400 uppercase tracking-wider">Convenience &amp; Automation</p>
               </div>
             </div>
 
-            {DIFF_ROWS.map(([label, free, pro], i) => (
-              <div key={i} className="grid grid-cols-3 border-b border-white/5">
-                <div className="px-6 py-3 border-r border-white/5 flex items-center">
+            {DIFF_ROWS.map(([label, free, casual, pro], i) => (
+              <div key={i} className="grid grid-cols-4 border-b border-white/5">
+                <div className="px-5 py-3 border-r border-white/5 flex items-center">
                   <span className="text-sm text-white/70">{label}</span>
                 </div>
-                <div className="px-6 py-3 border-r border-white/5 flex items-center justify-center">
+                <div className="px-5 py-3 border-r border-white/5 flex items-center justify-center">
                   {free === "\u2014" ? (
                     <Minus className="h-4 w-4 text-white/20" />
                   ) : (
-                    <span className="text-sm text-white/50">{free}</span>
+                    <span className="text-xs text-white/50 text-center">{free}</span>
                   )}
                 </div>
-                <div className="px-6 py-3 flex items-center justify-center">
+                <div className="px-5 py-3 border-r border-white/5 flex items-center justify-center">
+                  {casual === "\u2714" || casual === "\u2713" ? (
+                    <Check className="h-4 w-4 text-teal-400" />
+                  ) : casual === "\u2014" ? (
+                    <Minus className="h-4 w-4 text-white/20" />
+                  ) : (
+                    <span className="text-xs text-teal-300 text-center">{casual}</span>
+                  )}
+                </div>
+                <div className="px-5 py-3 flex items-center justify-center">
                   {pro === "\u2713" ? (
                     <Check className="h-4 w-4 text-sky-400" />
+                  ) : pro === "\u2014" ? (
+                    <Minus className="h-4 w-4 text-white/20" />
                   ) : (
-                    <span className="text-sm text-sky-300">{pro}</span>
+                    <span className="text-xs text-sky-300 text-center">{pro}</span>
                   )}
                 </div>
               </div>
             ))}
 
             {/* Section: Scale */}
-            <div className="grid grid-cols-3 border-b border-white/10 bg-amber-500/5">
-              <div className="col-span-3 px-6 py-2">
+            <div className="grid grid-cols-4 border-b border-white/10 bg-amber-500/5">
+              <div className="col-span-4 px-5 py-2">
                 <p className="text-xs font-semibold text-amber-400 uppercase tracking-wider">Scale</p>
               </div>
             </div>
 
-            {SCALE_ROWS.map(([label, free, pro], i) => (
-              <div key={i} className="grid grid-cols-3 border-b border-white/5">
-                <div className="px-6 py-3 border-r border-white/5 flex items-center">
+            {SCALE_ROWS.map(([label, free, casual, pro], i) => (
+              <div key={i} className="grid grid-cols-4 border-b border-white/5">
+                <div className="px-5 py-3 border-r border-white/5 flex items-center">
                   <span className="text-sm text-white/70">{label}</span>
                 </div>
-                <div className="px-6 py-3 border-r border-white/5 flex items-center justify-center">
+                <div className="px-5 py-3 border-r border-white/5 flex items-center justify-center">
                   <span className="text-sm text-white/50">{free}</span>
                 </div>
-                <div className="px-6 py-3 flex items-center justify-center">
+                <div className="px-5 py-3 border-r border-white/5 flex items-center justify-center">
+                  <span className="text-sm text-teal-300">{casual}</span>
+                </div>
+                <div className="px-5 py-3 flex items-center justify-center">
                   <span className="text-sm text-sky-300">{pro}</span>
                 </div>
               </div>
@@ -345,32 +371,36 @@ export function LandingVariantD() {
               accident. That&apos;s not something we&apos;re willing to do.
             </p>
             <p className="text-white/80">
-              Pro doesn&apos;t make your briefings better — they&apos;re already full quality.
-              Pro makes PlaneWX work harder for you by adding{" "}
-              <strong className="text-emerald-300">automation</strong>,{" "}
-              <strong className="text-emerald-300">proactive monitoring</strong>, and{" "}
-              <strong className="text-emerald-300">scale</strong>.
+              Pro doesn&apos;t make your briefings better — they&apos;re already full quality.{" "}
+              <strong className="text-teal-300">Casual</strong> makes PlaneWX{" "}
+              <strong className="text-teal-300">watch the weather for you</strong> — auto-refresh,
+              email alerts, Flight Window Explorer. <strong className="text-sky-300">Pro</strong>{" "}
+              adds <strong className="text-sky-300">route intelligence and maximum scale</strong>:
+              Corridor Watch, Multi-City Optimizer, and the mentor directory.
             </p>
           </div>
         </div>
       </section>
 
-      {/* WHO IS THE FREE PLAN FOR? */}
+      {/* WHO IS EACH PLAN FOR? */}
       <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-teal-950/20 to-transparent">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-bold mb-5">
-              Who is the free plan <span className="text-emerald-400">for?</span>
+              Which plan fits <span className="text-emerald-400">how you fly?</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Three kinds of pilots who get full value from PlaneWX at no cost.
+              Every pilot gets full-quality weather analysis. Choose the level of automation and scale that matches your flying.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="p-7 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
               <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-5">
                 <Calendar className="h-6 w-6 text-emerald-400" />
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-4">
+                Free
               </div>
               <h3 className="text-xl font-bold mb-3">Weekend Flyers</h3>
               <p className="text-white/60 text-sm leading-relaxed">
@@ -379,9 +409,26 @@ export function LandingVariantD() {
               </p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-teal-950/60 to-teal-950/20 border border-teal-500/20">
+            <div className="p-7 rounded-3xl bg-gradient-to-br from-teal-950/60 to-teal-950/30 border border-teal-500/30">
+              <div className="w-12 h-12 rounded-xl bg-teal-500/20 flex items-center justify-center mb-5">
+                <Zap className="h-6 w-6 text-teal-400" />
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-medium mb-4">
+                Casual · $7.99/mo
+              </div>
+              <h3 className="text-xl font-bold mb-3">Monthly Flyers</h3>
+              <p className="text-white/60 text-sm leading-relaxed">
+                A few cross-country flights per month. You want PlaneWX to watch the weather
+                and alert you to changes — not just brief you when you remember to check.
+              </p>
+            </div>
+
+            <div className="p-7 rounded-3xl bg-gradient-to-br from-teal-950/60 to-teal-950/20 border border-teal-500/20">
               <div className="w-12 h-12 rounded-xl bg-teal-500/20 flex items-center justify-center mb-5">
                 <GraduationCap className="h-6 w-6 text-teal-400" />
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-4">
+                Free
               </div>
               <h3 className="text-xl font-bold mb-3">Student Pilots</h3>
               <p className="text-white/60 text-sm leading-relaxed">
@@ -390,9 +437,12 @@ export function LandingVariantD() {
               </p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-gradient-to-br from-sky-950/60 to-sky-950/20 border border-sky-500/20">
+            <div className="p-7 rounded-3xl bg-gradient-to-br from-sky-950/60 to-sky-950/20 border border-sky-500/20">
               <div className="w-12 h-12 rounded-xl bg-sky-500/20 flex items-center justify-center mb-5">
                 <Search className="h-6 w-6 text-sky-400" />
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-4">
+                Free → Try Pro
               </div>
               <h3 className="text-xl font-bold mb-3">Pilots Evaluating PlaneWX</h3>
               <p className="text-white/60 text-sm leading-relaxed">
