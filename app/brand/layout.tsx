@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Plane, Home, Compass, Mic2, Palette, BookOpen, MessageSquare } from "lucide-react"
 
 const NAV_ITEMS = [
@@ -21,9 +22,14 @@ export default function BrandLayout({ children }: { children: React.ReactNode })
     <div className="min-h-screen bg-[#0B1120] text-white">
       <nav className="sticky top-0 z-50 backdrop-blur-xl bg-[#0B1120]/80 border-b border-white/10">
         <div className="container mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <Link href="/brand" className="flex items-center gap-2">
-            <Plane className="h-5 w-5 text-sky-400" />
-            <span className="font-semibold">PlaneWX</span>
+          <Link href="/brand" className="flex items-center gap-3">
+            <Image
+              src="/brand/planewx-og-wordmark.png"
+              alt="PlaneWX"
+              width={120}
+              height={24}
+              className="h-6 w-auto"
+            />
             <span className="text-white/40 text-sm hidden sm:inline">Brand Portal</span>
           </Link>
           <Link

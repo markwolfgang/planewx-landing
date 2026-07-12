@@ -634,7 +634,7 @@ export function LandingPageV2() {
           <h2 className="text-3xl font-bold mb-6">Built by a Pilot, for Pilots</h2>
           <p className="text-lg text-white/60 leading-relaxed mb-6">
             PlaneWX was founded by <strong className="text-white">Mark Wolfgang</strong>, a commercially rated 
-            instrument pilot with 800+ hours — including 620 hours of cross-country PIC in 18 months. 
+            instrument pilot approaching 1,000 hours — including 784 hours of cross-country PIC in under 2 years. 
             He built PlaneWX to solve his own frustration: knowing if the flight will happen, days in advance.
           </p>
           <p className="text-sm text-white/40 italic">

@@ -94,7 +94,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 </div>
               ))}
               <div className="pt-3 border-t border-white/5 space-y-3">
-                {["Auto-refresh", "Email alerts", "Trip Watchers", "Corridor Watch", "Browse Mentors"].map((f, i) => (
+                {["Auto-refresh", "Email alerts", "Fuel Advisor", "Trip Watchers", "Corridor Watch", "Browse Mentors"].map((f, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <Minus className="h-4 w-4 text-white/20 shrink-0" />
                     <span className="text-white/25">{f}</span>

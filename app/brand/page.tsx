@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { STATS } from "@/components/shared/landing-data"
 import {
   Target,
@@ -6,7 +7,6 @@ import {
   AlertTriangle,
   Lightbulb,
   Sparkles,
-  DollarSign,
   User,
   Compass,
   Mic2,
@@ -18,6 +18,12 @@ import {
   Handshake,
   GraduationCap,
   Plane,
+  Users,
+  Check,
+  Minus,
+  Crown,
+  Zap,
+  Shield,
 } from "lucide-react"
 
 export const metadata = {
@@ -31,6 +37,16 @@ export default function BrandPortalPage() {
     <div className="space-y-16">
       {/* Hero */}
       <section>
+        <div className="mb-8">
+          <Image
+            src="/brand/planewx-og-wordmark.png"
+            alt="PlaneWX"
+            width={320}
+            height={64}
+            className="h-14 w-auto"
+            priority
+          />
+        </div>
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium mb-6">
           <Target className="h-4 w-4" />
           Brand Overview
@@ -66,6 +82,55 @@ export default function BrandPortalPage() {
             raw data and hands the analysis back to the pilot. PlaneWX synthesizes it into a
             structured, quantified decision.
           </p>
+        </div>
+      </section>
+
+      {/* Three Pillars */}
+      <section>
+        <h2 className="text-3xl font-bold text-white mb-2">Three Pillars</h2>
+        <p className="text-white/60 mb-8">
+          PlaneWX is built on three interconnected pillars — each reinforcing the others.
+        </p>
+        <div className="grid sm:grid-cols-3 gap-5">
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div className="h-10 w-10 rounded-xl bg-sky-500/15 border border-sky-500/20 flex items-center justify-center mb-4">
+              <span className="text-sky-400 font-bold text-lg">1</span>
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">Briefing</h3>
+            <p className="text-white/65 text-sm leading-relaxed">
+              A continuously updated WX Score (0–100%) personalized to your aircraft,
+              your ratings, and your personal minimums. Synthesizes METARs, TAFs, AIRMETs,
+              SIGMETs, NOTAMs, CIP icing, GTG turbulence, and Synoptic Intelligence™ into
+              a single structured decision — not a data dump.
+            </p>
+          </div>
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div className="h-10 w-10 rounded-xl bg-violet-500/15 border border-violet-500/20 flex items-center justify-center mb-4">
+              <span className="text-violet-400 font-bold text-lg">2</span>
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">Mentors</h3>
+            <p className="text-white/65 text-sm leading-relaxed">
+              A peer mentoring network so no pilot faces a hard decision alone.
+              Free users can broadcast a <strong className="text-white">Need Help Now</strong> alert
+              to the entire mentor community. Pro users Browse Mentors — experienced
+              instrument-rated pilots who volunteer their time before a challenging flight.
+              Experience finally transfers.
+            </p>
+          </div>
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <div className="h-10 w-10 rounded-xl bg-amber-500/15 border border-amber-500/20 flex items-center justify-center mb-4">
+              <span className="text-amber-400 font-bold text-lg">3</span>
+            </div>
+            <h3 className="text-lg font-semibold text-white mb-2">PAVE</h3>
+            <p className="text-white/65 text-sm leading-relaxed">
+              Every briefing includes a structured <strong className="text-white">PAVE Risk Assessment</strong> — the FAA&apos;s four-factor
+              framework built into the decision flow: <strong className="text-white">P</strong>ilot,{" "}
+              <strong className="text-white">A</strong>ircraft,{" "}
+              en<strong className="text-white">V</strong>ironment, and{" "}
+              <strong className="text-white">E</strong>xternal pressures. PlaneWX is the
+              first tool to automate this assessment against live weather data.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -112,11 +177,17 @@ export default function BrandPortalPage() {
               <AlertTriangle className="h-6 w-6 text-amber-400/80" />
               <h3 className="text-lg font-semibold text-white">The Problem</h3>
             </div>
-            <p className="text-white/70 leading-relaxed">
+            <p className="text-white/70 leading-relaxed mb-3">
               Pilots are forced into go/no-go decisions at the moment of maximum
               pressure — bags packed, family waiting, hotels booked — when TAFs
               only cover 24 hours. Nobody helps analyze the vast quantity of
               weather data available beyond that window.
+            </p>
+            <p className="text-white/70 leading-relaxed">
+              And they face that decision alone. There&apos;s no system for connecting
+              a student pilot or low-time IFR pilot with an experienced mentor
+              who&apos;s flown the same route in the same conditions. Experience
+              doesn&apos;t transfer — every pilot re-learns the hard way.
             </p>
           </div>
           <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
@@ -145,26 +216,141 @@ export default function BrandPortalPage() {
               against YOUR aircraft and YOUR minimums into a quantified WX Score.
             </p>
           </div>
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 border-l-4 border-l-violet-500/50">
+            <div className="flex items-center gap-3 mb-3">
+              <Users className="h-6 w-6 text-violet-400" />
+              <h3 className="text-lg font-semibold text-white">The Community Layer</h3>
+            </div>
+            <p className="text-white/70 leading-relaxed mb-3">
+              PlaneWX is building what no weather app has: a peer mentoring network
+              so no pilot faces a hard decision alone. Through the{" "}
+              <strong className="text-white">Browse Mentors</strong> feature, experienced
+              IR pilots volunteer to be available for consultation — real pilots, real
+              context, before the flight.
+            </p>
+            <p className="text-white/70 leading-relaxed">
+              Free users can broadcast a <strong className="text-white">Need Help Now</strong>{" "}
+              alert to the entire mentor network. Pro users can browse mentor profiles and
+              connect directly. Experience finally transfers.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Pricing Philosophy */}
+      {/* Pricing */}
       <section>
-        <h2 className="text-3xl font-bold text-white mb-2">
-          Pricing Philosophy
-        </h2>
+        <h2 className="text-3xl font-bold text-white mb-2">Pricing</h2>
         <p className="text-white/60 mb-6">
-          How we talk about free vs. Pro.
+          Three tiers — same analysis engine at every level.
         </p>
-        <div className="p-6 rounded-2xl bg-sky-500/5 border border-sky-500/20">
-          <DollarSign className="h-8 w-8 text-sky-400 mb-4" />
-          <p className="text-white/90 leading-relaxed text-lg">
-            Safety is not a premium feature. Every free briefing uses the same
-            AI engine, the same weather models, and the same scoring methodology as
-            a Pro briefing. We limit how much you can use PlaneWX, not how well
-            it works.
+
+        <div className="p-5 rounded-2xl bg-emerald-500/5 border border-emerald-500/20 mb-8 flex items-start gap-4">
+          <Shield className="h-6 w-6 text-emerald-400 shrink-0 mt-0.5" />
+          <p className="text-white/80 text-sm leading-relaxed">
+            <strong className="text-emerald-400">Safety is not a premium feature.</strong>{" "}
+            Every briefing — Free, Casual, or Pro — uses the same AI engine, the same
+            weather models, and the same scoring methodology. We limit how much you can
+            use PlaneWX, not how well it works.
           </p>
         </div>
+
+        <div className="grid sm:grid-cols-3 gap-5">
+
+          {/* Free */}
+          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+            <p className="text-xs uppercase tracking-widest text-white/40 mb-1">Free</p>
+            <div className="text-3xl font-bold text-white mb-0.5">$0</div>
+            <p className="text-xs text-white/30 mb-4">forever</p>
+            <div className="space-y-2 text-sm text-white/60">
+              {[
+                "2 active flights",
+                "Full WX Score & PAVE",
+                "14-day planning horizon",
+                "Synoptic Intelligence™",
+                "Need Help Now mentor broadcast",
+              ].map((f) => (
+                <div key={f} className="flex items-center gap-2">
+                  <Check className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                  <span>{f}</span>
+                </div>
+              ))}
+              {["Auto-refresh", "Email alerts", "Browse Mentors"].map((f) => (
+                <div key={f} className="flex items-center gap-2">
+                  <Minus className="h-3.5 w-3.5 text-white/20 shrink-0" />
+                  <span className="text-white/25">{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Casual */}
+          <div className="relative p-6 rounded-2xl bg-gradient-to-br from-teal-950/60 to-emerald-950/40 border-2 border-teal-500/40">
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-teal-500 text-white text-xs font-semibold">
+                <Zap className="h-3 w-3" />
+                Most Popular
+              </div>
+            </div>
+            <p className="text-xs uppercase tracking-widest text-teal-400/70 mb-1">Casual</p>
+            <div className="text-3xl font-bold text-white mb-0.5">$7.99</div>
+            <p className="text-xs text-white/30 mb-1">/month</p>
+            <p className="text-xs text-teal-400 mb-4">or $59.99/year <span className="text-emerald-400">(save 37%)</span></p>
+            <div className="space-y-2 text-sm text-white/70">
+              <p className="text-xs text-white/30 uppercase tracking-wider mb-3">Everything in Free, plus</p>
+              {[
+                "10 active flights",
+                "5 auto-monitored trips",
+                "Auto-refresh & email alerts",
+                "Flight Window Explorer",
+                "Fuel Advisor",
+                "Trip Watchers",
+              ].map((f) => (
+                <div key={f} className="flex items-center gap-2">
+                  <Check className="h-3.5 w-3.5 text-teal-400 shrink-0" />
+                  <span>{f}</span>
+                </div>
+              ))}
+              {["Browse Mentors", "Corridor Watch"].map((f) => (
+                <div key={f} className="flex items-center gap-2">
+                  <Minus className="h-3.5 w-3.5 text-white/20 shrink-0" />
+                  <span className="text-white/25">{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Pro */}
+          <div className="relative p-6 rounded-2xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border border-sky-500/30">
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-sky-900/80 border border-sky-500/40 text-sky-300 text-xs font-semibold">
+                <Crown className="h-3 w-3" />
+                Full Toolkit
+              </div>
+            </div>
+            <p className="text-xs uppercase tracking-widest text-sky-400/70 mb-1">Pro</p>
+            <div className="text-3xl font-bold text-white mb-0.5">$14.99</div>
+            <p className="text-xs text-white/30 mb-1">/month</p>
+            <p className="text-xs text-sky-400 mb-4">or $119/year <span className="text-emerald-400">(4 months free)</span></p>
+            <div className="space-y-2 text-sm text-white/70">
+              <p className="text-xs text-white/30 uppercase tracking-wider mb-3">Everything in Casual, plus</p>
+              {[
+                "25+ active flights",
+                "Corridor Watch",
+                "Multi-City Optimizer",
+                "Browse Mentors — connect directly",
+              ].map((f) => (
+                <div key={f} className="flex items-center gap-2">
+                  <Check className="h-3.5 w-3.5 text-sky-400 shrink-0" />
+                  <span>{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+        <p className="text-xs text-white/30 mt-4 text-center">
+          All plans include a 14-day free Pro trial. No credit card required to start.
+        </p>
       </section>
 
       {/* Safety Impact */}
@@ -173,14 +359,14 @@ export default function BrandPortalPage() {
           Measured Safety Impact
         </h2>
         <p className="text-white/60 mb-8">
-          Real data from 244 post-flight feedback submissions (March 2026).
+          Real data from 831 post-flight feedback submissions (July 2026).
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {[
-            { value: "32", label: "pilots said PlaneWX gave them permission to cancel a flight", color: "text-emerald-400" },
-            { value: "89%", label: "of pilots who flew said the WX Score was accurate or conservative", color: "text-sky-400" },
-            { value: "3.8 days", label: "average planning horizon per trip", color: "text-sky-400" },
-            { value: "~8", label: "average briefing updates per trip", color: "text-sky-400" },
+            { value: "90", label: "pilots said PlaneWX gave them the confidence to make a no-go call", color: "text-emerald-400" },
+            { value: "78%", label: "of pilots said the WX Score was accurate or conservative", color: "text-sky-400" },
+            { value: "4.6 days", label: "average planning horizon per trip", color: "text-sky-400" },
+            { value: "8.1", label: "average briefing updates per trip", color: "text-sky-400" },
           ].map((stat) => (
             <div key={stat.label} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
               <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
@@ -190,27 +376,27 @@ export default function BrandPortalPage() {
         </div>
         <div className="grid sm:grid-cols-3 gap-4 mb-6">
           <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-            <div className="text-2xl font-bold text-sky-400">8.4 / 10</div>
-            <div className="text-sm text-white/60 mt-1">likelihood to recommend</div>
-            <div className="text-xs text-white/30 mt-1">244 pilot responses</div>
+            <div className="text-2xl font-bold text-sky-400">8.5 / 10</div>
+            <div className="text-sm text-white/60 mt-1">"would recommend to a fellow pilot"</div>
+            <div className="text-xs text-white/30 mt-1">831 pilot responses</div>
           </div>
           <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-            <div className="text-2xl font-bold text-sky-400">71%</div>
-            <div className="text-sm text-white/60 mt-1">of pilots flew as planned</div>
-            <div className="text-xs text-white/30 mt-1">173 of 244 trips</div>
+            <div className="text-2xl font-bold text-sky-400">64%</div>
+            <div className="text-sm text-white/60 mt-1">said PlaneWX helped their decision</div>
+            <div className="text-xs text-white/30 mt-1">417 of 647 responses</div>
           </div>
           <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-            <div className="text-2xl font-bold text-amber-400">29%</div>
-            <div className="text-sm text-white/60 mt-1">cancelled — 61% due to weather</div>
-            <div className="text-xs text-white/30 mt-1">43 of 71 cancellations</div>
+            <div className="text-2xl font-bold text-amber-400">90</div>
+            <div className="text-sm text-white/60 mt-1">no-go decisions credited to PlaneWX</div>
+            <div className="text-xs text-white/30 mt-1">80 weather-related cancellations</div>
           </div>
         </div>
         <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20 mb-6">
           <p className="text-white/80 text-sm leading-relaxed">
-            <strong className="text-emerald-400">The key stat:</strong> Of the 43 weather-related
-            cancellations, 32 pilots (74%) said PlaneWX gave them the confidence to make
-            that no-go call. These are flights where a pilot might have pushed into marginal
-            weather without the data PlaneWX provided.
+            <strong className="text-emerald-400">The key stat:</strong> 90 pilots said PlaneWX
+            gave them the confidence to make a no-go call — 80 of those were weather-related.
+            These are flights where a pilot might have pushed into marginal weather without
+            the data PlaneWX provided.
           </p>
         </div>
 
@@ -229,7 +415,7 @@ export default function BrandPortalPage() {
                 <span>&middot;</span>
                 <span>KANP → KOXB</span>
                 <span>&middot;</span>
-                <span>NPS 10/10</span>
+                <span>would recommend · 10/10</span>
               </div>
             </div>
           </div>
@@ -257,7 +443,7 @@ export default function BrandPortalPage() {
                   <span>&middot;</span>
                   <span>Private · IR · 282 hrs · C172</span>
                   <span>&middot;</span>
-                  <span>NPS 10/10</span>
+                  <span>would recommend · 10/10</span>
                 </div>
               </div>
             </div>
@@ -276,7 +462,7 @@ export default function BrandPortalPage() {
                   <span>&middot;</span>
                   <span>Private · IR · 3,000 hrs · SR22T</span>
                   <span>&middot;</span>
-                  <span>NPS 10/10</span>
+                  <span>would recommend · 10/10</span>
                 </div>
               </div>
             </div>
@@ -295,7 +481,7 @@ export default function BrandPortalPage() {
                   <span>&middot;</span>
                   <span>Private · IR · 420 hrs · SR22T</span>
                   <span>&middot;</span>
-                  <span>NPS 10/10</span>
+                  <span>would recommend · 10/10</span>
                 </div>
               </div>
             </div>
@@ -314,7 +500,7 @@ export default function BrandPortalPage() {
                   <span>&middot;</span>
                   <span>Private · IR · 700 hrs · C182</span>
                   <span>&middot;</span>
-                  <span>NPS 10/10</span>
+                  <span>would recommend · 10/10</span>
                 </div>
               </div>
             </div>
@@ -336,7 +522,7 @@ export default function BrandPortalPage() {
             { value: STATS.cumulativeHours, label: "cumulative flight hours" },
             { value: STATS.instrumentRated, label: "instrument rated" },
             { value: STATS.jetAircraft, label: "jet aircraft" },
-            { value: "98", label: "unique aircraft types" },
+            { value: "94", label: "unique aircraft types" },
           ].map((stat) => (
             <div key={stat.label} className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
               <div className="text-2xl sm:text-3xl font-bold text-sky-400">
@@ -349,7 +535,7 @@ export default function BrandPortalPage() {
         <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5">
           <p className="text-white/50 text-sm">
             Cirrus aircraft (SR22T, SR22, SF50) represent over half the fleet.
-            The fleet spans C172 trainers through Gulfstream G500 — 98 unique
+            The fleet spans C172 trainers through Gulfstream G500 — 94 unique
             aircraft types. The product is largely shaped by COPA members —
             extremely experienced, extremely detail-oriented pilots who expect precision.
           </p>
@@ -365,14 +551,14 @@ export default function BrandPortalPage() {
           Since public launch on March 1, 2026.
         </p>
         <p className="text-white/40 text-sm mb-8">
-          Public launch was March 1, 2026 — figures below reflect post-launch momentum.
+          Figures as of July 2026 — sourced from production database.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { value: "197", label: "paying subscribers" },
-            { value: "31%", label: "conversion rate (best cohort)" },
-            { value: "752", label: "trips under active monitoring" },
-            { value: "681", label: "monthly active pilots" },
+            { value: "390+", label: "paying subscribers" },
+            { value: "1,298+", label: "trips under active monitoring" },
+            { value: "827", label: "monthly active pilots" },
+            { value: "1,650+", label: "registered pilots" },
           ].map((stat) => (
             <div key={stat.label} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
               <div className="text-xl font-bold text-sky-400">{stat.value}</div>
@@ -394,8 +580,8 @@ export default function BrandPortalPage() {
             Mark Wolfgang
           </h3>
           <p className="text-white/70 leading-relaxed mb-4">
-            Commercial Instrument pilot, single and multiengine ratings, 800+
-            hours (620+ cross-country PIC in 18 months), Cirrus SR22T owner,
+            Commercial Instrument pilot, single and multiengine ratings, nearly 1,000
+            hours (784+ cross-country PIC in under 2 years), TBM 900 pilot,
             U.S. Navy veteran. Sold his InfoSec consulting company in 2022,
             earned his Private Pilot&apos;s license in 6 weeks, completed an
             accelerated 5-day IFR program, and discovered that nobody was solving

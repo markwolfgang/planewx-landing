@@ -2177,7 +2177,7 @@ export function LandingPage() {
                 After completing an accelerated IFR program in five days, Mark discovered the complexities of weather planning for instrument flying. He grew frustrated having to tell his wife, <em className="text-white/80">"Yeah, we should be good. I'll let you know after the TAF comes out tonight."</em>
               </p>
               <p>
-                Now flying a Cirrus SR22T with over 800 hours total time—including 620 hours of cross-country PIC in 18 months—Mark built PlaneWX to solve his own problem. What started as personal frustration became a mission to help every pilot answer the question: <em className="text-sky-400">"Is this flight going to happen?"</em>
+                Now flying a TBM 900 and approaching 1,000 hours total time—including 784 hours of cross-country PIC in under 2 years—Mark built PlaneWX to solve his own problem. What started as personal frustration became a mission to help every pilot answer the question: <em className="text-sky-400">"Is this flight going to happen?"</em>
               </p>
               <div className="pt-4 border-t border-white/10">
                 <p className="text-sm">

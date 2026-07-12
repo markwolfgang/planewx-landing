@@ -12,7 +12,6 @@ import {
   Zap,
 } from "lucide-react"
 import {
-  YouTubeSection,
   PricingSection,
   FaqSection,
   FooterCTA,
@@ -20,10 +19,10 @@ import {
   VariantTracker,
   FlightChopsEndorsement,
   PartnerBadges,
+  TestimonialsCarousel,
   SignUpButton,
   FounderImageModal,
   STATS,
-  TESTIMONIALS,
 } from "./shared"
 
 const VARIANT = "d"
@@ -182,11 +181,21 @@ export function LandingVariantD() {
 
       {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
       <FlightChopsEndorsement />
+
+      {/* ── TESTIMONIALS + PODCASTS ── */}
+      <section className="relative py-16 sm:py-24 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Real pilots. Real decisions.</h2>
+            <p className="text-white/50">From student pilots to 35,000-hour ATP captains.</p>
+          </div>
+          <TestimonialsCarousel />
+        </div>
+      </section>
+
       <PartnerBadges />
 
 
-      {/* YOUTUBE */}
-      <YouTubeSection variant={VARIANT} />
 
       {/* WHAT YOU GET FOR FREE */}
       <section className="relative py-24 px-4">
@@ -456,51 +465,6 @@ export function LandingVariantD() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Real pilots. Real decisions.
-            </h2>
-            <p className="text-white/50">From student pilots to 30,000-hour ATP captains.</p>
-          </div>
-
-          <div className="mb-8 p-8 rounded-2xl bg-gradient-to-br from-emerald-950/50 to-teal-950/50 border border-emerald-500/30">
-            <Quote className="h-8 w-8 text-emerald-400/40 mb-4" />
-            <p className="text-lg text-white/80 leading-relaxed mb-6 italic">
-              &ldquo;{TESTIMONIALS.find(t => t.featured)?.quote}&rdquo;
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold">
-                {TESTIMONIALS.find(t => t.featured)?.name[0]}
-              </div>
-              <div>
-                <p className="font-semibold">{TESTIMONIALS.find(t => t.featured)?.name}</p>
-                <p className="text-xs text-white/40">{TESTIMONIALS.find(t => t.featured)?.cert}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {TESTIMONIALS.filter(t => !t.featured).map((t, i) => (
-              <div key={i} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
-                <Quote className="h-5 w-5 text-white/20 mb-3" />
-                <p className="text-sm text-white/70 leading-relaxed italic mb-4">&ldquo;{t.quote}&rdquo;</p>
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white/60 text-xs font-bold">
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium">{t.name}</p>
-                    <p className="text-xs text-white/30">{t.cert}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* STATS BAR */}
       <section className="relative py-12 px-4 border-y border-white/5 bg-white/[0.02]">
@@ -572,8 +536,8 @@ export function LandingVariantD() {
                 </em>
               </p>
               <p>
-                Now flying a Cirrus SR22T with over 800 hours total time — including 620 hours of
-                cross-country PIC in 18 months — Mark built PlaneWX to solve his own problem. What
+                Now flying a TBM 900 and approaching 1,000 hours total time — including 784 hours of
+                cross-country PIC in under 2 years — Mark built PlaneWX to solve his own problem. What
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-emerald-400">&ldquo;Is this flight going to happen?&rdquo;</em>
               </p>

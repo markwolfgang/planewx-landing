@@ -99,7 +99,7 @@ export function LandingVariantE() {
           </p>
 
           <p className="text-white/40 text-sm mb-12 tracking-wide">
-            — Mark Wolfgang, Founder · SR22T Pilot · ~900 hours
+            — Mark Wolfgang, Founder · TBM 900 Pilot · ~1,000 hours
           </p>
 
           {/* CTAs */}
@@ -657,8 +657,8 @@ export function LandingVariantE() {
             <div className="rounded-2xl bg-gradient-to-br from-amber-950/40 to-orange-950/10 border border-amber-500/20 p-8">
               <div className="space-y-4 text-sm">
                 {[
-                  { label: "Aircraft", value: "Cirrus SR22T" },
-                  { label: "Total hours", value: "~900" },
+                  { label: "Aircraft", value: "TBM 900" },
+                  { label: "Total hours", value: "~1,000" },
                   { label: "Ratings", value: "Commercial · Instrument · Multi-Engine" },
                   { label: "Home base", value: "Rogers, AR (KROG)" },
                   { label: "Why he built it", value: "Needed a system that took it as seriously as he did" },

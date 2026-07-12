@@ -13,7 +13,6 @@ import {
   Brain,
 } from "lucide-react"
 import {
-  YouTubeSection,
   PricingSection,
   FaqSection,
   FooterCTA,
@@ -21,15 +20,14 @@ import {
   VariantTracker,
   FlightChopsEndorsement,
   PartnerBadges,
+  TestimonialsCarousel,
   SignUpButton,
   FounderImageModal,
   STATS,
-  TESTIMONIALS,
 } from "./shared"
 
 const VARIANT = "c"
 const appUrl = `https://app.planewx.ai?lp=${VARIANT}`
-const featuredTestimonial = TESTIMONIALS.find(t => t.featured)
 
 export function LandingVariantC() {
   return (
@@ -105,7 +103,7 @@ export function LandingVariantC() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed">
-            From student pilots to 30,000-hour ATP captains. From Cessna 172s to Gulfstreams.{" "}
+            From student pilots to 35,000-hour ATP captains. From Cessna 172s to Gulfstreams.{" "}
             <strong className="text-white">{STATS.instrumentRated} instrument rated.</strong>
           </p>
 
@@ -123,12 +121,6 @@ export function LandingVariantC() {
               Join the Community — Free
               <ArrowRight className="ml-2 h-5 w-5" />
             </SignUpButton>
-            <a
-              href="#demo-video"
-              className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all"
-            >
-              Watch the Demo
-            </a>
           </div>
 
           <p className="text-sm text-white/30">No credit card required · Cancel anytime</p>
@@ -137,37 +129,22 @@ export function LandingVariantC() {
 
       {/* ── FLIGHT CHOPS ENDORSEMENT ── */}
       <FlightChopsEndorsement />
-      <PartnerBadges />
 
-
-      {/* FEATURED TESTIMONIAL — Clark */}
-      <section className="relative py-16 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <div className="p-[1px] rounded-2xl bg-gradient-to-br from-sky-500/40 via-indigo-500/20 to-cyan-500/40">
-            <div className="p-8 md:p-10 rounded-2xl bg-[#0c1425]">
-              <Quote className="h-10 w-10 text-sky-400/30 mb-5" />
-              <p className="text-lg md:text-xl text-white/85 leading-relaxed italic mb-8">
-                &ldquo;{featuredTestimonial?.quote}&rdquo;
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-sky-500/20 flex items-center justify-center text-sky-400 font-bold text-lg">
-                  {featuredTestimonial?.name[0]}
-                </div>
-                <div>
-                  <p className="font-semibold text-lg">{featuredTestimonial?.name}</p>
-                  <p className="text-sm text-white/40">{featuredTestimonial?.cert}</p>
-                </div>
-              </div>
-            </div>
+      {/* ── TESTIMONIALS + PODCASTS ── */}
+      <section className="relative py-16 sm:py-24 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Real pilots. Real decisions.</h2>
+            <p className="text-white/50">From student pilots to 35,000-hour ATP captains.</p>
           </div>
-
+          <TestimonialsCarousel />
         </div>
       </section>
 
-      {/* YOUTUBE VIDEO */}
-      <div id="demo-video">
-        <YouTubeSection variant={VARIANT} />
-      </div>
+      <PartnerBadges />
+
+
+
 
       {/* STATS GRID */}
       <section className="relative py-20 px-4 border-y border-white/5 bg-white/[0.02]">
@@ -197,46 +174,6 @@ export function LandingVariantC() {
         </div>
       </section>
 
-      {/* WHAT PILOTS ARE SAYING — Full testimonials */}
-      <section id="community" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What pilots are saying
-            </h2>
-            <p className="text-white/50">From students building hours to ATP captains flying jets.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {TESTIMONIALS.map((t, i) => (
-              <div
-                key={i}
-                className={`p-6 rounded-2xl border ${
-                  t.featured
-                    ? "bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border-sky-500/30"
-                    : "bg-white/[0.03] border-white/10"
-                }`}
-              >
-                <Quote className={`h-5 w-5 mb-3 ${t.featured ? "text-sky-400/40" : "text-white/20"}`} />
-                <p className="text-sm text-white/70 leading-relaxed italic mb-5">&ldquo;{t.quote}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
-                    t.featured
-                      ? "bg-sky-500/20 text-sky-400"
-                      : "bg-white/10 text-white/60"
-                  }`}>
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium">{t.name}</p>
-                    <p className="text-xs text-white/30">{t.cert}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* WHAT ARE THEY ALL USING? */}
       <section className="relative py-24 px-4">
@@ -397,8 +334,8 @@ export function LandingVariantC() {
                 </em>
               </p>
               <p>
-                Now flying a Cirrus SR22T with over 800 hours total time — including 620 hours of
-                cross-country PIC in 18 months — Mark built PlaneWX to solve his own problem. What
+                Now flying a TBM 900 and approaching 1,000 hours total time — including 784 hours of
+                cross-country PIC in under 2 years — Mark built PlaneWX to solve his own problem. What
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-sky-400">&ldquo;Is this flight going to happen?&rdquo;</em>
               </p>

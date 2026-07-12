@@ -6,8 +6,9 @@ import Link from "next/link"
 import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
-import { STATS, TESTIMONIALS, FAQS } from "@/components/shared/landing-data"
+import { STATS, FAQS } from "@/components/shared/landing-data"
 import { FlightChopsEndorsement } from "@/components/shared/flight-chops-endorsement"
+import { TestimonialsCarousel } from "@/components/shared/testimonials-carousel"
 import { PartnerBadges } from "@/components/shared/partner-badges"
 import {
   ArrowRight,
@@ -214,6 +215,20 @@ export function LandingPageV3() {
 
       {/* ── FLIGHT CHOPS ENDORSEMENT ────────────────────────────────────────────── */}
       <FlightChopsEndorsement />
+
+      {/* ── TESTIMONIALS ───────────────────────────────────────────────────────── */}
+      <section className="relative py-16 sm:py-24 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Real pilots. Real decisions.
+            </h2>
+            <p className="text-white/50">From student pilots to 35,000-hour ATP captains.</p>
+          </div>
+          <TestimonialsCarousel />
+        </div>
+      </section>
+
       <PartnerBadges />
 
       {/* ── THE PROBLEM WITH EVERY OTHER TOOL ─────────────────────────────────── */}
@@ -357,24 +372,6 @@ export function LandingPageV3() {
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />Mentor connection for human perspective</li>
               </ul>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── YOUTUBE VIDEO ──────────────────────────────────────────────────────── */}
-      <section className="relative py-16 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-8">
-            <p className="text-white/50 text-sm uppercase tracking-widest font-medium mb-3">Don't take our word for it</p>
-            <h2 className="text-2xl md:text-3xl font-bold">
-              Hear what pilots are saying
-            </h2>
-          </div>
-          <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl shadow-black/60 border border-white/10" style={{ paddingBottom: "56.25%" }}>
-            <YouTubeFacade
-              videoId="qu7ppznhcGM"
-              title="Pilots: Meet PlaneWX — The AI Tool That Scores Your Flight Risk"
-            />
           </div>
         </div>
       </section>
@@ -680,54 +677,6 @@ export function LandingPageV3() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ───────────────────────────────────────────────────────── */}
-      <section className="relative py-16 sm:py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Real pilots. Real decisions.
-            </h2>
-            <p className="text-white/50">From student pilots to 30,000-hour ATP captains.</p>
-          </div>
-
-          {/* Featured testimonial */}
-          <div className="mb-8 p-5 sm:p-8 rounded-2xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border border-sky-500/30">
-            <Quote className="h-8 w-8 text-sky-400/40 mb-4" />
-            <p className="text-lg text-white/80 leading-relaxed mb-6 italic">
-              "{TESTIMONIALS.find(t => t.featured)?.quote}"
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-sky-500/20 flex items-center justify-center text-sky-400 font-bold">
-                {TESTIMONIALS.find(t => t.featured)?.name[0]}
-              </div>
-              <div>
-                <p className="font-semibold">{TESTIMONIALS.find(t => t.featured)?.name}</p>
-                <p className="text-xs text-white/40">{TESTIMONIALS.find(t => t.featured)?.cert}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Grid testimonials */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {TESTIMONIALS.filter(t => !t.featured).map((t, i) => (
-              <div key={i} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10">
-                <Quote className="h-5 w-5 text-white/20 mb-3" />
-                <p className="text-sm text-white/70 leading-relaxed italic mb-4">"{t.quote}"</p>
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center text-white/60 text-xs font-bold">
-                    {t.name[0]}
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium">{t.name}</p>
-                    <p className="text-xs text-white/30">{t.cert}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── PRICING ────────────────────────────────────────────────────────────── */}
       <section id="pricing" className="relative py-16 sm:py-24 px-4">
         <div className="container mx-auto max-w-4xl">
@@ -930,8 +879,8 @@ export function LandingPageV3() {
                 </em>
               </p>
               <p>
-                Now flying a Cirrus SR22T with over 800 hours total time — including 620 hours of
-                cross-country PIC in 18 months — Mark built PlaneWX to solve his own problem. What
+                Now flying a TBM 900 and approaching 1,000 hours total time — including 784 hours of
+                cross-country PIC in under 2 years — Mark built PlaneWX to solve his own problem. What
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-sky-400">"Is this flight going to happen?"</em>
               </p>
@@ -956,7 +905,7 @@ export function LandingPageV3() {
             </span>
           </h2>
           <p className="text-lg text-white/60 mb-10 max-w-lg mx-auto">
-            Join {STATS.totalPilots} pilots — from students to 30,000-hour ATP captains — who use PlaneWX
+            Join {STATS.totalPilots} pilots — from students to 35,000-hour ATP captains — who use PlaneWX
             to make better decisions.
           </p>
           <a
