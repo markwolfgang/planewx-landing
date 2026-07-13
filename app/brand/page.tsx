@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { FaInstagram, FaFacebook, FaXTwitter, FaTiktok, FaYoutube } from "react-icons/fa6"
 import { STATS } from "@/components/shared/landing-data"
 import {
   Target,
@@ -743,6 +744,105 @@ export default function BrandPortalPage() {
             <li>Tell us what&apos;s missing — feature ideas often ship same day</li>
           </ul>
         </div>
+      </section>
+
+      {/* Social Media Handles */}
+      <section>
+        <h2 className="text-3xl font-bold text-white mb-2">Social Media</h2>
+        <p className="text-white/60 mb-8">
+          Official PlaneWX accounts across all platforms. Use these handles when tagging us in posts, show notes, or episode descriptions.
+        </p>
+        <div className="rounded-2xl border border-white/10 overflow-hidden">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-white/10 bg-white/[0.03]">
+                <th className="text-left px-5 py-3 text-white/40 font-medium uppercase tracking-wider text-xs">Platform</th>
+                <th className="text-left px-5 py-3 text-white/40 font-medium uppercase tracking-wider text-xs">Handle</th>
+                <th className="text-left px-5 py-3 text-white/40 font-medium uppercase tracking-wider text-xs">URL</th>
+                <th className="text-left px-5 py-3 text-white/40 font-medium uppercase tracking-wider text-xs hidden sm:table-cell">Notes</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {[
+                {
+                  icon: FaYoutube,
+                  color: "text-red-400",
+                  bg: "bg-red-500/10",
+                  platform: "YouTube",
+                  handle: "@planewx",
+                  url: "https://youtube.com/@planewx",
+                  note: "Product demos, tutorials, pilot interviews",
+                },
+                {
+                  icon: FaInstagram,
+                  color: "text-pink-400",
+                  bg: "bg-pink-500/10",
+                  platform: "Instagram",
+                  handle: "@plane_wx",
+                  url: "https://instagram.com/plane_wx",
+                  note: "Community highlights, flight photos, tips",
+                },
+                {
+                  icon: FaXTwitter,
+                  color: "text-white/70",
+                  bg: "bg-white/5",
+                  platform: "X / Twitter",
+                  handle: "@planewxai",
+                  url: "https://x.com/planewxai",
+                  note: "Aviation weather updates, product news",
+                },
+                {
+                  icon: FaFacebook,
+                  color: "text-blue-400",
+                  bg: "bg-blue-500/10",
+                  platform: "Facebook",
+                  handle: "planewxai",
+                  url: "https://facebook.com/planewxai",
+                  note: "Pilot group community, longer-form posts",
+                },
+                {
+                  icon: FaTiktok,
+                  color: "text-sky-300",
+                  bg: "bg-sky-500/10",
+                  platform: "TikTok",
+                  handle: "@planewx",
+                  url: "https://tiktok.com/@planewx",
+                  note: "Short-form aviation weather explainers",
+                },
+              ].map(({ icon: Icon, color, bg, platform, handle, url, note }) => (
+                <tr key={platform} className="hover:bg-white/[0.02] transition-colors">
+                  <td className="px-5 py-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-lg ${bg} flex items-center justify-center shrink-0`}>
+                        <Icon className={`h-4 w-4 ${color}`} />
+                      </div>
+                      <span className="font-medium text-white">{platform}</span>
+                    </div>
+                  </td>
+                  <td className="px-5 py-4">
+                    <code className="text-sky-400 font-mono text-sm">{handle}</code>
+                  </td>
+                  <td className="px-5 py-4">
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/50 hover:text-sky-400 transition-colors text-xs truncate block max-w-[200px]"
+                    >
+                      {url.replace("https://", "")}
+                    </a>
+                  </td>
+                  <td className="px-5 py-4 hidden sm:table-cell">
+                    <span className="text-white/40 text-xs">{note}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-white/30 mt-3">
+          Note: Instagram handle is <code className="text-white/40">@plane_wx</code> (with underscore) — all other platforms use <code className="text-white/40">@planewx</code> or <code className="text-white/40">planewxai</code>.
+        </p>
       </section>
 
       {/* Quick Links */}
