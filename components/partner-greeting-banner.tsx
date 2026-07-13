@@ -18,7 +18,7 @@ export function PartnerGreetingBanner() {
       return
     }
 
-    if (!code || code.length < 4 || code.length > 32) return
+    if (!code || code.length < 2 || code.length > 32) return
 
     // Check sessionStorage cache to avoid a network round-trip on every navigation.
     const sessionKey = `${SESSION_KEY_PREFIX}${code}`

@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
   const raw = request.nextUrl.searchParams.get("code")
   const code = raw?.trim().toUpperCase() ?? null
 
-  if (!code || code.length < 4 || code.length > 32) {
+  if (!code || code.length < 2 || code.length > 32) {
     return NextResponse.json(
       { greeting: null },
       { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } }
