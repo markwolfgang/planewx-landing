@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import { SnfBanner } from "@/components/snf-banner"
+import { PartnerGreetingBanner } from "@/components/partner-greeting-banner"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -303,6 +304,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <SnfBanner />
+        <PartnerGreetingBanner />
         {children}
         <Analytics />
       </body>
