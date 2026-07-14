@@ -73,7 +73,7 @@ export default function SocialMediaPlaybookPage() {
             {
               num: 5,
               title: "Built by Pilots, for Pilots",
-              desc: "We built the tool we needed and couldn't find. 500+ pilots are using it now.",
+              desc: "We built the tool we needed and couldn't find. 1,650+ pilots are using it now.",
             },
             {
               num: 6,
@@ -258,7 +258,7 @@ export default function SocialMediaPlaybookPage() {
             },
             {
               q: "This is just for inexperienced pilots, right?",
-              a: `We have ${STATS.jetAircraft} jet pilots and ${STATS.atpPilots} ATPs on the platform. For experienced pilots, it's not a knowledge problem — it's a workload problem. A professional flying 5-6 trips a week can't manually monitor weather across all of them. PlaneWX gives them at-a-glance WX Scores for every active trip.`,
+              a: `The fleet includes ${STATS.jetAircraft} jets, and we have ${STATS.atpPilots} ATPs on the platform. For experienced pilots, it's not a knowledge problem — it's a workload problem. A professional flying 5-6 trips a week can't manually monitor weather across all of them. PlaneWX gives them at-a-glance WX Scores for every active trip.`,
             },
             {
               q: "Someone mentions a competitor negatively",
@@ -282,7 +282,7 @@ export default function SocialMediaPlaybookPage() {
           Approved Social Proof
         </h2>
         <p className="text-white/60 mb-8">
-          Stats to cite. All numbers backed by production data (March 2026).
+          Stats to cite. All numbers backed by production data (as of July 2026).
         </p>
 
         <h3 className="text-lg font-semibold text-white mb-4">
@@ -294,7 +294,7 @@ export default function SocialMediaPlaybookPage() {
             { value: STATS.cumulativeHours, label: "cumulative hours" },
             { value: STATS.instrumentRated, label: "instrument rated" },
             { value: STATS.jetAircraft, label: "jet aircraft" },
-            { value: "102", label: "aircraft types" },
+            { value: STATS.aircraftTypes, label: "aircraft types" },
           ].map((stat) => (
             <div
               key={stat.label}
@@ -309,14 +309,14 @@ export default function SocialMediaPlaybookPage() {
         </div>
 
         <h3 className="text-lg font-semibold text-white mb-4">
-          Safety Impact (177 post-flight surveys)
+          Safety Impact (831 post-flight feedback submissions, July 2026)
         </h3>
         <div className="grid sm:grid-cols-2 gap-4 mb-6">
           {[
-            { value: "28 pilots", desc: "said PlaneWX gave them permission to cancel a flight they might have otherwise attempted" },
-            { value: "92%", desc: "of pilots who flew said the WX Score was accurate or conservative — only 8% said conditions were worse than predicted" },
-            { value: "3.4 days", desc: "average planning horizon — pilots are using PlaneWX for advance planning, not day-of" },
-            { value: "8.3 briefings", desc: "per trip on average — pilots check back repeatedly as departure approaches" },
+            { value: "90 pilots", desc: "said PlaneWX gave them the confidence to make a no-go call — 80 of those were weather-related" },
+            { value: "78%", desc: "of pilots said the WX Score was accurate or conservative" },
+            { value: "4.6 days", desc: "average planning horizon — pilots are using PlaneWX for advance planning, not day-of" },
+            { value: "8.1 briefings", desc: "per trip on average — pilots check back repeatedly as departure approaches" },
           ].map((stat) => (
             <div
               key={stat.value}
@@ -331,8 +331,8 @@ export default function SocialMediaPlaybookPage() {
         <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4">
           <p className="text-white/80 text-sm">
             <strong className="text-amber-400/90">Usage guidelines:</strong> Lead
-            with the &quot;28 pilots&quot; stat for safety messaging, community
-            stats for credibility, and 3.4-day planning horizon for the advance
+            with the &quot;90 pilots&quot; stat for safety messaging, community
+            stats for credibility, and 4.6-day planning horizon for the advance
             planning value prop. Always cite &quot;from post-flight feedback&quot;
             for the safety numbers.
           </p>

@@ -602,7 +602,7 @@ export function LandingVariantE() {
           {[
             { value: STATS.cumulativeHours, label: "Hours of experience in our community" },
             { value: STATS.instrumentRated, label: "Instrument rated" },
-            { value: STATS.jetAircraft, label: "Aircraft in our community" },
+            { value: STATS.jetAircraft, label: "Jet aircraft in our community" },
             { value: STATS.maxPilotHours, label: "Hours, our most experienced pilot" },
           ].map(s => (
             <div key={s.label}>

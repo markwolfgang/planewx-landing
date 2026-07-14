@@ -523,7 +523,7 @@ export default function BrandPortalPage() {
             { value: STATS.cumulativeHours, label: "cumulative flight hours" },
             { value: STATS.instrumentRated, label: "instrument rated" },
             { value: STATS.jetAircraft, label: "jet aircraft" },
-            { value: "94", label: "unique aircraft types" },
+            { value: STATS.aircraftTypes, label: "unique aircraft types" },
           ].map((stat) => (
             <div key={stat.label} className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
               <div className="text-2xl sm:text-3xl font-bold text-sky-400">
@@ -642,7 +642,7 @@ export default function BrandPortalPage() {
             <Plane className="h-8 w-8 text-sky-400 mb-4" />
             <h3 className="text-lg font-semibold text-white mb-2">Real-world flying</h3>
             <p className="text-white/70 text-sm leading-relaxed mb-3">
-              The courage to stay — pilots who share mistakes and lessons. Pair with the Chris testimonial and the stat that 32 of 43 weather cancellations came with confidence to no-go.
+              The courage to stay — pilots who share mistakes and lessons. Pair with the Chris testimonial and the stat that 90 pilots credited PlaneWX with the confidence to make a no-go call — 80 of them weather-related.
             </p>
           </div>
           <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
@@ -656,7 +656,7 @@ export default function BrandPortalPage() {
             <Sparkles className="h-8 w-8 text-sky-400 mb-4" />
             <h3 className="text-lg font-semibold text-white mb-2">Owner & type-specific</h3>
             <p className="text-white/70 text-sm leading-relaxed mb-3">
-              Aircraft-specific minimums beyond generic ceiling, visibility, and crosswind. Cirrus-heavy fleet; 98 unique types from trainers to jets.
+              Aircraft-specific minimums beyond generic ceiling, visibility, and crosswind. Cirrus-heavy fleet; 94 unique types from trainers to jets.
             </p>
           </div>
         </div>

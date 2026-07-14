@@ -3,7 +3,8 @@ export const STATS = {
   totalPilots: "1,650+",
   cumulativeHours: "2.9M+",
   instrumentRated: "73%",
-  jetAircraft: "143+",
+  jetAircraft: "167",
+  aircraftTypes: "94",
   maxPilotHours: "35,000+",
   atpPilots: "146",
 }
