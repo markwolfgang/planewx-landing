@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
-import { SnfBanner } from "@/components/snf-banner"
+import { OshBanner } from "@/components/osh-banner"
 import { PartnerGreetingBanner } from "@/components/partner-greeting-banner"
 import "./globals.css"
 
@@ -303,7 +303,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={inter.className}>
-        <SnfBanner />
+        <OshBanner />
         <PartnerGreetingBanner />
         {children}
         <Analytics />
