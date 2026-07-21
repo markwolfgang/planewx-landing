@@ -1,20 +1,41 @@
 import { Resend } from "resend"
 import type { RaffleAttendance } from "@/lib/osh-admin"
+import {
+  googleCalendarUrl,
+  OSH_EVENTS,
+  type OshCalendarEventId,
+} from "@/lib/osh-calendar"
+
+function calendarLinksHtml(eventId: OshCalendarEventId): string {
+  const event = OSH_EVENTS[eventId]
+  const google = googleCalendarUrl(event)
+  const ics = `https://www.planewx.ai/osh/${eventId}.ics`
+  return `<p style="margin: 6px 0 0; font-size: 14px;">
+    <a href="${google}" style="color: #0ea5e9; font-weight: 600; text-decoration: none;">Google Calendar</a>
+    <span style="color: #94a3b8;"> · </span>
+    <a href="${ics}" style="color: #0ea5e9; font-weight: 600; text-decoration: none;">Apple / Outlook (.ics)</a>
+  </p>`
+}
 
 function eventBlock(attendance: RaffleAttendance): string {
   const meetup = `
-    <p style="margin: 0 0 8px; font-size: 15px;"><strong>Meetup</strong> — Wednesday · 11:00 AM · Flyte Booth 337</p>
+    <p style="margin: 0 0 4px; font-size: 15px;"><strong>Meetup</strong> — Wednesday · 11:00 AM · Flyte Booth 337</p>
+    ${calendarLinksHtml("meetup")}
   `
   const talk = `
-    <p style="margin: 0; font-size: 15px;"><strong>Forum talk</strong> — Wednesday · 4:00–5:15 PM · Stage 10</p>
+    <p style="margin: 12px 0 4px; font-size: 15px;"><strong>Forum talk</strong> — Wednesday · 4:00–5:15 PM · Stage 10</p>
+    ${calendarLinksHtml("talk")}
   `
   if (attendance === "meetup") {
-    return `${meetup}<p style="margin: 8px 0 0; font-size: 14px; color: #64748b;">Drawing at the meetup · <em>must be present to win</em></p>`
+    return `${meetup}<p style="margin: 12px 0 0; font-size: 14px; color: #64748b;">Drawing at the meetup · <em>must be present to win</em></p>`
   }
   if (attendance === "talk") {
-    return `${talk}<p style="margin: 8px 0 0; font-size: 14px; color: #64748b;">Drawing at the talk · <em>must be present to win</em></p>`
+    return `
+    <p style="margin: 0 0 4px; font-size: 15px;"><strong>Forum talk</strong> — Wednesday · 4:00–5:15 PM · Stage 10</p>
+    ${calendarLinksHtml("talk")}
+    <p style="margin: 12px 0 0; font-size: 14px; color: #64748b;">Drawing at the talk · <em>must be present to win</em></p>`
   }
-  return `${meetup}${talk}<p style="margin: 8px 0 0; font-size: 14px; color: #64748b;">Drawings at both events · <em>must be present to win</em></p>`
+  return `${meetup}${talk}<p style="margin: 12px 0 0; font-size: 14px; color: #64748b;">Drawings at both events · <em>must be present to win</em></p>`
 }
 
 export async function sendOshRaffleConfirmation(opts: {

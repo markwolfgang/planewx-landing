@@ -13,6 +13,11 @@ import {
 } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { OshRaffleForm } from "@/components/osh-raffle-form"
+import {
+  googleCalendarUrl,
+  icsHref,
+  OSH_EVENTS,
+} from "@/lib/osh-calendar"
 
 export const metadata: Metadata = {
   title: "PlaneWX at Oshkosh 2026",
@@ -147,12 +152,30 @@ export default function OshkoshPage() {
                     <dd>Flyte Booth 337</dd>
                   </div>
                 </dl>
-                <a
-                  href="#giveaway"
-                  className="inline-flex items-center text-sky-500 hover:text-sky-600 font-semibold text-sm pt-1"
-                >
-                  Enter the giveaway →
-                </a>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-sm">
+                  <a
+                    href={googleCalendarUrl(OSH_EVENTS.meetup)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-500 hover:text-sky-600 font-semibold"
+                  >
+                    Google Calendar
+                  </a>
+                  <span className="text-[#0c2d4a]/25">·</span>
+                  <a
+                    href={icsHref(OSH_EVENTS.meetup)}
+                    className="text-sky-500 hover:text-sky-600 font-semibold"
+                  >
+                    Apple / Outlook
+                  </a>
+                  <span className="text-[#0c2d4a]/25">·</span>
+                  <a
+                    href="#giveaway"
+                    className="text-sky-500 hover:text-sky-600 font-semibold"
+                  >
+                    Enter giveaway →
+                  </a>
+                </div>
               </div>
             </article>
 
@@ -181,14 +204,32 @@ export default function OshkoshPage() {
                     <dd>Forum Stage 10 · Mark Wolfgang</dd>
                   </div>
                 </dl>
-                <a
-                  href={TALK_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-sky-500 hover:text-sky-600 font-semibold text-sm pt-1"
-                >
-                  View on EAA schedule →
-                </a>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-sm">
+                  <a
+                    href={googleCalendarUrl(OSH_EVENTS.talk)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-500 hover:text-sky-600 font-semibold"
+                  >
+                    Google Calendar
+                  </a>
+                  <span className="text-[#0c2d4a]/25">·</span>
+                  <a
+                    href={icsHref(OSH_EVENTS.talk)}
+                    className="text-sky-500 hover:text-sky-600 font-semibold"
+                  >
+                    Apple / Outlook
+                  </a>
+                  <span className="text-[#0c2d4a]/25">·</span>
+                  <a
+                    href={TALK_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sky-500 hover:text-sky-600 font-semibold"
+                  >
+                    EAA schedule →
+                  </a>
+                </div>
               </div>
             </article>
           </div>

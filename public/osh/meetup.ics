@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PlaneWX//Oshkosh 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:meetup@planewx.ai
+DTSTAMP:20260720T000000Z
+DTSTART:20260722T160000Z
+DTEND:20260722T170000Z
+SUMMARY:PlaneWX Meetup @ Flyte — Oshkosh
+LOCATION:Flyte Booth 337\, EAA AirVenture Oshkosh
+DESCRIPTION:Meet Mark and Sara at the Flyte booth. Drinks by Flyte\, giveaways (must be present to win). Details: https://www.planewx.ai/osh
+URL:https://www.planewx.ai/osh
+END:VEVENT
+END:VCALENDAR
