@@ -145,7 +145,7 @@ async function fetchPilotProfiles(
   }
 
   const result = new Map<string, PilotProfile>()
-  for (const p of profiles ?? []) {
+  for (const p of (profiles as unknown as Array<Record<string, unknown>>) ?? []) {
     const uid = p.user_id as string
     result.set(uid, {
       member_since: (p.created_at as string)?.slice(0, 10) ?? "",
@@ -182,7 +182,7 @@ async function fetchCohortProfiles(
       .from("profiles")
       .select(PROFILE_COLS)
       .or(chunk.map((id) => `user_id.eq.${id}`).join(","))
-    if (data) all.push(...(data as Array<Record<string, unknown>>))
+    if (data) all.push(...(data as unknown as Array<Record<string, unknown>>))
   }
   return all
 }
