@@ -14,6 +14,10 @@ import {
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { OshRaffleForm } from "@/components/osh-raffle-form"
 import {
+  OshCampaignTracker,
+  OshSignUpLink,
+} from "@/components/osh-campaign-tracker"
+import {
   googleCalendarUrl,
   icsHref,
   OSH_EVENTS,
@@ -36,11 +40,11 @@ export const metadata: Metadata = {
 }
 
 const TALK_URL = "https://events.rdmobile.com/Sessions/Details/3567392"
-const SIGNUP_URL = "https://app.planewx.ai/auth/sign-up?lp=osh"
 
 export default function OshkoshPage() {
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white">
+      <OshCampaignTracker />
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0d1f3c] to-[#0a0f1a]" />
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[120px]" />
@@ -276,13 +280,10 @@ export default function OshkoshPage() {
             PlaneWX is the Pilot&apos;s Decision Support System — personal minimums,
             multi-model weather, and a WX Score that helps you decide days earlier.
           </p>
-          <a
-            href={SIGNUP_URL}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all"
-          >
+          <OshSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all">
             Start free 14-day trial
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </OshSignUpLink>
         </section>
 
         <footer className="text-center text-xs text-white/30 pb-8">
