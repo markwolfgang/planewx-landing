@@ -3,6 +3,44 @@
 import { useState } from "react"
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react"
 import type { RaffleAttendance } from "@/lib/osh-admin"
+import {
+  googleCalendarUrl,
+  icsHref,
+  OSH_EVENTS,
+  type OshCalendarEventId,
+} from "@/lib/osh-calendar"
+
+function CalendarLinks({ events }: { events: OshCalendarEventId[] }) {
+  return (
+    <div className="space-y-2 pt-1">
+      <p className="text-sm text-white/55 font-medium">Add to calendar</p>
+      {events.map((id) => {
+        const event = OSH_EVENTS[id]
+        const label = id === "meetup" ? "Meetup" : "Forum talk"
+        return (
+          <div key={id} className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+            <span className="text-white/70 font-medium">{label}:</span>
+            <a
+              href={googleCalendarUrl(event)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sky-400 hover:text-sky-300 font-medium"
+            >
+              Google
+            </a>
+            <span className="text-white/25">·</span>
+            <a
+              href={icsHref(event)}
+              className="text-sky-400 hover:text-sky-300 font-medium"
+            >
+              Apple / Outlook
+            </a>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
 
 const EVENT_OPTIONS: { value: RaffleAttendance; label: string; detail: string }[] = [
   {
@@ -67,6 +105,15 @@ export function OshRaffleForm() {
   }
 
   if (status === "success") {
+    const calendarEvents: OshCalendarEventId[] =
+      eventAttendance === "meetup"
+        ? ["meetup"]
+        : eventAttendance === "talk"
+          ? ["talk"]
+          : eventAttendance === "both"
+            ? ["meetup", "talk"]
+            : []
+
     return (
       <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6 sm:p-8 space-y-3">
         <div className="flex items-center gap-2 text-emerald-300 font-semibold text-lg">
@@ -77,6 +124,7 @@ export function OshRaffleForm() {
         <p className="text-sm text-white/50">
           Must be present at your selected event to win
         </p>
+        {calendarEvents.length > 0 && <CalendarLinks events={calendarEvents} />}
         <a
           href="https://app.planewx.ai/auth/sign-up?lp=osh"
           className="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 font-medium text-sm pt-2"
