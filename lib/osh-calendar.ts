@@ -1,4 +1,4 @@
-/** Calendar helpers for Oshkosh Wed Jul 22, 2026 (America/Chicago = CDT = UTC-5) */
+/** Calendar helpers for Oshkosh Wed Jul 22, 2026 (America/Chicago — Central Time) */
 
 export type OshCalendarEventId = "meetup" | "talk"
 
@@ -7,10 +7,12 @@ export type OshCalendarEvent = {
   title: string
   location: string
   details: string
-  /** UTC start/end as YYYYMMDDTHHMMSSZ */
-  startUtc: string
-  endUtc: string
+  /** Local Central Time as YYYYMMDDTHHMMSS (no Z) */
+  startLocal: string
+  endLocal: string
 }
+
+export const OSH_TZ = "America/Chicago"
 
 export const OSH_EVENTS: Record<OshCalendarEventId, OshCalendarEvent> = {
   meetup: {
@@ -20,8 +22,8 @@ export const OSH_EVENTS: Record<OshCalendarEventId, OshCalendarEvent> = {
     details:
       "Meet Mark and Sara at the Flyte booth. Drinks by Flyte, giveaways (must be present to win). Details: https://www.planewx.ai/osh",
     // Wed Jul 22, 2026 11:00–12:00 CDT
-    startUtc: "20260722T160000Z",
-    endUtc: "20260722T170000Z",
+    startLocal: "20260722T110000",
+    endLocal: "20260722T120000",
   },
   talk: {
     id: "talk",
@@ -30,8 +32,8 @@ export const OSH_EVENTS: Record<OshCalendarEventId, OshCalendarEvent> = {
     details:
       "PlaneWX forum talk on personal minimums, multi-model weather, and WX Score inside a PAVE risk assessment. Giveaway drawing at the talk (must be present to win). EAA: https://events.rdmobile.com/Sessions/Details/3567392 · Details: https://www.planewx.ai/osh",
     // Wed Jul 22, 2026 16:00–17:15 CDT
-    startUtc: "20260722T210000Z",
-    endUtc: "20260722T221500Z",
+    startLocal: "20260722T160000",
+    endLocal: "20260722T171500",
   },
 }
 
@@ -39,7 +41,8 @@ export function googleCalendarUrl(event: OshCalendarEvent): string {
   const params = new URLSearchParams({
     action: "TEMPLATE",
     text: event.title,
-    dates: `${event.startUtc}/${event.endUtc}`,
+    dates: `${event.startLocal}/${event.endLocal}`,
+    ctz: OSH_TZ,
     details: event.details,
     location: event.location,
   })
@@ -72,6 +75,28 @@ function foldIcsLine(line: string): string {
   return parts.join("\r\n")
 }
 
+/** Minimal America/Chicago VTIMEZONE (CST/CDT) for calendar clients. */
+const CHICAGO_VTIMEZONE = [
+  "BEGIN:VTIMEZONE",
+  "TZID:America/Chicago",
+  "X-LIC-LOCATION:America/Chicago",
+  "BEGIN:DAYLIGHT",
+  "TZOFFSETFROM:-0600",
+  "TZOFFSETTO:-0500",
+  "TZNAME:CDT",
+  "DTSTART:19700308T020000",
+  "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU",
+  "END:DAYLIGHT",
+  "BEGIN:STANDARD",
+  "TZOFFSETFROM:-0500",
+  "TZOFFSETTO:-0600",
+  "TZNAME:CST",
+  "DTSTART:19701101T020000",
+  "RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU",
+  "END:STANDARD",
+  "END:VTIMEZONE",
+]
+
 export function buildIcs(event: OshCalendarEvent): string {
   const uid = `${event.id}@planewx.ai`
   const lines = [
@@ -80,11 +105,12 @@ export function buildIcs(event: OshCalendarEvent): string {
     "PRODID:-//PlaneWX//Oshkosh 2026//EN",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
+    ...CHICAGO_VTIMEZONE,
     "BEGIN:VEVENT",
     `UID:${uid}`,
     `DTSTAMP:20260720T000000Z`,
-    `DTSTART:${event.startUtc}`,
-    `DTEND:${event.endUtc}`,
+    `DTSTART;TZID=${OSH_TZ}:${event.startLocal}`,
+    `DTEND;TZID=${OSH_TZ}:${event.endLocal}`,
     foldIcsLine(`SUMMARY:${escapeIcsText(event.title)}`),
     foldIcsLine(`LOCATION:${escapeIcsText(event.location)}`),
     foldIcsLine(`DESCRIPTION:${escapeIcsText(event.details)}`),
