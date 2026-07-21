@@ -24,7 +24,42 @@ export function assertAdminSecret(secret: string | null | undefined): boolean {
 export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export type RafflePrize = "sunglasses" | "merch"
+export type RaffleAttendance = "meetup" | "talk" | "both"
+export type RaffleDrawEvent = "meetup" | "talk"
 
 export function isRafflePrize(value: unknown): value is RafflePrize {
   return value === "sunglasses" || value === "merch"
+}
+
+export function isRaffleAttendance(value: unknown): value is RaffleAttendance {
+  return value === "meetup" || value === "talk" || value === "both"
+}
+
+export function isRaffleDrawEvent(value: unknown): value is RaffleDrawEvent {
+  return value === "meetup" || value === "talk"
+}
+
+export function attendanceEligibleForEvent(
+  attendance: string | null | undefined,
+  event: RaffleDrawEvent,
+): boolean {
+  const a = attendance || "both"
+  return a === "both" || a === event
+}
+
+export function attendanceLabel(attendance: string | null | undefined): string {
+  switch (attendance) {
+    case "meetup":
+      return "Meetup"
+    case "talk":
+      return "Forum talk"
+    case "both":
+      return "Both"
+    default:
+      return "Both"
+  }
+}
+
+export function drawEventLabel(event: string | null | undefined): string {
+  return event === "talk" ? "Forum talk" : "Meetup"
 }

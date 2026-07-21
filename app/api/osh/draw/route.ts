@@ -2,8 +2,11 @@ import { NextResponse } from "next/server"
 import { randomInt } from "crypto"
 import {
   assertAdminSecret,
+  attendanceEligibleForEvent,
   getOshSupabase,
+  isRaffleDrawEvent,
   isRafflePrize,
+  type RaffleDrawEvent,
   type RafflePrize,
 } from "@/lib/osh-admin"
 
@@ -11,18 +14,23 @@ const PAGE_SIZE = 500
 
 async function fetchEligibleEntryIds(
   supabase: NonNullable<ReturnType<typeof getOshSupabase>>,
+  event: RaffleDrawEvent,
 ): Promise<string[]> {
-  const wonIds = new Set<string>()
+  // Already won at this specific event → ineligible for another draw there
+  const wonAtEvent = new Set<string>()
   let from = 0
   while (true) {
     const { data, error } = await supabase
       .from("oshkosh_raffle_draws")
-      .select("entry_id")
+      .select("entry_id, event")
       .eq("status", "won")
       .range(from, from + PAGE_SIZE - 1)
     if (error) throw error
     if (!data || data.length === 0) break
-    for (const row of data) wonIds.add(row.entry_id as string)
+    for (const row of data) {
+      const drawEvent = (row.event as string) || "meetup"
+      if (drawEvent === event) wonAtEvent.add(row.entry_id as string)
+    }
     from += data.length
   }
 
@@ -31,12 +39,14 @@ async function fetchEligibleEntryIds(
   while (true) {
     const { data, error } = await supabase
       .from("oshkosh_raffle_entries")
-      .select("id")
+      .select("id, event_attendance")
       .range(from, from + PAGE_SIZE - 1)
     if (error) throw error
     if (!data || data.length === 0) break
     for (const row of data) {
-      if (!wonIds.has(row.id as string)) eligible.push(row.id as string)
+      if (wonAtEvent.has(row.id as string)) continue
+      if (!attendanceEligibleForEvent(row.event_attendance as string, event)) continue
+      eligible.push(row.id as string)
     }
     from += data.length
   }
@@ -63,10 +73,18 @@ export async function POST(request: Request) {
       )
     }
 
-    const eligibleIds = await fetchEligibleEntryIds(supabase)
+    const event: RaffleDrawEvent | null = isRaffleDrawEvent(body.event) ? body.event : null
+    if (!event) {
+      return NextResponse.json(
+        { error: "Event must be 'meetup' or 'talk'" },
+        { status: 400 },
+      )
+    }
+
+    const eligibleIds = await fetchEligibleEntryIds(supabase, event)
     if (eligibleIds.length === 0) {
       return NextResponse.json(
-        { error: "No eligible entries left to draw" },
+        { error: `No eligible entries left for the ${event === "talk" ? "forum talk" : "meetup"}` },
         { status: 409 },
       )
     }
@@ -75,7 +93,7 @@ export async function POST(request: Request) {
 
     const { data: entry, error: entryError } = await supabase
       .from("oshkosh_raffle_entries")
-      .select("id, email, first_name")
+      .select("id, email, first_name, event_attendance")
       .eq("id", winnerId)
       .single()
 
@@ -89,9 +107,10 @@ export async function POST(request: Request) {
       .insert({
         entry_id: entry.id,
         prize,
+        event,
         status: "won",
       })
-      .select("id, entry_id, prize, status, created_at")
+      .select("id, entry_id, prize, event, status, created_at")
       .single()
 
     if (drawError || !draw) {
@@ -106,6 +125,7 @@ export async function POST(request: Request) {
         id: entry.id,
         email: entry.email,
         firstName: entry.first_name,
+        eventAttendance: entry.event_attendance,
       },
       draw,
     })
