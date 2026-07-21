@@ -4,6 +4,7 @@ import { useMemo, useState } from "react"
 import Link from "next/link"
 import {
   ArrowLeft,
+  BarChart3,
   Download,
   Gift,
   Loader2,
@@ -20,7 +21,7 @@ import {
   type RaffleDrawEvent,
 } from "@/lib/osh-admin"
 
-import type { PilotProfile } from "@/app/api/osh/list/route"
+import type { OshCohortStats, PilotProfile } from "@/app/api/osh/list/route"
 
 type Entry = {
   id: string
@@ -70,6 +71,7 @@ export default function OshAdminPage() {
   })
   const [oshPilotCount, setOshPilotCount] = useState<number | null>(null)
   const [raffleOshPilotCount, setRaffleOshPilotCount] = useState(0)
+  const [oshCohortStats, setOshCohortStats] = useState<OshCohortStats | null>(null)
   const [prize, setPrize] = useState<Prize>("sunglasses")
   const [drawEvent, setDrawEvent] = useState<RaffleDrawEvent>("meetup")
   const [winner, setWinner] = useState<Winner | null>(null)
@@ -98,6 +100,7 @@ export default function OshAdminPage() {
       )
       setOshPilotCount(data.oshPilotCount ?? null)
       setRaffleOshPilotCount(data.raffleOshPilotCount ?? 0)
+      setOshCohortStats(data.oshCohortStats ?? null)
       setAuthenticated(true)
     } catch {
       setError("Network error loading entries")
@@ -305,6 +308,9 @@ export default function OshAdminPage() {
           </section>
         )}
 
+        {/* Cohort stats */}
+        {oshCohortStats && <OshCohortStatsPanel stats={oshCohortStats} />}
+
         <section className="rounded-2xl border border-sky-500/30 bg-sky-500/5 p-6 space-y-5">
           <h2 className="text-lg font-semibold">Pick a winner</h2>
 
@@ -448,7 +454,6 @@ export default function OshAdminPage() {
                       : "border-white/10 bg-white/[0.03]"
                   }`}
                 >
-                  {/* Header row */}
                   <div className="flex items-center justify-between gap-3 px-4 py-3">
                     <span className={`truncate font-medium ${wins.length > 0 ? "text-emerald-200" : "text-white/90"}`}>
                       {e.first_name ? `${e.first_name} · ` : ""}
@@ -478,7 +483,6 @@ export default function OshAdminPage() {
                     </div>
                   </div>
 
-                  {/* Pilot profile card */}
                   {e.pilot && (
                     <div className="border-t border-white/[0.06] px-4 py-3 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-2 text-xs">
                       <div>
@@ -531,6 +535,178 @@ export default function OshAdminPage() {
         </section>
       </div>
     </div>
+  )
+}
+
+function OshCohortStatsPanel({ stats }: { stats: OshCohortStats }) {
+  const hasInternational = stats.top_origins.some((o) => !o.airport.startsWith("K"))
+  const nogoRate = stats.trip_count > 0
+    ? Math.round((stats.nogo_count / stats.trip_count) * 100)
+    : 0
+
+  return (
+    <section className="rounded-2xl border border-indigo-500/20 bg-indigo-500/[0.04] p-5 space-y-5">
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <div className="flex items-center gap-2 text-sm font-semibold text-white/70">
+          <BarChart3 className="h-4 w-4 text-indigo-400" />
+          Pilot cohort
+        </div>
+        <span className="text-xs text-white/30">
+          {stats.pilot_count} pilots · {stats.trip_count} trips ·{" "}
+          {stats.profiles_with_data} filled profile
+        </span>
+      </div>
+
+      {/* Origins */}
+      <div>
+        <p className="text-xs text-white/40 uppercase tracking-wide font-semibold mb-2">
+          Where they came from
+        </p>
+        <div className="flex flex-wrap gap-1.5">
+          {stats.top_origins.map((o) => (
+            <span
+              key={o.airport}
+              className={`rounded-md px-2 py-0.5 text-xs font-medium border ${
+                !o.airport.startsWith("K")
+                  ? "bg-amber-500/10 border-amber-500/20 text-amber-300"
+                  : "bg-white/5 border-white/10 text-white/70"
+              }`}
+            >
+              {o.airport} ×{o.count}
+            </span>
+          ))}
+        </div>
+        {hasInternational && (
+          <p className="text-xs text-amber-400/60 mt-1.5">International pilots included (amber)</p>
+        )}
+      </div>
+
+      {/* Longest trips */}
+      <div>
+        <p className="text-xs text-white/40 uppercase tracking-wide font-semibold mb-2">
+          Longest flights
+        </p>
+        <ul className="space-y-1.5">
+          {stats.longest_trips.map((t, i) => (
+            <li
+              key={i}
+              className="flex items-center gap-3 text-xs"
+            >
+              <span className="font-mono font-semibold text-white/80 w-28 shrink-0">{t.route}</span>
+              <span className="text-indigo-300 font-bold shrink-0">{t.nm.toLocaleString()} nm</span>
+              {t.aircraft && (
+                <span className="text-white/40 shrink-0">{t.aircraft}</span>
+              )}
+              <span className="text-white/30 ml-auto shrink-0">{t.date}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Stats grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+
+        {/* Credentials */}
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 space-y-1.5">
+          <p className="text-xs text-white/40 font-semibold">Credentials</p>
+          {Object.entries(stats.certificate_breakdown)
+            .filter(([k]) => k !== "unknown")
+            .sort((a, b) => b[1] - a[1])
+            .map(([cert, n]) => (
+              <div key={cert} className="flex justify-between text-xs">
+                <span className="text-white/60">{certLabel(cert)}</span>
+                <span className="font-semibold">{n}</span>
+              </div>
+            ))}
+          <div className="pt-1 border-t border-white/10 space-y-1">
+            <div className="flex justify-between text-xs">
+              <span className="text-sky-300">IFR</span>
+              <span className="font-semibold">{stats.ifr_count}</span>
+            </div>
+            {stats.me_count > 0 && (
+              <div className="flex justify-between text-xs">
+                <span className="text-violet-300">ME</span>
+                <span className="font-semibold">{stats.me_count}</span>
+              </div>
+            )}
+            {stats.cfi_count > 0 && (
+              <div className="flex justify-between text-xs">
+                <span className="text-amber-300">CFI</span>
+                <span className="font-semibold">{stats.cfi_count}</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Hours */}
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 space-y-1.5">
+          <p className="text-xs text-white/40 font-semibold">
+            Hours <span className="font-normal">({stats.hours.sample_size} logged)</span>
+          </p>
+          <div className="flex justify-between text-xs">
+            <span className="text-white/60">Avg</span>
+            <span className="font-semibold">{stats.hours.avg.toLocaleString()}h</span>
+          </div>
+          <div className="flex justify-between text-xs">
+            <span className="text-white/60">Median</span>
+            <span className="font-semibold">{stats.hours.median.toLocaleString()}h</span>
+          </div>
+          <div className="flex justify-between text-xs">
+            <span className="text-white/60">Max</span>
+            <span className="font-semibold text-emerald-300">
+              {stats.hours.max.toLocaleString()}h
+            </span>
+          </div>
+          <div className="pt-1 border-t border-white/10 space-y-1">
+            <p className="text-xs text-white/40 font-semibold">Tenure</p>
+            <div className="flex justify-between text-xs">
+              <span className="text-white/60">Avg member</span>
+              <span className="font-semibold">{stats.member_days.avg}d</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Tiers */}
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 space-y-1.5">
+          <p className="text-xs text-white/40 font-semibold">Tiers</p>
+          {Object.entries(stats.tier_breakdown)
+            .sort((a, b) => b[1] - a[1])
+            .map(([tier, n]) => (
+              <div key={tier} className="flex justify-between text-xs">
+                <span className="text-white/60 capitalize">{tier}</span>
+                <span className="font-semibold">{n}</span>
+              </div>
+            ))}
+        </div>
+
+        {/* Aircraft */}
+        <div className="rounded-xl border border-white/10 bg-white/[0.03] p-3 space-y-1.5">
+          <p className="text-xs text-white/40 font-semibold">Aircraft</p>
+          {stats.top_aircraft_types.slice(0, 7).map(({ type, count }) => (
+            <div key={type} className="flex justify-between text-xs">
+              <span className="text-white/60">{type}</span>
+              <span className="font-semibold">{count}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Weather decisions */}
+      <div className="rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 flex flex-wrap gap-x-8 gap-y-2 text-xs">
+        <div>
+          <span className="text-white/40">Avg weather score </span>
+          <span className="font-semibold">{stats.avg_score ?? "—"}/100</span>
+        </div>
+        <div>
+          <span className="text-white/40">No-go trip checks </span>
+          <span className="font-semibold text-rose-300">{stats.nogo_count}</span>
+          <span className="text-white/40"> of {stats.trip_count} ({nogoRate}%)</span>
+        </div>
+        <div className="text-white/30">
+          PlaneWX was actively consulted for each trip check
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -601,7 +777,7 @@ function Stat({
         {icon}
         {label}
       </div>
-      <p className="text-2xl font-bold">{value}</p>
+      <p className={`font-bold ${isText ? "text-xl" : "text-2xl"}`}>{value}</p>
     </div>
   )
 }
