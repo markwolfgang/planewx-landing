@@ -10,6 +10,7 @@ import { STATS, FAQS } from "@/components/shared/landing-data"
 import { FlightChopsEndorsement } from "@/components/shared/flight-chops-endorsement"
 import { TestimonialsCarousel } from "@/components/shared/testimonials-carousel"
 import { PartnerBadges } from "@/components/shared/partner-badges"
+import { OshHomeCard } from "@/components/osh-home-card"
 import {
   ArrowRight,
   Check,
@@ -122,6 +123,8 @@ export function LandingPageV3() {
           </div>
         </div>
       </nav>
+
+      <OshHomeCard />
 
       {/* ── HERO ───────────────────────────────────────────────────────────────── */}
       <section className="relative pt-14 sm:pt-24 pb-14 sm:pb-20 px-4">
