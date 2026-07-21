@@ -128,6 +128,18 @@ export function OshRaffleForm() {
         <a
           href="https://app.planewx.ai/auth/sign-up?lp=osh"
           className="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 font-medium text-sm pt-2"
+          onClick={(e) => {
+            try {
+              const stored = localStorage.getItem("planewx_referral")
+              const fromUrl = new URLSearchParams(window.location.search).get("ref")
+              const code = stored || (fromUrl ? fromUrl.toUpperCase() : null)
+              if (code) {
+                e.currentTarget.href = `https://app.planewx.ai/auth/sign-up?lp=osh&ref=${encodeURIComponent(code)}`
+              }
+            } catch {
+              /* ignore */
+            }
+          }}
         >
           Try PlaneWX free while you wait
           <ArrowRight className="h-4 w-4" />
