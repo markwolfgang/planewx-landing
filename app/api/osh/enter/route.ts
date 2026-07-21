@@ -1,6 +1,22 @@
 import { NextResponse } from "next/server"
-import { EMAIL_REGEX, getOshSupabase } from "@/lib/osh-admin"
+import {
+  EMAIL_REGEX,
+  getOshSupabase,
+  isRaffleAttendance,
+  type RaffleAttendance,
+} from "@/lib/osh-admin"
 import { sendOshRaffleConfirmation } from "@/lib/osh-confirmation-email"
+
+function successMessage(attendance: RaffleAttendance): string {
+  switch (attendance) {
+    case "meetup":
+      return "You're in! See you Wednesday 11 AM at Flyte Booth 337."
+    case "talk":
+      return "You're in! See you Wednesday 4 PM at Forum Stage 10."
+    case "both":
+      return "You're in for both events! See you Wednesday at the booth and Stage 10."
+  }
+}
 
 export async function POST(request: Request) {
   try {
@@ -18,6 +34,9 @@ export async function POST(request: Request) {
       typeof body.source === "string" && body.source.trim()
         ? body.source.trim().slice(0, 40)
         : "page"
+    const attendance: RaffleAttendance | null = isRaffleAttendance(body.eventAttendance)
+      ? body.eventAttendance
+      : null
 
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 })
@@ -25,12 +44,19 @@ export async function POST(request: Request) {
     if (!EMAIL_REGEX.test(email)) {
       return NextResponse.json({ error: "Invalid email format" }, { status: 400 })
     }
+    if (!attendance) {
+      return NextResponse.json(
+        { error: "Please choose which event you'll attend" },
+        { status: 400 },
+      )
+    }
 
     const { error } = await supabase.from("oshkosh_raffle_entries").insert({
       email,
       first_name: firstName || null,
       marketing_opt_in: marketingOptIn,
       source,
+      event_attendance: attendance,
     })
 
     if (error) {
@@ -39,7 +65,7 @@ export async function POST(request: Request) {
           {
             success: true,
             alreadyEntered: true,
-            message: "You're already entered. See you at Booth 337!",
+            message: "You're already entered. Must be present at your selected event to win.",
           },
           { status: 200 },
         )
@@ -52,16 +78,15 @@ export async function POST(request: Request) {
     }
 
     try {
-      await sendOshRaffleConfirmation({ email, firstName })
+      await sendOshRaffleConfirmation({ email, firstName, eventAttendance: attendance })
     } catch (emailError) {
-      // Don't fail the raffle entry if email fails
       console.error("[Osh Raffle] confirmation email failed:", emailError)
     }
 
     return NextResponse.json({
       success: true,
       alreadyEntered: false,
-      message: "You're in! See you Wednesday 11 AM at Flyte Booth 337.",
+      message: successMessage(attendance),
     })
   } catch (err) {
     console.error("[Osh Raffle] unexpected error:", err)

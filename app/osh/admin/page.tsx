@@ -1,17 +1,23 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import Link from "next/link"
 import {
   ArrowLeft,
   Download,
   Gift,
   Loader2,
+  Mic2,
   RefreshCw,
   Shirt,
   Sparkles,
   Users,
 } from "lucide-react"
+import {
+  attendanceLabel,
+  drawEventLabel,
+  type RaffleDrawEvent,
+} from "@/lib/osh-admin"
 
 type Entry = {
   id: string
@@ -19,6 +25,7 @@ type Entry = {
   first_name: string | null
   marketing_opt_in: boolean
   source: string
+  event_attendance: string | null
   created_at: string
 }
 
@@ -26,6 +33,7 @@ type Draw = {
   id: string
   entry_id: string
   prize: "sunglasses" | "merch"
+  event: string | null
   status: "won" | "skipped_not_present"
   created_at: string
 }
@@ -34,6 +42,7 @@ type Winner = {
   id: string
   email: string
   firstName: string | null
+  eventAttendance?: string | null
 }
 
 type Prize = "sunglasses" | "merch"
@@ -46,11 +55,20 @@ export default function OshAdminPage() {
   const [error, setError] = useState<string | null>(null)
   const [entries, setEntries] = useState<Entry[]>([])
   const [draws, setDraws] = useState<Draw[]>([])
-  const [eligibleCount, setEligibleCount] = useState(0)
+  const [eligibleMeetup, setEligibleMeetup] = useState(0)
+  const [eligibleTalk, setEligibleTalk] = useState(0)
   const [marketingOptInCount, setMarketingOptInCount] = useState(0)
+  const [attendanceCounts, setAttendanceCounts] = useState({
+    meetup: 0,
+    talk: 0,
+    both: 0,
+  })
   const [prize, setPrize] = useState<Prize>("sunglasses")
+  const [drawEvent, setDrawEvent] = useState<RaffleDrawEvent>("meetup")
   const [winner, setWinner] = useState<Winner | null>(null)
   const [lastDraw, setLastDraw] = useState<Draw | null>(null)
+
+  const eligibleForSelected = drawEvent === "meetup" ? eligibleMeetup : eligibleTalk
 
   async function fetchList(adminSecret: string) {
     setLoading(true)
@@ -65,8 +83,12 @@ export default function OshAdminPage() {
       }
       setEntries(data.entries || [])
       setDraws(data.draws || [])
-      setEligibleCount(data.eligibleCount ?? 0)
+      setEligibleMeetup(data.eligibleMeetup ?? 0)
+      setEligibleTalk(data.eligibleTalk ?? 0)
       setMarketingOptInCount(data.marketingOptInCount ?? 0)
+      setAttendanceCounts(
+        data.attendanceCounts || { meetup: 0, talk: 0, both: 0 },
+      )
       setAuthenticated(true)
     } catch {
       setError("Network error loading entries")
@@ -87,7 +109,7 @@ export default function OshAdminPage() {
       const res = await fetch("/api/osh/draw", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ secret, prize }),
+        body: JSON.stringify({ secret, prize, event: drawEvent }),
       })
       const data = await res.json()
       if (!res.ok) {
@@ -96,7 +118,6 @@ export default function OshAdminPage() {
       }
       setWinner(data.winner)
       setLastDraw(data.draw)
-      setEligibleCount(data.eligibleRemaining ?? 0)
       await fetchList(secret)
     } catch {
       setError("Network error during draw")
@@ -131,12 +152,14 @@ export default function OshAdminPage() {
   }
 
   function exportCsv() {
-    const header = "first_name,email,marketing_opt_in,source,created_at\n"
+    const header =
+      "first_name,email,event_attendance,marketing_opt_in,source,created_at\n"
     const rows = entries
       .map((e) =>
         [
           csvEscape(e.first_name || ""),
           csvEscape(e.email),
+          csvEscape(e.event_attendance || "both"),
           e.marketing_opt_in ? "yes" : "no",
           csvEscape(e.source),
           e.created_at,
@@ -151,6 +174,11 @@ export default function OshAdminPage() {
     a.click()
     URL.revokeObjectURL(url)
   }
+
+  const confirmedWins = useMemo(
+    () => draws.filter((d) => d.status === "won"),
+    [draws],
+  )
 
   if (!authenticated) {
     return (
@@ -185,8 +213,6 @@ export default function OshAdminPage() {
       </div>
     )
   }
-
-  const confirmedWins = draws.filter((d) => d.status === "won")
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white">
@@ -223,46 +249,64 @@ export default function OshAdminPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-3">
-          <Stat
-            icon={<Users className="h-4 w-4" />}
-            label="Entries"
-            value={entries.length}
-          />
-          <Stat
-            icon={<Sparkles className="h-4 w-4" />}
-            label="Eligible"
-            value={eligibleCount}
-          />
-          <Stat
-            icon={<Gift className="h-4 w-4" />}
-            label="Marketing opt-in"
-            value={marketingOptInCount}
-          />
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <Stat icon={<Users className="h-4 w-4" />} label="Entries" value={entries.length} />
+          <Stat icon={<Gift className="h-4 w-4" />} label="Meetup pool" value={eligibleMeetup} />
+          <Stat icon={<Mic2 className="h-4 w-4" />} label="Talk pool" value={eligibleTalk} />
+          <Stat icon={<Sparkles className="h-4 w-4" />} label="Marketing" value={marketingOptInCount} />
         </div>
+        <p className="text-xs text-white/40 -mt-4">
+          Attendance: {attendanceCounts.meetup} meetup · {attendanceCounts.talk} talk ·{" "}
+          {attendanceCounts.both} both
+        </p>
 
-        {/* Draw controls */}
         <section className="rounded-2xl border border-sky-500/30 bg-sky-500/5 p-6 space-y-5">
           <h2 className="text-lg font-semibold">Pick a winner</h2>
-          <div className="flex flex-wrap gap-2">
-            <PrizeButton
-              active={prize === "sunglasses"}
-              onClick={() => setPrize("sunglasses")}
-              icon={<Gift className="h-4 w-4" />}
-              label="Sunglasses"
-            />
-            <PrizeButton
-              active={prize === "merch"}
-              onClick={() => setPrize("merch")}
-              icon={<Shirt className="h-4 w-4" />}
-              label="Hat / t-shirt"
-            />
+
+          <div>
+            <p className="text-xs text-white/50 mb-2 uppercase tracking-wide font-semibold">
+              Event draw
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <PrizeButton
+                active={drawEvent === "meetup"}
+                onClick={() => setDrawEvent("meetup")}
+                icon={<Gift className="h-4 w-4" />}
+                label={`Meetup (${eligibleMeetup})`}
+              />
+              <PrizeButton
+                active={drawEvent === "talk"}
+                onClick={() => setDrawEvent("talk")}
+                icon={<Mic2 className="h-4 w-4" />}
+                label={`Forum talk (${eligibleTalk})`}
+              />
+            </div>
+          </div>
+
+          <div>
+            <p className="text-xs text-white/50 mb-2 uppercase tracking-wide font-semibold">
+              Prize
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <PrizeButton
+                active={prize === "sunglasses"}
+                onClick={() => setPrize("sunglasses")}
+                icon={<Gift className="h-4 w-4" />}
+                label="Sunglasses"
+              />
+              <PrizeButton
+                active={prize === "merch"}
+                onClick={() => setPrize("merch")}
+                icon={<Shirt className="h-4 w-4" />}
+                label="Hat / t-shirt"
+              />
+            </div>
           </div>
 
           <button
             type="button"
             onClick={pickWinner}
-            disabled={drawing || eligibleCount === 0}
+            disabled={drawing || eligibleForSelected === 0}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 disabled:opacity-50 px-8 py-4 text-lg font-bold shadow-lg shadow-sky-500/25"
           >
             {drawing ? (
@@ -273,7 +317,7 @@ export default function OshAdminPage() {
             ) : (
               <>
                 <Sparkles className="h-5 w-5" />
-                Pick a winner
+                Pick {drawEventLabel(drawEvent)} winner
               </>
             )}
           </button>
@@ -283,12 +327,16 @@ export default function OshAdminPage() {
           {winner && lastDraw && (
             <div className="rounded-2xl border border-emerald-400/40 bg-emerald-500/10 p-6 sm:p-8 text-center space-y-3">
               <p className="text-emerald-300/80 text-sm font-medium uppercase tracking-wider">
-                Winner — {lastDraw.prize === "sunglasses" ? "Sunglasses" : "Merch"}
+                Winner — {drawEventLabel(lastDraw.event)} ·{" "}
+                {lastDraw.prize === "sunglasses" ? "Sunglasses" : "Merch"}
               </p>
               <p className="text-3xl sm:text-4xl font-bold tracking-tight">
                 {winner.firstName || "Pilot"}
               </p>
               <p className="text-lg text-white/70 break-all">{winner.email}</p>
+              <p className="text-sm text-white/40">
+                Signed up for: {attendanceLabel(winner.eventAttendance)}
+              </p>
               <div className="flex flex-col sm:flex-row gap-2 justify-center pt-2">
                 <button
                   type="button"
@@ -313,7 +361,6 @@ export default function OshAdminPage() {
           )}
         </section>
 
-        {/* Recent wins */}
         {confirmedWins.length > 0 && (
           <section className="space-y-3">
             <h2 className="text-lg font-semibold">Confirmed winners</h2>
@@ -330,6 +377,7 @@ export default function OshAdminPage() {
                         {entry?.first_name || "—"} · {entry?.email || d.entry_id}
                       </p>
                       <p className="text-white/40 text-xs">
+                        {drawEventLabel(d.event)} ·{" "}
                         {d.prize === "sunglasses" ? "Sunglasses" : "Merch"} ·{" "}
                         {new Date(d.created_at).toLocaleTimeString()}
                       </p>
@@ -341,25 +389,32 @@ export default function OshAdminPage() {
           </section>
         )}
 
-        {/* Entry list */}
         <section className="space-y-3">
           <h2 className="text-lg font-semibold">All entries ({entries.length})</h2>
           <ul className="space-y-1.5 max-h-[420px] overflow-y-auto">
             {entries.map((e) => {
-              const won = confirmedWins.some((d) => d.entry_id === e.id)
+              const wins = confirmedWins.filter((d) => d.entry_id === e.id)
               return (
                 <li
                   key={e.id}
                   className={`flex items-center justify-between gap-3 rounded-lg px-3 py-2 text-sm ${
-                    won ? "bg-emerald-500/10 text-emerald-200" : "bg-white/[0.03] text-white/80"
+                    wins.length > 0
+                      ? "bg-emerald-500/10 text-emerald-200"
+                      : "bg-white/[0.03] text-white/80"
                   }`}
                 >
                   <span className="truncate">
                     {e.first_name ? `${e.first_name} · ` : ""}
                     {e.email}
+                    {" · "}
+                    {attendanceLabel(e.event_attendance)}
                     {e.marketing_opt_in ? " · 📧" : ""}
                   </span>
-                  {won && <span className="shrink-0 text-xs font-semibold">WON</span>}
+                  {wins.length > 0 && (
+                    <span className="shrink-0 text-xs font-semibold">
+                      WON {wins.map((w) => drawEventLabel(w.event)).join(", ")}
+                    </span>
+                  )}
                 </li>
               )
             })}

@@ -2,16 +2,41 @@
 
 import { useState } from "react"
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react"
+import type { RaffleAttendance } from "@/lib/osh-admin"
+
+const EVENT_OPTIONS: { value: RaffleAttendance; label: string; detail: string }[] = [
+  {
+    value: "meetup",
+    label: "Meetup",
+    detail: "Wed 11 AM · Flyte Booth 337",
+  },
+  {
+    value: "talk",
+    label: "Forum talk",
+    detail: "Wed 4 PM · Forum Stage 10",
+  },
+  {
+    value: "both",
+    label: "Both",
+    detail: "Meetup + forum talk",
+  },
+]
 
 export function OshRaffleForm() {
   const [firstName, setFirstName] = useState("")
   const [email, setEmail] = useState("")
+  const [eventAttendance, setEventAttendance] = useState<RaffleAttendance | "">("")
   const [marketingOptIn, setMarketingOptIn] = useState(false)
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
   const [message, setMessage] = useState("")
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    if (!eventAttendance) {
+      setStatus("error")
+      setMessage("Please choose which event you'll attend.")
+      return
+    }
     setStatus("loading")
     setMessage("")
 
@@ -22,6 +47,7 @@ export function OshRaffleForm() {
         body: JSON.stringify({
           firstName,
           email,
+          eventAttendance,
           marketingOptIn,
           source: "page",
         }),
@@ -49,7 +75,7 @@ export function OshRaffleForm() {
         </div>
         <p className="text-white/80">{message}</p>
         <p className="text-sm text-white/50">
-          Must be present to win · Drawing at the meetup
+          Must be present at your selected event to win
         </p>
         <a
           href="https://app.planewx.ai/auth/sign-up?lp=osh"
@@ -96,6 +122,41 @@ export function OshRaffleForm() {
         </div>
       </div>
 
+      <fieldset className="space-y-2">
+        <legend className="text-sm text-white/60 mb-1.5">
+          Which event will you be at? <span className="text-rose-400">*</span>
+        </legend>
+        <div className="grid gap-2">
+          {EVENT_OPTIONS.map((opt) => {
+            const selected = eventAttendance === opt.value
+            return (
+              <label
+                key={opt.value}
+                className={`flex items-start gap-3 cursor-pointer rounded-xl border px-4 py-3 transition-colors ${
+                  selected
+                    ? "border-sky-400 bg-sky-500/15"
+                    : "border-white/10 bg-white/5 hover:bg-white/[0.07]"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="eventAttendance"
+                  value={opt.value}
+                  checked={selected}
+                  onChange={() => setEventAttendance(opt.value)}
+                  className="mt-1 h-4 w-4 border-white/20 text-sky-500 focus:ring-sky-500/50"
+                  required
+                />
+                <span>
+                  <span className="block text-sm font-semibold text-white">{opt.label}</span>
+                  <span className="block text-xs text-white/50 mt-0.5">{opt.detail}</span>
+                </span>
+              </label>
+            )
+          })}
+        </div>
+      </fieldset>
+
       <label className="flex items-start gap-3 cursor-pointer select-none">
         <input
           type="checkbox"
@@ -109,7 +170,7 @@ export function OshRaffleForm() {
       </label>
 
       <p className="text-xs text-amber-300/90 font-medium">
-        Must be present to win · Drawing at the Wed 11 AM meetup
+        Must be present at your selected event to win · Drawings at meetup and forum talk
       </p>
 
       {status === "error" && (

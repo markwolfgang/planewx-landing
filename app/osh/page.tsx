@@ -111,7 +111,7 @@ export default function OshkoshPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Clock className="h-4 w-4 text-sky-400 mt-1 shrink-0" />
-                  Drawing at the meetup — must be present to win
+                  Drawings at meetup &amp; forum talk — must be present to win
                 </li>
               </ul>
               <OshRaffleForm />
