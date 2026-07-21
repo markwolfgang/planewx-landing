@@ -194,26 +194,20 @@ export default function OshkoshPage() {
           </div>
         </section>
 
-        {/* Flyer + stage photos */}
-        <section className="grid sm:grid-cols-2 gap-4">
-          <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden border border-white/10">
-            <Image
-              src="/osh/meetup-flyer.jpg"
-              alt="PlaneWX × Flyte meetup flyer"
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 640px) 100vw, 50vw"
-            />
-          </div>
-          <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden border border-white/10">
+        {/* Forum Stage photo */}
+        <section className="max-w-xl mx-auto">
+          <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10">
             <Image
               src="/osh/forum-stage.jpg"
               alt="Mark Wolfgang pointing to his Forum Stage 10 talk on the AirVenture schedule"
               fill
               className="object-cover"
-              sizes="(max-width: 640px) 100vw, 50vw"
+              sizes="(max-width: 640px) 100vw, 512px"
             />
           </div>
+          <p className="text-center text-sm text-white/40 mt-3">
+            Forum Stage 10 · Wednesday 4:00 PM
+          </p>
         </section>
 
         {/* CTA */}
