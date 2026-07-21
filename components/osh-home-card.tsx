@@ -28,7 +28,7 @@ export function OshHomeCard() {
         <div className="pl-5 pr-4 py-4 sm:pl-6 sm:pr-5 sm:py-5 flex items-start justify-between gap-4">
           <div className="min-w-0">
             <h2 className="text-[#0c2d4a] font-bold text-base sm:text-lg leading-snug">
-              Meet the founder Mark at Oshkosh
+              Meet Mark and Sara at Oshkosh
             </h2>
             <p className="text-[#3d5a73] text-sm sm:text-[15px] mt-1 leading-relaxed">
               Wed 11 AM meetup at Flyte Booth 337 — giveaway, drinks, and Mark&apos;s

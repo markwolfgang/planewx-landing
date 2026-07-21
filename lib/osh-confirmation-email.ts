@@ -27,7 +27,7 @@ export async function sendOshRaffleConfirmation(opts: {
     html: `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 560px; margin: 0 auto; color: #0f172a; line-height: 1.55;">
         <p style="font-size: 16px;">${greeting}</p>
-        <p style="font-size: 16px;">You're entered in the <strong>PlaneWX × Flyte</strong> giveaway at AirVenture.</p>
+        <p style="font-size: 16px;">You're entered in the <strong>PlaneWX × Flyte</strong> giveaway at AirVenture — come meet <strong>Mark and Sara</strong> at the booth.</p>
         <div style="background: #f0f9ff; border-left: 4px solid #0ea5e9; border-radius: 8px; padding: 16px 18px; margin: 24px 0;">
           <p style="margin: 0 0 8px; font-size: 15px;"><strong>Meetup</strong> — Wednesday · 11:00 AM</p>
           <p style="margin: 0 0 8px; font-size: 15px;"><strong>Where</strong> — Flyte Booth 337</p>
@@ -45,7 +45,7 @@ export async function sendOshRaffleConfirmation(opts: {
         </p>
         <p style="margin-top: 32px; font-size: 13px; color: #94a3b8;">
           See you at the booth.<br/>
-          — Mark &amp; the PlaneWX team
+          — Mark &amp; Sara
         </p>
       </div>
     `,

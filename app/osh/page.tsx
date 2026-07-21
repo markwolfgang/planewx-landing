@@ -17,11 +17,11 @@ import { OshRaffleForm } from "@/components/osh-raffle-form"
 export const metadata: Metadata = {
   title: "PlaneWX at Oshkosh 2026",
   description:
-    "Meet PlaneWX at AirVenture — Wed 11 AM meetup at Flyte Booth 337 with giveaways, plus Mark Wolfgang's Forum Stage 10 talk on Advanced Aviation Risk Management at 4 PM.",
+    "Meet Mark and Sara at AirVenture — Wed 11 AM meetup at Flyte Booth 337 with giveaways, plus Mark Wolfgang's Forum Stage 10 talk on Advanced Aviation Risk Management at 4 PM.",
   openGraph: {
-    title: "PlaneWX at Oshkosh — Meetup, Giveaway & Forum Talk",
+    title: "PlaneWX at Oshkosh — Meet Mark & Sara",
     description:
-      "Wed 11 AM at Flyte Booth 337. Enter for Flyte sunglasses + PlaneWX merch. Must be present to win. Forum talk 4 PM Stage 10.",
+      "Wed 11 AM at Flyte Booth 337. Meet Mark and Sara, enter for Flyte sunglasses + PlaneWX merch. Forum talk 4 PM Stage 10.",
     type: "website",
     url: "https://www.planewx.ai/osh",
   },
@@ -71,7 +71,7 @@ export default function OshkoshPage() {
           </h1>
           <p className="text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
             Join us Wednesday for a meetup at the Flyte booth — drinks, giveaways,
-            and a chance to meet founder Mark. Then catch his forum talk on
+            and a chance to meet Mark and Sara. Then catch Mark&apos;s forum talk on
             Advanced Aviation Risk Management.
           </p>
         </header>
@@ -134,7 +134,7 @@ export default function OshkoshPage() {
                   11 AM PlaneWX Meetup @ Flyte
                 </h3>
                 <p className="text-[#3d5a73] text-sm leading-relaxed">
-                  We want to meet you. Come meet founder Mark, try on some cool
+                  We want to meet you. Come meet Mark and Sara, try on some cool
                   shades, grab a drink, and enter the giveaway.
                 </p>
                 <dl className="space-y-1.5 text-sm text-[#0c2d4a]/80">
@@ -194,20 +194,36 @@ export default function OshkoshPage() {
           </div>
         </section>
 
-        {/* Forum Stage photo */}
-        <section className="max-w-xl mx-auto">
-          <div className="relative aspect-[3/4] rounded-2xl overflow-hidden border border-white/10">
-            <Image
-              src="/osh/forum-stage.jpg"
-              alt="Mark Wolfgang pointing to his Forum Stage 10 talk on the AirVenture schedule"
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 100vw, 512px"
-            />
-          </div>
-          <p className="text-center text-sm text-white/40 mt-3">
-            Forum Stage 10 · Wednesday 4:00 PM
-          </p>
+        {/* Photos */}
+        <section className="grid sm:grid-cols-2 gap-4">
+          <figure className="space-y-3">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
+              <Image
+                src="/osh/mark-and-sara.jpg"
+                alt="Mark and Sara in the cockpit"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+            </div>
+            <figcaption className="text-center text-sm text-white/40">
+              Meet Mark and Sara at the booth
+            </figcaption>
+          </figure>
+          <figure className="space-y-3">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10">
+              <Image
+                src="/osh/forum-stage.jpg"
+                alt="Mark Wolfgang pointing to his Forum Stage 10 talk on the AirVenture schedule"
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+            </div>
+            <figcaption className="text-center text-sm text-white/40">
+              Forum Stage 10 · Wednesday 4:00 PM
+            </figcaption>
+          </figure>
         </section>
 
         {/* CTA */}
