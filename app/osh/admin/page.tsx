@@ -8,6 +8,7 @@ import {
   Gift,
   Loader2,
   Mic2,
+  PlaneTakeoff,
   RefreshCw,
   Shirt,
   Sparkles,
@@ -19,6 +20,8 @@ import {
   type RaffleDrawEvent,
 } from "@/lib/osh-admin"
 
+import type { PilotProfile } from "@/app/api/osh/list/route"
+
 type Entry = {
   id: string
   email: string
@@ -27,6 +30,8 @@ type Entry = {
   source: string
   event_attendance: string | null
   created_at: string
+  flew_to_osh: boolean | null
+  pilot: PilotProfile | null
 }
 
 type Draw = {
@@ -63,6 +68,8 @@ export default function OshAdminPage() {
     talk: 0,
     both: 0,
   })
+  const [oshPilotCount, setOshPilotCount] = useState<number | null>(null)
+  const [raffleOshPilotCount, setRaffleOshPilotCount] = useState(0)
   const [prize, setPrize] = useState<Prize>("sunglasses")
   const [drawEvent, setDrawEvent] = useState<RaffleDrawEvent>("meetup")
   const [winner, setWinner] = useState<Winner | null>(null)
@@ -89,6 +96,8 @@ export default function OshAdminPage() {
       setAttendanceCounts(
         data.attendanceCounts || { meetup: 0, talk: 0, both: 0 },
       )
+      setOshPilotCount(data.oshPilotCount ?? null)
+      setRaffleOshPilotCount(data.raffleOshPilotCount ?? 0)
       setAuthenticated(true)
     } catch {
       setError("Network error loading entries")
@@ -260,6 +269,42 @@ export default function OshAdminPage() {
           {attendanceCounts.both} both
         </p>
 
+        {/* PlaneWX pilots at Oshkosh */}
+        {oshPilotCount !== null && (
+          <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 space-y-3">
+            <div className="flex items-center gap-2 text-sm font-semibold text-white/70">
+              <PlaneTakeoff className="h-4 w-4 text-sky-400" />
+              PlaneWX pilots at Oshkosh 2026
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <Stat
+                icon={<PlaneTakeoff className="h-4 w-4" />}
+                label="Flew to OSH area"
+                value={oshPilotCount}
+              />
+              <Stat
+                icon={<Users className="h-4 w-4" />}
+                label="Also in raffle"
+                value={raffleOshPilotCount}
+              />
+              <Stat
+                icon={<Gift className="h-4 w-4" />}
+                label="Raffle conversion"
+                value={
+                  oshPilotCount > 0
+                    ? `${((entries.length / oshPilotCount) * 100).toFixed(1)}%`
+                    : "—"
+                }
+                isText
+              />
+            </div>
+            <p className="text-xs text-white/40">
+              OSH area airports: KOSH · KATW · KFLD · KGRB · KRYV · KMSN · KUES · KLNR · KSBM ·
+              arrival window Jul 14–28
+            </p>
+          </section>
+        )}
+
         <section className="rounded-2xl border border-sky-500/30 bg-sky-500/5 p-6 space-y-5">
           <h2 className="text-lg font-semibold">Pick a winner</h2>
 
@@ -391,29 +436,90 @@ export default function OshAdminPage() {
 
         <section className="space-y-3">
           <h2 className="text-lg font-semibold">All entries ({entries.length})</h2>
-          <ul className="space-y-1.5 max-h-[420px] overflow-y-auto">
+          <ul className="space-y-2">
             {entries.map((e) => {
               const wins = confirmedWins.filter((d) => d.entry_id === e.id)
               return (
                 <li
                   key={e.id}
-                  className={`flex items-center justify-between gap-3 rounded-lg px-3 py-2 text-sm ${
+                  className={`rounded-xl border text-sm ${
                     wins.length > 0
-                      ? "bg-emerald-500/10 text-emerald-200"
-                      : "bg-white/[0.03] text-white/80"
+                      ? "border-emerald-500/30 bg-emerald-500/5"
+                      : "border-white/10 bg-white/[0.03]"
                   }`}
                 >
-                  <span className="truncate">
-                    {e.first_name ? `${e.first_name} · ` : ""}
-                    {e.email}
-                    {" · "}
-                    {attendanceLabel(e.event_attendance)}
-                    {e.marketing_opt_in ? " · 📧" : ""}
-                  </span>
-                  {wins.length > 0 && (
-                    <span className="shrink-0 text-xs font-semibold">
-                      WON {wins.map((w) => drawEventLabel(w.event)).join(", ")}
+                  {/* Header row */}
+                  <div className="flex items-center justify-between gap-3 px-4 py-3">
+                    <span className={`truncate font-medium ${wins.length > 0 ? "text-emerald-200" : "text-white/90"}`}>
+                      {e.first_name ? `${e.first_name} · ` : ""}
+                      {e.email}
+                      <span className="text-white/40 font-normal">
+                        {" · "}{attendanceLabel(e.event_attendance)}
+                      </span>
                     </span>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      {e.flew_to_osh === true && (
+                        <span className="inline-flex items-center gap-1 rounded-md bg-sky-500/15 px-1.5 py-0.5 text-xs font-medium text-sky-300 border border-sky-500/20">
+                          <PlaneTakeoff className="h-3 w-3" />
+                          flew in
+                        </span>
+                      )}
+                      {e.pilot && (
+                        <TierBadge tier={e.pilot.subscription_tier} isTrial={e.pilot.is_trial} />
+                      )}
+                      {wins.length > 0 && (
+                        <span className="text-xs font-semibold text-emerald-300">
+                          WON {wins.map((w) => drawEventLabel(w.event)).join(", ")}
+                        </span>
+                      )}
+                      {e.marketing_opt_in && (
+                        <span className="text-xs text-white/40">email ✓</span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Pilot profile card */}
+                  {e.pilot && (
+                    <div className="border-t border-white/[0.06] px-4 py-3 grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-2 text-xs">
+                      <div>
+                        <p className="text-white/40 mb-0.5">Certificate</p>
+                        <p className="font-medium">
+                          {certLabel(e.pilot.pilot_certificate)}
+                          {e.pilot.instrument_rating && <span className="ml-1 text-sky-300">IFR</span>}
+                          {e.pilot.multi_engine_rating && <span className="ml-1 text-violet-300">ME</span>}
+                          {e.pilot.cfi && <span className="ml-1 text-amber-300">CFI</span>}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-white/40 mb-0.5">Total hours</p>
+                        <p className="font-medium">
+                          {e.pilot.total_hours.toLocaleString()}h
+                          <span className="text-white/40 font-normal ml-1">
+                            ({e.pilot.last_30_days}h last 30d)
+                          </span>
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-white/40 mb-0.5">PlaneWX trips</p>
+                        <p className="font-medium">{e.pilot.total_trips}</p>
+                      </div>
+                      <div>
+                        <p className="text-white/40 mb-0.5">Member since</p>
+                        <p className="font-medium">{memberSince(e.pilot.member_since)}</p>
+                      </div>
+                      {e.pilot.home_airport && (
+                        <div>
+                          <p className="text-white/40 mb-0.5">Home airport</p>
+                          <p className="font-medium">{e.pilot.home_airport}</p>
+                        </div>
+                      )}
+                      {e.pilot.badges.length > 0 && (
+                        <div className="col-span-2 sm:col-span-3">
+                          <p className="text-white/40 mb-0.5">Badges</p>
+                          <p className="font-medium text-white/60">{e.pilot.badges.join(" · ")}</p>
+                        </div>
+                      )}
+                    </div>
                   )}
                 </li>
               )
@@ -428,14 +534,66 @@ export default function OshAdminPage() {
   )
 }
 
+function TierBadge({ tier, isTrial }: { tier: string | null; isTrial: boolean }) {
+  if (isTrial)
+    return (
+      <span className="rounded-md bg-amber-500/15 px-1.5 py-0.5 text-xs font-medium text-amber-300 border border-amber-500/20">
+        trial
+      </span>
+    )
+  if (tier === "pro" || tier === "professional")
+    return (
+      <span className="rounded-md bg-violet-500/15 px-1.5 py-0.5 text-xs font-medium text-violet-300 border border-violet-500/20">
+        pro
+      </span>
+    )
+  if (tier === "casual")
+    return (
+      <span className="rounded-md bg-teal-500/15 px-1.5 py-0.5 text-xs font-medium text-teal-300 border border-teal-500/20">
+        casual
+      </span>
+    )
+  return (
+    <span className="rounded-md bg-white/8 px-1.5 py-0.5 text-xs font-medium text-white/50 border border-white/10">
+      free
+    </span>
+  )
+}
+
+function certLabel(cert: string | null): string {
+  switch (cert?.toUpperCase()) {
+    case "STUDENT":    return "Student"
+    case "SPORT":      return "Sport"
+    case "PRIVATE":    return "PPL"
+    case "COMMERCIAL": return "CPL"
+    case "ATP":        return "ATP"
+    default:           return cert ?? "—"
+  }
+}
+
+function memberSince(iso: string): string {
+  if (!iso) return "—"
+  const d = new Date(iso)
+  const now = new Date()
+  const months =
+    (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth())
+  if (months < 1) return "< 1 mo"
+  if (months < 12) return `${months} mo`
+  const yrs = Math.floor(months / 12)
+  const rem = months % 12
+  return rem > 0 ? `${yrs}y ${rem}mo` : `${yrs}y`
+}
+
 function Stat({
   icon,
   label,
   value,
+  isText = false,
 }: {
   icon: React.ReactNode
   label: string
-  value: number
+  value: number | string
+  isText?: boolean
 }) {
   return (
     <div className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
