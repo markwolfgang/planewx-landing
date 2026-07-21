@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { EMAIL_REGEX, getOshSupabase } from "@/lib/osh-admin"
+import { sendOshRaffleConfirmation } from "@/lib/osh-confirmation-email"
 
 export async function POST(request: Request) {
   try {
@@ -48,6 +49,13 @@ export async function POST(request: Request) {
         { error: "Failed to enter raffle. Please try again." },
         { status: 500 },
       )
+    }
+
+    try {
+      await sendOshRaffleConfirmation({ email, firstName })
+    } catch (emailError) {
+      // Don't fail the raffle entry if email fails
+      console.error("[Osh Raffle] confirmation email failed:", emailError)
     }
 
     return NextResponse.json({
