@@ -508,8 +508,13 @@
   }
   #remote-panel .remote-qr {
     background: #fff; padding: 8px; border-radius: 10px; flex-shrink: 0;
+    width: 136px; height: 136px;
+    display: flex; align-items: center; justify-content: center;
   }
-  #remote-panel .remote-qr img { width: 120px; height: 120px; display: block; }
+  #remote-panel .remote-qr canvas { width: 120px; height: 120px; display: block; }
+  #remote-panel .remote-qr-placeholder {
+    font-size: 12px; font-weight: 600; color: #64748b; text-align: center; padding: 8px;
+  }
   #remote-panel .remote-meta { font-size: 13px; color: var(--muted); line-height: 1.5; word-break: break-all; }
   #remote-panel .remote-meta strong { color: var(--text); font-size: 18px; letter-spacing: 0.08em; }
   #remote-panel .remote-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
@@ -560,8 +565,8 @@
   <h3>Phone remote</h3>
   <p>Scan with your phone (or open the link). Keep this laptop on the projector — your phone advances slides.</p>
   <div class="remote-row">
-    <div class="remote-qr">
-      <img id="remote-qr-img" alt="Remote QR" width="120" height="120" />
+    <div class="remote-qr" id="remote-qr-box">
+      <div class="remote-qr-placeholder">Press Start</div>
     </div>
     <div class="remote-meta">
       Room<br><strong id="remote-room">————</strong><br><br>
@@ -1940,8 +1945,9 @@
     remotePanelOpen = !remotePanelOpen;
     document.getElementById('remote-panel')?.classList.toggle('open', remotePanelOpen);
     document.getElementById('btn-remote')?.classList.toggle('active-pref', remotePanelOpen);
-    if (remotePanelOpen && !remoteRoom) {
-      // restore prior session if any
+    if (!remotePanelOpen) return;
+
+    if (!remoteRoom) {
       try {
         const saved = JSON.parse(sessionStorage.getItem(REMOTE_KEY) || '{}');
         if (saved.room && saved.token) {
@@ -1950,8 +1956,46 @@
           updateRemoteUi();
           ensureRemotePolling();
           pushRemoteState();
+          return;
         }
       } catch (_) {}
+      // Auto-create room so QR appears immediately
+      startPhoneRemote();
+    } else {
+      updateRemoteUi();
+    }
+  }
+
+  function loadQrLib() {
+    if (window.QRCode?.toCanvas) return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js';
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('QR library failed to load'));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function renderRemoteQr(link) {
+    const box = document.getElementById('remote-qr-box');
+    if (!box) return;
+    if (!link) {
+      box.innerHTML = '<div class="remote-qr-placeholder">Press Start</div>';
+      return;
+    }
+    try {
+      await loadQrLib();
+      box.innerHTML = '';
+      const canvas = document.createElement('canvas');
+      box.appendChild(canvas);
+      await window.QRCode.toCanvas(canvas, link, {
+        width: 120,
+        margin: 1,
+        color: { dark: '#0b1220', light: '#ffffff' },
+      });
+    } catch (_) {
+      box.innerHTML = `<div class="remote-qr-placeholder">QR unavailable — use Copy link</div>`;
     }
   }
 
@@ -1959,18 +2003,18 @@
     const roomEl = document.getElementById('remote-room');
     const statusEl = document.getElementById('remote-status');
     const dot = document.getElementById('remote-dot');
-    const qr = document.getElementById('remote-qr-img');
     if (roomEl) roomEl.textContent = remoteRoom || '————';
-    if (statusEl) statusEl.textContent = remoteRoom ? 'Live — polling' : 'Off';
+    if (statusEl) statusEl.textContent = remoteRoom ? 'Live — scan QR' : 'Off';
     dot?.classList.toggle('live', !!remoteRoom);
     if (remoteRoom && remoteToken) {
       const base = ON_SITE
         ? `${location.origin}/talk/remote.html`
         : 'https://www.planewx.ai/talk/remote.html';
       remoteLink = `${base}?room=${encodeURIComponent(remoteRoom)}&token=${encodeURIComponent(remoteToken)}`;
-      if (qr) {
-        qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&data=${encodeURIComponent(remoteLink)}`;
-      }
+      renderRemoteQr(remoteLink);
+    } else {
+      remoteLink = '';
+      renderRemoteQr('');
     }
   }
 
