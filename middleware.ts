@@ -48,10 +48,16 @@ function handleBrandAuth(request: NextRequest): NextResponse | null {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Brand portal password protection (skip the login page itself)
+  // Brand portal password protection (skip the login page itself).
+  // Static files under /public/brand (logos, etc.) must stay public — the talk
+  // deck and marketing pages load them without the brand-portal cookie.
   if (pathname.startsWith("/brand") && !pathname.startsWith("/brand-login")) {
-    const authResponse = handleBrandAuth(request)
-    if (authResponse) return authResponse
+    const isStaticAsset =
+      /\.(svg|png|jpe?g|webp|gif|ico|css|js|map|woff2?|ttf|otf)$/i.test(pathname)
+    if (!isStaticAsset) {
+      const authResponse = handleBrandAuth(request)
+      if (authResponse) return authResponse
+    }
   }
 
   // A/B variant routing (root path only)
