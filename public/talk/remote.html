@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>PlaneWX Talk Remote</title>
+  <style>
+    :root {
+      --bg: #061018;
+      --card: #0d2137;
+      --sky: #0ea5e9;
+      --text: #f0f8ff;
+      --muted: #7fb3d3;
+      --green: #22c55e;
+      --red: #ef4444;
+    }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body {
+      margin: 0; min-height: 100%;
+      background: var(--bg); color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+      user-select: none;
+    }
+    body {
+      padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+      display: flex; flex-direction: column; gap: 14px;
+      min-height: 100dvh;
+    }
+    .top {
+      display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    }
+    .brand { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: var(--sky); text-transform: uppercase; }
+    .status { font-size: 12px; color: var(--muted); }
+    .status.ok { color: var(--green); }
+    .status.err { color: var(--red); }
+    .counter {
+      font-size: 42px; font-weight: 800; letter-spacing: -1px; text-align: center;
+      line-height: 1.1;
+    }
+    .section {
+      text-align: center; font-size: 15px; color: var(--muted); min-height: 1.3em;
+    }
+    .controls {
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 12px;
+      flex: 1; min-height: 220px;
+    }
+    button {
+      border: none; border-radius: 20px; font-size: 28px; font-weight: 800;
+      color: #fff; cursor: pointer;
+      transition: transform 0.08s ease, opacity 0.15s ease;
+    }
+    button:active { transform: scale(0.97); }
+    button:disabled { opacity: 0.35; }
+    #btn-prev { background: #1e3a5f; }
+    #btn-next { background: linear-gradient(135deg, #0284c7, #0ea5e9); font-size: 36px; }
+    .notes {
+      background: var(--card); border: 1px solid rgba(14,165,233,0.2);
+      border-radius: 16px; padding: 14px 16px;
+      font-size: 14px; line-height: 1.45; color: var(--muted);
+      max-height: 28vh; overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      user-select: text;
+    }
+    .notes strong { color: var(--sky); }
+    .join {
+      display: none; flex-direction: column; gap: 12px; margin: auto 0;
+      width: 100%; max-width: 360px; align-self: center;
+    }
+    .join.visible { display: flex; }
+    .join input {
+      font-size: 22px; padding: 14px 16px; border-radius: 12px;
+      border: 1px solid rgba(14,165,233,0.35); background: var(--card); color: var(--text);
+      letter-spacing: 0.12em; text-transform: uppercase; text-align: center;
+    }
+    .join button {
+      background: var(--sky); padding: 16px; font-size: 18px; border-radius: 14px;
+    }
+    .main { display: none; flex-direction: column; gap: 14px; flex: 1; }
+    .main.visible { display: flex; }
+    .hint { font-size: 12px; color: var(--muted); text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">PlaneWX Talk Remote</div>
+    <div id="status" class="status">Connecting…</div>
+  </div>
+
+  <div id="join" class="join">
+    <div class="counter" style="font-size:28px;">Enter room code</div>
+    <input id="room-input" maxlength="8" autocomplete="off" autocapitalize="characters" placeholder="ABC123" />
+    <input id="token-input" maxlength="64" autocomplete="off" placeholder="Token (from laptop)" style="font-size:14px;letter-spacing:0;text-transform:none;" />
+    <button type="button" id="btn-join">Connect</button>
+    <div class="hint">Or scan the QR from the laptop “Phone” panel.</div>
+  </div>
+
+  <div id="main" class="main">
+    <div id="counter" class="counter">— / —</div>
+    <div id="section" class="section"></div>
+    <div class="controls">
+      <button type="button" id="btn-prev" aria-label="Previous slide">← Prev</button>
+      <button type="button" id="btn-next" aria-label="Next slide">Next →</button>
+    </div>
+    <div id="notes" class="notes"><strong>Notes</strong><br>Waiting…</div>
+    <div class="hint">Keep this screen awake · Room <span id="room-label"></span></div>
+  </div>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  let room = (params.get("room") || "").trim().toUpperCase();
+  let token = (params.get("token") || "").trim();
+  let slideIndex = 0;
+  let slideCount = 0;
+  let busy = false;
+  let pollTimer = null;
+
+  const API = "/api/talk/remote";
+  const $ = (id) => document.getElementById(id);
+
+  function setStatus(text, cls) {
+    const el = $("status");
+    el.textContent = text;
+    el.className = "status" + (cls ? " " + cls : "");
+  }
+
+  function showMain() {
+    $("join").classList.remove("visible");
+    $("main").classList.add("visible");
+    $("room-label").textContent = room;
+  }
+
+  function showJoin() {
+    $("join").classList.add("visible");
+    $("main").classList.remove("visible");
+    if (room) $("room-input").value = room;
+    if (token) $("token-input").value = token;
+  }
+
+  function render(state) {
+    slideIndex = state.slideIndex;
+    slideCount = state.slideCount;
+    $("counter").textContent = `${slideIndex + 1} / ${slideCount}`;
+    $("section").textContent = state.sectionLabel || "";
+    $("notes").innerHTML = `<strong>Notes</strong><br>${escapeHtml(state.notes || "—")}`;
+    $("btn-prev").disabled = slideIndex <= 0;
+    $("btn-next").disabled = slideIndex >= slideCount - 1;
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\n/g, "<br>");
+  }
+
+  async function poll() {
+    try {
+      const res = await fetch(`${API}?room=${encodeURIComponent(room)}`, { cache: "no-store" });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Poll failed");
+      render(data);
+      setStatus("Live", "ok");
+    } catch (e) {
+      setStatus(e.message || "Offline", "err");
+    }
+  }
+
+  async function step(action) {
+    if (busy || !token) return;
+    busy = true;
+    try {
+      const res = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action, room, token }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed");
+      render(data);
+      setStatus("Live", "ok");
+      // Haptic if available
+      navigator.vibrate?.(12);
+    } catch (e) {
+      setStatus(e.message || "Error", "err");
+    } finally {
+      busy = false;
+    }
+  }
+
+  function start() {
+    showMain();
+    poll();
+    clearInterval(pollTimer);
+    pollTimer = setInterval(poll, 700);
+  }
+
+  $("btn-prev").addEventListener("click", () => step("prev"));
+  $("btn-next").addEventListener("click", () => step("next"));
+  $("btn-join").addEventListener("click", () => {
+    room = $("room-input").value.trim().toUpperCase();
+    token = $("token-input").value.trim();
+    if (!room || !token) {
+      setStatus("Room + token required", "err");
+      return;
+    }
+    const url = new URL(location.href);
+    url.searchParams.set("room", room);
+    url.searchParams.set("token", token);
+    history.replaceState(null, "", url);
+    start();
+  });
+
+  // Wake Lock when supported
+  async function keepAwake() {
+    try {
+      if (navigator.wakeLock) await navigator.wakeLock.request("screen");
+    } catch (_) {}
+  }
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") keepAwake();
+  });
+
+  if (room && token) {
+    start();
+    keepAwake();
+  } else {
+    showJoin();
+    setStatus("Not connected");
+  }
+</script>
+</body>
+</html>
