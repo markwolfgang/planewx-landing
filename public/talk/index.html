@@ -1126,7 +1126,7 @@
       </div>
       <div class="gate-box">
         <div class="gate-label">D-1</div>
-        <div class="gate-name">Final go/no-go</div>
+        <div class="gate-name">Final call</div>
         <div class="gate-desc">TAF available. High confidence. Confirm or cancel — don't decide for the first time.</div>
       </div>
       <div class="gate-box" style="border-color:rgba(239,68,68,0.3); background:rgba(239,68,68,0.05);">
@@ -1166,7 +1166,7 @@
 
 <!-- SLIDE 19: PlaneWX intro — decision support -->
 <div class="slide bg-hero" data-section="PlaneWX" data-time="29:00"
-  data-notes="From /help: decision-support tools; PIC always makes final go/no-go. Philosophy: doesn't tell you what to do — tells you what you already decided before pressure. Not a data dump. A decision-ready picture — call still yours.">
+  data-notes="From /help: decision-support tools; PIC always owns the call. Philosophy: doesn't tell you what to do — tells you what you already decided before pressure. Not a data dump. A decision-ready picture — call still yours. WX Score informs; it doesn't decide.">
   <div class="slide-inner pad" style="justify-content:center; align-items:center; min-height:720px; text-align:center;">
     <img
       class="logo-img logo-lg"
@@ -1200,7 +1200,7 @@
         "PlaneWX doesn't tell you what to do.<br>It tells you what you already decided — before the pressure set in."
       </div>
       <div style="font-size:18px; color:var(--white); margin-top:12px; font-weight:600;">
-        PlaneWX doesn't make the go/no-go decision for me.<br>
+        PlaneWX doesn't make the decision for me.<br>
         <span style="color:var(--sky);">It just helps me make the decision.</span>
       </div>
     </div>
@@ -1318,7 +1318,7 @@
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div style="width:100%; max-width:1080px;">
       <div class="chip" style="margin-bottom:20px;">The PlaneWX community</div>
-      <div class="headline" style="font-size:44px; margin-bottom:40px; line-height:1.15;">Pilots making go / no-go decisions every day</div>
+      <div class="headline" style="font-size:44px; margin-bottom:40px; line-height:1.15;">Pilots assessing weather risk every day</div>
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px;">
         <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:24px 12px; text-align:center;">
           <div style="font-size:40px; font-weight:800; color:var(--sky);">1,750+</div>
@@ -1521,7 +1521,7 @@
         background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.35); border-radius:20px;">
         <div>
           <div style="font-size:96px; font-weight:900; color:var(--red); line-height:1;">0%</div>
-          <div style="font-size:18px; font-weight:700; letter-spacing:2px; color:var(--red); margin-top:4px;">NO-GO LABEL</div>
+          <div style="font-size:18px; font-weight:700; letter-spacing:2px; color:var(--red); margin-top:4px;">WX SCORE</div>
         </div>
         <div style="text-align:left; font-size:22px; color:var(--muted); line-height:1.4; max-width:340px;">
           does <span style="color:var(--white); font-weight:700;">not</span> mean<br>
@@ -1542,12 +1542,12 @@
           <ul class="bullet-list tight" style="font-size:18px;">
             <li>Not a stay-grounded order</li>
             <li>Not PlaneWX deciding for you</li>
-            <li>PIC still owns go / no-go</li>
+            <li>PIC still owns the call</li>
           </ul>
         </div>
       </div>
       <div style="font-size:22px; font-weight:600; color:var(--white); line-height:1.45;">
-        PlaneWX doesn't make the go/no-go decision for me.<br>
+        PlaneWX doesn't make the decision for me.<br>
         <span style="color:var(--sky);">It just helps me make the decision.</span>
       </div>
     </div>
@@ -1560,7 +1560,7 @@
   <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
     <div style="max-width:900px;">
       <div class="quote-text" style="font-size:48px; line-height:1.35; color:var(--white);">
-        PlaneWX doesn't make the<br>go/no-go decision for me.
+        PlaneWX doesn't make the<br>decision for me.
       </div>
       <div style="margin-top:36px; font-size:36px; font-weight:600; color:var(--sky); line-height:1.35;">
         It just helps me make the decision.
@@ -1580,12 +1580,12 @@
         <div class="col-title">SR22T (non-FIKI)</div>
         <div style="margin:16px 0;">
           <div class="wx-score wx-score-amber" style="display:inline-flex;">
-            <div><div class="number" style="font-size:48px;">61</div><div class="label">CAUTION</div></div>
-            <div style="font-size:13px; color:var(--muted); line-height:1.6;">WX Score<br>SR22T</div>
+            <div><div class="number" style="font-size:48px;">61</div><div class="label">WX SCORE</div></div>
+            <div style="font-size:13px; color:var(--muted); line-height:1.6;">SR22T<br>non-FIKI</div>
           </div>
         </div>
         <ul class="bullet-list tight" style="font-size:17px;">
-          <li>Icing: NO-GO above 8,000 ft</li>
+          <li>Icing: beyond mins above 8,000 ft</li>
           <li>Route requires FL120</li>
           <li>Ceiling marginal departure</li>
         </ul>
@@ -1594,8 +1594,8 @@
         <div class="col-title">TBM 900 (FIKI + pressurized)</div>
         <div style="margin:16px 0;">
           <div class="wx-score" style="display:inline-flex;">
-            <div><div class="number" style="font-size:48px;">86</div><div class="label">GO</div></div>
-            <div style="font-size:13px; color:var(--muted); line-height:1.6;">WX Score<br>TBM 900</div>
+            <div><div class="number" style="font-size:48px;">86</div><div class="label">WX SCORE</div></div>
+            <div style="font-size:13px; color:var(--muted); line-height:1.6;">TBM 900<br>FIKI</div>
           </div>
         </div>
         <ul class="bullet-list tight" style="font-size:17px;">
