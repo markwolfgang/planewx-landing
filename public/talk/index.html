@@ -1967,12 +1967,21 @@
   }
 
   function loadQrLib() {
-    if (window.QRCode?.toCanvas) return Promise.resolve();
+    // qrcodejs exposes window.QRCode as a constructor (not toCanvas)
+    if (typeof window.QRCode === 'function') return Promise.resolve();
     return new Promise((resolve, reject) => {
       const s = document.createElement('script');
-      s.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js';
+      // Same-origin first (works offline to CDNs / blocked jsdelivr)
+      s.src = ON_SITE ? '/talk/qrcode.min.js' : 'qrcode.min.js';
       s.onload = () => resolve();
-      s.onerror = () => reject(new Error('QR library failed to load'));
+      s.onerror = () => {
+        // Last resort: production host when editing local deck
+        const s2 = document.createElement('script');
+        s2.src = 'https://www.planewx.ai/talk/qrcode.min.js';
+        s2.onload = () => resolve();
+        s2.onerror = () => reject(new Error('QR library failed to load'));
+        document.head.appendChild(s2);
+      };
       document.head.appendChild(s);
     });
   }
@@ -1987,14 +1996,18 @@
     try {
       await loadQrLib();
       box.innerHTML = '';
-      const canvas = document.createElement('canvas');
-      box.appendChild(canvas);
-      await window.QRCode.toCanvas(canvas, link, {
+      // qrcodejs constructor — draws into the container
+      // eslint-disable-next-line no-new
+      new window.QRCode(box, {
+        text: link,
         width: 120,
-        margin: 1,
-        color: { dark: '#0b1220', light: '#ffffff' },
+        height: 120,
+        colorDark: '#0b1220',
+        colorLight: '#ffffff',
+        correctLevel: window.QRCode.CorrectLevel.M,
       });
-    } catch (_) {
+    } catch (err) {
+      console.warn('QR render failed', err);
       box.innerHTML = `<div class="remote-qr-placeholder">QR unavailable — use Copy link</div>`;
     }
   }
