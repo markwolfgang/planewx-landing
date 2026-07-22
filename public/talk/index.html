@@ -2017,9 +2017,19 @@ var QRCode;!function(){function a(a){this.mode=c.MODE_8BIT_BYTE,this.data=a,this
         : 'https://www.planewx.ai/talk/remote.html';
       remoteLink = `${base}?room=${encodeURIComponent(remoteRoom)}&token=${encodeURIComponent(remoteToken)}`;
       renderRemoteQr(remoteLink);
+      const preview = document.getElementById('remote-link-preview');
+      if (preview) {
+        preview.style.display = 'block';
+        preview.textContent = remoteLink;
+      }
     } else {
       remoteLink = '';
       renderRemoteQr('');
+      const preview = document.getElementById('remote-link-preview');
+      if (preview) {
+        preview.style.display = 'none';
+        preview.textContent = '';
+      }
     }
   }
 
