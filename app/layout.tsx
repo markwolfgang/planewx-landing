@@ -34,7 +34,7 @@ const jsonLd = {
       "url": "https://www.planewx.ai",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.planewx.ai/icon.svg",
+        "url": "https://www.planewx.ai/icon-512.png",
         "width": 512,
         "height": 512
       },
@@ -216,9 +216,12 @@ export const metadata: Metadata = {
     // yahoo: "your-yahoo-verification-code",
   },
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
   },
 }
 

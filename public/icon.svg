@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="45" fill="#0ea5e9"/>
-  <path d="M30 50 L45 35 L70 35 L85 50 L70 65 L45 65 Z" fill="white"/>
-  <circle cx="50" cy="50" r="8" fill="#0ea5e9"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00b6d1"/><stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="256" fill="url(#bg)"/>
+<g fill="#ffffff" transform="translate(-20.37 -20.37) scale(1.0796)">
+  <polygon points="303.68 191.27 269.49 216.29 228.59 151.07 280.52 151.07 303.68 191.27"/>
+  <polygon points="373.84 290.97 318.79 290.97 291.77 253.35 328.21 228.28 373.84 290.97"/>
+  <polygon points="367.53 151.05 367.15 151.08 80.52 360.95 190.74 316.69 431.48 151.05 367.53 151.05"/></g>
 </svg>
