@@ -237,7 +237,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         
         {/* Theme color for mobile browsers */}
-        <meta name="theme-color" content="#0ea5e9" />
+        <meta name="theme-color" content="#0a0f1a" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="PlaneWX" />

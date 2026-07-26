@@ -4,8 +4,8 @@
   "description": "AI-powered aviation weather intelligence for general aviation pilots. Know if your flight is a GO, days in advance.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0ea5e9",
+  "background_color": "#0a0f1a",
+  "theme_color": "#0a0f1a",
   "orientation": "portrait-primary",
   "icons": [
     {
