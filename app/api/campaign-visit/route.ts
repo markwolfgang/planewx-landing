@@ -21,7 +21,8 @@ export async function POST(request: NextRequest) {
     ? (body as any).lp.trim().toLowerCase().slice(0, 8)
     : null
 
-  if (!code || code.length < 4 || code.length > 32) {
+  // Match campaign-greeting validation — partner codes like 5X5 and IG are 2–3 chars.
+  if (!code || code.length < 2 || code.length > 32) {
     // Return 200 to avoid client-side errors for invalid/peer codes
     return NextResponse.json({ ok: false, reason: "invalid_code" })
   }
