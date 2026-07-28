@@ -53,6 +53,7 @@ const SAME_ROWS = [
   "Mentor broadcast",
   "Personal minimums",
   "Alternate departures",
+  "Flight Window Explorer",
   "Raw data",
   "14-day planning",
   "Visual Briefing",
@@ -62,7 +63,6 @@ const DIFF_ROWS: [string, string, string, string][] = [
   ["Auto-refresh", "Manual only", "Automatic", "Automatic"],
   ["Email alerts", "\u2014", "\u2713", "\u2713"],
   ["Trip Watchers", "\u2014", "4 per flight", "Unlimited"],
-  ["Flight Window Explorer", "\u2014", "\u2713", "\u2713"],
   ["Corridor Watch", "\u2014", "\u2014", "\u2713"],
   ["Multi-City Optimizer", "\u2014", "\u2014", "\u2713"],
   ["Browse Mentors", "Broadcast only", "Broadcast only", "Browse + select"],
@@ -385,7 +385,7 @@ export function LandingVariantD() {
               Pro doesn&apos;t make your briefings better — they&apos;re already full quality.{" "}
               <strong className="text-teal-300">Casual</strong> makes PlaneWX{" "}
               <strong className="text-teal-300">watch the weather for you</strong> — auto-refresh,
-              email alerts, Flight Window Explorer. <strong className="text-sky-300">Pro</strong>{" "}
+              email alerts, Trip Watchers. <strong className="text-sky-300">Pro</strong>{" "}
               adds <strong className="text-sky-300">route intelligence and maximum scale</strong>:
               Corridor Watch, Multi-City Optimizer, and the mentor directory.
             </p>
