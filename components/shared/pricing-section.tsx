@@ -86,6 +86,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 "14-day planning horizon",
                 "Synoptic Intelligence™",
                 "Visual Briefing",
+                "Flight Window Explorer",
                 "Need Help Now — mentor broadcast",
               ].map((f, i) => (
                 <div key={i} className="flex items-center gap-3">
@@ -140,7 +141,6 @@ export function PricingSection({ variant }: { variant: string }) {
                 ["3 aircraft profiles", false],
                 ["Auto-refresh — briefings update automatically", true],
                 ["Email alerts — weather changes to your inbox", true],
-                ["Flight Window Explorer", true],
                 ["Fuel Advisor — wind-aware multi-stop fuel planning", true],
                 ["Trip Watchers — share live trip status", true],
               ].map(([f, bold], i) => (

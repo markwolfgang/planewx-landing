@@ -268,6 +268,7 @@ export default function BrandPortalPage() {
                 "Full WX Score & PAVE",
                 "14-day planning horizon",
                 "Synoptic Intelligence™",
+                "Flight Window Explorer",
                 "Need Help Now mentor broadcast",
               ].map((f) => (
                 <div key={f} className="flex items-center gap-2">
@@ -302,7 +303,6 @@ export default function BrandPortalPage() {
                 "10 active flights",
                 "5 auto-monitored trips",
                 "Auto-refresh & email alerts",
-                "Flight Window Explorer",
                 "Fuel Advisor",
                 "Trip Watchers",
               ].map((f) => (
