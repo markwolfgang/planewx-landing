@@ -51,7 +51,23 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
 .ad-info-col { flex: 1; min-width: 280px; padding: 0 0 0 32px; display: flex; flex-direction: column; justify-content: flex-start; gap: 22px; border-left: 1px solid #e2e8f0; }
 .info-section { display: flex; flex-direction: column; }
 .info-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #94a3b8; margin-bottom: 7px; }
-.info-url { font-size: 11px; font-family: 'SF Mono', 'Fira Code', ui-monospace, monospace; color: #2563eb; word-break: break-all; line-height: 1.7; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 12px; }
+.url-row {
+  display: flex; align-items: stretch; gap: 0;
+  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden;
+}
+.info-url {
+  flex: 1; min-width: 0;
+  font-size: 11px; font-family: 'SF Mono', 'Fira Code', ui-monospace, monospace;
+  color: #2563eb; word-break: break-all; line-height: 1.7; padding: 10px 12px;
+}
+.copy-btn {
+  flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; border: none; border-left: 1px solid #e2e8f0; background: #fff;
+  color: #64748b; cursor: pointer; transition: background 0.15s, color 0.15s;
+}
+.copy-btn:hover { background: #f1f5f9; color: #0f172a; }
+.copy-btn.copied { color: #16a34a; background: #f0fdf4; }
+.copy-btn svg { display: block; }
 .info-hint { font-size: 10.5px; color: #64748b; margin-top: 8px; line-height: 1.55; }
 .info-filename { font-size: 12px; font-weight: 700; color: #0f172a; margin-bottom: 4px; font-family: 'SF Mono', 'Fira Code', ui-monospace, monospace; }
 .info-specs { font-size: 11px; color: #64748b; }
@@ -126,7 +142,12 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
 
       <div class="info-section">
         <div class="info-label">QR Code URL</div>
-        <div class="info-url">https://www.planewx.ai/?variant=a&amp;ref=AOPA-PILOT&amp;utm_source=aopa&amp;utm_medium=print&amp;utm_campaign=pilot-2026</div>
+        <div class="url-row">
+          <div class="info-url">https://www.planewx.ai/?variant=a&amp;ref=AOPA-PILOT&amp;utm_source=aopa&amp;utm_medium=print&amp;utm_campaign=pilot-2026</div>
+          <button type="button" class="copy-btn" data-copy="https://www.planewx.ai/?variant=a&ref=AOPA-PILOT&utm_source=aopa&utm_medium=print&utm_campaign=pilot-2026" aria-label="Copy URL" title="Copy URL">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
         <div class="info-hint">Embedded in the printed QR code. Lands on variant A with partner greeting. The <code style="font-size:10px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">ref=AOPA-PILOT</code> code attributes each signup to this placement — separate from Flight Training (<code style="font-size:10px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">AOPA-FT</code>).</div>
       </div>
 
@@ -190,7 +211,12 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
 
       <div class="info-section">
         <div class="info-label">QR Code URL</div>
-        <div class="info-url">https://www.planewx.ai?ref=AOPA-FT&amp;utm_source=aopa&amp;utm_medium=print&amp;utm_campaign=flight-training-2026</div>
+        <div class="url-row">
+          <div class="info-url">https://www.planewx.ai?ref=AOPA-FT&amp;utm_source=aopa&amp;utm_medium=print&amp;utm_campaign=flight-training-2026</div>
+          <button type="button" class="copy-btn" data-copy="https://www.planewx.ai?ref=AOPA-FT&utm_source=aopa&utm_medium=print&utm_campaign=flight-training-2026" aria-label="Copy URL" title="Copy URL">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
         <div class="info-hint">Embedded in the printed QR code. Readers scan to start a free trial. The <code style="font-size:10px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">ref=AOPA-FT</code> code attributes each signup to this placement in the Campaign Referrals dashboard.</div>
       </div>
 
@@ -248,7 +274,12 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
     <div style="display:flex;flex-wrap:wrap;gap:0;border-top:1px solid #f1f5f9;">
       <div class="info-section" style="flex:1;min-width:240px;padding:20px 28px;border-right:1px solid #f1f5f9;">
         <div class="info-label">Click-Through URL</div>
-        <div class="info-url">https://www.planewx.ai?ref=AOPA-FS&amp;utm_source=aopa&amp;utm_medium=email&amp;utm_campaign=flight-school-2026</div>
+        <div class="url-row">
+          <div class="info-url">https://www.planewx.ai?ref=AOPA-FS&amp;utm_source=aopa&amp;utm_medium=email&amp;utm_campaign=flight-school-2026</div>
+          <button type="button" class="copy-btn" data-copy="https://www.planewx.ai?ref=AOPA-FS&utm_source=aopa&utm_medium=email&utm_campaign=flight-school-2026" aria-label="Copy URL" title="Copy URL">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
         <div class="info-hint">Set this as the click destination in AOPA's newsletter system. The <code style="font-size:10px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">ref=AOPA-FS</code> code attributes signups to this placement — separate from the magazines (<code style="font-size:10px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">AOPA-FT</code> / <code style="font-size:10px;background:#f1f5f9;padding:1px 5px;border-radius:3px;">AOPA-PILOT</code>).</div>
       </div>
       <div class="info-section" style="flex:1;min-width:240px;padding:20px 28px;">
@@ -263,6 +294,54 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
     </div>
   </div>
 </div>
+
+<script>
+(function () {
+  var copyIcon = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  var checkIcon = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.getAttribute("data-copy") || "";
+      if (!text) return;
+
+      function flash() {
+        btn.classList.add("copied");
+        btn.innerHTML = checkIcon;
+        btn.setAttribute("title", "Copied");
+        setTimeout(function () {
+          btn.classList.remove("copied");
+          btn.innerHTML = copyIcon;
+          btn.setAttribute("title", "Copy URL");
+        }, 1600);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(flash).catch(function () {
+          fallbackCopy(text, flash);
+        });
+      } else {
+        fallbackCopy(text, flash);
+      }
+    });
+  });
+
+  function fallbackCopy(text, onSuccess) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      if (document.execCommand("copy")) onSuccess();
+    } finally {
+      document.body.removeChild(ta);
+    }
+  }
+})();
+</script>
 
 </body>
 </html>
