@@ -30,9 +30,9 @@ import {
   FounderImageModal,
   STATS,
 } from "./shared"
+import { YouTubeFacade } from "./shared/youtube-facade"
 
 const VARIANT = "a"
-const appUrl = `https://app.planewx.ai?lp=${VARIANT}`
 
 export function LandingVariantA() {
   return (
@@ -83,9 +83,13 @@ export function LandingVariantA() {
             <a href="/research/turbulence-safety" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
               Research
             </a>
-            <a href={appUrl} className="text-sm text-white/60 hover:text-white transition-colors">
+            <SignUpButton
+              variant={VARIANT}
+              path="/"
+              className="text-sm text-white/60 hover:text-white transition-colors"
+            >
               Log In
-            </a>
+            </SignUpButton>
             <SignUpButton
               variant={VARIANT}
               className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
@@ -229,9 +233,9 @@ export function LandingVariantA() {
               </div>
 
               {[
-                ["Displays raw METARs, TAFs, PIREPs", "Synthesizes all of it using AI"],
+                ["Displays raw METARs, TAFs, PIREPs", "Aggregates them into one structured view"],
                 ["Generic VFR / IFR categories", "Your personal minimums + your aircraft"],
-                ["You formulate the risk in your head", "WX Score — quantified risk, done for you"],
+                ["You formulate the risk alone under pressure", "WX Score — quantified context for your decision"],
                 ["Data only", "WX Score feeds into the PAVE framework"],
                 ["You decide alone", "Connects you to a mentor who sees your full briefing"],
               ].map(([left, right], i) => (
@@ -556,7 +560,7 @@ export function LandingVariantA() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0–100% risk metric calculated against your minimums and your aircraft — not generic VFR/IFR thresholds. The cognitive work, done for you." },
+              { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0–100% risk metric calculated against your minimums and your aircraft — not generic VFR/IFR thresholds. Structured context so you can decide with a clearer picture." },
               { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute go/no-go with bags packed and commitments made." },
               { icon: <Snowflake className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across 3–7 sample points along your route with confidence scoring. Nobody else does this." },
               { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "PAVE Risk Assessment", desc: "The FAA's decision-making framework, pre-filled from your trip context. Pilot, Aircraft, enVironment, External pressures — all in one view." },
@@ -630,6 +634,16 @@ export function LandingVariantA() {
                   with single and multiengine ratings, and a veteran of the U.S. Navy.
                 </p>
               </div>
+            </div>
+          </div>
+
+          <div className="mt-12 max-w-3xl mx-auto">
+            <p className="text-center text-sm text-white/40 mb-4">Watch the founder&apos;s story</p>
+            <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/50" style={{ paddingBottom: "56.25%" }}>
+              <YouTubeFacade
+                videoId="rAFTCzeR38M"
+                title="PlaneWX Founder's Story — Mark Wolfgang"
+              />
             </div>
           </div>
         </div>

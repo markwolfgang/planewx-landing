@@ -73,7 +73,7 @@ export default function SocialMediaPlaybookPage() {
             {
               num: 5,
               title: "Built by Pilots, for Pilots",
-              desc: "We built the tool we needed and couldn't find. 1,650+ pilots are using it now.",
+              desc: "We built the tool we needed and couldn't find. 1,850+ pilots are using it now.",
             },
             {
               num: 6,
