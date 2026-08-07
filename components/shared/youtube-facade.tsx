@@ -16,7 +16,7 @@ export function YouTubeFacade({ videoId, title, className = "" }: YouTubeFacadeP
     return (
       <iframe
         className={`absolute inset-0 w-full h-full ${className}`}
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&si=MnoooX_Fu66IxwRg`}
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&start=0&si=MnoooX_Fu66IxwRg`}
         title={title}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
