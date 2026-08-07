@@ -9,7 +9,7 @@ const PODCASTS = [
   {
     type: "podcast" as const,
     videoId: "qu7ppznhcGM",
-    title: "Pilots: Meet PlaneWX — The AI Tool That Scores Your Flight Risk",
+    title: "Pilots: Meet PlaneWX — Decision Support for Your Go/No-Go",
     channel: "Your Vision Jet Pilot",
     duration: "10 min",
     date: "2026",

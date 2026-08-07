@@ -1,6 +1,6 @@
-// Last updated: Jul 2026 — sourced from production DB (profiles, computed 2026-07-12)
+// Last updated: Aug 2026 — analytics replica profiles count 1,879 (2026-08-07)
 export const STATS = {
-  totalPilots: "1,650+",
+  totalPilots: "1,850+",
   cumulativeHours: "2.9M+",
   instrumentRated: "73%",
   jetAircraft: "167",
@@ -46,7 +46,7 @@ export const TESTIMONIALS = [
 export const FAQS = [
   {
     q: "How is PlaneWX different from ForeFlight or aviationweather.gov?",
-    a: "EFBs and weather portals display raw data — METARs, TAFs, winds aloft — and hand the analysis back to you. PlaneWX synthesizes that same data using AI, cross-references it against your aircraft capabilities and personal minimums, and produces a WX Score: a single quantified risk number integrated into the PAVE decision framework. It's the difference between a data display and a decision support system.",
+    a: "EFBs and weather portals display raw data — METARs, TAFs, winds aloft — and leave the synthesis to you. PlaneWX aggregates that same authoritative data, structures it against your aircraft capabilities and personal minimums, and produces a WX Score so you can decide with a clearer picture. You still own the analysis and the call. It's the difference between a data display and a decision support system.",
   },
   {
     q: "What is the WX Score?",

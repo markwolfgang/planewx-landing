@@ -559,7 +559,7 @@ export default function BrandPortalPage() {
             { value: "390+", label: "paying subscribers" },
             { value: "1,298+", label: "trips under active monitoring" },
             { value: "827", label: "monthly active pilots" },
-            { value: "1,650+", label: "registered pilots" },
+            { value: "1,850+", label: "registered pilots" },
           ].map((stat) => (
             <div key={stat.label} className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
               <div className="text-xl font-bold text-sky-400">{stat.value}</div>
