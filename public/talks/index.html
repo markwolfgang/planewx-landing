@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PlaneWX Talks</title>
+  <meta name="description" content="PlaneWX talks and presentations — AirVenture, EAA chapters, and more." />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --bg: #061018;
+      --card: #0d2137;
+      --sky: #0ea5e9;
+      --text: #f0f8ff;
+      --muted: #7fb3d3;
+      --line: rgba(127, 179, 211, 0.22);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(900px 420px at 10% -10%, rgba(14, 165, 233, 0.18), transparent 60%),
+        radial-gradient(700px 360px at 90% 0%, rgba(14, 165, 233, 0.08), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      padding: 48px 24px 80px;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    .brand {
+      display: inline-block;
+      margin-bottom: 28px;
+    }
+    .brand img { height: 28px; width: auto; display: block; }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sky);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 44px);
+      line-height: 1.1;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+    .lede {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.5;
+      margin: 0 0 40px;
+      max-width: 36em;
+    }
+    .list { display: flex; flex-direction: column; gap: 14px; }
+    a.card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(13, 33, 55, 0.85);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px 24px;
+      transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+    }
+    a.card:hover {
+      border-color: rgba(14, 165, 233, 0.55);
+      background: rgba(14, 165, 233, 0.08);
+      transform: translateY(-1px);
+    }
+    .meta {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--sky);
+      margin-bottom: 8px;
+    }
+    .title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .path {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .footer {
+      margin-top: 48px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .footer a { color: var(--sky); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="brand" href="https://www.planewx.ai/">
+      <img src="/brand/planewx-wordmark-dark.svg" alt="PlaneWX" />
+    </a>
+    <div class="eyebrow">Presentations</div>
+    <h1>PlaneWX Talks</h1>
+    <p class="lede">
+      Slide decks from forums and chapter meetings. Open a talk to present, or share the link with the room.
+    </p>
+    <div class="list">
+      <a class="card" href="/talks/eaa983/">
+        <div class="meta">EAA Chapter 983 · Aug 8, 2026</div>
+        <div class="title">Advanced Aviation Risk Management</div>
+        <div class="desc">Pecan Plantation chapter meeting — weather intelligence, PAVE, and the go/no-go decision.</div>
+        <div class="path">planewx.ai/talks/eaa983</div>
+      </a>
+      <a class="card" href="/talks/osh/">
+        <div class="meta">EAA AirVenture 2026 · Forum Stage 10</div>
+        <div class="title">Advanced Aviation Risk Management</div>
+        <div class="desc">Oshkosh forum talk — archive of the July 22 presentation.</div>
+        <div class="path">planewx.ai/talks/osh</div>
+      </a>
+    </div>
+    <div class="footer">
+      Looking for the app? <a href="https://www.planewx.ai/">planewx.ai</a>
+    </div>
+  </div>
+</body>
+</html>

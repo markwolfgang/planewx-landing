@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Advanced Aviation Risk Management — Mark Wolfgang · AirVenture 2026</title>
+<!-- cache-bust: wx-score-labels-20260722b -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root, [data-theme="dark"] {
+    --sky: #0ea5e9;
+    --sky-dark: #0284c7;
+    --sky-light: #e0f2fe;
+    --night: #020e1c;
+    --dark: #0d1f2d;
+    --card: #112233;
+    --text: #f0f8ff;
+    --muted: #7fb3d3;
+    --white: #ffffff;
+    --red: #ef4444;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --page-bg: #111111;
+    --nav-bg: rgba(2, 14, 28, 0.95);
+    --nav-border: rgba(14, 165, 233, 0.2);
+    --slide-border: #1a2a3a;
+    --surface: rgba(14, 165, 233, 0.08);
+    --surface-border: rgba(14, 165, 233, 0.25);
+    --caption: #9ec9e6;
+    --label-danger: #fca5a5;
+    --label-warn: #fbbf24;
+    --label-accent: #c4b5fd;
+    --deck-zoom: 1;
+    --type-boost: 0px;
+  }
+
+  /* Daylight theme — outdoor / bright covered venues */
+  [data-theme="light"] {
+    --sky: #0369a1;
+    --sky-dark: #075985;
+    --sky-light: #e0f2fe;
+    --night: #f4f7fa;
+    --dark: #ffffff;
+    --card: #eef3f8;
+    --text: #0b1220;
+    --muted: #334155;
+    --white: #0b1220;
+    --red: #dc2626;
+    --green: #15803d;
+    --amber: #b45309;
+    --page-bg: #d7e0e8;
+    --nav-bg: rgba(255, 255, 255, 0.97);
+    --nav-border: rgba(3, 105, 161, 0.22);
+    --slide-border: #c5d0db;
+    --surface: rgba(3, 105, 161, 0.06);
+    --surface-border: rgba(3, 105, 161, 0.28);
+    --caption: #1e293b;
+    --label-danger: #b91c1c;
+    --label-warn: #b45309;
+    --label-accent: #6d28d9;
+  }
+
+  /* Colored drama slides keep light-on-color text in both themes */
+  [data-theme="light"] .bg-danger,
+  [data-theme="light"] .bg-green,
+  [data-theme="light"] .bg-sky {
+    --white: #ffffff;
+    --text: #f8fafc;
+    --muted: #e2e8f0;
+    --sky: #7dd3fc;
+    --caption: #e2e8f0;
+    --label-danger: #fecaca;
+    --label-warn: #fde68a;
+    --label-accent: #ddd6fe;
+  }
+
+  /* High-contrast punch for washed-out projectors */
+  [data-contrast="high"] {
+    --muted: #cbd5e1;
+    --sky: #38bdf8;
+  }
+  [data-theme="light"][data-contrast="high"] {
+    --night: #ffffff;
+    --dark: #ffffff;
+    --card: #f1f5f9;
+    --text: #000000;
+    --muted: #1e293b;
+    --white: #000000;
+    --sky: #024e7a;
+    --page-bg: #e2e8f0;
+    --caption: #0f172a;
+    --label-danger: #991b1b;
+    --label-warn: #92400e;
+    --label-accent: #5b21b6;
+  }
+  [data-theme="light"][data-contrast="high"] .bg-danger,
+  [data-theme="light"][data-contrast="high"] .bg-green,
+  [data-theme="light"][data-contrast="high"] .bg-sky {
+    --white: #ffffff;
+    --text: #ffffff;
+    --muted: #f1f5f9;
+    --sky: #e0f2fe;
+  }
+  [data-contrast="high"] .bullet-list li::before {
+    width: 10px; height: 10px;
+  }
+  [data-contrast="high"] .headline,
+  [data-contrast="high"] .headline-lg,
+  [data-contrast="high"] .headline-sm,
+  [data-contrast="high"] .quote-text,
+  [data-contrast="high"] .tagline,
+  [data-contrast="high"] .formula {
+    font-weight: 900;
+  }
+  [data-contrast="high"] .gate-box,
+  [data-contrast="high"] .col-card,
+  [data-contrast="high"] .chip {
+    border-width: 2px;
+  }
+
+  html, body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--page-bg);
+    color: var(--text);
+  }
+
+  /* ── Navigation ─────────────────────────────────────────────────── */
+  #nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--nav-bg); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--nav-border);
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    padding: 8px 12px;
+    font-size: 12px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  body.chrome-hidden #nav {
+    transform: translateY(-110%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  body.chrome-hidden #progress-bar { opacity: 0; }
+  #nav button, #nav .nav-select {
+    padding: 4px 12px; border-radius: 4px; border: 1px solid var(--nav-border);
+    background: var(--surface); color: var(--sky); cursor: pointer;
+    font-family: inherit; font-size: 12px;
+    transition: background 0.15s;
+  }
+  #nav button:hover { filter: brightness(1.08); }
+  #nav button.active-pref {
+    background: var(--sky); color: #fff; border-color: var(--sky);
+  }
+  #nav .nav-select { appearance: none; padding-right: 22px; }
+  #nav .nav-group {
+    display: flex; align-items: center; gap: 4px;
+    padding-left: 8px; margin-left: 4px;
+    border-left: 1px solid var(--nav-border);
+  }
+  #nav .nav-hint {
+    color: var(--muted); font-size: 11px; opacity: 0.85;
+    margin-left: 4px;
+  }
+  #slide-counter { color: var(--muted); min-width: 60px; }
+  #section-label { color: var(--muted); flex: 1; text-align: center; min-width: 80px; }
+  #timer { color: var(--amber); min-width: 50px; text-align: right; }
+
+  #settings-panel {
+    display: none;
+    position: fixed; top: 48px; right: 12px; z-index: 110;
+    width: min(360px, calc(100vw - 24px));
+    background: var(--nav-bg);
+    border: 1px solid var(--nav-border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  #settings-panel.open { display: block; }
+  #settings-panel h3 {
+    font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--sky);
+  }
+  #settings-panel .pref-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--nav-border);
+  }
+  #settings-panel .pref-row:last-child { border-bottom: none; }
+  #settings-panel kbd {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px; padding: 1px 6px; border-radius: 4px;
+    border: 1px solid var(--nav-border); color: var(--muted);
+  }
+  #settings-panel .help {
+    margin-top: 12px; color: var(--muted); font-size: 12px;
+  }
+
+  /* ── Slide container ─────────────────────────────────────────────── */
+  #deck-wrap {
+    padding-top: 48px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  body.chrome-hidden #deck-wrap { padding-top: 0; }
+  body.fit-mode #deck-wrap {
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  #deck {
+    transform-origin: top center;
+    zoom: var(--deck-zoom);
+  }
+  body.fit-mode #deck {
+    zoom: 1;
+    transform-origin: center center;
+  }
+  .slide {
+    width: 1280px;
+    min-height: 720px;
+    display: none;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid var(--slide-border);
+  }
+  .slide.active { display: flex; }
+
+  /* ── Slide layouts ─────────────────────────────────────────────── */
+  .slide-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 720px;
+  }
+
+  .bg-night    { background: var(--night); color: var(--text); }
+  .bg-dark     { background: var(--dark); color: var(--text); }
+  .bg-card     { background: var(--card); color: var(--text); }
+  .bg-sky      { background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 100%); color: var(--text); }
+  .bg-hero     { background: radial-gradient(ellipse at 30% 50%, #0d2845 0%, var(--night) 70%); color: var(--text); }
+  .bg-danger   { background: linear-gradient(135deg, #450a0a 0%, #1a0808 100%); color: var(--text); }
+  .bg-green    { background: linear-gradient(135deg, #052e16 0%, #0d1f12 100%); color: var(--text); }
+
+  [data-theme="light"] .bg-hero {
+    background: radial-gradient(ellipse at 30% 40%, #dbeafe 0%, var(--night) 72%);
+  }
+  [data-theme="light"] .bg-danger {
+    background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
+  }
+  [data-theme="light"] .bg-green {
+    background: linear-gradient(135deg, #14532d 0%, #052e16 100%);
+  }
+
+  /* ── Typography ─────────────────────────────────────────────────── */
+  .headline {
+    font-size: calc(72px + var(--type-boost)); font-weight: 800; line-height: 1.05;
+    letter-spacing: -2px; color: var(--white);
+  }
+  .headline-lg {
+    font-size: calc(88px + var(--type-boost)); font-weight: 900; line-height: 1;
+    letter-spacing: -3px; color: var(--white);
+  }
+  .headline-sm {
+    font-size: calc(52px + var(--type-boost)); font-weight: 700; line-height: 1.1;
+    letter-spacing: -1.5px; color: var(--white);
+  }
+  .subhead {
+    font-size: calc(28px + (0.4 * var(--type-boost))); font-weight: 400; line-height: 1.4;
+    color: var(--muted);
+  }
+  .label {
+    font-size: 13px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--sky);
+  }
+  .quote-text {
+    font-size: calc(56px + var(--type-boost)); font-weight: 700; line-height: 1.2;
+    font-style: italic; color: var(--white);
+  }
+
+  /* ── Content blocks ──────────────────────────────────────────────── */
+  .bullet-list {
+    list-style: none; display: flex; flex-direction: column; gap: 18px;
+    font-size: calc(32px + (0.5 * var(--type-boost))); font-weight: 500; line-height: 1.3;
+    /* Resolve in-context so drama slides (bg-danger etc.) get light text in daylight theme */
+    color: var(--text);
+  }
+  .bullet-list li { display: flex; align-items: flex-start; gap: 14px; color: inherit; }
+  .bullet-list li::before {
+    content: ''; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--sky); flex-shrink: 0; margin-top: 14px;
+  }
+  .bullet-list.tight { gap: 12px; }
+  .bullet-list.tight li { font-size: 26px; }
+
+  .accent-bar {
+    width: 56px; height: 6px; border-radius: 3px;
+    background: var(--sky); margin-bottom: 24px;
+  }
+
+  /* ── Formula slide ────────────────────────────────────────────────── */
+  .formula {
+    font-size: calc(64px + var(--type-boost)); font-weight: 800; color: var(--white);
+    letter-spacing: -1px; text-align: center;
+  }
+  .formula .op { color: var(--sky); margin: 0 16px; }
+  .formula .var { color: var(--sky); }
+
+  /* ── Gate timeline ────────────────────────────────────────────────── */
+  .gates {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    width: 100%;
+  }
+  .gate-box {
+    background: rgba(14,165,233,0.08);
+    border: 1px solid rgba(14,165,233,0.25);
+    border-radius: 12px; padding: 24px 20px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .gate-label { font-size: 22px; font-weight: 800; color: var(--sky); }
+  .gate-name  { font-size: 32px; font-weight: 700; color: var(--white); }
+  .gate-desc  { font-size: 16px; color: var(--muted); line-height: 1.4; }
+  .gate-box.current { border-color: var(--sky); background: rgba(14,165,233,0.15); }
+
+  /* ── Two-column layout ──────────────────────────────────────────────── */
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    width: 100%; align-items: start;
+  }
+  .col-card {
+    background: rgba(14,165,233,0.06);
+    border: 1px solid rgba(14,165,233,0.2);
+    border-radius: 16px; padding: 32px;
+  }
+  .col-card .col-title {
+    font-size: 14px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--sky); margin-bottom: 16px;
+  }
+
+  /* ── WX Score chip ──────────────────────────────────────────────────── */
+  .wx-score {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: rgba(34,197,94,0.15);
+    border: 1px solid rgba(34,197,94,0.4);
+    border-radius: 12px; padding: 16px 28px;
+  }
+  .wx-score .number {
+    font-size: 64px; font-weight: 900; color: var(--green); line-height: 1;
+  }
+  .wx-score .label { font-size: 14px; font-weight: 600; color: var(--green); }
+
+  .wx-score-red {
+    background: rgba(239,68,68,0.15);
+    border-color: rgba(239,68,68,0.4);
+  }
+  .wx-score-red .number { color: var(--red); }
+  .wx-score-red .label  { color: var(--red); }
+
+  .wx-score-amber {
+    background: rgba(245,158,11,0.15);
+    border-color: rgba(245,158,11,0.4);
+  }
+  .wx-score-amber .number { color: var(--amber); }
+  .wx-score-amber .label  { color: var(--amber); }
+
+  /* ── Tag chip ──────────────────────────────────────────────────────── */
+  .chip {
+    display: inline-block; padding: 6px 16px; border-radius: 999px;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; background: rgba(14,165,233,0.15);
+    border: 1px solid rgba(14,165,233,0.3); color: var(--sky);
+    white-space: nowrap;
+  }
+  .chip.new { background: rgba(34,197,94,0.15); border-color: rgba(34,197,94,0.4); color: var(--green); }
+  .chip.wip { background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.4); color: var(--amber); }
+
+  /* ── Tagline slide ────────────────────────────────────────────────── */
+  .tagline {
+    font-size: calc(64px + var(--type-boost)); font-weight: 700; font-style: italic;
+    line-height: 1.15; text-align: center; color: var(--white);
+  }
+  .tagline .em { color: var(--sky); }
+
+  /* ── Logo wordmark (SVG — white + cyan/blue for dark slides) ─────── */
+  .logo-img {
+    display: block;
+    height: 48px;
+    width: auto;
+  }
+  .logo-img.logo-hero { height: 72px; }
+  .logo-img.logo-lg   { height: 56px; }
+  .logo-img.logo-md   { height: 40px; }
+  .logo-img.logo-sm   { height: 32px; }
+
+  /* ── Section divider line ────────────────────────────────────────── */
+  .divider { width: 100%; height: 1px; background: rgba(14,165,233,0.15); }
+
+  /* ── Progress bar ─────────────────────────────────────────────────── */
+  #progress-bar {
+    position: fixed; bottom: 0; left: 0; height: 3px;
+    background: var(--sky); transition: width 0.3s;
+    z-index: 200;
+  }
+
+  /* ── Speaker notes panel ──────────────────────────────────────────── */
+  #notes-panel {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--nav-bg); border-top: 1px solid var(--nav-border);
+    padding: 16px 24px; max-height: 200px; overflow-y: auto;
+    font-size: 14px; line-height: 1.6; color: var(--muted);
+    z-index: 99;
+  }
+  #notes-panel.visible { display: block; }
+  body.chrome-hidden #notes-panel.visible { bottom: 0; }
+
+  /* ── Slide padding defaults ─────────────────────────────────────── */
+  .pad { padding: 64px 80px; }
+  .pad-wide { padding: 64px 120px; }
+
+  /* Image containers */
+  .img-screen {
+    width: 100%; border-radius: 12px;
+    border: 1px solid rgba(14,165,233,0.2);
+    background: rgba(14,165,233,0.04);
+    overflow: hidden;
+  }
+  .img-screen img { width: 100%; display: block; }
+  .img-placeholder {
+    width: 100%; min-height: 200px;
+    background: rgba(14,165,233,0.06);
+    border: 1px dashed rgba(14,165,233,0.3);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 14px; font-style: italic;
+  }
+
+  /* Full-bleed product screenshots — readable from ~50 ft */
+  .slide.slide-shot {
+    padding: 0;
+    background: #020617;
+  }
+  .slide.slide-shot .shot-frame {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #020617;
+  }
+  .slide.slide-shot .shot-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .slide.slide-shot .shot-caption {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    z-index: 2;
+    padding: 16px 28px 18px;
+    background: linear-gradient(transparent, rgba(2,6,23,0.92) 35%);
+    color: #f8fafc;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: center;
+  }
+  .slide.slide-shot .shot-caption .shot-kicker {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 6px;
+  }
+
+  /* Deduction row */
+  .deduction-row {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 16px 0; border-bottom: 1px solid rgba(14,165,233,0.1);
+  }
+  .deduction-row:last-child { border-bottom: none; }
+  .ded-icon {
+    width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .ded-title { font-size: 20px; font-weight: 600; color: var(--white); }
+  .ded-detail { font-size: 15px; color: var(--muted); margin-top: 4px; }
+
+  /* Slide footer */
+  .slide-footer {
+    position: absolute; bottom: 24px; left: 80px; right: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px; color: var(--caption);
+    border-top: 1px solid rgba(14,165,233,0.08); padding-top: 16px;
+  }
+
+  /* Persistent corner QR (bottom-right of every slide) */
+  #deck { position: relative; }
+  .corner-qr {
+    position: absolute;
+    right: 22px;
+    bottom: 18px;
+    z-index: 30;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .corner-qr.is-hidden { opacity: 0; pointer-events: none; }
+  .corner-qr-pad {
+    background: #fff;
+    padding: 6px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.28);
+    line-height: 0;
+  }
+  .corner-qr-pad img {
+    width: 72px;
+    height: 72px;
+    display: block;
+  }
+  .corner-qr-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.45);
+  }
+  [data-theme="light"] .corner-qr-label {
+    color: var(--muted);
+    text-shadow: none;
+  }
+
+  /* Theme-aware readable secondary text */
+  .caption { color: var(--caption); font-weight: 500; }
+  .label-danger { color: var(--label-danger); font-weight: 700; }
+  .label-warn { color: var(--label-warn); font-weight: 700; }
+  .label-accent { color: var(--label-accent); font-weight: 700; }
+
+  /* Phone remote pairing panel */
+  #remote-panel {
+    display: none;
+    position: fixed;
+    z-index: 220;
+    right: 16px;
+    bottom: 16px;
+    width: min(360px, calc(100vw - 32px));
+    background: var(--nav-bg);
+    border: 1px solid var(--nav-border);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    color: var(--text);
+  }
+  #remote-panel.open { display: block; }
+  #remote-panel h3 {
+    margin: 0 0 8px; font-size: 15px; font-weight: 700; color: var(--sky);
+  }
+  #remote-panel p {
+    margin: 0 0 12px; font-size: 13px; color: var(--muted); line-height: 1.4;
+  }
+  #remote-panel .remote-row {
+    display: flex; gap: 14px; align-items: center;
+  }
+  #remote-panel .remote-qr {
+    background: #fff; padding: 8px; border-radius: 10px; flex-shrink: 0;
+    width: 136px; height: 136px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #remote-panel .remote-qr canvas,
+  #remote-panel .remote-qr img { width: 120px !important; height: 120px !important; display: block; }
+  #remote-panel .remote-qr-placeholder {
+    font-size: 12px; font-weight: 600; color: #64748b; text-align: center; padding: 8px;
+  }
+  #remote-panel .remote-meta { font-size: 13px; color: var(--muted); line-height: 1.5; word-break: break-all; }
+  #remote-panel .remote-meta strong { color: var(--text); font-size: 18px; letter-spacing: 0.08em; }
+  #remote-panel .remote-actions { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  #remote-panel .remote-actions button {
+    flex: 1; min-width: 100px; padding: 10px 12px; border-radius: 10px;
+    border: 1px solid var(--nav-border); background: rgba(14,165,233,0.12);
+    color: var(--text); font-weight: 600; cursor: pointer;
+  }
+  #remote-dot {
+    display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+    background: #64748b; margin-right: 6px; vertical-align: middle;
+  }
+  #remote-dot.live { background: #22c55e; box-shadow: 0 0 0 3px rgba(34,197,94,0.25); }
+</style>
+</head>
+<body>
+
+<!-- Navigation bar -->
+<div id="nav">
+  <button onclick="prevSlide()" title="← / ↑">← Prev</button>
+  <button onclick="nextSlide()" title="→ / ↓ / Space">Next →</button>
+  <span id="slide-counter">1 / 40</span>
+  <span id="section-label">Title</span>
+
+  <div class="nav-group">
+    <button id="btn-theme" onclick="toggleTheme()" title="D — theme">Light</button>
+    <button id="btn-contrast" onclick="toggleContrast()" title="C — high contrast">Contrast</button>
+    <select id="select-size" class="nav-select" onchange="setTypeSize(this.value)" title="Type size" aria-label="Type size">
+      <option value="sm">Text S</option>
+      <option value="md" selected>Text M</option>
+      <option value="lg">Text L</option>
+      <option value="xl">Text XL</option>
+    </select>
+    <button id="btn-fit" onclick="toggleFit()" title="V — fit to projector">Fit</button>
+    <button id="btn-chrome" onclick="toggleChrome()" title="H — hide chrome">Chrome</button>
+  </div>
+
+  <button onclick="toggleNotes()" title="N">Notes</button>
+  <button onclick="toggleFullscreen()" title="F">Fullscreen</button>
+  <button id="btn-remote" onclick="toggleRemotePanel()" title="P — phone remote">
+    <span id="remote-dot"></span>Phone
+  </button>
+  <button id="btn-settings" onclick="toggleSettings()" title="S — settings / shortcuts">Settings</button>
+  <span id="timer">0:00</span>
+</div>
+
+<div id="remote-panel" role="dialog" aria-label="Phone remote">
+  <h3>Phone remote</h3>
+  <p>Scan with your phone (or open the link). Keep this laptop on the projector — your phone advances slides.</p>
+  <div class="remote-row">
+    <div class="remote-qr" id="remote-qr-box">
+      <div class="remote-qr-placeholder">Press Start</div>
+    </div>
+    <div class="remote-meta">
+      Room<br><strong id="remote-room">————</strong><br><br>
+      Status: <span id="remote-status">Off</span>
+    </div>
+  </div>
+  <div id="remote-link-preview" style="margin-top:12px;font-size:11px;color:var(--muted);word-break:break-all;display:none;"></div>
+  <div class="remote-actions">
+    <button type="button" id="btn-remote-start" onclick="startPhoneRemote()">Start / refresh</button>
+    <button type="button" onclick="copyRemoteLink()">Copy link</button>
+    <button type="button" onclick="stopPhoneRemote()">Stop</button>
+  </div>
+</div>
+
+<div id="settings-panel" role="dialog" aria-label="Presentation settings">
+  <h3>Venue controls</h3>
+  <div class="pref-row"><span>Theme</span><span><kbd>D</kbd> light / dark</span></div>
+  <div class="pref-row"><span>High contrast</span><span><kbd>C</kbd></span></div>
+  <div class="pref-row"><span>Text size</span><span><kbd>+</kbd> / <kbd>-</kbd> or S–XL</span></div>
+  <div class="pref-row"><span>Fit to screen</span><span><kbd>V</kbd></span></div>
+  <div class="pref-row"><span>Hide nav chrome</span><span><kbd>H</kbd></span></div>
+  <div class="pref-row"><span>Fullscreen</span><span><kbd>F</kbd></span></div>
+  <div class="pref-row"><span>Speaker notes</span><span><kbd>N</kbd></span></div>
+  <div class="pref-row"><span>Timer</span><span><kbd>T</kbd></span></div>
+  <div class="pref-row"><span>Phone remote</span><span><kbd>P</kbd></span></div>
+  <p class="help">
+    Outdoor tip: start with <strong>Light + Contrast + Text L</strong>, then press <kbd>V</kbd> Fit and <kbd>F</kbd> Fullscreen.
+    Prefs save in this browser. URL overrides:
+    <code>?theme=light&amp;contrast=high&amp;size=lg&amp;fit=1</code>
+    Phone remote: press <kbd>P</kbd>, Start, scan QR on your phone.
+  </p>
+</div>
+
+<!-- Progress bar -->
+<div id="progress-bar" style="width: 3.33%"></div>
+
+<!-- Speaker notes panel -->
+<div id="notes-panel"></div>
+
+<div id="deck-wrap">
+<div id="deck">
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SECTION 1 — TITLE + STAKES
+═══════════════════════════════════════════════════════════════ -->
+
+<div class="slide active bg-hero" data-section="Title" data-time="1:00" data-no-corner-qr
+  data-notes="Leave this up before you start so people can scan. Welcome them, point to the QR, then frame: not a product tour — about the kitchen moment. URL: planewx.ai/osh">
+  <div class="slide-inner pad" style="flex-direction:row; gap:64px; align-items:center; justify-content:center; min-height:720px;">
+    <div style="flex:1; max-width:620px;">
+      <img
+        class="logo-img logo-hero"
+        src="/brand/planewx-wordmark-dark.svg"
+        alt="PlaneWX"
+        style="margin-bottom:36px;"
+      >
+      <div class="label" style="margin-bottom:24px;">EAA AirVenture 2026 · Forum Stage 10</div>
+      <div class="headline-lg" style="margin-bottom:24px; line-height:1.0; font-size:64px;">
+        Advanced Aviation<br>Risk Management
+      </div>
+      <div class="subhead">Mark Wolfgang · Founder</div>
+      <div style="margin-top:36px;">
+        <div class="chip">Forum Stage 10 · Wednesday 4 PM</div>
+      </div>
+    </div>
+    <div style="flex:0 0 auto; text-align:center;">
+      <div style="background:var(--white); padding:18px; border-radius:20px; display:inline-block; margin-bottom:14px;">
+        <img src="/talks/osh-signup-qr.png" alt="planewx.ai/osh QR code"
+          style="width:200px; height:200px; display:block;"
+          onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'width:200px;height:200px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999\'>QR: planewx.ai/osh</div>'">
+      </div>
+      <div style="font-size:20px; font-weight:700; color:var(--white); margin-bottom:4px;">Scan before we start</div>
+      <div style="font-size:18px; color:var(--sky); font-weight:600;">planewx.ai/osh</div>
+      <div style="font-size:14px; color:var(--muted); margin-top:8px;">Giveaway · try the app free</div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-night" data-section="Title" data-time="1:30"
+  data-notes="One question. Pause after the quote. Bridge: That's the question we're here to answer — earlier and better than most pilots ever do.">
+  <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px 120px;">
+    <div style="max-width:840px;">
+      <div class="label" style="margin-bottom:40px;">The question every pilot dreads</div>
+      <div class="quote-text" style="font-size:62px; line-height:1.25;">
+        "Are we going to be able to<br>make the flight?"
+      </div>
+      <div class="subhead" style="margin-top:40px; font-size:22px; max-width:600px; margin-left:auto; margin-right:auto;">
+        That's the question we're here to answer — earlier and better.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SECTION — ROOM · HANDS + OSHKOSH + COMMUNITY (early)
+═══════════════════════════════════════════════════════════════ -->
+
+<div class="slide bg-night" data-section="Room" data-time="34:00"
+  data-notes="EARLY BEAT. PAUSE. Ask each question slowly. Count hands. Gauge the room — then Oshkosh numbers and community. Welcome users warmly.">
+  <div class="slide-inner pad" style="justify-content:center; align-items:center; min-height:720px; text-align:center;">
+    <div style="max-width:880px; width:100%;">
+      <div class="label" style="margin-bottom:20px;">Quick show of hands</div>
+      <div class="headline-sm" style="font-size:42px; margin-bottom:48px;">Who's in the room?</div>
+      <div style="display:flex; flex-direction:column; gap:20px; text-align:left;">
+        <div style="padding:22px 28px; border-radius:14px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); font-size:26px; font-weight:600; color:var(--white);">
+          1 · Who is a PlaneWX user?
+        </div>
+        <div style="padding:22px 28px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.22); font-size:26px; font-weight:600; color:var(--white);">
+          2 · Who used it to plan the flight here?
+        </div>
+        <div style="padding:22px 28px; border-radius:14px; background:rgba(14,165,233,0.06); border:1px solid rgba(14,165,233,0.18); font-size:26px; font-weight:600; color:var(--white);">
+          3 · Who is using PlaneWX to get back home?
+        </div>
+      </div>
+      <div style="margin-top:36px; font-size:18px; color:var(--muted);">
+        Look around. You're not alone in this room — or in the decision.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-dark" data-section="Room" data-time="35:00"
+  data-notes="After hands: 116 pilots used PlaneWX to get here. ~60 already have outbound briefings. Then community scale — who else uses it, what they fly. Refresh counts night-before.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="width:100%;">
+      <div class="chip" style="margin-bottom:20px;">AirVenture 2026</div>
+      <div class="headline" style="font-size:52px; margin-bottom:16px;">This week · right here</div>
+      <div class="subhead" style="margin-bottom:48px; font-size:22px; color:var(--muted);">
+        PlaneWX pilots who briefed inbound to the Oshkosh area
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:36px;">
+        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:28px 16px; text-align:center;">
+          <div style="font-size:48px; font-weight:800; color:var(--sky);">116</div>
+          <div style="font-size:15px; color:var(--muted); margin-top:8px;">Pilots briefed in</div>
+        </div>
+        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:28px 16px; text-align:center;">
+          <div style="font-size:48px; font-weight:800; color:var(--sky);">60</div>
+          <div style="font-size:15px; color:var(--muted); margin-top:8px;">Already planning outbound</div>
+        </div>
+        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:28px 16px; text-align:center;">
+          <div style="font-size:48px; font-weight:800; color:var(--sky);">~150</div>
+          <div style="font-size:15px; color:var(--muted); margin-top:8px;">Inbound assessments</div>
+        </div>
+        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:28px 16px; text-align:center;">
+          <div style="font-size:48px; font-weight:800; color:var(--sky);">94</div>
+          <div style="font-size:15px; color:var(--muted); margin-top:8px;">Direct to KOSH</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+        <span style="padding:8px 16px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); font-size:16px; color:var(--muted);">KATW · Appleton</span>
+        <span style="padding:8px 16px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); font-size:16px; color:var(--muted);">KFLD · Fond du Lac</span>
+        <span style="padding:8px 16px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); font-size:16px; color:var(--muted);">KGRB · Green Bay</span>
+        <span style="padding:8px 16px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); font-size:16px; color:var(--muted);">+ satellites</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-dark" data-section="Room" data-time="33:45"
+  data-notes="After Oshkosh week numbers: zoom out — 1,750+ pilots, ~1,950 aircraft, fleet mix. Not a side project. Bridge into who I am / why I built this.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="width:100%; max-width:1080px;">
+      <div class="chip" style="margin-bottom:20px;">The PlaneWX community</div>
+      <div class="headline" style="font-size:44px; margin-bottom:40px; line-height:1.15;">Pilots assessing weather risk every day</div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px;">
+        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:24px 12px; text-align:center;">
+          <div style="font-size:40px; font-weight:800; color:var(--sky);">1,750+</div>
+          <div style="font-size:16px; color:var(--muted); margin-top:8px;">Pilots</div>
+        </div>
+        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:24px 12px; text-align:center;">
+          <div style="font-size:40px; font-weight:800; color:var(--sky);">~1,950</div>
+          <div style="font-size:16px; color:var(--muted); margin-top:8px;">Aircraft</div>
+        </div>
+        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:24px 12px; text-align:center;">
+          <div style="font-size:40px; font-weight:800; color:var(--sky);">10,000+</div>
+          <div style="font-size:16px; color:var(--muted); margin-top:8px;">Briefings</div>
+        </div>
+        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:24px 12px; text-align:center;">
+          <div style="font-size:40px; font-weight:800; color:var(--sky);">3.1M</div>
+          <div style="font-size:16px; color:var(--muted); margin-top:8px;">Flight hours</div>
+        </div>
+      </div>
+      <div class="subhead" style="margin-top:36px; font-size:18px; color:var(--muted); max-width:960px;">
+        Cessnas · Cirri · VLJs · Eclipse Jets · Citations · turboprops — same decision problem across the fleet
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SECTION 2 — WHO I AM
+═══════════════════════════════════════════════════════════════ -->
+
+<div class="slide bg-dark" data-section="About Me" data-time="3:00"
+  data-notes="Lead with risk profession: 22 years professional penetration tester / IT risk management. Navy. Sold firm Dec 2022. Don't read the resume — frame as someone who finds failure modes for a living.">
+  <div class="slide-inner pad" style="flex-direction:row; gap:60px; align-items:center; min-height:720px;">
+    <div style="flex:1;">
+      <div class="label" style="margin-bottom:20px;">About Mark</div>
+      <div class="headline-sm" style="margin-bottom:32px;">Risk management<br>as a profession</div>
+      <ul class="bullet-list">
+        <li>U.S. Navy veteran</li>
+        <li>22 years — professional penetration tester</li>
+        <li>IT risk management for a living</li>
+        <li>Sold consulting firm Dec 2022</li>
+      </ul>
+    </div>
+    <div style="flex:0 0 420px;">
+      <div class="img-screen" style="border-radius:16px;">
+        <img src="/talks/screenshots/mark-aircraft.jpg" alt="Mark with aircraft"
+          style="width:100%; height:auto; display:block; object-fit:cover; max-height:520px;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-dark" data-section="About Me" data-time="4:30"
+  data-notes="Willing to do things many call risky — freediving, spearfishing — but only with eyes open. Know every risk, stack every mitigation. Same pattern later became PlaneWX. Bridge to flying.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:920px; width:100%;">
+      <div class="label" style="margin-bottom:20px;">Personal risk</div>
+      <div class="headline-sm" style="margin-bottom:16px; font-size:44px;">Willing to take the risk —<br>not willing to be surprised by it</div>
+      <div class="subhead" style="margin-bottom:36px; font-size:20px; color:var(--muted); max-width:820px;">
+        I'll do things many people would call risky. I just want every risk on the table — so I can mitigate as much as possible.
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
+        <div style="background:rgba(14,165,233,0.06); border:1px solid rgba(14,165,233,0.2); border-radius:16px; padding:28px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky); margin-bottom:16px;">The activity</div>
+          <ul class="bullet-list tight" style="font-size:20px;">
+            <li>~7 years freediving & spearfishing</li>
+            <li>Breath-hold dives to 150 ft</li>
+            <li>Cave exits · fight the fish · surface</li>
+          </ul>
+        </div>
+        <div style="background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.25); border-radius:16px; padding:28px;">
+          <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--green); margin-bottom:16px;">The mitigation</div>
+          <ul class="bullet-list tight" style="font-size:20px;">
+            <li>Every certification course available</li>
+            <li>Best practices — always</li>
+            <li>Risk work done *before* the dive</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-dark" data-section="About Me" data-time="6:00"
+  data-notes="Quick credentials. Next slide is the ForeFlight log full-bleed — big enough for the back of the room.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div class="accent-bar"></div>
+    <div class="headline-sm" style="margin-bottom:32px; font-size:48px;">A lot of flying<br>in a short time</div>
+    <ul class="bullet-list" style="max-width:720px;">
+      <li>DA40 NG → PPL in ~6 weeks</li>
+      <li>IFR rating in 5 days</li>
+      <li>Now: TBM 900</li>
+        <li>~1,000 hrs total time — in under two years</li>
+      <li>Commercial / Instrument · SEL/MEL</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide slide-shot" data-section="About Me" data-time="6:20"
+  data-notes="Full-screen ForeFlight log. Same risk mindset, new domain. Building because I need it.">
+  <div class="shot-frame">
+    <img src="/screenshots/foreflight.png" alt="ForeFlight flight log">
+  </div>
+</div>
+
+<div class="slide bg-hero" data-section="About Me" data-time="7:00"
+  data-notes="Let this breathe. Bridge: And I want to tell you why it started — into Thanksgiving.">
+  <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
+    <div style="max-width:800px;">
+      <img
+        class="logo-img logo-md"
+        src="/brand/planewx-wordmark-dark.svg"
+        alt="PlaneWX"
+        style="margin: 0 auto 40px;"
+      >
+      <div class="quote-text" style="font-size:68px; color:var(--sky);">
+        "I built PlaneWX<br>because I needed it."
+      </div>
+      <div class="subhead" style="margin-top:32px; font-size:22px;">— Mark Wolfgang, Founder</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SECTION 3 — THANKSGIVING
+═══════════════════════════════════════════════════════════════ -->
+
+<div class="slide bg-dark" data-section="Origin Story" data-time="8:00"
+  data-notes="Set the scene. Bentonville → Fremont. Photo is that trip — Nebraska shirt, Diamond, above the layer. Bags packed, family, the real flight that started all this.">
+  <div class="slide-inner pad" style="flex-direction:row; gap:56px; align-items:center; min-height:720px;">
+    <div style="flex:1;">
+      <div class="chip" style="margin-bottom:28px;">The origin story</div>
+      <div class="headline" style="font-size:56px; margin-bottom:28px;">Thanksgiving 2024</div>
+      <ul class="bullet-list">
+        <li>Trip planned weeks out</li>
+        <li>Bentonville, AR → Fremont, NE</li>
+        <li>Bags packed · Dog ready</li>
+        <li>Family waiting</li>
+      </ul>
+    </div>
+    <div style="flex:0 0 440px;">
+      <div class="img-screen" style="border-radius:16px;">
+        <img src="/talks/screenshots/thanksgiving-2024.jpg" alt="Thanksgiving 2024 flight — Bentonville to Fremont"
+          style="width:100%; height:auto; display:block; max-height:520px; object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-night" data-section="Origin Story" data-time="8:30"
+  data-notes="PAUSE. Let them read it. Universal GA moment. Then: she asked if the trip would happen — and days out I had nothing but 'I'll know after the TAF.'">
+  <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px 100px;">
+    <div style="max-width:900px;">
+      <div class="subhead" style="margin-bottom:36px; font-size:22px; color:var(--muted);">What I told my wife every time:</div>
+      <div class="quote-text" style="font-size:60px; color:var(--white); line-height:1.3;">
+        "Yeah, we should be fine.<br>
+        <span style="color:var(--muted);">I'll know after the</span><br>
+        <span style="color:var(--sky);">TAF tonight.</span>"
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SECTION 4 — THE RISK PROBLEM
+═══════════════════════════════════════════════════════════════ -->
+
+<div class="slide bg-dark" data-section="The Risk Problem" data-time="11:30"
+  data-notes="TAFs are 24h. Trips are planned days/weeks out. Decision forced to last 24 hours — when pressure is maximum and information is finally good. Terrible combination.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div class="accent-bar"></div>
+    <div class="headline-sm" style="margin-bottom:16px;">TAFs only go 24 hours</div>
+    <div class="subhead" style="margin-bottom:48px;">Your trip planning window is much longer.</div>
+    <!-- Timeline -->
+    <div style="display:flex; align-items:flex-start; gap:0; width:100%; max-width:960px;">
+      <div style="flex:1; text-align:center;">
+        <div style="height:4px; background:rgba(14,165,233,0.2); border-radius:2px; margin-bottom:16px;"></div>
+        <div style="font-size:20px; font-weight:800; color:var(--text);">D-7</div>
+        <div style="font-size:15px; font-weight:600; color:var(--caption); margin-top:8px; line-height:1.35;">Plans made<br>No forecast</div>
+      </div>
+      <div style="flex:1; text-align:center;">
+        <div style="height:4px; background:rgba(14,165,233,0.2); border-radius:2px; margin-bottom:16px;"></div>
+        <div style="font-size:20px; font-weight:800; color:var(--text);">D-3</div>
+        <div style="font-size:15px; font-weight:600; color:var(--caption); margin-top:8px; line-height:1.35;">Commitments<br>accumulate</div>
+      </div>
+      <div style="flex:1; text-align:center;">
+        <div style="height:4px; background:rgba(14,165,233,0.2); border-radius:2px; margin-bottom:16px;"></div>
+        <div style="font-size:20px; font-weight:800; color:var(--text);">D-1</div>
+        <div style="font-size:15px; font-weight:600; color:var(--sky); margin-top:8px; line-height:1.35;">TAF arrives<br>Pressure: max</div>
+      </div>
+      <div style="flex:1; text-align:center;">
+        <div style="height:4px; background:var(--red); border-radius:2px; margin-bottom:16px;"></div>
+        <div style="font-size:20px; font-weight:800; color:var(--red);">D-day</div>
+        <div style="font-size:15px; font-weight:600; color:var(--red); margin-top:8px; line-height:1.35;">Decision forced<br>under pressure</div>
+      </div>
+    </div>
+    <div style="margin-top:48px; padding:24px 28px; background:rgba(14,165,233,0.06);
+      border-left:4px solid var(--sky); border-radius:8px; max-width:960px;">
+      <div style="font-size:20px; font-weight:600; color:var(--white);">
+        Good information arrives at the worst possible moment.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-dark" data-section="The Risk Problem" data-time="13:30"
+  data-notes="FAA language. It's in the accident reports. The real examples: charter pilots who fear losing jobs, family trips, business meetings. Name the pressures — they're in this room.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div class="accent-bar"></div>
+    <div class="headline-sm" style="margin-bottom:32px;">External pressure kills judgment</div>
+    <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:20px; max-width:900px;">
+      <div class="col-card" style="padding:28px;">
+        <div style="font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; margin-bottom:14px;">Personal</div>
+        <ul class="bullet-list tight" style="font-size:22px;">
+          <li>Family commitments</li>
+          <li>Hotel reservations</li>
+          <li>Event tickets</li>
+          <li>"I said I'd be there"</li>
+        </ul>
+      </div>
+      <div class="col-card" style="padding:28px;">
+        <div style="font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--sky); font-weight:700; margin-bottom:14px;">Professional</div>
+        <ul class="bullet-list tight" style="font-size:22px;">
+          <li>Business meetings</li>
+          <li>Charter dispatch pressure</li>
+          <li>"Less cautious pilots" threat</li>
+          <li>Ego</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:32px; padding:20px 24px; background:rgba(239,68,68,0.1);
+      border:1px solid rgba(239,68,68,0.28); border-left:4px solid var(--red);
+      border-radius:8px; max-width:900px;">
+      <div style="font-size:18px; line-height:1.45; color:var(--text);">
+        The FAA names <strong style="color:var(--red); font-weight:800;">get-there-itis</strong> and external pressures as contributing factors in thousands of accidents. It is not a character flaw — it is a system failure.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Origin: AFDs — the real homework -->
+<div class="slide bg-dark" data-section="Origin Story" data-time="9:00"
+  data-notes="Before the lightbulb: I tried to read the AFDs myself. Bentonville→Fremont needs Tulsa, Wichita, AND Omaha. Written by mets for mets — not pilots. Updated 4x/day. Even if I understood one, I had to re-read and re-synthesize all three, repeatedly, until departure. Impossible as a manual process.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:960px; width:100%;">
+      <div class="label" style="margin-bottom:16px;">Before TAFs exist</div>
+      <div class="headline-sm" style="font-size:40px; margin-bottom:12px;">Area Forecast Discussions</div>
+      <div class="subhead" style="font-size:20px; margin-bottom:32px; color:var(--muted); max-width:820px;">
+        Written by NWS meteorologists — for other meteorologists. Not for pilots.
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:28px;">
+        <div style="padding:24px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); text-align:center;">
+          <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:10px;">Departure</div>
+          <div style="font-size:26px; font-weight:800; color:var(--white);">Tulsa</div>
+          <div style="font-size:15px; color:var(--muted); margin-top:8px;">covers Bentonville</div>
+        </div>
+        <div style="padding:24px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); text-align:center;">
+          <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:10px;">En route</div>
+          <div style="font-size:26px; font-weight:800; color:var(--white);">Wichita</div>
+          <div style="font-size:15px; color:var(--muted); margin-top:8px;">corridor weather</div>
+        </div>
+        <div style="padding:24px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); text-align:center;">
+          <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:10px;">Arrival</div>
+          <div style="font-size:26px; font-weight:800; color:var(--white);">Omaha</div>
+          <div style="font-size:15px; color:var(--muted); margin-top:8px;">covers Fremont</div>
+        </div>
+      </div>
+      <ul class="bullet-list tight" style="max-width:860px; font-size:22px;">
+        <li>I tried to learn every technical term</li>
+        <li>Updated <span style="color:var(--sky);">four times a day</span></li>
+        <li>Read three · synthesize · repeat until departure</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- Origin: Lightbulb — Nov 2024 -->
+<div class="slide bg-hero" data-section="Origin Story" data-time="9:45"
+  data-notes="November 2024 lightbulb — NOT when PlaneWX started. Took Tulsa AFD to AI: chances for Thanksgiving flight? Useful. Saw the potential. Did not start a company yet.">
+  <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
+    <div style="max-width:900px;">
+      <div class="label" style="margin-bottom:16px;">November 2024 · the lightbulb</div>
+      <div class="quote-text" style="font-size:40px; color:var(--white); line-height:1.35; margin-bottom:36px;">
+        I sent the Tulsa AFD to AI and asked:<br>
+        <span style="color:var(--sky);">"What are my chances of making<br>the Thanksgiving flight?"</span>
+      </div>
+      <div style="font-size:22px; color:var(--muted); max-width:720px; margin:0 auto; line-height:1.45;">
+        It gave me something useful. I saw the potential for AI —
+        <span style="color:var(--white);">but I didn't start building yet.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Origin: Hesitation -->
+<div class="slide bg-night" data-section="Origin Story" data-time="10:00"
+  data-notes="Honest beat. Sold security firm Dec 2022 — retired. When I start a business I go all in. Wasn't ready to get back to work. The 2024 idea sat.">
+  <div class="slide-inner pad" style="justify-content:center; align-items:center; min-height:720px; text-align:center;">
+    <div style="max-width:880px;">
+      <div class="label" style="margin-bottom:24px;">Why I waited</div>
+      <div class="headline-sm" style="font-size:44px; margin-bottom:36px; line-height:1.2;">
+        When I start something,<br>I go all in.
+      </div>
+      <ul class="bullet-list" style="max-width:720px; margin:0 auto; text-align:left;">
+        <li>Sold my security company · Dec 2022</li>
+        <li>I'd been retired — and liked it</li>
+        <li>I wasn't ready to get back to work</li>
+        <li>So the idea stayed an idea</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Origin: Thanksgiving 2025 — start building -->
+<div class="slide bg-hero" data-section="Origin Story" data-time="10:15"
+  data-notes="LAND THIS. Thanksgiving 2025 — same trip-planning problem again. That was the tipping point. Had to do something. Got back to work. Started building PlaneWX.">
+  <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
+    <div style="max-width:900px;">
+      <div class="label" style="margin-bottom:24px;">Thanksgiving 2025</div>
+      <div class="headline" style="font-size:48px; margin-bottom:28px; line-height:1.15;">
+        Same problem.<br>One year later.
+      </div>
+      <div class="subhead" style="font-size:22px; max-width:720px; margin:0 auto 36px; color:var(--muted); line-height:1.45;">
+        The exact same issue showed up again. That's when I decided —
+        I had to get back to work and build PlaneWX.
+      </div>
+      <div style="display:inline-block; padding:20px 32px; border-radius:14px; background:rgba(14,165,233,0.12); border:1px solid rgba(14,165,233,0.35); font-size:22px; font-weight:700; color:var(--white);">
+        2024: saw the potential &nbsp;·&nbsp; 2025: started building
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Origin: Synoptic Intelligence -->
+<div class="slide bg-dark" data-section="Origin Story" data-time="10:30"
+  data-notes="LAND THE JOB. Problem: TAFs don't go out far enough — we want decisions before pressure. Synoptic = big-picture layer days out so you can reschedule / not lock a bad day. Not a fake extended TAF — schedule decisions; TAFs still day-of. Timeline optional verbally: 2024 spark → 2025 build. Next: Regional Watch.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:920px; width:100%;">
+      <div class="label" style="margin-bottom:16px;">The gap</div>
+      <div class="headline-sm" style="font-size:44px; margin-bottom:12px; line-height:1.15;">
+        TAFs don't go out far enough
+      </div>
+      <div class="subhead" style="font-size:22px; margin-bottom:36px; color:var(--muted); max-width:780px;">
+        You need a call <span style="color:var(--white);">before the pressure is on</span> — while you can still move the trip.
+      </div>
+      <div style="padding:28px 32px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.35); margin-bottom:28px;">
+        <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:12px;">What that became</div>
+        <div style="font-size:36px; font-weight:800; color:var(--white); margin-bottom:12px;">Synoptic Intelligence™</div>
+        <div style="font-size:20px; color:var(--muted); line-height:1.45; max-width:720px;">
+          NWS Area Forecast Discussions — synthesized for your route — in language a pilot can use.
+          The big-picture layer <span style="color:var(--white);">before TAFs exist.</span>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div style="padding:22px 24px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25);">
+          <div style="font-size:15px; font-weight:700; color:var(--sky); margin-bottom:8px;">Synoptic · days out</div>
+          <div style="font-size:18px; color:var(--muted); line-height:1.4;">Schedule decisions — reschedule or don't lock that day</div>
+        </div>
+        <div style="padding:22px 24px; border-radius:14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12);">
+          <div style="font-size:15px; font-weight:700; color:var(--white); margin-bottom:8px;">TAFs · day-of</div>
+          <div style="font-size:18px; color:var(--muted); line-height:1.4;">Execution decisions — still required, still yours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Synoptic: Regional Watch — full bleed -->
+<div class="slide slide-shot" data-section="Origin Story" data-time="10:30"
+  data-notes="Regional Watch powered by Synoptic Intelligence — what that Thanksgiving experiment looks like in the product today. Pattern-level VFR outlook across regions. Pause, then into PlaneWX.">
+  <div class="shot-frame">
+    <img src="/talks/screenshots/16-regional-watch-synoptic.jpg" alt="Regional Watch — powered by Synoptic Intelligence">
+  </div>
+  <div class="shot-caption">
+    <span class="shot-kicker">Regional Watch · Synoptic Intelligence™</span>
+    The big picture — before TAFs exist
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SECTION 6 — PLANEWX
+═══════════════════════════════════════════════════════════════ -->
+
+<div class="slide bg-hero" data-section="PlaneWX" data-time="29:00"
+  data-notes="LAND THIS HARD. At its core we quantify weather risk vs aircraft + personal minimums. Point at the WX Score card — that's the number. Decision support, not a display — PIC still decides.">
+  <div class="slide-inner pad" style="flex-direction:row; gap:48px; align-items:center; min-height:720px;">
+    <div style="flex:1; text-align:left;">
+      <img
+        class="logo-img logo-md"
+        src="/brand/planewx-wordmark-dark.svg"
+        alt="PlaneWX"
+        style="margin: 0 0 24px;"
+      >
+      <div class="label" style="margin-bottom:20px;">At its core</div>
+      <div class="headline" style="font-size:44px; margin-bottom:28px; line-height:1.15;">
+        We quantify weather risk
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:28px; max-width:520px;">
+        <div style="padding:20px 22px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); border-radius:14px;">
+          <div style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:6px;">Aircraft</div>
+          <div style="font-size:20px; font-weight:700; color:var(--white);">Your aircraft capabilities</div>
+          <div style="font-size:15px; color:var(--muted); margin-top:4px;">FIKI · cruise · equipment · performance</div>
+        </div>
+        <div style="padding:20px 22px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); border-radius:14px;">
+          <div style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:6px;">Pilot</div>
+          <div style="font-size:20px; font-weight:700; color:var(--white);">Your personal minimums</div>
+          <div style="font-size:15px; color:var(--muted); margin-top:4px;">Ceiling · visibility · wind · icing · turb</div>
+        </div>
+      </div>
+      <div style="font-size:18px; font-weight:600; color:var(--white); max-width:520px; line-height:1.4;">
+        Not generic weather — a <span style="color:var(--sky);">WX Score</span> for this airplane and this pilot.
+      </div>
+      <div style="margin-top:16px; font-size:17px; color:var(--muted); max-width:520px; line-height:1.4;">
+        Decision support — not a weather display. <span style="color:var(--white);">You still own the call.</span>
+      </div>
+    </div>
+    <div style="flex:0 0 300px;">
+      <div style="border-radius:20px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.45); border:1px solid rgba(255,255,255,0.12);">
+        <img src="/talks/screenshots/17-wx-score-card.jpg" alt="WX Score card — quantified weather risk"
+          style="width:100%; height:auto; display:block; max-height:560px; object-fit:contain; background:#fff;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-night" data-section="PlaneWX" data-time="29:30"
+  data-notes="Frame: go/no-go is the job. Weather briefing is ONE element — not the whole decision. Three pillars together: briefing + PAVE + mentors. Next: walk pillar 1 with my inbound briefing — then how I use + AI trust — then aircraft, crew, PAVE, mentors.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:960px; width:100%;">
+      <div class="label" style="margin-bottom:16px;">The go / no-go decision</div>
+      <div class="headline-sm" style="font-size:44px; margin-bottom:14px; line-height:1.15;">Three pillars</div>
+      <div class="subhead" style="font-size:20px; margin-bottom:36px; color:var(--muted); max-width:820px;">
+        Weather is one element. The call is bigger than the briefing.
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:28px;">
+        <div style="padding:32px 28px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3);">
+          <div style="font-size:14px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:16px;">01</div>
+          <div style="font-size:26px; font-weight:800; color:var(--white); line-height:1.2; margin-bottom:14px;">Weather briefing</div>
+          <div style="font-size:17px; color:var(--muted); line-height:1.45;">
+            Aircraft-specific risk — scored as a WX Score you can act on.
+          </div>
+        </div>
+        <div style="padding:32px 28px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3);">
+          <div style="font-size:14px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:16px;">02</div>
+          <div style="font-size:26px; font-weight:800; color:var(--white); line-height:1.2; margin-bottom:14px;">PAVE self-assessment</div>
+          <div style="font-size:17px; color:var(--muted); line-height:1.45;">
+            Pilot, Aircraft, Environment, External pressures — structured and timed.
+          </div>
+        </div>
+        <div style="padding:32px 28px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3);">
+          <div style="font-size:14px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:16px;">03</div>
+          <div style="font-size:26px; font-weight:800; color:var(--white); line-height:1.2; margin-bottom:14px;">Mentor network</div>
+          <div style="font-size:17px; color:var(--muted); line-height:1.45;">
+            A second set of eyes on your exact briefing — when the call still feels hard.
+          </div>
+        </div>
+      </div>
+      <div style="padding:18px 24px; border-radius:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); font-size:20px; color:var(--white); text-align:center; line-height:1.4;">
+        Together — a cleaner go / no-go. <span style="color:var(--muted);">You still own the call.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SECTION — MY BRIEFING IN
+═══════════════════════════════════════════════════════════════ -->
+
+<div class="slide bg-hero" data-section="My Briefing In" data-time="35:15"
+  data-notes="Pillar 1 deep dive. I was one of those inbound briefings. KUES→KOSH. Walk the room through MY briefing — smoke, windows, decision, outcome. Not a product tour — a real flight.">
+  <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
+    <div style="max-width:880px;">
+      <div class="label" style="margin-bottom:24px;">Pillar 1 · Weather briefing</div>
+      <div class="headline" style="font-size:56px; margin-bottom:20px;">KUES → KOSH</div>
+      <div class="subhead" style="font-size:24px; color:var(--muted); max-width:640px; margin:0 auto;">
+        Planned 13:30 · Departed 14:34 · Same briefing that scored me at 0%
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide slide-shot" data-section="My Briefing In" data-time="35:20"
+  data-notes="Full screen. Planned ETD 13:30. Arrival vis below minimums. Smoke on the map. Pause — let them see the 0%.">
+  <div class="shot-frame">
+    <img src="/talks/screenshots/01-score-0pct.png" alt="WX Score 0% — KUES to KOSH">
+  </div>
+  <div class="shot-caption">
+    <span class="shot-kicker">WX Score · planned 13:30</span>
+    0% — arrival visibility below my minimums
+  </div>
+</div>
+
+<div class="slide bg-night" data-section="My Briefing In" data-time="35:35"
+  data-notes="LAND THIS: 0% ≠ mission impossible. High workload. Many risks mitigable. Experienced pilot in right seat. Backup: divert or return to origin. I chose to fly knowing it would be tough.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:900px;">
+      <div class="label" style="margin-bottom:20px;">How to read a 0%</div>
+      <div class="headline-sm" style="font-size:44px; margin-bottom:28px;">Not mission impossible.<br>High workload.</div>
+      <ul class="bullet-list" style="max-width:780px;">
+        <li>Many of the risks can be mitigated</li>
+        <li>Experienced pilot in the right seat</li>
+        <li>Backup plan: divert — or return to origin</li>
+        <li>I chose to fly · knowing it would be tough</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide slide-shot" data-section="My Briefing In" data-time="35:50"
+  data-notes="Flight Window Explorer. TAF said later was better — green slots after ~5:30. Planned 1:30 was red. I got excited when the field went IFR→VFR around 2:00. Passengers ready. Departed 2:34 anyway.">
+  <div class="shot-frame">
+    <img src="/talks/screenshots/02-flight-window.png" alt="Flight Window Explorer">
+  </div>
+  <div class="shot-caption">
+    <span class="shot-kicker">Flight Window Explorer</span>
+    Later windows were clearly better — I still left at 14:34
+  </div>
+</div>
+
+<div class="slide bg-danger" data-section="My Briefing In" data-time="36:15"
+  data-notes="Outcome story. VFR flight into marginal VFR — not IMC/'soup'. Poor vis + heavy traffic into KOSH. Circled south, held, monitored radio. Too much traffic to attempt arrival — returned to KUES. PIC decided; safe divert.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:900px;">
+      <div class="label" style="margin-bottom:20px;">What happened</div>
+      <div class="headline-sm" style="font-size:42px; margin-bottom:28px;">Departed into marginal VFR.<br>Held. Diverted.</div>
+      <ul class="bullet-list" style="max-width:800px;">
+        <li>Marginal VFR · traffic stacking for KOSH</li>
+        <li>Circled south · held · monitored the radio</li>
+        <li>Too much traffic to attempt the arrival</li>
+        <li>Returned to <span style="color:var(--sky);">KUES</span> — the backup plan we briefed</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide slide-shot" data-section="My Briefing In" data-time="36:30"
+  data-notes="Ceilings & visibility with wildfire smoke. Bridge later to What's New smoke slides — same product, lived experience first.">
+  <div class="shot-frame">
+    <img src="/talks/screenshots/04-ceiling-vis-smoke.png" alt="Ceilings and visibility with wildfire smoke">
+  </div>
+  <div class="shot-caption">
+    <span class="shot-kicker">Ceilings · visibility · smoke</span>
+    Wildfire smoke in the briefing — scored against my VFR minimums
+  </div>
+</div>
+
+<div class="slide slide-shot" data-section="My Briefing In" data-time="36:50"
+  data-notes="While You're There / ground weather — new in the last week. Once you get there, protect the airplane. Bridge to What's New ground-weather section if you want the feature frame later.">
+  <div class="shot-frame">
+    <img src="/talks/screenshots/06-while-there.png" alt="While You're There — ground weather">
+  </div>
+  <div class="shot-caption">
+    <span class="shot-kicker">While You're There · new</span>
+    Ground weather at the destination — protect the airplane
+  </div>
+</div>
+
+<div class="slide bg-night" data-section="PlaneWX" data-time="36:55"
+  data-notes="After the live briefing walkthrough. Lead with founder quote. Intelligence layer days out; ForeFlight independent brief always as a requirement; cross-check; mentors if unsettled. Not sole source. Then AI trust.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="width:100%; max-width:940px;">
+      <div class="label" style="margin-bottom:14px;">How I actually use PlaneWX</div>
+      <div class="quote-text" style="font-size:36px; color:var(--sky); margin-bottom:36px; line-height:1.3;">
+        "I don't rely solely on PlaneWX,<br>and neither should you."
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:28px;">
+        <div style="padding:26px; border-radius:16px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25);">
+          <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:12px;">Intelligence layer</div>
+          <ul class="bullet-list tight" style="font-size:18px;">
+            <li>Every trip in immediately</li>
+            <li>Watch big patterns early</li>
+            <li>Trip Watchers · pressure early</li>
+            <li>Cross-check when score drops</li>
+          </ul>
+        </div>
+        <div style="padding:26px; border-radius:16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12);">
+          <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Final preflight</div>
+          <ul class="bullet-list tight" style="font-size:18px;">
+            <li>ForeFlight — full independent brief</li>
+            <li>Not a sanity check — a requirement</li>
+            <li>PAVE within ~12 hours</li>
+            <li>Mentors if I'm not settled</li>
+          </ul>
+        </div>
+      </div>
+      <div style="font-size:20px; font-weight:600; color:var(--white); text-align:center; line-height:1.4;">
+        One tool in a stack — <span style="color:var(--sky);">alongside what you already trust.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-dark" data-section="PlaneWX" data-time="37:00"
+  data-notes="After they've seen a real briefing. Nod to Thanksgiving/Synoptic: AI earns its keep on narrative. Critical calcs stay deterministic. AI synthesizes, never invents. Score/minimums/retrieval = code. Then back to pillar depth.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="width:100%; max-width:1000px;">
+      <div class="label" style="margin-bottom:12px;">Automation &amp; AI</div>
+      <div class="headline-sm" style="font-size:38px; margin-bottom:10px;">AI synthesizes — never invents</div>
+      <div class="subhead" style="font-size:19px; margin-bottom:32px; color:var(--muted);">
+        Synoptic started as a 2024 experiment — PlaneWX as a company in 2025. Critical calculations stay deterministic code — AI does not decide your flight.
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;">
+        <div style="padding:26px; background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.25); border-radius:16px;">
+          <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--green); margin-bottom:14px;">What AI is used for</div>
+          <ul class="bullet-list tight" style="font-size:18px;">
+            <li>Briefing narrative synthesis</li>
+            <li>Synoptic Intelligence™ (AFDs)</li>
+            <li>Pattern / trend explanation</li>
+            <li>Pilot-friendly language</li>
+          </ul>
+        </div>
+        <div style="padding:26px; background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.22); border-radius:16px;">
+          <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--label-danger); margin-bottom:14px;">What AI is NOT used for</div>
+          <ul class="bullet-list tight" style="font-size:18px;">
+            <li>WX Score / GO score math</li>
+            <li>Personal minimums checks</li>
+            <li>Weather product retrieval</li>
+            <li>Winds · icing · turb scoring</li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding:16px 22px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:12px; font-size:17px; color:var(--muted);">
+        Fed only verified NOAA / NWS / FAA data · required to cite sources · code validates critical numbers independently
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SECTION — PRODUCT DEPTH (light)
+═══════════════════════════════════════════════════════════════ -->
+
+<div class="slide bg-dark" data-section="PlaneWX" data-time="37:15"
+  data-notes="Still pillar 1. Same route, same day, two different aircraft — two completely different briefings. That's not a bug; that's the whole point. Risk is aircraft-specific.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div class="label" style="margin-bottom:24px;">Pillar 1 · Aircraft-specific</div>
+    <div class="headline-sm" style="margin-bottom:40px; font-size:44px;">Same route · Same day · Two aircraft</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:900px;">
+      <div class="col-card">
+        <div class="col-title">SR22T (non-FIKI)</div>
+        <div style="margin:16px 0;">
+          <div class="wx-score wx-score-amber" style="display:inline-flex;">
+            <div><div class="number" style="font-size:48px;">61</div><div class="label">WX SCORE</div></div>
+            <div style="font-size:13px; color:var(--muted); line-height:1.6;">SR22T<br>non-FIKI</div>
+          </div>
+        </div>
+        <ul class="bullet-list tight" style="font-size:17px;">
+          <li>Icing: beyond mins above 8,000 ft</li>
+          <li>Route requires FL120</li>
+          <li>Ceiling marginal departure</li>
+        </ul>
+      </div>
+      <div class="col-card">
+        <div class="col-title">TBM 900 (FIKI + pressurized)</div>
+        <div style="margin:16px 0;">
+          <div class="wx-score" style="display:inline-flex;">
+            <div><div class="number" style="font-size:48px;">86</div><div class="label">WX SCORE</div></div>
+            <div style="font-size:13px; color:var(--muted); line-height:1.6;">TBM 900<br>FIKI</div>
+          </div>
+        </div>
+        <ul class="bullet-list tight" style="font-size:17px;">
+          <li>FIKI handles en-route icing</li>
+          <li>FL260 available: above weather</li>
+          <li>TAS: 330 kts — minimizes exposure</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-dark" data-section="PlaneWX" data-time="38:30"
+  data-notes="Pillar 2. Opens ~12h out. Environment pre-filled from the briefing — you don't invent the weather under pressure. You add Pilot / Aircraft / External. Next slide: final PAVE decision screen — you document the call.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:860px;">
+      <div class="label" style="margin-bottom:20px;">Pillar 2 · PAVE self-assessment</div>
+      <div class="headline-sm" style="margin-bottom:28px; font-size:48px;">PAVE — with teeth</div>
+      <div class="subhead" style="font-size:20px; margin-bottom:32px; color:var(--muted); max-width:760px;">
+        Weather fills the <span style="color:var(--sky);">V</span>. You still own Pilot, Aircraft, and External pressures.
+      </div>
+      <ul class="bullet-list" style="max-width:760px;">
+        <li>Opens ~12h before departure</li>
+        <li>Briefing feeds Environment automatically</li>
+        <li>You add: fatigue, currency, stress, pressure</li>
+        <li>Objective weather + subjective readiness — together</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="slide slide-shot" data-section="PlaneWX" data-time="39:05"
+  data-notes="Final PAVE decision screen. IMPORTANT framing: this is YOU documenting the call — GO / modify / postpone / no-go. PlaneWX does not decide. Same philosophy as WX Score. Write why. Then mentors if unsettled.">
+  <div class="shot-frame">
+    <img src="/talks/screenshots/14-pave-decision.png" alt="PAVE final decision — PIC owns the call">
+  </div>
+  <div class="shot-caption">
+    <span class="shot-kicker">PAVE · Your decision</span>
+    You document the call — PlaneWX does not make it
+  </div>
+</div>
+
+<div class="slide bg-hero" data-section="PlaneWX" data-time="39:30"
+  data-notes="STORY SLIDE — tell a real mentor-network moment (yours or a user's, with permission). Key: mentors see the exact briefing — WX Score, minimums, PAVE — not a phone description. Need Help Now for all; Browse Mentors for Pro. Second opinion is not weakness when other lives are involved. Optional hands: who has used Need Help Now / mentors?">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="width:100%; max-width:960px;">
+      <div class="label" style="margin-bottom:14px;">Pillar 3 · Mentor network</div>
+      <div class="headline-sm" style="font-size:44px; margin-bottom:16px;">No pilot faces the call alone</div>
+      <div class="subhead" style="font-size:20px; margin-bottom:36px; color:var(--muted); max-width:820px;">
+        Mentors see your exact briefing — same WX Score, weather analysis, aircraft, and minimums. The conversation starts with real data.
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:28px;">
+        <div style="padding:26px; border-radius:16px; background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.3);">
+          <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--label-accent); margin-bottom:12px;">Need Help Now</div>
+          <div style="font-size:18px; color:var(--muted); line-height:1.45;">Broadcast to available mentors. Shared briefing. Off-platform call — phone, text, WhatsApp.</div>
+        </div>
+        <div style="padding:26px; border-radius:16px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25);">
+          <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:12px;">Browse Mentors</div>
+          <div style="font-size:18px; color:var(--muted); line-height:1.45;">Find someone who flies your type. Direct request. Experience finally transfers.</div>
+        </div>
+      </div>
+      <div style="padding:20px 24px; border-radius:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); font-size:20px; color:var(--white); font-style:italic; line-height:1.4;">
+        "A second opinion is not a sign of weakness when other lives are involved."
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide slide-shot" data-section="PlaneWX" data-time="39:45"
+  data-notes="Ask a Mentor modal — full screen. Mentors see the exact briefing (WX Score in the bar). Need Help Now vs Browse Mentors. PIC disclaimer: volunteer peer, you retain 91.3 authority.">
+  <div class="shot-frame">
+    <img src="/talks/screenshots/15-ask-mentor.jpg" alt="Ask a Mentor — Need Help Now and Browse Mentors">
+  </div>
+  <div class="shot-caption">
+    <span class="shot-kicker">Ask a Mentor</span>
+    They see your briefing — you still own the call
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SECTION 7 — WHAT'S NEW (one slide)
+═══════════════════════════════════════════════════════════════ -->
+
+
+<!-- What's New — single compressed slide -->
+<div class="slide bg-dark" data-section="What's New" data-time="42:00"
+  data-notes="One slide only. You already showed smoke + While You're There in the inbound story. Here: radar corridor also shipped. Don't linger. Into close.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:900px; width:100%;">
+      <div class="label" style="margin-bottom:20px;">What's been shipping</div>
+      <div class="headline-sm" style="font-size:44px; margin-bottom:16px;">Not a static product</div>
+      <div class="subhead" style="font-size:20px; margin-bottom:36px; color:var(--muted);">
+        Flight risk changes every season — so does PlaneWX.
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div style="padding:22px 24px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25);">
+          <div style="font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:8px;">Live radar corridor</div>
+          <div style="font-size:17px; color:var(--muted); line-height:1.4;">MRMS along your route for near-term departures</div>
+        </div>
+        <div style="padding:22px 24px; border-radius:14px; background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.3);">
+          <div style="font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--amber); margin-bottom:8px;">Wildfire smoke scoring</div>
+          <div style="font-size:17px; color:var(--muted); line-height:1.4;">En-route vis scored vs your VFR minimums</div>
+        </div>
+        <div style="padding:22px 24px; border-radius:14px; background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.25);">
+          <div style="font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--green); margin-bottom:8px;">While You're There</div>
+          <div style="font-size:17px; color:var(--muted); line-height:1.4;">Ground weather — protect the airplane after you land</div>
+        </div>
+        <div style="padding:22px 24px; border-radius:14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12);">
+          <div style="font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">And more</div>
+          <div style="font-size:17px; color:var(--muted); line-height:1.4;">Flight windows · Trip Watchers · mentors · free WX Score + PAVE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+  SECTION 8 — CLOSE
+═══════════════════════════════════════════════════════════════ -->
+
+<div class="slide bg-night" data-section="Close" data-time="47:00"
+  data-notes="Say it slowly. Advanced risk management isn't flying in everything. It's knowing the difference — and knowing it early. The courage to stay is harder than the confidence to go.">
+  <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
+    <div style="max-width:900px;">
+      <div class="tagline" style="font-size:58px;">
+        The <span class="em">confidence</span> to go,<br>
+        or the <span class="em">courage</span> to stay.
+      </div>
+      <div style="margin-top:16px; font-size:18px; color:rgba(255,255,255,0.3); font-style:italic; letter-spacing:1px;">™</div>
+      <div style="margin-top:40px; display:flex; justify-content:center;">
+        <img
+          class="logo-img logo-md"
+          src="/brand/planewx-wordmark-dark.svg"
+          alt="PlaneWX"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-hero" data-section="Close" data-time="47:45"
+  data-notes="Sincere. Thank users in the room and everyone who sent feedback, bug reports, feature ideas, smoke/radar requests. PlaneWX is built with pilots, not for them in isolation. Look at the hands that went up earlier. Then advance to QR / Q&A.">
+  <div class="slide-inner pad" style="justify-content:center; align-items:center; min-height:720px; text-align:center;">
+    <div style="max-width:860px;">
+      <img
+        class="logo-img logo-lg"
+        src="/brand/planewx-wordmark-dark.svg"
+        alt="PlaneWX"
+        style="margin: 0 auto 40px;"
+      >
+      <div class="headline-sm" style="font-size:56px; margin-bottom:28px;">Thank you</div>
+      <div class="subhead" style="font-size:26px; line-height:1.45; margin-bottom:36px; color:var(--muted);">
+        To every PlaneWX pilot who used the product, sent feedback, and helped shape what it became.
+      </div>
+      <div style="font-size:22px; color:var(--white); line-height:1.5; max-width:720px; margin:0 auto;">
+        I couldn't have built PlaneWX without the input of other pilots.<br>
+        <span style="color:var(--sky);">This is your product as much as mine.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-hero" data-section="Close" data-time="48:30" data-no-corner-qr
+  data-notes="GIVEAWAY BEAT. Last chance — if you just walked in, scan now. We're giving away a couple PlaneWX hats. Run the drawing on this slide. Then open Q&A. QR → planewx.ai/osh.">
+  <div class="slide-inner pad" style="flex-direction:row; gap:80px; align-items:center; justify-content:center; min-height:720px;">
+    <!-- QR -->
+    <div style="text-align:center;">
+      <div style="background:var(--white); padding:20px; border-radius:20px; display:inline-block; margin-bottom:16px;">
+        <img src="/talks/osh-signup-qr.png" alt="planewx.ai/osh QR code"
+          style="width:220px; height:220px; display:block;"
+          onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'width:220px;height:220px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999\'>QR: planewx.ai/osh</div>'">
+      </div>
+      <div style="font-size:13px; color:var(--muted);">Scan with phone camera — no app needed</div>
+    </div>
+    <!-- Right col -->
+    <div>
+      <div class="label" style="margin-bottom:20px;">Last chance</div>
+      <div class="headline-sm" style="font-size:52px; margin-bottom:16px; line-height:1.1;">
+        Enter the giveaway
+      </div>
+      <div class="subhead" style="font-size:24px; margin-bottom:12px; color:var(--sky);">
+        We're giving away a couple hats
+      </div>
+      <div style="font-size:20px; color:var(--muted); margin-bottom:28px;">
+        Just walked in? Scan now — then we draw.
+      </div>
+      <div style="font-size:22px; font-weight:700; color:var(--white); margin-bottom:28px;">planewx.ai/osh</div>
+      <ul class="bullet-list tight" style="font-size:18px; color:var(--muted);">
+        <li>Try the app free — no credit card</li>
+        <li>Questions after the drawing</li>
+      </ul>
+      <div style="margin-top:36px;">
+        <img
+          class="logo-img logo-sm"
+          src="/brand/planewx-wordmark-dark.svg"
+          alt="PlaneWX"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+  <a id="corner-qr" class="corner-qr is-hidden" href="https://planewx.ai/osh" target="_blank" rel="noopener" title="planewx.ai/osh">
+    <div class="corner-qr-pad">
+      <img src="/talks/osh-signup-qr.png" alt="Scan planewx.ai/osh"
+        onerror="this.closest('.corner-qr').classList.add('is-hidden')">
+    </div>
+    <div class="corner-qr-label">planewx.ai/osh</div>
+  </a>
+
+</div><!-- #deck -->
+</div><!-- #deck-wrap -->
+
+<!-- INLINE_QR_LIB -->
+<script>
+var QRCode;!function(){function a(a){this.mode=c.MODE_8BIT_BYTE,this.data=a,this.parsedData=[];for(var b=[],d=0,e=this.data.length;e>d;d++){var f=this.data.charCodeAt(d);f>65536?(b[0]=240|(1835008&f)>>>18,b[1]=128|(258048&f)>>>12,b[2]=128|(4032&f)>>>6,b[3]=128|63&f):f>2048?(b[0]=224|(61440&f)>>>12,b[1]=128|(4032&f)>>>6,b[2]=128|63&f):f>128?(b[0]=192|(1984&f)>>>6,b[1]=128|63&f):b[0]=f,this.parsedData=this.parsedData.concat(b)}this.parsedData.length!=this.data.length&&(this.parsedData.unshift(191),this.parsedData.unshift(187),this.parsedData.unshift(239))}function b(a,b){this.typeNumber=a,this.errorCorrectLevel=b,this.modules=null,this.moduleCount=0,this.dataCache=null,this.dataList=[]}function i(a,b){if(void 0==a.length)throw new Error(a.length+"/"+b);for(var c=0;c<a.length&&0==a[c];)c++;this.num=new Array(a.length-c+b);for(var d=0;d<a.length-c;d++)this.num[d]=a[d+c]}function j(a,b){this.totalCount=a,this.dataCount=b}function k(){this.buffer=[],this.length=0}function m(){return"undefined"!=typeof CanvasRenderingContext2D}function n(){var a=!1,b=navigator.userAgent;return/android/i.test(b)&&(a=!0,aMat=b.toString().match(/android ([0-9]\.[0-9])/i),aMat&&aMat[1]&&(a=parseFloat(aMat[1]))),a}function r(a,b){for(var c=1,e=s(a),f=0,g=l.length;g>=f;f++){var h=0;switch(b){case d.L:h=l[f][0];break;case d.M:h=l[f][1];break;case d.Q:h=l[f][2];break;case d.H:h=l[f][3]}if(h>=e)break;c++}if(c>l.length)throw new Error("Too long data");return c}function s(a){var b=encodeURI(a).toString().replace(/\%[0-9a-fA-F]{2}/g,"a");return b.length+(b.length!=a?3:0)}a.prototype={getLength:function(){return this.parsedData.length},write:function(a){for(var b=0,c=this.parsedData.length;c>b;b++)a.put(this.parsedData[b],8)}},b.prototype={addData:function(b){var c=new a(b);this.dataList.push(c),this.dataCache=null},isDark:function(a,b){if(0>a||this.moduleCount<=a||0>b||this.moduleCount<=b)throw new Error(a+","+b);return this.modules[a][b]},getModuleCount:function(){return this.moduleCount},make:function(){this.makeImpl(!1,this.getBestMaskPattern())},makeImpl:function(a,c){this.moduleCount=4*this.typeNumber+17,this.modules=new Array(this.moduleCount);for(var d=0;d<this.moduleCount;d++){this.modules[d]=new Array(this.moduleCount);for(var e=0;e<this.moduleCount;e++)this.modules[d][e]=null}this.setupPositionProbePattern(0,0),this.setupPositionProbePattern(this.moduleCount-7,0),this.setupPositionProbePattern(0,this.moduleCount-7),this.setupPositionAdjustPattern(),this.setupTimingPattern(),this.setupTypeInfo(a,c),this.typeNumber>=7&&this.setupTypeNumber(a),null==this.dataCache&&(this.dataCache=b.createData(this.typeNumber,this.errorCorrectLevel,this.dataList)),this.mapData(this.dataCache,c)},setupPositionProbePattern:function(a,b){for(var c=-1;7>=c;c++)if(!(-1>=a+c||this.moduleCount<=a+c))for(var d=-1;7>=d;d++)-1>=b+d||this.moduleCount<=b+d||(this.modules[a+c][b+d]=c>=0&&6>=c&&(0==d||6==d)||d>=0&&6>=d&&(0==c||6==c)||c>=2&&4>=c&&d>=2&&4>=d?!0:!1)},getBestMaskPattern:function(){for(var a=0,b=0,c=0;8>c;c++){this.makeImpl(!0,c);var d=f.getLostPoint(this);(0==c||a>d)&&(a=d,b=c)}return b},createMovieClip:function(a,b,c){var d=a.createEmptyMovieClip(b,c),e=1;this.make();for(var f=0;f<this.modules.length;f++)for(var g=f*e,h=0;h<this.modules[f].length;h++){var i=h*e,j=this.modules[f][h];j&&(d.beginFill(0,100),d.moveTo(i,g),d.lineTo(i+e,g),d.lineTo(i+e,g+e),d.lineTo(i,g+e),d.endFill())}return d},setupTimingPattern:function(){for(var a=8;a<this.moduleCount-8;a++)null==this.modules[a][6]&&(this.modules[a][6]=0==a%2);for(var b=8;b<this.moduleCount-8;b++)null==this.modules[6][b]&&(this.modules[6][b]=0==b%2)},setupPositionAdjustPattern:function(){for(var a=f.getPatternPosition(this.typeNumber),b=0;b<a.length;b++)for(var c=0;c<a.length;c++){var d=a[b],e=a[c];if(null==this.modules[d][e])for(var g=-2;2>=g;g++)for(var h=-2;2>=h;h++)this.modules[d+g][e+h]=-2==g||2==g||-2==h||2==h||0==g&&0==h?!0:!1}},setupTypeNumber:function(a){for(var b=f.getBCHTypeNumber(this.typeNumber),c=0;18>c;c++){var d=!a&&1==(1&b>>c);this.modules[Math.floor(c/3)][c%3+this.moduleCount-8-3]=d}for(var c=0;18>c;c++){var d=!a&&1==(1&b>>c);this.modules[c%3+this.moduleCount-8-3][Math.floor(c/3)]=d}},setupTypeInfo:function(a,b){for(var c=this.errorCorrectLevel<<3|b,d=f.getBCHTypeInfo(c),e=0;15>e;e++){var g=!a&&1==(1&d>>e);6>e?this.modules[e][8]=g:8>e?this.modules[e+1][8]=g:this.modules[this.moduleCount-15+e][8]=g}for(var e=0;15>e;e++){var g=!a&&1==(1&d>>e);8>e?this.modules[8][this.moduleCount-e-1]=g:9>e?this.modules[8][15-e-1+1]=g:this.modules[8][15-e-1]=g}this.modules[this.moduleCount-8][8]=!a},mapData:function(a,b){for(var c=-1,d=this.moduleCount-1,e=7,g=0,h=this.moduleCount-1;h>0;h-=2)for(6==h&&h--;;){for(var i=0;2>i;i++)if(null==this.modules[d][h-i]){var j=!1;g<a.length&&(j=1==(1&a[g]>>>e));var k=f.getMask(b,d,h-i);k&&(j=!j),this.modules[d][h-i]=j,e--,-1==e&&(g++,e=7)}if(d+=c,0>d||this.moduleCount<=d){d-=c,c=-c;break}}}},b.PAD0=236,b.PAD1=17,b.createData=function(a,c,d){for(var e=j.getRSBlocks(a,c),g=new k,h=0;h<d.length;h++){var i=d[h];g.put(i.mode,4),g.put(i.getLength(),f.getLengthInBits(i.mode,a)),i.write(g)}for(var l=0,h=0;h<e.length;h++)l+=e[h].dataCount;if(g.getLengthInBits()>8*l)throw new Error("code length overflow. ("+g.getLengthInBits()+">"+8*l+")");for(g.getLengthInBits()+4<=8*l&&g.put(0,4);0!=g.getLengthInBits()%8;)g.putBit(!1);for(;;){if(g.getLengthInBits()>=8*l)break;if(g.put(b.PAD0,8),g.getLengthInBits()>=8*l)break;g.put(b.PAD1,8)}return b.createBytes(g,e)},b.createBytes=function(a,b){for(var c=0,d=0,e=0,g=new Array(b.length),h=new Array(b.length),j=0;j<b.length;j++){var k=b[j].dataCount,l=b[j].totalCount-k;d=Math.max(d,k),e=Math.max(e,l),g[j]=new Array(k);for(var m=0;m<g[j].length;m++)g[j][m]=255&a.buffer[m+c];c+=k;var n=f.getErrorCorrectPolynomial(l),o=new i(g[j],n.getLength()-1),p=o.mod(n);h[j]=new Array(n.getLength()-1);for(var m=0;m<h[j].length;m++){var q=m+p.getLength()-h[j].length;h[j][m]=q>=0?p.get(q):0}}for(var r=0,m=0;m<b.length;m++)r+=b[m].totalCount;for(var s=new Array(r),t=0,m=0;d>m;m++)for(var j=0;j<b.length;j++)m<g[j].length&&(s[t++]=g[j][m]);for(var m=0;e>m;m++)for(var j=0;j<b.length;j++)m<h[j].length&&(s[t++]=h[j][m]);return s};for(var c={MODE_NUMBER:1,MODE_ALPHA_NUM:2,MODE_8BIT_BYTE:4,MODE_KANJI:8},d={L:1,M:0,Q:3,H:2},e={PATTERN000:0,PATTERN001:1,PATTERN010:2,PATTERN011:3,PATTERN100:4,PATTERN101:5,PATTERN110:6,PATTERN111:7},f={PATTERN_POSITION_TABLE:[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]],G15:1335,G18:7973,G15_MASK:21522,getBCHTypeInfo:function(a){for(var b=a<<10;f.getBCHDigit(b)-f.getBCHDigit(f.G15)>=0;)b^=f.G15<<f.getBCHDigit(b)-f.getBCHDigit(f.G15);return(a<<10|b)^f.G15_MASK},getBCHTypeNumber:function(a){for(var b=a<<12;f.getBCHDigit(b)-f.getBCHDigit(f.G18)>=0;)b^=f.G18<<f.getBCHDigit(b)-f.getBCHDigit(f.G18);return a<<12|b},getBCHDigit:function(a){for(var b=0;0!=a;)b++,a>>>=1;return b},getPatternPosition:function(a){return f.PATTERN_POSITION_TABLE[a-1]},getMask:function(a,b,c){switch(a){case e.PATTERN000:return 0==(b+c)%2;case e.PATTERN001:return 0==b%2;case e.PATTERN010:return 0==c%3;case e.PATTERN011:return 0==(b+c)%3;case e.PATTERN100:return 0==(Math.floor(b/2)+Math.floor(c/3))%2;case e.PATTERN101:return 0==b*c%2+b*c%3;case e.PATTERN110:return 0==(b*c%2+b*c%3)%2;case e.PATTERN111:return 0==(b*c%3+(b+c)%2)%2;default:throw new Error("bad maskPattern:"+a)}},getErrorCorrectPolynomial:function(a){for(var b=new i([1],0),c=0;a>c;c++)b=b.multiply(new i([1,g.gexp(c)],0));return b},getLengthInBits:function(a,b){if(b>=1&&10>b)switch(a){case c.MODE_NUMBER:return 10;case c.MODE_ALPHA_NUM:return 9;case c.MODE_8BIT_BYTE:return 8;case c.MODE_KANJI:return 8;default:throw new Error("mode:"+a)}else if(27>b)switch(a){case c.MODE_NUMBER:return 12;case c.MODE_ALPHA_NUM:return 11;case c.MODE_8BIT_BYTE:return 16;case c.MODE_KANJI:return 10;default:throw new Error("mode:"+a)}else{if(!(41>b))throw new Error("type:"+b);switch(a){case c.MODE_NUMBER:return 14;case c.MODE_ALPHA_NUM:return 13;case c.MODE_8BIT_BYTE:return 16;case c.MODE_KANJI:return 12;default:throw new Error("mode:"+a)}}},getLostPoint:function(a){for(var b=a.getModuleCount(),c=0,d=0;b>d;d++)for(var e=0;b>e;e++){for(var f=0,g=a.isDark(d,e),h=-1;1>=h;h++)if(!(0>d+h||d+h>=b))for(var i=-1;1>=i;i++)0>e+i||e+i>=b||(0!=h||0!=i)&&g==a.isDark(d+h,e+i)&&f++;f>5&&(c+=3+f-5)}for(var d=0;b-1>d;d++)for(var e=0;b-1>e;e++){var j=0;a.isDark(d,e)&&j++,a.isDark(d+1,e)&&j++,a.isDark(d,e+1)&&j++,a.isDark(d+1,e+1)&&j++,(0==j||4==j)&&(c+=3)}for(var d=0;b>d;d++)for(var e=0;b-6>e;e++)a.isDark(d,e)&&!a.isDark(d,e+1)&&a.isDark(d,e+2)&&a.isDark(d,e+3)&&a.isDark(d,e+4)&&!a.isDark(d,e+5)&&a.isDark(d,e+6)&&(c+=40);for(var e=0;b>e;e++)for(var d=0;b-6>d;d++)a.isDark(d,e)&&!a.isDark(d+1,e)&&a.isDark(d+2,e)&&a.isDark(d+3,e)&&a.isDark(d+4,e)&&!a.isDark(d+5,e)&&a.isDark(d+6,e)&&(c+=40);for(var k=0,e=0;b>e;e++)for(var d=0;b>d;d++)a.isDark(d,e)&&k++;var l=Math.abs(100*k/b/b-50)/5;return c+=10*l}},g={glog:function(a){if(1>a)throw new Error("glog("+a+")");return g.LOG_TABLE[a]},gexp:function(a){for(;0>a;)a+=255;for(;a>=256;)a-=255;return g.EXP_TABLE[a]},EXP_TABLE:new Array(256),LOG_TABLE:new Array(256)},h=0;8>h;h++)g.EXP_TABLE[h]=1<<h;for(var h=8;256>h;h++)g.EXP_TABLE[h]=g.EXP_TABLE[h-4]^g.EXP_TABLE[h-5]^g.EXP_TABLE[h-6]^g.EXP_TABLE[h-8];for(var h=0;255>h;h++)g.LOG_TABLE[g.EXP_TABLE[h]]=h;i.prototype={get:function(a){return this.num[a]},getLength:function(){return this.num.length},multiply:function(a){for(var b=new Array(this.getLength()+a.getLength()-1),c=0;c<this.getLength();c++)for(var d=0;d<a.getLength();d++)b[c+d]^=g.gexp(g.glog(this.get(c))+g.glog(a.get(d)));return new i(b,0)},mod:function(a){if(this.getLength()-a.getLength()<0)return this;for(var b=g.glog(this.get(0))-g.glog(a.get(0)),c=new Array(this.getLength()),d=0;d<this.getLength();d++)c[d]=this.get(d);for(var d=0;d<a.getLength();d++)c[d]^=g.gexp(g.glog(a.get(d))+b);return new i(c,0).mod(a)}},j.RS_BLOCK_TABLE=[[1,26,19],[1,26,16],[1,26,13],[1,26,9],[1,44,34],[1,44,28],[1,44,22],[1,44,16],[1,70,55],[1,70,44],[2,35,17],[2,35,13],[1,100,80],[2,50,32],[2,50,24],[4,25,9],[1,134,108],[2,67,43],[2,33,15,2,34,16],[2,33,11,2,34,12],[2,86,68],[4,43,27],[4,43,19],[4,43,15],[2,98,78],[4,49,31],[2,32,14,4,33,15],[4,39,13,1,40,14],[2,121,97],[2,60,38,2,61,39],[4,40,18,2,41,19],[4,40,14,2,41,15],[2,146,116],[3,58,36,2,59,37],[4,36,16,4,37,17],[4,36,12,4,37,13],[2,86,68,2,87,69],[4,69,43,1,70,44],[6,43,19,2,44,20],[6,43,15,2,44,16],[4,101,81],[1,80,50,4,81,51],[4,50,22,4,51,23],[3,36,12,8,37,13],[2,116,92,2,117,93],[6,58,36,2,59,37],[4,46,20,6,47,21],[7,42,14,4,43,15],[4,133,107],[8,59,37,1,60,38],[8,44,20,4,45,21],[12,33,11,4,34,12],[3,145,115,1,146,116],[4,64,40,5,65,41],[11,36,16,5,37,17],[11,36,12,5,37,13],[5,109,87,1,110,88],[5,65,41,5,66,42],[5,54,24,7,55,25],[11,36,12],[5,122,98,1,123,99],[7,73,45,3,74,46],[15,43,19,2,44,20],[3,45,15,13,46,16],[1,135,107,5,136,108],[10,74,46,1,75,47],[1,50,22,15,51,23],[2,42,14,17,43,15],[5,150,120,1,151,121],[9,69,43,4,70,44],[17,50,22,1,51,23],[2,42,14,19,43,15],[3,141,113,4,142,114],[3,70,44,11,71,45],[17,47,21,4,48,22],[9,39,13,16,40,14],[3,135,107,5,136,108],[3,67,41,13,68,42],[15,54,24,5,55,25],[15,43,15,10,44,16],[4,144,116,4,145,117],[17,68,42],[17,50,22,6,51,23],[19,46,16,6,47,17],[2,139,111,7,140,112],[17,74,46],[7,54,24,16,55,25],[34,37,13],[4,151,121,5,152,122],[4,75,47,14,76,48],[11,54,24,14,55,25],[16,45,15,14,46,16],[6,147,117,4,148,118],[6,73,45,14,74,46],[11,54,24,16,55,25],[30,46,16,2,47,17],[8,132,106,4,133,107],[8,75,47,13,76,48],[7,54,24,22,55,25],[22,45,15,13,46,16],[10,142,114,2,143,115],[19,74,46,4,75,47],[28,50,22,6,51,23],[33,46,16,4,47,17],[8,152,122,4,153,123],[22,73,45,3,74,46],[8,53,23,26,54,24],[12,45,15,28,46,16],[3,147,117,10,148,118],[3,73,45,23,74,46],[4,54,24,31,55,25],[11,45,15,31,46,16],[7,146,116,7,147,117],[21,73,45,7,74,46],[1,53,23,37,54,24],[19,45,15,26,46,16],[5,145,115,10,146,116],[19,75,47,10,76,48],[15,54,24,25,55,25],[23,45,15,25,46,16],[13,145,115,3,146,116],[2,74,46,29,75,47],[42,54,24,1,55,25],[23,45,15,28,46,16],[17,145,115],[10,74,46,23,75,47],[10,54,24,35,55,25],[19,45,15,35,46,16],[17,145,115,1,146,116],[14,74,46,21,75,47],[29,54,24,19,55,25],[11,45,15,46,46,16],[13,145,115,6,146,116],[14,74,46,23,75,47],[44,54,24,7,55,25],[59,46,16,1,47,17],[12,151,121,7,152,122],[12,75,47,26,76,48],[39,54,24,14,55,25],[22,45,15,41,46,16],[6,151,121,14,152,122],[6,75,47,34,76,48],[46,54,24,10,55,25],[2,45,15,64,46,16],[17,152,122,4,153,123],[29,74,46,14,75,47],[49,54,24,10,55,25],[24,45,15,46,46,16],[4,152,122,18,153,123],[13,74,46,32,75,47],[48,54,24,14,55,25],[42,45,15,32,46,16],[20,147,117,4,148,118],[40,75,47,7,76,48],[43,54,24,22,55,25],[10,45,15,67,46,16],[19,148,118,6,149,119],[18,75,47,31,76,48],[34,54,24,34,55,25],[20,45,15,61,46,16]],j.getRSBlocks=function(a,b){var c=j.getRsBlockTable(a,b);if(void 0==c)throw new Error("bad rs block @ typeNumber:"+a+"/errorCorrectLevel:"+b);for(var d=c.length/3,e=[],f=0;d>f;f++)for(var g=c[3*f+0],h=c[3*f+1],i=c[3*f+2],k=0;g>k;k++)e.push(new j(h,i));return e},j.getRsBlockTable=function(a,b){switch(b){case d.L:return j.RS_BLOCK_TABLE[4*(a-1)+0];case d.M:return j.RS_BLOCK_TABLE[4*(a-1)+1];case d.Q:return j.RS_BLOCK_TABLE[4*(a-1)+2];case d.H:return j.RS_BLOCK_TABLE[4*(a-1)+3];default:return void 0}},k.prototype={get:function(a){var b=Math.floor(a/8);return 1==(1&this.buffer[b]>>>7-a%8)},put:function(a,b){for(var c=0;b>c;c++)this.putBit(1==(1&a>>>b-c-1))},getLengthInBits:function(){return this.length},putBit:function(a){var b=Math.floor(this.length/8);this.buffer.length<=b&&this.buffer.push(0),a&&(this.buffer[b]|=128>>>this.length%8),this.length++}};var l=[[17,14,11,7],[32,26,20,14],[53,42,32,24],[78,62,46,34],[106,84,60,44],[134,106,74,58],[154,122,86,64],[192,152,108,84],[230,180,130,98],[271,213,151,119],[321,251,177,137],[367,287,203,155],[425,331,241,177],[458,362,258,194],[520,412,292,220],[586,450,322,250],[644,504,364,280],[718,560,394,310],[792,624,442,338],[858,666,482,382],[929,711,509,403],[1003,779,565,439],[1091,857,611,461],[1171,911,661,511],[1273,997,715,535],[1367,1059,751,593],[1465,1125,805,625],[1528,1190,868,658],[1628,1264,908,698],[1732,1370,982,742],[1840,1452,1030,790],[1952,1538,1112,842],[2068,1628,1168,898],[2188,1722,1228,958],[2303,1809,1283,983],[2431,1911,1351,1051],[2563,1989,1423,1093],[2699,2099,1499,1139],[2809,2213,1579,1219],[2953,2331,1663,1273]],o=function(){var a=function(a,b){this._el=a,this._htOption=b};return a.prototype.draw=function(a){function g(a,b){var c=document.createElementNS("http://www.w3.org/2000/svg",a);for(var d in b)b.hasOwnProperty(d)&&c.setAttribute(d,b[d]);return c}var b=this._htOption,c=this._el,d=a.getModuleCount();Math.floor(b.width/d),Math.floor(b.height/d),this.clear();var h=g("svg",{viewBox:"0 0 "+String(d)+" "+String(d),width:"100%",height:"100%",fill:b.colorLight});h.setAttributeNS("http://www.w3.org/2000/xmlns/","xmlns:xlink","http://www.w3.org/1999/xlink"),c.appendChild(h),h.appendChild(g("rect",{fill:b.colorDark,width:"1",height:"1",id:"template"}));for(var i=0;d>i;i++)for(var j=0;d>j;j++)if(a.isDark(i,j)){var k=g("use",{x:String(i),y:String(j)});k.setAttributeNS("http://www.w3.org/1999/xlink","href","#template"),h.appendChild(k)}},a.prototype.clear=function(){for(;this._el.hasChildNodes();)this._el.removeChild(this._el.lastChild)},a}(),p="svg"===document.documentElement.tagName.toLowerCase(),q=p?o:m()?function(){function a(){this._elImage.src=this._elCanvas.toDataURL("image/png"),this._elImage.style.display="block",this._elCanvas.style.display="none"}function d(a,b){var c=this;if(c._fFail=b,c._fSuccess=a,null===c._bSupportDataURI){var d=document.createElement("img"),e=function(){c._bSupportDataURI=!1,c._fFail&&_fFail.call(c)},f=function(){c._bSupportDataURI=!0,c._fSuccess&&c._fSuccess.call(c)};return d.onabort=e,d.onerror=e,d.onload=f,d.src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",void 0}c._bSupportDataURI===!0&&c._fSuccess?c._fSuccess.call(c):c._bSupportDataURI===!1&&c._fFail&&c._fFail.call(c)}if(this._android&&this._android<=2.1){var b=1/window.devicePixelRatio,c=CanvasRenderingContext2D.prototype.drawImage;CanvasRenderingContext2D.prototype.drawImage=function(a,d,e,f,g,h,i,j){if("nodeName"in a&&/img/i.test(a.nodeName))for(var l=arguments.length-1;l>=1;l--)arguments[l]=arguments[l]*b;else"undefined"==typeof j&&(arguments[1]*=b,arguments[2]*=b,arguments[3]*=b,arguments[4]*=b);c.apply(this,arguments)}}var e=function(a,b){this._bIsPainted=!1,this._android=n(),this._htOption=b,this._elCanvas=document.createElement("canvas"),this._elCanvas.width=b.width,this._elCanvas.height=b.height,a.appendChild(this._elCanvas),this._el=a,this._oContext=this._elCanvas.getContext("2d"),this._bIsPainted=!1,this._elImage=document.createElement("img"),this._elImage.style.display="none",this._el.appendChild(this._elImage),this._bSupportDataURI=null};return e.prototype.draw=function(a){var b=this._elImage,c=this._oContext,d=this._htOption,e=a.getModuleCount(),f=d.width/e,g=d.height/e,h=Math.round(f),i=Math.round(g);b.style.display="none",this.clear();for(var j=0;e>j;j++)for(var k=0;e>k;k++){var l=a.isDark(j,k),m=k*f,n=j*g;c.strokeStyle=l?d.colorDark:d.colorLight,c.lineWidth=1,c.fillStyle=l?d.colorDark:d.colorLight,c.fillRect(m,n,f,g),c.strokeRect(Math.floor(m)+.5,Math.floor(n)+.5,h,i),c.strokeRect(Math.ceil(m)-.5,Math.ceil(n)-.5,h,i)}this._bIsPainted=!0},e.prototype.makeImage=function(){this._bIsPainted&&d.call(this,a)},e.prototype.isPainted=function(){return this._bIsPainted},e.prototype.clear=function(){this._oContext.clearRect(0,0,this._elCanvas.width,this._elCanvas.height),this._bIsPainted=!1},e.prototype.round=function(a){return a?Math.floor(1e3*a)/1e3:a},e}():function(){var a=function(a,b){this._el=a,this._htOption=b};return a.prototype.draw=function(a){for(var b=this._htOption,c=this._el,d=a.getModuleCount(),e=Math.floor(b.width/d),f=Math.floor(b.height/d),g=['<table style="border:0;border-collapse:collapse;">'],h=0;d>h;h++){g.push("<tr>");for(var i=0;d>i;i++)g.push('<td style="border:0;border-collapse:collapse;padding:0;margin:0;width:'+e+"px;height:"+f+"px;background-color:"+(a.isDark(h,i)?b.colorDark:b.colorLight)+';"></td>');g.push("</tr>")}g.push("</table>"),c.innerHTML=g.join("");var j=c.childNodes[0],k=(b.width-j.offsetWidth)/2,l=(b.height-j.offsetHeight)/2;k>0&&l>0&&(j.style.margin=l+"px "+k+"px")},a.prototype.clear=function(){this._el.innerHTML=""},a}();QRCode=function(a,b){if(this._htOption={width:256,height:256,typeNumber:4,colorDark:"#000000",colorLight:"#ffffff",correctLevel:d.H},"string"==typeof b&&(b={text:b}),b)for(var c in b)this._htOption[c]=b[c];"string"==typeof a&&(a=document.getElementById(a)),this._android=n(),this._el=a,this._oQRCode=null,this._oDrawing=new q(this._el,this._htOption),this._htOption.text&&this.makeCode(this._htOption.text)},QRCode.prototype.makeCode=function(a){this._oQRCode=new b(r(a,this._htOption.correctLevel),this._htOption.correctLevel),this._oQRCode.addData(a),this._oQRCode.make(),this._el.title=a,this._oDrawing.draw(this._oQRCode),this.makeImage()},QRCode.prototype.makeImage=function(){"function"==typeof this._oDrawing.makeImage&&(!this._android||this._android>=3)&&this._oDrawing.makeImage()},QRCode.prototype.clear=function(){this._oDrawing.clear()},QRCode.CorrectLevel=d}();
+</script>
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+  let timerInterval = null;
+  let seconds = 0;
+  let notesVisible = false;
+  let settingsOpen = false;
+
+  const ON_SITE = /planewx\.ai$/.test(location.hostname) || location.pathname.startsWith('/talks') || location.pathname.startsWith('/talk');
+  const ASSET_BRAND = ON_SITE ? '/brand/' : '/brand/';
+  const LOGO_ON_DARK = ASSET_BRAND + 'planewx-wordmark-dark.svg';
+  const LOGO_ON_LIGHT = ASSET_BRAND + 'planewx-wordmark.svg';
+  const SIZE_STEPS = ['sm', 'md', 'lg', 'xl'];
+  const SIZE_ZOOM = { sm: 0.92, md: 1, lg: 1.12, xl: 1.22 };
+  const SIZE_BOOST = { sm: '-2px', md: '0px', lg: '4px', xl: '8px' };
+  const PREF_KEY = 'planewx-oshkosh-deck-prefs';
+  const REMOTE_KEY = 'planewx-oshkosh-remote';
+  const API_BASE = ON_SITE ? '' : 'https://www.planewx.ai';
+
+  const sections = Array.from(slides).map(s => s.dataset.section || '');
+
+  const prefs = loadPrefs();
+
+  // ── Phone remote (host = this browser / projector) ─────────────
+  let remotePanelOpen = false;
+  let remoteRoom = '';
+  let remoteToken = '';
+  let remotePollTimer = null;
+  let remoteApplying = false;
+  let remoteLastPush = 0;
+  let remoteLink = '';
+
+  function remoteApi(path = '/api/talk/remote') {
+    return API_BASE + path;
+  }
+
+  function toggleRemotePanel() {
+    remotePanelOpen = !remotePanelOpen;
+    document.getElementById('remote-panel')?.classList.toggle('open', remotePanelOpen);
+    document.getElementById('btn-remote')?.classList.toggle('active-pref', remotePanelOpen);
+    if (!remotePanelOpen) return;
+
+    if (!remoteRoom) {
+      try {
+        const saved = JSON.parse(sessionStorage.getItem(REMOTE_KEY) || '{}');
+        if (saved.room && saved.token) {
+          remoteRoom = saved.room;
+          remoteToken = saved.token;
+          updateRemoteUi();
+          ensureRemotePolling();
+          pushRemoteState();
+          return;
+        }
+      } catch (_) {}
+      // Auto-create room so QR appears immediately
+      startPhoneRemote();
+    } else {
+      updateRemoteUi();
+    }
+  }
+
+  function loadQrLib() {
+    // Library is inlined above (<!-- INLINE_QR_LIB -->) — no CDN / no extra request
+    if (typeof window.QRCode === 'function') return Promise.resolve();
+    return Promise.reject(new Error('QR library missing'));
+  }
+
+  async function renderRemoteQr(link) {
+    const box = document.getElementById('remote-qr-box');
+    if (!box) return;
+    if (!link) {
+      box.innerHTML = '<div class="remote-qr-placeholder">Press Start</div>';
+      return;
+    }
+    try {
+      await loadQrLib();
+      box.innerHTML = '';
+      // qrcodejs constructor — draws into the container
+      // eslint-disable-next-line no-new
+      new window.QRCode(box, {
+        text: link,
+        width: 120,
+        height: 120,
+        colorDark: '#0b1220',
+        colorLight: '#ffffff',
+        correctLevel: window.QRCode.CorrectLevel.M,
+      });
+    } catch (err) {
+      console.warn('QR render failed', err);
+      box.innerHTML = `<div class="remote-qr-placeholder">QR unavailable — use Copy link</div>`;
+    }
+  }
+
+  function updateRemoteUi() {
+    const roomEl = document.getElementById('remote-room');
+    const statusEl = document.getElementById('remote-status');
+    const dot = document.getElementById('remote-dot');
+    if (roomEl) roomEl.textContent = remoteRoom || '————';
+    if (statusEl) statusEl.textContent = remoteRoom ? 'Live — scan QR' : 'Off';
+    dot?.classList.toggle('live', !!remoteRoom);
+    if (remoteRoom && remoteToken) {
+      const base = ON_SITE
+        ? `${location.origin}/talks/remote.html`
+        : 'https://www.planewx.ai/talks/remote.html';
+      remoteLink = `${base}?room=${encodeURIComponent(remoteRoom)}&token=${encodeURIComponent(remoteToken)}`;
+      renderRemoteQr(remoteLink);
+      const preview = document.getElementById('remote-link-preview');
+      if (preview) {
+        preview.style.display = 'block';
+        preview.textContent = remoteLink;
+      }
+    } else {
+      remoteLink = '';
+      renderRemoteQr('');
+      const preview = document.getElementById('remote-link-preview');
+      if (preview) {
+        preview.style.display = 'none';
+        preview.textContent = '';
+      }
+    }
+  }
+
+  async function startPhoneRemote() {
+    const statusEl = document.getElementById('remote-status');
+    if (statusEl) statusEl.textContent = 'Creating room…';
+    try {
+      const res = await fetch(remoteApi(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'create', slideCount: slides.length }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Create failed');
+      remoteRoom = data.room;
+      remoteToken = data.token;
+      sessionStorage.setItem(REMOTE_KEY, JSON.stringify({ room: remoteRoom, token: remoteToken }));
+      updateRemoteUi();
+      ensureRemotePolling();
+      await pushRemoteState();
+      if (statusEl) statusEl.textContent = 'Live — scan QR on phone';
+    } catch (e) {
+      if (statusEl) statusEl.textContent = e.message || 'Error';
+      alert('Could not start phone remote.\n\n' + (e.message || e) +
+        '\n\nIf this is the first time: run migrations/20260722_talk_remote_sessions.sql in Supabase, then deploy the landing API.');
+    }
+  }
+
+  function stopPhoneRemote() {
+    remoteRoom = '';
+    remoteToken = '';
+    remoteLink = '';
+    sessionStorage.removeItem(REMOTE_KEY);
+    if (remotePollTimer) {
+      clearInterval(remotePollTimer);
+      remotePollTimer = null;
+    }
+    updateRemoteUi();
+    const statusEl = document.getElementById('remote-status');
+    if (statusEl) statusEl.textContent = 'Off';
+    document.getElementById('remote-dot')?.classList.remove('live');
+  }
+
+  function copyRemoteLink() {
+    if (!remoteLink) {
+      alert('Start the remote first.');
+      return;
+    }
+    navigator.clipboard?.writeText(remoteLink).then(
+      () => {
+        const statusEl = document.getElementById('remote-status');
+        if (statusEl) statusEl.textContent = 'Link copied';
+      },
+      () => prompt('Copy this link to your phone:', remoteLink),
+    );
+  }
+
+  function ensureRemotePolling() {
+    if (remotePollTimer) return;
+    remotePollTimer = setInterval(pollRemoteState, 600);
+  }
+
+  async function pushRemoteState() {
+    if (!remoteRoom || !remoteToken || remoteApplying) return;
+    remoteLastPush = Date.now();
+    const s = slides[current];
+    try {
+      await fetch(remoteApi(), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'set',
+          room: remoteRoom,
+          token: remoteToken,
+          slideIndex: current,
+          slideCount: slides.length,
+          sectionLabel: sections[current] || '',
+          notes: s?.dataset?.notes || '',
+        }),
+      });
+    } catch (_) {}
+  }
+
+  async function pollRemoteState() {
+    if (!remoteRoom) return;
+    try {
+      const res = await fetch(`${remoteApi()}?room=${encodeURIComponent(remoteRoom)}`, { cache: 'no-store' });
+      const data = await res.json();
+      if (!res.ok) return;
+      const idx = Number(data.slideIndex);
+      if (!Number.isFinite(idx) || idx === current) return;
+      // Ignore echoes of our own recent push
+      if (Date.now() - remoteLastPush < 450) return;
+      remoteApplying = true;
+      showSlide(idx);
+      remoteApplying = false;
+    } catch (_) {}
+  }
+
+  function loadPrefs() {
+    const defaults = { theme: 'dark', contrast: 'normal', size: 'md', fit: false, chromeHidden: false };
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(PREF_KEY) || '{}'); } catch (_) {}
+    const url = new URLSearchParams(location.search);
+    return {
+      theme: url.get('theme') || saved.theme || defaults.theme,
+      contrast: url.get('contrast') || saved.contrast || defaults.contrast,
+      size: url.get('size') || saved.size || defaults.size,
+      fit: url.has('fit') ? url.get('fit') !== '0' : (saved.fit ?? defaults.fit),
+      chromeHidden: url.has('chrome') ? url.get('chrome') === '0' : (saved.chromeHidden ?? defaults.chromeHidden),
+    };
+  }
+
+  function savePrefs() {
+    try { localStorage.setItem(PREF_KEY, JSON.stringify(prefs)); } catch (_) {}
+  }
+
+  function applyPrefs() {
+    const root = document.documentElement;
+    root.setAttribute('data-theme', prefs.theme === 'light' ? 'light' : 'dark');
+    root.setAttribute('data-contrast', prefs.contrast === 'high' ? 'high' : 'normal');
+    root.style.setProperty('--deck-zoom', String(SIZE_ZOOM[prefs.size] || 1));
+    root.style.setProperty('--type-boost', SIZE_BOOST[prefs.size] || '0px');
+    document.body.classList.toggle('fit-mode', !!prefs.fit);
+    document.body.classList.toggle('chrome-hidden', !!prefs.chromeHidden);
+
+    const themeBtn = document.getElementById('btn-theme');
+    if (themeBtn) themeBtn.textContent = prefs.theme === 'light' ? 'Dark' : 'Light';
+
+    document.getElementById('btn-contrast')?.classList.toggle('active-pref', prefs.contrast === 'high');
+    document.getElementById('btn-fit')?.classList.toggle('active-pref', !!prefs.fit);
+    document.getElementById('btn-chrome')?.classList.toggle('active-pref', !prefs.chromeHidden);
+
+    const sizeSelect = document.getElementById('select-size');
+    if (sizeSelect) sizeSelect.value = SIZE_STEPS.includes(prefs.size) ? prefs.size : 'md';
+
+    updateLogos();
+    applyFitScale();
+    savePrefs();
+  }
+
+  function updateLogos() {
+    document.querySelectorAll('img.logo-img').forEach((img) => {
+      const slide = img.closest('.slide');
+      const onColorBg = slide && (
+        slide.classList.contains('bg-danger') ||
+        slide.classList.contains('bg-green') ||
+        slide.classList.contains('bg-sky')
+      );
+      const useLightLogo = prefs.theme === 'dark' || onColorBg;
+      const next = useLightLogo ? LOGO_ON_DARK : LOGO_ON_LIGHT;
+      if (!img.getAttribute('src')?.includes(next.split('/').pop())) {
+        img.setAttribute('src', next);
+      }
+    });
+  }
+
+  function applyFitScale() {
+    const deck = document.getElementById('deck');
+    if (!deck) return;
+    if (!prefs.fit) {
+      deck.style.transform = '';
+      return;
+    }
+    const navH = prefs.chromeHidden ? 0 : (document.getElementById('nav')?.offsetHeight || 48);
+    const notesH = notesVisible ? (document.getElementById('notes-panel')?.offsetHeight || 0) : 0;
+    const availW = window.innerWidth;
+    const availH = Math.max(200, window.innerHeight - navH - notesH);
+    const scale = Math.min(availW / 1280, availH / 720) * (SIZE_ZOOM[prefs.size] || 1);
+    deck.style.transform = `scale(${scale})`;
+  }
+
+  function toggleTheme() {
+    prefs.theme = prefs.theme === 'light' ? 'dark' : 'light';
+    applyPrefs();
+  }
+
+  function toggleContrast() {
+    prefs.contrast = prefs.contrast === 'high' ? 'normal' : 'high';
+    applyPrefs();
+  }
+
+  function setTypeSize(size) {
+    if (!SIZE_STEPS.includes(size)) return;
+    prefs.size = size;
+    applyPrefs();
+  }
+
+  function bumpTypeSize(dir) {
+    const i = SIZE_STEPS.indexOf(prefs.size);
+    const next = SIZE_STEPS[Math.max(0, Math.min(SIZE_STEPS.length - 1, (i < 0 ? 1 : i) + dir))];
+    setTypeSize(next);
+  }
+
+  function toggleFit() {
+    prefs.fit = !prefs.fit;
+    applyPrefs();
+  }
+
+  function toggleChrome() {
+    prefs.chromeHidden = !prefs.chromeHidden;
+    applyPrefs();
+  }
+
+  function toggleSettings() {
+    settingsOpen = !settingsOpen;
+    document.getElementById('settings-panel')?.classList.toggle('open', settingsOpen);
+    document.getElementById('btn-settings')?.classList.toggle('active-pref', settingsOpen);
+  }
+
+  function updateCornerQr() {
+    const el = document.getElementById('corner-qr');
+    if (!el) return;
+    const hide = slides[current].hasAttribute('data-no-corner-qr');
+    el.classList.toggle('is-hidden', hide);
+  }
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    current = Math.max(0, Math.min(n, slides.length - 1));
+    slides[current].classList.add('active');
+    document.getElementById('slide-counter').textContent = `${current + 1} / ${slides.length}`;
+    document.getElementById('section-label').textContent = sections[current];
+    document.getElementById('progress-bar').style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (notesVisible) updateNotes();
+    updateLogos();
+    updateCornerQr();
+    applyFitScale();
+    window.scrollTo(0, 0);
+    if (!remoteApplying) pushRemoteState();
+  }
+
+  function nextSlide() { showSlide(current + 1); }
+  function prevSlide() { showSlide(current - 1); }
+
+  function updateNotes() {
+    const panel = document.getElementById('notes-panel');
+    const s = slides[current];
+    panel.innerHTML = `<strong style="color:var(--sky);">[Slide ${current + 1}]</strong> ${s.dataset.notes || 'No notes for this slide.'}`;
+  }
+
+  function toggleNotes() {
+    notesVisible = !notesVisible;
+    const panel = document.getElementById('notes-panel');
+    if (notesVisible) {
+      panel.classList.add('visible');
+      updateNotes();
+    } else {
+      panel.classList.remove('visible');
+    }
+    applyFitScale();
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen?.();
+    } else {
+      document.exitFullscreen?.();
+    }
+  }
+
+  function formatTime(s) {
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return `${m}:${sec.toString().padStart(2,'0')}`;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+      e.preventDefault(); nextSlide();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault(); prevSlide();
+    } else if (e.key === 'n' || e.key === 'N') {
+      toggleNotes();
+    } else if (e.key === 'f' || e.key === 'F') {
+      toggleFullscreen();
+    } else if (e.key === 'd' || e.key === 'D') {
+      toggleTheme();
+    } else if (e.key === 'c' || e.key === 'C') {
+      toggleContrast();
+    } else if (e.key === 'v' || e.key === 'V') {
+      toggleFit();
+    } else if (e.key === 'h' || e.key === 'H') {
+      toggleChrome();
+    } else if (e.key === 's' || e.key === 'S') {
+      toggleSettings();
+    } else if (e.key === 'p' || e.key === 'P') {
+      toggleRemotePanel();
+    } else if (e.key === '=' || e.key === '+') {
+      e.preventDefault(); bumpTypeSize(1);
+    } else if (e.key === '-' || e.key === '_') {
+      e.preventDefault(); bumpTypeSize(-1);
+    } else if (e.key === 'Escape' && settingsOpen) {
+      toggleSettings();
+    } else if (e.key === 't' || e.key === 'T') {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      } else {
+        timerInterval = setInterval(() => {
+          seconds++;
+          document.getElementById('timer').textContent = formatTime(seconds);
+        }, 1000);
+      }
+    } else if (e.key === 'Home') {
+      e.preventDefault(); showSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault(); showSlide(slides.length - 1);
+    }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) { dx < 0 ? nextSlide() : prevSlide(); }
+  });
+
+  window.addEventListener('resize', () => applyFitScale());
+  document.addEventListener('fullscreenchange', () => setTimeout(applyFitScale, 50));
+
+  // Click outside settings to close
+  document.addEventListener('click', (e) => {
+    const panel = document.getElementById('settings-panel');
+    const btn = document.getElementById('btn-settings');
+    if (!settingsOpen || !panel) return;
+    if (panel.contains(e.target) || btn?.contains(e.target)) return;
+    toggleSettings();
+  });
+
+  applyPrefs();
+
+  // Resume phone remote if URL / session has room+token, then show current slide
+  (async function bootRemote() {
+    const url = new URLSearchParams(location.search);
+    const r = (url.get('room') || '').toUpperCase();
+    const t = url.get('token') || '';
+    if (r && t) {
+      remoteRoom = r;
+      remoteToken = t;
+      sessionStorage.setItem(REMOTE_KEY, JSON.stringify({ room: remoteRoom, token: remoteToken }));
+    } else {
+      try {
+        const saved = JSON.parse(sessionStorage.getItem(REMOTE_KEY) || '{}');
+        if (saved.room && saved.token) {
+          remoteRoom = saved.room;
+          remoteToken = saved.token;
+        }
+      } catch (_) {}
+    }
+
+    if (remoteRoom && remoteToken) {
+      updateRemoteUi();
+      try {
+        const res = await fetch(`${remoteApi()}?room=${encodeURIComponent(remoteRoom)}`, { cache: 'no-store' });
+        const data = await res.json();
+        if (res.ok && Number.isFinite(Number(data.slideIndex))) {
+          remoteApplying = true;
+          showSlide(Number(data.slideIndex));
+          remoteApplying = false;
+        } else {
+          showSlide(0);
+        }
+      } catch (_) {
+        showSlide(0);
+      }
+      ensureRemotePolling();
+    } else {
+      showSlide(0);
+    }
+  })();
+</script>
+</body>
+</html>

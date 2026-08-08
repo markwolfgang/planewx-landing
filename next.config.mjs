@@ -20,6 +20,14 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // Legacy AirVenture deck URL → archive under /talks
+      { source: "/talk", destination: "/talks/osh", permanent: false },
+      { source: "/talk/", destination: "/talks/osh/", permanent: false },
+      { source: "/talk/remote.html", destination: "/talks/remote.html", permanent: false },
+    ]
+  },
 }
 
 export default nextConfig
