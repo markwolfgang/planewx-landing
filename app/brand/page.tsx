@@ -593,7 +593,7 @@ export default function BrandPortalPage() {
             often same-day. Feature suggestions are sometimes implemented the same
             day. The product is his own tool, refined by the community he flies with.
           </p>
-          <div className="mt-4">
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
             <Link
               href="/brand/why"
               className="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 transition-colors text-sm font-medium"
@@ -601,6 +601,15 @@ export default function BrandPortalPage() {
               Read the full origin story
               <ArrowRight className="h-4 w-4" />
             </Link>
+            <a
+              href="https://youtu.be/rAFTCzeR38M?t=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 transition-colors text-sm font-medium"
+            >
+              <FaYoutube className="h-4 w-4" />
+              Watch Mark&apos;s story on YouTube
+            </a>
           </div>
         </div>
       </section>
