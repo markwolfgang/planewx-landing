@@ -482,11 +482,11 @@ export default async function SunNFun2026() {
           </a>
         </section>
 
-        {/* ── Teaser Go Score ───────────────────────────────────────────────── */}
+        {/* ── Teaser WX Score ───────────────────────────────────────────────── */}
         <section className="space-y-6">
           <div className="space-y-2">
             <h2 className="text-2xl md:text-3xl font-bold">
-              Your Go Score is waiting
+              Your WX Score is waiting
             </h2>
             <p className="text-white/50 max-w-2xl">
               PlaneWX distills every data source — ECMWF, GFS, HRRR, PIREPs, NOTAMs,
@@ -501,7 +501,7 @@ export default async function SunNFun2026() {
             <div className="p-6 space-y-4 blur-sm select-none pointer-events-none">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-white/40 uppercase tracking-wider">Go Score</p>
+                  <p className="text-xs text-white/40 uppercase tracking-wider">WX Score</p>
                   <div className="flex items-end gap-2 mt-1">
                     <span className="text-5xl font-bold text-emerald-400">82</span>
                     <span className="text-white/40 mb-1">/ 100</span>
