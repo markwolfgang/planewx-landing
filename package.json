@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/check-wx-score-copy.mjs && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint && node scripts/check-wx-score-copy.mjs",
+    "test": "node scripts/check-wx-score-copy.mjs"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.1.4",
