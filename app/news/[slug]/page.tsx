@@ -62,8 +62,12 @@ export default async function NewsArticlePage({ params }: Props) {
             </svg>
             All news
           </Link>
-          <Link href="/" className="text-xs uppercase tracking-widest text-white/40 hover:text-white/60 transition-colors">
-            planewx.ai
+          <Link href="/" aria-label="PlaneWX home">
+            <BrandLogo
+              variant="wordmarkTransparent"
+              className="h-5 w-auto"
+              alt="PlaneWX"
+            />
           </Link>
         </div>
       </header>

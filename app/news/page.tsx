@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { BrandLogo } from "@/components/shared/brand-logo"
 import { NEWS_ITEMS } from "./news-data"
 
 export const metadata: Metadata = {
@@ -42,9 +43,15 @@ export default function NewsPage() {
             >
               <path d="M19 12H5M12 5l-7 7 7 7" />
             </svg>
-            planewx.ai
+            Home
           </Link>
-          <span className="text-xs uppercase tracking-widest text-white/40">Newsroom</span>
+          <Link href="/" aria-label="PlaneWX home">
+            <BrandLogo
+              variant="wordmarkTransparent"
+              className="h-5 w-auto"
+              alt="PlaneWX"
+            />
+          </Link>
         </div>
       </header>
 
