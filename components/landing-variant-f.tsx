@@ -54,6 +54,7 @@ export function LandingVariantF() {
           <div className="hidden md:flex items-center gap-6 text-sm text-[#8a8f98]">
             <a href="#how-it-works" className="hover:text-[#f7f8f8] transition-colors">How It Works</a>
             <a href="#pricing" className="hover:text-[#f7f8f8] transition-colors">Pricing</a>
+            <a href="/news" className="hover:text-[#f7f8f8] transition-colors">News</a>
           </div>
           <a
             href="https://app.planewx.ai/auth/login"
