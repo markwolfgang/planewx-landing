@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { BrandLogo } from "@/components/shared/brand-logo"
+import { NewsShareBar } from "@/components/news-share-bar"
 import { NEWS_ITEMS, getNewsItem } from "../news-data"
 
 interface Props {
@@ -28,16 +29,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: item.title,
       description: item.excerpt,
       publishedTime: item.isoDate,
-      ...(item.heroImage
-        ? {
-            images: [
-              {
-                url: `https://www.planewx.ai${item.heroImage.src}`,
-                alt: item.heroImage.alt,
-              },
-            ],
-          }
-        : {}),
+      siteName: "PlaneWX",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: item.title,
+      description: item.excerpt,
+      creator: "@planewx",
     },
   }
 }
@@ -109,6 +107,13 @@ export default async function NewsArticlePage({ params }: Props) {
             {item.title}
           </h1>
           <p className="text-lg leading-relaxed text-white/70">{item.excerpt}</p>
+          <div className="mt-6">
+            <NewsShareBar
+              url={`https://www.planewx.ai/news/${slug}`}
+              title={item.title}
+              excerpt={item.excerpt}
+            />
+          </div>
         </header>
 
         {item.heroImage && (
@@ -181,6 +186,14 @@ export default async function NewsArticlePage({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: item.body }}
         />
 
+        <div className="mt-12 border-t border-white/10 pt-8">
+          <NewsShareBar
+            url={`https://www.planewx.ai/news/${slug}`}
+            title={item.title}
+            excerpt={item.excerpt}
+          />
+        </div>
+
         {/* JSON-LD */}
         <script
           type="application/ld+json"
@@ -192,9 +205,9 @@ export default async function NewsArticlePage({ params }: Props) {
               description: item.excerpt,
               datePublished: item.isoDate,
               url: `https://www.planewx.ai/news/${slug}`,
-              ...(item.heroImage
-                ? { image: `https://www.planewx.ai${item.heroImage.src}` }
-                : {}),
+              image: item.heroImage
+                ? `https://www.planewx.ai${item.heroImage.src}`
+                : `https://www.planewx.ai/news/${slug}/opengraph-image`,
               publisher: {
                 "@type": "Organization",
                 name: "PlaneWX",
