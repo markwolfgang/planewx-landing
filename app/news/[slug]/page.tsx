@@ -28,6 +28,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: item.title,
       description: item.excerpt,
       publishedTime: item.isoDate,
+      ...(item.heroImage
+        ? {
+            images: [
+              {
+                url: `https://www.planewx.ai${item.heroImage.src}`,
+                alt: item.heroImage.alt,
+              },
+            ],
+          }
+        : {}),
     },
   }
 }
@@ -101,6 +111,26 @@ export default async function NewsArticlePage({ params }: Props) {
           <p className="text-lg leading-relaxed text-white/70">{item.excerpt}</p>
         </header>
 
+        {item.heroImage && (
+          <figure className="mb-10">
+            <div className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+              <Image
+                src={item.heroImage.src}
+                alt={item.heroImage.alt}
+                width={item.heroImage.width}
+                height={item.heroImage.height}
+                className="h-auto w-full"
+                priority
+              />
+            </div>
+            {item.heroImage.caption && (
+              <figcaption className="mt-3 text-center text-sm italic text-white/45">
+                {item.heroImage.caption}
+              </figcaption>
+            )}
+          </figure>
+        )}
+
         {/* Co-branded lockup — both marks on one row, ours first */}
         {item.coBrand && (
           <div className="mb-10 flex items-center justify-center gap-5 rounded-xl border border-white/10 bg-white/[0.02] px-6 py-6 sm:gap-8">
@@ -162,6 +192,9 @@ export default async function NewsArticlePage({ params }: Props) {
               description: item.excerpt,
               datePublished: item.isoDate,
               url: `https://www.planewx.ai/news/${slug}`,
+              ...(item.heroImage
+                ? { image: `https://www.planewx.ai${item.heroImage.src}` }
+                : {}),
               publisher: {
                 "@type": "Organization",
                 name: "PlaneWX",
