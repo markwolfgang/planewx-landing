@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getSoroArticles } from '@/lib/soro'
+import { NEWS_ITEMS } from '@/app/news/news-data'
 
 export const revalidate = 3600
 
@@ -10,6 +11,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPosts: MetadataRoute.Sitemap = articles.map((a) => ({
     url: `${baseUrl}/blog/${a.slug}`,
     lastModified: new Date(a.isoDate),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+
+  const newsPosts: MetadataRoute.Sitemap = NEWS_ITEMS.map((item) => ({
+    url: `${baseUrl}/news/${item.slug}`,
+    lastModified: new Date(item.isoDate),
     changeFrequency: 'monthly',
     priority: 0.7,
   }))
@@ -52,6 +60,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     ...blogPosts,
+    {
+      url: `${baseUrl}/news`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    ...newsPosts,
     {
       url: `${baseUrl}/multi-model-analysis`,
       lastModified: new Date(),

@@ -57,6 +57,7 @@ export function LandingVariantE() {
             <a href="#story" className="hover:text-white transition-colors">The Story</a>
             <a href="#system" className="hover:text-white transition-colors">The System</a>
             <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+            <a href="/news" className="hover:text-white transition-colors">News</a>
           </div>
           <a
             href="https://app.planewx.ai/auth/login"

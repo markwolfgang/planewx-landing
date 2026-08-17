@@ -80,6 +80,9 @@ export function LandingVariantA() {
             >
               Pricing
             </a>
+            <a href="/news" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
+              News
+            </a>
             <a href="/research/turbulence-safety" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
               Research
             </a>

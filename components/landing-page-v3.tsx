@@ -108,6 +108,9 @@ export function LandingPageV3() {
             >
               Pricing
             </button>
+            <a href="/news" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
+              News
+            </a>
             <a href="/research/turbulence-safety" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
               Research
             </a>
@@ -943,6 +946,7 @@ export function LandingPageV3() {
             <span>· The Pilot's Decision Support System</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <a href="/news" className="hover:text-white/60 transition-colors">News</a>
             <a href="/blog" className="hover:text-white/60 transition-colors">Blog</a>
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
             <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
