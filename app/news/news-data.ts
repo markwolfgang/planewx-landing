@@ -35,9 +35,9 @@ export const NEWS_ITEMS: NewsItem[] = [
       "A new plan for pilots who fly enough that the briefing should follow the airplane — Ground Protection, Auto-Brief, a pre-flight text, and eligibility for 5X5's risk-based premium credits.",
     date: "August 17, 2026",
     isoDate: "2026-08-17",
-    location: "Fremont, Nebraska",
+    location: "St. Petersburg, Florida",
     body: `
-<p><strong>Fremont, Nebraska &mdash; August 17, 2026 &mdash;</strong> PlaneWX today launched Pro Plus, a new plan for pilots who fly enough that weather intelligence should follow the airplane, not the other way around.</p>
+<p><strong>St. Petersburg, Florida &mdash; August 17, 2026 &mdash;</strong> PlaneWX today launched Pro Plus, a new plan for pilots who fly enough that weather intelligence should follow the airplane, not the other way around.</p>
 
 <p>Pro Plus is the same decision support system &mdash; a WX Score against your aircraft and your personal minimums, an integrated risk assessment built on the FAA&rsquo;s PAVE framework, and a mentor who can see the full briefing. What changes is the busywork. The briefing follows the flight you actually filed. A text reaches you on the walk out. And someone is watching the airplane when you are not.</p>
 
@@ -76,7 +76,7 @@ export const NEWS_ITEMS: NewsItem[] = [
       "Verified PlaneWX Pro Plus members are eligible for risk-based premium credits through 5X5's Safety Rewards program — underwriting recognition for the preflight work pilots already do.",
     date: "August 17, 2026",
     isoDate: "2026-08-17",
-    location: "Fremont, Nebraska",
+    location: "St. Petersburg, Florida",
     coBrand: {
       name: "5X5 Aviation Insurance",
       logo: "/logos/5x5-wordmark-white.webp",
@@ -84,7 +84,7 @@ export const NEWS_ITEMS: NewsItem[] = [
       logoHeight: 327,
     },
     body: `
-<p><strong>Fremont, Nebraska &mdash; August 17, 2026 &mdash;</strong> PlaneWX, the pilot&rsquo;s decision support system, today named 5X5 Aviation Insurance its exclusive insurance partner. Verified PlaneWX Pro Plus members are eligible for risk-based premium credits through 5X5&rsquo;s Safety Rewards program &mdash; recognition, in the underwriting process, of the preparation pilots already do before they fly.</p>
+<p><strong>St. Petersburg, Florida &mdash; August 17, 2026 &mdash;</strong> PlaneWX, the pilot&rsquo;s decision support system, today named 5X5 Aviation Insurance its exclusive insurance partner. Verified PlaneWX Pro Plus members are eligible for risk-based premium credits through 5X5&rsquo;s Safety Rewards program &mdash; recognition, in the underwriting process, of the preparation pilots already do before they fly.</p>
 
 <p>PlaneWX was built for the gap every EFB leaves open. TAFs cover about 24 hours, and most trips are planned well before that. PlaneWX synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums into a WX Score, feeds that briefing into an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network so no one has to make a hard go/no-go call alone. That picture is available up to 14 days out.</p>
 
