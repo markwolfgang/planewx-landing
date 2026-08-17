@@ -1,7 +1,7 @@
 # Newsroom article backlog
 
-Newsroom stays unlisted (no homepage link, no sitemap) until Mark says
-otherwise. Do not invent numbers. Re-verify every stat at write time.
+Newsroom is listed: homepage / variant nav + footer, and `/sitemap.xml`.
+Do not invent numbers. Re-verify every stat at write time.
 
 ## On the page (this branch)
 
