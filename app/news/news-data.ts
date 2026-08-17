@@ -124,7 +124,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
 `,
-  },,
+  },
   {
     slug: "foreflight-share-to-planewx",
     category: "Product",
