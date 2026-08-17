@@ -16,6 +16,47 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "pro-plus-launch",
+    category: "Product",
+    title: "PlaneWX Launches Pro Plus",
+    excerpt:
+      "A new plan for pilots who fly enough that the briefing should follow the airplane — Ground Protection, Auto-Brief, a pre-flight text, and eligibility for 5X5's risk-based premium credits.",
+    date: "August 17, 2026",
+    isoDate: "2026-08-17",
+    location: "Fremont, Nebraska",
+    body: `
+<p><strong>Fremont, Nebraska &mdash; August 17, 2026 &mdash;</strong> PlaneWX today launched Pro Plus, a new plan for pilots who fly enough that weather intelligence should follow the airplane, not the other way around.</p>
+
+<p>Pro Plus is the same decision support system &mdash; a WX Score against your aircraft and your personal minimums, an integrated risk assessment built on the FAA&rsquo;s PAVE framework, and a mentor who can see the full briefing. What changes is the busywork. The briefing follows the flight you actually filed. A text reaches you on the walk out. And someone is watching the airplane when you are not.</p>
+
+<p><strong>Ground Protection</strong> watches the weather at your parked airplane and texts you before hail, damaging wind, or freezing rain gets there. You do not have to remember to check.</p>
+
+<p><strong>Auto-Brief</strong> means filing a flight plan is the trigger. If you already built a briefing, PlaneWX finds it, updates it to the time you actually filed, and refreshes it. If you never got around to building one, it creates it. Think about the normal morning: you brief an 0800 departure the night before, something slips, and you file 0900. Until now that meant going back in and waiting on a new briefing. Now the briefing follows the flight plan you filed.</p>
+
+<p><strong>Pre-Flight Text</strong> sends your WX Score and the go/no-go picture about 30 minutes before departure, while you&rsquo;re walking out to the airplane.</p>
+
+<p><strong>On-Demand Briefing Refresh</strong> lets you pull fresh weather when you want it, instead of waiting on a schedule.</p>
+
+<p><strong>Contract Fuel Pricing</strong> and <strong>Briefed Fuel Stops</strong> apply the fuel programs you already belong to, so the stop we recommend is the one that actually saves you money.</p>
+
+<p><strong>PlaneWX Labs</strong> is early access to what we&rsquo;re still building &mdash; including Pilot Debrief, which closes the loop after the flight: plan it, fly it, write down what you learned. Labs features are beta, and we label them that way in the app.</p>
+
+<p>Pro Plus also raises the ceiling: 25 monitored flights, 10 aircraft, unlimited saved routes, and 25 Corridor Watch routes.</p>
+
+<p>The same day, <a href="/news/5x5-aviation-insurance-exclusive-partner">5X5 Aviation Insurance named PlaneWX its exclusive insurance partner</a>. Verified Pro Plus members are eligible for risk-based premium credits through 5X5&rsquo;s Safe and Smart program &mdash; 5% at quote and bind, with more at renewal for members who stay on the plan and use it. Credits are subject to 5X5&rsquo;s underwriting guidelines. PlaneWX does not sell insurance and receives no compensation tied to any policy.</p>
+
+<p>Pro Plus is $29.99 a month or $249 a year. Through October 1, annual plans can be locked for two years &mdash; Pro Plus is $498 for 24 months. After October 1 that option goes away. Existing locks are honored. Pro and Casual are still there. Safety is not a premium feature: every briefing uses the same engine. We limit how much you can use PlaneWX, not how well it works.</p>
+
+<p>Pilots can start at <a href="https://www.planewx.ai">www.planewx.ai</a>. PlaneWX is complementary to the electronic flight bag and official weather sources pilots already use. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
     slug: "5x5-aviation-insurance-exclusive-partner",
     category: "Partnerships",
     title: "PlaneWX Names 5X5 Aviation Insurance Its Exclusive Insurance Partner",

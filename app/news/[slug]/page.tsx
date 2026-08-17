@@ -81,9 +81,11 @@ export default async function NewsArticlePage({ params }: Props) {
               {item.date}
             </time>
           </div>
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-white/40">
-            For Immediate Release
-          </p>
+          {(item.category === "Press Release" || item.category === "Partnerships") && (
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-white/40">
+              For Immediate Release
+            </p>
+          )}
           <h1
             className="mb-4 text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl"
             itemProp="headline"
