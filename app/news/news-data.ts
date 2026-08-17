@@ -114,6 +114,70 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
 `,
   },
+  {
+    slug: "ground-protection",
+    category: "Product",
+    title: "Ground Protection Watches the Airplane After You Land",
+    excerpt:
+      "A briefing card answers whether the destination ramp is safe to leave the airplane on. Then, if you want it, texts keep watching — and you can tell PlaneWX hangar, ramp, or home from your phone.",
+    date: "July 16, 2026",
+    isoDate: "2026-07-16",
+    location: "St. Petersburg, Florida",
+    body: `
+<p><strong>St. Petersburg, Florida &mdash; July 16, 2026 &mdash;</strong> PlaneWX today named Ground Protection as an always-on watch for parked aircraft, with optional text alerts. The same weather engine already appears on the briefing as <strong>While You&rsquo;re There</strong> &mdash; so the hangar, preheat, and wind picture is on the trip before you leave, not after you&rsquo;re standing on someone else&rsquo;s ramp.</p>
+
+<p>A WX Score answers whether you should fly. It does not answer whether the airplane is safe sitting there for the next few days. Hail, a gust front, freezing rain, and a hard freeze do not care that you already landed. While You&rsquo;re There is that second question. It does not change the WX Score or a go/no-go call. It tells you whether you need a hangar, a preheat, or a harder look at the tie-downs.</p>
+
+<h2>On the briefing, before you go</h2>
+<p>On eligible U.S. trips, the briefing shows a card titled <strong>While You&rsquo;re There</strong> after the Gotchas. PlaneWX infers how long the airplane will sit: a later leg from the same airport, a separately saved return trip, or a stated 72-hour assumption if no return is on the books yet. Day-by-day detail follows the NWS point forecast, about seven days. Farther out is a lower-confidence preview.</p>
+
+<p>When an Urgent or Alert advisory is in the stay window, the card says hangar or shade is recommended. The advisories underneath are the reason to call the FBO early &mdash; hangar space fills &mdash; not a reservation. PlaneWX does not book hangars.</p>
+
+<p>What the engine actually watches:</p>
+<ul>
+<li><strong>Convective</strong> &mdash; tornado and severe thunderstorm watches and warnings, hail, and convective wind</li>
+<li><strong>Wind</strong> &mdash; forecast wind against the aircraft&rsquo;s advisory and critical limits, plus high-wind products</li>
+<li><strong>Cold</strong> &mdash; overnight at or below the preheat threshold, below POH minimum operating temperature, freezing rain or drizzle, and likely snow</li>
+<li><strong>Heat</strong> &mdash; highs at or above 95&deg;F, with a stronger alert at 105&deg;F</li>
+<li><strong>Regional</strong> &mdash; ice storm, hurricane and tropical, flood, and similar NWS events that matter to a parked airplane</li>
+</ul>
+<p>Typical guidance is practical: arrange engine preheat or hangar overnight; ensure the airplane is tied down or hangared when wind is above the aircraft limit; hangar now if freezing rain is coming. It is not frost monitoring. There is no frost check in the engine.</p>
+
+<p>You can tell the briefing how the airplane will be stored on that stay &mdash; open ramp, tie-downs, shade hangar, hangar, or climate-controlled hangar. An enclosed hangar demotes the wind and storm advisories to reference. A climate hangar also covers cold and heat. Tie-downs alone do not silence an Urgent watch.</p>
+
+<h2>Then the texts, if you want them</h2>
+<p>Ground Protection is the always-on version of the same watch. Turn it on for an aircraft and PlaneWX keeps evaluating the parked location on an hourly cycle. New Urgent or Alert threats can come by text, outside quiet hours (10 p.m. to 7 a.m. by default). You can also watch without texts.</p>
+
+<p>Texts require a verified phone number and an opt-in. First evaluation seeds what is already in play, so you are not spammed with current weather as if it were new.</p>
+
+<p>Reply with a keyword. The parser is keywords, not a sentence:</p>
+<ul>
+<li><strong>HANGAR</strong> (or HANGARED, SECURED) &mdash; the airplane is in a hangar</li>
+<li><strong>RAMP</strong> (or OPEN, UNHANGAR) &mdash; it is back on the open ramp</li>
+<li><strong>HOME</strong> &mdash; clear the away override and resume the home or standby airport</li>
+<li><strong>WX</strong> &mdash; a weather snapshot for the watch airport, even during quiet hours</li>
+<li><strong>STATUS</strong> &mdash; what is being watched</li>
+<li><strong>HELP</strong> &mdash; the command list</li>
+</ul>
+<p>Add a tail if you have more than one airplane on the watch: <code>HANGAR N916CM</code> or the last three, <code>RAMP 6CM</code>.</p>
+
+<h2>Where it thinks the airplane is</h2>
+<p>Ground Protection does not move the watch off live ADS-B. The location is parked override, then standby airport, then home airport. You set that in the app or by texting HANGAR, RAMP, or HOME.</p>
+
+<p>If the tail is in FlightAware history and you turn on Follow Me, the morning digest can use the last landing airport. When that lookup shows the airplane back at home after it was away, PlaneWX clears the parked override &mdash; the same effect as texting HOME. A missed FlightAware lookup does not wipe an away airport. If FlightAware never saw the flight, the override you set by hand stays put.</p>
+
+<h2>Who gets it</h2>
+<p>While You&rsquo;re There is on eligible briefings for Pro and above. Always-on Ground Protection and the texts are Pro Plus (up to three aircraft) and Enterprise. Evaluation is U.S. airports. It is complementary to the EFB and official weather you already use, and it is not a substitute for PIC judgment or a call to the FBO.</p>
+
+<p>Pro Plus is <a href="/news/pro-plus-launch">$29.99 a month or $249 a year</a>. Pilots can start at <a href="https://www.planewx.ai">www.planewx.ai</a>. The in-app guide is at <a href="https://app.planewx.ai/help/ground-weather">app.planewx.ai/help/ground-weather</a>.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
 ]
 
 export function getNewsItem(slug: string): NewsItem | undefined {
