@@ -108,13 +108,30 @@ export default async function NewsArticlePage({ params }: Props) {
             <span aria-hidden="true" className="text-lg font-light leading-none text-white/25">
               +
             </span>
-            <Image
-              src={item.coBrand.logo}
-              alt={item.coBrand.name}
-              width={item.coBrand.logoWidth}
-              height={item.coBrand.logoHeight}
-              className="h-8 w-auto sm:h-9"
-            />
+            {item.coBrand.href ? (
+              <a
+                href={item.coBrand.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-opacity hover:opacity-80"
+              >
+                <Image
+                  src={item.coBrand.logo}
+                  alt={item.coBrand.name}
+                  width={item.coBrand.logoWidth}
+                  height={item.coBrand.logoHeight}
+                  className="h-8 w-auto sm:h-9"
+                />
+              </a>
+            ) : (
+              <Image
+                src={item.coBrand.logo}
+                alt={item.coBrand.name}
+                width={item.coBrand.logoWidth}
+                height={item.coBrand.logoHeight}
+                className="h-8 w-auto sm:h-9"
+              />
+            )}
           </div>
         )}
 
