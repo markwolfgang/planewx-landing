@@ -12,6 +12,18 @@ export interface NewsItem {
   isoDate: string // e.g. "2026-08-17"
   location?: string
   body: string // HTML
+  /**
+   * Optional co-branded logo lockup, rendered above the body for joint
+   * announcements. Our wordmark leads; the partner's mark follows.
+   * Width/height are the asset's intrinsic pixels, for aspect ratio only —
+   * display size is set in the component.
+   */
+  coBrand?: {
+    name: string
+    logo: string
+    logoWidth: number
+    logoHeight: number
+  }
 }
 
 export const NEWS_ITEMS: NewsItem[] = [
@@ -43,7 +55,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 <p>Pro Plus also raises the ceiling: 25 monitored flights, 10 aircraft, unlimited saved routes, and 25 Corridor Watch routes.</p>
 
-<p>The same day, <a href="/news/5x5-aviation-insurance-exclusive-partner">5X5 Aviation Insurance named PlaneWX its exclusive insurance partner</a>. Verified Pro Plus members are eligible for risk-based premium credits through 5X5&rsquo;s Safe and Smart program &mdash; 5% at quote and bind, with more at renewal for members who stay on the plan and use it. Credits are subject to 5X5&rsquo;s underwriting guidelines. PlaneWX does not sell insurance and receives no compensation tied to any policy.</p>
+<p>The same day, <a href="/news/5x5-aviation-insurance-exclusive-partner">5X5 Aviation Insurance named PlaneWX its exclusive insurance partner</a>. Verified Pro Plus members are eligible for risk-based premium credits through 5X5&rsquo;s Safety Rewards program &mdash; 5% at quote and bind, with more available at renewal for members who stay on the plan and use it. Credits are subject to 5X5&rsquo;s underwriting guidelines. PlaneWX does not sell insurance and receives no compensation tied to any policy.</p>
 
 <p>Pro Plus is $29.99 a month or $249 a year. Through October 1, annual plans can be locked for two years &mdash; Pro Plus is $498 for 24 months. After October 1 that option goes away. Existing locks are honored. Pro and Casual are still there. Safety is not a premium feature: every briefing uses the same engine. We limit how much you can use PlaneWX, not how well it works.</p>
 
@@ -61,18 +73,24 @@ export const NEWS_ITEMS: NewsItem[] = [
     category: "Partnerships",
     title: "PlaneWX Names 5X5 Aviation Insurance Its Exclusive Insurance Partner",
     excerpt:
-      "Verified PlaneWX Pro Plus members are eligible for risk-based premium credits through 5X5's Safe and Smart program — underwriting recognition for the preflight work pilots already do.",
+      "Verified PlaneWX Pro Plus members are eligible for risk-based premium credits through 5X5's Safety Rewards program — underwriting recognition for the preflight work pilots already do.",
     date: "August 17, 2026",
     isoDate: "2026-08-17",
     location: "Fremont, Nebraska",
+    coBrand: {
+      name: "5X5 Aviation Insurance",
+      logo: "/logos/5x5-wordmark-white.webp",
+      logoWidth: 1000,
+      logoHeight: 327,
+    },
     body: `
-<p><strong>Fremont, Nebraska &mdash; August 17, 2026 &mdash;</strong> PlaneWX, the pilot&rsquo;s decision support system, today named 5X5 Aviation Insurance its exclusive insurance partner. Verified PlaneWX Pro Plus members are eligible for risk-based premium credits through 5X5&rsquo;s Safe and Smart program &mdash; recognition, in the underwriting process, of the preparation pilots already do before they fly.</p>
+<p><strong>Fremont, Nebraska &mdash; August 17, 2026 &mdash;</strong> PlaneWX, the pilot&rsquo;s decision support system, today named 5X5 Aviation Insurance its exclusive insurance partner. Verified PlaneWX Pro Plus members are eligible for risk-based premium credits through 5X5&rsquo;s Safety Rewards program &mdash; recognition, in the underwriting process, of the preparation pilots already do before they fly.</p>
 
 <p>PlaneWX was built for the gap every EFB leaves open. TAFs cover about 24 hours, and most trips are planned well before that. PlaneWX synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums into a WX Score, feeds that briefing into an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network so no one has to make a hard go/no-go call alone. That picture is available up to 14 days out.</p>
 
 <blockquote><p>&ldquo;PlaneWX doesn&rsquo;t tell you not to fly. It gives you the information to make that decision yourself &mdash; days earlier, when you still have options. 5X5 is the first insurer I&rsquo;ve seen that treats that kind of preparation as something worth underwriting.&rdquo;</p><cite>&mdash; Mark Wolfgang, founder of PlaneWX, a Navy veteran and commercial instrument-rated pilot</cite></blockquote>
 
-<p>Under the program, verified PlaneWX Pro Plus members earn a 5% risk-based premium credit at quote and bind. At renewal, continued Pro Plus membership earns a further 5% credit, and members who use PlaneWX on 75% or more of their flights during the policy year earn an additional 5%. Every active PlaneWX Pro Plus member reaches at least 10% in total credits at renewal. All credits are risk-based, trace to a documented loss-mitigation rationale, and are subject to 5X5&rsquo;s underwriting guidelines and applicable filings.</p>
+<p>Verified PlaneWX Pro Plus members earn a 5% risk-based premium credit at quote and bind, subject to 5X5 underwriting guidelines. At renewal, members who continue their PlaneWX Pro Plus membership may receive additional credit available for pilots who use the platform on at least 75% of their flights. Eligible pilots can receive up to 10% in total premium credits through the program. All credits are risk-based, trace to a documented loss-mitigation rationale, and are subject to 5X5&rsquo;s underwriting guidelines and applicable filings.</p>
 
 <p>The partnership works because both companies treat preparation as evidence rather than as a slogan. A WX Score is a number. An integrated PAVE risk assessment, plus a mentor who can see the full briefing, is a process. 5X5 underwrites that process.</p>
 

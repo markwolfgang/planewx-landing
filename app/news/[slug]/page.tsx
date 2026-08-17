@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { BrandLogo } from "@/components/shared/brand-logo"
 import { NEWS_ITEMS, getNewsItem } from "../news-data"
 
 interface Props {
@@ -95,9 +97,35 @@ export default async function NewsArticlePage({ params }: Props) {
           <p className="text-lg leading-relaxed text-white/70">{item.excerpt}</p>
         </header>
 
-        {/* Body */}
+        {/* Co-branded lockup — both marks on one row, ours first */}
+        {item.coBrand && (
+          <div className="mb-10 flex items-center justify-center gap-5 rounded-xl border border-white/10 bg-white/[0.02] px-6 py-6 sm:gap-8">
+            <BrandLogo
+              variant="wordmarkTransparent"
+              className="h-7 w-auto sm:h-8"
+              alt="PlaneWX"
+            />
+            <span aria-hidden="true" className="text-lg font-light leading-none text-white/25">
+              +
+            </span>
+            <Image
+              src={item.coBrand.logo}
+              alt={item.coBrand.name}
+              width={item.coBrand.logoWidth}
+              height={item.coBrand.logoHeight}
+              className="h-8 w-auto sm:h-9"
+            />
+          </div>
+        )}
+
+        {/*
+          Body. The body HTML carries its own curly quotes, and
+          @tailwindcss/typography adds open-quote/close-quote on blockquote
+          paragraphs — content-none drops the CSS pair so pull quotes don't
+          render as doubled quotation marks.
+        */}
         <div
-          className="prose prose-invert prose-sky max-w-none prose-headings:font-bold prose-headings:text-white prose-a:text-sky-400 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-sky-500/50 prose-blockquote:text-white/80 prose-cite:text-white/50 prose-cite:not-italic"
+          className="prose prose-invert prose-sky max-w-none prose-headings:font-bold prose-headings:text-white prose-a:text-sky-400 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-sky-500/50 prose-blockquote:text-white/80 prose-cite:text-white/50 prose-cite:not-italic [&_blockquote_p::before]:content-none [&_blockquote_p::after]:content-none"
           itemProp="articleBody"
           dangerouslySetInnerHTML={{ __html: item.body }}
         />
