@@ -106,7 +106,7 @@ export function LandingVariantC() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed">
-            From student pilots to 35,000-hour ATP captains. From Cessna 172s to Gulfstreams.{" "}
+            From student pilots to {STATS.maxPilotHoursPhrase} ATP captains. From Cessna 172s to Gulfstreams.{" "}
             <strong className="text-white">{STATS.instrumentRated} instrument rated.</strong>
           </p>
 
@@ -138,7 +138,7 @@ export function LandingVariantC() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Real pilots. Real decisions.</h2>
-            <p className="text-white/50">From student pilots to 35,000-hour ATP captains.</p>
+            <p className="text-white/50">From student pilots to {STATS.maxPilotHoursPhrase} ATP captains.</p>
           </div>
           <TestimonialsCarousel />
         </div>
@@ -165,7 +165,7 @@ export function LandingVariantC() {
               { value: STATS.instrumentRated, label: "Instrument Rated", color: "text-emerald-400", border: "border-emerald-500/20" },
               { value: STATS.jetAircraft, label: "Jet Aircraft", color: "text-violet-400", border: "border-violet-500/20" },
               { value: STATS.atpPilots, label: "ATP Pilots", color: "text-amber-400", border: "border-amber-500/20" },
-              { value: "2,000+", label: "Average Hours per Pilot", color: "text-cyan-400", border: "border-cyan-500/20" },
+              { value: STATS.avgHours, label: "Average Hours per Pilot", color: "text-cyan-400", border: "border-cyan-500/20" },
               { value: STATS.maxPilotHours, label: "Highest-Time Pilot", color: "text-rose-400", border: "border-rose-500/20" },
             ].map(({ value, label, color, border }) => (
               <div key={label} className={`p-6 rounded-2xl bg-white/[0.03] border ${border} text-center`}>

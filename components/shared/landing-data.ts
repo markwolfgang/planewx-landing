@@ -1,12 +1,16 @@
-// Last updated: Aug 2026 — analytics replica profiles count 1,879 (2026-08-07)
+// Last updated: 2026-08-17
+// Replica (sync 07:24 UTC): 2,066 active · 3,550,417 hrs · 70% IR · 194 jets · 153 types · 174 ATP · max 35,000 · avg 1,909
+// Prod active pilots at write: 2,085
 export const STATS = {
-  totalPilots: "1,850+",
-  cumulativeHours: "2.9M+",
-  instrumentRated: "73%",
-  jetAircraft: "167",
-  aircraftTypes: "94",
+  totalPilots: "2,050+",
+  cumulativeHours: "3.5M+",
+  instrumentRated: "70%",
+  jetAircraft: "194",
+  aircraftTypes: "153",
   maxPilotHours: "35,000+",
-  atpPilots: "146",
+  maxPilotHoursPhrase: "35,000-hour",
+  atpPilots: "174",
+  avgHours: "1,900+",
 }
 
 export const TESTIMONIALS = [
@@ -69,11 +73,11 @@ export const FAQS = [
     a: "Yes. The free plan includes 2 active flights, full WX Score breakdowns, personal minimums, PAVE risk assessment, 14-day planning, the Flight Window Explorer, and the ability to broadcast a help request to volunteer mentors. Every paid plan uses the identical AI engine — limits are on quantity, not quality.",
   },
   {
-    q: "What's the difference between Casual and Pro?",
-    a: "Casual ($7.99/mo or $59.99/yr) is for pilots who fly a few times a month and want PlaneWX to watch the weather automatically: auto-refresh, email alerts, Fuel Advisor, and Trip Watchers. Pro ($14.99/mo or $119/yr) adds route-scale tools for frequent flyers: Corridor Watch, Multi-City Optimizer (up to 6 destinations), and the ability to browse and connect directly with mentors.",
+    q: "What's the difference between Casual, Pro, and Pro Plus?",
+    a: "Casual ($7.99/mo or $59.99/yr) is for pilots who fly a few times a month and want PlaneWX to watch the weather automatically: auto-refresh, email alerts, Fuel Advisor, and Trip Watchers. Pro ($14.99/mo or $119/yr) adds route-scale tools for frequent flyers: Corridor Watch, Multi-City Optimizer (up to 6 destinations), and the ability to browse and connect directly with mentors. Pro Plus ($29.99/mo or $249/yr) adds automation between flights — Ground Protection, Auto-Brief, Pre-Flight Text — plus Contract Fuel Pricing, On-Demand Refresh, PlaneWX Labs, and eligibility for 5x5's insurance credit.",
   },
   {
     q: "What happens after the 14-day free trial?",
-    a: "Your trial gives you full Pro access with no credit card required. After 14 days you choose: stay on the free plan at no cost, subscribe to Casual for $7.99/month for auto-monitoring, or subscribe to Pro for the full toolkit. There's no pressure — the free plan is genuinely useful and never expires.",
+    a: "Your trial gives you full Pro Plus access with no credit card required. After 14 days you choose: stay on the free plan at no cost, or subscribe to Casual, Pro, or Pro Plus. There's no pressure — the free plan is genuinely useful and never expires.",
   },
 ]
