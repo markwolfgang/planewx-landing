@@ -6,7 +6,7 @@ import { Check, Crown, Plane, Shield } from "lucide-react"
 const APP_HELP = "https://app.planewx.ai"
 const TWO_YEAR_OFFER_ENDS_AT_MS = Date.parse("2026-10-02T05:00:00.000Z")
 
-const PLUS_BULLETS: { name: string; detail: string; helpPath?: string }[] = [
+const PLUS_BULLETS: { name: string; detail: string; helpPath?: string; href?: string }[] = [
   {
     name: "Ground Protection",
     detail:
@@ -45,6 +45,7 @@ const PLUS_BULLETS: { name: string; detail: string; helpPath?: string }[] = [
     name: "5x5 Insurance Discount",
     detail:
       "Eligible for up to 10% off your aircraft insurance premium through our partner 5x5. Terms are set by 5x5.",
+    href: "https://www.5x5insurance.com",
   },
   {
     name: "PlaneWX Labs",
@@ -161,6 +162,15 @@ export function PricingSection({ variant }: { variant: string }) {
                     {item.helpPath ? (
                       <a
                         href={`${APP_HELP}${item.helpPath}`}
+                        className="font-semibold text-white underline underline-offset-2 decoration-indigo-400/70 hover:text-indigo-300"
+                      >
+                        {item.name}
+                      </a>
+                    ) : item.href ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="font-semibold text-white underline underline-offset-2 decoration-indigo-400/70 hover:text-indigo-300"
                       >
                         {item.name}
