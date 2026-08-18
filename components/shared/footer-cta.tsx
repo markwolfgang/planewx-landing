@@ -30,7 +30,7 @@ export function FooterCTA({ variant }: { variant: string }) {
           </span>
         </h2>
         <p className="text-lg text-white/60 mb-10 max-w-lg mx-auto">
-          Join {STATS.totalPilots} pilots — from students to 35,000-hour ATP captains — who use PlaneWX
+          Join {STATS.totalPilots} pilots — from students to {STATS.maxPilotHoursPhrase} ATP captains — who use PlaneWX
           to make better decisions.
         </p>
         <a

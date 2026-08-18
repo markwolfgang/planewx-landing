@@ -1,12 +1,16 @@
-// Last updated: Aug 2026 — analytics replica profiles count 1,879 (2026-08-07)
+// Last updated: 2026-08-17
+// Replica (sync 07:24 UTC): 2,066 active · 3,550,417 hrs · 70% IR · 194 jets · 153 types · 174 ATP · max 35,000 · avg 1,909
+// Prod active pilots at write: 2,085
 export const STATS = {
-  totalPilots: "1,850+",
-  cumulativeHours: "2.9M+",
-  instrumentRated: "73%",
-  jetAircraft: "167",
-  aircraftTypes: "94",
+  totalPilots: "2,050+",
+  cumulativeHours: "3.5M+",
+  instrumentRated: "70%",
+  jetAircraft: "194",
+  aircraftTypes: "153",
   maxPilotHours: "35,000+",
-  atpPilots: "146",
+  maxPilotHoursPhrase: "35,000-hour",
+  atpPilots: "174",
+  avgHours: "1,900+",
 }
 
 export const TESTIMONIALS = [

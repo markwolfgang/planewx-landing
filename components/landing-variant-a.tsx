@@ -169,7 +169,7 @@ export function LandingVariantA() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Real pilots. Real decisions.</h2>
-            <p className="text-white/50">From student pilots to 35,000-hour ATP captains.</p>
+            <p className="text-white/50">From student pilots to {STATS.maxPilotHoursPhrase} ATP captains.</p>
           </div>
           <TestimonialsCarousel />
         </div>
@@ -198,7 +198,7 @@ export function LandingVariantA() {
               <div className="text-sm text-white/50">jet aircraft<br />in our fleet</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">2,000+</div>
+              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">{STATS.avgHours}</div>
               <div className="text-sm text-white/50">average flight hours<br />per pilot</div>
             </div>
           </div>
