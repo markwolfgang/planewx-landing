@@ -47,11 +47,11 @@ export function FooterCTA({ variant }: { variant: string }) {
           </div>
           <div className="flex items-center gap-2">
             <Check className="h-4 w-4 text-emerald-400" />
-            Full Pro access for 14 days
+            Full Pro Plus access for 14 days
           </div>
           <div className="flex items-center gap-2">
             <Check className="h-4 w-4 text-emerald-400" />
-            Then choose: Free, Casual, or Pro
+            Then choose: Free, Casual, Pro, or Pro Plus
           </div>
         </div>
       </div>
