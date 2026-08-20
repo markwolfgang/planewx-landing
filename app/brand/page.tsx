@@ -242,20 +242,20 @@ export default function BrandPortalPage() {
       <section>
         <h2 className="text-3xl font-bold text-white mb-2">Pricing</h2>
         <p className="text-white/60 mb-6">
-          Three tiers — same analysis engine at every level.
+          Four tiers — same analysis engine at every level.
         </p>
 
         <div className="p-5 rounded-2xl bg-emerald-500/5 border border-emerald-500/20 mb-8 flex items-start gap-4">
           <Shield className="h-6 w-6 text-emerald-400 shrink-0 mt-0.5" />
           <p className="text-white/80 text-sm leading-relaxed">
             <strong className="text-emerald-400">Safety is not a premium feature.</strong>{" "}
-            Every briefing — Free, Casual, or Pro — uses the same AI engine, the same
+            Every briefing — Free, Casual, Pro, or Pro Plus — uses the same AI engine, the same
             weather models, and the same scoring methodology. We limit how much you can
             use PlaneWX, not how well it works.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
 
           {/* Free */}
           <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
@@ -348,9 +348,40 @@ export default function BrandPortalPage() {
             </div>
           </div>
 
+          {/* Pro Plus */}
+          <div className="relative p-6 rounded-2xl bg-gradient-to-br from-indigo-950/60 to-violet-950/40 border-2 border-indigo-500/40">
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-indigo-600 text-white text-xs font-semibold">
+                <Sparkles className="h-3 w-3" />
+                Automation
+              </div>
+            </div>
+            <p className="text-xs uppercase tracking-widest text-indigo-400/70 mb-1">Pro Plus</p>
+            <div className="text-3xl font-bold text-white mb-0.5">$29.99</div>
+            <p className="text-xs text-white/30 mb-1">/month</p>
+            <p className="text-xs text-indigo-400 mb-4">or $249/year <span className="text-emerald-400">(save $111)</span></p>
+            <div className="space-y-2 text-sm text-white/70">
+              <p className="text-xs text-white/30 uppercase tracking-wider mb-3">Everything in Pro, plus</p>
+              {[
+                "Ground Protection",
+                "Auto-Brief on file",
+                "Pre-Flight Text",
+                "On-Demand Refresh",
+                "Contract Fuel Pricing",
+                "PlaneWX Labs",
+                "5x5 Insurance credit",
+              ].map((f) => (
+                <div key={f} className="flex items-center gap-2">
+                  <Check className="h-3.5 w-3.5 text-indigo-400 shrink-0" />
+                  <span>{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
         <p className="text-xs text-white/30 mt-4 text-center">
-          All plans include a 14-day free Pro trial. No credit card required to start.
+          All plans include a 14-day free Pro Plus trial. No credit card required to start.
         </p>
       </section>
 
