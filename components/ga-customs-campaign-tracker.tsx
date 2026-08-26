@@ -6,6 +6,8 @@ import { VariantTracker } from "@/components/shared/variant-tracker"
 export const GA_CUSTOMS_CAMPAIGN_CODE = "GACUSTOMS"
 export const GA_CUSTOMS_LP = "gacus"
 
+const PLANEWX_HOME = "https://www.planewx.ai"
+
 /** Records visits on /ga-customs (with or without ?ref=) as GACUSTOMS. */
 export function GaCustomsCampaignTracker() {
   return (
@@ -13,8 +15,8 @@ export function GaCustomsCampaignTracker() {
   )
 }
 
-function signupHref(): string {
-  let url = `https://app.planewx.ai/auth/sign-up?lp=${GA_CUSTOMS_LP}`
+/** PlaneWX marketing home with campaign ref preserved for attribution. */
+function planewxHref(): string {
   try {
     const stored = localStorage.getItem("planewx_referral")
     const fromUrl = new URLSearchParams(window.location.search).get("ref")
@@ -22,11 +24,10 @@ function signupHref(): string {
       (fromUrl ? fromUrl.toUpperCase() : null) ||
       stored ||
       GA_CUSTOMS_CAMPAIGN_CODE
-    if (code) url += `&ref=${encodeURIComponent(code)}`
+    return `${PLANEWX_HOME}?ref=${encodeURIComponent(code)}`
   } catch {
-    url += `&ref=${GA_CUSTOMS_CAMPAIGN_CODE}`
+    return `${PLANEWX_HOME}?ref=${GA_CUSTOMS_CAMPAIGN_CODE}`
   }
-  return url
 }
 
 /** Primary CTA — always attributes to GACUSTOMS (or ?ref= when present). */
@@ -39,10 +40,10 @@ export function GaCustomsSignUpLink({
 }) {
   return (
     <a
-      href={`https://app.planewx.ai/auth/sign-up?lp=${GA_CUSTOMS_LP}&ref=${GA_CUSTOMS_CAMPAIGN_CODE}`}
+      href={`${PLANEWX_HOME}?ref=${GA_CUSTOMS_CAMPAIGN_CODE}`}
       className={className}
       onClick={(e) => {
-        e.currentTarget.href = signupHref()
+        e.currentTarget.href = planewxHref()
       }}
     >
       {children}
