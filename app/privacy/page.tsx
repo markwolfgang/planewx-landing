@@ -7,7 +7,7 @@ export const metadata = {
   description: "Privacy Policy for PlaneWX.",
 }
 
-const EFFECTIVE_DATE = "January 5, 2026"
+const EFFECTIVE_DATE = "August 26, 2026"
 
 export default function PrivacyPolicyPage() {
   return (
@@ -150,7 +150,38 @@ export default function PrivacyPolicyPage() {
           </p>
         </Section>
 
-        <Section title="14. Contact">
+        <Section title="14. GA Customs (iOS app)">
+          <p className="text-sm leading-relaxed text-white/70 mb-3">
+            GA Customs is a free iOS app from PlaneWX, LLC. The following describes how GA Customs handles information in addition to
+            the practices above that apply to PlaneWX Services generally.
+          </p>
+          <ul className="list-disc space-y-2 pl-6">
+            <li>
+              <strong className="text-white">Location:</strong> Location access is optional and, when enabled, is When In Use only.
+              It is used on-device to show distance to Airports of Entry. Location is not sent to PlaneWX servers for tracking.
+            </li>
+            <li>
+              <strong className="text-white">Favorites:</strong> Favorites are stored on your device and may sync via anonymous
+              Firebase Authentication. We do not collect a name or email address for that sync.
+            </li>
+            <li>
+              <strong className="text-white">Pilot reviews:</strong> Pilot reviews are user-generated content stored in Firebase.
+              Users can report reviews. We may hide reported reviews.
+            </li>
+            <li>
+              <strong className="text-white">Maps and fact sheets:</strong> Map tiles are provided by OpenStreetMap. CBP airport
+              fact sheets may be cached from CBP publications and/or Firebase Storage for offline use.
+            </li>
+            <li>
+              <strong className="text-white">Contact:</strong>{" "}
+              <a href="mailto:privacy@planewx.ai" className="text-sky-400 hover:underline">privacy@planewx.ai</a>
+              {" "}and{" "}
+              <a href="mailto:support@planewx.ai" className="text-sky-400 hover:underline">support@planewx.ai</a>.
+            </li>
+          </ul>
+        </Section>
+
+        <Section title="15. Contact">
           <p className="text-sm leading-relaxed text-white/70">
             Questions about this Policy? Contact us at <a href="mailto:privacy@planewx.ai" className="text-sky-400 hover:underline">privacy@planewx.ai</a>.
           </p>
