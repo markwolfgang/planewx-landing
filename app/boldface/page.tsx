@@ -123,7 +123,7 @@ export default function BoldfacePage() {
       <nav className="border-b border-white/5 bg-[#0B1120]/80 backdrop-blur-md">
         <div className="container mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2" aria-label="PlaneWX home">
-            <BrandLogo className="h-8 w-auto" />
+            <BrandLogo variant="wordmarkTransparent" className="h-8 w-auto" />
           </Link>
           <Link
             href="/"
@@ -136,18 +136,30 @@ export default function BoldfacePage() {
       </nav>
 
       <main className="container mx-auto max-w-5xl px-4 py-12 sm:py-16 space-y-14 sm:space-y-20">
-        {/* Hero — brand first */}
+        {/* Hero — brand first: mean-face spinner + TBM / BOLDFACE wordmark */}
         <header className="relative space-y-8 text-center sm:text-left">
-          <div className="flex flex-col sm:flex-row sm:items-end gap-5 sm:gap-8">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+            <div className="mx-auto sm:mx-0 shrink-0">
+              <Image
+                src="/boldface/tbm-boldface-icon.png"
+                alt="TBM Boldface"
+                width={128}
+                height={128}
+                className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32"
+                priority
+              />
+            </div>
             <div className="space-y-4 min-w-0 flex-1">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#3b82f6]">
                 From the PlaneWX family
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-                <span className="block text-[#3b82f6] text-lg sm:text-xl font-semibold tracking-[0.18em] uppercase mb-2">
+              <h1 className="leading-[0.95]">
+                <span className="block text-[#3b82f6] text-base sm:text-lg font-semibold tracking-[0.22em] uppercase mb-1.5">
                   TBM
                 </span>
-                Boldface
+                <span className="block text-5xl sm:text-6xl md:text-7xl font-black italic tracking-tight uppercase">
+                  Boldface
+                </span>
               </h1>
               <p className="text-lg sm:text-xl text-white/65 max-w-xl leading-relaxed">
                 Free iPhone/iPad app for TBM memory items — study, test, and chair-fly
@@ -170,8 +182,7 @@ export default function BoldfacePage() {
             </BoldfacePlaneWxLink>
           </div>
           <p className="text-sm text-white/40 max-w-lg">
-            Brought to you by PlaneWX — not a sponsored product. Weather decision
-            support lives on planewx.ai.
+            Brought to you by PlaneWX. Weather decision support lives on planewx.ai.
           </p>
         </header>
 
@@ -267,7 +278,7 @@ export default function BoldfacePage() {
           </div>
           <div className="pt-4 flex flex-col items-center gap-3">
             <p className="text-xs text-white/40 uppercase tracking-wider">Brought to you by</p>
-            <BrandLogo className="h-7 w-auto opacity-90" />
+            <BrandLogo variant="wordmarkTransparent" className="h-7 w-auto" />
           </div>
         </section>
 
