@@ -13,7 +13,7 @@ declare global {
  * Records campaign visits via POST /api/campaign-visit.
  * - `?ref=` wins when present (stored in localStorage for signup CTAs).
  * - Dedicated campaign landings may pass `defaultCode` so bare path visits
- *   (e.g. /ga-customs) are still attributed without requiring ?ref=.
+ *   (e.g. /ga-customs, /boldface) are still attributed without requiring ?ref=.
  */
 export function VariantTracker({
   variant,
