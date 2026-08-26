@@ -246,9 +246,9 @@ export default function GaCustomsPage() {
             <ArrowRight className="h-4 w-4" />
           </GaCustomsSignUpLink>
           <p className="text-sm text-white/40 pt-2 max-w-xl mx-auto leading-relaxed">
-            GA Customs is available on TestFlight — Apple&apos;s free app for installing
-            iOS apps before they are on the App Store. Open the invite on iPhone or
-            iPad and TestFlight installs it. App Store listing coming soon.
+            GA Customs is available on TestFlight for beta testing — invite coming soon.
+            TestFlight is Apple&apos;s free app for installing iOS apps before they are
+            on the App Store. App Store listing coming soon.
           </p>
           <div className="pt-4 flex flex-col items-center gap-3">
             <p className="text-xs text-white/40 uppercase tracking-wider">Brought to you by</p>

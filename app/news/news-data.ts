@@ -40,6 +40,35 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "free-apps-testflight-boldface-ga-customs",
+    category: "Product",
+    title: "PlaneWX Launches Two Free Apps on TestFlight",
+    excerpt:
+      "TBM Boldface and GA Customs are in TestFlight beta now, free of charge — memory items for TBM pilots, and U.S. Airport of Entry hours & fees.",
+    date: "August 25, 2026",
+    isoDate: "2026-08-25",
+    location: "St. Petersburg, Florida",
+    body: `
+<p><strong>St. Petersburg, Florida &mdash; August 25, 2026 &mdash;</strong> PlaneWX today launched two free companion iOS apps for GA pilots. Both are in TestFlight beta, and both are free of charge.</p>
+
+<p><a href="/boldface"><strong>TBM Boldface</strong></a> is built for TBM memory items &mdash; study, test, and chair-fly the procedures before the airplane asks. Join the public TestFlight beta at <a href="https://testflight.apple.com/join/T5VnWRgb" target="_blank" rel="noopener noreferrer">testflight.apple.com/join/T5VnWRgb</a>.</p>
+
+<p><a href="/ga-customs"><strong>GA Customs</strong></a> covers U.S. Airport of Entry hours and fees for pilots planning a crossing. A TestFlight invite is coming soon.</p>
+
+<p>TestFlight is Apple&rsquo;s free app for installing iOS betas before they are on the App Store. Open an invite on iPhone or iPad and TestFlight installs the app.</p>
+
+<p>Both apps are listed together at <a href="/apps">planewx.ai/apps</a>. They are brought to you by PlaneWX.</p>
+
+<p>PlaneWX remains the pilot&rsquo;s decision support system for go/no-go weather &mdash; complementary to the electronic flight bag and official weather sources pilots already use. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
     slug: "5x5-aviation-insurance-exclusive-partner",
     category: "Partnerships",
     title: "PlaneWX Names 5X5 Aviation Insurance Its Exclusive Insurance Partner",
