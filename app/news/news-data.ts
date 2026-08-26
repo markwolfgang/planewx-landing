@@ -53,7 +53,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 <p><a href="/boldface"><strong>TBM Boldface</strong></a> is built for TBM memory items &mdash; study, test, and chair-fly the procedures before the airplane asks. Join the public TestFlight beta at <a href="https://testflight.apple.com/join/T5VnWRgb" target="_blank" rel="noopener noreferrer">testflight.apple.com/join/T5VnWRgb</a>.</p>
 
-<p><a href="/ga-customs"><strong>GA Customs</strong></a> covers U.S. Airport of Entry hours and fees for pilots planning a crossing. A TestFlight invite is coming soon.</p>
+<p><a href="/ga-customs"><strong>GA Customs</strong></a> covers U.S. Airport of Entry hours and fees for pilots planning a crossing. Join the public TestFlight beta at <a href="https://testflight.apple.com/join/WnAf8xTj" target="_blank" rel="noopener noreferrer">testflight.apple.com/join/WnAf8xTj</a>.</p>
 
 <p>TestFlight is Apple&rsquo;s free app for installing iOS betas before they are on the App Store. Open an invite on iPhone or iPad and TestFlight installs the app.</p>
 
