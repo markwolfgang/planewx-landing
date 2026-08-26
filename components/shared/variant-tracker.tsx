@@ -9,11 +9,24 @@ declare global {
   }
 }
 
-export function VariantTracker({ variant }: { variant: string }) {
+/**
+ * Records campaign visits via POST /api/campaign-visit.
+ * - `?ref=` wins when present (stored in localStorage for signup CTAs).
+ * - Dedicated campaign landings may pass `defaultCode` so bare path visits
+ *   (e.g. /ga-customs) are still attributed without requiring ?ref=.
+ */
+export function VariantTracker({
+  variant,
+  defaultCode,
+}: {
+  variant: string
+  defaultCode?: string
+}) {
   useEffect(() => {
     const refParam = new URLSearchParams(window.location.search).get("ref")
-    if (refParam) {
-      const code = refParam.toUpperCase()
+    const code = (refParam || defaultCode || "").trim().toUpperCase() || null
+
+    if (code) {
       try {
         localStorage.setItem("planewx_referral", code)
       } catch {}
@@ -40,7 +53,7 @@ export function VariantTracker({ variant }: { variant: string }) {
     if (window.fbq) {
       window.fbq("trackCustom", "LandingVariantView", { variant })
     }
-  }, [variant])
+  }, [variant, defaultCode])
 
   return null
 }
