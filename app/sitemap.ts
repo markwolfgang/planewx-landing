@@ -36,7 +36,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.95,
     },
     {
+<<<<<<< HEAD
       url: `${baseUrl}/ga-customs`,
+=======
+      url: `${baseUrl}/boldface`,
+>>>>>>> 6d1c4e7 (Add TBM Boldface campaign landing at /boldface.)
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.85,
