@@ -25,7 +25,7 @@ const APPS = [
     href: "/boldface",
     name: "TBM Boldface",
     subtitle: "TBM memory items on iPhone & iPad",
-    body: "Free TestFlight app for chair-flying memory items — study, test, and keep serial-aware procedures ready before the airplane asks.",
+    body: "Free iOS app for chair-flying memory items — study, test, and keep serial-aware procedures ready before the airplane asks.",
     cta: "Open TBM Boldface",
     icon: {
       src: "/boldface/tbm-boldface-icon.png",
@@ -88,7 +88,7 @@ export default function AppsPage() {
             Free apps
           </h1>
           <p className="text-lg sm:text-xl text-white/[0.72] leading-relaxed animate-fade-in-up [animation-delay:120ms]">
-            Free tools for GA pilots — brought to you by PlaneWX, not sponsored.
+            Free tools for GA pilots, brought to you by PlaneWX.
           </p>
         </header>
 

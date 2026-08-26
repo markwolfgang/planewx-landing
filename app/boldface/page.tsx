@@ -181,6 +181,11 @@ export default function BoldfacePage() {
               <ArrowRight className="h-4 w-4" />
             </BoldfacePlaneWxLink>
           </div>
+          <p className="text-sm text-white/40 max-w-xl leading-relaxed">
+            Available on TestFlight — Apple&apos;s free app for installing iOS apps
+            before they are on the App Store. Open the invite on iPhone or iPad and
+            TestFlight installs it.
+          </p>
           <p className="text-sm text-white/40 max-w-lg">
             Brought to you by PlaneWX. Weather decision support lives on planewx.ai.
           </p>
@@ -276,6 +281,11 @@ export default function BoldfacePage() {
               <ArrowRight className="h-4 w-4" />
             </BoldfacePlaneWxLink>
           </div>
+          <p className="text-sm text-white/40 max-w-xl mx-auto leading-relaxed">
+            TestFlight is Apple&apos;s free app for installing iOS apps before they are
+            on the App Store — open the invite on iPhone or iPad and TestFlight
+            installs it.
+          </p>
           <div className="pt-4 flex flex-col items-center gap-3">
             <p className="text-xs text-white/40 uppercase tracking-wider">Brought to you by</p>
             <BrandLogo variant="wordmarkTransparent" className="h-7 w-auto" />

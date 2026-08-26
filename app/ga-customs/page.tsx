@@ -245,9 +245,10 @@ export default function GaCustomsPage() {
             Get PlaneWX
             <ArrowRight className="h-4 w-4" />
           </GaCustomsSignUpLink>
-          <p className="text-sm text-white/40 pt-2">
-            GA Customs on the App Store — listing coming soon. This page is the
-            marketing URL for App Store and in-app PlaneWX links.
+          <p className="text-sm text-white/40 pt-2 max-w-xl mx-auto leading-relaxed">
+            GA Customs is available on TestFlight — Apple&apos;s free app for installing
+            iOS apps before they are on the App Store. Open the invite on iPhone or
+            iPad and TestFlight installs it. App Store listing coming soon.
           </p>
           <div className="pt-4 flex flex-col items-center gap-3">
             <p className="text-xs text-white/40 uppercase tracking-wider">Brought to you by</p>
