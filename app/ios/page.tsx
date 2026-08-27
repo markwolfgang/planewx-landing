@@ -160,10 +160,10 @@ export default function PlaneWxIosPage() {
         </section>
 
         <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-10 space-y-5 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold">More free apps from PlaneWX</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold">More TestFlight betas from PlaneWX</h2>
           <p className="text-white/60 max-w-xl mx-auto leading-relaxed">
-            TBM Boldface and GA Customs are also on TestFlight — memory items for TBM
-            pilots and U.S. Airport of Entry hours &amp; fees.
+            TBM Boldface and GA Customs are in beta too — memory items for TBM pilots
+            and U.S. Airport of Entry hours &amp; fees.
           </p>
           <Link
             href="/apps"

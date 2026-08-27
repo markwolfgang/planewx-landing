@@ -4,14 +4,17 @@ import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 
+const BETA_BADGE_CLASS =
+  "border-amber-400/30 bg-amber-400/10 text-amber-300" as const
+
 export const metadata: Metadata = {
   title: "iOS apps → PlaneWX | PlaneWX, TBM Boldface & GA Customs",
   description:
-    "PlaneWX for iPhone and iPad on TestFlight, plus free companion apps — TBM Boldface for TBM memory items and GA Customs for U.S. Airport of Entry hours & fees.",
+    "Three TestFlight betas from the PlaneWX family — PlaneWX for iPhone and iPad, TBM Boldface for memory items, and GA Customs for U.S. Airport of Entry hours & fees.",
   openGraph: {
     title: "iOS apps from the PlaneWX family",
     description:
-      "PlaneWX on TestFlight plus TBM Boldface and GA Customs — free companion apps for GA pilots.",
+      "PlaneWX, TBM Boldface, and GA Customs — all three on TestFlight beta for GA pilots.",
     type: "website",
     url: "https://www.planewx.ai/apps",
   },
@@ -28,8 +31,7 @@ const APPS = [
     body: "Native app for trips, WX Score, and briefings — ForeFlight Send To import, push notifications, and the same account as app.planewx.ai.",
     cta: "Join PlaneWX TestFlight",
     badge: "Beta",
-    badgeClassName:
-      "border-amber-400/30 bg-amber-400/10 text-amber-300",
+    badgeClassName: BETA_BADGE_CLASS,
     icon: {
       src: "/brand/planewx-icon-light.png",
       alt: "PlaneWX",
@@ -40,10 +42,10 @@ const APPS = [
     href: "/boldface",
     name: "TBM Boldface",
     subtitle: "TBM memory items on iPhone & iPad",
-    body: "Free iOS app for chair-flying memory items — study, test, and keep serial-aware procedures ready before the airplane asks.",
-    cta: "Open TBM Boldface",
-    badge: "Free",
-    badgeClassName: "border-[#3B82F6]/30 bg-[#3B82F6]/10 text-[#3B82F6]",
+    body: "iOS app for chair-flying memory items — study, test, and keep serial-aware procedures ready before the airplane asks.",
+    cta: "Join TBM Boldface TestFlight",
+    badge: "Beta",
+    badgeClassName: BETA_BADGE_CLASS,
     icon: {
       src: "/boldface/tbm-boldface-icon.png",
       alt: "TBM Boldface",
@@ -54,10 +56,10 @@ const APPS = [
     href: "/ga-customs",
     name: "GA Customs",
     subtitle: "U.S. Airport of Entry hours & fees",
-    body: "Free iOS app for AOE hours, fees, and notice requirements — plan the crossing without digging through scattered pages.",
-    cta: "Open GA Customs",
-    badge: "Free",
-    badgeClassName: "border-[#3B82F6]/30 bg-[#3B82F6]/10 text-[#3B82F6]",
+    body: "iOS app for AOE hours, fees, and notice requirements — plan the crossing without digging through scattered pages.",
+    cta: "Join GA Customs TestFlight",
+    badge: "Beta",
+    badgeClassName: BETA_BADGE_CLASS,
     icon: {
       src: "/ga-customs/app-icon.png",
       alt: "GA Customs",
@@ -107,7 +109,7 @@ export default function AppsPage() {
             iOS apps
           </h1>
           <p className="text-lg sm:text-xl text-white/[0.72] leading-relaxed animate-fade-in-up [animation-delay:120ms]">
-            PlaneWX on TestFlight, plus free companion tools for GA pilots.
+            Three iOS apps in TestFlight beta — PlaneWX plus companion tools for GA pilots.
           </p>
         </header>
 
