@@ -4,14 +4,17 @@ import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 
+const BETA_BADGE_CLASS =
+  "border-amber-400/30 bg-amber-400/10 text-amber-300" as const
+
 export const metadata: Metadata = {
-  title: "Free apps → PlaneWX | TBM Boldface & GA Customs",
+  title: "iOS apps → PlaneWX | PlaneWX, TBM Boldface & GA Customs",
   description:
-    "Free tools for GA pilots from the PlaneWX family — TBM Boldface for TBM memory items, and GA Customs for U.S. Airport of Entry hours & fees. Brought to you by PlaneWX.",
+    "Three TestFlight betas from the PlaneWX family — PlaneWX for iPhone and iPad, TBM Boldface for memory items, and GA Customs for U.S. Airport of Entry hours & fees.",
   openGraph: {
-    title: "Free apps from the PlaneWX family",
+    title: "iOS apps from the PlaneWX family",
     description:
-      "TBM Boldface and GA Customs — free apps for GA pilots, brought to you by PlaneWX.",
+      "PlaneWX, TBM Boldface, and GA Customs — all three on TestFlight beta for GA pilots.",
     type: "website",
     url: "https://www.planewx.ai/apps",
   },
@@ -22,11 +25,27 @@ export const metadata: Metadata = {
 
 const APPS = [
   {
+    href: "/ios",
+    name: "PlaneWX",
+    subtitle: "Weather decision support on iPhone & iPad",
+    body: "Native app for trips, WX Score, and briefings — ForeFlight Send To import, push notifications, and the same account as app.planewx.ai.",
+    cta: "Join PlaneWX TestFlight",
+    badge: "Beta",
+    badgeClassName: BETA_BADGE_CLASS,
+    icon: {
+      src: "/brand/planewx-icon-light.png",
+      alt: "PlaneWX",
+      rounded: true,
+    },
+  },
+  {
     href: "/boldface",
     name: "TBM Boldface",
     subtitle: "TBM memory items on iPhone & iPad",
-    body: "Free iOS app for chair-flying memory items — study, test, and keep serial-aware procedures ready before the airplane asks.",
-    cta: "Open TBM Boldface",
+    body: "iOS app for chair-flying memory items — study, test, and keep serial-aware procedures ready before the airplane asks.",
+    cta: "Join TBM Boldface TestFlight",
+    badge: "Beta",
+    badgeClassName: BETA_BADGE_CLASS,
     icon: {
       src: "/boldface/tbm-boldface-icon.png",
       alt: "TBM Boldface",
@@ -37,8 +56,10 @@ const APPS = [
     href: "/ga-customs",
     name: "GA Customs",
     subtitle: "U.S. Airport of Entry hours & fees",
-    body: "Free iOS app for AOE hours, fees, and notice requirements — plan the crossing without digging through scattered pages.",
-    cta: "Open GA Customs",
+    body: "iOS app for AOE hours, fees, and notice requirements — plan the crossing without digging through scattered pages.",
+    cta: "Join GA Customs TestFlight",
+    badge: "Beta",
+    badgeClassName: BETA_BADGE_CLASS,
     icon: {
       src: "/ga-customs/app-icon.png",
       alt: "GA Customs",
@@ -85,15 +106,15 @@ export default function AppsPage() {
             From the PlaneWX family
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05] animate-fade-in-up [animation-delay:60ms]">
-            Free apps
+            iOS apps
           </h1>
           <p className="text-lg sm:text-xl text-white/[0.72] leading-relaxed animate-fade-in-up [animation-delay:120ms]">
-            Free tools for GA pilots, brought to you by PlaneWX.
+            Three iOS apps in TestFlight beta — PlaneWX plus companion tools for GA pilots.
           </p>
         </header>
 
         <section
-          className="grid gap-5 sm:gap-6 md:grid-cols-2"
+          className="grid gap-5 sm:gap-6 lg:grid-cols-3"
           aria-label="PlaneWX family apps"
         >
           {APPS.map((app, i) => (
@@ -114,10 +135,12 @@ export default function AppsPage() {
                       ? "h-20 w-20 sm:h-24 sm:w-24 rounded-[1.35rem] shadow-[0_12px_40px_-18px_rgba(59,130,246,0.55)]"
                       : "h-20 w-20 sm:h-24 sm:w-24 shadow-[0_12px_40px_-18px_rgba(59,130,246,0.55)]"
                   }
-                  priority
+                  priority={i === 0}
                 />
-                <span className="shrink-0 rounded-md border border-[#3B82F6]/30 bg-[#3B82F6]/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-[#3B82F6]">
-                  Free
+                <span
+                  className={`shrink-0 rounded-md border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider ${app.badgeClassName}`}
+                >
+                  {app.badge}
                 </span>
               </div>
 
@@ -141,17 +164,17 @@ export default function AppsPage() {
 
         <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-10 space-y-5 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold">
-            Weather for the same trip
+            Prefer the browser?
           </h2>
           <p className="text-white/60 max-w-xl mx-auto leading-relaxed">
-            PlaneWX is the Pilot&apos;s Decision Support System — personal minimums,
-            multi-model weather, and a clear picture days before you fly.
+            PlaneWX also runs at app.planewx.ai — same trips, WX Score, and
+            briefings on desktop and mobile web.
           </p>
           <a
-            href="https://www.planewx.ai"
+            href="https://app.planewx.ai"
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            Open PlaneWX
+            Open PlaneWX in browser
             <ArrowRight className="h-4 w-4" />
           </a>
           <div className="pt-4 flex flex-col items-center gap-3">
