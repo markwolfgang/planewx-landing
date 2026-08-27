@@ -27,6 +27,17 @@ export default function PrivacyPolicyPage() {
           </div>
         </header>
 
+        <aside className="rounded-xl border border-sky-500/30 bg-sky-500/10 px-4 py-3 space-y-1">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-sky-300">What&apos;s new — {EFFECTIVE_DATE}</p>
+          <p className="text-sm leading-relaxed text-white/80">
+            We added{" "}
+            <a href="#insurance-partners" className="text-sky-400 hover:underline font-medium">
+              Insurance partners
+            </a>{" "}
+            (5X5). They see membership and usage only, not briefings, scores, or whether you flew.
+          </p>
+        </aside>
+
         <section className="space-y-3 text-sm leading-relaxed text-white/70">
           PlaneWX, LLC (&quot;PlaneWX,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) values your privacy. This Privacy
           Policy explains how we collect, use, share, and protect information when you use our website, applications, and services
