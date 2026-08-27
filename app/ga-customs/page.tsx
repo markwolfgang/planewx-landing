@@ -32,6 +32,8 @@ export const metadata: Metadata = {
   },
 }
 
+const TESTFLIGHT_URL = "https://testflight.apple.com/join/WnAf8xTj"
+
 const BULLETS = [
   {
     icon: Map,
@@ -152,16 +154,27 @@ export default function GaCustomsPage() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <GaCustomsSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]">
-              Open PlaneWX
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            <a
+              href={TESTFLIGHT_URL}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              Join the TestFlight beta
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <GaCustomsSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
+              Get PlaneWX
               <ArrowRight className="h-4 w-4" />
             </GaCustomsSignUpLink>
-            <p className="text-sm text-white/40 sm:max-w-xs">
-              Start a free trial of PlaneWX — flight weather intelligence for the same
-              pilots who use GA Customs.
-            </p>
           </div>
+          <p className="text-sm text-white/40 max-w-xl leading-relaxed">
+            Available on TestFlight — Apple&apos;s free app for installing iOS apps
+            before they are on the App Store. Open the invite on iPhone or iPad and
+            TestFlight installs it.
+          </p>
+          <p className="text-sm text-white/40 max-w-lg">
+            Brought to you by PlaneWX. Weather decision support lives on planewx.ai.
+          </p>
         </header>
 
         {/* Screenshots */}
@@ -232,22 +245,31 @@ export default function GaCustomsPage() {
           </ul>
         </section>
 
-        {/* CTA + App Store note */}
+        {/* CTA */}
         <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-10 space-y-5 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold">
             Ready for the weather half of the trip?
           </h2>
           <p className="text-white/60 max-w-xl mx-auto leading-relaxed">
-            PlaneWX is the Pilot&apos;s Decision Support System — personal minimums,
-            multi-model weather, and a clear picture days before you fly.
+            Install GA Customs on TestFlight, then open PlaneWX for personal-minimums
+            weather intelligence on the same trip.
           </p>
-          <GaCustomsSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all">
-            Get PlaneWX
-            <ArrowRight className="h-4 w-4" />
-          </GaCustomsSignUpLink>
-          <p className="text-sm text-white/40 pt-2">
-            GA Customs on the App Store — listing coming soon. This page is the
-            marketing URL for App Store and in-app PlaneWX links.
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href={TESTFLIGHT_URL}
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all"
+            >
+              Join the TestFlight beta
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <GaCustomsSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
+              Get PlaneWX
+              <ArrowRight className="h-4 w-4" />
+            </GaCustomsSignUpLink>
+          </div>
+          <p className="text-sm text-white/40 max-w-xl mx-auto leading-relaxed">
+            TestFlight is Apple&apos;s free app for installing iOS apps before they are
+            on the App Store. App Store listing coming soon.
           </p>
           <div className="pt-4 flex flex-col items-center gap-3">
             <p className="text-xs text-white/40 uppercase tracking-wider">Brought to you by</p>
