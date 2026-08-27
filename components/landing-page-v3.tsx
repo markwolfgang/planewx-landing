@@ -7,6 +7,7 @@ import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { STATS, FAQS } from "@/components/shared/landing-data"
+import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 import { FlightChopsEndorsement } from "@/components/shared/flight-chops-endorsement"
 import { TestimonialsCarousel } from "@/components/shared/testimonials-carousel"
 import { PartnerBadges } from "@/components/shared/partner-badges"
@@ -824,8 +825,11 @@ export function LandingPageV3() {
                   />
                 </button>
                 {openFaq === i && (
-                  <div className="px-6 pb-5">
+                  <div className="px-6 pb-5 space-y-2">
                     <p className="text-sm text-white/60 leading-relaxed">{faq.a}</p>
+                    {faq.fiveX5SeesNote ? (
+                      <FiveX5SeesNote className="text-sm text-white/45 leading-relaxed" />
+                    ) : null}
                   </div>
                 )}
               </div>

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 import { FAQS } from "./landing-data"
+import { FiveX5SeesNote } from "./five-x-five-sees-note"
 
 export function FaqSection({ variant }: { variant: string }) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -26,8 +27,11 @@ export function FaqSection({ variant }: { variant: string }) {
                 />
               </button>
               {openFaq === i && (
-                <div className="px-6 pb-5">
+                <div className="px-6 pb-5 space-y-2">
                   <p className="text-sm text-white/60 leading-relaxed">{faq.a}</p>
+                  {faq.fiveX5SeesNote ? (
+                    <FiveX5SeesNote className="text-sm text-white/45 leading-relaxed" />
+                  ) : null}
                 </div>
               )}
             </div>
