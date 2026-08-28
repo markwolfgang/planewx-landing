@@ -7,7 +7,7 @@ export const metadata = {
   description: "Privacy Policy for PlaneWX.",
 }
 
-const EFFECTIVE_DATE = "August 27, 2026"
+const EFFECTIVE_DATE = "August 28, 2026"
 
 export default function PrivacyPolicyPage() {
   return (
@@ -30,11 +30,12 @@ export default function PrivacyPolicyPage() {
         <aside className="rounded-xl border border-sky-500/30 bg-sky-500/10 px-4 py-3 space-y-1">
           <p className="text-xs font-semibold uppercase tracking-[0.15em] text-sky-300">What&apos;s new — {EFFECTIVE_DATE}</p>
           <p className="text-sm leading-relaxed text-white/80">
-            We added{" "}
+            Updated{" "}
             <a href="#insurance-partners" className="text-sky-400 hover:underline font-medium">
               Insurance partners
             </a>{" "}
-            (5X5). They see membership and usage only, not briefings, scores, or whether you flew.
+            (5X5). They may look up a tail they already insure (Pro Plus yes/no, then briefing usage). We do not
+            share briefings, scores, or whether you flew, and we do not send them our customer list.
           </p>
         </aside>
 
@@ -82,9 +83,9 @@ export default function PrivacyPolicyPage() {
             <li>With your direction: for example, when sharing trips with watchers/crew.</li>
             <li>We do not sell personal information.</li>
             <li>
-              Insurance partners: limited membership and utilization sharing only as described under{" "}
+              Insurance partners: 5X5 may look up a tail they already insure (Pro Plus yes/no, then briefing usage). See{" "}
               <a href="#insurance-partners" className="text-sky-400 hover:underline">
-                Insurance partners
+                section 5
               </a>
               .
             </li>
@@ -92,27 +93,30 @@ export default function PrivacyPolicyPage() {
         </Section>
 
         <section id="insurance-partners" className="space-y-3 scroll-mt-8">
-          <h2 className="text-xl font-semibold text-white">Insurance partners</h2>
+          <h2 className="text-xl font-semibold text-white">5. Insurance partners</h2>
           <div className="text-sm leading-relaxed text-white/70 space-y-3">
+            <p>PlaneWX partners with 5X5 Aviation Insurance.</p>
             <p>
-              PlaneWX partners with 5X5 Aviation Insurance. If you are a 5X5 insured or applicant and you use
-              PlaneWX at the required membership tier (currently Pro Plus), we may share only two things, and
-              only for that partnership:
-            </p>
-            <ol className="list-decimal space-y-2 pl-6">
-              <li>Confirmation that you are a PlaneWX member at the required tier.</li>
-              <li>
-                At renewal, a utilization figure: whether you used PlaneWX on a share of your flights.
-              </li>
-            </ol>
-            <p>
-              We do not share weather briefings, WX Scores, personal minimums, PAVE or FRAT assessments, Pilot
-              Self Debriefs, or whether you chose to fly a specific flight. 5X5 does not get a grade, a
-              go/no-go, or the contents of a briefing.
+              5X5 already has the tail numbers of its own insureds. They may ask us whether a specific tail is on
+              PlaneWX Pro Plus. We answer yes or no. We do not send them our customer list, and they do not ask about
+              tails they do not already insure.
             </p>
             <p>
-              You can use PlaneWX without insuring with 5X5. You can insure with 5X5 without using PlaneWX. Any
-              credit is set by 5X5, not by us.
+              If the answer is yes, they may also ask for usage for that tail: whether PlaneWX briefings were used in
+              connection with that aircraft. That is all.
+            </p>
+            <p>
+              We do not share weather briefings, WX Scores, personal minimums, PAVE or FRAT assessments, Pilot Self
+              Debriefs, contact information, or whether you chose to fly. 5X5 does not get a grade, a go/no-go, or the
+              contents of a briefing.
+            </p>
+            <p>
+              We may share aggregate figures that cannot identify a person or a tail, such as how many aircraft of a
+              type are on the platform.
+            </p>
+            <p>
+              You can use PlaneWX without insuring with 5X5. You can insure with 5X5 without using PlaneWX. Any credit
+              is set by 5X5, not by us.
             </p>
             <p>
               If we add another insurance partner, the same rule applies unless we update this policy first.
@@ -120,28 +124,28 @@ export default function PrivacyPolicyPage() {
           </div>
         </section>
 
-        <Section title="5. Cookies and Tracking">
+        <Section title="6. Cookies and Tracking">
           <p className="text-sm leading-relaxed text-white/70">
             We use cookies and similar technologies for authentication, preferences, and analytics. Where required, we will request consent.
             You can manage cookies through your browser settings, but core functionality may be impacted.
           </p>
         </Section>
 
-        <Section title="6. Data Retention">
+        <Section title="7. Data Retention">
           <p className="text-sm leading-relaxed text-white/70">
             We retain information for as long as needed to provide the Services, comply with legal obligations, resolve disputes, and enforce
             agreements. We may anonymize or aggregate data for longer-term use.
           </p>
         </Section>
 
-        <Section title="7. Security">
+        <Section title="8. Security">
           <p className="text-sm leading-relaxed text-white/70">
             We use reasonable administrative, technical, and physical safeguards to protect information. No method of transmission or storage
             is 100% secure.
           </p>
         </Section>
 
-        <Section title="8. Your Choices">
+        <Section title="9. Your Choices">
           <ul className="list-disc space-y-2 pl-6">
             <li>Account settings: update or delete certain info in your profile.</li>
             <li>Emails: opt out of marketing via email footer; transactional/service emails will still be sent.</li>
@@ -149,7 +153,7 @@ export default function PrivacyPolicyPage() {
           </ul>
         </Section>
 
-        <Section title="9. SMS Communications">
+        <Section title="10. SMS Communications">
           <ul className="list-disc space-y-2 pl-6">
             <li>
               <strong className="text-white">Opt-in:</strong> PlaneWX may send transactional SMS messages to users who opt in through their account settings. SMS is used for time-sensitive notifications, such as alerting volunteer mentors when a pilot requests flight decision support. You opt in to SMS by selecting &quot;Phone / Text&quot; or &quot;Phone &amp; Email&quot; as your preferred contact method in your Mentor profile settings and providing your phone number.
@@ -169,35 +173,35 @@ export default function PrivacyPolicyPage() {
           </ul>
         </Section>
 
-        <Section title="10. Regional Rights (if applicable)">
+        <Section title="11. Regional Rights (if applicable)">
           <p className="text-sm leading-relaxed text-white/70">
             Depending on your region (e.g., EU/UK/California), you may have rights to access, correct, delete, or request a copy of your data,
             and to object or restrict certain processing. To exercise rights, contact privacy@planewx.ai. We may need to verify your identity.
           </p>
         </Section>
 
-        <Section title="11. International Transfers">
+        <Section title="12. International Transfers">
           <p className="text-sm leading-relaxed text-white/70">
             We may process and store information in the United States and other countries. Where required, we will use appropriate safeguards
             (e.g., Standard Contractual Clauses) for cross-border transfers.
           </p>
         </Section>
 
-        <Section title="12. Children">
+        <Section title="13. Children">
           <p className="text-sm leading-relaxed text-white/70">
             The Services are not directed to children under 13 (or under 16 where applicable). Do not use the Services if you are under the
             applicable age. If we learn we have collected data from a child, we will delete it.
           </p>
         </Section>
 
-        <Section title="13. Changes to This Policy">
+        <Section title="14. Changes to This Policy">
           <p className="text-sm leading-relaxed text-white/70">
             We may update this Policy. The &quot;Effective&quot; date will change. Where required, we will provide notice or request consent.
             Continued use after changes means you accept the updated Policy.
           </p>
         </Section>
 
-        <Section title="14. GA Customs (iOS app)">
+        <Section title="15. GA Customs (iOS app)">
           <p className="text-sm leading-relaxed text-white/70 mb-3">
             GA Customs is a free iOS app from PlaneWX, LLC. The following describes how GA Customs handles information in addition to
             the practices above that apply to PlaneWX Services generally.
@@ -228,7 +232,7 @@ export default function PrivacyPolicyPage() {
           </ul>
         </Section>
 
-        <Section title="15. Contact">
+        <Section title="16. Contact">
           <p className="text-sm leading-relaxed text-white/70">
             Questions about this Policy? Contact us at <a href="mailto:privacy@planewx.ai" className="text-sky-400 hover:underline">privacy@planewx.ai</a>.
           </p>
