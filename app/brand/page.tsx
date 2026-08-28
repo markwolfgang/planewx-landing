@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { FaInstagram, FaFacebook, FaXTwitter, FaTiktok, FaYoutube } from "react-icons/fa6"
 import { STATS } from "@/components/shared/landing-data"
+import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 import {
   Target,
   Eye,
@@ -371,9 +372,14 @@ export default function BrandPortalPage() {
                 "PlaneWX Labs",
                 "5x5 Insurance credit",
               ].map((f) => (
-                <div key={f} className="flex items-center gap-2">
-                  <Check className="h-3.5 w-3.5 text-indigo-400 shrink-0" />
-                  <span>{f}</span>
+                <div key={f} className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <Check className="h-3.5 w-3.5 text-indigo-400 shrink-0" />
+                    <span>{f}</span>
+                  </div>
+                  {f === "5x5 Insurance credit" ? (
+                    <FiveX5SeesNote className="pl-5 text-xs text-white/40 leading-snug" />
+                  ) : null}
                 </div>
               ))}
             </div>

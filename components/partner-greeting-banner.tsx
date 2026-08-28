@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Handshake } from "lucide-react"
+import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 
 const SESSION_KEY_PREFIX = "planewx_greeting_"
 
@@ -52,6 +53,7 @@ export function PartnerGreetingBanner() {
   if (!greeting) return null
 
   const customColor = code ? BANNER_COLORS[code] : undefined
+  const showFiveX5Note = code === "5X5"
 
   return (
     <div
@@ -62,12 +64,23 @@ export function PartnerGreetingBanner() {
       }
       style={customColor ? { backgroundColor: customColor } : undefined}
     >
-      <div className="container mx-auto max-w-5xl px-4 py-2.5 flex items-center justify-center gap-2.5">
-        <Handshake
-          className={`h-4 w-4 shrink-0 ${customColor ? "text-white/80" : "text-sky-200"}`}
-          aria-hidden="true"
-        />
-        <span className="font-medium text-center">{greeting}</span>
+      <div
+        className={`container mx-auto max-w-5xl px-4 py-2.5 flex ${
+          showFiveX5Note
+            ? "flex-col items-center gap-1 text-center"
+            : "items-center justify-center gap-2.5"
+        }`}
+      >
+        <div className="flex items-center justify-center gap-2.5">
+          <Handshake
+            className={`h-4 w-4 shrink-0 ${customColor ? "text-white/80" : "text-sky-200"}`}
+            aria-hidden="true"
+          />
+          <span className="font-medium text-center">{greeting}</span>
+        </div>
+        {showFiveX5Note ? (
+          <FiveX5SeesNote className="text-xs text-white/85 leading-snug [&_a]:text-white [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:text-white" />
+        ) : null}
       </div>
     </div>
   )

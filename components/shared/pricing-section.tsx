@@ -2,11 +2,18 @@
 
 import { useEffect, useState, type ReactNode } from "react"
 import { Check, Crown, Plane, Shield } from "lucide-react"
+import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 
 const APP_HELP = "https://app.planewx.ai"
 const TWO_YEAR_OFFER_ENDS_AT_MS = Date.parse("2026-10-02T05:00:00.000Z")
 
-const PLUS_BULLETS: { name: string; detail: string; helpPath?: string; href?: string }[] = [
+const PLUS_BULLETS: {
+  name: string
+  detail: string
+  helpPath?: string
+  href?: string
+  seesNote?: boolean
+}[] = [
   {
     name: "Ground Protection",
     detail:
@@ -46,6 +53,7 @@ const PLUS_BULLETS: { name: string; detail: string; helpPath?: string; href?: st
     detail:
       "Eligible for up to 10% off your aircraft insurance premium through our partner 5x5. Terms are set by 5x5.",
     href: "https://www.5x5insurance.com",
+    seesNote: true,
   },
   {
     name: "PlaneWX Labs",
@@ -179,6 +187,9 @@ export function PricingSection({ variant }: { variant: string }) {
                       <span className="font-semibold text-white">{item.name}</span>
                     )}
                     <p className="text-white/50 mt-0.5">{item.detail}</p>
+                    {item.seesNote ? (
+                      <FiveX5SeesNote className="text-white/40 text-xs mt-1 leading-relaxed" />
+                    ) : null}
                   </li>
                 ))}
               </ul>

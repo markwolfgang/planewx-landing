@@ -7,7 +7,7 @@ export const metadata = {
   description: "Privacy Policy for PlaneWX.",
 }
 
-const EFFECTIVE_DATE = "August 26, 2026"
+const EFFECTIVE_DATE = "August 27, 2026"
 
 export default function PrivacyPolicyPage() {
   return (
@@ -26,6 +26,17 @@ export default function PrivacyPolicyPage() {
             <p className="text-sm text-white/60">Effective {EFFECTIVE_DATE}</p>
           </div>
         </header>
+
+        <aside className="rounded-xl border border-sky-500/30 bg-sky-500/10 px-4 py-3 space-y-1">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-sky-300">What&apos;s new — {EFFECTIVE_DATE}</p>
+          <p className="text-sm leading-relaxed text-white/80">
+            We added{" "}
+            <a href="#insurance-partners" className="text-sky-400 hover:underline font-medium">
+              Insurance partners
+            </a>{" "}
+            (5X5). They see membership and usage only, not briefings, scores, or whether you flew.
+          </p>
+        </aside>
 
         <section className="space-y-3 text-sm leading-relaxed text-white/70">
           PlaneWX, LLC (&quot;PlaneWX,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) values your privacy. This Privacy
@@ -70,8 +81,44 @@ export default function PrivacyPolicyPage() {
             <li>Business transfers: in connection with mergers, acquisitions, financing, or asset sales.</li>
             <li>With your direction: for example, when sharing trips with watchers/crew.</li>
             <li>We do not sell personal information.</li>
+            <li>
+              Insurance partners: limited membership and utilization sharing only as described under{" "}
+              <a href="#insurance-partners" className="text-sky-400 hover:underline">
+                Insurance partners
+              </a>
+              .
+            </li>
           </ul>
         </Section>
+
+        <section id="insurance-partners" className="space-y-3 scroll-mt-8">
+          <h2 className="text-xl font-semibold text-white">Insurance partners</h2>
+          <div className="text-sm leading-relaxed text-white/70 space-y-3">
+            <p>
+              PlaneWX partners with 5X5 Aviation Insurance. If you are a 5X5 insured or applicant and you use
+              PlaneWX at the required membership tier (currently Pro Plus), we may share only two things, and
+              only for that partnership:
+            </p>
+            <ol className="list-decimal space-y-2 pl-6">
+              <li>Confirmation that you are a PlaneWX member at the required tier.</li>
+              <li>
+                At renewal, a utilization figure: whether you used PlaneWX on a share of your flights.
+              </li>
+            </ol>
+            <p>
+              We do not share weather briefings, WX Scores, personal minimums, PAVE or FRAT assessments, Pilot
+              Self Debriefs, or whether you chose to fly a specific flight. 5X5 does not get a grade, a
+              go/no-go, or the contents of a briefing.
+            </p>
+            <p>
+              You can use PlaneWX without insuring with 5X5. You can insure with 5X5 without using PlaneWX. Any
+              credit is set by 5X5, not by us.
+            </p>
+            <p>
+              If we add another insurance partner, the same rule applies unless we update this policy first.
+            </p>
+          </div>
+        </section>
 
         <Section title="5. Cookies and Tracking">
           <p className="text-sm leading-relaxed text-white/70">
