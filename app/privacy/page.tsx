@@ -1,13 +1,14 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { FIVE_X_FIVE_SEES_LINE } from "@/lib/five-x-five"
 
 export const metadata = {
   title: "Privacy Policy | PlaneWX",
   description: "Privacy Policy for PlaneWX.",
 }
 
-const EFFECTIVE_DATE = "August 28, 2026"
+const EFFECTIVE_DATE = "August 31, 2026"
 
 export default function PrivacyPolicyPage() {
   return (
@@ -34,8 +35,7 @@ export default function PrivacyPolicyPage() {
             <a href="#insurance-partners" className="text-sky-400 hover:underline font-medium">
               Insurance partners
             </a>{" "}
-            (5X5). They may look up a tail they already insure (Pro Plus yes/no, then briefing usage). We do not
-            share briefings, scores, or whether you flew, and we do not send them our customer list.
+            (5X5). {FIVE_X_FIVE_SEES_LINE}
           </p>
         </aside>
 
@@ -83,7 +83,7 @@ export default function PrivacyPolicyPage() {
             <li>With your direction: for example, when sharing trips with watchers/crew.</li>
             <li>We do not sell personal information.</li>
             <li>
-              Insurance partners: 5X5 may look up a tail they already insure (Pro Plus yes/no, then briefing usage). See{" "}
+              Insurance partners: {FIVE_X_FIVE_SEES_LINE} See{" "}
               <a href="#insurance-partners" className="text-sky-400 hover:underline">
                 section 5
               </a>
@@ -96,20 +96,7 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-semibold text-white">5. Insurance partners</h2>
           <div className="text-sm leading-relaxed text-white/70 space-y-3">
             <p>PlaneWX partners with 5X5 Aviation Insurance.</p>
-            <p>
-              5X5 already has the tail numbers of its own insureds. They may ask us whether a specific tail is on
-              PlaneWX Pro Plus. We answer yes or no. We do not send them our customer list, and they do not ask about
-              tails they do not already insure.
-            </p>
-            <p>
-              If the answer is yes, they may also ask for usage for that tail: whether PlaneWX briefings were used in
-              connection with that aircraft. That is all.
-            </p>
-            <p>
-              We do not share weather briefings, WX Scores, personal minimums, PAVE or FRAT assessments, Pilot Self
-              Debriefs, contact information, or whether you chose to fly. 5X5 does not get a grade, a go/no-go, or the
-              contents of a briefing.
-            </p>
+            <p>{FIVE_X_FIVE_SEES_LINE}</p>
             <p>
               We may share aggregate figures that cannot identify a person or a tail, such as how many aircraft of a
               type are on the platform.
