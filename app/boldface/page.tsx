@@ -16,15 +16,16 @@ import {
   BoldfaceCampaignTracker,
   BoldfacePlaneWxLink,
 } from "@/components/boldface-campaign-tracker"
+import { BOLDFACE_APP_STORE_URL } from "@/lib/planewx-family-apps"
 
 export const metadata: Metadata = {
   title: "TBM Boldface → PlaneWX | Memory items for TBM pilots",
   description:
-    "TBM Boldface is a free iPhone/iPad TestFlight app for TBM memory items — brought to you by PlaneWX. Study and test emergency procedures for TBM 700 A/B through 980.",
+    "TBM Boldface is a free iPhone/iPad app for TBM memory items — brought to you by PlaneWX. Download on the App Store. Study and test emergency procedures for TBM 700 A/B through 980.",
   openGraph: {
     title: "TBM Boldface — brought to you by PlaneWX",
     description:
-      "Free TestFlight app for TBM memory items. Study, test, and keep go / no-go weather with PlaneWX.",
+      "Free App Store app for TBM memory items. Study, test, and keep go / no-go weather with PlaneWX.",
     type: "website",
     url: "https://www.planewx.ai/boldface",
   },
@@ -32,8 +33,6 @@ export const metadata: Metadata = {
     canonical: "https://www.planewx.ai/boldface",
   },
 }
-
-const TESTFLIGHT_URL = "https://testflight.apple.com/join/T5VnWRgb"
 
 const FEATURES = [
   {
@@ -170,10 +169,12 @@ export default function BoldfacePage() {
 
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
             <a
-              href={TESTFLIGHT_URL}
+              href={BOLDFACE_APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3b82f6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
-              Join the TestFlight beta
+              Download on the App Store
               <ArrowRight className="h-4 w-4" />
             </a>
             <BoldfacePlaneWxLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
@@ -182,9 +183,8 @@ export default function BoldfacePage() {
             </BoldfacePlaneWxLink>
           </div>
           <p className="text-sm text-white/40 max-w-xl leading-relaxed">
-            Available on TestFlight — Apple&apos;s free app for installing iOS apps
-            before they are on the App Store. Open the invite on iPhone or iPad and
-            TestFlight installs it.
+            Free on the App Store for iPhone and iPad — search TBM Boldface or tap
+            Download above.
           </p>
           <p className="text-sm text-white/40 max-w-lg">
             Brought to you by PlaneWX. Weather decision support lives on planewx.ai.
@@ -198,7 +198,7 @@ export default function BoldfacePage() {
               Inside the app
             </h2>
             <p className="text-white/55 leading-relaxed">
-              Home through Settings — the same screens you&apos;ll open on TestFlight.
+              Home through Settings — the same screens you&apos;ll open in the app.
             </p>
           </div>
 
@@ -265,15 +265,17 @@ export default function BoldfacePage() {
             Chair-fly the procedure. Brief the weather.
           </h2>
           <p className="text-white/60 max-w-xl mx-auto leading-relaxed">
-            Install TBM Boldface on TestFlight, then open PlaneWX for personal-minimums
-            weather intelligence on the same trip.
+            Install TBM Boldface from the App Store, then open PlaneWX for
+            personal-minimums weather intelligence on the same trip.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href={TESTFLIGHT_URL}
+              href={BOLDFACE_APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3b82f6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
-              Join the TestFlight beta
+              Download on the App Store
               <ArrowRight className="h-4 w-4" />
             </a>
             <BoldfacePlaneWxLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
@@ -282,9 +284,7 @@ export default function BoldfacePage() {
             </BoldfacePlaneWxLink>
           </div>
           <p className="text-sm text-white/40 max-w-xl mx-auto leading-relaxed">
-            TestFlight is Apple&apos;s free app for installing iOS apps before they are
-            on the App Store — open the invite on iPhone or iPad and TestFlight
-            installs it.
+            Free on the App Store for iPhone and iPad.
           </p>
           <div className="pt-4 flex flex-col items-center gap-3">
             <p className="text-xs text-white/40 uppercase tracking-wider">Brought to you by</p>

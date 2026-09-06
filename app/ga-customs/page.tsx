@@ -15,15 +15,16 @@ import {
   GaCustomsCampaignTracker,
   GaCustomsSignUpLink,
 } from "@/components/ga-customs-campaign-tracker"
+import { GA_CUSTOMS_APP_STORE_URL } from "@/lib/planewx-family-apps"
 
 export const metadata: Metadata = {
   title: "GA Customs → PlaneWX | Airport of Entry hours & fees",
   description:
-    "GA Customs is a free iOS app for U.S. Airport of Entry hours and fees — brought to you by PlaneWX. Open PlaneWX for flight weather intelligence built for GA pilots.",
+    "GA Customs is a free iOS app for U.S. Airport of Entry hours and fees — brought to you by PlaneWX. Download on the App Store, then open PlaneWX for flight weather intelligence built for GA pilots.",
   openGraph: {
     title: "GA Customs — brought to you by PlaneWX",
     description:
-      "U.S. Airport of Entry hours & fees for GA pilots. Free app from the PlaneWX family. Get PlaneWX for decision-support weather.",
+      "U.S. Airport of Entry hours & fees for GA pilots. Free on the App Store from the PlaneWX family. Get PlaneWX for decision-support weather.",
     type: "website",
     url: "https://www.planewx.ai/ga-customs",
   },
@@ -31,8 +32,6 @@ export const metadata: Metadata = {
     canonical: "https://www.planewx.ai/ga-customs",
   },
 }
-
-const TESTFLIGHT_URL = "https://testflight.apple.com/join/WnAf8xTj"
 
 const BULLETS = [
   {
@@ -156,10 +155,12 @@ export default function GaCustomsPage() {
 
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
             <a
-              href={TESTFLIGHT_URL}
+              href={GA_CUSTOMS_APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
-              Join the TestFlight beta
+              Download on the App Store
               <ArrowRight className="h-4 w-4" />
             </a>
             <GaCustomsSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
@@ -168,9 +169,8 @@ export default function GaCustomsPage() {
             </GaCustomsSignUpLink>
           </div>
           <p className="text-sm text-white/40 max-w-xl leading-relaxed">
-            Available on TestFlight — Apple&apos;s free app for installing iOS apps
-            before they are on the App Store. Open the invite on iPhone or iPad and
-            TestFlight installs it.
+            Free on the App Store for iPhone and iPad — search GA Customs or tap
+            Download above.
           </p>
           <p className="text-sm text-white/40 max-w-lg">
             Brought to you by PlaneWX. Weather decision support lives on planewx.ai.
@@ -251,15 +251,17 @@ export default function GaCustomsPage() {
             Ready for the weather half of the trip?
           </h2>
           <p className="text-white/60 max-w-xl mx-auto leading-relaxed">
-            Install GA Customs on TestFlight, then open PlaneWX for personal-minimums
-            weather intelligence on the same trip.
+            Install GA Customs from the App Store, then open PlaneWX for
+            personal-minimums weather intelligence on the same trip.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href={TESTFLIGHT_URL}
+              href={GA_CUSTOMS_APP_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
-              Join the TestFlight beta
+              Download on the App Store
               <ArrowRight className="h-4 w-4" />
             </a>
             <GaCustomsSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
@@ -268,8 +270,7 @@ export default function GaCustomsPage() {
             </GaCustomsSignUpLink>
           </div>
           <p className="text-sm text-white/40 max-w-xl mx-auto leading-relaxed">
-            TestFlight is Apple&apos;s free app for installing iOS apps before they are
-            on the App Store. App Store listing coming soon.
+            Free on the App Store for iPhone and iPad.
           </p>
           <div className="pt-4 flex flex-col items-center gap-3">
             <p className="text-xs text-white/40 uppercase tracking-wider">Brought to you by</p>

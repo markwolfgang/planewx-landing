@@ -3,18 +3,29 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
+import {
+  AppsHubCampaignTracker,
+  AppsHubPlaneWxLink,
+} from "@/components/apps-hub-campaign-tracker"
+import {
+  BOLDFACE_APP_STORE_URL,
+  GA_CUSTOMS_APP_STORE_URL,
+  PLANEWX_IOS_TESTFLIGHT_URL,
+} from "@/lib/planewx-family-apps"
 
-const BETA_BADGE_CLASS =
+const TESTFLIGHT_BADGE_CLASS =
   "border-amber-400/30 bg-amber-400/10 text-amber-300" as const
+const APP_STORE_BADGE_CLASS =
+  "border-sky-400/30 bg-sky-400/10 text-sky-300" as const
 
 export const metadata: Metadata = {
   title: "iOS apps → PlaneWX | PlaneWX, TBM Boldface & GA Customs",
   description:
-    "Three TestFlight betas from the PlaneWX family — PlaneWX for iPhone and iPad, TBM Boldface for memory items, and GA Customs for U.S. Airport of Entry hours & fees.",
+    "iOS apps from the PlaneWX family — TBM Boldface and GA Customs on the App Store, PlaneWX for iPhone and iPad in TestFlight beta.",
   openGraph: {
     title: "iOS apps from the PlaneWX family",
     description:
-      "PlaneWX, TBM Boldface, and GA Customs — all three on TestFlight beta for GA pilots.",
+      "TBM Boldface and GA Customs are free on the App Store. PlaneWX iOS is in TestFlight beta.",
     type: "website",
     url: "https://www.planewx.ai/apps",
   },
@@ -25,13 +36,15 @@ export const metadata: Metadata = {
 
 const APPS = [
   {
-    href: "/ios",
+    detailHref: "/ios",
+    downloadHref: PLANEWX_IOS_TESTFLIGHT_URL,
+    external: true,
     name: "PlaneWX",
     subtitle: "Weather decision support on iPhone & iPad",
     body: "Native app for trips, WX Score, and briefings — ForeFlight Send To import, push notifications, and the same account as app.planewx.ai.",
-    cta: "Join PlaneWX TestFlight",
-    badge: "Beta",
-    badgeClassName: BETA_BADGE_CLASS,
+    cta: "Join the TestFlight beta",
+    badge: "TestFlight",
+    badgeClassName: TESTFLIGHT_BADGE_CLASS,
     icon: {
       src: "/brand/planewx-icon-light.png",
       alt: "PlaneWX",
@@ -39,13 +52,15 @@ const APPS = [
     },
   },
   {
-    href: "/boldface",
+    detailHref: "/boldface",
+    downloadHref: BOLDFACE_APP_STORE_URL,
+    external: true,
     name: "TBM Boldface",
     subtitle: "TBM memory items on iPhone & iPad",
-    body: "iOS app for chair-flying memory items — study, test, and keep serial-aware procedures ready before the airplane asks.",
-    cta: "Join TBM Boldface TestFlight",
-    badge: "Beta",
-    badgeClassName: BETA_BADGE_CLASS,
+    body: "Free on the App Store — chair-fly memory items, study, test, and keep serial-aware procedures ready before the airplane asks.",
+    cta: "Download on the App Store",
+    badge: "App Store",
+    badgeClassName: APP_STORE_BADGE_CLASS,
     icon: {
       src: "/boldface/tbm-boldface-icon.png",
       alt: "TBM Boldface",
@@ -53,13 +68,15 @@ const APPS = [
     },
   },
   {
-    href: "/ga-customs",
+    detailHref: "/ga-customs",
+    downloadHref: GA_CUSTOMS_APP_STORE_URL,
+    external: true,
     name: "GA Customs",
     subtitle: "U.S. Airport of Entry hours & fees",
-    body: "iOS app for AOE hours, fees, and notice requirements — plan the crossing without digging through scattered pages.",
-    cta: "Join GA Customs TestFlight",
-    badge: "Beta",
-    badgeClassName: BETA_BADGE_CLASS,
+    body: "Free on the App Store — AOE hours, fees, and notice requirements without digging through scattered pages.",
+    cta: "Download on the App Store",
+    badge: "App Store",
+    badgeClassName: APP_STORE_BADGE_CLASS,
     icon: {
       src: "/ga-customs/app-icon.png",
       alt: "GA Customs",
@@ -71,6 +88,8 @@ const APPS = [
 export default function AppsPage() {
   return (
     <div className="min-h-screen bg-[#0B1120] text-white">
+      <AppsHubCampaignTracker />
+
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B1120] via-[#0d1f3c] to-[#0a0f1a]" />
         <div
@@ -109,7 +128,9 @@ export default function AppsPage() {
             iOS apps
           </h1>
           <p className="text-lg sm:text-xl text-white/[0.72] leading-relaxed animate-fade-in-up [animation-delay:120ms]">
-            Three iOS apps in TestFlight beta — PlaneWX plus companion tools for GA pilots.
+            TBM Boldface and GA Customs are free on the App Store. PlaneWX for
+            iPhone and iPad is in TestFlight while the App Store listing is in
+            review.
           </p>
         </header>
 
@@ -118,25 +139,26 @@ export default function AppsPage() {
           aria-label="PlaneWX family apps"
         >
           {APPS.map((app, i) => (
-            <Link
-              key={app.href}
-              href={app.href}
-              className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5 transition-colors hover:border-[#3B82F6]/35 hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60 animate-fade-in-up"
+            <article
+              key={app.detailHref}
+              className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5 transition-colors hover:border-[#3B82F6]/35 hover:bg-white/[0.05] animate-fade-in-up"
               style={{ animationDelay: `${180 + i * 90}ms` }}
             >
               <div className="flex items-start justify-between gap-4">
-                <Image
-                  src={app.icon.src}
-                  alt={app.icon.alt}
-                  width={96}
-                  height={96}
-                  className={
-                    app.icon.rounded
-                      ? "h-20 w-20 sm:h-24 sm:w-24 rounded-[1.35rem] shadow-[0_12px_40px_-18px_rgba(59,130,246,0.55)]"
-                      : "h-20 w-20 sm:h-24 sm:w-24 shadow-[0_12px_40px_-18px_rgba(59,130,246,0.55)]"
-                  }
-                  priority={i === 0}
-                />
+                <Link href={app.detailHref} aria-label={`${app.name} details`}>
+                  <Image
+                    src={app.icon.src}
+                    alt={app.icon.alt}
+                    width={96}
+                    height={96}
+                    className={
+                      app.icon.rounded
+                        ? "h-20 w-20 sm:h-24 sm:w-24 rounded-[1.35rem] shadow-[0_12px_40px_-18px_rgba(59,130,246,0.55)]"
+                        : "h-20 w-20 sm:h-24 sm:w-24 shadow-[0_12px_40px_-18px_rgba(59,130,246,0.55)]"
+                    }
+                    priority={i === 0}
+                  />
+                </Link>
                 <span
                   className={`shrink-0 rounded-md border px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider ${app.badgeClassName}`}
                 >
@@ -146,7 +168,12 @@ export default function AppsPage() {
 
               <div className="space-y-2 min-w-0 flex-1">
                 <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
-                  {app.name}
+                  <Link
+                    href={app.detailHref}
+                    className="hover:text-sky-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60 rounded-sm"
+                  >
+                    {app.name}
+                  </Link>
                 </h2>
                 <p className="text-sm font-medium text-[#3B82F6]">{app.subtitle}</p>
                 <p className="text-sm sm:text-base text-white/[0.72] leading-relaxed">
@@ -154,11 +181,16 @@ export default function AppsPage() {
                 </p>
               </div>
 
-              <span className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#3B82F6] group-hover:bg-sky-400 text-white px-6 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all group-hover:scale-[1.02] group-active:scale-[0.98]">
+              <a
+                href={app.downloadHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60"
+              >
                 {app.cta}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
-            </Link>
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </article>
           ))}
         </section>
 
@@ -170,13 +202,10 @@ export default function AppsPage() {
             PlaneWX also runs at app.planewx.ai — same trips, WX Score, and
             briefings on desktop and mobile web.
           </p>
-          <a
-            href="https://app.planewx.ai"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
-          >
+          <AppsHubPlaneWxLink className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]">
             Open PlaneWX in browser
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </AppsHubPlaneWxLink>
           <div className="pt-4 flex flex-col items-center gap-3">
             <p className="text-xs text-white/40 uppercase tracking-wider">Brought to you by</p>
             <BrandLogo variant="wordmarkTransparent" className="h-7 w-auto" />

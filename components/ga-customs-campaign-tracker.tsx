@@ -8,6 +8,13 @@ export const GA_CUSTOMS_LP = "gacus"
 
 const PLANEWX_HOME = "https://www.planewx.ai"
 
+/** Landing → PlaneWX home UTMs (web attribution). */
+const GA_CUSTOMS_UTM = {
+  utm_source: "planewx_web",
+  utm_medium: "landing",
+  utm_campaign: "ga-customs",
+} as const
+
 /** Records visits on /ga-customs (with or without ?ref=) as GACUSTOMS. */
 export function GaCustomsCampaignTracker() {
   return (
@@ -15,7 +22,15 @@ export function GaCustomsCampaignTracker() {
   )
 }
 
-/** PlaneWX marketing home with campaign ref preserved for attribution. */
+function buildPlanewxHref(refCode: string): string {
+  const params = new URLSearchParams({
+    ref: refCode,
+    ...GA_CUSTOMS_UTM,
+  })
+  return `${PLANEWX_HOME}?${params.toString()}`
+}
+
+/** PlaneWX marketing home with campaign ref + UTMs for attribution. */
 function planewxHref(): string {
   try {
     const stored = localStorage.getItem("planewx_referral")
@@ -24,13 +39,13 @@ function planewxHref(): string {
       (fromUrl ? fromUrl.toUpperCase() : null) ||
       stored ||
       GA_CUSTOMS_CAMPAIGN_CODE
-    return `${PLANEWX_HOME}?ref=${encodeURIComponent(code)}`
+    return buildPlanewxHref(code)
   } catch {
-    return `${PLANEWX_HOME}?ref=${GA_CUSTOMS_CAMPAIGN_CODE}`
+    return buildPlanewxHref(GA_CUSTOMS_CAMPAIGN_CODE)
   }
 }
 
-/** Primary CTA — always attributes to GACUSTOMS (or ?ref= when present). */
+/** Secondary CTA — attributes to GACUSTOMS (or ?ref= when present) + landing UTMs. */
 export function GaCustomsSignUpLink({
   className,
   children,
@@ -40,7 +55,7 @@ export function GaCustomsSignUpLink({
 }) {
   return (
     <a
-      href={`${PLANEWX_HOME}?ref=${GA_CUSTOMS_CAMPAIGN_CODE}`}
+      href={buildPlanewxHref(GA_CUSTOMS_CAMPAIGN_CODE)}
       className={className}
       onClick={(e) => {
         e.currentTarget.href = planewxHref()
