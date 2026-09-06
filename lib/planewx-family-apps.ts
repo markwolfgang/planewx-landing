@@ -7,3 +7,25 @@ export const BOLDFACE_TESTFLIGHT_URL =
 
 export const GA_CUSTOMS_TESTFLIGHT_URL =
   "https://testflight.apple.com/join/WnAf8xTj" as const
+
+/** Live App Store product pages (GA / Boldface). */
+export const BOLDFACE_APP_STORE_URL =
+  "https://apps.apple.com/us/app/tbm-boldface/id6804532133" as const
+
+export const GA_CUSTOMS_APP_STORE_URL =
+  "https://apps.apple.com/us/app/id6758804419" as const
+
+/**
+ * Optional Apple Campaign Link query params (App Analytics).
+ * Generate real links in App Store Connect → App Analytics → Campaigns
+ * (requires provider token `pt`, campaign token `ct`, media type `mt=8`).
+ * Append as `?pt=…&ct=…&mt=8` when Mark/CoS creates ASC campaigns.
+ *
+ * Suggested ct tokens for these LPs:
+ * - Boldface LP: ct=boldface_lp
+ * - GA Customs LP: ct=gacus_lp
+ */
+export const APP_STORE_CAMPAIGN_HINTS = {
+  boldface: { ct: "boldface_lp", mt: "8" },
+  gaCustoms: { ct: "gacus_lp", mt: "8" },
+} as const
