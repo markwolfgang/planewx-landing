@@ -12,7 +12,9 @@ import {
   MessageSquare,
   Phone,
   PlaneLanding,
+  ShieldOff,
   Unlock,
+  UserX,
 } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import {
@@ -64,8 +66,18 @@ const BULLETS = [
   },
   {
     icon: Unlock,
-    title: "No login",
-    body: "Open it and go — nothing to create, nothing to sign into.",
+    title: "No login required",
+    body: "Open it and go — nothing to sign into.",
+  },
+  {
+    icon: UserX,
+    title: "No account setup",
+    body: "Nothing to create before you can use it.",
+  },
+  {
+    icon: ShieldOff,
+    title: "No personal information collected",
+    body: "We don't ask for your name, email, or a profile.",
   },
   {
     icon: Phone,
