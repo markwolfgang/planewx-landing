@@ -187,8 +187,7 @@ export default function GaCustomsPage() {
                 GA Customs
               </h1>
               <p className="text-lg sm:text-xl text-white/65 max-w-xl leading-relaxed">
-                U.S. Airport of Entry hours &amp; fees — a free iOS app for GA pilots,
-                brought to you by PlaneWX.
+                GA Customs is a free iPhone and iPad app for general aviation pilots who need U.S. Airport of Entry hours, notice, and fees. No login required. No account setup. No personal information collected. Works offline. Tap to call. Pilot reviews. Free.
               </p>
             </div>
           </div>
@@ -263,8 +262,7 @@ export default function GaCustomsPage() {
               What pilots get in GA Customs
             </h2>
             <p className="text-white/55 leading-relaxed">
-              Built for border crossings and AOE planning — then come to PlaneWX when
-              weather is the hard part of the go / no-go.
+              Coming back from Canada, Mexico, the Caribbean, or anywhere else, it helps you find a customs airport and plan the first landing. South Arrival: if you are coming from the south and you do not have an overflight exemption, the first landing has to be a designated airport. Those airports are the CBP list in 19 CFR 122.24. From Canada or the north, you do not need that permit, and there is no designated list. User-fee airports come from 19 CFR 122.15. Always confirm with the airport. Hours and procedures come from U.S. Customs and Border Protection. Always verify with CBP before you fly.
             </p>
           </div>
 
