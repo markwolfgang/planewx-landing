@@ -9,6 +9,10 @@ import {
   Map,
   FileText,
   HeartHandshake,
+  MessageSquare,
+  Phone,
+  PlaneLanding,
+  Unlock,
 } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import {
@@ -57,6 +61,26 @@ const BULLETS = [
     icon: HeartHandshake,
     title: "Free — brought to you by PlaneWX",
     body: "GA Customs is free for GA pilots. PlaneWX builds the weather decision support behind your go / no-go.",
+  },
+  {
+    icon: Unlock,
+    title: "No login",
+    body: "Open it and go — nothing to create, nothing to sign into.",
+  },
+  {
+    icon: Phone,
+    title: "Tap to call the port",
+    body: "From the airport page, ring the port without hunting for the number.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Pilot reviews",
+    body: "How the clearance actually went — from pilots who've done it, not a brochure.",
+  },
+  {
+    icon: PlaneLanding,
+    title: "South Arrival",
+    body: "Coming from the south with no overflight exemption, your first landing has to be a designated airport (19 CFR 122.24).",
   },
 ] as const
 
