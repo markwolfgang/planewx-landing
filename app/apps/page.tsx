@@ -7,9 +7,12 @@ import {
   AppsHubCampaignTracker,
   AppsHubPlaneWxLink,
 } from "@/components/apps-hub-campaign-tracker"
+import { TestFlightBetaCta } from "@/components/testflight-beta-cta"
 import {
   BOLDFACE_APP_STORE_URL,
+  BOLDFACE_TESTFLIGHT_URL,
   GA_CUSTOMS_APP_STORE_URL,
+  GA_CUSTOMS_TESTFLIGHT_URL,
   PLANEWX_IOS_TESTFLIGHT_URL,
 } from "@/lib/planewx-family-apps"
 
@@ -38,6 +41,7 @@ const APPS = [
   {
     detailHref: "/ios",
     downloadHref: PLANEWX_IOS_TESTFLIGHT_URL,
+    betaHref: null,
     external: true,
     name: "PlaneWX",
     subtitle: "Weather decision support on iPhone & iPad",
@@ -54,6 +58,7 @@ const APPS = [
   {
     detailHref: "/boldface",
     downloadHref: BOLDFACE_APP_STORE_URL,
+    betaHref: BOLDFACE_TESTFLIGHT_URL,
     external: true,
     name: "TBM Boldface",
     subtitle: "TBM memory items on iPhone & iPad",
@@ -70,6 +75,7 @@ const APPS = [
   {
     detailHref: "/ga-customs",
     downloadHref: GA_CUSTOMS_APP_STORE_URL,
+    betaHref: GA_CUSTOMS_TESTFLIGHT_URL,
     external: true,
     name: "GA Customs",
     subtitle: "U.S. Airport of Entry hours & fees",
@@ -181,15 +187,24 @@ export default function AppsPage() {
                 </p>
               </div>
 
-              <a
-                href={app.downloadHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60"
-              >
-                {app.cta}
-                <ArrowRight className="h-4 w-4" />
-              </a>
+              <div className="flex flex-col gap-3">
+                <a
+                  href={app.downloadHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60"
+                >
+                  {app.cta}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+                {app.betaHref ? (
+                  <TestFlightBetaCta
+                    href={app.betaHref}
+                    size="compact"
+                    align="stretch"
+                  />
+                ) : null}
+              </div>
             </article>
           ))}
         </section>

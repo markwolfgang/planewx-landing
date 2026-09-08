@@ -16,7 +16,11 @@ import {
   BoldfaceCampaignTracker,
   BoldfacePlaneWxLink,
 } from "@/components/boldface-campaign-tracker"
-import { BOLDFACE_APP_STORE_URL } from "@/lib/planewx-family-apps"
+import { TestFlightBetaCta } from "@/components/testflight-beta-cta"
+import {
+  BOLDFACE_APP_STORE_URL,
+  BOLDFACE_TESTFLIGHT_URL,
+} from "@/lib/planewx-family-apps"
 
 export const metadata: Metadata = {
   title: "TBM Boldface → PlaneWX | Memory items for TBM pilots",
@@ -167,7 +171,7 @@ export default function BoldfacePage() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
             <a
               href={BOLDFACE_APP_STORE_URL}
               target="_blank"
@@ -177,6 +181,7 @@ export default function BoldfacePage() {
               Download on the App Store
               <ArrowRight className="h-4 w-4" />
             </a>
+            <TestFlightBetaCta href={BOLDFACE_TESTFLIGHT_URL} />
             <BoldfacePlaneWxLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
               Get PlaneWX
               <ArrowRight className="h-4 w-4" />
@@ -268,7 +273,7 @@ export default function BoldfacePage() {
             Install TBM Boldface from the App Store, then open PlaneWX for
             personal-minimums weather intelligence on the same trip.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-3">
             <a
               href={BOLDFACE_APP_STORE_URL}
               target="_blank"
@@ -278,6 +283,7 @@ export default function BoldfacePage() {
               Download on the App Store
               <ArrowRight className="h-4 w-4" />
             </a>
+            <TestFlightBetaCta href={BOLDFACE_TESTFLIGHT_URL} align="center" />
             <BoldfacePlaneWxLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
               Get PlaneWX
               <ArrowRight className="h-4 w-4" />

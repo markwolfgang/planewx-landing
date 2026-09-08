@@ -15,7 +15,11 @@ import {
   GaCustomsCampaignTracker,
   GaCustomsSignUpLink,
 } from "@/components/ga-customs-campaign-tracker"
-import { GA_CUSTOMS_APP_STORE_URL } from "@/lib/planewx-family-apps"
+import { TestFlightBetaCta } from "@/components/testflight-beta-cta"
+import {
+  GA_CUSTOMS_APP_STORE_URL,
+  GA_CUSTOMS_TESTFLIGHT_URL,
+} from "@/lib/planewx-family-apps"
 
 export const metadata: Metadata = {
   title: "GA Customs → PlaneWX | Airport of Entry hours & fees",
@@ -153,7 +157,7 @@ export default function GaCustomsPage() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
             <a
               href={GA_CUSTOMS_APP_STORE_URL}
               target="_blank"
@@ -163,6 +167,7 @@ export default function GaCustomsPage() {
               Download on the App Store
               <ArrowRight className="h-4 w-4" />
             </a>
+            <TestFlightBetaCta href={GA_CUSTOMS_TESTFLIGHT_URL} />
             <GaCustomsSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
               Get PlaneWX
               <ArrowRight className="h-4 w-4" />
@@ -254,7 +259,7 @@ export default function GaCustomsPage() {
             Install GA Customs from the App Store, then open PlaneWX for
             personal-minimums weather intelligence on the same trip.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-3">
             <a
               href={GA_CUSTOMS_APP_STORE_URL}
               target="_blank"
@@ -264,6 +269,7 @@ export default function GaCustomsPage() {
               Download on the App Store
               <ArrowRight className="h-4 w-4" />
             </a>
+            <TestFlightBetaCta href={GA_CUSTOMS_TESTFLIGHT_URL} align="center" />
             <GaCustomsSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
               Get PlaneWX
               <ArrowRight className="h-4 w-4" />
