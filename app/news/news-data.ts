@@ -42,6 +42,35 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "tbm-boldface-ga-customs-app-store",
+    category: "Product",
+    title: "PlaneWX Ships Two Free Apps on the App Store",
+    excerpt:
+      "TBM Boldface and GA Customs are free on the App Store. Memory items for TBM pilots, and U.S. Airport of Entry hours, fees, and South Arrival for crossings.",
+    date: "September 8, 2026",
+    isoDate: "2026-09-08",
+    location: "St. Petersburg, Florida",
+    body: `
+<p><strong>St. Petersburg, Florida &mdash; September 8, 2026 &mdash;</strong> PlaneWX today released two free companion iOS apps on the App Store. Both are free of charge. No login. No account setup. No personal information collected.</p>
+
+<p><a href="/boldface"><strong>TBM Boldface</strong></a> is for TBM memory items. Study, test, and chair-fly the procedures before the airplane asks. Free on the App Store: <a href="https://apps.apple.com/us/app/tbm-boldface/id6804532133" target="_blank" rel="noopener noreferrer">apps.apple.com/us/app/tbm-boldface/id6804532133</a> and on the site at <a href="/boldface">/boldface</a>.</p>
+
+<p><a href="/ga-customs"><strong>GA Customs</strong></a> is for general aviation pilots who need U.S. Airport of Entry hours, notice, and fees. It works offline. Tap to call the port. Pilot reviews. Coming back from Canada, Mexico, the Caribbean, or anywhere else, it helps you find a customs airport and plan the first landing.</p>
+
+<p><strong>South Arrival.</strong> If you are coming from the south and you do not have an overflight exemption, the first landing has to be a designated airport. Those airports are the CBP list in 19 CFR 122.24. From Canada or the north, you do not need that permit, and there is no designated list. User-fee airports come from the CBP list in 19 CFR 122.15. Always confirm with the airport. Hours and procedures come from U.S. Customs and Border Protection. Always verify with CBP before you fly.</p>
+
+<p>GA Customs on the App Store: <a href="https://apps.apple.com/us/app/ga-customs/id6758804419" target="_blank" rel="noopener noreferrer">apps.apple.com/us/app/ga-customs/id6758804419</a> and on the site at <a href="/ga-customs">/ga-customs</a>.</p>
+
+<p>Both apps are listed at <a href="/apps">/apps</a>. They are brought to you by PlaneWX. PlaneWX remains the pilot&rsquo;s decision support system for go/no-go weather. Complementary to the electronic flight bag and official weather sources. Outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
     slug: "free-apps-testflight-boldface-ga-customs",
     category: "Product",
     title: "PlaneWX Launches Two Free Apps on TestFlight",
