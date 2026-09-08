@@ -10,6 +10,7 @@ import {
   Smartphone,
 } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
+import { TestFlightBetaCta } from "@/components/testflight-beta-cta"
 import { PLANEWX_IOS_TESTFLIGHT_URL } from "@/lib/planewx-family-apps"
 
 export const metadata: Metadata = {
@@ -111,14 +112,8 @@ export default function PlaneWxIosPage() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-            <a
-              href={PLANEWX_IOS_TESTFLIGHT_URL}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
-            >
-              Join the TestFlight beta
-              <ArrowRight className="h-4 w-4" />
-            </a>
+          <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4 sm:justify-start items-center">
+            <TestFlightBetaCta href={PLANEWX_IOS_TESTFLIGHT_URL} align="center" className="sm:items-start sm:text-left" />
             <a
               href="https://app.planewx.ai"
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all"

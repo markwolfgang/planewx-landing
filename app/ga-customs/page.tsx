@@ -9,13 +9,23 @@ import {
   Map,
   FileText,
   HeartHandshake,
+  MessageSquare,
+  Phone,
+  PlaneLanding,
+  ShieldOff,
+  Unlock,
+  UserX,
 } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import {
   GaCustomsCampaignTracker,
   GaCustomsSignUpLink,
 } from "@/components/ga-customs-campaign-tracker"
-import { GA_CUSTOMS_APP_STORE_URL } from "@/lib/planewx-family-apps"
+import { TestFlightBetaCta } from "@/components/testflight-beta-cta"
+import {
+  GA_CUSTOMS_APP_STORE_URL,
+  GA_CUSTOMS_TESTFLIGHT_URL,
+} from "@/lib/planewx-family-apps"
 
 export const metadata: Metadata = {
   title: "GA Customs → PlaneWX | Airport of Entry hours & fees",
@@ -53,6 +63,36 @@ const BULLETS = [
     icon: HeartHandshake,
     title: "Free — brought to you by PlaneWX",
     body: "GA Customs is free for GA pilots. PlaneWX builds the weather decision support behind your go / no-go.",
+  },
+  {
+    icon: Unlock,
+    title: "No login required",
+    body: "Open it and go — nothing to sign into.",
+  },
+  {
+    icon: UserX,
+    title: "No account setup",
+    body: "Nothing to create before you can use it.",
+  },
+  {
+    icon: ShieldOff,
+    title: "No personal information collected",
+    body: "We don't ask for your name, email, or a profile.",
+  },
+  {
+    icon: Phone,
+    title: "Tap to call the port",
+    body: "From the airport page, ring the port without hunting for the number.",
+  },
+  {
+    icon: MessageSquare,
+    title: "Pilot reviews",
+    body: "How the clearance actually went — from pilots who've done it, not a brochure.",
+  },
+  {
+    icon: PlaneLanding,
+    title: "South Arrival",
+    body: "Coming from the south with no overflight exemption, your first landing has to be a designated airport (19 CFR 122.24).",
   },
 ] as const
 
@@ -147,13 +187,12 @@ export default function GaCustomsPage() {
                 GA Customs
               </h1>
               <p className="text-lg sm:text-xl text-white/65 max-w-xl leading-relaxed">
-                U.S. Airport of Entry hours &amp; fees — a free iOS app for GA pilots,
-                brought to you by PlaneWX.
+                GA Customs is a free iPhone and iPad app for general aviation pilots who need U.S. Airport of Entry hours, notice, and fees. No login required. No account setup. No personal information collected. Works offline. Tap to call. Pilot reviews. Free.
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
             <a
               href={GA_CUSTOMS_APP_STORE_URL}
               target="_blank"
@@ -163,6 +202,7 @@ export default function GaCustomsPage() {
               Download on the App Store
               <ArrowRight className="h-4 w-4" />
             </a>
+            <TestFlightBetaCta href={GA_CUSTOMS_TESTFLIGHT_URL} />
             <GaCustomsSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
               Get PlaneWX
               <ArrowRight className="h-4 w-4" />
@@ -222,8 +262,7 @@ export default function GaCustomsPage() {
               What pilots get in GA Customs
             </h2>
             <p className="text-white/55 leading-relaxed">
-              Built for border crossings and AOE planning — then come to PlaneWX when
-              weather is the hard part of the go / no-go.
+              Coming back from Canada, Mexico, the Caribbean, or anywhere else, it helps you find a customs airport and plan the first landing. South Arrival: if you are coming from the south and you do not have an overflight exemption, the first landing has to be a designated airport. Those airports are the CBP list in 19 CFR 122.24. From Canada or the north, you do not need that permit, and there is no designated list. User-fee airports come from 19 CFR 122.15. Always confirm with the airport. Hours and procedures come from U.S. Customs and Border Protection. Always verify with CBP before you fly.
             </p>
           </div>
 
@@ -254,7 +293,7 @@ export default function GaCustomsPage() {
             Install GA Customs from the App Store, then open PlaneWX for
             personal-minimums weather intelligence on the same trip.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-3">
             <a
               href={GA_CUSTOMS_APP_STORE_URL}
               target="_blank"
@@ -264,6 +303,7 @@ export default function GaCustomsPage() {
               Download on the App Store
               <ArrowRight className="h-4 w-4" />
             </a>
+            <TestFlightBetaCta href={GA_CUSTOMS_TESTFLIGHT_URL} align="center" />
             <GaCustomsSignUpLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
               Get PlaneWX
               <ArrowRight className="h-4 w-4" />
