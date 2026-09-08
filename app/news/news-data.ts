@@ -80,6 +80,8 @@ export const NEWS_ITEMS: NewsItem[] = [
     isoDate: "2026-08-25",
     location: "St. Petersburg, Florida",
     body: `
+<p>Both apps are now on the App Store &mdash; <a href="https://apps.apple.com/us/app/tbm-boldface/id6804532133" target="_blank" rel="noopener noreferrer">TBM Boldface</a> and <a href="https://apps.apple.com/us/app/ga-customs/id6758804419" target="_blank" rel="noopener noreferrer">GA Customs</a>. See <a href="/news/tbm-boldface-ga-customs-app-store">PlaneWX Ships Two Free Apps on the App Store</a>.</p>
+
 <p><strong>St. Petersburg, Florida &mdash; August 25, 2026 &mdash;</strong> PlaneWX today launched two free companion iOS apps for GA pilots. Both are in TestFlight beta, and both are free of charge.</p>
 
 <p><a href="/boldface"><strong>TBM Boldface</strong></a> is built for TBM memory items &mdash; study, test, and chair-fly the procedures before the airplane asks. Join the public TestFlight beta at <a href="https://testflight.apple.com/join/T5VnWRgb" target="_blank" rel="noopener noreferrer">testflight.apple.com/join/T5VnWRgb</a>.</p>
