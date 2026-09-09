@@ -42,6 +42,35 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "visibility-in-meters",
+    category: "Product",
+    title: "Show Visibility in Meters",
+    excerpt:
+      "A new preference for pilots who brief in meters. Ceiling stays in feet. The WX Score does not change.",
+    date: "September 9, 2026",
+    isoDate: "2026-09-09",
+    location: "St. Petersburg, Florida",
+    body: `
+<p><strong>St. Petersburg, Florida &mdash; September 9, 2026 &mdash;</strong> PlaneWX now lets you show visibility in meters.</p>
+
+<p>Profile &rarr; Preferences &rarr; Show visibility in meters. Off by default.</p>
+
+<p>When it is on, visibility labels use ICAO METAR meter reporting &mdash; four digits under 10 km, rounded down. Below 50 m reads 0000. Below 800 m steps in 50s. Below 5,000 m steps in 100s. Below 10 km steps in 1,000s. At 10 km and above you see 9999 / 10+ km.</p>
+
+<p>Ceiling stays in feet. Scoring and the personal minimums you stored stay in statute miles. This is display only.</p>
+
+<p>The scale is sourced from ICAO METAR practice. Built for European users who asked for it &mdash; including Sven.</p>
+
+<p>Now live for every account.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
     slug: "tbm-boldface-ga-customs-app-store",
     category: "Product",
     title: "PlaneWX Ships Two Free Apps on the App Store",
