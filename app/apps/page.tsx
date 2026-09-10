@@ -102,7 +102,7 @@ const APPS = [
     },
     wordmark: {
       kind: "image" as const,
-      src: "/ga-customs/wordmark.png",
+      src: "/ga-customs/wordmark-v2.png",
       alt: "GA Customs",
       width: 320,
       height: 47,
