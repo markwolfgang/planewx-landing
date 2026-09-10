@@ -185,7 +185,7 @@ export default function GaCustomsPage() {
               </p>
               <h1 className="leading-none">
                 <Image
-                  src="/ga-customs/wordmark.png"
+                  src="/ga-customs/wordmark-v2.png"
                   alt="GA Customs"
                   width={640}
                   height={95}
