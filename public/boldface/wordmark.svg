@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="400" viewBox="0 0 1600 400">
+  <defs>
+    <linearGradient id="faceGrad" gradientUnits="userSpaceOnUse" x1="640" y1="0" x2="1154" y2="0">
+      <stop offset="0%" stop-color="#00B6D1"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="slashGrad" gradientUnits="userSpaceOnUse" x1="780" y1="340" x2="920" y2="60">
+      <stop offset="0%" stop-color="#00B6D1"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <mask id="faceMask">
+      <rect width="1600" height="400" fill="white"/>
+      <!-- gap cut through A -->
+      <polygon fill="black" points="800,355 822,355 940,45 918,45"/>
+    </mask>
+    <style>
+      .wm {
+        font-family: "Public Sans", "Noto Sans Display", "Liberation Sans", Arial Black, sans-serif;
+        font-weight: 900;
+        font-style: italic;
+        font-size: 200px;
+        letter-spacing: -0.03em;
+      }
+    </style>
+  </defs>
+  <text x="48" y="270" class="wm" fill="#FFFFFF">BOLD</text>
+  <g mask="url(#faceMask)">
+    <text x="640" y="270" class="wm" fill="url(#faceGrad)">FACE</text>
+  </g>
+  <polygon fill="url(#slashGrad)" points="806,360 820,360 938,40 924,40"/>
+</svg>

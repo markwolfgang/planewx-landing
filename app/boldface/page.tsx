@@ -139,7 +139,7 @@ export default function BoldfacePage() {
       </nav>
 
       <main className="container mx-auto max-w-5xl px-4 py-12 sm:py-16 space-y-14 sm:space-y-20">
-        {/* Hero — brand first: mean-face spinner + TBM / BOLDFACE wordmark */}
+        {/* Hero — product app icon + locked BOLD FACE wordmark */}
         <header className="relative space-y-8 text-center sm:text-left">
           <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
             <div className="mx-auto sm:mx-0 shrink-0">
@@ -156,13 +156,18 @@ export default function BoldfacePage() {
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#3b82f6]">
                 From the PlaneWX family
               </p>
-              <h1 className="leading-[0.95]">
-                <span className="block text-[#3b82f6] text-base sm:text-lg font-semibold tracking-[0.22em] uppercase mb-1.5">
+              <h1 className="leading-none space-y-2">
+                <span className="block text-[#3b82f6] text-base sm:text-lg font-semibold tracking-[0.22em] uppercase">
                   TBM
                 </span>
-                <span className="block text-5xl sm:text-6xl md:text-7xl font-black italic tracking-tight uppercase">
-                  Boldface
-                </span>
+                <Image
+                  src="/boldface/wordmark.png"
+                  alt="Bold Face"
+                  width={560}
+                  height={182}
+                  className="h-12 sm:h-14 md:h-16 w-auto mx-auto sm:mx-0"
+                  priority
+                />
               </h1>
               <p className="text-lg sm:text-xl text-white/65 max-w-xl leading-relaxed">
                 Free iPhone/iPad app for TBM memory items — study, test, and chair-fly
@@ -307,7 +312,10 @@ export default function BoldfacePage() {
         </p>
 
         <footer className="border-t border-white/5 pt-8 pb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/35">
-          <p>© {new Date().getFullYear()} PlaneWX, LLC</p>
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+            <BrandLogo variant="wordmarkTransparent" className="h-5 w-auto opacity-70" />
+            <p>© {new Date().getFullYear()} PlaneWX, LLC</p>
+          </div>
           <div className="flex items-center gap-5">
             <Link href="/privacy" className="hover:text-white/60 transition-colors">
               Privacy
