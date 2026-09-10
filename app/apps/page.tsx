@@ -104,8 +104,10 @@ const APPS = [
       kind: "image" as const,
       src: "/ga-customs/wordmark.png",
       alt: "GA Customs",
-      width: 320,
-      height: 47,
+      // Intrinsic 488×70 — keep aspect ratio so the slash wordmark
+      // is not vertically squashed into an icon-scrap strip.
+      width: 488,
+      height: 70,
       className: "h-7 sm:h-8 w-auto",
     },
   },

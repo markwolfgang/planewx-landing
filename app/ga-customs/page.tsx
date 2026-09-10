@@ -187,8 +187,8 @@ export default function GaCustomsPage() {
                 <Image
                   src="/ga-customs/wordmark.png"
                   alt="GA Customs"
-                  width={640}
-                  height={95}
+                  width={488}
+                  height={70}
                   className="h-10 sm:h-12 md:h-14 w-auto mx-auto sm:mx-0"
                   priority
                 />
