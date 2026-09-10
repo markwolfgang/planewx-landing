@@ -102,8 +102,14 @@ export default function PlaneWxIosPage() {
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#3B82F6]">
                 TestFlight beta
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-                PlaneWX for iOS
+              <h1 className="leading-none space-y-2">
+                <BrandLogo
+                  variant="wordmarkTransparent"
+                  className="h-10 sm:h-12 md:h-14 w-auto mx-auto sm:mx-0"
+                />
+                <span className="block text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white/90">
+                  for iOS
+                </span>
               </h1>
               <p className="text-lg sm:text-xl text-white/65 max-w-xl leading-relaxed">
                 The Pilot&apos;s Decision Support System on iPhone and iPad — trips,

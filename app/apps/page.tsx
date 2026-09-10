@@ -55,6 +55,9 @@ const APPS = [
       alt: "PlaneWX",
       rounded: true,
     },
+    wordmark: {
+      kind: "planewx" as const,
+    },
   },
   {
     detailHref: "/boldface",
@@ -72,6 +75,14 @@ const APPS = [
       alt: "TBM Boldface",
       rounded: false,
     },
+    wordmark: {
+      kind: "image" as const,
+      src: "/boldface/wordmark.png",
+      alt: "Bold Face",
+      width: 280,
+      height: 91,
+      className: "h-8 sm:h-9 w-auto",
+    },
   },
   {
     detailHref: "/ga-customs",
@@ -88,6 +99,14 @@ const APPS = [
       src: "/ga-customs/app-icon.png",
       alt: "GA Customs",
       rounded: true,
+    },
+    wordmark: {
+      kind: "image" as const,
+      src: "/ga-customs/wordmark.png",
+      alt: "GA Customs",
+      width: 320,
+      height: 47,
+      className: "h-7 sm:h-8 w-auto",
     },
   },
 ] as const
@@ -174,12 +193,26 @@ export default function AppsPage() {
               </div>
 
               <div className="space-y-2 min-w-0 flex-1">
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                <h2 className="tracking-tight">
                   <Link
                     href={app.detailHref}
-                    className="hover:text-sky-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60 rounded-sm"
+                    className="inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6]/60 rounded-sm opacity-95 hover:opacity-100 transition-opacity"
+                    aria-label={app.name}
                   >
-                    {app.name}
+                    {app.wordmark.kind === "planewx" ? (
+                      <BrandLogo
+                        variant="wordmarkTransparent"
+                        className="h-7 sm:h-8 w-auto"
+                      />
+                    ) : (
+                      <Image
+                        src={app.wordmark.src}
+                        alt={app.wordmark.alt}
+                        width={app.wordmark.width}
+                        height={app.wordmark.height}
+                        className={app.wordmark.className}
+                      />
+                    )}
                   </Link>
                 </h2>
                 <p className="text-sm font-medium text-[#3B82F6]">{app.subtitle}</p>

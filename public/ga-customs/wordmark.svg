@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="400" viewBox="0 0 1800 400">
+  <defs>
+    <style>
+      .wm {
+        font-family: "Public Sans", "Noto Sans Display", "Liberation Sans", Arial Black, sans-serif;
+        font-weight: 900;
+        font-style: italic;
+        font-size: 200px;
+        letter-spacing: -0.03em;
+      }
+    </style>
+    <!-- Diagonal slash: top-left cyan / bottom-right blue across CUSTOMS -->
+    <clipPath id="topLeft">
+      <polygon points="0,0 1800,0 0,400"/>
+    </clipPath>
+    <clipPath id="bottomRight">
+      <polygon points="1800,0 1800,400 0,400"/>
+    </clipPath>
+  </defs>
+  <text x="48" y="270" class="wm" fill="#FFFFFF">GA</text>
+  <g clip-path="url(#topLeft)">
+    <text x="420" y="270" class="wm" fill="#00B6D1">CUSTOMS</text>
+  </g>
+  <g clip-path="url(#bottomRight)">
+    <text x="420" y="270" class="wm" fill="#2563EB">CUSTOMS</text>
+  </g>
+</svg>

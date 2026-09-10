@@ -183,8 +183,15 @@ export default function GaCustomsPage() {
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#3B82F6]">
                 From the PlaneWX family
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-                GA Customs
+              <h1 className="leading-none">
+                <Image
+                  src="/ga-customs/wordmark.png"
+                  alt="GA Customs"
+                  width={640}
+                  height={95}
+                  className="h-10 sm:h-12 md:h-14 w-auto mx-auto sm:mx-0"
+                  priority
+                />
               </h1>
               <p className="text-lg sm:text-xl text-white/65 max-w-xl leading-relaxed">
                 GA Customs is a free iPhone and iPad app for general aviation pilots who need U.S. Airport of Entry hours, notice, and fees. No login required. No account setup. No personal information collected. Works offline. Tap to call. Pilot reviews. Free.
