@@ -730,7 +730,7 @@ export function LandingPageV3() {
               </a>
               <div className="space-y-3 text-sm">
                 {[
-                  "2 active flights",
+                  "2 monitored / 2 saved flights",
                   "1 aircraft profile",
                   "Full WX Score breakdown",
                   "Per-aircraft personal minimums",
@@ -782,7 +782,7 @@ export function LandingPageV3() {
               <div className="space-y-3 text-sm">
                 <p className="text-xs text-white/30 uppercase tracking-wider font-medium mb-4">Everything in Free, plus</p>
                 {[
-                  ["10 active flights", false],
+                  ["10 monitored / 100 saved flights", false],
                   ["5 aircraft profiles", false],
                   ["Auto-refresh — briefings update automatically", true],
                   ["Email alerts — weather changes to your inbox", true],

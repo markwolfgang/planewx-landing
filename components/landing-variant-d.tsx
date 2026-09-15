@@ -69,8 +69,8 @@ const DIFF_ROWS: [string, string, string, string][] = [
 ]
 
 const SCALE_ROWS: [string, string, string, string][] = [
-  ["Active flights", "2", "10", "25+"],
-  ["Auto-monitored trips", "0", "5", "10"],
+  ["Saved flights", "2", "10", "100"],
+  ["Monitored flights", "2", "5", "10"],
   ["Aircraft profiles", "1", "3", "5"],
   ["Weekly briefings", "15", "Unlimited", "Unlimited"],
 ]
@@ -418,7 +418,7 @@ export function LandingVariantD() {
               </div>
               <h3 className="text-xl font-bold mb-3">Weekend Flyers</h3>
               <p className="text-white/60 text-sm leading-relaxed">
-                You fly a handful of cross-country trips a year. Two active flights and 15 weekly
+                You fly a handful of cross-country trips a year. Two saved flights and 15 weekly
                 briefings cover your typical usage comfortably. Full analysis, every time.
               </p>
             </div>

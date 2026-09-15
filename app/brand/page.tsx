@@ -265,7 +265,7 @@ export default function BrandPortalPage() {
             <p className="text-xs text-white/30 mb-4">forever</p>
             <div className="space-y-2 text-sm text-white/60">
               {[
-                "2 active flights",
+                "2 monitored / 2 saved flights",
                 "Full WX Score & PAVE",
                 "14-day planning horizon",
                 "Synoptic Intelligence™",
@@ -301,8 +301,8 @@ export default function BrandPortalPage() {
             <div className="space-y-2 text-sm text-white/70">
               <p className="text-xs text-white/30 uppercase tracking-wider mb-3">Everything in Free, plus</p>
               {[
-                "10 active flights",
-                "5 auto-monitored trips",
+                "10 saved flights",
+                "5 monitored flights",
                 "Auto-refresh & email alerts",
                 "Fuel Advisor",
                 "Trip Watchers",
@@ -336,7 +336,8 @@ export default function BrandPortalPage() {
             <div className="space-y-2 text-sm text-white/70">
               <p className="text-xs text-white/30 uppercase tracking-wider mb-3">Everything in Casual, plus</p>
               {[
-                "25+ active flights",
+                "100 saved flights",
+                "10 monitored flights",
                 "Corridor Watch",
                 "Multi-City Optimizer",
                 "Browse Mentors — connect directly",

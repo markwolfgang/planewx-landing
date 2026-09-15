@@ -1012,7 +1012,7 @@ export function LandingPage() {
                 <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">What&apos;s included</p>
                 <div className="flex items-center gap-3">
                   <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70">2 active flights</span>
+                  <span className="text-white/70">2 monitored / 2 saved flights</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Check className="h-4 w-4 text-emerald-400 shrink-0" />
@@ -1102,7 +1102,7 @@ export function LandingPage() {
                 <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">Everything in Free, plus</p>
                 <div className="flex items-center gap-3">
                   <Check className="h-4 w-4 text-sky-400 shrink-0" />
-                  <span className="text-white/70">10 active flights</span>
+                  <span className="text-white/70">10 monitored / 100 saved flights</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Check className="h-4 w-4 text-sky-400 shrink-0" />
@@ -2063,7 +2063,7 @@ export function LandingPage() {
               },
               {
                 q: "What's the difference between Free and Pro?",
-                a: "Free gives you full-quality briefings with personal minimums, WX Scores, and PAVE — but you're limited to 2 active flights and 1 aircraft. Pro adds auto-refresh, email alerts, Trip Watchers, Corridor Watch, Multi-City Optimizer, and expands to 10 active flights and 5 aircraft."
+                a: "Free gives you full-quality briefings with personal minimums, WX Scores, and PAVE — but you're limited to 2 monitored / 2 saved flights and 1 aircraft. Pro adds auto-refresh, email alerts, Trip Watchers, Corridor Watch, Multi-City Optimizer, and expands to 10 monitored / 100 saved flights and 5 aircraft."
               },
               {
                 q: "Is there a money-back guarantee?",
