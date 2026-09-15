@@ -365,6 +365,8 @@ export default function BrandPortalPage() {
             <div className="space-y-2 text-sm text-white/70">
               <p className="text-xs text-white/30 uppercase tracking-wider mb-3">Everything in Pro, plus</p>
               {[
+                "500 saved flights",
+                "25 monitored flights",
                 "Ground Protection",
                 "Auto-Brief on file",
                 "Pre-Flight Text",
