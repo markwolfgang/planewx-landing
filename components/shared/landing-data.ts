@@ -75,7 +75,7 @@ export const FAQS: {
   },
   {
     q: "Is there a free plan?",
-    a: "Yes. The free plan includes 2 active flights, full WX Score breakdowns, personal minimums, PAVE risk assessment, 14-day planning, the Flight Window Explorer, and the ability to broadcast a help request to volunteer mentors. Every paid plan uses the identical AI engine — limits are on quantity, not quality.",
+    a: "Yes. The free plan includes 2 monitored / 2 saved flights, full WX Score breakdowns, personal minimums, PAVE risk assessment, 14-day planning, the Flight Window Explorer, and the ability to broadcast a help request to volunteer mentors. Every paid plan uses the identical AI engine — limits are on quantity, not quality.",
   },
   {
     q: "What's the difference between Casual, Pro, and Pro Plus?",

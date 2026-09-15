@@ -213,8 +213,8 @@ export function PricingSection({ variant }: { variant: string }) {
                 </>
               )}
               <p className="text-xs text-white/40 mb-4">
-                Also includes higher limits than Pro — 25 monitored trips, 10 aircraft, unlimited
-                saved routes, and 25 Corridor Watch routes.
+                Also includes higher limits than Pro — 25 monitored / 500 saved flights, 10
+                aircraft, unlimited saved routes, and 25 Corridor Watch routes.
               </p>
               <div className="grid grid-cols-2 gap-2 mb-3">
                 <button
@@ -283,6 +283,7 @@ export function PricingSection({ variant }: { variant: string }) {
             <ul className="space-y-3 text-sm flex-1">
               {[
                 "2 monitored flights",
+                "2 saved flights",
                 "1 aircraft profile",
                 "15 briefing refreshes per week",
                 "Full WX Score breakdown",
@@ -334,6 +335,7 @@ export function PricingSection({ variant }: { variant: string }) {
             <ul className="space-y-3 text-sm flex-1">
               {[
                 ["5", " monitored with auto-updates"],
+                ["10", " saved flights"],
                 ["3", " aircraft profiles"],
                 ["Unlimited", " briefing refreshes"],
                 ["", "Auto-refresh briefings"],
@@ -377,6 +379,7 @@ export function PricingSection({ variant }: { variant: string }) {
             <ul className="space-y-3 text-sm flex-1">
               {[
                 ["10", " monitored with auto-updates"],
+                ["100", " saved flights"],
                 ["5", " aircraft profiles"],
                 ["Unlimited", " briefing refreshes"],
                 ["Auto-refresh", " briefings"],
@@ -437,6 +440,12 @@ export function PricingSection({ variant }: { variant: string }) {
                 <Check className="h-4 w-4 text-emerald-400 shrink-0" />
                 <span className="text-white/70">
                   <strong>10</strong> monitored with auto-updates
+                </span>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Check className="h-4 w-4 text-emerald-400 shrink-0" />
+                <span className="text-white/70">
+                  <strong>100</strong> saved flights
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
