@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from "next/server"
 import { partnerCodeFromPathname } from "@/lib/partner-paths"
 
+// Phase 2 (Mark 2026-09-16): homepage is variant A only.
+// B/C/D/E stay in the map so ?variant= override still works for QA.
 const VARIANT_WEIGHTS: Record<string, number> = {
-  a: 25,
-  b: 25,
-  c: 25,
-  d: 25,
-  e: 0,   // 0 = excluded from random rotation; still reachable via ?variant=e
+  a: 100,
+  b: 0,
+  c: 0,
+  d: 0,
+  e: 0,
 }
 
 const COOKIE_NAME = "planewx-variant"
