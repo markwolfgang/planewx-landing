@@ -36,6 +36,17 @@ import { YouTubeFacade } from "./shared/youtube-facade"
 
 const VARIANT = "a"
 
+/** Light-blue brain outline with a small airplane silhouette inside (Mark-locked pill). */
+function BrainPlaneIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <span className={`relative inline-flex items-center justify-center ${className}`} aria-hidden>
+      <Brain className="h-full w-full text-sky-400" strokeWidth={1.75} />
+      <Plane className="absolute h-[45%] w-[45%] text-sky-400" strokeWidth={2.25} />
+    </span>
+  )
+}
+
+
 export function LandingVariantA() {
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
@@ -114,9 +125,9 @@ export function LandingVariantA() {
       {/* HERO */}
       <section className="relative pt-24 pb-20 px-4">
         <div className="container mx-auto max-w-5xl text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-sm font-medium">
-            <Brain className="h-4 w-4" />
-            <span>Pilot decision support for general aviation</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a1628] border border-sky-400/40 text-sky-400 text-sm font-medium">
+            <BrainPlaneIcon className="h-4 w-4" />
+            <span>A new category in aviation technology</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
