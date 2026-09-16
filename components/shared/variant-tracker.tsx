@@ -28,8 +28,11 @@ export function VariantTracker({
   useEffect(() => {
     const refParam = new URLSearchParams(window.location.search).get("ref")
     const pathCode = partnerCodeFromPathname(window.location.pathname)
+    // Trim ref before precedence so whitespace-only ?ref= falls through to
+    // partner path / defaultCode (e.g. /runway?ref=%20 → RUNWAY).
     const code =
-      (refParam || pathCode || defaultCode || "").trim().toUpperCase() || null
+      (refParam?.trim() || pathCode || defaultCode || "").trim().toUpperCase() ||
+      null
 
     if (code) {
       try {
