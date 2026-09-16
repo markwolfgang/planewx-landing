@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { partnerCodeFromPathname } from "@/lib/partner-paths"
 
 const VARIANT_WEIGHTS: Record<string, number> = {
   a: 25,
@@ -45,6 +46,34 @@ function handleBrandAuth(request: NextRequest): NextResponse | null {
   return NextResponse.redirect(loginUrl)
 }
 
+/**
+ * A/B rewrite for the homepage funnel. Optionally force `ref` (partner short links).
+ * Preserves other query params; sets/overwrites `ref` when partnerCode is provided.
+ */
+function rewriteToVariant(
+  request: NextRequest,
+  variant: string,
+  partnerCode?: string | null,
+  setCookie?: boolean
+): NextResponse {
+  const url = request.nextUrl.clone()
+  url.pathname = `/variants/${variant}`
+  if (partnerCode) {
+    url.searchParams.set("ref", partnerCode)
+  }
+  // Drop admin override once applied so the rewritten page does not keep ?variant=
+  url.searchParams.delete("variant")
+  const res = NextResponse.rewrite(url)
+  if (setCookie) {
+    res.cookies.set(COOKIE_NAME, variant, {
+      maxAge: COOKIE_MAX_AGE,
+      sameSite: "lax",
+      path: "/",
+    })
+  }
+  return res
+}
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
@@ -60,8 +89,12 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // A/B variant routing (root path only)
-  if (pathname !== "/") return NextResponse.next()
+  // Partner short links (e.g. /runway → homepage funnel with ref=RUNWAY).
+  // Allowlist-only — never steals reserved routes like /apps, /osh, /news.
+  const partnerCode = partnerCodeFromPathname(pathname)
+  const isHomepageFunnel = pathname === "/" || Boolean(partnerCode)
+
+  if (!isHomepageFunnel) return NextResponse.next()
 
   const { searchParams } = request.nextUrl
   const ua = request.headers.get("user-agent") ?? ""
@@ -69,46 +102,27 @@ export function middleware(request: NextRequest) {
   // Admin override via query param
   const forced = searchParams.get("variant")
   if (forced && forced in VARIANT_WEIGHTS) {
-    const url = request.nextUrl.clone()
-    url.pathname = `/variants/${forced}`
-    url.searchParams.delete("variant")
-    const res = NextResponse.rewrite(url)
-    res.cookies.set(COOKIE_NAME, forced, {
-      maxAge: COOKIE_MAX_AGE,
-      sameSite: "lax",
-      path: "/",
-    })
-    return res
+    return rewriteToVariant(request, forced, partnerCode, true)
   }
 
   // Pin bots/crawlers to variant A for consistent SEO
   if (BOT_UA_PATTERN.test(ua)) {
-    const url = request.nextUrl.clone()
-    url.pathname = "/variants/a"
-    return NextResponse.rewrite(url)
+    return rewriteToVariant(request, "a", partnerCode, false)
   }
 
   // Existing cookie — honour it if the variant is still active
   const existing = request.cookies.get(COOKIE_NAME)?.value
   if (existing && VARIANT_WEIGHTS[existing] > 0) {
-    const url = request.nextUrl.clone()
-    url.pathname = `/variants/${existing}`
-    return NextResponse.rewrite(url)
+    return rewriteToVariant(request, existing, partnerCode, false)
   }
 
   // No cookie (or stale variant) — assign randomly by weight
   const assigned = pickVariant()
-  const url = request.nextUrl.clone()
-  url.pathname = `/variants/${assigned}`
-  const res = NextResponse.rewrite(url)
-  res.cookies.set(COOKIE_NAME, assigned, {
-    maxAge: COOKIE_MAX_AGE,
-    sameSite: "lax",
-    path: "/",
-  })
-  return res
+  return rewriteToVariant(request, assigned, partnerCode, true)
 }
 
+// Matcher must be a static array (Next.js compile-time). When adding a partner
+// slug to PARTNER_PATH_CODES in lib/partner-paths.ts, add `/{slug}` here too.
 export const config = {
-  matcher: ["/", "/brand/:path*"],
+  matcher: ["/", "/brand/:path*", "/runway"],
 }
