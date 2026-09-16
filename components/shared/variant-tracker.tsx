@@ -29,7 +29,7 @@ export function VariantTracker({
     const refParam = new URLSearchParams(window.location.search).get("ref")
     const pathCode = partnerCodeFromPathname(window.location.pathname)
     // Trim ref before precedence so whitespace-only ?ref= falls through to
-    // partner path / defaultCode (e.g. /runway?ref=%20 → RUNWAY).
+    // partner path / defaultCode (e.g. /runway?ref=%20 -> RUNWAY).
     const code =
       (refParam?.trim() || pathCode || defaultCode || "").trim().toUpperCase() ||
       null
