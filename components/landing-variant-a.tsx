@@ -132,7 +132,7 @@ export function LandingVariantA() {
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             PlaneWX improves GA safety by giving pilots a robust decision support system:
-            weather briefing, living FRAT, and a mentor network. See weather, risk, and counsel
+            weather briefing, FRAT, and a mentor network. See weather, risk, and counsel
             before trip pressure locks in.
           </p>
 
@@ -238,7 +238,7 @@ export function LandingVariantA() {
 
               {[
                 ["Displays raw METARs, TAFs, PIREPs", "Weather briefing matched to your airplane and minimums"],
-                ["Generic VFR / IFR categories", "Living FRAT: Pilot, Aircraft, Environment, External"],
+                ["Generic VFR / IFR categories", "FRAT: Pilot, Aircraft, enVironment, External"],
                 ["You formulate the risk alone under pressure", "WX Score: quantified context for your decision"],
                 ["Weather as the whole call", "Weather, FRAT, and mentor counsel in one workflow"],
                 ["You decide alone", "Mentors who see your full briefing and catch blind spots"],
@@ -270,13 +270,10 @@ export function LandingVariantA() {
       {/* THREE PILLARS */}
       <section id="pillars" className="relative py-24 px-4">
         <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-14 space-y-4">
+          <div className="text-center mb-10 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium">
               Three pillars
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold">
-              Weather. FRAT. Mentors.
-            </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               A decision support system is more than another weather tab. Structured inputs, clear
               synthesis, and room for judgment before launch.
@@ -284,42 +281,38 @@ export function LandingVariantA() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-sky-950/60 to-sky-950/20 border border-sky-500/20">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-sky-950/60 to-sky-950/20 border border-sky-500/20">
               <div className="w-12 h-12 rounded-xl bg-sky-500/20 flex items-center justify-center mb-5">
                 <CloudSun className="h-6 w-6 text-sky-400" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Weather briefing</h3>
+              <h2 className="text-2xl font-bold mb-3">Weather</h2>
               <p className="text-white/60 text-sm leading-relaxed">
-                Ceiling, visibility, wind, icing, convective trends, and how those products evolve
-                as the window tightens. Matched to your airplane and personal minimums, with a WX
-                Score that updates as the forecast sharpens. Weather is the environment. It is not
-                the entire risk picture.
+                A briefing matched to your airplane and personal minimums. Ceiling, visibility,
+                wind, icing, convective trends, and how those products evolve as the window
+                tightens. The WX Score updates as the forecast sharpens.
               </p>
             </div>
 
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
               <div className="w-12 h-12 rounded-xl bg-violet-500/20 flex items-center justify-center mb-5">
                 <ClipboardCheck className="h-6 w-6 text-violet-400" />
               </div>
-              <h3 className="text-xl font-bold mb-3">FRAT</h3>
+              <h2 className="text-2xl font-bold mb-3">FRAT</h2>
               <p className="text-white/60 text-sm leading-relaxed">
-                A living flight risk assessment that asks what the weather briefing does not. How
-                current are you. What is on the airplane. How complex is the environment. What
-                external pressure is riding in the cabin. Done early and honestly, FRAT keeps
-                personal minimums from living only in a forgotten note.
+                Pilot, Aircraft, enVironment, External. Fed by the high-quality WX briefing plus
+                airport complexity, day or night, unfamiliar destinations, and risk stacking.
+                Dynamic, not a static one-time checklist.
               </p>
             </div>
 
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
               <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-5">
                 <Users className="h-6 w-6 text-emerald-400" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Mentor network</h3>
+              <h2 className="text-2xl font-bold mb-3">Mentors</h2>
               <p className="text-white/60 text-sm leading-relaxed">
-                Even good pilots miss their own blind spots. Mentors give you another set of eyes
-                before you launch: someone who will ask the awkward question about fatigue,
-                currency, or get-there-itis when the forecast looks good enough. Counsel is part of
-                decision support, not an afterthought.
+                Another set of eyes before you launch. Someone who will ask the awkward question
+                about fatigue, currency, or get-there-itis when the forecast looks good enough.
               </p>
             </div>
           </div>
@@ -399,12 +392,13 @@ export function LandingVariantA() {
               </div>
               <h3 className="text-xl font-bold mb-3">Decide</h3>
               <p className="text-white/60 text-sm leading-relaxed mb-4">
-                The WX Score feeds a living FRAT built on PAVE: Pilot, Aircraft, enVironment,
-                External pressures. You get a complete decision picture, not just a weather snapshot.
+                The WX Score feeds FRAT on PAVE: Pilot, Aircraft, enVironment, External pressures.
+                Risk updates with the briefing, airport complexity, and the rest of the picture.
+                You get a complete decision view, not just a weather snapshot.
               </p>
               <ul className="space-y-1.5 text-xs text-white/40">
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />WX Score: 0-100% quantified risk</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />Living FRAT / PAVE, pre-filled from context</li>
+                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />FRAT / PAVE, fed by briefing and context</li>
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />14-day trend to avoid last-minute pressure</li>
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />Mentor connection for human perspective</li>
               </ul>
@@ -492,16 +486,17 @@ export function LandingVariantA() {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-medium mb-5">
-              Living FRAT
+              FRAT
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-5">
               Weather alone is not{" "}
               <span className="text-indigo-400">the whole call</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              FRAT turns risk into a conversation with yourself. PlaneWX uses the FAA&apos;s PAVE
-              framework (Pilot, Aircraft, enVironment, External) as a living flight risk assessment:
-              pre-fill what it can, prompt what only you can answer.
+              FRAT turns risk into a conversation with yourself. PlaneWX FRAT uses the FAA&apos;s
+              PAVE framework (Pilot, Aircraft, enVironment, External) and stays dynamic: it reads
+              the WX briefing, airport complexity, day or night, unfamiliar destinations, and risk
+              stacking. Not a static one-time form.
             </p>
           </div>
 
@@ -638,7 +633,7 @@ export function LandingVariantA() {
               { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0-100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds. Structured context so you can decide with a clearer picture." },
               { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute go/no-go with bags packed and commitments made." },
               { icon: <Snowflake className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across 3-7 sample points along your route with confidence scoring. Nobody else does this." },
-              { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "Living FRAT (PAVE)", desc: "A living flight risk assessment on the FAA PAVE framework, pre-filled from your trip context. Pilot, Aircraft, enVironment, External pressures: risk as a conversation, not a checkbox." },
+              { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "FRAT (PAVE)", desc: "Pilot, Aircraft, enVironment, External. Fed by the WX briefing, airport complexity, day or night, unfamiliar destinations, and risk stacking. Dynamic risk assessment, not a static checklist." },
               { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Mentor network", desc: "Connect with experienced pilots who see your full briefing: WX Score, aircraft profile, minimums. Mentors catch what you cannot see alone." },
               { icon: <Users className="h-6 w-6" />, color: "text-amber-400 bg-amber-500/20", title: "Trip Watchers", desc: "Family, passengers, schedulers see the same live data. Rescheduling becomes a shared decision, not a confrontation at 6 AM." },
               { icon: <Route className="h-6 w-6" />, color: "text-rose-400 bg-rose-500/20", title: "Corridor Watch", desc: "Route-specific intelligence at departure, waypoints, and arrival. TFRs, NOTAMs, and icing overlays along your exact path." },
