@@ -47,8 +47,9 @@ function handleBrandAuth(request: NextRequest): NextResponse | null {
 }
 
 /**
- * A/B rewrite for the homepage funnel. Optionally force `ref` (partner short links).
- * Preserves other query params; sets/overwrites `ref` when partnerCode is provided.
+ * A/B rewrite for the homepage funnel. Optionally set `ref` from a partner short link.
+ * Preserves other query params. Only fills `ref` when the request has no non-blank ref
+ * (explicit ?ref= wins over the path-derived partner code).
  */
 function rewriteToVariant(
   request: NextRequest,
@@ -58,7 +59,8 @@ function rewriteToVariant(
 ): NextResponse {
   const url = request.nextUrl.clone()
   url.pathname = `/variants/${variant}`
-  if (partnerCode) {
+  const existingRef = url.searchParams.get("ref")?.trim()
+  if (partnerCode && !existingRef) {
     url.searchParams.set("ref", partnerCode)
   }
   // Drop admin override once applied so the rewritten page does not keep ?variant=
