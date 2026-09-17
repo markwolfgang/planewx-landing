@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
+import { partnerCodeFromPathname } from "@/lib/partner-paths"
 
 declare global {
   interface Window {
@@ -12,6 +13,8 @@ declare global {
 /**
  * Records campaign visits via POST /api/campaign-visit.
  * - `?ref=` wins when present (stored in localStorage for signup CTAs).
+ * - Partner short links (e.g. /runway) map pathname → campaign code when
+ *   middleware rewrites to the homepage funnel without changing the browser URL.
  * - Dedicated campaign landings may pass `defaultCode` so bare path visits
  *   (e.g. /ga-customs, /boldface) are still attributed without requiring ?ref=.
  */
@@ -24,7 +27,12 @@ export function VariantTracker({
 }) {
   useEffect(() => {
     const refParam = new URLSearchParams(window.location.search).get("ref")
-    const code = (refParam || defaultCode || "").trim().toUpperCase() || null
+    const pathCode = partnerCodeFromPathname(window.location.pathname)
+    // Trim ref before precedence so whitespace-only ?ref= falls through to
+    // partner path / defaultCode (e.g. /runway?ref=%20 -> RUNWAY).
+    const code =
+      (refParam?.trim() || pathCode || defaultCode || "").trim().toUpperCase() ||
+      null
 
     if (code) {
       try {

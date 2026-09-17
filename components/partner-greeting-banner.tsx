@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Handshake } from "lucide-react"
 import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
+import { partnerCodeFromPathname } from "@/lib/partner-paths"
 
 const SESSION_KEY_PREFIX = "planewx_greeting_"
 
@@ -16,11 +17,14 @@ export function PartnerGreetingBanner() {
   const [code, setCode] = useState<string | null>(null)
 
   useEffect(() => {
-    // Resolve the campaign code: URL param takes priority, then localStorage.
+    // Resolve the campaign code: ?ref= wins, then partner short-link path
+    // (e.g. /runway → RUNWAY; browser URL keeps the path after middleware rewrite),
+    // then localStorage from a prior visit.
     let resolved: string | null = null
     try {
       const urlCode = new URLSearchParams(window.location.search).get("ref")?.trim().toUpperCase()
-      resolved = urlCode || localStorage.getItem("planewx_referral")
+      const pathCode = partnerCodeFromPathname(window.location.pathname)
+      resolved = urlCode || pathCode || localStorage.getItem("planewx_referral")
     } catch {
       return
     }
