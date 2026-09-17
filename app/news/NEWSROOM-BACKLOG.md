@@ -7,8 +7,14 @@ Do not invent numbers. Re-verify every stat at write time.
 
 | Slug | Date | Notes |
 |---|---|---|
+| `frat` | Sep 16, 2026 | FRAT product name; PAVE underneath. Dynamic briefing + airport complexity chips; pilot self-rates. Help `/help/frat`. |
+| `skydemon-share` | Sep 15, 2026 | Share / `.flightplan` / paste into New Trip. Help `/help/route-paste`. No platform counts. |
+| `visibility-in-meters` | Sep 9, 2026 | Display preference; ceiling stays feet; WX Score unchanged. |
+| `tbm-boldface-ga-customs-app-store` | Sep 8, 2026 | Two free App Store apps. |
+| `free-apps-testflight-boldface-ga-customs` | Aug 25, 2026 | TestFlight launch; App Store follow-up linked. |
 | `pro-plus-launch` | Aug 17, 2026 | On `main` |
 | `5x5-aviation-insurance-exclusive-partner` | Aug 17, 2026 | On `main` |
+| `per-airport-personal-minimums` | Aug 16, 2026 | Briefing uses that airport’s mins, not only a global set. |
 | `foreflight-share-to-planewx` | Aug 12, 2026 | iOS Send To + paste fallback. App Store still a follow-up in the spec — copy does not claim the store. |
 | `ifr-wx-score-on-vfr-briefing` | Aug 12, 2026 | Wayne / 20-point ceiling-vis gate |
 | `international-pilots` | Aug 11, 2026 | 30 countries / 35 briefed (replica `community_stats` 2026-08-16). AROME/ICON named because dateline is Aug 11. |
@@ -20,7 +26,6 @@ Do not invent numbers. Re-verify every stat at write time.
 
 ## Maybe later
 
-- Per-airport minimums (Aug 14)
 - Fuel plan on the briefing (Aug 14)
 - WX Score History (Aug 13)
 - European models as their own piece (already carried in the Aug 11 international story)
