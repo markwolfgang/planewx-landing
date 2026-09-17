@@ -273,16 +273,18 @@ export const NEWS_ITEMS: NewsItem[] = [
     category: "Product",
     title: "Personal Minimums per Airport",
     excerpt:
-      "The briefing now uses that airport’s personal minimums — not only a single global set — so home field and an unfamiliar destination can score differently.",
+      "Home field and a hard strip are not the same standard. Set ceiling, visibility, and crosswind per airport so the briefing scores that field honestly. Help at app.planewx.ai/help/personal-minimums.",
     date: "August 16, 2026",
     isoDate: "2026-08-16",
     location: "St. Petersburg, Florida",
     body: `
-<p><strong>St. Petersburg, Florida &mdash; August 16, 2026 &mdash;</strong> PlaneWX now supports personal minimums per airport. The briefing uses that airport&rsquo;s mins &mdash; not only a single global set.</p>
+<p><strong>St. Petersburg, Florida &mdash; August 16, 2026 &mdash;</strong> PlaneWX now supports personal minimums per airport. The briefing uses that airport&rsquo;s mins when a row exists, not only a single global set.</p>
 
-<p>Home field and an unfamiliar destination are not the same standard. Set mins for the airports that matter to you. When a briefing scores departure or arrival weather, it applies the mins on file for that airport. Where you have not set an override, your global personal minimums still apply.</p>
+<p>One global set is a compromise. Set it to the easy home field and a mountain strip, coastal field, or short one-way runway scores too generously. Set it to the hard field and every routine home trip looks like a no-go. Night into an unfamiliar Class B is not the same risk as a daylight pattern at home. A short runway with a higher personal bar deserves its own numbers.</p>
 
-<p>No change to how you store soft and hard limits. The score still compares forecast weather against the minimums you set. PlaneWX does not invent a different standard for you.</p>
+<p>What you can set per airport: ceiling (VFR and IFR, comfort/soft and max/hard), visibility (VFR and IFR, comfort/soft and max/hard), and crosswind (comfort/soft and max/hard). Turbulence and icing stay global. Storm avoidance stays global. Leave a field blank and it inherits your global or aircraft limit. Cap is 25 airports. Find it under Profile &rarr; Minimums &rarr; Airport-specific minimums. When a briefing scores departure or arrival weather and a row exists for that airport, those mins apply.</p>
+
+<p>The in-app guide is at <a href="https://app.planewx.ai/help/personal-minimums">app.planewx.ai/help/personal-minimums</a>.</p>
 
 <p>PlaneWX is complementary to the electronic flight bag and official weather sources. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
 
