@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 import fs from 'fs'
 import path from 'path'
 
-export const alt = 'PlaneWX — Weather Intelligence for Confident Decisions'
+export const alt = "PlaneWX | The Pilot's Decision Support System"
 export const size = {
   width: 1200,
   height: 630,
@@ -19,7 +19,7 @@ export default async function Image() {
     (
       <div
         style={{
-          background: 'linear-gradient(135deg, #0a0f1e 0%, #0f172a 40%, #0a0f1e 100%)',
+          background: 'linear-gradient(135deg, #0a1628 0%, #0d1f3c 50%, #0a0f1a 100%)',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -56,29 +56,29 @@ export default async function Image() {
           <span style={{ fontSize: '28px', fontWeight: 700, color: '#38bdf8' }}>PlaneWX</span>
         )}
 
-        {/* Headline */}
+        {/* Headline: Variant A DSS voice */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <span
             style={{
-              fontSize: '72px',
+              fontSize: '56px',
               fontWeight: 800,
               color: 'white',
               lineHeight: 1.05,
               letterSpacing: '-0.02em',
             }}
           >
-            Weather Intelligence for
+            The Pilot's Decision
           </span>
           <span
             style={{
-              fontSize: '72px',
+              fontSize: '56px',
               fontWeight: 800,
               color: '#38bdf8',
               lineHeight: 1.05,
               letterSpacing: '-0.02em',
             }}
           >
-            Confident Decisions
+            Support System
           </span>
           <span
             style={{
@@ -88,7 +88,7 @@ export default async function Image() {
               color: 'rgba(255,255,255,0.65)',
             }}
           >
-            Know your WX Score 14 days out.
+            Every weather tool shows you data. PlaneWX helps you decide.
           </span>
         </div>
 
@@ -111,9 +111,9 @@ export default async function Image() {
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             {[
-              { label: 'WX Score', color: '#38bdf8' },
-              { label: '14-Day Outlook', color: '#10b981' },
-              { label: 'Personal Minimums', color: '#f59e0b' },
+              { label: 'Weather Briefing', color: '#38bdf8' },
+              { label: 'FRAT', color: '#a78bfa' },
+              { label: 'Mentor Network', color: '#10b981' },
             ].map(({ label, color }) => (
               <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div
