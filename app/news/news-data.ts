@@ -282,6 +282,8 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 <p>One global set is a compromise. Set it to the easy home field and a mountain strip, coastal field, or short one-way runway scores too generously. Set it to the hard field and every routine home trip looks like a no-go. Night into an unfamiliar Class B is not the same risk as a daylight pattern at home. A short runway with a higher personal bar deserves its own numbers.</p>
 
+<p>The idea came from an Alaskan ATP based at Anchorage doing King Air / BE30 rental work. Same pilot, same airplane, different personal limits at different fields. The motivating pair is PANC versus PASD (Sand Point): tighter ceiling, visibility, and crosswind at the harder strip.</p>
+
 <p>What you can set per airport: ceiling (VFR and IFR, comfort/soft and max/hard), visibility (VFR and IFR, comfort/soft and max/hard), and crosswind (comfort/soft and max/hard). Turbulence and icing stay global. Storm avoidance stays global. Leave a field blank and it inherits your global or aircraft limit. Cap is 25 airports. Find it under Profile &rarr; Minimums &rarr; Airport-specific minimums. When a briefing scores departure or arrival weather and a row exists for that airport, those mins apply.</p>
 
 <p>The in-app guide is at <a href="https://app.planewx.ai/help/personal-minimums">app.planewx.ai/help/personal-minimums</a>.</p>
