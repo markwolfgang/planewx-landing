@@ -17,8 +17,10 @@ const COOKIE_MAX_AGE = 60 * 60 * 24 * 30 // 30 days
 const BRAND_AUTH_COOKIE = "planewx-brand-auth"
 const BRAND_AUTH_MAX_AGE = 60 * 60 * 24 * 90 // 90 days
 
+// Pin social unfurl crawlers (Discord, Slack, iMessage/Apple) to variant A
+// alongside classic search/social bots so partner short links emit consistent OG.
 const BOT_UA_PATTERN =
-  /Googlebot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|facebookexternalhit|Twitterbot|LinkedInBot/i
+  /Googlebot|Bingbot|Slurp|DuckDuckBot|Baiduspider|YandexBot|facebookexternalhit|Twitterbot|LinkedInBot|Discordbot|Slackbot|Applebot|SkypeUriPreview/i
 
 function pickVariant(): string {
   const active = Object.entries(VARIANT_WEIGHTS).filter(([, w]) => w > 0)

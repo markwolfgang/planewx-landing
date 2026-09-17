@@ -17,7 +17,7 @@ const jsonLd = {
       "@id": "https://www.planewx.ai/#website",
       "url": "https://www.planewx.ai",
       "name": "PlaneWX",
-      "description": "Weather intelligence for pilots — know if your flight is a go, days in advance",
+      "description": "The Pilot's Decision Support System: weather briefing, FRAT, and a mentor network for general aviation pilots.",
       "publisher": {
         "@id": "https://www.planewx.ai/#organization"
       },
@@ -51,7 +51,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "@id": "https://www.planewx.ai/#app",
       "name": "PlaneWX",
-      "description": "AI-powered aviation weather intelligence that synthesizes expert meteorological insights into actionable briefings. Know if your flight is a GO, days in advance.",
+      "description": "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, and a mentor network. Every weather tool shows you data. PlaneWX helps you decide.",
       "applicationCategory": "WeatherApplication",
       "operatingSystem": "Web",
       "offers": {
@@ -89,7 +89,7 @@ const jsonLd = {
           "name": "What is PlaneWX?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PlaneWX is an AI-powered aviation weather intelligence platform for general aviation pilots. It synthesizes multiple weather data sources to provide actionable briefings and WX Score probability metrics, helping you know if your flight will happen days in advance."
+            "text": "PlaneWX is the Pilot's Decision Support System for general aviation. It combines weather briefing, FRAT, and a mentor network so pilots can see weather and risk, and connect with a mentor before the pressure locks in."
           }
         },
         {
@@ -123,10 +123,11 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "PlaneWX — Weather Intelligence for Pilots",
+    default: "PlaneWX | The Pilot's Decision Support System",
     template: "%s | PlaneWX",
   },
-  description: "The confidence to go, or the courage to stay™. PlaneWX provides AI-powered long-range aviation weather forecasting for general aviation pilots. Get weather briefings days in advance with WX Score probability metrics.",
+  description:
+    "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, and a mentor network. The confidence to go, or the courage to stay™.",
   keywords: [
     "aviation weather",
     "flight planning",
@@ -167,9 +168,13 @@ export const metadata: Metadata = {
     "turbulence forecast",
     "icing forecast",
     "GA weather app",
+    "pilot decision support",
+    "FRAT",
+    "flight risk assessment",
+    "mentor network",
   ],
   category: "Weather",
-  classification: "Aviation Weather Intelligence",
+  classification: "Pilot Decision Support System",
   authors: [{ name: "Mark Wolfgang", url: "https://www.planewx.ai" }],
   creator: "PlaneWX, LLC",
   publisher: "PlaneWX, LLC",
@@ -185,16 +190,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://planewx.ai",
+    url: "https://www.planewx.ai",
     siteName: "PlaneWX",
-    title: "PlaneWX — Weather Intelligence for Confident Decisions",
-    description: "Know your WX Score 14 days out. The confidence to go, or the courage to stay.™",
+    title: "PlaneWX | The Pilot's Decision Support System",
+    description:
+      "Every weather tool shows you data. PlaneWX helps you decide. Weather briefing, FRAT, and a mentor network.",
     // OG image is auto-generated from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "PlaneWX — Weather Intelligence for Confident Decisions",
-    description: "Know your WX Score 14 days out. The confidence to go, or the courage to stay.™",
+    title: "PlaneWX | The Pilot's Decision Support System",
+    description:
+      "Every weather tool shows you data. PlaneWX helps you decide. Weather briefing, FRAT, and a mentor network.",
     // Twitter image is auto-generated from app/twitter-image.tsx
     creator: "@planewx",
   },
