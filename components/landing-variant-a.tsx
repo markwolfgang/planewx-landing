@@ -148,8 +148,7 @@ export function LandingVariantA() {
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             PlaneWX improves GA safety by giving pilots a robust decision support system:
-            weather briefing, FRAT, and a mentor network. See weather, risk, and counsel
-            before trip pressure locks in.
+            weather briefing, FRAT, and a mentor network. See weather and risk, and connect with a mentor pilot before the pressure locks in. Nobody has to make a tough decision alone.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
