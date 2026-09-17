@@ -42,6 +42,58 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "frat",
+    category: "Product",
+    title: "PlaneWX FRAT Is Live",
+    excerpt:
+      "PlaneWX autocalculates day/night, unfamiliar destinations, airport environment signals, runway notes, and briefing weather into FRAT. When risks stack, you see it. You still decide. Help at app.planewx.ai/help/frat.",
+    date: "September 16, 2026",
+    isoDate: "2026-09-16",
+    location: "St. Petersburg, Florida",
+    body: `
+<p><strong>St. Petersburg, Florida &mdash; September 16, 2026 &mdash;</strong> PlaneWX FRAT is live. FRAT is the product name for flight risk assessment in PlaneWX. Underneath it sits the FAA&rsquo;s PAVE framework (Pilot, Aircraft, enVironment, External). PAVE is the foundation. FRAT is how you work it.</p>
+
+<p>PlaneWX autocalculates many of the inputs so you are not starting from a blank form. Day or night comes from planned departure and arrival against local solar. Unfamiliar destination comes from your flown history. Airport environment signals appear when a source supports them (volume, SID/STAR, seasonal, training-heavy). When there is no source, those signals stay silent. Runway notes are checked against your mins. Weather stays tied to the briefing for the trip you are actually flying.</p>
+
+<p>When risks start stacking, PlaneWX surfaces it. Elevated factors can trip a three-strikes, elevated-factor stacking banner so you see the pile-up in one place. There is no auto NO-GO. You still decide. The point is a thorough, intentional self-assessment: work TEAM mitigations, keep the PAVE model underneath, and own the call as pilot in command.</p>
+
+<p>The in-app guide is at <a href="https://app.planewx.ai/help/frat">app.planewx.ai/help/frat</a>.</p>
+
+<p>PlaneWX is complementary to the electronic flight bag and official weather sources. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
+    slug: "skydemon-share",
+    category: "Product",
+    title: "Share a SkyDemon Route into PlaneWX",
+    excerpt:
+      "Bring a SkyDemon route into PlaneWX as a trip — Share, .flightplan, or paste — without retyping. Help at app.planewx.ai/help/route-paste.",
+    date: "September 15, 2026",
+    isoDate: "2026-09-15",
+    location: "St. Petersburg, Florida",
+    body: `
+<p><strong>St. Petersburg, Florida &mdash; September 15, 2026 &mdash;</strong> PlaneWX now takes a <a href="https://www.skydemon.aero/" target="_blank" rel="noopener noreferrer">SkyDemon</a> route and opens it as a trip &mdash; without making you type the route twice.</p>
+
+<p>Share from SkyDemon, send a <code>.flightplan</code> file, or paste the route. Either way, the trip opens prefilled. That is a handoff, not a briefing. You still pick the date, the airplane, and the flight rules, then run the weather.</p>
+
+<p>The in-app walkthrough is at <a href="https://app.planewx.ai/help/route-paste">app.planewx.ai/help/route-paste</a>.</p>
+
+<p>PlaneWX is complementary to the electronic flight bag. <a href="https://www.skydemon.aero/" target="_blank" rel="noopener noreferrer">SkyDemon</a> remains the place many pilots build the route. PlaneWX is the decision support on that same route.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
     slug: "visibility-in-meters",
     category: "Product",
     title: "Show Visibility in Meters",
@@ -208,6 +260,33 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Pro Plus is $29.99 a month or $249 a year. Through October 1, annual plans can be locked for two years &mdash; Pro Plus is $498 for 24 months. After October 1 that option goes away. Existing locks are honored. Pro and Casual are still there. Safety is not a premium feature: every briefing uses the same engine. We limit how much you can use PlaneWX, not how well it works.</p>
 
 <p>Pilots can start at <a href="https://www.planewx.ai">www.planewx.ai</a>. PlaneWX is complementary to the electronic flight bag and official weather sources pilots already use. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
+    slug: "per-airport-personal-minimums",
+    category: "Product",
+    title: "Personal Minimums per Airport",
+    excerpt:
+      "Home field and a hard strip are not the same standard. Set ceiling, visibility, and crosswind per airport so the briefing scores that field honestly. Help at app.planewx.ai/help/personal-minimums.",
+    date: "August 16, 2026",
+    isoDate: "2026-08-16",
+    location: "St. Petersburg, Florida",
+    body: `
+<p><strong>St. Petersburg, Florida &mdash; August 16, 2026 &mdash;</strong> PlaneWX now supports personal minimums per airport. The briefing uses that airport&rsquo;s mins when a row exists, not only a single global set.</p>
+
+<p>One global set is a compromise. Set it to the easy home field and a mountain strip, coastal field, or short one-way runway scores too generously. Set it to the hard field and every routine home trip looks like a no-go. Night into an unfamiliar Class B is not the same risk as a daylight pattern at home. A short runway with a higher personal bar deserves its own numbers.</p>
+
+<p>What you can set per airport: ceiling (VFR and IFR, comfort/soft and max/hard), visibility (VFR and IFR, comfort/soft and max/hard), and crosswind (comfort/soft and max/hard). Turbulence and icing stay global. Storm avoidance stays global. Leave a field blank and it inherits your global or aircraft limit. Cap is 25 airports. Find it under Profile &rarr; Minimums &rarr; Airport-specific minimums. When a briefing scores departure or arrival weather and a row exists for that airport, those mins apply.</p>
+
+<p>The in-app guide is at <a href="https://app.planewx.ai/help/personal-minimums">app.planewx.ai/help/personal-minimums</a>.</p>
+
+<p>PlaneWX is complementary to the electronic flight bag and official weather sources. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
 
 <h2>About PlaneWX</h2>
 <p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
