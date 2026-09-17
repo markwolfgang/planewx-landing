@@ -46,14 +46,16 @@ export const NEWS_ITEMS: NewsItem[] = [
     category: "Product",
     title: "PlaneWX FRAT Is Live",
     excerpt:
-      "Flight risk assessment built on the FAA’s PAVE framework — dynamic with briefing weather and airport complexity chips. You self-rate. Help at app.planewx.ai/help/frat.",
+      "PlaneWX autocalculates day/night, unfamiliar destinations, airport environment signals, runway notes, and briefing weather into FRAT. When risks stack, you see it. You still decide. Help at app.planewx.ai/help/frat.",
     date: "September 16, 2026",
     isoDate: "2026-09-16",
     location: "St. Petersburg, Florida",
     body: `
-<p><strong>St. Petersburg, Florida &mdash; September 16, 2026 &mdash;</strong> PlaneWX FRAT is live. FRAT is the product name for flight risk assessment. Underneath it is the FAA&rsquo;s PAVE framework &mdash; Pilot, Aircraft, enVironment, External. PAVE is the foundation. FRAT is how you work it in PlaneWX.</p>
+<p><strong>St. Petersburg, Florida &mdash; September 16, 2026 &mdash;</strong> PlaneWX FRAT is live. FRAT is the product name for flight risk assessment in PlaneWX. Underneath it sits the FAA&rsquo;s PAVE framework (Pilot, Aircraft, enVironment, External). PAVE is the foundation. FRAT is how you work it.</p>
 
-<p>It is not a static one-time form. FRAT stays dynamic with the briefing: weather from the trip you are actually flying, plus airport complexity chips when a source supports them &mdash; volume, SID/STAR, seasonal, training-heavy. When there is no source, those chips stay silent. You self-rate the rest. PlaneWX does not decide go or no-go for you.</p>
+<p>PlaneWX autocalculates many of the inputs so you are not starting from a blank form. Day or night comes from planned departure and arrival against local solar. Unfamiliar destination comes from your flown history. Airport environment signals appear when a source supports them (volume, SID/STAR, seasonal, training-heavy). When there is no source, those signals stay silent. Runway notes are checked against your mins. Weather stays tied to the briefing for the trip you are actually flying.</p>
+
+<p>When risks start stacking, PlaneWX surfaces it. Elevated factors can trip a three-strikes, elevated-factor stacking banner so you see the pile-up in one place. There is no auto NO-GO. You still decide. The point is a thorough, intentional self-assessment: work TEAM mitigations, keep the PAVE model underneath, and own the call as pilot in command.</p>
 
 <p>The in-app guide is at <a href="https://app.planewx.ai/help/frat">app.planewx.ai/help/frat</a>.</p>
 
@@ -76,13 +78,13 @@ export const NEWS_ITEMS: NewsItem[] = [
     isoDate: "2026-09-15",
     location: "St. Petersburg, Florida",
     body: `
-<p><strong>St. Petersburg, Florida &mdash; September 15, 2026 &mdash;</strong> PlaneWX now takes a SkyDemon route and opens it as a trip &mdash; without making you type the route twice.</p>
+<p><strong>St. Petersburg, Florida &mdash; September 15, 2026 &mdash;</strong> PlaneWX now takes a <a href="https://www.skydemon.aero/" target="_blank" rel="noopener noreferrer">SkyDemon</a> route and opens it as a trip &mdash; without making you type the route twice.</p>
 
 <p>Share from SkyDemon, send a <code>.flightplan</code> file, or paste the route. Either way, the trip opens prefilled. That is a handoff, not a briefing. You still pick the date, the airplane, and the flight rules, then run the weather.</p>
 
 <p>The in-app walkthrough is at <a href="https://app.planewx.ai/help/route-paste">app.planewx.ai/help/route-paste</a>.</p>
 
-<p>PlaneWX is complementary to the electronic flight bag. SkyDemon remains the place many pilots build the route. PlaneWX is the decision support on that same route.</p>
+<p>PlaneWX is complementary to the electronic flight bag. <a href="https://www.skydemon.aero/" target="_blank" rel="noopener noreferrer">SkyDemon</a> remains the place many pilots build the route. PlaneWX is the decision support on that same route.</p>
 
 <h2>About PlaneWX</h2>
 <p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
