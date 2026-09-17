@@ -131,9 +131,14 @@ export function LandingVariantA() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            Decide before you{" "}
+            Every weather tool{" "}
+            <span className="bg-gradient-to-r from-rose-400 to-orange-400 bg-clip-text text-transparent">
+              shows you data.
+            </span>
+            <br />
+            PlaneWX{" "}
             <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              launch.
+              helps you decide.
             </span>
           </h1>
 

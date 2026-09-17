@@ -114,13 +114,14 @@ export function middleware(request: NextRequest) {
     return rewriteToVariant(request, "a", partnerCode, false)
   }
 
-  // Existing cookie — honour it if the variant is still active
+  // Existing cookie: honour only if that variant still has weight > 0
+  // (stale B/C/D cookies fall through and get reassigned to A)
   const existing = request.cookies.get(COOKIE_NAME)?.value
   if (existing && VARIANT_WEIGHTS[existing] > 0) {
     return rewriteToVariant(request, existing, partnerCode, false)
   }
 
-  // No cookie (or stale variant) — assign randomly by weight
+  // Default / random assignment: A only (see VARIANT_WEIGHTS)
   const assigned = pickVariant()
   return rewriteToVariant(request, assigned, partnerCode, true)
 }
