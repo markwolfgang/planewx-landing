@@ -2,40 +2,310 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PlaneWX × AOPA — Ad Creative Package</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PlaneWX × AOPA — Native Article + Ad Creative Package</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --aopa-navy: #002a3a;
+  --aopa-link: #0066a1;
+  --text: #333333;
+  --muted: #888888;
+  --rule: #dddddd;
+  --sponsor-bg: #f4f4f4;
+  --page: #ffffff;
+}
+
 body {
   background: #fff;
   font-family: 'Inter', -apple-system, system-ui, sans-serif;
-  padding: 48px 48px 80px;
+  color: #0f172a;
   min-width: 760px;
 }
-h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em; margin-bottom: 6px; }
-.subtitle { font-size: 13px; color: #64748b; margin-bottom: 8px; }
 
-/* Page header */
+a { color: var(--aopa-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Native article (CAU-matched chrome) ─── */
+.native-wrap {
+  border-bottom: 2px solid #e2e8f0;
+  background: var(--page);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.native-banner {
+  background: #0f172a;
+  color: #fff;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+}
+
+.native-article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px 20px 56px;
+}
+
+.sponsorline {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #999999;
+  margin: 8px 0 14px;
+  line-height: 1.4;
+}
+.sponsorline a {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--aopa-link);
+}
+
+h1.headline {
+  font-family: Arial Narrow, "Helvetica Condensed", "Arial Condensed", Impact, Haettenschweiler, Arial, sans-serif;
+  font-size: clamp(28px, 4.2vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #2a2a2a;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 0 0 16px;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 12px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 22px;
+  font-size: 14px;
+  color: #777;
+}
+.share {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #888;
+}
+.share-ico {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #d0d0d0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.dek {
+  font-family: Arial Narrow, "Helvetica Condensed", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: #333;
+  margin: 0 0 22px;
+}
+
+.body-copy {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #333;
+}
+.body-copy p { margin: 0 0 1.15em; }
+.body-copy h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #222;
+  margin: 1.6em 0 0.55em;
+  line-height: 1.3;
+}
+.body-copy blockquote {
+  margin: 1.35em 0;
+  padding: 0 0 0 16px;
+  border-left: 3px solid #c5c5c5;
+  color: #444;
+  font-style: italic;
+}
+.body-copy blockquote p { margin: 0; }
+
+.yt-link {
+  margin: 0 0 1.35em;
+  font-size: 15px;
+  line-height: 1.5;
+  clear: both;
+}
+.yt-link a {
+  font-weight: 700;
+  color: var(--aopa-link);
+}
+
+.figure-hero {
+  margin: 0 0 1.5em;
+  clear: both;
+}
+.ph {
+  background: #e8e8e8;
+  border: 1px solid #c8c8c8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 32px 20px;
+  color: #555;
+}
+.ph-hero {
+  width: 100%;
+  min-height: 280px;
+  aspect-ratio: 16 / 9;
+}
+.ph .label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #444;
+  margin: 0 0 8px;
+}
+.ph .hint {
+  font-size: 13px;
+  color: #666;
+  max-width: 420px;
+  margin: 0;
+  line-height: 1.4;
+}
+.caption {
+  font-size: 13px;
+  color: #777;
+  margin: 8px 0 0;
+  line-height: 1.4;
+}
+
+.figure-float {
+  float: left;
+  width: 40%;
+  max-width: 300px;
+  margin: 4px 22px 14px 0;
+}
+.ph-inline {
+  min-height: 180px;
+  width: 100%;
+}
+
+.soft-cta {
+  clear: both;
+  margin: 2em 0 1.75em;
+  padding: 18px 0 0;
+  border-top: 1px solid var(--rule);
+  font-size: 16px;
+}
+.soft-cta a.cta-emph {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--aopa-link);
+}
+
+.sponsor-card {
+  clear: both;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  background: var(--sponsor-bg);
+  padding: 28px 30px;
+  margin: 1.5em 0 0;
+}
+.sponsor-logo {
+  flex: 0 0 140px;
+  width: 140px;
+  height: 140px;
+  background: #fff;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+}
+.sponsor-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.sponsor-copy {
+  flex: 1;
+  min-width: 0;
+}
+.sponsor-copy h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+.sponsor-copy p {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #555;
+}
+.sponsor-copy .learn-more {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--aopa-link);
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ─── Creative package (unchanged behavior) ─── */
+.package-wrap {
+  padding: 48px 48px 80px;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+}
+
 .page-header { padding: 0 0 32px; margin-bottom: 40px; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
-.page-header-text .subtitle { color: #64748b; margin-bottom: 0; }
+.page-header-text h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em; margin-bottom: 6px; }
+.page-header-text .subtitle { font-size: 13px; color: #64748b; margin-bottom: 0; }
 .page-header-text .contact { font-size: 12px; color: #475569; margin-top: 10px; }
 .page-header-text .contact a { color: #00b6d1; text-decoration: none; }
 
-/* Instructions */
 .instructions { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 22px 28px; margin-bottom: 48px; }
 .instructions h2 { font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.06em; }
 .instructions ol { padding-left: 18px; }
 .instructions li { font-size: 12px; color: #475569; line-height: 1.7; }
 .instructions li strong { color: #0f172a; }
 
-/* Section divider label */
 .section-label {
   font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
   color: #94a3b8; margin: 8px 0 20px;
 }
 
-/* Ad card */
 .ad-card { background: none; border: none; overflow: visible; margin-bottom: 48px; border-bottom: 1px solid #e2e8f0; padding-bottom: 32px; border-top: 3px solid #d97706; }
 .ad-card-header { display: flex; align-items: center; gap: 16px; padding: 10px 0 14px; flex-wrap: wrap; }
 .ad-card-meta { flex: 1; min-width: 0; }
@@ -43,9 +313,9 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
 .ad-card-specs { font-size: 11px; color: #94a3b8; }
 .due-badge { display: inline-flex; align-items: center; gap: 5px; padding: 5px 13px; border-radius: 20px; font-size: 11px; font-weight: 700; white-space: nowrap; flex-shrink: 0; background: #fffbeb; color: #d97706; border: 1px solid #fde68a; }
 .card-dl-btn { display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(135deg,#00b6d1 0%,#2563eb 100%); color: #fff; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; padding: 9px 18px; border-radius: 7px; text-decoration: none; white-space: nowrap; flex-shrink: 0; letter-spacing: -0.01em; }
+.card-dl-btn:hover { text-decoration: none; }
 .card-dl-btn-dark { background: linear-gradient(135deg,#475569 0%,#1e293b 100%); }
 
-/* Card body */
 .ad-card-body { display: flex; align-items: stretch; }
 .ad-creative-col { background: none; display: flex; align-items: flex-start; justify-content: center; padding: 0 28px 0 0; flex-shrink: 0; }
 .ad-info-col { flex: 1; min-width: 280px; padding: 0 0 0 32px; display: flex; flex-direction: column; justify-content: flex-start; gap: 22px; border-left: 1px solid #e2e8f0; }
@@ -73,34 +343,157 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
 .info-specs { font-size: 11px; color: #64748b; }
 .info-divider { height: 1px; background: #f1f5f9; }
 
-/* Spec table */
 .spec-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 6px; }
 .spec-table td { padding: 5px 0; color: #475569; border-bottom: 1px solid #f8fafc; }
 .spec-table td:first-child { font-weight: 600; color: #0f172a; width: 120px; padding-right: 12px; }
 
-/* Bleed warning */
 .bleed-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 10px 14px; font-size: 10.5px; color: #92400e; line-height: 1.6; margin-top: 4px; }
 .bleed-note strong { font-weight: 700; }
 
-/* Photo option row */
-.photo-options { display: flex; flex-direction: column; gap: 28px; margin-top: 8px; }
-.photo-option { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
-.photo-option img { display: block; max-height: 280px; width: auto; border-radius: 4px; box-shadow: 0 4px 24px rgba(0,0,0,0.13); }
-.photo-option-meta { flex: 1; min-width: 220px; }
-.option-badge {
-  display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 0.08em; padding: 3px 9px; border-radius: 4px; margin-bottom: 8px;
-  background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;
+@media (max-width: 640px) {
+  body { min-width: 0; }
+  .figure-float {
+    float: none;
+    width: 100%;
+    max-width: none;
+    margin: 0 0 1.25em;
+  }
+  .sponsor-card {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .sponsor-logo {
+    width: 120px;
+    height: 120px;
+    flex-basis: auto;
+  }
+  .package-wrap { padding: 28px 20px 56px; }
+  .ad-card-body { flex-direction: column; }
+  .ad-creative-col { padding: 0 0 20px; }
+  .ad-info-col { padding: 0; border-left: none; border-top: 1px solid #e2e8f0; padding-top: 20px; }
 }
-.photo-option-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
 </style>
 </head>
 <body>
 
+<!-- ═══════════ OCT 2026 AOPA NATIVE ARTICLE (first) ═══════════ -->
+<div class="native-wrap">
+  <div class="native-banner">AOPA Native · October 2, 2026 · Sponsored Content preview for AOPA / Mark</div>
+
+  <article class="native-article">
+
+    <p class="sponsorline">Sponsored Content <a href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">PlaneWX</a></p>
+
+    <h1 class="headline">Beyond the Briefing: An Aviation Decision Support System for Safer Decisions</h1>
+
+    <div class="meta-row">
+      <span>October 2, 2026</span>
+      <div class="share">
+        <span>Share via:</span>
+        <span class="share-ico" title="Facebook">f</span>
+        <span class="share-ico" title="X">X</span>
+        <span class="share-ico" title="LinkedIn">in</span>
+        <span class="share-ico" title="Email">@</span>
+      </div>
+    </div>
+
+    <p class="dek">A weather briefing is necessary, but it is just one input in the decision to launch. An aviation decision support system adds flight risk (FRAT) and mentor advice so you see the whole picture before trip pressure locks in the answer. <a href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">PlaneWX</a> is built around those three pillars: the weather briefing, FRAT, and a mentor network.</p>
+
+    <figure class="figure-hero">
+      <div class="ph ph-hero" role="img" aria-label="Hero image placeholder">
+        <p class="label">Image placeholder · Hero</p>
+        <p class="hint">Suggested: Pilot at a table days before departure, calendar and briefing open, not yet committed.</p>
+      </div>
+      <figcaption class="caption">Decide before launch pressure locks in the answer.</figcaption>
+    </figure>
+
+    <div class="body-copy">
+
+      <p>Most bad launches are not mysteries. They are late decisions.</p>
+
+      <p>Hotels are booked. Passengers have rearranged work. The airplane is reserved. Then the night before, the briefing finally gets serious, and &ldquo;we&rsquo;ll see&rdquo; has quietly become &ldquo;we have to go.&rdquo; By then you are not deciding. You are rationalizing.</p>
+
+      <p>What you needed earlier was not another tab of METARs. You needed a way to pressure-test the flight while a change of plan was still a change of plan. That is what a decision support system is for: structured inputs, clear synthesis, and room for judgment before launch.</p>
+
+      <h2>Weather alone is not the whole call</h2>
+
+      <p>A solid weather briefing is necessary. Ceiling, visibility, wind, icing, convective trends, and how those products evolve as the window tightens all matter. Checking TAFs the night before is not the same as watching the picture days out against your aircraft and personal minimums. Weather is the environment. It is not the entire risk picture.</p>
+
+      <h2>FRAT turns risk into a conversation with yourself</h2>
+
+      <p>Flight risk assessment (FRAT) asks what the weather briefing does not. How current are you. What is on the airplane. How complex is the environment. What external pressure is riding in the cabin. Done early and honestly, FRAT keeps personal minimums from living only in a forgotten note. Done late, it becomes a box to check after the decision is already made.</p>
+
+      <figure class="figure-float">
+        <div class="ph ph-inline" role="img" aria-label="Three pillars image placeholder">
+          <p class="label">Image placeholder · Three pillars</p>
+          <p class="hint">Suggested: Three simple cards labeled Weather briefing, FRAT, Mentors.</p>
+        </div>
+        <figcaption class="caption">Three pillars of an aviation decision support system.</figcaption>
+      </figure>
+
+      <h2>Mentors catch what you cannot see alone</h2>
+
+      <p>Even good pilots miss their own blind spots. A mentor network gives you another set of eyes before you launch: someone who will ask the awkward question about fatigue, currency, or get-there-itis when the forecast looks &ldquo;good enough.&rdquo; Mentor advice is part of decision support, not an afterthought.</p>
+
+      <h2>How <a href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">PlaneWX</a> puts the three together</h2>
+
+      <p><a href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">PlaneWX</a> is a pilot decision support system built on those three pillars. The weather briefing synthesizes authoritative products against your airplane and personal minimums, with a WX Score that updates as the forecast sharpens. FRAT walks Pilot, Aircraft, Environment, and External pressures so risk is visible before departure. The mentor network brings trusted advice into the same workflow.</p>
+
+      <p>It sits beside your EFB. It does not replace charts, filing, or official weather sources. It does not tell you what to do. Outputs are decision-support tools. The pilot in command remains solely responsible for the flight.</p>
+
+      <div class="clearfix"></div>
+
+      <h2>When the window is the mission</h2>
+
+      <p>Some trips are not weekend hops. They are mid-horizon weather calls with real arrival pressure. In 2026, Flight Chops used <a href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">PlaneWX</a> while choosing the weather window to fly Chipmunks from the museum in Windsor, near Detroit, to Oshkosh. The hard part was not finding a METAR. It was picking a window early enough that the airplanes could move when the weather said yes.</p>
+
+      <blockquote>
+        <p>&ldquo;<a href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">PlaneWX</a> is a new supporter of @flightchops and it was a particularly helpful tool while we figured out which weather window to fly the Chipmunks to get them from the Museum (in Windsor near Detroit) to Oshkosh.&rdquo;</p>
+      </blockquote>
+
+      <p class="yt-link">
+        <a href="https://www.youtube.com/watch?v=EJ5s4XzmQ2M" target="_blank" rel="noopener noreferrer">Watch: Wasn&rsquo;t sure I could even share this. The Smokiest AirVenture Arrival (FlightChops · YouTube)</a>
+      </p>
+
+      <figure class="figure-hero">
+        <div class="ph ph-hero" role="img" aria-label="Flight Chops / Oshkosh image placeholder">
+          <p class="label">Image placeholder · Flight Chops / Oshkosh</p>
+          <p class="hint">Suggested: Chipmunks / Oshkosh window planning. Partner photo welcome when available.</p>
+        </div>
+      </figure>
+
+      <p>That is decision support in the wild: weather briefing days out, risk visible before the convoy is committed, and room to change the plan while a change still costs less than a forced launch.</p>
+
+      <p>Before you promise a departure day, run the decision, not just the weather. Start at <a href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026</a>. Put a real trip on the calendar. Brief it. Work the FRAT. Bring a mentor in when the call is close. The confidence to go. Or the courage to stay.</p>
+
+    </div><!-- /.body-copy -->
+
+    <div class="soft-cta">
+      <p>Explore a full-quality briefing and put a real trip on the calendar.</p>
+      <a class="cta-emph" href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">Explore a full-quality briefing &gt;</a>
+    </div>
+
+    <aside class="sponsor-card">
+      <div class="sponsor-logo" aria-label="PlaneWX logo">
+        <img src="/logos/planewx-wordmark.svg" alt="PlaneWX">
+      </div>
+      <div class="sponsor-copy">
+        <h3>About PlaneWX</h3>
+        <p><a href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">PlaneWX</a> is a pilot decision-support system founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. It brings together weather briefing, FRAT, and mentor advice so go/no-go planning can start before trip pressure locks in. Complementary to the electronic flight bag and official weather sources. Outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
+        <a class="learn-more" href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">LEARN MORE &gt;</a>
+      </div>
+    </aside>
+
+  </article>
+</div>
+
+<!-- ═══════════ EXISTING AD CREATIVE PACKAGE (unchanged downloads) ═══════════ -->
+<div class="package-wrap">
+
 <div class="page-header">
   <div class="page-header-text">
     <h1>PlaneWX × AOPA</h1>
-    <p class="subtitle">Ad Creative Package · Flight Training · Pilot Magazine · 2026</p>
+    <p class="subtitle">Native Article (above) · Ad Creative Package · Flight Training · Pilot Magazine · 2026</p>
     <p class="contact">Questions: <a href="mailto:mark@planewx.ai">mark@planewx.ai</a> &nbsp;·&nbsp; <a href="https://www.planewx.ai" target="_blank">www.planewx.ai</a></p>
   </div>
 </div>
@@ -294,6 +687,8 @@ h1 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.03em;
     </div>
   </div>
 </div>
+
+</div><!-- /.package-wrap -->
 
 <script>
 (function () {
