@@ -278,9 +278,10 @@ h1.headline {
   margin: 1.5em 0 0;
 }
 .sponsor-logo {
-  flex: 0 0 140px;
-  width: 140px;
-  height: 140px;
+  flex: 0 0 168px;
+  width: 168px;
+  height: auto;
+  min-height: 96px;
   background: #fff;
   border: 1px solid #ddd;
   display: flex;
@@ -288,10 +289,11 @@ h1.headline {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 16px;
+  padding: 18px 16px;
 }
 .sponsor-logo img {
-  width: 100%;
+  width: 128px;
+  max-width: 100%;
   height: auto;
   display: block;
 }
@@ -405,9 +407,11 @@ h1.headline {
     padding: 20px;
   }
   .sponsor-logo {
-    width: 120px;
-    height: 120px;
+    width: 160px;
     flex-basis: auto;
+  }
+  .sponsor-logo img {
+    width: 128px;
   }
   .package-wrap { padding: 28px 20px 56px; }
   .ad-card-body { flex-direction: column; }
@@ -516,7 +520,7 @@ h1.headline {
 
     <aside class="sponsor-card">
       <div class="sponsor-logo" aria-label="PlaneWX logo">
-        <img src="/logos/planewx-wordmark.svg" alt="PlaneWX">
+        <img src="/brand/planewx-wordmark.svg" width="128" height="25" alt="PlaneWX">
       </div>
       <div class="sponsor-copy">
         <h3>About PlaneWX</h3>
