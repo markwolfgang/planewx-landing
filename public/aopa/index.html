@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PlaneWX × AOPA — Native Article + Ad Creative Package</title>
+<title>PlaneWX × AOPA · Native Article + Ad Creative Package</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -145,13 +145,48 @@ h1.headline {
 }
 .body-copy blockquote p { margin: 0; }
 
-.yt-link {
-  margin: 0 0 1.35em;
-  font-size: 15px;
-  line-height: 1.5;
+.yt-card {
   clear: both;
+  margin: 0 0 1.5em;
 }
-.yt-link a {
+.yt-card-link {
+  display: block;
+  position: relative;
+  border: 1px solid #c8c8c8;
+  overflow: hidden;
+  background: #111;
+  text-decoration: none !important;
+}
+.yt-card-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  vertical-align: middle;
+}
+.yt-card-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+}
+.yt-card-play svg { display: block; }
+.yt-card-link:hover .yt-card-play { background: #ff0000; }
+.yt-card .caption { margin-top: 8px; }
+.yt-card .yt-watch {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--aopa-link);
 }
@@ -451,15 +486,15 @@ h1.headline {
         <p>&ldquo;<a href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">PlaneWX</a> is a new supporter of @flightchops and it was a particularly helpful tool while we figured out which weather window to fly the Chipmunks to get them from the Museum (in Windsor near Detroit) to Oshkosh.&rdquo;</p>
       </blockquote>
 
-      <p class="yt-link">
-        <a href="https://www.youtube.com/watch?v=EJ5s4XzmQ2M" target="_blank" rel="noopener noreferrer">Watch: Wasn&rsquo;t sure I could even share this. The Smokiest AirVenture Arrival (FlightChops · YouTube)</a>
-      </p>
-
-      <figure class="figure-hero">
-        <div class="ph ph-hero" role="img" aria-label="Flight Chops / Oshkosh image placeholder">
-          <p class="label">Image placeholder · Flight Chops / Oshkosh</p>
-          <p class="hint">Suggested: Chipmunks / Oshkosh window planning. Partner photo welcome when available.</p>
-        </div>
+      <figure class="yt-card">
+        <a class="yt-card-link" href="https://www.youtube.com/watch?v=EJ5s4XzmQ2M" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube: Wasn&rsquo;t sure I could even share this. The Smokiest AirVenture Arrival">
+          <img src="/aopa/exports/flightchops-smokiest-arrival-thumb.jpg" width="1280" height="720" alt="FlightChops: The Smokiest AirVenture Arrival YouTube thumbnail">
+          <span class="yt-card-play" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </a>
+        <figcaption class="caption">Flight Chops · The Smokiest AirVenture Arrival (source of the PlaneWX quote above).</figcaption>
+        <a class="yt-watch" href="https://www.youtube.com/watch?v=EJ5s4XzmQ2M" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
       </figure>
 
       <p>That is decision support in the wild: weather briefing days out, risk visible before the convoy is committed, and room to change the plan while a change still costs less than a forced launch.</p>
