@@ -6,6 +6,8 @@ import { OshBanner } from "@/components/osh-banner"
 import { PartnerGreetingBanner } from "@/components/partner-greeting-banner"
 import "./globals.css"
 
+// aopa native preview redeploy trigger (static /aopa closer CTA text)
+
 const inter = Inter({ subsets: ["latin"] })
 
 // Structured Data (JSON-LD) for SEO
