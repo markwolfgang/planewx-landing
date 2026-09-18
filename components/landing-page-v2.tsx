@@ -139,7 +139,7 @@ export function LandingPageV2() {
       <nav className="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <BrandLogo className="h-9 w-auto" priority />
+            <BrandLogo variant="wordmarkTransparent" className="h-9 w-auto" priority />
           </div>
           <div className="hidden md:flex items-center gap-8">
             <button 
@@ -648,7 +648,7 @@ export function LandingPageV2() {
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <BrandLogo className="h-7 w-auto" />
+              <BrandLogo variant="wordmarkTransparent" className="h-7 w-auto" />
             </div>
             <p className="text-sm text-white/40">
               © {new Date().getFullYear()} PlaneWX, LLC. All rights reserved.

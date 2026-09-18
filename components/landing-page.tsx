@@ -158,7 +158,7 @@ export function LandingPage() {
       <nav className="relative z-10 border-b border-white/5">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <BrandLogo className="h-9 w-auto" priority />
+            <BrandLogo variant="wordmarkTransparent" className="h-9 w-auto" priority />
             <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-2">Weather Intelligence for Pilots</span>
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
@@ -206,7 +206,7 @@ export function LandingPage() {
           <div className="text-center space-y-8">
             {/* Logo */}
             <div className="flex flex-col items-center gap-2">
-              <BrandLogo className="h-14 w-auto md:h-20" priority />
+              <BrandLogo variant="wordmarkTransparent" className="h-14 w-auto md:h-20" priority />
               <span className="text-sm md:text-base text-white/40 font-medium tracking-widest uppercase">Weather Intelligence for Pilots</span>
             </div>
             
@@ -2197,7 +2197,7 @@ export function LandingPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <BrandLogo className="h-7 w-auto" />
+              <BrandLogo variant="wordmarkTransparent" className="h-7 w-auto" />
               <span className="text-xs text-white/30 hidden sm:inline">Weather Intelligence for Pilots</span>
           </div>
             <p className="text-sm text-white/40">

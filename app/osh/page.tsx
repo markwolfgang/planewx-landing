@@ -54,7 +54,7 @@ export default function OshkoshPage() {
       <nav className="border-b border-white/5 bg-[#0a0f1a]/80 backdrop-blur-md">
         <div className="container mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <BrandLogo className="h-8 w-auto" priority />
+            <BrandLogo variant="wordmarkTransparent" className="h-8 w-auto" priority />
           </Link>
           <Link
             href="/"
