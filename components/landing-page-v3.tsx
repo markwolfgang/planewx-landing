@@ -913,7 +913,7 @@ export function LandingPageV3() {
             </div>
             <p className="text-center text-sm text-white/40 mt-4">
               <a
-                href="https://www.youtube.com/@markwolfgang7407"
+                href="https://www.youtube.com/@markflieshigh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sky-400 hover:text-sky-300 underline underline-offset-4 transition-colors"
