@@ -50,6 +50,16 @@ type Partner = {
     wellClassName?: string
   }
   blurb: string
+  photo?: {
+    src: string
+    alt: string
+    width: number
+    height: number
+  }
+  extraLink?: {
+    href: string
+    label: string
+  }
 }
 
 const PARTNERS: Partner[] = [
@@ -65,6 +75,10 @@ const PARTNERS: Partner[] = [
     },
     blurb:
       "Direct aviation insurance for pilots and owners. Fast online quotes, coverage tailored to how you fly, and discounts that reward training and safety.",
+    extraLink: {
+      href: "https://www.5x5insurance.com/news/5x5-aviation-insurance-exclusively-partners-with-planewx-to-reward-safe-pilots",
+      label: "Read the news release",
+    },
   },
   {
     name: "Flight Chops",
@@ -78,6 +92,12 @@ const PARTNERS: Partner[] = [
     },
     blurb:
       "Real-world cockpit video and training content that puts pilot decision-making on camera.",
+    photo: {
+      src: "/partners/media/rv14-logo.jpg",
+      alt: "Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage",
+      width: 1200,
+      height: 1600,
+    },
   },
   {
     name: "EAA",
@@ -131,6 +151,12 @@ const PARTNERS: Partner[] = [
     },
     blurb:
       "Aviator sunglasses built for the cockpit. Thin temples for headsets. Non-polarized lenses so glass-cockpit displays stay readable.",
+    photo: {
+      src: "/partners/media/flyte-hat.jpg",
+      alt: "FLYTE sunglass stand and a PlaneWX hat at an outdoor booth",
+      width: 1200,
+      height: 1600,
+    },
   },
   {
     name: "TBMOPA",
@@ -261,6 +287,38 @@ const FAQS = [
   },
 ] as const
 
+function PartnerClip({
+  src,
+  poster,
+  caption,
+  mutedLoop = false,
+}: {
+  src: string
+  poster: string
+  caption: string
+  mutedLoop?: boolean
+}) {
+  return (
+    <figure className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+      <video
+        className="w-full max-h-[28rem] bg-black object-contain"
+        controls
+        playsInline
+        preload="metadata"
+        poster={poster}
+        muted={mutedLoop}
+        loop={mutedLoop}
+        autoPlay={mutedLoop}
+      >
+        <source src={src} type="video/mp4" />
+      </video>
+      <figcaption className="px-4 py-3 text-sm text-white/50 leading-relaxed">
+        {caption}
+      </figcaption>
+    </figure>
+  )
+}
+
 function BecomePartnerButton({
   className,
   children = "Become a Partner",
@@ -349,14 +407,12 @@ export default function PartnersPage() {
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {PARTNERS.map((partner) => (
               <li key={partner.name} className="h-full">
-                <a
-                  href={partner.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
-                >
-                  <div
-                    className={`flex min-h-[5rem] items-center justify-center rounded-xl px-4 py-5 mb-4 ${
+                <article className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors">
+                  <a
+                    href={partner.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex min-h-[5rem] items-center justify-center rounded-xl px-4 py-5 mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400 ${
                       partner.logo.wellClassName ?? "bg-black/25"
                     }`}
                   >
@@ -367,23 +423,49 @@ export default function PartnersPage() {
                       height={partner.logo.height}
                       className={partner.logo.className}
                     />
-                  </div>
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                  {partner.photo ? (
+                    <Image
+                      src={partner.photo.src}
+                      alt={partner.photo.alt}
+                      width={partner.photo.width}
+                      height={partner.photo.height}
+                      className="mb-4 w-full h-48 sm:h-52 object-cover rounded-xl"
+                    />
+                  ) : null}
                   <div className="flex items-start justify-between gap-3 mt-auto">
                     <div className="space-y-2 min-w-0">
-                      <p className="font-semibold text-white group-hover:text-sky-300 transition-colors">
+                      <a
+                        href={partner.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-white group-hover:text-sky-300 transition-colors"
+                      >
                         {partner.name}
-                      </p>
+                      </a>
                       <p className="text-sm text-white/50 leading-relaxed">
                         {partner.blurb}
                       </p>
+                      {partner.extraLink ? (
+                        <a
+                          href={partner.extraLink.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-300 hover:text-sky-200 transition-colors"
+                        >
+                          {partner.extraLink.label}
+                          <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+                          <span className="sr-only"> (opens in a new tab)</span>
+                        </a>
+                      ) : null}
                     </div>
                     <ExternalLink
                       className="h-4 w-4 shrink-0 text-white/30 group-hover:text-sky-400 transition-colors mt-1"
                       aria-hidden
                     />
                   </div>
-                  <span className="sr-only"> (opens in a new tab)</span>
-                </a>
+                </article>
               </li>
             ))}
           </ul>
@@ -510,6 +592,51 @@ export default function PartnersPage() {
               </li>
             ))}
           </ul>
+
+          <p className="text-sm text-white/40 leading-relaxed">
+            From the field at Oshkosh: FLYTE, Flight Chops, and EAA.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+              <Image
+                src="/partners/media/flyte-hat.jpg"
+                alt="FLYTE sunglass stand and a PlaneWX hat at an outdoor booth"
+                width={1200}
+                height={1600}
+                className="w-full h-64 sm:h-80 object-cover"
+              />
+              <figcaption className="px-4 py-3 text-sm text-white/50 leading-relaxed">
+                FLYTE booth: cockpit sunglasses on the stand, PlaneWX hat on the table.
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+              <Image
+                src="/partners/media/rv14-logo.jpg"
+                alt="Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage"
+                width={1200}
+                height={1600}
+                className="w-full h-64 sm:h-80 object-cover object-[center_70%]"
+              />
+              <figcaption className="px-4 py-3 text-sm text-white/50 leading-relaxed">
+                Flight Chops RV-14 at Oshkosh with PlaneWX on the fuselage.
+              </figcaption>
+            </figure>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <PartnerClip
+              src="/partners/media/flightline-aerobatics.mp4"
+              poster="/partners/media/flightline-aerobatics-poster.jpg"
+              caption="PlaneWX on a yellow aerobatic ship at Oshkosh, then smoke in the box."
+            />
+            <PartnerClip
+              src="/partners/media/copper-mark.mp4"
+              poster="/partners/media/copper-mark-poster.jpg"
+              caption="Mark at EAA pointing to PlaneWX on the Copper Supporters board."
+              mutedLoop
+            />
+          </div>
         </section>
 
         <section
