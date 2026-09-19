@@ -53,7 +53,7 @@ const PARTNERS: Partner[] = [
       className: "h-9 sm:h-10 w-auto max-w-[11rem] object-contain",
     },
     blurb:
-      "Aviation insurance built for how pilots actually fly. Fast quotes, transparent coverage, and safety rewards.",
+      "Direct aviation insurance for pilots and owners. Fast online quotes, coverage tailored to how you fly, and discounts that reward training and safety.",
   },
   {
     name: "Flight Chops",
@@ -66,7 +66,7 @@ const PARTNERS: Partner[] = [
       className: "h-14 sm:h-16 w-auto max-w-[9rem] object-contain",
     },
     blurb:
-      "Ride-along flying videos that put real weather, real diversions, and real go / no-go calls on camera.",
+      "Real-world cockpit video and training content that puts pilot decision-making on camera.",
   },
   {
     name: "EAA",
@@ -79,7 +79,7 @@ const PARTNERS: Partner[] = [
       className: "h-11 sm:h-12 w-auto max-w-[10rem] object-contain",
     },
     blurb:
-      "Experimental Aircraft Association. AirVenture, local chapters, and the builders, restorers, and pilots who keep general aviation moving.",
+      "Experimental Aircraft Association. Home of AirVenture Oshkosh and the community that builds, restores, and flies experimental and light aircraft.",
   },
   {
     name: "AOPA",
@@ -92,7 +92,7 @@ const PARTNERS: Partner[] = [
       className: "h-11 sm:h-12 w-auto max-w-[10rem] object-contain",
     },
     blurb:
-      "Aircraft Owners and Pilots Association. Advocacy, training, and resources that protect the freedom to fly.",
+      "Aircraft Owners and Pilots Association. Advocacy, training, and resources that protect and support GA pilots.",
   },
   {
     name: "Veterans Airlift Command",
@@ -106,7 +106,7 @@ const PARTNERS: Partner[] = [
       wellClassName: "bg-white",
     },
     blurb:
-      "Free private air transportation for combat-injured veterans and their families, flown by volunteer pilots and aircraft owners.",
+      "Volunteer pilots and aircraft owners providing free air transport for wounded veterans and their families.",
   },
   {
     name: "FLYTE",
@@ -119,7 +119,7 @@ const PARTNERS: Partner[] = [
       className: "h-9 sm:h-10 w-auto max-w-[12rem] object-contain",
     },
     blurb:
-      "Pilot sunglasses built for the cockpit. Headset-friendly temples. Non-polarized lenses so glass-cockpit displays stay readable.",
+      "Aviator sunglasses built for the cockpit. Thin temples that work with headsets. Non-polarized lenses so glass-cockpit displays stay readable. Made from airplane-grade materials.",
   },
   {
     name: "TBMOPA",
@@ -132,7 +132,7 @@ const PARTNERS: Partner[] = [
       className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
     },
     blurb:
-      "Association for Daher TBM owners and operators. Promotes safety and the ownership experience through member forums, training and safety seminars, annual convention, and technical/ops Q&A including Daher expertise.",
+      "TBM Owners and Pilots Association. For Daher TBM owners and operators. Safety first, plus member forums, training and safety seminars, the annual convention, and technical answers with input from Daher experts.",
   },
   {
     name: "Runway to Oshkosh",
@@ -248,9 +248,10 @@ export default function PartnersPage() {
             Built with pilots, for pilots
           </h2>
           <p className="text-white/55 leading-relaxed max-w-2xl">
-            PlaneWX is built with this community so more pilots can make safer
-            decisions. A listing is not an endorsement. The PIC still owns the
-            call.
+            PlaneWX is pilot decision support, built with the clubs, brands, and
+            pilots who care about clearer go / no-go calls. Partners here
+            collaborate with our community. Listing is not an endorsement. The
+            PIC still owns every decision.
           </p>
           <div className="pt-2">
             <Link
