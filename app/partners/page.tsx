@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Inter_Tight } from "next/font/google"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -15,6 +16,11 @@ import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
 
 const PARTNER_MAILTO = "mailto:sara@planewx.ai?subject=Partnership%20inquiry"
+
+const display = Inter_Tight({
+  subsets: ["latin"],
+  weight: ["700", "800"],
+})
 
 export const metadata: Metadata = {
   title: "Partners",
@@ -384,18 +390,22 @@ export default function PartnersPage() {
         </div>
       </nav>
 
-      <main className="container mx-auto max-w-5xl px-4 py-10 sm:py-14 space-y-16 sm:space-y-20">
-        <header className="space-y-6 text-center sm:text-left max-w-3xl">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-[1.08]">
-            Reach the pilots who still own the call.
+      <main className="container mx-auto max-w-5xl px-4 py-16 sm:py-24 space-y-20 sm:space-y-24">
+        <header className="mx-auto max-w-3xl text-center space-y-7 sm:space-y-8 pt-4 sm:pt-8">
+          <h1
+            id="who-we-work-with"
+            className={`${display.className} text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight leading-[1.05] text-white`}
+          >
+            Who we work with
           </h1>
-          <p className="text-lg sm:text-xl text-white/70 leading-relaxed">
-            Partner with PlaneWX when you want to stand next to GA pilots who
-            brief early, run a living FRAT, and make go / no-go before the bags
-            are packed. Community listing, co-marketing, and shared work that
-            respects PIC judgment.
+          <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
+            At PlaneWX, we get to team up with associations, creators, and
+            aviation brands that care about safer flights. They help more
+            pilots get decision support that scores the briefing to their mins,
+            keeps the self-assessment honest, and gives an objective second
+            opinion before the pressure locks in. Here&apos;s who we fly with.
           </p>
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 pt-1">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
             <BecomePartnerButton />
             <a
               href="mailto:sara@planewx.ai?subject=Partnership%20question"
@@ -406,16 +416,10 @@ export default function PartnersPage() {
           </div>
         </header>
 
-        <section aria-labelledby="partners-grid-heading" className="space-y-5">
-          <div className="space-y-2 text-center sm:text-left">
-            <h2 id="partners-grid-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Partners in the community
-            </h2>
-            <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
-              Clubs, brands, and campaigns already on this page. A listing is
-              not an endorsement. The PIC owns every go / no-go.
-            </p>
-          </div>
+        <section aria-labelledby="who-we-work-with" className="space-y-5">
+          <p className="sr-only">
+            A listing is not an endorsement. The PIC owns every go / no-go.
+          </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {PARTNERS.map((partner) => (
               <li key={partner.name} className="h-full">
