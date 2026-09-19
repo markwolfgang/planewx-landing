@@ -6,6 +6,10 @@ import { getSoroArticles, getSoroArticleContent } from "@/lib/soro"
 
 export const revalidate = 3600
 
+// Allow on-demand generation for slugs published in Soro after the last deploy.
+// (Default is true; set explicitly so new posts are not silently 404'd.)
+export const dynamicParams = true
+
 interface Props {
   params: Promise<{ slug: string }>
 }
@@ -17,8 +21,12 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const articles = await getSoroArticles()
-  const article = articles.find((a) => a.slug === slug)
+  let articles = await getSoroArticles()
+  let article = articles.find((a) => a.slug === slug)
+  if (!article) {
+    articles = await getSoroArticles({ fresh: true })
+    article = articles.find((a) => a.slug === slug)
+  }
   if (!article) return {}
 
   return {
@@ -38,8 +46,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
-  const articles = await getSoroArticles()
-  const article = articles.find((a) => a.slug === slug)
+  // Prefer the hour-cached list (ISR). If this slug is missing — e.g. a post
+  // published in Soro after the cached list was filled — bypass the Data Cache
+  // before calling notFound(). Otherwise a premature 404 gets ISR-cached for
+  // `revalidate` seconds even after Soro has the article.
+  let articles = await getSoroArticles()
+  let article = articles.find((a) => a.slug === slug)
+  if (!article) {
+    articles = await getSoroArticles({ fresh: true })
+    article = articles.find((a) => a.slug === slug)
+  }
   if (!article) notFound()
 
   const content = await getSoroArticleContent(article.id)

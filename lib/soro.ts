@@ -12,16 +12,20 @@ export interface SoroArticle {
   image: string
 }
 
+type FetchOpts = { fresh?: boolean }
+
 /**
  * Fetch the article list from the Soro embed script.
  * The script embeds SORO_ARTICLES as a JSON literal — we parse it out.
- * Cached for 1 hour on the CDN (ISR-compatible).
+ * Cached for 1 hour on the CDN (ISR-compatible), unless `fresh: true`.
  */
-export async function getSoroArticles(): Promise<SoroArticle[]> {
+export async function getSoroArticles(opts: FetchOpts = {}): Promise<SoroArticle[]> {
   try {
     const script = await fetch(
       `${SORO_API_BASE}/api/embed/${SORO_TOKEN}?theme=dark`,
-      { next: { revalidate: 3600 } }
+      opts.fresh
+        ? { cache: 'no-store' }
+        : { next: { revalidate: 3600 } }
     ).then(r => r.text())
 
     const match = script.match(/var SORO_ARTICLES = (\[[\s\S]*?\]);/)
