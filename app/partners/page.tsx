@@ -107,7 +107,7 @@ const PARTNERS = [
       className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
     },
     blurb:
-      "Community partner with Disa Pryor and flyte.aero. Pilot-minded gear and a shared push to make flying more useful for the people who do it.",
+      "Flight sunglasses built for the cockpit: thin temples that play nicely with headsets, and lenses that keep instruments readable. A community partner helping pilots fly more comfortably.",
   },
   {
     name: "TBMOPA",
@@ -121,7 +121,7 @@ const PARTNERS = [
       className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
     },
     blurb:
-      "With Misty Stanistreet. Webinar and Phoenix community for TBM owners and pilots, alongside PlaneWX talks already live.",
+      "Owner and pilot organization for the TBM community. Events, education, and a place for TBM operators to learn and connect, including PlaneWX talks.",
   },
   {
     name: "Runway to Oshkosh",
@@ -258,14 +258,30 @@ export default function PartnersPage() {
             PlaneWX works with the pilots, clubs, and brands that make flying
             safer and more useful. More partners and ambassadors coming.
           </p>
-          <div className="pt-2">
+          <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:items-center">
             <Link
               href="https://app.planewx.ai"
               className="inline-flex items-center justify-center rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
               Get PlaneWX
             </Link>
+            <a
+              href="mailto:hello@planewx.ai?subject=Partnership%20inquiry"
+              className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.06] hover:border-sky-500/30 text-white/80 hover:text-white px-6 py-3 text-sm font-semibold transition-colors"
+            >
+              Partnership inquiries
+            </a>
           </div>
+          <p className="text-sm text-white/40 leading-relaxed">
+            Want to talk partnerships? Email{" "}
+            <a
+              href="mailto:hello@planewx.ai?subject=Partnership%20inquiry"
+              className="text-sky-300/90 hover:text-sky-300 underline underline-offset-2"
+            >
+              hello@planewx.ai
+            </a>
+            {" "}with subject &ldquo;Partnership inquiry.&rdquo;
+          </p>
         </section>
       </main>
 
