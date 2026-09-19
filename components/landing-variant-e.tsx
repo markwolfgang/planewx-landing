@@ -101,7 +101,7 @@ export function LandingVariantE() {
           </p>
 
           <p className="text-white/40 text-sm mb-12 tracking-wide">
-            — Mark Wolfgang, Founder · TBM 900 Pilot · ~1,000 hours
+            Mark Wolfgang, Founder · TBM 900 Pilot · over 1,000 hours
           </p>
 
           {/* CTAs */}
