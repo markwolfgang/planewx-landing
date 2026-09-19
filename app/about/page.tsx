@@ -252,8 +252,8 @@ export default function AboutPage() {
               ))}
             </ol>
             <p className="mt-10 text-white/70 leading-relaxed text-center max-w-2xl mx-auto">
-              Since launch, PlaneWX has grown to over 2,200 pilots flying a wide variety of
-              aircraft, from pistons to turbines, around the world.
+              Since launch, PlaneWX has grown to over 2,200 pilots in 36 countries, flying a wide
+              variety of aircraft from pistons to turbines.
             </p>
           </div>
         </section>
