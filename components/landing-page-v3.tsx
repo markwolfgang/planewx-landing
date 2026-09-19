@@ -109,6 +109,9 @@ export function LandingPageV3() {
             >
               Pricing
             </button>
+            <a href="/about" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
+              About
+            </a>
             <a href="/news" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
               News
             </a>
@@ -878,7 +881,7 @@ export function LandingPageV3() {
               </p>
               <p>
                 After selling his Information Security consulting company in December 2022, Mark retired
-                and bought his first airplane — a Diamond DA40 NG. He earned his Private Pilot's license
+                and bought his first airplane, a Diamond DA40 NG. He earned his Private Pilot's license
                 in just six weeks and started flying his wife and dog around the country.
               </p>
               <p>
@@ -889,15 +892,23 @@ export function LandingPageV3() {
                 </em>
               </p>
               <p>
-                Now flying a TBM 900 and approaching 1,000 hours total time — including 784 hours of
-                cross-country PIC in under 2 years — Mark built PlaneWX to solve his own problem. What
+                Now flying a TBM 900 with over 1,000 hours total time, including 784 hours of
+                cross-country PIC in under 2 years, Mark built PlaneWX to solve his own problem. What
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-sky-400">"Is this flight going to happen?"</em>
               </p>
-              <div className="pt-4 border-t border-white/10">
+              <div className="pt-4 border-t border-white/10 space-y-3">
                 <p className="text-sm text-white/50">
                   <strong className="text-white">Mark Wolfgang</strong> is a Commercial Instrument pilot
                   with single and multiengine ratings, and a veteran of the U.S. Navy.
+                </p>
+                <p className="text-sm text-white/50">
+                  Read the full story on our{" "}
+                  <a href="/about" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">
+                    About
+                  </a>{" "}
+                  page: how PlaneWX started, why safety stays free, and the mission behind Synoptic
+                  Intelligence™.
                 </p>
               </div>
             </div>
@@ -950,6 +961,7 @@ export function LandingPageV3() {
             <span>· The Pilot's Decision Support System</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <a href="/about" className="hover:text-white/60 transition-colors">About</a>
             <a href="/news" className="hover:text-white/60 transition-colors">News</a>
             <a href="/blog" className="hover:text-white/60 transition-colors">Blog</a>
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
