@@ -180,7 +180,7 @@ export function LandingPage() {
             >
               Testimonials
             </button>
-            <a href="#founder" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
+            <a href="/about" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
             <a href="/news" className="text-sm text-white/60 hover:text-white transition-colors">
               News
             </a>

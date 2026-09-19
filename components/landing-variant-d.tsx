@@ -121,6 +121,9 @@ export function LandingVariantD() {
             >
               Pricing
             </a>
+            <a href="/about" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
+              About
+            </a>
             <a href="/news" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
               News
             </a>
@@ -528,7 +531,7 @@ export function LandingVariantD() {
               </p>
               <p>
                 After selling his Information Security consulting company in December 2022, Mark retired
-                and bought his first airplane — a Diamond DA40 NG. He earned his Private Pilot&apos;s license
+                and bought his first airplane, a Diamond DA40 NG. He earned his Private Pilot&apos;s license
                 in just six weeks and started flying his wife and dog around the country.
               </p>
               <p>
@@ -544,10 +547,18 @@ export function LandingVariantD() {
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-emerald-400">&ldquo;Is this flight going to happen?&rdquo;</em>
               </p>
-              <div className="pt-4 border-t border-white/10">
+              <div className="pt-4 border-t border-white/10 space-y-3">
                 <p className="text-sm text-white/50">
                   <strong className="text-white">Mark Wolfgang</strong> is a Commercial Instrument pilot
                   with single and multiengine ratings, and a veteran of the U.S. Navy.
+                </p>
+                <p className="text-sm text-white/50">
+                  Read the full story on our{" "}
+                  <a href="/about" className="text-emerald-400 hover:text-emerald-300 underline underline-offset-2">
+                    About
+                  </a>{" "}
+                  page: how PlaneWX started, why safety stays free, and the mission behind Synoptic
+                  Intelligence™.
                 </p>
               </div>
             </div>
