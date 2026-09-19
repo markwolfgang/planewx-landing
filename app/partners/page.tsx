@@ -55,6 +55,7 @@ type Partner = {
     alt: string
     width: number
     height: number
+    className?: string
   }
   extraLink?: {
     href: string
@@ -111,6 +112,13 @@ const PARTNERS: Partner[] = [
     },
     blurb:
       "Experimental Aircraft Association. Home of AirVenture Oshkosh and the community that builds, restores, and flies experimental and light aircraft.",
+    photo: {
+      src: "/partners/media/eaa-proud-supporter-2026-black.png",
+      alt: "Proud Supporter of EAA AirVenture Oshkosh 2026",
+      width: 1000,
+      height: 1000,
+      className: "mb-4 mx-auto h-40 sm:h-44 w-auto object-contain",
+    },
   },
   {
     name: "AOPA",
@@ -265,6 +273,10 @@ const PROOF = [
     href: "https://www.eaa.org",
     title: "Proud supporter",
     body: "PlaneWX supports EAA AirVenture and has stood on the forum stage to talk risk, personal minimums, and decision support. Community first. No claim that we got anyone to Oshkosh.",
+    glyph: {
+      src: "/partners/media/eaa-proud-supporter-2026-black.png",
+      alt: "Proud Supporter of EAA AirVenture Oshkosh 2026",
+    },
   },
 ] as const
 
@@ -431,7 +443,10 @@ export default function PartnersPage() {
                       alt={partner.photo.alt}
                       width={partner.photo.width}
                       height={partner.photo.height}
-                      className="mb-4 w-full h-48 sm:h-52 object-cover rounded-xl"
+                      className={
+                        partner.photo.className ??
+                        "mb-4 w-full h-48 sm:h-52 object-cover rounded-xl"
+                      }
                     />
                   ) : null}
                   <div className="flex items-start justify-between gap-3 mt-auto">
@@ -584,6 +599,15 @@ export default function PartnersPage() {
                   <p className="text-xs font-semibold uppercase tracking-widest text-sky-400/80">
                     {item.title}
                   </p>
+                  {"glyph" in item && item.glyph ? (
+                    <Image
+                      src={item.glyph.src}
+                      alt={item.glyph.alt}
+                      width={1000}
+                      height={1000}
+                      className="mt-4 mx-auto h-28 sm:h-32 w-auto object-contain"
+                    />
+                  ) : null}
                   <h3 className="mt-2 font-semibold text-white group-hover:text-sky-300 transition-colors">
                     {item.name}
                   </h3>
