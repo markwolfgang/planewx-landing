@@ -109,7 +109,7 @@ const SCREENSHOTS = [
   },
   {
     src: "/ga-customs/03-kprs-process-reviews.png",
-    alt: "KPRS — inspection process, pilot reviews, offline PDF",
+    alt: "KPRS — designated airport, inspection process, pilot reviews",
     label: "Process & reviews",
   },
   {
