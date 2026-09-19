@@ -10,9 +10,8 @@ const brandAssets = {
     src: "/logos/planewx-wordmark.svg",
     alt: "PlaneWX",
   },
-  // The same gradient wordmark with the baked-in #0b0b0e background plate
-  // removed. Use on any surface that isn't near-black, where the plate would
-  // otherwise read as a visible dark rectangle.
+  // White PLANE + cyan→blue WX, no baked-in #0b0b0e plate. Default so dark
+  // navy pages do not show a black rectangle behind the mark.
   wordmarkTransparent: {
     src: "/logos/planewx-wordmark-transparent.svg",
     alt: "PlaneWX",
@@ -24,7 +23,7 @@ const brandAssets = {
 } as const
 
 export function BrandLogo({
-  variant = "wordmark",
+  variant = "wordmarkTransparent",
   className,
   alt,
 }: BrandLogoProps) {
@@ -37,7 +36,7 @@ export function BrandLogo({
     <img
       src={asset.src}
       alt={alt ?? asset.alt}
-      className={className}
+      className={["bg-transparent", className].filter(Boolean).join(" ")}
       loading="eager"
     />
   )

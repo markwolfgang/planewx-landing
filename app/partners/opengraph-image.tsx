@@ -78,7 +78,7 @@ export default async function Image() {
               color: "rgba(255,255,255,0.65)",
             }}
           >
-            PlaneWX is pilot decision support.
+            Work with the pilots who still own the call.
           </span>
         </div>
         <span
