@@ -67,7 +67,7 @@ const TIMELINE = [
 ] as const
 
 const MISSION_POINTS = [
-  "Put real impact on GA safety, not vanity metrics.",
+  "Make a real impact on GA safety, not vanity metrics.",
   "Equip pilots with a high-quality weather briefing scored against personal minimums and aircraft capabilities, an honest FRAT, and mentor input when the call is close.",
   "Keep the PIC in command. PlaneWX never tells you to go or stay. It helps you see the decision clearly enough to own it.",
 ] as const
