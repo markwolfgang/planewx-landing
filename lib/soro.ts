@@ -1,5 +1,4 @@
-wrote soro 1422
- = '732fc303-3b9b-4f2b-a629-ca12722565ce'
+const SORO_TOKEN = '732fc303-3b9b-4f2b-a629-ca12722565ce'
 const SORO_API_BASE = 'https://app.trysoro.com'
 
 export interface SoroArticle {
