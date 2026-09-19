@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og"
+import fs from "fs"
+import path from "path"
 
 export const alt = "Partners | PlaneWX"
 export const size = {
@@ -8,6 +10,11 @@ export const size = {
 export const contentType = "image/png"
 
 export default async function Image() {
+  const logoPath = path.join(process.cwd(), "public", "brand", "planewx-og-wordmark.png")
+  const logoSrc = fs.existsSync(logoPath)
+    ? `data:image/png;base64,${fs.readFileSync(logoPath).toString("base64")}`
+    : null
+
   return new ImageResponse(
     (
       <div
@@ -34,9 +41,24 @@ export default async function Image() {
             display: "flex",
           }}
         />
-        <span style={{ fontSize: "28px", fontWeight: 700, color: "#38bdf8" }}>
-          PlaneWX
-        </span>
+        {logoSrc ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={logoSrc}
+            width={320}
+            height={64}
+            style={{ objectFit: "contain", objectPosition: "left" }}
+            alt="PlaneWX"
+          />
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={`${process.env.NEXT_PUBLIC_SITE_URL || "https://www.planewx.ai"}/logos/planewx-wordmark-transparent.svg`}
+            width={280}
+            height={56}
+            alt="PlaneWX"
+          />
+        )}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           <span
             style={{
@@ -56,7 +78,7 @@ export default async function Image() {
               color: "rgba(255,255,255,0.65)",
             }}
           >
-            Partners who help pilots fly safer.
+            PlaneWX is pilot decision support.
           </span>
         </div>
         <span

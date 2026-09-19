@@ -1,6 +1,6 @@
 "use client"
 
-import { Plane } from "lucide-react"
+import { BrandLogo } from "@/components/shared/brand-logo"
 import { FaInstagram, FaFacebook, FaXTwitter, FaTiktok, FaYoutube } from "react-icons/fa6"
 
 const SOCIAL_LINKS = [
@@ -30,10 +30,9 @@ export function SiteFooter({ variant }: { variant: string }) {
           ))}
         </div>
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <Plane className="h-4 w-4 text-sky-400" />
-            <span className="font-semibold text-white/50">PlaneWX</span>
-            <span>· The Pilot&apos;s Decision Support System</span>
+          <div className="flex items-center gap-3">
+            <BrandLogo variant="wordmarkTransparent" className="h-5 w-auto" />
+            <span className="hidden sm:inline">The Pilot&apos;s Decision Support System</span>
           </div>
           <div className="flex items-center gap-6">
             <a href="/news" className="hover:text-white/60 transition-colors">News</a>

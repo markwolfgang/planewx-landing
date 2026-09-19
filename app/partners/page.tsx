@@ -8,11 +8,11 @@ import { SiteFooter } from "@/components/shared/site-footer"
 export const metadata: Metadata = {
   title: "Partners",
   description:
-    "Partners who help pilots fly safer. PlaneWX works with aviation organizations and companies that support general aviation decision support.",
+    "PlaneWX is pilot decision support. Partners on this page collaborate with the community around that work. A listing is not an endorsement. The PIC owns every go / no-go.",
   openGraph: {
     title: "Partners | PlaneWX",
     description:
-      "Partners who help pilots fly safer. Meet the organizations working alongside PlaneWX for general aviation.",
+      "PlaneWX is pilot decision support. Partners collaborate with the community. A listing is not an endorsement. The PIC owns every go / no-go.",
     type: "website",
     url: "https://www.planewx.ai/partners",
   },
@@ -20,14 +20,28 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Partners | PlaneWX",
     description:
-      "Partners who help pilots fly safer. Meet the organizations working alongside PlaneWX for general aviation.",
+      "PlaneWX is pilot decision support. Partners collaborate with the community. A listing is not an endorsement. The PIC owns every go / no-go.",
   },
   alternates: {
     canonical: "https://www.planewx.ai/partners",
   },
 }
 
-const PARTNERS = [
+type Partner = {
+  name: string
+  href: string
+  logo: {
+    src: string
+    alt: string
+    width: number
+    height: number
+    className: string
+    wellClassName?: string
+  }
+  blurb: string
+}
+
+const PARTNERS: Partner[] = [
   {
     name: "5X5 Aviation Insurance",
     href: "https://www.5x5insurance.com",
@@ -39,7 +53,7 @@ const PARTNERS = [
       className: "h-9 sm:h-10 w-auto max-w-[11rem] object-contain",
     },
     blurb:
-      "Aviation insurance partner working with PlaneWX so pilots can keep their decision support and their coverage in the same flight picture.",
+      "Aviation insurance built for how pilots actually fly. Fast quotes, transparent coverage, and safety rewards.",
   },
   {
     name: "Flight Chops",
@@ -52,13 +66,12 @@ const PARTNERS = [
       className: "h-14 sm:h-16 w-auto max-w-[9rem] object-contain",
     },
     blurb:
-      "Training and storytelling that put real pilot decision-making on camera. A PlaneWX partner helping more pilots brief with intent.",
+      "Ride-along flying videos that put real weather, real diversions, and real go / no-go calls on camera.",
   },
   {
     name: "EAA",
     href: "https://www.eaa.org",
     logo: {
-      // White mark for dark DSS background; color master also shipped at /partners/eaa.png
       src: "/partners/eaa-white.png",
       alt: "Experimental Aircraft Association (EAA) logo",
       width: 861,
@@ -66,13 +79,12 @@ const PARTNERS = [
       className: "h-11 sm:h-12 w-auto max-w-[10rem] object-contain",
     },
     blurb:
-      "Experimental Aircraft Association. Supporting the builders, restorers, and pilots who keep general aviation moving.",
+      "Experimental Aircraft Association. AirVenture, local chapters, and the builders, restorers, and pilots who keep general aviation moving.",
   },
   {
     name: "AOPA",
     href: "https://www.aopa.org",
     logo: {
-      // White SVG for dark navy cards; color master at /partners/aopa.png
       src: "/partners/aopa-white.svg",
       alt: "Aircraft Owners and Pilots Association (AOPA) logo",
       width: 96,
@@ -80,7 +92,7 @@ const PARTNERS = [
       className: "h-11 sm:h-12 w-auto max-w-[10rem] object-contain",
     },
     blurb:
-      "Aircraft Owners and Pilots Association. Advocating for GA pilots and the freedom to fly.",
+      "Aircraft Owners and Pilots Association. Advocacy, training, and resources that protect the freedom to fly.",
   },
   {
     name: "Veterans Airlift Command",
@@ -91,85 +103,73 @@ const PARTNERS = [
       width: 712,
       height: 232,
       className: "h-9 sm:h-10 w-auto max-w-[12rem] object-contain",
+      wellClassName: "bg-white",
     },
     blurb:
-      "Connecting wounded veterans and their families with free air transportation through volunteer pilots and aircraft owners.",
+      "Free private air transportation for combat-injured veterans and their families, flown by volunteer pilots and aircraft owners.",
   },
   {
     name: "FLYTE",
-    href: "https://www.planewx.ai/flyte",
+    href: "https://www.flyte.aero",
     logo: {
-      // PLACEHOLDER for Sara: Drive Partners Assets empty at launch; social share JPG is weak.
-      src: "/partners/flyte-placeholder.svg",
-      alt: "FLYTE logo placeholder",
-      width: 320,
-      height: 96,
-      className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
+      src: "/partners/flyte-white.png",
+      alt: "FLYTE logo",
+      width: 5758,
+      height: 1182,
+      className: "h-9 sm:h-10 w-auto max-w-[12rem] object-contain",
     },
     blurb:
-      "Community partner with Disa Pryor and flyte.aero. Pilot-minded gear and a shared push to make flying more useful for the people who do it.",
+      "Pilot sunglasses built for the cockpit. Headset-friendly temples. Non-polarized lenses so glass-cockpit displays stay readable.",
   },
   {
     name: "TBMOPA",
-    href: "https://www.planewx.ai/talks/tbmopa",
+    href: "https://www.tbmowners.org",
     logo: {
-      // PLACEHOLDER for Sara: official mark not in handoff; swap when Drive assets land.
       src: "/partners/tbmopa-placeholder.svg",
-      alt: "TBMOPA logo placeholder",
+      alt: "TBMOPA logo",
       width: 320,
       height: 96,
       className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
     },
     blurb:
-      "With Misty Stanistreet. Webinar and Phoenix community for TBM owners and pilots, alongside PlaneWX talks already live.",
+      "Association for Daher TBM owners and operators. Promotes safety and the ownership experience through member forums, training and safety seminars, annual convention, and technical/ops Q&A including Daher expertise.",
   },
   {
     name: "Runway to Oshkosh",
-    href: "https://www.planewx.ai/runway",
+    href: "https://runwaytooshkosh.com",
     logo: {
-      // PLACEHOLDER for Sara: campaign mark not in handoff; keep despite Gleam hold. Not Creative Relay.
       src: "/partners/runway-placeholder.svg",
-      alt: "Runway to Oshkosh logo placeholder",
+      alt: "Runway to Oshkosh logo",
       width: 360,
       height: 96,
       className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
     },
     blurb:
-      "Campaign and community partner on the road to Oshkosh. Pilots, clubs, and shared events that keep GA connected.",
+      "A multi-aircraft flight from Tecnam's U.S. base at Sebring to AirVenture. Three days, 1,047 nautical miles, and the country in between.",
   },
-] as const
+]
 
 export default function PartnersPage() {
   return (
-    <div className="min-h-screen bg-[#0B1120] text-white">
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1120] via-[#0d1f3c] to-[#0a0f1a]" />
-        <div
-          className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-transparent via-[#3B82F6] to-transparent opacity-80"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-x-0 top-2 h-px bg-[#3B82F6]/40"
-          aria-hidden
-        />
-        <div className="absolute top-0 left-1/4 w-[520px] h-[520px] bg-sky-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/5 w-[420px] h-[420px] bg-[#3B82F6]/10 rounded-full blur-[100px]" />
-      </div>
+    <div className="min-h-screen bg-[#0a0f1a] text-white">
+      <div
+        className="fixed inset-0 -z-10"
+        style={{
+          background: [
+            "radial-gradient(ellipse 600px 600px at 25% 0%, rgba(14,165,233,0.10) 0%, transparent 70%)",
+            "radial-gradient(ellipse 500px 500px at 75% 100%, rgba(99,102,241,0.10) 0%, transparent 70%)",
+            "radial-gradient(ellipse 400px 400px at 50% 50%, rgba(6,182,212,0.05) 0%, transparent 70%)",
+            "linear-gradient(135deg, #0a1628 0%, #0d1f3c 50%, #0a0f1a 100%)",
+          ].join(", "),
+        }}
+      />
 
-      <nav className="border-b border-white/5 bg-[#0B1120]/80 backdrop-blur-md">
+      <nav className="relative z-10 border-b border-white/5">
         <div className="container mx-auto max-w-5xl px-4 py-4 flex items-center justify-between gap-4">
-          <Link
-            href="/"
-            className="flex items-center gap-3 min-w-0"
-            aria-label="PlaneWX home"
-          >
-            {/* Official SoT light wordmark for dark nav (transparent plate) */}
-            <BrandLogo
-              variant="wordmarkTransparent"
-              className="h-7 sm:h-8 w-auto max-w-[min(100%,11rem)]"
-            />
-            <span className="hidden sm:inline text-xs text-white/45 tracking-wide truncate">
-              Pilot Decision Support
+          <Link href="/" className="flex items-center gap-3 min-w-0" aria-label="PlaneWX home">
+            <BrandLogo className="h-9 w-auto" priority />
+            <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
+              The Pilot&apos;s Decision Support System
             </span>
           </Link>
           <Link
@@ -184,20 +184,15 @@ export default function PartnersPage() {
 
       <main className="container mx-auto max-w-5xl px-4 py-10 sm:py-14 space-y-10 sm:space-y-12">
         <header className="space-y-4 text-center sm:text-left max-w-2xl">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#3B82F6]">
-            PlaneWX
-          </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
             Partners
           </h1>
-          <p className="text-lg sm:text-xl text-white/65 leading-relaxed">
-            Partners who help pilots fly safer.
+          <p className="text-lg sm:text-xl text-white/70 leading-relaxed">
+            PlaneWX is pilot decision support.
           </p>
           <p className="text-sm sm:text-base text-white/45 leading-relaxed">
-            PlaneWX is built with the GA community: clubs, brands, and pilots who
-            care about clearer go / no-go calls. Listing here means collaboration
-            or shared community, not an endorsement of PlaneWX by any partner. The
-            PIC still owns every decision.
+            Partners on this page collaborate with the community around that
+            work. A listing is not an endorsement. The PIC owns every go / no-go.
           </p>
         </header>
 
@@ -214,7 +209,11 @@ export default function PartnersPage() {
                   rel="noopener noreferrer"
                   className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
                 >
-                  <div className="flex min-h-[4.75rem] items-center justify-center rounded-xl bg-white/[0.04] px-4 py-4 mb-4">
+                  <div
+                    className={`flex min-h-[5rem] items-center justify-center rounded-xl px-4 py-5 mb-4 ${
+                      partner.logo.wellClassName ?? "bg-black/25"
+                    }`}
+                  >
                     <Image
                       src={partner.logo.src}
                       alt={partner.logo.alt}
@@ -245,18 +244,13 @@ export default function PartnersPage() {
         </section>
 
         <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-8 space-y-3 text-center sm:text-left">
-          {/* Sara lock: CTA heading must stay exactly this string. */}
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
             Built with pilots, for pilots
           </h2>
-          {/*
-            PLACEHOLDER for Sara swap (CoS): exact body paragraph not available yet.
-            Do not treat this as final Sara copy. CoS will interrupt with her text.
-          */}
-          {/* PLACEHOLDER: Sara exact body pending */}
           <p className="text-white/55 leading-relaxed max-w-2xl">
-            PlaneWX works with the pilots, clubs, and brands that make flying
-            safer and more useful. More partners and ambassadors coming.
+            PlaneWX is built with this community so more pilots can make safer
+            decisions. A listing is not an endorsement. The PIC still owns the
+            call.
           </p>
           <div className="pt-2">
             <Link
