@@ -889,8 +889,8 @@ export function LandingPageV3() {
                 </em>
               </p>
               <p>
-                Now flying a TBM 900 and approaching 1,000 hours total time — including 784 hours of
-                cross-country PIC in under 2 years — Mark built PlaneWX to solve his own problem. What
+                Now flying a TBM 900 and over 1,000 hours total time, including 784 hours of
+                cross-country PIC in under 2 years, Mark built PlaneWX to solve his own problem. What
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-sky-400">"Is this flight going to happen?"</em>
               </p>
@@ -901,6 +901,26 @@ export function LandingPageV3() {
                 </p>
               </div>
             </div>
+          </div>
+
+          <div className="mt-12 max-w-3xl mx-auto">
+            <p className="text-center text-sm text-white/40 mb-4">Watch the founder&apos;s story</p>
+            <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/50" style={{ paddingBottom: "56.25%" }}>
+              <YouTubeFacade
+                videoId="rAFTCzeR38M"
+                title="PlaneWX Founder's Story, Mark Wolfgang"
+              />
+            </div>
+            <p className="text-center text-sm text-white/40 mt-4">
+              <a
+                href="https://www.youtube.com/@markflieshigh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-400 hover:text-sky-300 underline underline-offset-4 transition-colors"
+              >
+                More on YouTube
+              </a>
+            </p>
           </div>
         </div>
       </section>
