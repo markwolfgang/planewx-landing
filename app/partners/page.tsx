@@ -119,7 +119,7 @@ const PARTNERS: Partner[] = [
       className: "h-9 sm:h-10 w-auto max-w-[12rem] object-contain",
     },
     blurb:
-      "Aviator sunglasses built for the cockpit. Thin temples that work with headsets. Non-polarized lenses so glass-cockpit displays stay readable. Made from airplane-grade materials.",
+      "Aviator sunglasses built for the cockpit. Thin temples that work with headsets. Non-polarized lenses so glass-cockpit displays stay readable.",
   },
   {
     name: "TBMOPA",
@@ -132,7 +132,7 @@ const PARTNERS: Partner[] = [
       className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
     },
     blurb:
-      "TBM Owners and Pilots Association. For Daher TBM owners and operators. Safety first, plus member forums, training and safety seminars, the annual convention, and technical answers with input from Daher experts.",
+      "TBM Owners and Pilots Association for Daher TBM owners and operators. Promotes safety and the ownership experience through member forums, training and safety seminars, the annual convention, and technical answers with input from Daher experts.",
   },
   {
     name: "Runway to Oshkosh",
