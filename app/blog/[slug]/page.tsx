@@ -2,9 +2,16 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { getSoroArticles, getSoroArticleContent } from "@/lib/soro"
+import { connection } from "next/server"
+import {
+  getSoroArticles,
+  getSoroArticleBySlug,
+  getSoroArticleContent,
+} from "@/lib/soro"
 
 export const revalidate = 3600
+/** Allow new Soro slugs that were not in generateStaticParams at build time. */
+export const dynamicParams = true
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -17,8 +24,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const articles = await getSoroArticles()
-  const article = articles.find((a) => a.slug === slug)
+  const article = await getSoroArticleBySlug(slug)
   if (!article) return {}
 
   return {
@@ -38,9 +44,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
-  const articles = await getSoroArticles()
-  const article = articles.find((a) => a.slug === slug)
-  if (!article) notFound()
+  const article = await getSoroArticleBySlug(slug)
+  if (!article) {
+    // Confirmed miss after a no-store list refetch — wait for a real request so
+    // Next does not ISR-cache this 404 for revalidate (3600s). A post published
+    // minutes later would otherwise stay soft-404 until the hour rolled over.
+    await connection()
+    notFound()
+  }
 
   const content = await getSoroArticleContent(article.id)
 
