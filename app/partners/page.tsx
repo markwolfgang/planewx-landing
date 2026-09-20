@@ -64,6 +64,7 @@ type Partner = {
     href: string
     label: string
   }
+  perk?: string
 }
 
 const PARTNERS: Partner[] = [
@@ -164,6 +165,7 @@ const PARTNERS: Partner[] = [
     },
     blurb:
       "TBM Owners and Pilots Association for Daher TBM owners and operators. Safety, member forums, training and safety seminars, annual convention, and technical answers with Daher expertise.",
+    perk: "TBMOPA members: 20% off your first invoice (code pmopa20)",
   },
   {
     name: "Runway to Oshkosh",
@@ -198,7 +200,7 @@ const PROGRAM = [
 const FAQS = [
   {
     q: "Who is eligible?",
-    a: "Organizations, ambassadors, and content creators who use PlaneWX, stay safety-focused, and get real value from it. Not paid YouTube ads for people who do not use the product.",
+    a: "People who use PlaneWX and can share that experience. Organizations, ambassadors, and content creators. We grow together.",
   },
   {
     q: "What does a listing mean?",
@@ -265,10 +267,10 @@ export default function PartnersPage() {
             Who we work with
           </h1>
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
-            We work with organizations, ambassadors, and content creators who
-            are safety-focused, use PlaneWX, and get real value from it. We do
-            not pay for YouTube sponsorships or commercial ads for people who
-            do not use PlaneWX.
+            We work with people who use PlaneWX and can share that experience
+            so more pilots find it. Organizations, ambassadors, and content
+            creators. We grow together. Real relationships. Meetups and
+            community when the fit is there.
           </p>
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
             If you&apos;re using PlaneWX and can see yourself working with us,
@@ -337,6 +339,11 @@ export default function PartnersPage() {
                       >
                         {partner.name}
                       </a>
+                      {partner.perk ? (
+                        <p className="text-sm font-semibold text-sky-300 leading-snug">
+                          {partner.perk}
+                        </p>
+                      ) : null}
                       <p className="text-sm text-white/50 leading-relaxed">
                         {partner.blurb}
                       </p>
