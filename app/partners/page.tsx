@@ -1,4 +1,3 @@
-import type { ReactNode } from "react"
 import type { Metadata } from "next"
 import { Inter_Tight } from "next/font/google"
 import Image from "next/image"
@@ -9,6 +8,7 @@ import {
   Mail,
 } from "lucide-react"
 import { PartnerApplyForm } from "@/components/partners/apply-form"
+import { PartnersMediaCarousel } from "@/components/partners/media-carousel"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
 
@@ -210,21 +210,6 @@ const FAQS = [
   },
 ] as const
 
-function HeroMediaTile({
-  children,
-  caption,
-}: {
-  children: ReactNode
-  caption: string
-}) {
-  return (
-    <figure className="overflow-hidden rounded-xl border border-white/10 bg-black/40">
-      {children}
-      <figcaption className="sr-only">{caption}</figcaption>
-    </figure>
-  )
-}
-
 function BecomePartnerButton() {
   return (
     <a
@@ -270,59 +255,7 @@ export default function PartnersPage() {
       </nav>
 
       <main className="container mx-auto max-w-5xl px-4 pt-4 sm:pt-5 pb-16 sm:pb-20 space-y-14 sm:space-y-16">
-        <section
-          aria-label="From Oshkosh"
-          className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3"
-        >
-          <HeroMediaTile caption="FLYTE sunglass stand and a PlaneWX hat at an outdoor booth">
-            <Image
-              src="/partners/media/flyte-hat.jpg"
-              alt="FLYTE sunglass stand and a PlaneWX hat at an outdoor booth"
-              width={1200}
-              height={1600}
-              priority
-              className="w-full h-40 sm:h-52 lg:h-56 object-cover"
-            />
-          </HeroMediaTile>
-          <HeroMediaTile caption="PlaneWX on a yellow aerobatic ship at Oshkosh, then smoke in the box">
-            <video
-              className="w-full h-40 sm:h-52 lg:h-56 bg-black object-cover"
-              controls
-              playsInline
-              preload="metadata"
-              poster="/partners/media/flightline-aerobatics-poster.jpg"
-              muted
-              loop
-              autoPlay
-            >
-              <source src="/partners/media/flightline-aerobatics.mp4" type="video/mp4" />
-            </video>
-          </HeroMediaTile>
-          <HeroMediaTile caption="Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage">
-            <Image
-              src="/partners/media/rv14-logo.jpg"
-              alt="Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage"
-              width={1200}
-              height={1600}
-              priority
-              className="w-full h-40 sm:h-52 lg:h-56 object-cover object-[center_70%]"
-            />
-          </HeroMediaTile>
-          <HeroMediaTile caption="Mark at EAA pointing to PlaneWX on the Copper Supporters board">
-            <video
-              className="w-full h-40 sm:h-52 lg:h-56 bg-black object-cover"
-              controls
-              playsInline
-              preload="metadata"
-              poster="/partners/media/copper-mark-poster.jpg"
-              muted
-              loop
-              autoPlay
-            >
-              <source src="/partners/media/copper-mark.mp4" type="video/mp4" />
-            </video>
-          </HeroMediaTile>
-        </section>
+        <PartnersMediaCarousel />
 
         <header className="mx-auto max-w-3xl text-center space-y-5 sm:space-y-6">
           <h1
