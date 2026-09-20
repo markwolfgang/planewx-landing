@@ -1,3 +1,4 @@
+import type { ReactNode } from "react"
 import type { Metadata } from "next"
 import { Inter_Tight } from "next/font/google"
 import Image from "next/image"
@@ -208,18 +209,18 @@ const BENEFITS = [
   },
   {
     icon: Megaphone,
-    title: "Co-marketing that sounds like pilots",
-    body: "Joint notes, posts, and event work written in the same voice we use with the community. No hype layer. If we cannot stand behind the sentence, it does not ship.",
+    title: "Shared work, same voice",
+    body: "Notes, posts, and event work written the way we talk to other pilots. If we cannot stand behind the sentence, it does not ship.",
   },
   {
     icon: Handshake,
-    title: "Community trust, earned slowly",
-    body: "A listing here sits next to clubs and brands pilots already know. That only works if the page stays honest: collaboration, not a purchased seal.",
+    title: "Honest listing",
+    body: "A listing sits next to clubs and brands pilots already know. Collaboration, not a purchased seal.",
   },
   {
     icon: Shield,
-    title: "Aligned with safer decisions",
-    body: "The fit is product or community work that helps a PIC see weather, risk, and counsel earlier. Beyond a weather briefing. The confidence to go, or the courage to stay.",
+    title: "Beyond the weather briefing",
+    body: "The fit is work that helps a PIC see weather, risk, and counsel before the trip already has momentum. PlaneWX sits beside the EFB. You remain PIC.",
   },
 ] as const
 
@@ -256,33 +257,8 @@ const STEPS = [
   },
   {
     n: "04",
-    title: "Launch and stay honest",
+    title: "Go live",
     body: "The page goes live, or the campaign starts. Listing is not an endorsement. The PIC still owns every go / no-go.",
-  },
-] as const
-
-const PROOF = [
-  {
-    name: "5X5 Aviation Insurance",
-    href: "/news/5x5-aviation-insurance-exclusive-partner",
-    title: "Exclusive insurance partner",
-    body: "Verified Pro Plus members can be eligible for risk-based premium credits through 5X5 Safety Rewards. PlaneWX does not sell insurance. Credits are 5X5's underwriting, not a PlaneWX guarantee.",
-  },
-  {
-    name: "Flight Chops",
-    href: "https://flightchops.com",
-    title: "YouTube partner",
-    body: "Steve pushed smoke onto the same briefing as the rest of the weather. Real cockpit video, real decision-making. A video is not a go / no-go. It is another set of eyes on the problem.",
-  },
-  {
-    name: "EAA",
-    href: "https://www.eaa.org",
-    title: "Proud supporter",
-    body: "PlaneWX supports EAA AirVenture and has stood on the forum stage to talk risk, personal minimums, and decision support. Community first. No claim that we got anyone to Oshkosh.",
-    glyph: {
-      src: "/partners/media/eaa-proud-supporter-2026-black.png",
-      alt: "Proud Supporter of EAA AirVenture Oshkosh 2026",
-    },
   },
 ] as const
 
@@ -305,34 +281,17 @@ const FAQS = [
   },
 ] as const
 
-function PartnerClip({
-  src,
-  poster,
+function HeroMediaTile({
+  children,
   caption,
-  mutedLoop = false,
 }: {
-  src: string
-  poster: string
+  children: ReactNode
   caption: string
-  mutedLoop?: boolean
 }) {
   return (
-    <figure className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-      <video
-        className="w-full max-h-[28rem] bg-black object-contain"
-        controls
-        playsInline
-        preload="metadata"
-        poster={poster}
-        muted={mutedLoop}
-        loop={mutedLoop}
-        autoPlay={mutedLoop}
-      >
-        <source src={src} type="video/mp4" />
-      </video>
-      <figcaption className="px-4 py-3 text-sm text-white/50 leading-relaxed">
-        {caption}
-      </figcaption>
+    <figure className="overflow-hidden rounded-xl border border-white/10 bg-black/40">
+      {children}
+      <figcaption className="sr-only">{caption}</figcaption>
     </figure>
   )
 }
@@ -390,8 +349,59 @@ export default function PartnersPage() {
         </div>
       </nav>
 
-      <main className="container mx-auto max-w-5xl px-4 py-16 sm:py-24 space-y-20 sm:space-y-24">
-        <header className="mx-auto max-w-3xl text-center space-y-7 sm:space-y-8 pt-4 sm:pt-8">
+      <main className="container mx-auto max-w-5xl px-4 pt-4 sm:pt-5 pb-16 sm:pb-20 space-y-14 sm:space-y-16">
+        <section
+          aria-label="From Oshkosh"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3"
+        >
+          <HeroMediaTile caption="FLYTE sunglass stand and a PlaneWX hat at an outdoor booth">
+            <Image
+              src="/partners/media/flyte-hat.jpg"
+              alt="FLYTE sunglass stand and a PlaneWX hat at an outdoor booth"
+              width={1200}
+              height={1600}
+              priority
+              className="w-full h-40 sm:h-52 lg:h-56 object-cover"
+            />
+          </HeroMediaTile>
+          <HeroMediaTile caption="Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage">
+            <Image
+              src="/partners/media/rv14-logo.jpg"
+              alt="Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage"
+              width={1200}
+              height={1600}
+              priority
+              className="w-full h-40 sm:h-52 lg:h-56 object-cover object-[center_70%]"
+            />
+          </HeroMediaTile>
+          <HeroMediaTile caption="PlaneWX on a yellow aerobatic ship at Oshkosh, then smoke in the box">
+            <video
+              className="w-full h-40 sm:h-52 lg:h-56 bg-black object-cover"
+              controls
+              playsInline
+              preload="metadata"
+              poster="/partners/media/flightline-aerobatics-poster.jpg"
+            >
+              <source src="/partners/media/flightline-aerobatics.mp4" type="video/mp4" />
+            </video>
+          </HeroMediaTile>
+          <HeroMediaTile caption="Mark at EAA pointing to PlaneWX on the Copper Supporters board">
+            <video
+              className="w-full h-40 sm:h-52 lg:h-56 bg-black object-cover"
+              controls
+              playsInline
+              preload="metadata"
+              poster="/partners/media/copper-mark-poster.jpg"
+              muted
+              loop
+              autoPlay
+            >
+              <source src="/partners/media/copper-mark.mp4" type="video/mp4" />
+            </video>
+          </HeroMediaTile>
+        </section>
+
+        <header className="mx-auto max-w-3xl text-center space-y-5 sm:space-y-6">
           <h1
             id="who-we-work-with"
             className={`${display.className} text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight leading-[1.05] text-white`}
@@ -405,9 +415,6 @@ export default function PartnersPage() {
             keeps the self-assessment honest, and gives an objective second
             opinion before the pressure locks in. Here&apos;s who we fly with.
           </p>
-          <div className="flex justify-center pt-2">
-            <BecomePartnerButton />
-          </div>
         </header>
 
         <section aria-labelledby="who-we-work-with" className="space-y-5">
@@ -510,9 +517,6 @@ export default function PartnersPage() {
               </li>
             ))}
           </ul>
-          <div className="pt-1">
-            <BecomePartnerButton />
-          </div>
         </section>
 
         <section aria-labelledby="program-heading" className="space-y-6">
@@ -566,99 +570,6 @@ export default function PartnersPage() {
               </li>
             ))}
           </ol>
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3">
-            <BecomePartnerButton />
-            <p className="text-sm text-white/40 sm:pt-3">
-              Typical first reply is a human, not a packet.
-            </p>
-          </div>
-        </section>
-
-        <section aria-labelledby="proof-heading" className="space-y-6">
-          <div className="space-y-2 text-center sm:text-left">
-            <h2 id="proof-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-              How we work together
-            </h2>
-            <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
-              Real collaborations already on the record. No invented reach
-              numbers. Read the work, then decide if the fit is yours.
-            </p>
-          </div>
-          <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {PROOF.map((item) => (
-              <li key={item.name} className="h-full">
-                <Link
-                  href={item.href}
-                  {...(item.href.startsWith("http")
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-widest text-sky-400/80">
-                    {item.title}
-                  </p>
-                  {"glyph" in item && item.glyph ? (
-                    <Image
-                      src={item.glyph.src}
-                      alt={item.glyph.alt}
-                      width={1000}
-                      height={1000}
-                      className="mt-4 mx-auto h-28 sm:h-32 w-auto object-contain"
-                    />
-                  ) : null}
-                  <h3 className="mt-2 font-semibold text-white group-hover:text-sky-300 transition-colors">
-                    {item.name}
-                  </h3>
-                  <p className="mt-2 text-sm text-white/50 leading-relaxed flex-1">{item.body}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <p className="text-sm text-white/40 leading-relaxed">
-            From the field at Oshkosh: FLYTE, Flight Chops, and EAA.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-              <Image
-                src="/partners/media/flyte-hat.jpg"
-                alt="FLYTE sunglass stand and a PlaneWX hat at an outdoor booth"
-                width={1200}
-                height={1600}
-                className="w-full h-64 sm:h-80 object-cover"
-              />
-              <figcaption className="px-4 py-3 text-sm text-white/50 leading-relaxed">
-                FLYTE booth: cockpit sunglasses on the stand, PlaneWX hat on the table.
-              </figcaption>
-            </figure>
-            <figure className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-              <Image
-                src="/partners/media/rv14-logo.jpg"
-                alt="Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage"
-                width={1200}
-                height={1600}
-                className="w-full h-64 sm:h-80 object-cover object-[center_70%]"
-              />
-              <figcaption className="px-4 py-3 text-sm text-white/50 leading-relaxed">
-                Flight Chops RV-14 at Oshkosh with PlaneWX on the fuselage.
-              </figcaption>
-            </figure>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <PartnerClip
-              src="/partners/media/flightline-aerobatics.mp4"
-              poster="/partners/media/flightline-aerobatics-poster.jpg"
-              caption="PlaneWX on a yellow aerobatic ship at Oshkosh, then smoke in the box."
-            />
-            <PartnerClip
-              src="/partners/media/copper-mark.mp4"
-              poster="/partners/media/copper-mark-poster.jpg"
-              caption="Mark at EAA pointing to PlaneWX on the Copper Supporters board."
-              mutedLoop
-            />
-          </div>
         </section>
 
         <section
