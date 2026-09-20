@@ -296,6 +296,9 @@ export default function PartnersPage() {
               playsInline
               preload="metadata"
               poster="/partners/media/flightline-aerobatics-poster.jpg"
+              muted
+              loop
+              autoPlay
             >
               <source src="/partners/media/flightline-aerobatics.mp4" type="video/mp4" />
             </video>
