@@ -198,7 +198,7 @@ const PROGRAM = [
 const FAQS = [
   {
     q: "Who is eligible?",
-    a: "Organizations, ambassadors, and content creators who help pilots make better decisions.",
+    a: "Organizations, ambassadors, and content creators who use PlaneWX, stay safety-focused, and get real value from it. Not paid YouTube ads for people who do not use the product.",
   },
   {
     q: "What does a listing mean?",
@@ -332,9 +332,10 @@ export default function PartnersPage() {
             Who we work with
           </h1>
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
-            Organizations, ambassadors, and content creators who want to reach
-            pilots in a real go / no-go. We&apos;re real people. Here&apos;s
-            who we fly with.
+            We work with organizations, ambassadors, and content creators who
+            are safety-focused, use PlaneWX, and get real value from it. We do
+            not pay for YouTube sponsorships or commercial ads for people who
+            do not use PlaneWX.
           </p>
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
             If you&apos;re using PlaneWX and can see yourself working with us,
