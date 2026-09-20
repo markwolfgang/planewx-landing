@@ -2,6 +2,12 @@
 
 A standalone Next.js landing page for PlaneWX with waitlist signup functionality.
 
+## Brand Portal (Sara-facing marketing SoT)
+
+The password-gated Brand Portal at `/brand` is the **Sara-facing marketing source of truth** for tone, story, terminology, and product framing. Prose lives in `content/brand/` and deploys from `main`.
+
+App-repo docs (for example `PLANEWX-MASTER-REFERENCE.md` in the product app) may still exist for engineering/product context. **They are not the Sara-facing marketing SoT.** Edit `content/brand/` here when messaging changes. See `content/brand/README.md`.
+
 ## Setup
 
 1. **Install dependencies:**
