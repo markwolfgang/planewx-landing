@@ -488,8 +488,9 @@ export default function PartnersPage() {
               Why partner with PlaneWX
             </h2>
             <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
-              This is for organizations that want to reach pilots in the middle
-              of a real decision, not a weather-app install screen.
+              This is for organizations, ambassadors, and content creators who
+              want to reach pilots in the middle of a real decision. We&apos;re
+              real people. Not a weather-app install screen.
             </p>
           </div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
