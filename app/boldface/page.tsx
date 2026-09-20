@@ -275,8 +275,8 @@ export default function BoldfacePage() {
             Chair-fly the procedure. Brief the weather.
           </h2>
           <p className="text-white/60 max-w-xl mx-auto leading-relaxed">
-            Install TBM Boldface from the App Store, then open PlaneWX for
-            personal-minimums weather intelligence on the same trip.
+            Install TBM Boldface to study and chair-fly your memory items. Open
+            PlaneWX for personal-minimums weather intelligence on the flight.
           </p>
           <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center gap-3">
             <a
