@@ -8,7 +8,6 @@ import {
   ExternalLink,
   Handshake,
   Mail,
-  Megaphone,
   Shield,
   Users,
 } from "lucide-react"
@@ -205,79 +204,47 @@ const BENEFITS = [
   {
     icon: Users,
     title: "Reach pilots making the call",
-    body: "PlaneWX is used by GA pilots before they launch: briefing, FRAT, and counsel in one workflow. Partners meet people who are already thinking about go / no-go, not browsing a weather gadget.",
-  },
-  {
-    icon: Megaphone,
-    title: "Shared work, same voice",
-    body: "Notes, posts, and event work written the way we talk to other pilots. If we cannot stand behind the sentence, it does not ship.",
+    body: "You meet pilots already in a go / no-go, not browsing a weather gadget.",
   },
   {
     icon: Handshake,
     title: "Honest listing",
-    body: "A listing sits next to clubs and brands pilots already know. Collaboration, not a purchased seal.",
+    body: "Collaboration. Not a purchased seal. The PIC still owns the call.",
   },
   {
     icon: Shield,
     title: "Beyond the weather briefing",
-    body: "The fit is work that helps a PIC see weather, risk, and counsel before the trip already has momentum. PlaneWX sits beside the EFB. You remain PIC.",
+    body: "Decision support beside the EFB. Weather is the environment. You remain PIC.",
   },
 ] as const
 
 const PROGRAM = [
   {
     title: "Community",
-    body: "Owners groups, clubs, and events that already gather pilots who care about the next flight. A listing puts you on this page with a live link and a blurb we both accept.",
+    body: "Clubs, owners groups, events.",
   },
   {
     title: "Co-marketing",
-    body: "Shared content, booths, and campaigns. We write like pilots talking to pilots. You keep your brand. We keep PIC judgment at the center.",
+    body: "Pilot-to-pilot voice.",
   },
   {
     title: "Strategic",
-    body: "Deeper product alignment when the work changes what a member can do, the way 5X5 recognizes preparation in underwriting. Those take a longer conversation.",
-  },
-] as const
-
-const STEPS = [
-  {
-    n: "01",
-    title: "Write Sara",
-    body: "Email who you are, the organization, a site, and what you want to do together. A short note is enough.",
-  },
-  {
-    n: "02",
-    title: "Talk through fit",
-    body: "We will reply if there is a path. Expect a plain conversation about audience, the work, and whether the voices match.",
-  },
-  {
-    n: "03",
-    title: "Align on the work",
-    body: "Listing copy, links, and any co-marketing get agreed in writing. We do not invent metrics. We do not put a name on a card we cannot defend.",
-  },
-  {
-    n: "04",
-    title: "Go live",
-    body: "The page goes live, or the campaign starts. Listing is not an endorsement. The PIC still owns every go / no-go.",
+    body: "Deeper product fit when it is real.",
   },
 ] as const
 
 const FAQS = [
   {
-    q: "Who is eligible to partner?",
-    a: "Clubs, owners groups, trainers, media, and aviation brands whose work helps GA pilots make better decisions. If the product fights PIC judgment or needs us to pretend PlaneWX is only a weather app, this is not the page.",
+    q: "Who is eligible?",
+    a: "Organizations, ambassadors, and content creators who help pilots make better decisions.",
   },
   {
     q: "What does a listing mean?",
-    a: "A listing is collaboration: a logo, a live link, and a blurb we both accept. It is not an endorsement of a product, a policy, or a flight. The PIC owns every go / no-go.",
+    a: "A logo, a live link, and a blurb we both accept. Not an endorsement. The PIC owns every go / no-go.",
   },
   {
     q: "How do I apply?",
-    a: "Use the form on this page or email sara@planewx.ai with your organization, a site, and a short note on the work. We will reply if there is a fit. There is no public SLA and no automated approval.",
-  },
-  {
-    q: "Who do I contact?",
-    a: "Sara Wolfgang, PlaneWX. sara@planewx.ai. For product or press that is not a partnership, hello@planewx.ai still works.",
+    a: "Use the form or email sara@planewx.ai. A short note is enough.",
   },
 ] as const
 
@@ -400,11 +367,9 @@ export default function PartnersPage() {
             Who we work with
           </h1>
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
-            At PlaneWX, we get to team up with associations, creators, and
-            aviation brands that care about safer flights. They help more
-            pilots get decision support that scores the briefing to their mins,
-            keeps the self-assessment honest, and gives an objective second
-            opinion before the pressure locks in. Here&apos;s who we fly with.
+            Organizations, ambassadors, and content creators who want to reach
+            pilots in a real go / no-go. We&apos;re real people. Here&apos;s
+            who we fly with.
           </p>
         </header>
 
@@ -488,12 +453,11 @@ export default function PartnersPage() {
               Why partner with PlaneWX
             </h2>
             <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
-              This is for organizations, ambassadors, and content creators who
-              want to reach pilots in the middle of a real decision. We&apos;re
-              real people. Not a weather-app install screen.
+              Organizations, ambassadors, and content creators. Real people.
+              Not a weather-app install screen.
             </p>
           </div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {BENEFITS.map((benefit) => (
               <li
                 key={benefit.title}
@@ -517,8 +481,8 @@ export default function PartnersPage() {
               What a PlaneWX partnership is
             </h2>
             <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
-              Strategic, community, and co-marketing work. Not a badge you buy.
-              Not a claim that PlaneWX vouches for a flight.
+              Community, co-marketing, or strategic. A listing is not an
+              endorsement.
             </p>
           </div>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -532,36 +496,6 @@ export default function PartnersPage() {
               </li>
             ))}
           </ul>
-          <p className="text-sm text-white/40 leading-relaxed max-w-3xl">
-            We will list you when the work is real and the copy is honest. We
-            will not list you as an endorsement. PlaneWX is a pilot decision
-            support system sitting beside the EFB. Weather is the environment.
-            It is not the entire risk picture. The PIC still owns the call.
-          </p>
-        </section>
-
-        <section aria-labelledby="apply-steps-heading" className="space-y-6">
-          <div className="space-y-2 text-center sm:text-left">
-            <h2 id="apply-steps-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-              How we start
-            </h2>
-            <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
-              Four steps. No portal, no points program. Write us, talk it
-              through, agree the work, then show up.
-            </p>
-          </div>
-          <ol className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {STEPS.map((step) => (
-              <li
-                key={step.n}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 space-y-2"
-              >
-                <p className="text-xs font-semibold tracking-[0.2em] text-sky-400/80">{step.n}</p>
-                <h3 className="font-semibold text-white">{step.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{step.body}</p>
-              </li>
-            ))}
-          </ol>
         </section>
 
         <section
@@ -578,8 +512,7 @@ export default function PartnersPage() {
               Tell us who you are
             </h2>
             <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
-              The form opens a message to sara@planewx.ai with your note. No
-              account, no portal. If mail does not open, write her directly.
+              Short note to sara@planewx.ai. No portal.
             </p>
           </div>
           <PartnerApplyForm />
@@ -607,8 +540,6 @@ export default function PartnersPage() {
             Built with pilots, for pilots
           </h2>
           <p className="text-white/55 leading-relaxed max-w-2xl">
-            We work with the clubs, brands, and pilots who care about clearer
-            go / no-go calls. Partners here collaborate with that community.
             Listing is not an endorsement. The PIC still owns every decision.
           </p>
           <div className="pt-2">
