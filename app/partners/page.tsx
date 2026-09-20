@@ -405,14 +405,8 @@ export default function PartnersPage() {
             keeps the self-assessment honest, and gives an objective second
             opinion before the pressure locks in. Here&apos;s who we fly with.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <div className="flex justify-center pt-2">
             <BecomePartnerButton />
-            <a
-              href="mailto:sara@planewx.ai?subject=Partnership%20question"
-              className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-6 py-3 text-sm font-medium transition-all"
-            >
-              Talk to us
-            </a>
           </div>
         </header>
 
@@ -714,14 +708,8 @@ export default function PartnersPage() {
             go / no-go calls. Partners here collaborate with that community.
             Listing is not an endorsement. The PIC still owns every decision.
           </p>
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 pt-2">
+          <div className="pt-2">
             <BecomePartnerButton />
-            <Link
-              href="https://app.planewx.ai"
-              className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-6 py-3 text-sm font-medium transition-all"
-            >
-              Get PlaneWX
-            </Link>
           </div>
         </section>
       </main>
