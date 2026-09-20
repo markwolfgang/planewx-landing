@@ -47,15 +47,44 @@ export const TESTIMONIALS = [
   },
 ]
 
+/** Plain text, or a link segment for in-answer anchors. */
+export type FaqSegment = string | { href: string; label: string }
+
+/** Single-paragraph string, or multi-paragraph rich answer (array of segment arrays). */
+export type FaqAnswer = string | FaqSegment[][]
+
 export const FAQS: {
   q: string
-  a: string
+  a: FaqAnswer
   /** When set, render the approved 5X5 disclosure after the answer, linked to /privacy. */
   fiveX5SeesNote?: boolean
 }[] = [
   {
     q: "How is PlaneWX different from ForeFlight or aviationweather.gov?",
-    a: "EFBs and weather portals display raw data — METARs, TAFs, winds aloft — and leave the synthesis to you. PlaneWX aggregates that same authoritative data, structures it against your aircraft capabilities and personal minimums, and produces a WX Score so you can decide with a clearer picture. You still own the analysis and the call. It's the difference between a data display and a decision support system.",
+    a: [
+      [
+        "ForeFlight and Garmin Pilot are excellent EFBs for charts, filing, and day-of flying. Aviationweather.gov and Flight Service (including 1800WXBRIEF) give you official weather products. PlaneWX sits beside those tools. It does not replace them.",
+      ],
+      [
+        "What PlaneWX adds is decision support days out: a ",
+        {
+          href: "https://www.planewx.ai/blog/wx-score-planning-tool-review",
+          label: "WX Score matched to your aircraft and personal minimums",
+        },
+        ", a dynamic ",
+        {
+          href: "https://app.planewx.ai/help/frat",
+          label: "FRAT on the FAA PAVE framework",
+        },
+        ", and mentors who see the same briefing you see. Read how ",
+        {
+          href: "https://www.planewx.ai/news/foreflight-share-to-planewx",
+          label: "ForeFlight share into PlaneWX",
+        },
+        " works when you already plan in your EFB.",
+      ],
+      ["You stay PIC. Charts, filing, and official sources stay where they belong."],
+    ],
   },
   {
     q: "What is the WX Score?",
@@ -63,7 +92,24 @@ export const FAQS: {
   },
   {
     q: "What is the PAVE framework?",
-    a: "PAVE is the FAA's structured aeronautical decision-making framework: Pilot, Aircraft, enVironment, and External pressures. PlaneWX pre-fills the environment quadrant with your WX Score, prompts you through the other three, and produces a complete risk picture — not just weather.",
+    a: [
+      [
+        "PAVE is the FAA risk framework: Pilot, Aircraft, enVironment, and External pressures. It is the structure behind a serious preflight risk assessment, not a weather product by itself.",
+      ],
+      [
+        "We walk through it in plain language in our ",
+        {
+          href: "https://www.planewx.ai/blog/pave-risk-assessment-weather",
+          label: "PAVE risk assessment guide",
+        },
+        ". PlaneWX FRAT uses that same framework as a living sit-down assessment near departure. See ",
+        {
+          href: "https://app.planewx.ai/help/frat",
+          label: "how PlaneWX FRAT works",
+        },
+        ", including how the briefing and airport context feed the enVironment side.",
+      ],
+    ],
   },
   {
     q: "How far in advance can PlaneWX forecast weather?",
@@ -75,15 +121,49 @@ export const FAQS: {
   },
   {
     q: "Is there a free plan?",
-    a: "Yes. The free plan includes 2 monitored / 2 saved flights, full WX Score breakdowns, personal minimums, PAVE risk assessment, 14-day planning, the Flight Window Explorer, and the ability to broadcast a help request to volunteer mentors. Every paid plan uses the identical AI engine — limits are on quantity, not quality.",
+    a: [
+      [
+        "Yes. Free forever includes full-quality briefings. We limit how much you can use PlaneWX, not how good the analysis is. Details on plans and what each tier includes are in ",
+        {
+          href: "https://app.planewx.ai/help/plans",
+          label: "PlaneWX Plans help",
+        },
+        ".",
+      ],
+    ],
   },
   {
     q: "What's the difference between Casual, Pro, and Pro Plus?",
-    a: "Casual ($7.99/mo or $59.99/yr) is for pilots who fly a few times a month and want PlaneWX to watch the weather automatically: auto-refresh, email alerts, Fuel Advisor, and Trip Watchers. Pro ($14.99/mo or $119/yr) adds route-scale tools for frequent flyers: Corridor Watch, Multi-City Optimizer (up to 6 destinations), and the ability to browse and connect directly with mentors. Pro Plus ($29.99/mo or $249/yr) adds automation between flights — Ground Protection, Auto-Brief, Pre-Flight Text — plus Contract Fuel Pricing, On-Demand Refresh, PlaneWX Labs, and eligibility for 5x5's insurance credit.",
-    fiveX5SeesNote: true,
+    a: [
+      [
+        "Casual is for pilots who fly a few times a month and want auto-monitoring. Pro raises limits and automation. Pro Plus adds Ground Protection, Auto-Brief, Pre-Flight Check, briefed fuel stops, and Labs. Compare current limits and features in ",
+        {
+          href: "https://app.planewx.ai/help/plans",
+          label: "Plans help",
+        },
+        ", or start from the pricing section on this page.",
+      ],
+      [
+        "Personal minimums still drive the WX Score on every plan. If you are setting those for the first time, see ",
+        {
+          href: "https://www.planewx.ai/blog/personal-minimums-weather-planning",
+          label: "personal minimums for weather planning",
+        },
+        ".",
+      ],
+    ],
   },
   {
     q: "What happens after the 14-day free trial?",
-    a: "Your trial gives you full Pro Plus access with no credit card required. After 14 days you choose: stay on the free plan at no cost, or subscribe to Casual, Pro, or Pro Plus. There's no pressure — the free plan is genuinely useful and never expires.",
+    a: [
+      [
+        "You keep access on Free, or choose Casual, Pro, or Pro Plus. No card is required to start the trial. Plan details stay in ",
+        {
+          href: "https://app.planewx.ai/help/plans",
+          label: "Plans help",
+        },
+        ".",
+      ],
+    ],
   },
 ]

@@ -7,6 +7,7 @@ import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { STATS, FAQS } from "@/components/shared/landing-data"
+import { FaqAnswerBody } from "@/components/shared/faq-answer"
 import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 import { FlightChopsEndorsement } from "@/components/shared/flight-chops-endorsement"
 import { TestimonialsCarousel } from "@/components/shared/testimonials-carousel"
@@ -351,9 +352,15 @@ export function LandingPageV3() {
               </div>
               <h3 className="text-xl font-bold mb-3">Personalize</h3>
               <p className="text-white/60 text-sm leading-relaxed mb-4">
-                The synthesis is matched against your aircraft's actual capabilities — FIKI, TAS,
-                service ceiling, autopilot — and your personal minimums. Your SR22T has different
-                limits than a rental 172.
+                The synthesis is matched against your aircraft&apos;s actual capabilities — FIKI, TAS,
+                service ceiling, autopilot — and your{" "}
+                <a
+                  href="https://www.planewx.ai/blog/personal-minimums-weather-planning"
+                  className="text-sky-400 underline underline-offset-2 decoration-sky-400/50 hover:text-sky-300"
+                >
+                  personal minimums
+                </a>
+                . Your SR22T has different limits than a rental 172.
               </p>
               <ul className="space-y-1.5 text-xs text-white/40">
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-violet-400" />Per-aircraft minimums (ceiling, vis, crosswind)</li>
@@ -404,8 +411,15 @@ export function LandingPageV3() {
                 the last minute.
               </p>
               <p className="text-white/70 leading-relaxed mb-6">
-                The WX Score externalizes that work. For the first time, the cognitive burden of
-                weather risk assessment lives in software — not your memory, not your gut.
+                The{" "}
+                <a
+                  href="https://www.planewx.ai/blog/wx-score-planning-tool-review"
+                  className="text-sky-400 underline underline-offset-2 decoration-sky-400/50 hover:text-sky-300"
+                >
+                  WX Score
+                </a>{" "}
+                externalizes that work. For the first time, the cognitive burden of weather risk
+                assessment lives in software — not your memory, not your gut.
               </p>
               <ul className="space-y-3">
                 {[
@@ -473,8 +487,15 @@ export function LandingPageV3() {
               <span className="text-indigo-400">of the decision</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              The FAA's PAVE framework is the gold standard for aeronautical decision-making.
-              PlaneWX pre-fills the environment quadrant and guides you through the rest.
+              The FAA&apos;s{" "}
+              <a
+                href="https://www.planewx.ai/blog/pave-risk-assessment-weather"
+                className="text-sky-400 underline underline-offset-2 decoration-sky-400/50 hover:text-sky-300"
+              >
+                PAVE framework
+              </a>{" "}
+              is the gold standard for aeronautical decision-making. PlaneWX pre-fills the
+              environment quadrant and guides you through the rest.
             </p>
           </div>
 
@@ -829,7 +850,7 @@ export function LandingPageV3() {
                 </button>
                 {openFaq === i && (
                   <div className="px-6 pb-5 space-y-2">
-                    <p className="text-sm text-white/60 leading-relaxed">{faq.a}</p>
+                    <FaqAnswerBody answer={faq.a} />
                     {faq.fiveX5SeesNote ? (
                       <FiveX5SeesNote className="text-sm text-white/45 leading-relaxed" />
                     ) : null}
