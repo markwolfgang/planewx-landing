@@ -6,10 +6,7 @@ import Link from "next/link"
 import {
   ArrowLeft,
   ExternalLink,
-  Handshake,
   Mail,
-  Shield,
-  Users,
 } from "lucide-react"
 import { PartnerApplyForm } from "@/components/partners/apply-form"
 import { BrandLogo } from "@/components/shared/brand-logo"
@@ -187,24 +184,6 @@ const PARTNERS: Partner[] = [
       "A multi-aircraft flight from Tecnam's U.S. base at Sebring to AirVenture. Three days, 1,047 nautical miles, and the country in between.",
   },
 ]
-
-const BENEFITS = [
-  {
-    icon: Users,
-    title: "Reach pilots making the call",
-    body: "You meet pilots already in a go / no-go, not browsing a weather gadget.",
-  },
-  {
-    icon: Handshake,
-    title: "Honest listing",
-    body: "Collaboration. Not a purchased seal. The PIC still owns the call.",
-  },
-  {
-    icon: Shield,
-    title: "Beyond the weather briefing",
-    body: "Decision support beside the EFB. Weather is the environment. You remain PIC.",
-  },
-] as const
 
 const PROGRAM = [
   {
@@ -435,32 +414,15 @@ export default function PartnersPage() {
           </ul>
         </section>
 
-        <section aria-labelledby="benefits-heading" className="space-y-6">
-          <div className="space-y-2 text-center sm:text-left">
-            <h2 id="benefits-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Why partner with PlaneWX
-            </h2>
-            <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
-              Organizations, ambassadors, and content creators. Real people.
-              Not a weather-app install screen.
-            </p>
-          </div>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {BENEFITS.map((benefit) => (
-              <li
-                key={benefit.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 space-y-3"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500/15 text-sky-300">
-                    <benefit.icon className="h-4 w-4" aria-hidden />
-                  </span>
-                  <h3 className="font-semibold text-white">{benefit.title}</h3>
-                </div>
-                <p className="text-sm text-white/50 leading-relaxed">{benefit.body}</p>
-              </li>
-            ))}
-          </ul>
+        <section aria-labelledby="benefits-heading" className="space-y-3 max-w-2xl">
+          <h2 id="benefits-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
+            Why partner with PlaneWX
+          </h2>
+          <p className="text-base sm:text-lg text-white/60 leading-relaxed">
+            We want to be around good people and good pilots. Organizations,
+            ambassadors, creators. If it&apos;s a real win-win and we can stand
+            behind the work, let&apos;s talk. If it isn&apos;t, we pass.
+          </p>
         </section>
 
         <section aria-labelledby="program-heading" className="space-y-6">
