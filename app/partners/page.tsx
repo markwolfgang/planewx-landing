@@ -296,22 +296,13 @@ function HeroMediaTile({
   )
 }
 
-function BecomePartnerButton({
-  className,
-  children = "Become a Partner",
-}: {
-  className?: string
-  children?: string
-}) {
+function BecomePartnerButton() {
   return (
     <a
       href={PARTNER_MAILTO}
-      className={
-        className ??
-        "inline-flex items-center justify-center rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all"
-      }
+      className="inline-flex items-center justify-center rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all"
     >
-      {children}
+      Become a Partner
     </a>
   )
 }
@@ -551,7 +542,7 @@ export default function PartnersPage() {
         <section aria-labelledby="apply-steps-heading" className="space-y-6">
           <div className="space-y-2 text-center sm:text-left">
             <h2 id="apply-steps-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-              How to become a partner
+              How we start
             </h2>
             <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
               Four steps. No portal, no points program. Write us, talk it
