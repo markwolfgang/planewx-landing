@@ -92,7 +92,7 @@ const PARTNERS: Partner[] = [
       alt: "Flight Chops logo",
       width: 800,
       height: 766,
-      className: "h-14 sm:h-16 w-auto max-w-[9rem] object-contain",
+      className: "h-20 sm:h-24 w-auto max-w-[12rem] object-contain",
     },
     blurb:
       "Real-world cockpit video and training content that puts pilot decision-making on camera.",
