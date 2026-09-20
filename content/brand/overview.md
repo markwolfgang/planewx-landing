@@ -313,19 +313,27 @@ founder:
   name: Mark Wolfgang
   paragraphs:
     - >-
-      Commercial Instrument pilot, single and multiengine ratings, nearly 1,000
-      hours (784+ cross-country PIC in under 2 years), TBM 900 pilot, U.S. Navy
-      veteran. Sold his InfoSec consulting company in 2022, earned his Private
-      Pilot's license in 6 weeks, completed an accelerated 5-day IFR program,
-      and discovered that nobody was solving the weather synthesis problem for
-      pilots.
+      Commercial Instrument pilot (CMEL | IR), nearly 1,000 hours, TBM 900
+      (N916CM), U.S. Navy veteran, VAC volunteer pilot. Sold his InfoSec company
+      in 2022, earned his Private in 6 weeks, then an accelerated IFR program,
+      and found nobody was solving weather synthesis for pilots.
     - >-
-      Mark personally responds to nearly every feedback email and bug report,
-      often same-day. Feature suggestions are sometimes implemented the same
-      day. The product is his own tool, refined by the community he flies with.
+      Planning long trips meant reading multiple NWS Area Forecast Discussions
+      (separate WFOs along the route) and mentally stitching them together. He
+      pasted AFDs into AI, asked whether the trip was makeable, and Synoptic
+      Intelligence was born. The deeper driver: carrying family in the right
+      seat and wanting a system that takes that decision as seriously as he
+      does.
+    - >-
+      Mark personally answers nearly every feedback email and bug report, often
+      same-day. Feature ideas sometimes ship the same day. The product is his
+      own daily tool, shaped by the pilots who use it.
   originCta: Read the full origin story
   youtubeCta: Watch Mark's story on YouTube
-  youtubeUrl: 'https://youtu.be/rAFTCzeR38M?t=0'
+  youtubeUrl: 'https://youtu.be/rAFTCzeR38M'
+  personalYoutubeCta: Pilot Mark on YouTube
+  personalYoutubeUrl: 'https://www.youtube.com/@markwolfgang7407'
+  personalYoutubeNote: 'Personal channel. Not an official PlaneWX account.'
 positioning:
   title: Positioning
   subtitle: How PlaneWX fits with existing tools.

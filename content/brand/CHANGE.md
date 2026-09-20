@@ -23,3 +23,4 @@ Attempted to pull useful deltas from `markwolfgang/v0-planewx-v0` (`docs/PLANEWX
 
 - Replaced no-go stat framing that used "confidence" with courage-to-stay wording (keep 90/80). Trademark tagline unchanged.
 - Removed Traction paid-subscriber headcount card from public brand materials. No paid/paying subscriber counts on /brand.
+- Expanded Founder on `/brand` (bio, Synoptic origin why, feedback cadence) plus Pilot Mark personal YouTube CTA. Full origin stays on `/brand/why`. Personal channel is Founder-only, not listed as an official PlaneWX account.

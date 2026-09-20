@@ -173,6 +173,9 @@ type OverviewContent = {
     originCta: string
     youtubeCta: string
     youtubeUrl: string
+    personalYoutubeCta: string
+    personalYoutubeUrl: string
+    personalYoutubeNote?: string
   }
   positioning: {
     title: string
@@ -686,7 +689,9 @@ export default function BrandPortalPage() {
           {content.founder.paragraphs.map((p, i) => (
             <p
               key={i}
-              className={`text-white/70 leading-relaxed ${i === 0 ? "mb-4" : ""}`}
+              className={`text-white/70 leading-relaxed ${
+                i < content.founder.paragraphs.length - 1 ? "mb-4" : ""
+              }`}
             >
               {p}
             </p>
@@ -708,7 +713,21 @@ export default function BrandPortalPage() {
               <FaYoutube className="h-4 w-4" />
               {content.founder.youtubeCta}
             </a>
+            <a
+              href={content.founder.personalYoutubeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 transition-colors text-sm font-medium"
+            >
+              <FaYoutube className="h-4 w-4" />
+              {content.founder.personalYoutubeCta}
+            </a>
           </div>
+          {content.founder.personalYoutubeNote ? (
+            <p className="text-xs text-white/35 mt-3">
+              {content.founder.personalYoutubeNote}
+            </p>
+          ) : null}
         </div>
       </section>
 
