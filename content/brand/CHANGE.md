@@ -18,3 +18,8 @@ Where the portal named ForeFlight / Garmin in competitive or "bash vs complement
 ### App docs deltas
 
 Attempted to pull useful deltas from `markwolfgang/v0-planewx-v0` (`docs/PLANEWX-MASTER-REFERENCE.md`, `FOUNDER-NARRATIVE.md`, etc.) via `gh`. **Not accessible from this environment** (private repo / 404 for the agent token). No narrative facts were added from app docs. Follow-up: Sara or Mark can paste any missing locks into these files when reviewing the preview.
+
+### 2026-09-20 — Mark preview copy locks
+
+- Replaced no-go stat framing that used "confidence" with courage-to-stay wording (keep 90/80). Trademark tagline unchanged.
+- Removed Traction paid-subscriber headcount card from public brand materials. No paid/paying subscriber counts on /brand.

@@ -149,7 +149,7 @@ socialProof:
   safetyStats:
     - value: 90 pilots
       desc: >-
-        said PlaneWX gave them the confidence to make a no-go call. 80 of those
+        said PlaneWX gave them the courage to stay, or call a no-go. 80 of those
         were weather-related
     - value: 78%
       desc: of pilots said the WX Score was accurate or conservative

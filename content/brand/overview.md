@@ -198,7 +198,7 @@ safetyImpact:
   subtitle: Real data from 831 post-flight feedback submissions (July 2026).
   primaryStats:
     - value: '90'
-      label: pilots said PlaneWX gave them the confidence to make a no-go call
+      label: pilots said PlaneWX gave them the courage to stay, or call a no-go
       color: emerald
     - value: 78%
       label: of pilots said the WX Score was accurate or conservative
@@ -223,8 +223,8 @@ safetyImpact:
       note: 80 weather-related cancellations
       color: amber
   keyStat: >-
-    **The key stat:** 90 pilots said PlaneWX gave them the confidence to make a
-    no-go call. 80 of those were weather-related. These are flights where a
+    **The key stat:** 90 pilots said PlaneWX gave them the courage to stay, or
+    call a no-go. 80 of those were weather-related. These are flights where a
     pilot might have pushed into marginal weather without the data PlaneWX
     provided.
   featuredTestimonial:
@@ -301,8 +301,6 @@ traction:
   subtitle: 'Since public launch on March 1, 2026.'
   asOf: Figures as of July 2026. Sourced from production database.
   stats:
-    - value: 390+
-      label: paying subscribers
     - value: '1,298+'
       label: trips under active monitoring
     - value: '827'
@@ -350,8 +348,8 @@ audienceHooks:
       title: Real-world flying
       body: >-
         The courage to stay. Pilots who share mistakes and lessons. Pair with
-        the Chris testimonial and the stat that 90 pilots credited PlaneWX with
-        the confidence to make a no-go call. 80 of them weather-related.
+        the Chris testimonial and the stat that 90 pilots said PlaneWX gave them
+        the courage to stay, or call a no-go. 80 of them weather-related.
     - icon: GraduationCap
       title: IFR training
       body: >-
