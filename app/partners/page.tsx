@@ -56,7 +56,7 @@ type Partner = {
     wellClassName?: string
   }
   blurb: string
-  photo?: {
+  badge?: {
     src: string
     alt: string
     width: number
@@ -99,12 +99,6 @@ const PARTNERS: Partner[] = [
     },
     blurb:
       "Real-world cockpit video and training content that puts pilot decision-making on camera.",
-    photo: {
-      src: "/partners/media/rv14-logo.jpg",
-      alt: "Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage",
-      width: 1200,
-      height: 1600,
-    },
   },
   {
     name: "EAA",
@@ -118,7 +112,7 @@ const PARTNERS: Partner[] = [
     },
     blurb:
       "Experimental Aircraft Association. Home of AirVenture Oshkosh and the community that builds, restores, and flies experimental and light aircraft.",
-    photo: {
+    badge: {
       src: "/partners/media/eaa-proud-supporter-2026-black.png",
       alt: "Proud Supporter of EAA AirVenture Oshkosh 2026",
       width: 1000,
@@ -165,12 +159,6 @@ const PARTNERS: Partner[] = [
     },
     blurb:
       "Aviator sunglasses built for the cockpit. Thin temples for headsets. Non-polarized lenses so glass-cockpit displays stay readable.",
-    photo: {
-      src: "/partners/media/flyte-hat.jpg",
-      alt: "FLYTE sunglass stand and a PlaneWX hat at an outdoor booth",
-      width: 1200,
-      height: 1600,
-    },
   },
   {
     name: "TBMOPA",
@@ -322,16 +310,6 @@ export default function PartnersPage() {
               className="w-full h-40 sm:h-52 lg:h-56 object-cover"
             />
           </HeroMediaTile>
-          <HeroMediaTile caption="Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage">
-            <Image
-              src="/partners/media/rv14-logo.jpg"
-              alt="Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage"
-              width={1200}
-              height={1600}
-              priority
-              className="w-full h-40 sm:h-52 lg:h-56 object-cover object-[center_70%]"
-            />
-          </HeroMediaTile>
           <HeroMediaTile caption="PlaneWX on a yellow aerobatic ship at Oshkosh, then smoke in the box">
             <video
               className="w-full h-40 sm:h-52 lg:h-56 bg-black object-cover"
@@ -342,6 +320,16 @@ export default function PartnersPage() {
             >
               <source src="/partners/media/flightline-aerobatics.mp4" type="video/mp4" />
             </video>
+          </HeroMediaTile>
+          <HeroMediaTile caption="Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage">
+            <Image
+              src="/partners/media/rv14-logo.jpg"
+              alt="Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage"
+              width={1200}
+              height={1600}
+              priority
+              className="w-full h-40 sm:h-52 lg:h-56 object-cover object-[center_70%]"
+            />
           </HeroMediaTile>
           <HeroMediaTile caption="Mark at EAA pointing to PlaneWX on the Copper Supporters board">
             <video
@@ -398,15 +386,15 @@ export default function PartnersPage() {
                     />
                     <span className="sr-only"> (opens in a new tab)</span>
                   </a>
-                  {partner.photo ? (
+                  {partner.badge ? (
                     <Image
-                      src={partner.photo.src}
-                      alt={partner.photo.alt}
-                      width={partner.photo.width}
-                      height={partner.photo.height}
+                      src={partner.badge.src}
+                      alt={partner.badge.alt}
+                      width={partner.badge.width}
+                      height={partner.badge.height}
                       className={
-                        partner.photo.className ??
-                        "mb-4 w-full h-48 sm:h-52 object-cover rounded-xl"
+                        partner.badge.className ??
+                        "mb-4 mx-auto h-40 sm:h-44 w-auto object-contain"
                       }
                     />
                   ) : null}
