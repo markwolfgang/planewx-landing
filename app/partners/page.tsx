@@ -165,7 +165,7 @@ const PARTNERS: Partner[] = [
     },
     blurb:
       "TBM Owners and Pilots Association for Daher TBM owners and operators. Safety, member forums, training and safety seminars, annual convention, and technical answers with Daher expertise.",
-    perk: "TBMOPA members: 20% off your first invoice (code pmopa20)",
+    perk: "TBMOPA members: 20% off your first invoice (code tbmopa20)",
   },
   {
     name: "Runway to Oshkosh",
