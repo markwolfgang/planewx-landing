@@ -136,7 +136,7 @@ export const FAQS: {
     q: "What's the difference between Casual, Pro, and Pro Plus?",
     a: [
       [
-        "Casual is for pilots who fly a few times a month and want auto-monitoring. Pro raises limits and automation. Pro Plus adds Ground Protection, Auto-Brief, Pre-Flight Check, briefed fuel stops, and Labs. Compare current limits and features in ",
+        "Casual is for pilots who fly a few times a month and want auto-monitoring. Pro raises limits and automation. Pro Plus adds Ground Protection, Auto-Brief, Pre-Flight Text, briefed fuel stops, and Labs. Compare current limits and features in ",
         {
           href: "https://app.planewx.ai/help/plans",
           label: "Plans help",
