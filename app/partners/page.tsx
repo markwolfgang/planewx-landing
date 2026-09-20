@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 type Partner = {
   name: string
   href: string
-  logo: {
+  logo?: {
     src: string
     alt: string
     width: number
@@ -92,7 +92,9 @@ const PARTNERS: Partner[] = [
       alt: "Flight Chops logo",
       width: 800,
       height: 766,
-      className: "h-20 sm:h-24 w-auto max-w-[12rem] object-contain",
+      className: "h-44 sm:h-52 w-auto max-w-full object-contain",
+      wellClassName:
+        "min-h-[12rem] sm:min-h-[14rem] px-3 py-2.5 bg-black/25",
     },
     blurb:
       "Real-world cockpit video and training content that puts pilot decision-making on camera.",
@@ -100,13 +102,6 @@ const PARTNERS: Partner[] = [
   {
     name: "EAA",
     href: "https://www.eaa.org",
-    logo: {
-      src: "/partners/eaa-white.png",
-      alt: "Experimental Aircraft Association (EAA) logo",
-      width: 861,
-      height: 492,
-      className: "h-11 sm:h-12 w-auto max-w-[10rem] object-contain",
-    },
     blurb:
       "Experimental Aircraft Association. Home of AirVenture Oshkosh and the community that builds, restores, and flies experimental and light aircraft.",
     badge: {
@@ -114,7 +109,7 @@ const PARTNERS: Partner[] = [
       alt: "Proud Supporter of EAA AirVenture Oshkosh 2026",
       width: 1000,
       height: 1000,
-      className: "mb-4 mx-auto h-40 sm:h-44 w-auto object-contain",
+      className: "mb-4 mx-auto h-40 sm:h-48 w-auto max-w-full object-contain",
     },
   },
   {
@@ -139,7 +134,7 @@ const PARTNERS: Partner[] = [
       width: 712,
       height: 232,
       className: "h-9 sm:h-10 w-auto max-w-[12rem] object-contain",
-      wellClassName: "bg-white",
+      wellClassName: "min-h-[5rem] px-4 py-5 bg-white",
     },
     blurb:
       "Volunteer pilots and aircraft owners providing free air transport for wounded veterans and their families.",
@@ -351,34 +346,45 @@ export default function PartnersPage() {
             {PARTNERS.map((partner) => (
               <li key={partner.name} className="h-full">
                 <article className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors">
-                  <a
-                    href={partner.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex min-h-[5rem] items-center justify-center rounded-xl px-4 py-5 mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400 ${
-                      partner.logo.wellClassName ?? "bg-black/25"
-                    }`}
-                  >
-                    <Image
-                      src={partner.logo.src}
-                      alt={partner.logo.alt}
-                      width={partner.logo.width}
-                      height={partner.logo.height}
-                      className={partner.logo.className}
-                    />
-                    <span className="sr-only"> (opens in a new tab)</span>
-                  </a>
+                  {partner.logo ? (
+                    <a
+                      href={partner.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-center rounded-xl mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400 ${
+                        partner.logo.wellClassName ??
+                        "min-h-[5rem] px-4 py-5 bg-black/25"
+                      }`}
+                    >
+                      <Image
+                        src={partner.logo.src}
+                        alt={partner.logo.alt}
+                        width={partner.logo.width}
+                        height={partner.logo.height}
+                        className={partner.logo.className}
+                      />
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                  ) : null}
                   {partner.badge ? (
-                    <Image
-                      src={partner.badge.src}
-                      alt={partner.badge.alt}
-                      width={partner.badge.width}
-                      height={partner.badge.height}
-                      className={
-                        partner.badge.className ??
-                        "mb-4 mx-auto h-40 sm:h-44 w-auto object-contain"
-                      }
-                    />
+                    <a
+                      href={partner.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mb-4 block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                    >
+                      <Image
+                        src={partner.badge.src}
+                        alt={partner.badge.alt}
+                        width={partner.badge.width}
+                        height={partner.badge.height}
+                        className={
+                          partner.badge.className ??
+                          "mx-auto h-40 sm:h-44 w-auto object-contain"
+                        }
+                      />
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
                   ) : null}
                   <div className="flex items-start justify-between gap-3 mt-auto">
                     <div className="space-y-2 min-w-0">
