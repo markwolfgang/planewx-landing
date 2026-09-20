@@ -231,7 +231,7 @@ function BecomePartnerButton() {
       href={PARTNER_MAILTO}
       className="inline-flex items-center justify-center rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all"
     >
-      Become a Partner
+      Let&apos;s connect
     </a>
   )
 }
@@ -336,6 +336,13 @@ export default function PartnersPage() {
             pilots in a real go / no-go. We&apos;re real people. Here&apos;s
             who we fly with.
           </p>
+          <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
+            If you&apos;re using PlaneWX and can see yourself working with us,
+            let&apos;s connect.
+          </p>
+          <div className="pt-1">
+            <BecomePartnerButton />
+          </div>
         </header>
 
         <section aria-labelledby="who-we-work-with" className="space-y-5">
@@ -494,17 +501,6 @@ export default function PartnersPage() {
           </dl>
         </section>
 
-        <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-8 space-y-3 text-center sm:text-left">
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
-            Built with pilots, for pilots
-          </h2>
-          <p className="text-white/55 leading-relaxed max-w-2xl">
-            Listing is not an endorsement. The PIC still owns every decision.
-          </p>
-          <div className="pt-2">
-            <BecomePartnerButton />
-          </div>
-        </section>
       </main>
 
       <SiteFooter variant="dark" />
