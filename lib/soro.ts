@@ -66,6 +66,20 @@ export async function getSoroArticleBySlug(slug: string): Promise<SoroArticle | 
   return fresh.find((a) => a.slug === slug) ?? null
 }
 
+/** Per-article data-cache tag used by getSoroArticleContent. */
+export function soroArticleContentTag(articleId: string): string {
+  return `${SORO_ARTICLE_CONTENT_TAG}:${articleId}`
+}
+
+/**
+ * Resolve article UUID from slug via a no-store Soro embed fetch.
+ * Used by /api/revalidate so slug-targeted purges clear the per-article content tag.
+ */
+export async function getSoroArticleIdBySlugFresh(slug: string): Promise<string | null> {
+  const articles = await fetchSoroArticles('no-store')
+  return articles.find((a) => a.slug === slug)?.id ?? null
+}
+
 /**
  * Fetch full HTML content for a single article by its UUID.
  * Cached for 1 hour, tagged for on-demand purge.
@@ -77,7 +91,7 @@ export async function getSoroArticleContent(articleId: string): Promise<string |
       {
         next: {
           revalidate: 3600,
-          tags: [SORO_ARTICLE_CONTENT_TAG, `${SORO_ARTICLE_CONTENT_TAG}:${articleId}`],
+          tags: [SORO_ARTICLE_CONTENT_TAG, soroArticleContentTag(articleId)],
         },
       }
     ).then((r) => r.json())
