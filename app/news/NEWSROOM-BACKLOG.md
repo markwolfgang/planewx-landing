@@ -7,6 +7,7 @@ Do not invent numbers. Re-verify every stat at write time.
 
 | Slug | Date | Notes |
 |---|---|---|
+| `why-i-built-planewx` | Sep 21, 2026 | Founder Medium essay pointer. Title: Why I built PlaneWX. Full essay: *I Built an Aviation Safety App So I Would Not Kill Myself*. No Help link. |
 | `frat` | Sep 16, 2026 | FRAT product name; PAVE underneath. Dynamic briefing + airport complexity chips; pilot self-rates. Help `/help/frat`. |
 | `skydemon-share` | Sep 15, 2026 | Share / `.flightplan` / paste into New Trip. Help `/help/route-paste`. No platform counts. |
 | `visibility-in-meters` | Sep 9, 2026 | Display preference; ceiling stays feet; WX Score unchanged. |
