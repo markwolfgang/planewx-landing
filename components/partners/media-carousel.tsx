@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -20,7 +20,15 @@ type VideoSlide = {
   alt: string
 }
 
-type MediaSlide = PhotoSlide | VideoSlide
+type BadgeSlide = {
+  type: "badge"
+  src: string
+  alt: string
+  width: number
+  height: number
+}
+
+type MediaSlide = PhotoSlide | VideoSlide | BadgeSlide
 
 const SLIDES: MediaSlide[] = [
   {
@@ -57,22 +65,66 @@ const SLIDES: MediaSlide[] = [
     poster: "/partners/media/copper-mark-poster.jpg",
     alt: "Mark at EAA pointing to PlaneWX on the Copper Supporters board",
   },
+  {
+    type: "photo",
+    src: "/partners/media/osh26-sara-flightchops-mark-rv14-0413.jpg",
+    alt: "Sara Wolfgang, Flight Chops, and Mark Wolfgang beside the yellow RV-14 with PlaneWX logos at Oshkosh",
+    width: 1500,
+    height: 2000,
+  },
+  {
+    type: "photo",
+    src: "/partners/media/osh26-mark-sara-flightchops-rv14-0411.jpg",
+    alt: "Mark Wolfgang, Sara Wolfgang, and Flight Chops by the RV-14 at EAA AirVenture Oshkosh",
+    width: 1500,
+    height: 2000,
+  },
+  {
+    type: "photo",
+    src: "/partners/media/osh26-mark-sara-flightchops-rv14-0410.jpg",
+    alt: "Mark Wolfgang, Sara Wolfgang, and Flight Chops with the PlaneWX RV-14 at Oshkosh",
+    width: 1500,
+    height: 2000,
+  },
+  {
+    type: "badge",
+    src: "/partners/media/eaa-proud-supporter-2026-white.png",
+    alt: "Proud Supporter of EAA AirVenture Oshkosh 2026, Copper sponsor",
+    width: 1200,
+    height: 1200,
+  },
 ]
+
+const AUTO_MS = 5000
 
 export function PartnersMediaCarousel() {
   const scrollerRef = useRef<HTMLDivElement>(null)
+  const [paused, setPaused] = useState(false)
 
-  function scrollByCard(dir: -1 | 1) {
+  const scrollByCard = useCallback((dir: -1 | 1, wrap = false) => {
     const scroller = scrollerRef.current
     const card = scroller?.querySelector<HTMLElement>("[data-media-card]")
     if (!scroller || !card) return
     const styles = window.getComputedStyle(scroller)
     const gap = Number.parseFloat(styles.columnGap || styles.gap || "12") || 12
+    const step = card.offsetWidth + gap
+    const max = scroller.scrollWidth - scroller.clientWidth
+    if (wrap && dir === 1 && scroller.scrollLeft + step >= max - 4) {
+      scroller.scrollTo({ left: 0, behavior: "smooth" })
+      return
+    }
     scroller.scrollBy({
-      left: dir * (card.offsetWidth + gap),
+      left: dir * step,
       behavior: "smooth",
     })
-  }
+  }, [])
+
+  useEffect(() => {
+    if (paused) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    const id = window.setInterval(() => scrollByCard(1, true), AUTO_MS)
+    return () => window.clearInterval(id)
+  }, [paused, scrollByCard])
 
   useEffect(() => {
     const root = scrollerRef.current
@@ -101,6 +153,14 @@ export function PartnersMediaCarousel() {
       aria-roledescription="carousel"
       aria-label="Partners at Oshkosh"
       className="relative w-full"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setPaused(false)
+        }
+      }}
     >
       <div className="flex items-center gap-2 sm:gap-3">
         <button
@@ -136,6 +196,14 @@ export function PartnersMediaCarousel() {
                         ? { objectPosition: slide.objectPosition }
                         : undefined
                     }
+                  />
+                ) : slide.type === "badge" ? (
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 80vw"
+                    className="object-contain p-6 sm:p-8"
                   />
                 ) : (
                   <video
