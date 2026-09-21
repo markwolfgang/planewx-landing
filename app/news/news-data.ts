@@ -42,6 +42,31 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "why-i-built-planewx",
+    category: "Company",
+    title: "Why I built PlaneWX",
+    excerpt:
+      "Founder essay on personal mins, late TAFs, FRAT, and mentors, and why PlaneWX is a pilot decision support system.",
+    date: "September 21, 2026",
+    isoDate: "2026-09-21",
+    location: "St. Petersburg, Florida",
+    body: `
+<p><strong>St. Petersburg, Florida. September 21, 2026.</strong> I published a new essay on Medium: <em>I Built an Aviation Safety App So I Would Not Kill Myself</em>.</p>
+
+<p>It is the honest version of why PlaneWX exists. I learned to fly at 49. I am risk averse. The weather that actually drives the go/no-go call gets sharp late, after hotels and family plans are already locked in. That pressure is real, and the FAA calls external pressures a major factor in a majority of GA accidents.</p>
+
+<p>PlaneWX is my answer: a high-quality briefing with a WX Score against your personal mins and aircraft, a living FRAT so self-assessment is not a paper checklist you skip, and mentors when you want a second mind on a hard call. Same decision support on Free as on paid. Automation is what you pay for. Safety is not.</p>
+
+<p>Read the full piece: <a href="https://medium.com/@markxwolfgang/fff745833a28" target="_blank" rel="noopener noreferrer">medium.com/@markxwolfgang/fff745833a28</a></p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
     slug: "frat",
     category: "Product",
     title: "PlaneWX FRAT Is Live",
