@@ -58,19 +58,13 @@ export function PartnerApplyForm() {
           className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/40 resize-y min-h-[6.5rem]"
         />
       </label>
-      <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-1">
+      <div className="pt-1">
         <button
           type="submit"
           className="inline-flex items-center justify-center rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all"
         >
           Email partnership inquiry
         </button>
-        <a
-          href={`mailto:${APPLY_MAILTO}?subject=${encodeURIComponent("Partnership inquiry")}`}
-          className="text-sm text-sky-300 hover:text-sky-200 transition-colors"
-        >
-          Or write {APPLY_MAILTO} directly
-        </a>
       </div>
       {sent ? (
         <p className="text-xs text-white/40">

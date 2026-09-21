@@ -22,11 +22,11 @@ const display = Inter_Tight({
 export const metadata: Metadata = {
   title: "Partners",
   description:
-    "Partner with PlaneWX to reach GA pilots who use a decision support system before they launch. Community listing, co-marketing, and shared work. A listing is not an endorsement. The PIC owns every go / no-go.",
+    "Partner with PlaneWX to reach GA pilots who use a decision support system before they launch. Community listing and co-marketing. The PIC owns every go / no-go.",
   openGraph: {
     title: "Partners | PlaneWX",
     description:
-      "Reach GA pilots who still own the go / no-go. Partner with PlaneWX through community listing and co-marketing. A listing is not an endorsement.",
+      "Reach GA pilots who still own the go / no-go. Partner with PlaneWX through community listing and co-marketing.",
     type: "website",
     url: "https://www.planewx.ai/partners",
   },
@@ -191,10 +191,6 @@ const PROGRAM = [
     title: "Co-marketing",
     body: "Pilot-to-pilot voice.",
   },
-  {
-    title: "Strategic",
-    body: "Deeper product fit when it is real.",
-  },
 ] as const
 
 function BecomePartnerButton() {
@@ -254,10 +250,9 @@ export default function PartnersPage() {
             Who we work with
           </h1>
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
-            We work with people who use PlaneWX and can share that experience
-            so more pilots find it. Organizations, ambassadors, and content
-            creators. We grow together. Real relationships. Meetups and
-            community when the fit is there.
+            We work with people who use PlaneWX and can share that experience.
+            Organizations, ambassadors, and content creators. We grow together.
+            Real relationships. Meetups and community when the fit is there.
           </p>
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
             If you&apos;re using PlaneWX and can see yourself working with us,
@@ -270,7 +265,7 @@ export default function PartnersPage() {
 
         <section aria-labelledby="who-we-work-with" className="space-y-5">
           <p className="sr-only">
-            A listing is not an endorsement. The PIC owns every go / no-go.
+            The PIC owns every go / no-go.
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {PARTNERS.map((partner) => (
@@ -365,7 +360,7 @@ export default function PartnersPage() {
           <p className="text-base sm:text-lg text-white/60 leading-relaxed">
             We want to be around good people and good pilots. Organizations,
             ambassadors, creators. If it&apos;s a real win-win and we can stand
-            behind the work, let&apos;s talk. If it isn&apos;t, we pass.
+            behind the work, let&apos;s talk.
           </p>
         </section>
 
@@ -375,11 +370,10 @@ export default function PartnersPage() {
               What a PlaneWX partnership is
             </h2>
             <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
-              Community, co-marketing, or strategic. A listing is not an
-              endorsement.
+              Community or co-marketing.
             </p>
           </div>
-          <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {PROGRAM.map((item) => (
               <li
                 key={item.title}
@@ -406,7 +400,7 @@ export default function PartnersPage() {
               Tell us who you are
             </h2>
             <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
-              Short note to sara@planewx.ai. No portal.
+              Short note to sara@planewx.ai.
             </p>
           </div>
           <PartnerApplyForm />
