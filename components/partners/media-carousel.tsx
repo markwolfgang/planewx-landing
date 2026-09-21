@@ -100,36 +100,37 @@ export function PartnersMediaCarousel() {
     <section
       aria-roledescription="carousel"
       aria-label="Partners at Oshkosh"
-      className="relative"
+      className="relative w-full"
     >
       <div className="flex items-center gap-2 sm:gap-3">
         <button
           type="button"
           onClick={() => scrollByCard(-1)}
           aria-label="Previous photo or video"
-          className="shrink-0 inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-white"
+          className="shrink-0 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white"
         >
           <ChevronLeft className="h-5 w-5" aria-hidden />
         </button>
 
         <div
           ref={scrollerRef}
-          className="flex gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex min-w-0 flex-1 gap-3 overflow-x-auto scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {SLIDES.map((slide) => (
+          {SLIDES.map((slide, i) => (
             <figure
               key={slide.src}
               data-media-card
-              className="snap-start shrink-0 w-[80%] sm:w-[calc(50%-0.375rem)] lg:w-[calc((100%-1.5rem)/3)] overflow-hidden rounded-2xl border border-white/10 bg-black/40"
+              className="snap-start shrink-0 w-[min(80vw,22rem)] sm:w-[calc((100%-0.75rem)/2)] lg:w-[calc((100%-1.5rem)/3)] overflow-hidden rounded-2xl border border-white/10 bg-black/50"
             >
-              <div className="relative aspect-[4/3] sm:aspect-[16/11]">
+              <div className="relative w-full aspect-[4/3] min-h-[14rem] sm:min-h-[16rem] lg:min-h-[18rem]">
                 {slide.type === "photo" ? (
                   <Image
                     src={slide.src}
                     alt={slide.alt}
-                    width={slide.width}
-                    height={slide.height}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 80vw"
+                    priority={i === 0}
+                    className="object-cover"
                     style={
                       slide.objectPosition
                         ? { objectPosition: slide.objectPosition }
@@ -160,7 +161,7 @@ export function PartnersMediaCarousel() {
           type="button"
           onClick={() => scrollByCard(1)}
           aria-label="Next photo or video"
-          className="shrink-0 inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-white"
+          className="shrink-0 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white"
         >
           <ChevronRight className="h-5 w-5" aria-hidden />
         </button>

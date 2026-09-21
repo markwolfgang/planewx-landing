@@ -197,21 +197,6 @@ const PROGRAM = [
   },
 ] as const
 
-const FAQS = [
-  {
-    q: "Who is eligible?",
-    a: "People who use PlaneWX and can share that experience. Organizations, ambassadors, and content creators. We grow together.",
-  },
-  {
-    q: "What does a listing mean?",
-    a: "A logo, a live link, and a blurb we both accept. Not an endorsement. The PIC owns every go / no-go.",
-  },
-  {
-    q: "How do I apply?",
-    a: "Use the form or email sara@planewx.ai. A short note is enough.",
-  },
-] as const
-
 function BecomePartnerButton() {
   return (
     <a
@@ -256,9 +241,11 @@ export default function PartnersPage() {
         </div>
       </nav>
 
-      <main className="container mx-auto max-w-5xl px-4 pt-4 sm:pt-5 pb-16 sm:pb-20 space-y-14 sm:space-y-16">
+      <div className="container mx-auto max-w-6xl px-4 pt-4 sm:pt-5">
         <PartnersMediaCarousel />
+      </div>
 
+      <main className="container mx-auto max-w-5xl px-4 pt-10 sm:pt-12 pb-16 sm:pb-20 space-y-14 sm:space-y-16">
         <header className="mx-auto max-w-3xl text-center space-y-5 sm:space-y-6">
           <h1
             id="who-we-work-with"
@@ -424,24 +411,6 @@ export default function PartnersPage() {
           </div>
           <PartnerApplyForm />
         </section>
-
-        <section aria-labelledby="faq-heading" className="space-y-5">
-          <h2 id="faq-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-            Questions we get first
-          </h2>
-          <dl className="space-y-3">
-            {FAQS.map((faq) => (
-              <div
-                key={faq.q}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 sm:px-6 sm:py-5 space-y-2"
-              >
-                <dt className="font-semibold text-white">{faq.q}</dt>
-                <dd className="text-sm text-white/50 leading-relaxed">{faq.a}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-
       </main>
 
       <SiteFooter variant="dark" />
