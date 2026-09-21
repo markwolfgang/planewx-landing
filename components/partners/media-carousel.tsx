@@ -53,6 +53,13 @@ const SLIDES: MediaSlide[] = [
   },
   {
     type: "photo",
+    src: "/partners/media/osh26-sara-flightchops-mark-rv14-0413.jpg",
+    alt: "Sara Wolfgang, Flight Chops, and Mark Wolfgang beside the yellow RV-14 with PlaneWX logos at Oshkosh",
+    width: 1500,
+    height: 2000,
+  },
+  {
+    type: "photo",
     src: "/partners/media/rv14-logo.jpg",
     alt: "Yellow Flight Chops RV-14 at Oshkosh with the PlaneWX wordmark on the fuselage",
     width: 1200,
@@ -67,22 +74,8 @@ const SLIDES: MediaSlide[] = [
   },
   {
     type: "photo",
-    src: "/partners/media/osh26-sara-flightchops-mark-rv14-0413.jpg",
-    alt: "Sara Wolfgang, Flight Chops, and Mark Wolfgang beside the yellow RV-14 with PlaneWX logos at Oshkosh",
-    width: 1500,
-    height: 2000,
-  },
-  {
-    type: "photo",
     src: "/partners/media/osh26-mark-sara-flightchops-rv14-0411.jpg",
     alt: "Mark Wolfgang, Sara Wolfgang, and Flight Chops by the RV-14 at EAA AirVenture Oshkosh",
-    width: 1500,
-    height: 2000,
-  },
-  {
-    type: "photo",
-    src: "/partners/media/osh26-mark-sara-flightchops-rv14-0410.jpg",
-    alt: "Mark Wolfgang, Sara Wolfgang, and Flight Chops with the PlaneWX RV-14 at Oshkosh",
     width: 1500,
     height: 2000,
   },
@@ -95,7 +88,7 @@ const SLIDES: MediaSlide[] = [
   },
 ]
 
-const AUTO_MS = 5000
+const AUTO_MS = 4500
 
 export function PartnersMediaCarousel() {
   const scrollerRef = useRef<HTMLDivElement>(null)
@@ -110,7 +103,7 @@ export function PartnersMediaCarousel() {
     const step = card.offsetWidth + gap
     const max = scroller.scrollWidth - scroller.clientWidth
     if (wrap && dir === 1 && scroller.scrollLeft + step >= max - 4) {
-      scroller.scrollTo({ left: 0, behavior: "smooth" })
+      scroller.scrollTo({ left: 0, behavior: "auto" })
       return
     }
     scroller.scrollBy({
@@ -120,10 +113,20 @@ export function PartnersMediaCarousel() {
   }, [])
 
   useEffect(() => {
-    if (paused) return
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-    const id = window.setInterval(() => scrollByCard(1, true), AUTO_MS)
-    return () => window.clearInterval(id)
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+    if (paused || media.matches) return
+    const id = window.setInterval(() => {
+      if (document.visibilityState === "hidden") return
+      scrollByCard(1, true)
+    }, AUTO_MS)
+    const stopIfReduced = () => {
+      if (media.matches) window.clearInterval(id)
+    }
+    media.addEventListener("change", stopIfReduced)
+    return () => {
+      window.clearInterval(id)
+      media.removeEventListener("change", stopIfReduced)
+    }
   }, [paused, scrollByCard])
 
   useEffect(() => {

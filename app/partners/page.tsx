@@ -387,6 +387,42 @@ export default function PartnersPage() {
         </section>
 
         <section
+          aria-labelledby="fly-ins-heading"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-4 max-w-3xl"
+        >
+          <h2 id="fly-ins-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
+            We&apos;re planning fun fly-ins. Want in?
+          </h2>
+          <p className="text-base sm:text-lg text-white/60 leading-relaxed">
+            We&apos;re looking for fun events to plan with the PlaneWX community.
+            Open to suggestions. We want to meet you.
+          </p>
+          <p className="text-base sm:text-lg text-white/60 leading-relaxed">
+            First idea: a{" "}
+            <a
+              href="https://wacosurf.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-sky-300 hover:text-sky-200 underline underline-offset-4 decoration-sky-300/40"
+            >
+              Waco Surf
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>{" "}
+            fly-in. Surf park in Waco, Texas, about 90 minutes from DFW or Austin.
+          </p>
+          <p className="text-sm sm:text-base text-white/50 leading-relaxed">
+            Interested, or got an idea?{" "}
+            <a
+              href="#apply"
+              className="font-medium text-sky-300 hover:text-sky-200 underline underline-offset-4 decoration-sky-300/40"
+            >
+              Send a partnership inquiry
+            </a>
+            .
+          </p>
+        </section>
+
+        <section
           id="apply"
           aria-labelledby="apply-heading"
           className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
