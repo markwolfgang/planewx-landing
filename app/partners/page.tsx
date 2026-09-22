@@ -42,6 +42,20 @@ const PARTNERS = [
       "Aviation insurance partner working with PlaneWX so pilots can keep their decision support and their coverage in the same flight picture.",
   },
   {
+    name: "Air Care Alliance",
+    href: "https://aircarealliance.org",
+    logo: {
+      // Official white wordmark from ACA site (aca_logo_tag_white.svg); color master at /partners/aca.svg
+      src: "/partners/aca-white.svg",
+      alt: "Air Care Alliance logo",
+      width: 369,
+      height: 133,
+      className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
+    },
+    blurb:
+      "Nationwide alliance of volunteer pilot groups flying compassion missions for people and animals in need. Kindred work with the volunteer spirit we support at planewx.ai/volunteer.",
+  },
+  {
     name: "Flight Chops",
     href: "https://flightchops.com",
     logo: {
