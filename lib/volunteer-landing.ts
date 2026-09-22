@@ -39,22 +39,15 @@ export const VOLUNTEER_CALL_SIGN_FORMAT_ERROR =
 export const VOLUNTEER_CALL_SIGN_PLACEHOLDER = "WWW"
 
 /**
- * Founder welcome YouTube ID. Prefer env so we can drop a video in without
- * a code change; leave empty for the on-page placeholder.
+ * Founder welcome YouTube ID (Mark Wolfgang). Env override for swaps without
+ * a code change; defaults to the recorded welcome video.
+ * https://youtu.be/6QOZJUoMlLA
  */
 export const VOLUNTEER_FOUNDER_VIDEO_ID =
-  process.env.NEXT_PUBLIC_VOLUNTEER_FOUNDER_VIDEO_ID?.trim() || ""
-
-/**
- * Optional checkout screenshot path under /public.
- * Example when ready: "/volunteer/coupon-checkout.png"
- * Empty string keeps the "screenshot coming soon" placeholder.
- */
-export const VOLUNTEER_COUPON_SCREENSHOT_SRC =
-  process.env.NEXT_PUBLIC_VOLUNTEER_COUPON_SCREENSHOT?.trim() || ""
+  process.env.NEXT_PUBLIC_VOLUNTEER_FOUNDER_VIDEO_ID?.trim() || "6QOZJUoMlLA"
 
 export const VOLUNTEER_FOUNDER_VIDEO_TITLE =
-  "Founder welcome: Mark Wolfgang for volunteer pilots"
+  "Welcome from PlaneWX founder Mark Wolfgang"
 
 /** Normalize raw input to uppercase CMF + digits, or null if format-invalid. */
 export function normalizeVolunteerCallSign(raw: string): string | null {

@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Image from "next/image"
 import Link from "next/link"
 import {
   ArrowLeft,
@@ -7,14 +6,12 @@ import {
   HeartHandshake,
   Plane,
   Shield,
-  Ticket,
 } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { VolunteerCallSignGate } from "@/components/volunteer-call-sign-gate"
 import { VolunteerCampaignTracker } from "@/components/volunteer-campaign-tracker"
 import {
-  VOLUNTEER_COUPON_SCREENSHOT_SRC,
   VOLUNTEER_FOUNDER_VIDEO_ID,
   VOLUNTEER_FOUNDER_VIDEO_TITLE,
 } from "@/lib/volunteer-landing"
@@ -42,96 +39,15 @@ export const metadata: Metadata = {
 }
 
 function FounderWelcomeVideo() {
-  if (VOLUNTEER_FOUNDER_VIDEO_ID) {
-    return (
-      <div
-        className="relative w-full rounded-2xl overflow-hidden shadow-2xl shadow-black/60 border border-white/10"
-        style={{ paddingBottom: "56.25%" }}
-      >
-        <YouTubeFacade
-          videoId={VOLUNTEER_FOUNDER_VIDEO_ID}
-          title={VOLUNTEER_FOUNDER_VIDEO_TITLE}
-        />
-      </div>
-    )
-  }
-
   return (
     <div
-      className="relative w-full rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-slate-900 via-[#0d1f3c] to-[#0a0f1a]"
+      className="relative w-full rounded-2xl overflow-hidden shadow-2xl shadow-black/60 border border-white/10"
       style={{ paddingBottom: "56.25%" }}
-      role="img"
-      aria-label="Founder welcome video coming soon"
     >
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-        <span
-          className="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 border border-white/15"
-          aria-hidden
-        >
-          <svg
-            className="h-7 w-7 text-white/70 ml-0.5"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </span>
-        <div className="space-y-1.5">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-300/90">
-            Founder welcome video
-          </p>
-          <p className="text-lg sm:text-xl font-semibold text-white/90">
-            Coming soon
-          </p>
-          <p className="text-sm text-white/45 max-w-sm mx-auto leading-relaxed">
-            Mark will share a short welcome for volunteer pilots. Drop the YouTube
-            ID in when it is ready.
-          </p>
-        </div>
-      </div>
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.35) 3px)",
-        }}
-        aria-hidden
+      <YouTubeFacade
+        videoId={VOLUNTEER_FOUNDER_VIDEO_ID}
+        title={VOLUNTEER_FOUNDER_VIDEO_TITLE}
       />
-    </div>
-  )
-}
-
-function CheckoutScreenshotSlot() {
-  if (VOLUNTEER_COUPON_SCREENSHOT_SRC) {
-    return (
-      <figure className="rounded-2xl border border-white/10 bg-black/30 p-3 sm:p-4 overflow-hidden">
-        <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-[#0B1120]">
-          <Image
-            src={VOLUNTEER_COUPON_SCREENSHOT_SRC}
-            alt="PlaneWX checkout applying the volunteer discount from a Compassion Flight call sign"
-            fill
-            className="object-contain object-center"
-            sizes="(max-width: 768px) 100vw, 640px"
-          />
-        </div>
-        <figcaption className="mt-3 text-center text-xs text-white/40">
-          At purchase, PlaneWX applies 30% from the call sign you entered
-        </figcaption>
-      </figure>
-    )
-  }
-
-  return (
-    <div
-      className="rounded-2xl border border-dashed border-white/15 bg-white/[0.03] px-6 py-12 sm:py-14 text-center space-y-2"
-      aria-label="Checkout screenshot coming soon"
-    >
-      <Ticket className="h-8 w-8 text-sky-400/70 mx-auto" aria-hidden />
-      <p className="text-sm font-semibold text-white/70">Screenshot coming soon</p>
-      <p className="text-xs text-white/40 max-w-xs mx-auto leading-relaxed">
-        We will drop a checkout image here showing the volunteer discount applied
-        from your call sign.
-      </p>
     </div>
   )
 }
@@ -342,7 +258,6 @@ export default function VolunteerPage() {
                     Discount is applied at purchase from that stored call sign
                   </li>
                 </ul>
-                <CheckoutScreenshotSlot />
               </div>
             </li>
           </ol>
