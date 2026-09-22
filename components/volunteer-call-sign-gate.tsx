@@ -219,8 +219,8 @@ export function VolunteerCallSignGate() {
         </h3>
         <p className="text-white/60 leading-relaxed text-sm sm:text-base">
           Full access to Pro Plus, our highest tier. No credit card required to
-          start the trial. When you continue after the trial, PlaneWX applies a
-          30% volunteer discount at purchase from the call sign you entered here.
+          start the trial. When you continue after the trial, PlaneWX applies{" "}
+          30% off the annual plan at purchase from the call sign you entered here.
           You do not type a separate coupon code.
         </p>
 
