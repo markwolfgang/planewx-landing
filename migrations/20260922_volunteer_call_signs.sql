@@ -6,7 +6,7 @@
 CREATE TABLE IF NOT EXISTS volunteer_call_signs (
   id bigserial PRIMARY KEY,
   call_sign text NOT NULL,
-  ref text NOT NULL DEFAULT 'CMF',
+  ref text NOT NULL DEFAULT 'ACA',
   lp text,
   created_at timestamptz NOT NULL DEFAULT now()
 );

@@ -12,7 +12,7 @@ import {
  * Format-only validation (CMF + 1–4 digits). No ACA membership list lookup.
  * Stores the normalized call sign with timestamp + ref when Supabase is available.
  * Always returns the normalized sign on success so the client can pass it into
- * signup (?cmf=CMF42&ref=CMF) even if durable storage is temporarily unavailable.
+ * signup (?cmf=CMF42&ref=ACA) even if durable storage is temporarily unavailable.
  */
 export async function POST(request: NextRequest) {
   let body: unknown
