@@ -1,0 +1,85 @@
+import { NextRequest, NextResponse } from "next/server"
+import { createClient } from "@supabase/supabase-js"
+import {
+  normalizeVolunteerCallSign,
+  VOLUNTEER_CAMPAIGN_CODE,
+  VOLUNTEER_CALL_SIGN_FORMAT_ERROR,
+} from "@/lib/volunteer-landing"
+
+/**
+ * POST /api/volunteer/call-sign
+ *
+ * Format-only validation (CMF + 1–4 digits). No ACA membership list lookup.
+ * Stores the normalized call sign with timestamp + ref when Supabase is available.
+ * Always returns the normalized sign on success so the client can pass it into
+ * signup (?cmf=CMF42&ref=CMF) even if durable storage is temporarily unavailable.
+ */
+export async function POST(request: NextRequest) {
+  let body: unknown
+  try {
+    body = await request.json()
+  } catch {
+    return NextResponse.json({ ok: false, error: "Invalid JSON" }, { status: 400 })
+  }
+
+  const raw =
+    typeof (body as { callSign?: unknown })?.callSign === "string"
+      ? (body as { callSign: string }).callSign
+      : typeof (body as { call_sign?: unknown })?.call_sign === "string"
+        ? (body as { call_sign: string }).call_sign
+        : ""
+
+  const callSign = normalizeVolunteerCallSign(raw)
+  if (!callSign) {
+    return NextResponse.json(
+      { ok: false, error: VOLUNTEER_CALL_SIGN_FORMAT_ERROR },
+      { status: 400 }
+    )
+  }
+
+  const refRaw =
+    typeof (body as { ref?: unknown })?.ref === "string"
+      ? (body as { ref: string }).ref.trim().toUpperCase()
+      : ""
+  const ref =
+    refRaw && refRaw.length >= 2 && refRaw.length <= 32
+      ? refRaw
+      : VOLUNTEER_CAMPAIGN_CODE
+
+  const lp =
+    typeof (body as { lp?: unknown })?.lp === "string"
+      ? (body as { lp: string }).lp.trim().toLowerCase().slice(0, 8) || null
+      : null
+
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+  let stored = false
+  if (supabaseUrl && supabaseKey) {
+    const db = createClient(supabaseUrl, supabaseKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+    })
+
+    const { error } = await db.from("volunteer_call_signs").insert({
+      call_sign: callSign,
+      ref,
+      lp,
+    })
+
+    if (error) {
+      // Do not block the pilot. Client still has the validated sign for signup.
+      console.error("[volunteer/call-sign] Insert failed:", error.message)
+    } else {
+      stored = true
+    }
+  } else {
+    console.error("[volunteer/call-sign] Missing Supabase env vars")
+  }
+
+  return NextResponse.json({
+    ok: true,
+    callSign,
+    ref,
+    stored,
+  })
+}

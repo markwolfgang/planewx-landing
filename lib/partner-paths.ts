@@ -47,6 +47,7 @@ export const RESERVED_PARTNER_PATH_SLUGS = new Set([
   "talk",
   "talks",
   "decision-support",
+  "volunteer",
   "_next",
 ])
 
