@@ -1,18 +1,28 @@
 import type { Metadata } from "next"
+import { Inter_Tight } from "next/font/google"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, ExternalLink } from "lucide-react"
+import { ArrowLeft, ExternalLink, Mail } from "lucide-react"
+import { PartnerApplyForm } from "@/components/partners/apply-form"
+import { PartnersMediaCarousel } from "@/components/partners/media-carousel"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
+
+const PARTNER_MAILTO = "mailto:sara@planewx.ai?subject=Partnership%20inquiry"
+
+const display = Inter_Tight({
+  subsets: ["latin"],
+  weight: ["700", "800"],
+})
 
 export const metadata: Metadata = {
   title: "Partners",
   description:
-    "Partners who help pilots fly safer. PlaneWX works with aviation organizations and companies that support general aviation decision support.",
+    "Partner with PlaneWX to reach GA pilots who use a decision support system before they launch. Community listing and co-marketing. The PIC owns every go / no-go.",
   openGraph: {
     title: "Partners | PlaneWX",
     description:
-      "Partners who help pilots fly safer. Meet the organizations working alongside PlaneWX for general aviation.",
+      "Reach GA pilots who still own the go / no-go. Partner with PlaneWX through community listing and co-marketing.",
     type: "website",
     url: "https://www.planewx.ai/partners",
   },
@@ -20,14 +30,30 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Partners | PlaneWX",
     description:
-      "Partners who help pilots fly safer. Meet the organizations working alongside PlaneWX for general aviation.",
+      "Reach GA pilots who still own the go / no-go. Partner with PlaneWX through community listing and co-marketing.",
   },
   alternates: {
     canonical: "https://www.planewx.ai/partners",
   },
 }
 
-const PARTNERS = [
+type Partner = {
+  name: string
+  href: string
+  logo: {
+    src: string
+    alt: string
+    width: number
+    height: number
+    className: string
+    wellClassName?: string
+  }
+  blurb: string
+}
+
+// Mark's current main partner logos/cards (PR #74 live roster). Do not swap for
+// older polish-branch logos or drop ACA / COPA.
+const PARTNERS: Partner[] = [
   {
     name: "5X5 Aviation Insurance",
     href: "https://www.5x5insurance.com",
@@ -166,39 +192,54 @@ const PARTNERS = [
     blurb:
       "Campaign and community partner on the road to Oshkosh. Pilots, clubs, and shared events that keep GA connected.",
   },
+]
+
+const PROGRAM = [
+  {
+    title: "Community",
+    body: "Clubs, owners groups, events.",
+  },
+  {
+    title: "Co-marketing",
+    body: "Pilot-to-pilot voice.",
+  },
 ] as const
+
+function BecomePartnerButton() {
+  return (
+    <a
+      href={PARTNER_MAILTO}
+      className="inline-flex items-center justify-center rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all"
+    >
+      Let&apos;s connect
+    </a>
+  )
+}
 
 export default function PartnersPage() {
   return (
-    <div className="min-h-screen bg-[#0B1120] text-white">
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B1120] via-[#0d1f3c] to-[#0a0f1a]" />
-        <div
-          className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-transparent via-[#3B82F6] to-transparent opacity-80"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-x-0 top-2 h-px bg-[#3B82F6]/40"
-          aria-hidden
-        />
-        <div className="absolute top-0 left-1/4 w-[520px] h-[520px] bg-sky-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/5 w-[420px] h-[420px] bg-[#3B82F6]/10 rounded-full blur-[100px]" />
-      </div>
+    <div className="min-h-screen bg-[#0a0f1a] text-white">
+      <div
+        className="fixed inset-0 -z-10"
+        style={{
+          background: [
+            "radial-gradient(ellipse 600px 600px at 25% 0%, rgba(14,165,233,0.10) 0%, transparent 70%)",
+            "radial-gradient(ellipse 500px 500px at 75% 100%, rgba(99,102,241,0.10) 0%, transparent 70%)",
+            "radial-gradient(ellipse 400px 400px at 50% 50%, rgba(6,182,212,0.05) 0%, transparent 70%)",
+            "linear-gradient(135deg, #0a1628 0%, #0d1f3c 50%, #0a0f1a 100%)",
+          ].join(", "),
+        }}
+      />
 
-      <nav className="border-b border-white/5 bg-[#0B1120]/80 backdrop-blur-md">
+      <nav className="relative z-10 border-b border-white/5">
         <div className="container mx-auto max-w-5xl px-4 py-4 flex items-center justify-between gap-4">
-          <Link
-            href="/"
-            className="flex items-center gap-3 min-w-0"
-            aria-label="PlaneWX home"
-          >
-            {/* Official SoT light wordmark for dark nav (transparent plate) */}
+          <Link href="/" className="flex items-center gap-3 min-w-0" aria-label="PlaneWX home">
             <BrandLogo
               variant="wordmarkTransparent"
-              className="h-7 sm:h-8 w-auto max-w-[min(100%,11rem)]"
+              className="h-9 w-auto bg-transparent"
             />
-            <span className="hidden sm:inline text-xs text-white/45 tracking-wide truncate">
-              Pilot Decision Support
+            <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
+              The Pilot&apos;s Decision Support System
             </span>
           </Link>
           <Link
@@ -211,39 +252,47 @@ export default function PartnersPage() {
         </div>
       </nav>
 
-      <main className="container mx-auto max-w-5xl px-4 py-10 sm:py-14 space-y-10 sm:space-y-12">
-        <header className="space-y-4 text-center sm:text-left max-w-2xl">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#3B82F6]">
-            PlaneWX
-          </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-            Partners
+      <div className="container mx-auto max-w-6xl px-4 pt-4 sm:pt-5">
+        <PartnersMediaCarousel />
+      </div>
+
+      <main className="container mx-auto max-w-5xl px-4 pt-10 sm:pt-12 pb-16 sm:pb-20 space-y-14 sm:space-y-16">
+        <header className="mx-auto max-w-3xl text-center space-y-5 sm:space-y-6">
+          <h1
+            id="who-we-work-with"
+            className={`${display.className} text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight leading-[1.05] text-white`}
+          >
+            Who we work with
           </h1>
-          <p className="text-lg sm:text-xl text-white/65 leading-relaxed">
-            Partners who help pilots fly safer.
+          <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
+            We work with people who use PlaneWX and can share that experience.
+            Organizations, ambassadors, and content creators. We grow together.
+            Real relationships. Meetups and community when the fit is there.
           </p>
-          <p className="text-sm sm:text-base text-white/45 leading-relaxed">
-            PlaneWX is built with the GA community: clubs, brands, and pilots who
-            care about clearer go / no-go calls. Listing here means collaboration
-            or shared community, not an endorsement of PlaneWX by any partner. The
-            PIC still owns every decision.
+          <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
+            If you&apos;re using PlaneWX and can see yourself working with us,
+            let&apos;s connect.
           </p>
+          <div className="pt-1">
+            <BecomePartnerButton />
+          </div>
         </header>
 
-        <section aria-labelledby="partners-grid-heading" className="space-y-5">
-          <h2 id="partners-grid-heading" className="sr-only">
-            Partner organizations
-          </h2>
+        <section aria-labelledby="who-we-work-with" className="space-y-5">
+          <p className="sr-only">The PIC owns every go / no-go.</p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {PARTNERS.map((partner) => (
               <li key={partner.name} className="h-full">
-                <a
-                  href={partner.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
-                >
-                  <div className="flex min-h-[4.75rem] items-center justify-center rounded-xl bg-white/[0.04] px-4 py-4 mb-4">
+                <article className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors">
+                  <a
+                    href={partner.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center justify-center rounded-xl mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400 ${
+                      partner.logo.wellClassName ??
+                      "min-h-[4.75rem] px-4 py-4 bg-white/[0.04]"
+                    }`}
+                  >
                     <Image
                       src={partner.logo.src}
                       alt={partner.logo.alt}
@@ -251,12 +300,18 @@ export default function PartnersPage() {
                       height={partner.logo.height}
                       className={partner.logo.className}
                     />
-                  </div>
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
                   <div className="flex items-start justify-between gap-3 mt-auto">
                     <div className="space-y-2 min-w-0">
-                      <p className="font-semibold text-white group-hover:text-sky-300 transition-colors">
+                      <a
+                        href={partner.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-white group-hover:text-sky-300 transition-colors"
+                      >
                         {partner.name}
-                      </p>
+                      </a>
                       <p className="text-sm text-white/50 leading-relaxed">
                         {partner.blurb}
                       </p>
@@ -266,51 +321,111 @@ export default function PartnersPage() {
                       aria-hidden
                     />
                   </div>
-                  <span className="sr-only"> (opens in a new tab)</span>
-                </a>
+                </article>
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-8 space-y-3 text-center sm:text-left">
-          {/* Sara lock: CTA heading must stay exactly this string. */}
-          <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
-            Built with pilots, for pilots
+        <section aria-labelledby="benefits-heading" className="space-y-3 max-w-2xl">
+          <h2
+            id="benefits-heading"
+            className="text-2xl sm:text-3xl font-bold tracking-tight"
+          >
+            Why partner with PlaneWX
           </h2>
-          {/*
-            PLACEHOLDER for Sara swap (CoS): exact body paragraph not available yet.
-            Do not treat this as final Sara copy. CoS will interrupt with her text.
-          */}
-          {/* PLACEHOLDER: Sara exact body pending */}
-          <p className="text-white/55 leading-relaxed max-w-2xl">
-            PlaneWX works with the pilots, clubs, and brands that make flying
-            safer and more useful. More partners and ambassadors coming.
+          <p className="text-base sm:text-lg text-white/60 leading-relaxed">
+            We want to be around good people and good pilots. Organizations,
+            ambassadors, creators. If it&apos;s a real win-win and we can stand
+            behind the work, let&apos;s talk.
           </p>
-          <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:items-center">
-            <Link
-              href="https://app.planewx.ai"
-              className="inline-flex items-center justify-center rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all"
+        </section>
+
+        <section aria-labelledby="program-heading" className="space-y-6">
+          <div className="space-y-2 text-center sm:text-left">
+            <h2
+              id="program-heading"
+              className="text-2xl sm:text-3xl font-bold tracking-tight"
             >
-              Get PlaneWX
-            </Link>
-            <a
-              href="mailto:hello@planewx.ai?subject=Partnership%20inquiry"
-              className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.06] hover:border-sky-500/30 text-white/80 hover:text-white px-6 py-3 text-sm font-semibold transition-colors"
-            >
-              Partnership inquiries
-            </a>
+              What a PlaneWX partnership is
+            </h2>
+            <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
+              Community or co-marketing.
+            </p>
           </div>
-          <p className="text-sm text-white/40 leading-relaxed">
-            Want to talk partnerships? Email{" "}
-            <a
-              href="mailto:hello@planewx.ai?subject=Partnership%20inquiry"
-              className="text-sky-300/90 hover:text-sky-300 underline underline-offset-2"
-            >
-              hello@planewx.ai
-            </a>
-            {" "}with subject &ldquo;Partnership inquiry.&rdquo;
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {PROGRAM.map((item) => (
+              <li
+                key={item.title}
+                className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 space-y-2"
+              >
+                <h3 className="font-semibold text-sky-300">{item.title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{item.body}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section
+          aria-labelledby="fly-ins-heading"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-4 max-w-3xl"
+        >
+          <h2
+            id="fly-ins-heading"
+            className="text-2xl sm:text-3xl font-bold tracking-tight"
+          >
+            We&apos;re planning fun fly-ins. Want in?
+          </h2>
+          <p className="text-base sm:text-lg text-white/60 leading-relaxed">
+            We&apos;re looking for fun events to plan with the PlaneWX community.
+            Open to suggestions. We want to meet you.
           </p>
+          <p className="text-base sm:text-lg text-white/60 leading-relaxed">
+            First idea: a{" "}
+            <a
+              href="https://wacosurf.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-sky-300 hover:text-sky-200 underline underline-offset-4 decoration-sky-300/40"
+            >
+              Waco Surf
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>{" "}
+            fly-in. Surf park in Waco, Texas, about 90 minutes from DFW or Austin.
+          </p>
+          <p className="text-sm sm:text-base text-white/50 leading-relaxed">
+            Interested, or got an idea?{" "}
+            <a
+              href="#apply"
+              className="font-medium text-sky-300 hover:text-sky-200 underline underline-offset-4 decoration-sky-300/40"
+            >
+              Send a partnership inquiry
+            </a>
+            .
+          </p>
+        </section>
+
+        <section
+          id="apply"
+          aria-labelledby="apply-heading"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
+        >
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 text-sky-300 text-sm font-medium">
+              <Mail className="h-4 w-4" aria-hidden />
+              Apply
+            </div>
+            <h2
+              id="apply-heading"
+              className="text-2xl sm:text-3xl font-bold tracking-tight"
+            >
+              Tell us who you are
+            </h2>
+            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
+              Short note to sara@planewx.ai.
+            </p>
+          </div>
+          <PartnerApplyForm />
         </section>
       </main>
 
