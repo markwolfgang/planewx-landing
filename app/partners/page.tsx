@@ -114,7 +114,8 @@ const PARTNERS = [
     name: "Veterans Airlift Command",
     href: "https://www.veteransairlift.org",
     logo: {
-      src: "/partners/vac.png",
+      // White mark for dark DSS cards; color master retained at /partners/vac.png
+      src: "/partners/vac-white.png",
       alt: "Veterans Airlift Command logo",
       width: 712,
       height: 232,
