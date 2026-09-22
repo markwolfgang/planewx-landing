@@ -15,6 +15,11 @@ export interface NewsItem {
   location?: string
   body: string // HTML
   /**
+   * Partner-review drafts stay off the public /news list and sitemap.
+   * The detail route `/news/[slug]` still works for a direct share URL.
+   */
+  draft?: boolean
+  /**
    * Optional hero image under the excerpt. Width/height are the asset's
    * intrinsic pixels, for aspect ratio only.
    */
@@ -50,6 +55,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     date: "September 22, 2026",
     isoDate: "2026-09-22",
     location: "St. Petersburg, Florida",
+    draft: true,
     coBrand: {
       name: "Air Care Alliance",
       logo: "/partners/aca-white.svg",
@@ -58,7 +64,7 @@ export const NEWS_ITEMS: NewsItem[] = [
       href: "https://aircarealliance.org",
     },
     body: `
-<p><strong>DRAFT FOR REVIEW &mdash; not published on www.planewx.ai. Partner review only.</strong></p>
+<p><strong>DRAFT FOR REVIEW &mdash; partner review only; not listed in the public Newsroom.</strong></p>
 
 <p><strong>St. Petersburg, Florida &mdash; September 22, 2026 &mdash;</strong> PlaneWX today announced a partnership with <a href="https://aircarealliance.org" target="_blank" rel="noopener noreferrer">Air Care Alliance</a> (ACA) to support volunteer mission pilots. Eligible Compassion Flight pilots can access PlaneWX through a dedicated volunteer offer: enter a Compassion Flight call sign, start a two-week Pro Plus trial, and receive 30% off Pro Plus annual when they continue.</p>
 
@@ -652,4 +658,9 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 export function getNewsItem(slug: string): NewsItem | undefined {
   return NEWS_ITEMS.find((n) => n.slug === slug)
+}
+
+/** Public Newsroom list + sitemap. Drafts stay reachable by direct slug URL. */
+export function getPublishedNewsItems(): NewsItem[] {
+  return NEWS_ITEMS.filter((n) => !n.draft)
 }

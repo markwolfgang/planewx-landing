@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { NewsNav } from "@/components/news-nav"
-import { NEWS_ITEMS } from "./news-data"
+import { getPublishedNewsItems } from "./news-data"
 
 export const metadata: Metadata = {
   title: "Newsroom — PlaneWX Press Releases & Announcements",
@@ -24,7 +24,7 @@ type NewsPageProps = {
 export default async function NewsPage({ searchParams }: NewsPageProps) {
   const params = await searchParams
   const embed = params.embed === "1"
-  const items = NEWS_ITEMS
+  const items = getPublishedNewsItems()
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white">
