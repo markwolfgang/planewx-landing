@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { BrandLogo } from "@/components/shared/brand-logo"
+import { NewsNav } from "@/components/news-nav"
 import { NEWS_ITEMS } from "./news-data"
 
 export const metadata: Metadata = {
@@ -17,43 +17,22 @@ export const metadata: Metadata = {
   },
 }
 
-export default function NewsPage() {
+type NewsPageProps = {
+  searchParams: Promise<{ embed?: string }>
+}
+
+export default async function NewsPage({ searchParams }: NewsPageProps) {
+  const params = await searchParams
+  const embed = params.embed === "1"
   const items = NEWS_ITEMS
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white">
-      {/* Nav */}
-      <header className="border-b border-white/10 px-6 py-4">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-sm text-sky-400 hover:text-sky-300 transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M19 12H5M12 5l-7 7 7 7" />
-            </svg>
-            Home
-          </Link>
-          <Link href="/" aria-label="PlaneWX home">
-            <BrandLogo
-              variant="wordmarkTransparent"
-              className="h-5 w-auto"
-              alt="PlaneWX"
-            />
-          </Link>
-        </div>
-      </header>
+      <NewsNav
+        embed={embed}
+        maxWidthClass="max-w-5xl"
+        back={{ href: "/", label: "Home" }}
+      />
 
       {/* Hero */}
       <section className="px-6 py-16 text-center">
@@ -71,13 +50,13 @@ export default function NewsPage() {
       {/* Item list */}
       <main className="mx-auto max-w-3xl px-6 pb-24">
         {items.length === 0 ? (
-          <p className="text-center text-white/40 py-16">No announcements yet — check back soon.</p>
+          <p className="text-center text-white/40 py-16">No announcements yet. Check back soon.</p>
         ) : (
           <div className="flex flex-col gap-5">
             {items.map((item) => (
               <Link
                 key={item.slug}
-                href={`/news/${item.slug}`}
+                href={embed ? `/news/${item.slug}?embed=1` : `/news/${item.slug}`}
                 className="group flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-6 hover:border-sky-500/40 hover:bg-white/[0.08] transition-all"
               >
                 <div className="flex items-center gap-3 text-xs">

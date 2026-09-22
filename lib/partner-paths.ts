@@ -19,6 +19,7 @@ export const PARTNER_PATH_CODES: Record<string, string> = {
  * Allowlist-only matching already protects these; this set is a guardrail.
  */
 export const RESERVED_PARTNER_PATH_SLUGS = new Set([
+  "about",
   "apps",
   "osh",
   "brand",
@@ -45,6 +46,8 @@ export const RESERVED_PARTNER_PATH_SLUGS = new Set([
   "sitemap",
   "talk",
   "talks",
+  "decision-support",
+  "volunteer",
   "_next",
 ])
 

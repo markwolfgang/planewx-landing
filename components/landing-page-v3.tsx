@@ -7,6 +7,7 @@ import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { STATS, FAQS } from "@/components/shared/landing-data"
+import { FaqAnswerBody } from "@/components/shared/faq-answer"
 import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 import { FlightChopsEndorsement } from "@/components/shared/flight-chops-endorsement"
 import { TestimonialsCarousel } from "@/components/shared/testimonials-carousel"
@@ -109,6 +110,9 @@ export function LandingPageV3() {
             >
               Pricing
             </button>
+            <a href="/about" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
+              About
+            </a>
             <a href="/news" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
               News
             </a>
@@ -348,9 +352,15 @@ export function LandingPageV3() {
               </div>
               <h3 className="text-xl font-bold mb-3">Personalize</h3>
               <p className="text-white/60 text-sm leading-relaxed mb-4">
-                The synthesis is matched against your aircraft's actual capabilities — FIKI, TAS,
-                service ceiling, autopilot — and your personal minimums. Your SR22T has different
-                limits than a rental 172.
+                The synthesis is matched against your aircraft&apos;s actual capabilities — FIKI, TAS,
+                service ceiling, autopilot — and your{" "}
+                <a
+                  href="https://www.planewx.ai/blog/personal-minimums-weather-planning"
+                  className="text-sky-400 underline underline-offset-2 decoration-sky-400/50 hover:text-sky-300"
+                >
+                  personal minimums
+                </a>
+                . Your SR22T has different limits than a rental 172.
               </p>
               <ul className="space-y-1.5 text-xs text-white/40">
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-violet-400" />Per-aircraft minimums (ceiling, vis, crosswind)</li>
@@ -401,8 +411,15 @@ export function LandingPageV3() {
                 the last minute.
               </p>
               <p className="text-white/70 leading-relaxed mb-6">
-                The WX Score externalizes that work. For the first time, the cognitive burden of
-                weather risk assessment lives in software — not your memory, not your gut.
+                The{" "}
+                <a
+                  href="https://www.planewx.ai/blog/wx-score-planning-tool-review"
+                  className="text-sky-400 underline underline-offset-2 decoration-sky-400/50 hover:text-sky-300"
+                >
+                  WX Score
+                </a>{" "}
+                externalizes that work. For the first time, the cognitive burden of weather risk
+                assessment lives in software — not your memory, not your gut.
               </p>
               <ul className="space-y-3">
                 {[
@@ -470,8 +487,15 @@ export function LandingPageV3() {
               <span className="text-indigo-400">of the decision</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              The FAA's PAVE framework is the gold standard for aeronautical decision-making.
-              PlaneWX pre-fills the environment quadrant and guides you through the rest.
+              The FAA&apos;s{" "}
+              <a
+                href="https://www.planewx.ai/blog/pave-risk-assessment-weather"
+                className="text-sky-400 underline underline-offset-2 decoration-sky-400/50 hover:text-sky-300"
+              >
+                PAVE framework
+              </a>{" "}
+              is the gold standard for aeronautical decision-making. PlaneWX pre-fills the
+              environment quadrant and guides you through the rest.
             </p>
           </div>
 
@@ -826,7 +850,7 @@ export function LandingPageV3() {
                 </button>
                 {openFaq === i && (
                   <div className="px-6 pb-5 space-y-2">
-                    <p className="text-sm text-white/60 leading-relaxed">{faq.a}</p>
+                    <FaqAnswerBody answer={faq.a} />
                     {faq.fiveX5SeesNote ? (
                       <FiveX5SeesNote className="text-sm text-white/45 leading-relaxed" />
                     ) : null}
@@ -878,7 +902,7 @@ export function LandingPageV3() {
               </p>
               <p>
                 After selling his Information Security consulting company in December 2022, Mark retired
-                and bought his first airplane — a Diamond DA40 NG. He earned his Private Pilot's license
+                and bought his first airplane, a Diamond DA40 NG. He earned his Private Pilot's license
                 in just six weeks and started flying his wife and dog around the country.
               </p>
               <p>
@@ -889,18 +913,46 @@ export function LandingPageV3() {
                 </em>
               </p>
               <p>
-                Now flying a TBM 900 and approaching 1,000 hours total time — including 784 hours of
-                cross-country PIC in under 2 years — Mark built PlaneWX to solve his own problem. What
+                Now flying a TBM 900 and over 1,000 hours total time, including 784 hours of
+                cross-country PIC in under 2 years, Mark built PlaneWX to solve his own problem. What
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-sky-400">"Is this flight going to happen?"</em>
               </p>
-              <div className="pt-4 border-t border-white/10">
+              <div className="pt-4 border-t border-white/10 space-y-3">
                 <p className="text-sm text-white/50">
                   <strong className="text-white">Mark Wolfgang</strong> is a Commercial Instrument pilot
                   with single and multiengine ratings, and a veteran of the U.S. Navy.
                 </p>
+                <p className="text-sm text-white/50">
+                  Read the full story on our{" "}
+                  <a href="/about" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">
+                    About
+                  </a>{" "}
+                  page: how PlaneWX started, why safety stays free, and the mission behind Synoptic
+                  Intelligence™.
+                </p>
               </div>
             </div>
+          </div>
+
+          <div className="mt-12 max-w-3xl mx-auto">
+            <p className="text-center text-sm text-white/40 mb-4">Watch the founder&apos;s story</p>
+            <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/50" style={{ paddingBottom: "56.25%" }}>
+              <YouTubeFacade
+                videoId="rAFTCzeR38M"
+                title="PlaneWX Founder's Story, Mark Wolfgang"
+              />
+            </div>
+            <p className="text-center text-sm text-white/40 mt-4">
+              <a
+                href="https://www.youtube.com/@markflieshigh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-400 hover:text-sky-300 underline underline-offset-4 transition-colors"
+              >
+                More on YouTube
+              </a>
+            </p>
           </div>
         </div>
       </section>
@@ -950,6 +1002,7 @@ export function LandingPageV3() {
             <span>· The Pilot's Decision Support System</span>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <a href="/about" className="hover:text-white/60 transition-colors">About</a>
             <a href="/news" className="hover:text-white/60 transition-colors">News</a>
             <a href="/blog" className="hover:text-white/60 transition-colors">Blog</a>
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>

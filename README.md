@@ -2,6 +2,12 @@
 
 A standalone Next.js landing page for PlaneWX with waitlist signup functionality.
 
+## Brand Portal (Sara-facing marketing SoT)
+
+The password-gated Brand Portal at `/brand` is the **Sara-facing marketing source of truth** for tone, story, terminology, and product framing. Prose lives in `content/brand/` and deploys from `main`.
+
+App-repo docs (for example `PLANEWX-MASTER-REFERENCE.md` in the product app) may still exist for engineering/product context. **They are not the Sara-facing marketing SoT.** Edit `content/brand/` here when messaging changes. See `content/brand/README.md`.
+
 ## Setup
 
 1. **Install dependencies:**
@@ -41,6 +47,23 @@ A standalone Next.js landing page for PlaneWX with waitlist signup functionality
 4. Deploy
 
 The landing page will be available at your configured domain (e.g., `www.planewx.ai`).
+
+
+## Blog (Soro) revalidation
+
+Blog posts are fetched from Soro (`lib/soro.ts`) with ISR (`revalidate = 3600`).
+
+After publishing a new Soro article, purge caches so the slug page cannot keep a sticky 404:
+
+```bash
+# Set REVALIDATE_SECRET in Vercel (falls back to WAITLIST_ADMIN_SECRET if unset)
+curl -X POST -H "Authorization: Bearer $REVALIDATE_SECRET" \
+  -H "Content-Type: application/json" \
+  -d '{"slug":"your-new-slug"}' \
+  https://www.planewx.ai/api/revalidate
+```
+
+Slug pages also refetch the Soro list with `cache: "no-store"` when a slug is missing from the hour-long list cache, and confirmed misses are not ISR-cached for an hour.
 
 ## Features
 

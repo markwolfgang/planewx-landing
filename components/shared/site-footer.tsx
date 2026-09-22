@@ -43,6 +43,7 @@ export function SiteFooter({ variant }: { variant: string }) {
             <span className="truncate">· The Pilot&apos;s Decision Support System</span>
           </div>
           <div className="flex items-center gap-6">
+            <a href="/about" className="hover:text-white/60 transition-colors">About</a>
             <a href="/news" className="hover:text-white/60 transition-colors">News</a>
             <a href="/partners" className="hover:text-white/60 transition-colors">Partners</a>
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>

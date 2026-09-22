@@ -180,7 +180,7 @@ export function LandingPage() {
             >
               Testimonials
             </button>
-            <a href="#founder" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
+            <a href="/about" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
             <a href="/news" className="text-sm text-white/60 hover:text-white transition-colors">
               News
             </a>
@@ -2180,7 +2180,7 @@ export function LandingPage() {
                 After completing an accelerated IFR program in five days, Mark discovered the complexities of weather planning for instrument flying. He grew frustrated having to tell his wife, <em className="text-white/80">"Yeah, we should be good. I'll let you know after the TAF comes out tonight."</em>
               </p>
               <p>
-                Now flying a TBM 900 and approaching 1,000 hours total time—including 784 hours of cross-country PIC in under 2 years—Mark built PlaneWX to solve his own problem. What started as personal frustration became a mission to help every pilot answer the question: <em className="text-sky-400">"Is this flight going to happen?"</em>
+                Now flying a TBM 900 and over 1,000 hours total time, including 784 hours of cross-country PIC in under 2 years, Mark built PlaneWX to solve his own problem. What started as personal frustration became a mission to help every pilot answer the question: <em className="text-sky-400">"Is this flight going to happen?"</em>
               </p>
               <div className="pt-4 border-t border-white/10">
                 <p className="text-sm">
@@ -2188,6 +2188,26 @@ export function LandingPage() {
                 </p>
               </div>
             </div>
+          </div>
+
+          <div className="mt-12 max-w-3xl mx-auto">
+            <p className="text-center text-sm text-white/40 mb-4">Watch the founder&apos;s story</p>
+            <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/50" style={{ paddingBottom: "56.25%" }}>
+              <YouTubeFacade
+                videoId="rAFTCzeR38M"
+                title="PlaneWX Founder's Story, Mark Wolfgang"
+              />
+            </div>
+            <p className="text-center text-sm text-white/40 mt-4">
+              <a
+                href="https://www.youtube.com/@markflieshigh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-400 hover:text-sky-300 underline underline-offset-4 transition-colors"
+              >
+                More on YouTube
+              </a>
+            </p>
           </div>
         </div>
       </section>

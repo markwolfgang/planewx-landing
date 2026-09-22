@@ -1,13 +1,14 @@
 import type { Metadata } from "next"
 import Image from "next/image"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 import { BrandLogo } from "@/components/shared/brand-logo"
+import { NewsNav } from "@/components/news-nav"
 import { NewsShareBar } from "@/components/news-share-bar"
 import { NEWS_ITEMS, getNewsItem } from "../news-data"
 
 interface Props {
   params: Promise<{ slug: string }>
+  searchParams: Promise<{ embed?: string }>
 }
 
 export function generateStaticParams() {
@@ -40,45 +41,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function NewsArticlePage({ params }: Props) {
+export default async function NewsArticlePage({ params, searchParams }: Props) {
   const { slug } = await params
+  const query = await searchParams
+  const embed = query.embed === "1"
   const item = getNewsItem(slug)
   if (!item) notFound()
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white">
-      {/* Nav */}
-      <header className="border-b border-white/10 px-6 py-4">
-        <div className="mx-auto flex max-w-3xl items-center justify-between">
-          <Link
-            href="/news"
-            className="flex items-center gap-2 text-sm text-sky-400 hover:text-sky-300 transition-colors"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M19 12H5M12 5l-7 7 7 7" />
-            </svg>
-            All news
-          </Link>
-          <Link href="/" aria-label="PlaneWX home">
-            <BrandLogo
-              variant="wordmarkTransparent"
-              className="h-5 w-auto"
-              alt="PlaneWX"
-            />
-          </Link>
-        </div>
-      </header>
+      <NewsNav
+        embed={embed}
+        maxWidthClass="max-w-3xl"
+        back={{ href: embed ? "/news?embed=1" : "/news", label: "All news" }}
+      />
 
       <article
         className="mx-auto max-w-3xl px-6 py-12 pb-24"

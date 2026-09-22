@@ -1,6 +1,7 @@
 export { YouTubeSection } from "./youtube-section"
 export { PricingSection } from "./pricing-section"
 export { FaqSection } from "./faq-section"
+export { FaqAnswerBody } from "./faq-answer"
 export { FooterCTA } from "./footer-cta"
 export { SiteFooter } from "./site-footer"
 export { VariantTracker } from "./variant-tracker"

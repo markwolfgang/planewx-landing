@@ -1,364 +1,301 @@
 import Image from "next/image"
 import DownloadAllButton from "./DownloadAllButton"
+import { loadBrandContent, withStatsDeep } from "@/lib/brand-content"
 
-export const metadata = {
-  title: "Assets & Colors | PlaneWX Brand Portal",
-  description: "PlaneWX brand assets, color palette, typography, and usage guidelines.",
+type AssetsContent = {
+  meta: { title: string; description: string }
+  hero: { eyebrow: string; title: string; subtitle: string }
+  colors: {
+    title: string
+    items: {
+      name: string
+      hex: string
+      swatch: string | null
+      usage: string
+      border?: boolean
+      borderOnly?: boolean
+    }[]
+  }
+  scoring: {
+    title: string
+    subtitle: string
+    items: { name: string; hex: string; swatch: string }[]
+  }
+  typography: {
+    title: string
+    labelExample: string
+    description: string
+    headingExample: string
+    bodyExample: string
+  }
+  logo: {
+    title: string
+    intro: string
+    variants: {
+      title: string
+      bg: "dark" | "light"
+      previewSrc: string
+      previewType: "next-image" | "img"
+      width: number
+      height: number
+      className?: string
+      downloads: {
+        href: string
+        download: string
+        label: string
+        primary: boolean
+      }[]
+    }[]
+    usageRules: {
+      title: string
+      dos: string[]
+      donts: string[]
+      contact: string
+    }
+  }
+  images: {
+    title: string
+    items: { title: string; body: string }[]
+  }
+  brandFormat: {
+    title: string
+    items: { label: string; text: string; href?: string }[]
+  }
+}
+
+export function generateMetadata() {
+  const content = loadBrandContent<AssetsContent>("assets")
+  return {
+    title: content.meta.title,
+    description: content.meta.description,
+  }
 }
 
 export default function AssetsPage() {
+  const content = withStatsDeep(loadBrandContent<AssetsContent>("assets"))
+
   return (
     <div className="space-y-16">
-      {/* Hero */}
       <section>
         <p className="text-xs uppercase tracking-[0.2em] text-sky-400 mb-2">
-          Brand Assets
+          {content.hero.eyebrow}
         </p>
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-          Assets & Colors
+          {content.hero.title}
         </h1>
         <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
-          Color palette, typography, logo usage, and image guidelines for the
-          PlaneWX brand.
+          {content.hero.subtitle}
         </p>
       </section>
 
-      {/* Color Palette */}
       <section>
         <h2 className="text-2xl font-bold tracking-tight text-white mb-6">
-          Color Palette
+          {content.colors.title}
         </h2>
         <div className="space-y-6">
-          <div className="flex flex-wrap items-center gap-6 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+          {content.colors.items.map((item) => (
             <div
-              className="w-24 h-24 rounded-xl bg-[#3b82f6] shrink-0"
-              aria-hidden
-            />
-            <div>
-              <p className="font-semibold text-white">Primary — Sky Blue</p>
-              <p className="text-sky-400 font-mono text-sm">#3b82f6 (sky-500)</p>
-              <p className="text-white/70 leading-relaxed mt-1">
-                Brand color, links, accents
-              </p>
+              key={item.name}
+              className="flex flex-wrap items-center gap-6 p-6 rounded-2xl bg-white/[0.03] border border-white/10"
+            >
+              {item.borderOnly ? (
+                <div
+                  className="w-24 h-24 rounded-xl border-2 border-white/10 shrink-0"
+                  aria-hidden
+                />
+              ) : item.swatch ? (
+                <div
+                  className={`w-24 h-24 rounded-xl shrink-0 ${item.border ? "border border-white/10" : ""}`}
+                  style={{ backgroundColor: item.swatch }}
+                  aria-hidden
+                />
+              ) : (
+                <div
+                  className="w-24 h-24 rounded-xl bg-white/[0.03] border border-white/10 shrink-0"
+                  aria-hidden
+                />
+              )}
+              <div>
+                <p className="font-semibold text-white">{item.name}</p>
+                <p className="text-sky-400 font-mono text-sm">{item.hex}</p>
+                <p className="text-white/70 leading-relaxed mt-1">{item.usage}</p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-6 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-            <div
-              className="w-24 h-24 rounded-xl bg-[#0B1120] border border-white/10 shrink-0"
-              aria-hidden
-            />
-            <div>
-              <p className="font-semibold text-white">Background — Deep Navy</p>
-              <p className="text-sky-400 font-mono text-sm">#0B1120</p>
-              <p className="text-white/70 leading-relaxed mt-1">
-                All dark-theme surfaces
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-6 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-            <div
-              className="w-24 h-24 rounded-xl bg-white/[0.03] border border-white/10 shrink-0"
-              aria-hidden
-            />
-            <div>
-              <p className="font-semibold text-white">Card Surface</p>
-              <p className="text-sky-400 font-mono text-sm">white at 3% opacity — bg-white/[0.03]</p>
-              <p className="text-white/70 leading-relaxed mt-1">
-                Cards, panels, elevated surfaces
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-6 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-            <div
-              className="w-24 h-24 rounded-xl border-2 border-white/10 shrink-0"
-              aria-hidden
-            />
-            <div>
-              <p className="font-semibold text-white">Border</p>
-              <p className="text-sky-400 font-mono text-sm">white at 10% opacity — border-white/10</p>
-              <p className="text-white/70 leading-relaxed mt-1">
-                Dividers, card borders, UI boundaries
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Scoring Colors */}
       <section>
         <h2 className="text-2xl font-bold tracking-tight text-white mb-2">
-          Scoring Colors
+          {content.scoring.title}
         </h2>
         <p className="text-white/70 leading-relaxed mb-6">
-          Critical — used in the product for WX Score and decision states.
+          {content.scoring.subtitle}
         </p>
         <div className="grid sm:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+          {content.scoring.items.map((item) => (
             <div
-              className="w-full h-16 rounded-xl bg-[#22c55e] mb-4"
-              aria-hidden
-            />
-            <p className="font-semibold text-white">GO / Favorable</p>
-            <p className="text-sky-400 font-mono text-sm">#22c55e (green-500)</p>
-          </div>
-          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-            <div
-              className="w-full h-16 rounded-xl bg-[#f59e0b] mb-4"
-              aria-hidden
-            />
-            <p className="font-semibold text-white">CAUTION / Marginal</p>
-            <p className="text-sky-400 font-mono text-sm">#f59e0b (amber-500)</p>
-          </div>
-          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-            <div
-              className="w-full h-16 rounded-xl bg-[#ef4444] mb-4"
-              aria-hidden
-            />
-            <p className="font-semibold text-white">NO-GO / Unfavorable</p>
-            <p className="text-sky-400 font-mono text-sm">#ef4444 (red-500)</p>
-          </div>
+              key={item.name}
+              className="p-6 rounded-2xl bg-white/[0.03] border border-white/10"
+            >
+              <div
+                className="w-full h-16 rounded-xl mb-4"
+                style={{ backgroundColor: item.swatch }}
+                aria-hidden
+              />
+              <p className="font-semibold text-white">{item.name}</p>
+              <p className="text-sky-400 font-mono text-sm">{item.hex}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Typography */}
       <section>
         <h2 className="text-2xl font-bold tracking-tight text-white mb-6">
-          Typography
+          {content.typography.title}
         </h2>
         <div className="space-y-4 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-sky-400 mb-1">
-              Label example
+              {content.typography.labelExample}
             </p>
             <p className="text-white/70 leading-relaxed mb-4">
-              Font: Inter (Google Fonts). Headings: font-bold, tracking-tight.
-              Body: text-white/70, leading-relaxed. Labels: text-xs uppercase
-              tracking-[0.2em] text-sky-400.
+              {content.typography.description}
             </p>
           </div>
           <h3 className="text-xl font-bold tracking-tight text-white">
-            Heading example
+            {content.typography.headingExample}
           </h3>
           <p className="text-white/70 leading-relaxed">
-            Body text uses leading-relaxed for readability. Inter is the primary
-            typeface across the brand.
+            {content.typography.bodyExample}
           </p>
         </div>
       </section>
 
-      {/* Logo */}
       <section>
         <div className="flex flex-wrap items-start justify-between gap-4 mb-2">
           <h2 className="text-2xl font-bold tracking-tight text-white">
-            Logo
+            {content.logo.title}
           </h2>
           <DownloadAllButton />
         </div>
-        <p className="text-white/60 mb-8 leading-relaxed">
-          Always use the official files below. Do not recreate, distort, recolor,
-          or alter the logo in any way.
-        </p>
+        <p className="text-white/60 mb-8 leading-relaxed">{content.logo.intro}</p>
 
-        {/* Wordmark — dark background */}
-        <div className="space-y-4 mb-10">
-          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Wordmark — Dark Background</h3>
-          <div className="rounded-2xl bg-[#0a0f1a] border border-white/10 p-10 flex items-center justify-center">
-            <Image
-              src="/brand/planewx-og-wordmark.png"
-              alt="PlaneWX wordmark — dark background"
-              width={400}
-              height={80}
-              className="max-w-full h-auto"
-            />
-          </div>
-          <div className="flex flex-wrap gap-3 pt-1">
-            <a
-              href="/brand/planewx-og-wordmark.png"
-              download="planewx-wordmark-dark.png"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium hover:bg-sky-500/20 transition-colors"
+        {content.logo.variants.map((variant) => (
+          <div key={variant.title} className="space-y-4 mb-10 last:mb-8">
+            <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">
+              {variant.title}
+            </h3>
+            <div
+              className={`rounded-2xl border border-white/10 p-10 flex items-center justify-center ${
+                variant.bg === "dark" ? "bg-[#0a0f1a]" : "bg-white"
+              }`}
             >
-              ↓ Download PNG
-            </a>
-            <a
-              href="/brand/planewx-wordmark-dark.svg"
-              download="planewx-wordmark-dark.svg"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
-            >
-              ↓ Download SVG
-            </a>
+              {variant.previewType === "next-image" ? (
+                <Image
+                  src={variant.previewSrc}
+                  alt={variant.title}
+                  width={variant.width}
+                  height={variant.height}
+                  className="max-w-full h-auto"
+                />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={variant.previewSrc}
+                  alt={variant.title}
+                  width={variant.width}
+                  height={variant.height}
+                  className={variant.className ?? "max-w-full h-auto"}
+                />
+              )}
+            </div>
+            <div className="flex flex-wrap gap-3 pt-1">
+              {variant.downloads.map((dl) => (
+                <a
+                  key={dl.href}
+                  href={dl.href}
+                  download={dl.download}
+                  className={
+                    dl.primary
+                      ? "inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium hover:bg-sky-500/20 transition-colors"
+                      : "inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
+                  }
+                >
+                  {dl.label}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
+        ))}
 
-        {/* Wordmark — light background */}
-        <div className="space-y-4 mb-10">
-          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Wordmark — Light Background</h3>
-          <div className="rounded-2xl bg-white border border-white/10 p-10 flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/brand/planewx-wordmark.svg"
-              alt="PlaneWX wordmark — light background"
-              width={400}
-              height={80}
-              className="max-w-full h-auto"
-            />
-          </div>
-          <div className="flex flex-wrap gap-3 pt-1">
-            <a
-              href="/brand/planewx-wordmark-light.png"
-              download="planewx-wordmark-light.png"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium hover:bg-sky-500/20 transition-colors"
-            >
-              ↓ Download PNG
-            </a>
-            <a
-              href="/brand/planewx-wordmark.svg"
-              download="planewx-wordmark-light.svg"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
-            >
-              ↓ Download SVG
-            </a>
-          </div>
-        </div>
-
-        {/* Icon — dark background */}
-        <div className="space-y-4 mb-10">
-          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Icon Mark — Dark Background</h3>
-          <div className="rounded-2xl bg-[#0a0f1a] border border-white/10 p-10 flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/brand/planewx-icon.svg"
-              alt="PlaneWX icon — dark background"
-              width={120}
-              height={120}
-              className="h-24 w-auto"
-            />
-          </div>
-          <div className="flex flex-wrap gap-3 pt-1">
-            <a
-              href="/brand/planewx-icon-dark.png"
-              download="planewx-icon-dark.png"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium hover:bg-sky-500/20 transition-colors"
-            >
-              ↓ Download PNG
-            </a>
-            <a
-              href="/brand/planewx-icon.svg"
-              download="planewx-icon-dark.svg"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
-            >
-              ↓ Download SVG
-            </a>
-          </div>
-        </div>
-
-        {/* Icon — light background */}
-        <div className="space-y-4 mb-8">
-          <h3 className="text-sm font-semibold text-white/50 uppercase tracking-widest">Icon Mark — Light Background</h3>
-          <div className="rounded-2xl bg-white border border-white/10 p-10 flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/brand/planewx-icon-light.svg"
-              alt="PlaneWX icon — light background"
-              width={120}
-              height={120}
-              className="h-24 w-auto"
-            />
-          </div>
-          <div className="flex flex-wrap gap-3 pt-1">
-            <a
-              href="/brand/planewx-icon-light.png"
-              download="planewx-icon-light.png"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium hover:bg-sky-500/20 transition-colors"
-            >
-              ↓ Download PNG
-            </a>
-            <a
-              href="/brand/planewx-icon-light.svg"
-              download="planewx-icon-light.svg"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/70 text-sm font-medium hover:bg-white/10 transition-colors"
-            >
-              ↓ Download SVG
-            </a>
-          </div>
-        </div>
-
-        {/* Usage rules */}
         <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
-          <p className="text-sm font-semibold text-white">Usage rules</p>
+          <p className="text-sm font-semibold text-white">
+            {content.logo.usageRules.title}
+          </p>
           <ul className="space-y-2 text-sm text-white/60">
-            <li className="flex items-start gap-2"><span className="text-emerald-400 mt-0.5">✓</span> Use the wordmark on dark navy or white backgrounds only</li>
-            <li className="flex items-start gap-2"><span className="text-emerald-400 mt-0.5">✓</span> Maintain clear space equal to the height of the &ldquo;P&rdquo; on all sides</li>
-            <li className="flex items-start gap-2"><span className="text-emerald-400 mt-0.5">✓</span> Use SVG files for print and large-format digital</li>
-            <li className="flex items-start gap-2"><span className="text-rose-400 mt-0.5">✗</span> Do not recolor, stretch, rotate, or add effects</li>
-            <li className="flex items-start gap-2"><span className="text-rose-400 mt-0.5">✗</span> Do not place on busy photographic backgrounds</li>
-            <li className="flex items-start gap-2"><span className="text-rose-400 mt-0.5">✗</span> Do not use the wordmark at sizes below 120px wide</li>
+            {content.logo.usageRules.dos.map((rule) => (
+              <li key={rule} className="flex items-start gap-2">
+                <span className="text-emerald-400 mt-0.5">✓</span> {rule}
+              </li>
+            ))}
+            {content.logo.usageRules.donts.map((rule) => (
+              <li key={rule} className="flex items-start gap-2">
+                <span className="text-rose-400 mt-0.5">✗</span> {rule}
+              </li>
+            ))}
           </ul>
           <p className="text-xs text-white/30 pt-2">
             Questions?{" "}
-            <a href="mailto:hello@planewx.ai" className="text-sky-400 hover:text-sky-300 transition-colors">
-              hello@planewx.ai
+            <a
+              href={`mailto:${content.logo.usageRules.contact}`}
+              className="text-sky-400 hover:text-sky-300 transition-colors"
+            >
+              {content.logo.usageRules.contact}
             </a>
           </p>
         </div>
       </section>
 
-      {/* Image Guidelines */}
       <section>
         <h2 className="text-2xl font-bold tracking-tight text-white mb-6">
-          Image Guidelines
+          {content.images.title}
         </h2>
         <div className="space-y-4 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-          <div>
-            <p className="font-semibold text-white mb-1">Photography</p>
-            <p className="text-white/70 leading-relaxed">
-              Aviation-focused, real flying scenarios. Avoid stock photo
-              corporate jets.
-            </p>
-          </div>
-          <div>
-            <p className="font-semibold text-white mb-1">Emoji</p>
-            <p className="text-white/70 leading-relaxed">
-              Never in the product UI or formal marketing. Permitted in email
-              subjects for inbox visibility. Selective aviation-related only in
-              social posts.
-            </p>
-          </div>
+          {content.images.items.map((item) => (
+            <div key={item.title}>
+              <p className="font-semibold text-white mb-1">{item.title}</p>
+              <p className="text-white/70 leading-relaxed">{item.body}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Brand Format */}
       <section>
         <h2 className="text-2xl font-bold tracking-tight text-white mb-6">
-          Brand Format
+          {content.brandFormat.title}
         </h2>
         <div className="space-y-4">
-          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-            <p className="text-xs uppercase tracking-[0.2em] text-sky-400 mb-2">
-              Full
-            </p>
-            <p className="text-white font-medium">
-              PlaneWX — The Pilot&apos;s Decision Support System
-            </p>
-          </div>
-          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-            <p className="text-xs uppercase tracking-[0.2em] text-sky-400 mb-2">
-              With tagline
-            </p>
-            <p className="text-white font-medium">
-              The confidence to go, or the courage to stay™
-            </p>
-          </div>
-          <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-            <p className="text-xs uppercase tracking-[0.2em] text-sky-400 mb-2">
-              Contact
-            </p>
-            <a
-              href="mailto:hello@planewx.ai"
-              className="text-sky-400 hover:text-sky-300 transition-colors font-medium"
+          {content.brandFormat.items.map((item) => (
+            <div
+              key={item.label}
+              className="p-6 rounded-2xl bg-white/[0.03] border border-white/10"
             >
-              hello@planewx.ai
-            </a>
-          </div>
+              <p className="text-xs uppercase tracking-[0.2em] text-sky-400 mb-2">
+                {item.label}
+              </p>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  className="text-sky-400 hover:text-sky-300 transition-colors font-medium"
+                >
+                  {item.text}
+                </a>
+              ) : (
+                <p className="text-white font-medium">{item.text}</p>
+              )}
+            </div>
+          ))}
         </div>
       </section>
     </div>

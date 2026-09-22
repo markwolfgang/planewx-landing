@@ -57,6 +57,7 @@ export function LandingVariantE() {
             <a href="#story" className="hover:text-white transition-colors">The Story</a>
             <a href="#system" className="hover:text-white transition-colors">The System</a>
             <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+            <a href="/about" className="hover:text-white transition-colors">About</a>
             <a href="/news" className="hover:text-white transition-colors">News</a>
           </div>
           <a
@@ -100,7 +101,7 @@ export function LandingVariantE() {
           </p>
 
           <p className="text-white/40 text-sm mb-12 tracking-wide">
-            — Mark Wolfgang, Founder · TBM 900 Pilot · ~1,000 hours
+            Mark Wolfgang, Founder · TBM 900 Pilot · over 1,000 hours
           </p>
 
           {/* CTAs */}
