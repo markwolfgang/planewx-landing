@@ -56,7 +56,7 @@ export default function VolunteerPage() {
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
       {/*
-        Campaign code: CMF (see migrations/20260922_cmf_volunteer_campaign_code.sql).
+        Campaign code: ACA (see migrations/20260922_aca_volunteer_campaign_code.sql).
         Call signs: migrations/20260922_volunteer_call_signs.sql
         Format only (CMF + 1-4 digits). No ACA membership list lookup.
       */}

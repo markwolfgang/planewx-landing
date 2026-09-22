@@ -9,7 +9,7 @@ import {
 } from "@/lib/volunteer-landing"
 
 /**
- * Records visits on /volunteer as CMF by default.
+ * Records visits on /volunteer as ACA by default.
  * Explicit ?ref= still wins (stored for signup CTAs).
  */
 export function VolunteerCampaignTracker() {
@@ -40,7 +40,7 @@ function resolveCallSign(): string | null {
   }
 }
 
-/** Build app signup URL with ref=CMF and optional cmf=CALLSIGN. */
+/** Build app signup URL with ref=ACA and optional cmf=CALLSIGN. */
 export function buildVolunteerSignupHref(callSign?: string | null): string {
   const params = new URLSearchParams({
     lp: VOLUNTEER_LP,
@@ -57,7 +57,7 @@ export function buildVolunteerSignupHref(callSign?: string | null): string {
 }
 
 /**
- * Primary CTA: app signup with ref=CMF (and cmf= when a call sign is stored).
+ * Primary CTA: app signup with ref=ACA (and cmf= when a call sign is stored).
  * Prefer VolunteerCallSignGate for the locked flow; this link is for unlocked CTAs.
  */
 export function VolunteerSignUpLink({

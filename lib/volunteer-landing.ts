@@ -1,16 +1,16 @@
 /**
- * Volunteer / Compassion Flight (CMF) landing constants.
+ * Volunteer / Compassion Flight landing constants.
  *
- * Campaign code CMF attributes ACA / volunteer-pilot inbound leads.
+ * Campaign code ACA attributes Air Care Alliance / volunteer-pilot inbound leads.
  * Visit recording validates against campaign_codes.active
- * (see migrations/20260922_cmf_volunteer_campaign_code.sql).
+ * (see migrations/20260922_aca_volunteer_campaign_code.sql).
  *
  * Call signs are format-checked only (CMF + 1–4 digits). We do NOT look up
  * Barbara's ACA membership list. Validated signs are stored (API + localStorage)
- * and passed to app signup as ?cmf=CMF42&ref=CMF.
+ * and passed to app signup as ?cmf=CMF42&ref=ACA.
  */
 
-export const VOLUNTEER_CAMPAIGN_CODE = "CMF"
+export const VOLUNTEER_CAMPAIGN_CODE = "ACA"
 
 /** lp variant; must be <=8 chars (campaign-visit truncates to 8). */
 export const VOLUNTEER_LP = "vol"
