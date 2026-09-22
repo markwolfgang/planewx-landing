@@ -9,6 +9,7 @@ import {
   normalizeVolunteerCallSign,
   VOLUNTEER_CALL_SIGN_FORMAT_ERROR,
   VOLUNTEER_CALL_SIGN_FORMAT_HINT,
+  VOLUNTEER_CALL_SIGN_PLACEHOLDER,
   VOLUNTEER_CALL_SIGN_STORAGE_KEY,
   VOLUNTEER_CAMPAIGN_CODE,
   VOLUNTEER_LP,
@@ -16,9 +17,8 @@ import {
 
 /**
  * Call-sign gate for /volunteer.
- * Format-only: CMF + 1–4 digits. No ACA membership list lookup.
- * On success: store locally, POST to /api/volunteer/call-sign, unlock signup CTA
- * with ?cmf=CMF42&ref=CMF so the app can persist on account create.
+ * Server/client format validation stays internal. User-facing copy must not
+ * reveal the letter prefix, digit pattern, or any working call-sign example.
  */
 export function VolunteerCallSignGate() {
   const [input, setInput] = useState("")
@@ -80,7 +80,6 @@ export function VolunteerCallSignGate() {
         | null
 
       if (!res.ok || !data?.ok) {
-        // Format was already validated client-side; keep going for signup.
         console.warn("[volunteer] call-sign API:", data?.error || res.status)
       } else {
         remoteOk = Boolean(data.stored)
@@ -114,34 +113,35 @@ export function VolunteerCallSignGate() {
       >
         <div className="space-y-2">
           <label
-            htmlFor="cmf-call-sign"
+            htmlFor="volunteer-call-sign"
             className="block text-sm font-semibold text-white"
           >
             Your Compassion Flight call sign
           </label>
           <p className="text-sm text-white/50 leading-relaxed">
-            {VOLUNTEER_CALL_SIGN_FORMAT_HINT} We only check the format. We do not
-            look up a membership list.
+            {VOLUNTEER_CALL_SIGN_FORMAT_HINT}
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3">
           <input
-            id="cmf-call-sign"
+            id="volunteer-call-sign"
             name="callSign"
             type="text"
             inputMode="text"
             autoCapitalize="characters"
             autoCorrect="off"
             spellCheck={false}
-            placeholder="CMF42"
+            placeholder={VOLUNTEER_CALL_SIGN_PLACEHOLDER}
             value={input}
             onChange={(e) => {
               setInput(e.target.value)
               if (error) setError(null)
             }}
             aria-invalid={Boolean(error)}
-            aria-describedby={error ? "cmf-call-sign-error" : "cmf-call-sign-hint"}
+            aria-describedby={
+              error ? "volunteer-call-sign-error" : "volunteer-call-sign-hint"
+            }
             className="flex-1 rounded-xl border border-white/15 bg-black/30 px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-sky-500/60 focus:border-sky-500/40"
           />
           <button
@@ -162,13 +162,13 @@ export function VolunteerCallSignGate() {
           </button>
         </div>
 
-        <p id="cmf-call-sign-hint" className="text-xs text-white/35">
-          Examples: CMF1, CMF42, CMF9999. Caps or lowercase both work.
+        <p id="volunteer-call-sign-hint" className="sr-only">
+          Enter your Compassion Flight call sign.
         </p>
 
         {error ? (
           <p
-            id="cmf-call-sign-error"
+            id="volunteer-call-sign-error"
             role="alert"
             className="text-sm text-rose-300 leading-relaxed"
           >
@@ -176,13 +176,13 @@ export function VolunteerCallSignGate() {
           </p>
         ) : null}
 
-        {unlocked && callSign ? (
+        {unlocked ? (
           <p className="inline-flex items-start gap-2 text-sm text-emerald-300 leading-relaxed">
             <Check className="h-4 w-4 mt-0.5 shrink-0" aria-hidden />
             <span>
-              Got it: <strong className="font-semibold text-white">{callSign}</strong>.
-              Sign up below for your 2-week Pro Plus trial. At purchase, PlaneWX
-              applies the volunteer discount from this call sign
+              Call sign accepted. Sign up below for your 2-week Pro Plus trial. At
+              purchase, PlaneWX applies the volunteer discount from the call sign you
+              entered
               {storedRemotely ? "." : " (saved for signup on this device)."}
             </span>
           </p>
@@ -207,7 +207,7 @@ export function VolunteerCallSignGate() {
             <>
               <Lock className="h-4 w-4 text-white/40" aria-hidden />
               <span className="text-white/45">
-                Enter a valid call sign to unlock signup
+                Enter your Compassion Flight call sign to unlock signup
               </span>
             </>
           )}
@@ -244,14 +244,6 @@ export function VolunteerCallSignGate() {
             <Lock className="h-4 w-4" aria-hidden />
           </button>
         )}
-
-        {unlocked && callSign ? (
-          <p className="text-xs text-white/40">
-            Signup link carries <code className="text-white/55">cmf={callSign}</code>{" "}
-            and <code className="text-white/55">ref=CMF</code> so the app can attach
-            the discount to your account.
-          </p>
-        ) : null}
       </div>
     </div>
   )

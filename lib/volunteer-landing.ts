@@ -24,11 +24,19 @@ export const VOLUNTEER_CALL_SIGN_STORAGE_KEY = "planewx_cmf_call_sign"
  */
 export const VOLUNTEER_CALL_SIGN_FORMAT = /^CMF\d{1,4}$/i
 
+/** User-facing helper under the call-sign field. Do not mention format rules. */
 export const VOLUNTEER_CALL_SIGN_FORMAT_HINT =
-  "Use your Compassion Flight call sign: CMF followed by 1 to 4 digits (for example CMF42)."
+  "Enter your Compassion Flight call sign."
 
+/**
+ * User-facing error when format validation fails.
+ * Do not reveal the CMF + digits rule in this string.
+ */
 export const VOLUNTEER_CALL_SIGN_FORMAT_ERROR =
-  "That does not look like a Compassion Flight call sign. Enter CMF followed by 1 to 4 digits (for example CMF42)."
+  "That doesn't look like a valid Compassion Flight call sign."
+
+/** Placeholder that fails format validation (never use a real call-sign example). */
+export const VOLUNTEER_CALL_SIGN_PLACEHOLDER = "WWW"
 
 /**
  * Founder welcome YouTube ID. Prefer env so we can drop a video in without

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Welcome volunteer pilots | PlaneWX",
     description:
-      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your CMF call sign and start a 2-week Pro Plus trial.",
+      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your Compassion Flight call sign and start a 2-week Pro Plus trial.",
     type: "website",
     url: "https://www.planewx.ai/volunteer",
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Welcome volunteer pilots | PlaneWX",
     description:
-      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your CMF call sign and start a 2-week Pro Plus trial.",
+      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your Compassion Flight call sign and start a 2-week Pro Plus trial.",
   },
   alternates: {
     canonical: "https://www.planewx.ai/volunteer",
@@ -314,8 +314,7 @@ export default function VolunteerPage() {
               <div className="space-y-2 min-w-0">
                 <h3 className="text-lg font-semibold">Enter your Compassion Flight call sign</h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-                  Format only: <strong className="text-white font-semibold">CMF</strong> plus
-                  1 to 4 digits (for example CMF42). Caps or lowercase both work. We do not
+                  Enter your Compassion Flight call sign below to unlock signup. We do not
                   check a membership list.
                 </p>
               </div>
