@@ -26,7 +26,7 @@ export const VOLUNTEER_CALL_SIGN_FORMAT = /^CMF\d{1,4}$/i
 
 /** User-facing helper under the call-sign field. Do not mention format rules. */
 export const VOLUNTEER_CALL_SIGN_FORMAT_HINT =
-  "Enter your Compassion Flight call sign."
+  "Enter your Compassion Flight call sign. We'll validate it, then unlock signup."
 
 /**
  * User-facing error when format validation fails.

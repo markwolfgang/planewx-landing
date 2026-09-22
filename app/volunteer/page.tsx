@@ -3,7 +3,6 @@ import Image from "next/image"
 import Link from "next/link"
 import {
   ArrowLeft,
-  ArrowRight,
   Check,
   HeartHandshake,
   Plane,
@@ -194,21 +193,6 @@ export default function VolunteerPage() {
               decision support.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-1">
-            <a
-              href="#get-started"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
-            >
-              Enter your call sign
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#how-it-works"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all"
-            >
-              How the offer works
-            </a>
-          </div>
         </header>
 
         {/* Decision support */}
@@ -301,8 +285,8 @@ export default function VolunteerPage() {
               How the offer works
             </h2>
             <p className="text-white/55 leading-relaxed">
-              Enter your call sign, start a Pro Plus trial, then keep flying with the
-              volunteer discount at purchase.
+              Enter your Compassion Flight call sign. We&apos;ll validate it, then unlock
+              signup for your Pro Plus trial and volunteer discount.
             </p>
           </div>
 
@@ -314,8 +298,8 @@ export default function VolunteerPage() {
               <div className="space-y-2 min-w-0">
                 <h3 className="text-lg font-semibold">Enter your Compassion Flight call sign</h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-                  Enter your Compassion Flight call sign below to unlock signup. We do not
-                  check a membership list.
+                  Enter your Compassion Flight call sign. We&apos;ll validate it, then unlock
+                  signup.
                 </p>
               </div>
             </li>
@@ -327,7 +311,7 @@ export default function VolunteerPage() {
               <div className="space-y-2 min-w-0">
                 <h3 className="text-lg font-semibold">Sign up for a 2-week Pro Plus trial</h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-                  After your call sign checks out, signup unlocks. You get full access to{" "}
+                  After we validate your call sign, signup unlocks. You get full access to{" "}
                   <strong className="text-white font-semibold">Pro Plus</strong>, our highest
                   tier, for two weeks. No credit card required to start the trial.
                 </p>
@@ -378,7 +362,8 @@ export default function VolunteerPage() {
               Get started
             </h2>
             <p className="text-white/55 leading-relaxed">
-              Enter your Compassion Flight call sign to unlock signup.
+              Enter your Compassion Flight call sign. We&apos;ll validate it, then unlock
+              signup.
             </p>
           </div>
           <VolunteerCallSignGate />

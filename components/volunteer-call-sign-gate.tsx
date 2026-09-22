@@ -207,7 +207,8 @@ export function VolunteerCallSignGate() {
             <>
               <Lock className="h-4 w-4 text-white/40" aria-hidden />
               <span className="text-white/45">
-                Enter your Compassion Flight call sign to unlock signup
+                Enter your Compassion Flight call sign. We&apos;ll validate it, then unlock
+                signup
               </span>
             </>
           )}
