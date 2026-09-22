@@ -1,7 +1,8 @@
 "use client"
 
-import { Plane } from "lucide-react"
+import Link from "next/link"
 import { FaInstagram, FaFacebook, FaXTwitter, FaTiktok, FaYoutube } from "react-icons/fa6"
+import { BrandLogo } from "@/components/shared/brand-logo"
 
 const SOCIAL_LINKS = [
   { icon: FaInstagram, href: "https://instagram.com/plane_wx", label: "Instagram" },
@@ -30,14 +31,21 @@ export function SiteFooter({ variant }: { variant: string }) {
           ))}
         </div>
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <Plane className="h-4 w-4 text-sky-400" />
-            <span className="font-semibold text-white/50">PlaneWX</span>
-            <span>· The Pilot&apos;s Decision Support System</span>
+          <div className="flex items-center gap-2.5 min-w-0">
+            <Link href="/" className="shrink-0" aria-label="PlaneWX home">
+              {/* Same light-on-dark wordmark as partners / dark DSS nav */}
+              <BrandLogo
+                variant="wordmarkTransparent"
+                alt="PlaneWX"
+                className="h-7 sm:h-8 w-auto"
+              />
+            </Link>
+            <span className="truncate">· The Pilot&apos;s Decision Support System</span>
           </div>
           <div className="flex items-center gap-6">
             <a href="/about" className="hover:text-white/60 transition-colors">About</a>
             <a href="/news" className="hover:text-white/60 transition-colors">News</a>
+            <a href="/partners" className="hover:text-white/60 transition-colors">Partners</a>
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
             <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
             <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">Contact</a>
