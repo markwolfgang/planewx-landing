@@ -42,6 +42,47 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "aca-air-care-alliance-partnership",
+    category: "Partnerships",
+    title: "PlaneWX Partners with Air Care Alliance to Support Volunteer Mission Pilots",
+    excerpt:
+      "Compassion Flight volunteer pilots can unlock PlaneWX Pro Plus with a call sign, start a free trial, and get 30% off the annual plan. The partnership puts decision support behind the pilots who fly for those in need.",
+    date: "September 22, 2026",
+    isoDate: "2026-09-22",
+    location: "St. Petersburg, Florida",
+    coBrand: {
+      name: "Air Care Alliance",
+      logo: "/partners/aca-white.svg",
+      logoWidth: 369,
+      logoHeight: 133,
+      href: "https://aircarealliance.org",
+    },
+    body: `
+<p><strong>DRAFT FOR REVIEW &mdash; not published on www.planewx.ai. Partner review only.</strong></p>
+
+<p><strong>St. Petersburg, Florida &mdash; September 22, 2026 &mdash;</strong> PlaneWX today announced a partnership with <a href="https://aircarealliance.org" target="_blank" rel="noopener noreferrer">Air Care Alliance</a> (ACA) to support volunteer mission pilots. Eligible Compassion Flight pilots can access PlaneWX through a dedicated volunteer offer: enter a Compassion Flight call sign, start a two-week Pro Plus trial, and receive 30% off Pro Plus annual when they continue.</p>
+
+<p>Air Care Alliance connects and supports organizations that use general aviation to help people in medical and humanitarian need. PlaneWX is the pilot&rsquo;s decision support system for go/no-go weather &mdash; a WX Score against each pilot&rsquo;s specific aircraft and personal minimums, an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework (FRAT), and a peer mentor network so planning can start up to 14 days out, not the night before.</p>
+
+<p>Eligible pilots start at <a href="https://www.planewx.ai/volunteer?ref=ACA">www.planewx.ai/volunteer?ref=ACA</a>. A Compassion Flight call sign unlocks signup. The two-week Pro Plus trial begins from there. When the pilot continues on Pro Plus annual, the 30% discount applies automatically from the stored call sign &mdash; no promo code to type. More on the partnership and other collaborators is at <a href="https://www.planewx.ai/partners">www.planewx.ai/partners</a>.</p>
+
+<blockquote><p>&ldquo;I built PlaneWX to give myself a safety framework for personal and volunteer flights. Volunteer pilots give their time and money, and share the gift of private flight with people who need it. I am proud to partner with Air Care Alliance and put our Decision Support System in front of their volunteer pilots, to improve the safety of flight and to help more missions get dispatched.&rdquo;</p><cite>&mdash; Mark Wolfgang, founder of PlaneWX, Navy veteran, commercial instrument-rated pilot, and Veterans Airlift Command volunteer pilot</cite></blockquote>
+
+<blockquote><p>&ldquo;Volunteer pilots already give extraordinary time and resources to move people who need help. Better weather decision support earlier in the planning window helps volunteer pilots go when the mission is sound, stay on the ground when it isn&rsquo;t, or move the departure to a better day or time while they still have options. I have been using PlaneWX myself since March 2026 as an early adopter, and I am glad to see it available to Compassion Flight pilots across the ACA community.&rdquo;</p><cite>&mdash; Mark Hanson, President, Air Care Alliance</cite></blockquote>
+
+<p>PlaneWX is complementary to the electronic flight bag and official weather sources pilots already use. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+
+<h2>About Air Care Alliance</h2>
+<p>Air Care Alliance is a nonprofit that supports and connects organizations and volunteer pilots who provide free air transportation for people in medical and humanitarian need. <a href="https://aircarealliance.org" target="_blank" rel="noopener noreferrer">aircarealliance.org</a></p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
     slug: "why-i-built-planewx",
     category: "Company",
     title: "Why I built PlaneWX",
