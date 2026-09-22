@@ -19,7 +19,7 @@ import {
 export const metadata: Metadata = {
   title: "Volunteer Pilots | PlaneWX",
   description:
-    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your Compassion Flight call sign, start a 2-week Pro Plus trial, and get 30% off at purchase.",
+    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your Compassion Flight call sign, start a 2-week Pro Plus trial, and get 30% off the annual plan at purchase.",
   openGraph: {
     title: "Welcome volunteer pilots | PlaneWX",
     description:
@@ -149,9 +149,10 @@ export default function VolunteerPage() {
           </p>
           <p className="text-white/70 leading-relaxed">
             That is why this is the highest discount PlaneWX has ever given:{" "}
-            <strong className="text-white font-semibold">30% at purchase</strong> from the
-            Compassion Flight call sign you enter below. We are glad to do it. Safer
-            decisions on missions like yours are exactly why we built this.
+            <strong className="text-white font-semibold">30% off annual</strong> at
+            purchase from the Compassion Flight call sign you enter below. We are glad
+            to do it. Safer decisions on missions like yours are exactly why we built
+            this.
           </p>
         </section>
 
@@ -240,13 +241,13 @@ export default function VolunteerPage() {
               </span>
               <div className="space-y-3 min-w-0 flex-1">
                 <h3 className="text-lg font-semibold">
-                  30% volunteer discount at purchase
+                  30% off the annual plan at purchase
                 </h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
                   If you continue after the trial, PlaneWX applies{" "}
-                  <strong className="text-white font-semibold">30% off</strong> at purchase
-                  from the call sign you entered on this page. You do not type a separate
-                  coupon code at checkout.
+                  <strong className="text-white font-semibold">30% off the annual plan</strong>{" "}
+                  at purchase from the call sign you entered on this page. You do not type
+                  a separate coupon code at checkout.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-start gap-2">
