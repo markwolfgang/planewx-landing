@@ -23,11 +23,11 @@ import {
 export const metadata: Metadata = {
   title: "Volunteer Pilots | PlaneWX",
   description:
-    "PlaneWX supports volunteer pilots with decision support for safer missions. Enter your Compassion Flight call sign, start a 2-week Pro Plus trial, and get 30% off at purchase.",
+    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your Compassion Flight call sign, start a 2-week Pro Plus trial, and get 30% off at purchase.",
   openGraph: {
     title: "Welcome volunteer pilots | PlaneWX",
     description:
-      "Decision support for safer volunteer missions. Highest discount PlaneWX has offered. Enter your CMF call sign and start a 2-week Pro Plus trial.",
+      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your CMF call sign and start a 2-week Pro Plus trial.",
     type: "website",
     url: "https://www.planewx.ai/volunteer",
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Welcome volunteer pilots | PlaneWX",
     description:
-      "Decision support for safer volunteer missions. Highest discount PlaneWX has offered. Enter your CMF call sign and start a 2-week Pro Plus trial.",
+      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your CMF call sign and start a 2-week Pro Plus trial.",
   },
   alternates: {
     canonical: "https://www.planewx.ai/volunteer",
@@ -189,9 +189,9 @@ export default function VolunteerPage() {
               Welcome volunteer pilots
             </h1>
             <p className="text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
-              PlaneWX is proud to support you on volunteer missions. The flights that
-              move people when it matters most deserve clear weather intelligence and
-              honest decision support.
+              Welcome pilots who fly volunteer missions for people and animals in need.
+              PlaneWX is proud to support you with clear weather intelligence and honest
+              decision support.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 pt-1">
@@ -230,7 +230,7 @@ export default function VolunteerPage() {
           <p className="text-white/55 leading-relaxed">
             Volunteer routes often run through busy corridors, weather that shifts mid-leg,
             and fixes or waypoints you have not flown lately. Better information before you
-            fire up is how you protect the people who trusted you with the ride.
+            fire up is how you protect the people and animals who need that ride.
           </p>
         </section>
 
@@ -243,9 +243,9 @@ export default function VolunteerPage() {
             These missions cost you more than fuel
           </h2>
           <p className="text-white/70 leading-relaxed">
-            Volunteer flying carries external pressure and personal cost. Someone is waiting
-            on the ground. The schedule is not yours alone. The money and the time come out
-            of your pocket and your weekend.
+            Volunteer flying for people and animals carries external pressure and personal
+            cost. Someone is waiting on the ground. The schedule is not yours alone. The
+            money and the time come out of your pocket and your weekend.
           </p>
           <p className="text-white/70 leading-relaxed">
             That is why this is the highest discount PlaneWX has ever given:{" "}
