@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, ExternalLink } from "lucide-react"
+import { PartnerInquiryForm } from "@/components/partners/inquiry-form"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
 
@@ -287,30 +288,33 @@ export default function PartnersPage() {
             PlaneWX works with the pilots, clubs, and brands that make flying
             safer and more useful. More partners and ambassadors coming.
           </p>
-          <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:items-center">
+          <div className="pt-2">
             <Link
               href="https://app.planewx.ai"
               className="inline-flex items-center justify-center rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
               Get PlaneWX
             </Link>
-            <a
-              href="mailto:hello@planewx.ai?subject=Partnership%20inquiry"
-              className="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.06] hover:border-sky-500/30 text-white/80 hover:text-white px-6 py-3 text-sm font-semibold transition-colors"
-            >
-              Partnership inquiries
-            </a>
           </div>
-          <p className="text-sm text-white/40 leading-relaxed">
-            Want to talk partnerships? Email{" "}
-            <a
-              href="mailto:hello@planewx.ai?subject=Partnership%20inquiry"
-              className="text-sky-300/90 hover:text-sky-300 underline underline-offset-2"
+        </section>
+
+        <section
+          id="apply"
+          aria-labelledby="apply-heading"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
+        >
+          <div className="space-y-2">
+            <h2
+              id="apply-heading"
+              className="text-xl sm:text-2xl font-bold tracking-tight"
             >
-              hello@planewx.ai
-            </a>
-            {" "}with subject &ldquo;Partnership inquiry.&rdquo;
-          </p>
+              Tell us who you are
+            </h2>
+            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
+              Want to talk partnerships? Send a short note — we&apos;ll reply.
+            </p>
+          </div>
+          <PartnerInquiryForm />
         </section>
       </main>
 
