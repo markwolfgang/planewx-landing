@@ -56,6 +56,20 @@ const PARTNERS = [
       "Nationwide alliance of volunteer pilot groups flying compassion missions for people and animals in need. Kindred work with the volunteer spirit we support at planewx.ai/volunteer.",
   },
   {
+    name: "COPA",
+    href: "https://www.cirruspilots.org",
+    logo: {
+      // Official white footer mark from cirruspilots.org; blue header master at /partners/copa.png
+      src: "/partners/copa-white.png",
+      alt: "COPA (Cirrus Owners and Pilots Association) logo",
+      width: 394,
+      height: 96,
+      className: "h-10 sm:h-11 w-auto max-w-[13rem] object-contain",
+    },
+    blurb:
+      "Cirrus Owners and Pilots Association. Community for Cirrus owners and pilots focused on safety, training, and shared experience.",
+  },
+  {
     name: "Flight Chops",
     href: "https://flightchops.com",
     logo: {
