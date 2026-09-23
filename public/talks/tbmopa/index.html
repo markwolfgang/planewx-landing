@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1280">
-<title>The Pilot’s Decision Support System — TBMOPA Touch and Go · Steamboat</title>
-<!-- cache-bust: tbmopa-20260822 -->
+<title>Beyond the Weather Briefing: Using a DSS for TBM Pilots · TBMOPA Webinar</title>
+<!-- cache-bust: tbmopa-webinar-20260924 -->
+<!-- Open: /talks/tbmopa/ (local) · Live: https://www.planewx.ai/talks/tbmopa -->
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -603,7 +604,7 @@
 <div id="nav">
   <button onclick="prevSlide()" title="← / ↑">← Prev</button>
   <button onclick="nextSlide()" title="→ / ↓ / Space">Next →</button>
-  <span id="slide-counter">1 / 40</span>
+  <span id="slide-counter">1 / 29</span>
   <span id="section-label">Title</span>
 
   <div class="nav-group">
@@ -677,21 +678,25 @@
 <div id="deck">
 
 <!-- ═══════════════════════════════════════════════════════════════
-  TBMOPA Touch and Go · Steamboat · Aug 22, 2026
+  TBMOPA Webinar · Thu Sep 24, 2026 · ~60 min (talk + Q&A)
+  Narrative: Beyond the Briefing DSS article (briefing + living FRAT + mentor)
+  Open: /talks/tbmopa/ · Live: https://www.planewx.ai/talks/tbmopa
 ═══════════════════════════════════════════════════════════════ -->
 
 <div class="slide active bg-hero" data-section="Title" data-time="0:00" data-no-corner-qr
-  data-notes="Leave this up before you start. Welcome TBMOPA / Steamboat. Point to QR + TBMOPA (20% off any plan). Dan will go first (~10 min). You are not a meteorologist. This is not a product tour — it is a decision support system. URL: planewx.ai">
+  data-notes="Leave this up as people join. Welcome TBMOPA. You are a peer who flies a TBM 900, not a salesman. This hour is about using a decision support system. Not a feature tour of another weather app. Point to QR / planewx.ai. ~45 min talk, then Q&A.">
   <div class="slide-inner pad" style="flex-direction:row; gap:64px; align-items:center; justify-content:center; min-height:720px;">
-    <div style="flex:1; max-width:640px;">
+    <div style="flex:1; max-width:700px;">
       <img class="logo-img logo-hero" src="/brand/planewx-wordmark-dark.svg" alt="PlaneWX" style="margin-bottom:28px;">
-      <div class="label" style="margin-bottom:20px;">TBMOPA Touch and Go · Steamboat · August 22, 2026</div>
-      <div class="headline-lg" style="margin-bottom:20px; line-height:1.0; font-size:56px;">
-        The Pilot’s Decision<br>Support System
+      <div class="label" style="margin-bottom:20px;">TBMOPA Webinar · Thursday, September 24, 2026</div>
+      <div class="headline-lg" style="margin-bottom:20px; line-height:1.05; font-size:48px;">
+        Beyond the Weather Briefing
       </div>
-      <div class="subhead">Three pillars to a go/no-go</div>
-      <div style="margin-top:14px; font-size:16px; color:var(--muted); line-height:1.4; max-width:520px;">
-        Mark Wolfgang · Founder &nbsp;·&nbsp; Dan Torgerson · 5X5 Aviation Insurance
+      <div class="subhead" style="font-size:24px; max-width:560px;">
+        Using a decision support system for TBM pilots
+      </div>
+      <div style="margin-top:18px; font-size:16px; color:var(--muted); line-height:1.4; max-width:520px;">
+        Mark Wolfgang · Founder · TBM 900 pilot
       </div>
     </div>
     <div style="flex:0 0 auto; text-align:center;">
@@ -701,126 +706,41 @@
           onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'width:200px;height:200px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999\'>QR: planewx.ai</div>'">
       </div>
       <div style="font-size:18px; color:var(--sky); font-weight:600;">planewx.ai</div>
-      <div style="font-size:14px; color:var(--muted); margin-top:8px;">Code <span style="color:var(--sky); font-weight:700;">TBMOPA</span> · 20% off any plan</div>
+      <div style="font-size:14px; color:var(--muted); margin-top:8px;">Code <span style="color:var(--sky); font-weight:700;">TBMOPA</span></div>
     </div>
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="5X5" data-time="0:30"
-  data-notes="DAN. 5X5 intro. Direct-to-pilot. High-performance fixed-wing including TBM. 38 states. AM Best A- paper. How you prepare is part of the risk. Mark stays offstage.">
+<div class="slide bg-night" data-section="Frame" data-time="1:00"
+  data-notes="Set the frame early. This is not a product demo hour. Same story as the Beyond the Briefing article. Three pillars. PIC remains responsible.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div style="max-width:960px; width:100%;">
-      <img src="/talks/screenshots/5x5-logo-white.png" alt="5X5 Aviation Insurance" style="height:56px; width:auto; display:block; margin-bottom:28px;">
-      <div class="label" style="margin-bottom:16px;">Our exclusive insurance partner</div>
-      <div class="headline-sm" style="font-size:44px; margin-bottom:28px; line-height:1.15;">Insurance that treats<br>preparation as risk data</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-        <div style="padding:24px; border-radius:16px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25);">
-          <div style="font-size:15px; font-weight:700; color:var(--sky); margin-bottom:10px;">Who they insure</div>
-          <div style="font-size:18px; color:var(--muted); line-height:1.45;">TBM, Citation, King Air, M-series — high-performance fixed-wing. Direct to the pilot. 38 states, expanding.</div>
+      <div class="label" style="margin-bottom:16px;">This hour</div>
+      <div class="headline-sm" style="font-size:44px; margin-bottom:36px; line-height:1.15;">What this is · what it is not</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div style="padding:28px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3);">
+          <div style="font-size:14px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky); margin-bottom:14px;">Is</div>
+          <ul class="bullet-list tight" style="font-size:20px;">
+            <li>Using a decision support system</li>
+            <li>Briefing + FRAT + mentor as one loop</li>
+            <li>Deciding before trip pressure locks in</li>
+          </ul>
         </div>
-        <div style="padding:24px; border-radius:16px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25);">
-          <div style="font-size:15px; font-weight:700; color:var(--sky); margin-bottom:10px;">How they underwrite</div>
-          <div style="font-size:18px; color:var(--muted); line-height:1.45;">AM Best A- paper. Data-driven. Training, hours, and how you prepare show up in the quote.</div>
+        <div style="padding:28px; border-radius:16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12);">
+          <div style="font-size:14px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Is not</div>
+          <ul class="bullet-list tight" style="font-size:20px;">
+            <li>Another weather-app feature tour</li>
+            <li>A replacement for your EFB</li>
+            <li>Someone else owning your go/no-go</li>
+          </ul>
         </div>
-      </div>
-      <div style="margin-top:24px; padding:20px 24px; border-radius:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); font-size:20px; color:var(--white); font-style:italic; line-height:1.4;">
-        “Safety isn’t a premium feature and it shouldn’t be treated like one.” <span style="color:var(--muted); font-style:normal; font-size:16px;">— Doug Tibbs, 5X5</span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="5X5" data-time="5:00"
-  data-notes="DAN. Bio + partnership numbers. Exclusive partner. 5% at quote/bind for Pro Plus. More at renewal if used on ≥75% of flights. Up to 10% total. Dan owns every premium number. Then hand to Mark — two PlaneWX scale slides, then hands.">
-  <div class="slide-inner pad" style="flex-direction:row; gap:56px; align-items:center; min-height:720px;">
-    <div style="flex:0 0 340px; text-align:center;">
-      <div style="border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.12); margin-bottom:18px;">
-        <img src="/talks/screenshots/dan-torgerson.png" alt="Dan Torgerson" style="width:100%; height:auto; display:block; object-fit:cover;">
-      </div>
-      <div style="font-size:28px; font-weight:800; color:var(--white);">Dan Torgerson</div>
-      <div style="font-size:15px; color:var(--sky); font-weight:700; margin-top:6px;">Chief Aviation Officer · Insurance Agent</div>
-    </div>
-    <div style="flex:1;">
-      <div class="label" style="margin-bottom:14px;">5X5 × PlaneWX</div>
-      <div class="headline-sm" style="font-size:36px; margin-bottom:20px; line-height:1.2;">Reward the pilots<br>who actually prepare</div>
-      <ul class="bullet-list tight" style="font-size:20px; margin-bottom:22px;">
-        <li>Commercial · CFII / MEI · still instructing at a 141 school</li>
-        <li>Pro Plus members: <span style="color:var(--sky);">5%</span> credit at quote and bind</li>
-        <li>Use PlaneWX on <span style="color:var(--sky);">≥75%</span> of flights — more at renewal</li>
-        <li>Up to <span style="color:var(--sky);">10%</span> total through Safety Rewards</li>
-      </ul>
-      <div style="font-size:17px; color:var(--muted); line-height:1.45;">PlaneWX doesn’t tell you not to fly. It gives you the picture days earlier — when you still have options.</div>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-dark" data-section="PlaneWX" data-time="10:00"
-  data-notes="MARK TAKES THE ROOM. Since March 1, 2025. 2,100+ pilots. 50+ countries we’ve briefed — not ‘pilots live in 50 countries.’ 68 TBMs on the platform. Not a side project. Then the watch slide.">
-  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="width:100%; max-width:1080px;">
-      <div class="label" style="margin-bottom:16px;">The PlaneWX community</div>
-      <div class="headline-sm" style="font-size:44px; margin-bottom:40px; line-height:1.15;">Since March 1, 2025</div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
-        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:32px 16px; text-align:center;">
-          <div style="font-size:48px; font-weight:800; color:var(--sky);">2,100+</div>
-          <div style="font-size:18px; color:var(--muted); margin-top:10px;">Pilots</div>
-        </div>
-        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:32px 16px; text-align:center;">
-          <div style="font-size:48px; font-weight:800; color:var(--sky);">50+</div>
-          <div style="font-size:18px; color:var(--muted); margin-top:10px;">Countries</div>
-        </div>
-        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:32px 16px; text-align:center;">
-          <div style="font-size:48px; font-weight:800; color:var(--sky);">68</div>
-          <div style="font-size:18px; color:var(--muted); margin-top:10px;">TBMs</div>
-        </div>
-      </div>
-      <div class="subhead" style="margin-top:36px; font-size:20px; color:var(--muted); max-width:880px;">
-        Not a side project. Same go/no-go problem — now including this room.
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-dark" data-section="PlaneWX" data-time="10:40"
-  data-notes="13,000+ briefings. Refreshed every day at minimum. More often as departure gets close. You don’t re-brief it — it keeps watching. Then hands.">
-  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="width:100%; max-width:1080px;">
-      <div class="label" style="margin-bottom:16px;">What runs every day</div>
-      <div class="headline-sm" style="font-size:44px; margin-bottom:40px; line-height:1.15;">The briefing keeps watching</div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:28px;">
-        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:32px 16px; text-align:center;">
-          <div style="font-size:48px; font-weight:800; color:var(--sky);">13,000+</div>
-          <div style="font-size:18px; color:var(--muted); margin-top:10px;">Briefings generated</div>
-        </div>
-        <div style="background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); border-radius:16px; padding:32px 16px; text-align:center;">
-          <div style="font-size:48px; font-weight:800; color:var(--sky);">Daily</div>
-          <div style="font-size:18px; color:var(--muted); margin-top:10px;">Refresh at minimum</div>
-        </div>
-      </div>
-      <div class="subhead" style="font-size:20px; color:var(--muted); max-width:880px;">
-        More often as departure gets close. You don’t re-brief it.
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-night" data-section="Room" data-time="11:10"
-  data-notes="Hands. Ask slowly. Count. 1) Who uses AI for flight planning or weather? 2) Who already uses PlaneWX? 3) Who already fills out a FRAT? Bridge: that last one is pillar 2. Then: I’m a pilot who needed better support.">
-  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="max-width:880px; width:100%;">
-      <div class="label" style="margin-bottom:20px;">Show of hands</div>
-      <div class="headline-sm" style="font-size:44px; margin-bottom:40px;">Who’s in the hangar?</div>
-      <div style="display:flex; flex-direction:column; gap:18px;">
-        <div style="padding:22px 28px; border-radius:16px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); font-size:24px; font-weight:700; color:var(--white);">1 · Who uses AI for flight planning or weather?</div>
-        <div style="padding:22px 28px; border-radius:16px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); font-size:24px; font-weight:700; color:var(--white);">2 · Who already uses PlaneWX?</div>
-        <div style="padding:22px 28px; border-radius:16px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); font-size:24px; font-weight:700; color:var(--white);">3 · Who already fills out a FRAT?</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-night" data-section="Title" data-time="12:00"
-  data-notes="One question. Pause. Bridge: That’s the question we’re here to answer — earlier, and with more than a TAF.">
+<div class="slide bg-night" data-section="Frame" data-time="2:00"
+  data-notes="One question. Pause. Bridge: That is the question a DSS is for. Earlier, and with more than a TAF.">
   <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px 120px;">
     <div style="max-width:840px;">
       <div class="label" style="margin-bottom:40px;">The question every pilot dreads</div>
@@ -828,23 +748,54 @@
         “Are we going to be able to<br>make the flight?”
       </div>
       <div class="subhead" style="margin-top:40px; font-size:22px; max-width:600px; margin-left:auto; margin-right:auto;">
-        That’s the question a decision support system is for.
+        That is the question a decision support system is for.
       </div>
     </div>
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="About Me" data-time="13:00"
-  data-notes="Lead with risk profession: 22 years pentest / IT risk. Navy. Sold firm Dec 2022. Don’t read the resume — frame as someone who finds failure modes for a living.">
+<div class="slide bg-hero" data-section="Thesis" data-time="3:00"
+  data-notes="LAND THIS. Core thesis from the article. Most bad launches are late decisions. Not mysteries.">
+  <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
+    <div style="max-width:900px;">
+      <div class="label" style="margin-bottom:28px;">The thesis</div>
+      <div class="quote-text" style="font-size:52px; line-height:1.25;">
+        Most bad launches are not mysteries.<br>
+        <span style="color:var(--sky);">They are late decisions.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-dark" data-section="Thesis" data-time="4:00"
+  data-notes="Walk the pressure story. Hotels, passengers, airplane reserved. Night before: we have to go. By then you are rationalizing, not deciding. This room knows that pressure.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:960px; width:100%;">
+      <div class="label" style="margin-bottom:16px;">How late decisions happen</div>
+      <div class="headline-sm" style="font-size:42px; margin-bottom:32px; line-height:1.15;">Trip pressure locks in the answer</div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div style="padding:20px 26px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); font-size:22px; color:var(--white);">Hotels are booked. Passengers rearranged work.</div>
+        <div style="padding:20px 26px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); font-size:22px; color:var(--white);">The airplane is reserved. “We’ll see” holds for days.</div>
+        <div style="padding:20px 26px; border-radius:14px; background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.35); font-size:22px; color:var(--white);">The night before, “we’ll see” becomes “we have to go.”</div>
+      </div>
+      <div style="margin-top:28px; font-size:22px; font-weight:600; color:var(--muted); max-width:860px; line-height:1.4;">
+        By then you are not deciding. You are rationalizing.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-dark" data-section="About Me" data-time="6:00"
+  data-notes="Peer intro. Keep short. Risk profession, Navy, now TBM 900. Same room. Not a meteorologist.">
   <div class="slide-inner pad" style="flex-direction:row; gap:60px; align-items:center; min-height:720px;">
     <div style="flex:1;">
       <div class="label" style="margin-bottom:20px;">About Mark</div>
-      <div class="headline-sm" style="margin-bottom:32px;">Risk management<br>as a profession</div>
+      <div class="headline-sm" style="margin-bottom:28px;">A TBM pilot who needed<br>better decision support</div>
       <ul class="bullet-list">
         <li>U.S. Navy veteran</li>
-        <li>22 years — professional penetration tester</li>
-        <li>IT risk management for a living</li>
-        <li>Sold consulting firm Dec 2022</li>
+        <li>22 years finding failure modes for a living</li>
+        <li>Commercial / Instrument · SEL/MEL</li>
+        <li>Flies a TBM 900</li>
       </ul>
     </div>
     <div style="flex:0 0 420px;">
@@ -855,110 +806,54 @@
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="About Me" data-time="14:00"
-  data-notes="Willing to do things many call risky — freediving — but only with eyes open. Same pattern later became PlaneWX. Bridge to aviation.">
-  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="max-width:920px; width:100%;">
-      <div class="label" style="margin-bottom:20px;">Personal risk</div>
-      <div class="headline-sm" style="margin-bottom:16px; font-size:44px;">Willing to take the risk —<br>not willing to be surprised by it</div>
-      <div class="subhead" style="margin-bottom:36px; font-size:20px; color:var(--muted); max-width:820px;">
-        I’ll do things many people would call risky. I just want every risk on the table — so I can mitigate as much as possible.
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
-        <div style="background:rgba(14,165,233,0.06); border:1px solid rgba(14,165,233,0.2); border-radius:16px; padding:28px;">
-          <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky); margin-bottom:16px;">The activity</div>
-          <ul class="bullet-list tight" style="font-size:20px;">
-            <li>~7 years freediving &amp; spearfishing</li>
-            <li>Breath-hold dives to 150 ft</li>
-            <li>Cave exits · fight the fish · surface</li>
-          </ul>
-        </div>
-        <div style="background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.25); border-radius:16px; padding:28px;">
-          <div style="font-size:15px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--green); margin-bottom:16px;">The mitigation</div>
-          <ul class="bullet-list tight" style="font-size:20px;">
-            <li>Every certification course available</li>
-            <li>Best practices — always</li>
-            <li>Risk work done *before* the dive</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-dark" data-section="About Me" data-time="15:00"
-  data-notes="ONE IDEA. Aviation is the same risk discipline. Method: learn failure modes early, stack mitigations before the moment, re-check under pressure, decide with eyes open. Bridge to credentials.">
-  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="max-width:920px; width:100%;">
-      <div class="label" style="margin-bottom:20px;">Aviation risk</div>
-      <div class="headline-sm" style="margin-bottom:16px; font-size:44px; line-height:1.15;">Same risk discipline<br>in the air</div>
-      <div class="subhead" style="margin-bottom:36px; font-size:20px; color:var(--muted); max-width:820px;">IT risk · personal risk · aviation — same loop</div>
-      <ul class="bullet-list" style="max-width:780px;">
-        <li>Learn failure modes early — incidents, training, experience</li>
-        <li>Stack mitigations before the moment — mins, FRAT, proficiency</li>
-        <li>Re-check under pressure — independent brief, second opinion</li>
-        <li>Decide with eyes open — not surprised mid-flight</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-dark" data-section="About Me" data-time="16:00"
-  data-notes="Quick credentials. Next is the ForeFlight log. This room flies TBMs — you fly one too.">
+<div class="slide bg-dark" data-section="About Me" data-time="7:30"
+  data-notes="Quick flying arc. Then the line that always lands.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="accent-bar"></div>
     <div class="headline-sm" style="margin-bottom:32px; font-size:48px;">A lot of flying<br>in a short time</div>
     <ul class="bullet-list" style="max-width:720px;">
-      <li>DA40 NG → PPL in ~6 weeks</li>
-      <li>IFR rating in 5 days</li>
-      <li>Now: TBM 900</li>
-      <li>~1,000 hrs total time — in under two years</li>
-      <li>Commercial / Instrument · SEL/MEL</li>
+      <li>Learned to fly at 49</li>
+      <li>DA40 NG to PPL in ~6 weeks · IFR in 5 days</li>
+      <li>Now: TBM 900 · ~1,000 hrs in under two years</li>
+      <li>Risk-averse by nature. Eyes open by training.</li>
     </ul>
   </div>
 </div>
 
-<div class="slide slide-shot" data-section="About Me" data-time="16:20"
-  data-notes="Full-screen ForeFlight log. Same risk mindset, new domain. Building because I need it.">
-  <div class="shot-frame">
-    <img src="/screenshots/foreflight.png" alt="ForeFlight flight log">
-  </div>
-</div>
-
-<div class="slide bg-hero" data-section="About Me" data-time="16:40"
-  data-notes="Let this breathe. Bridge into Thanksgiving.">
+<div class="slide bg-hero" data-section="About Me" data-time="8:30"
+  data-notes="Let this breathe. Bridge into Thanksgiving / late-decision origin.">
   <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
     <div style="max-width:800px;">
       <img class="logo-img logo-md" src="/brand/planewx-wordmark-dark.svg" alt="PlaneWX" style="margin: 0 auto 40px;">
       <div class="quote-text" style="font-size:64px; color:var(--sky);">“I built PlaneWX<br>because I needed it.”</div>
-      <div class="subhead" style="margin-top:32px; font-size:22px;">— Mark Wolfgang, Founder</div>
+      <div class="subhead" style="margin-top:32px; font-size:22px;">Mark Wolfgang, Founder</div>
     </div>
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="Origin Story" data-time="17:00"
-  data-notes="Bentonville → Fremont. Bags packed, family. The flight that started this.">
+<div class="slide bg-dark" data-section="Origin" data-time="9:00"
+  data-notes="Thanksgiving origin. Bags packed, family waiting. The flight that started this.">
   <div class="slide-inner pad" style="flex-direction:row; gap:56px; align-items:center; min-height:720px;">
     <div style="flex:1;">
-      <div class="chip" style="margin-bottom:28px;">The origin story</div>
+      <div class="chip" style="margin-bottom:28px;">Origin story</div>
       <div class="headline" style="font-size:56px; margin-bottom:28px;">Thanksgiving 2024</div>
       <ul class="bullet-list">
         <li>Trip planned weeks out</li>
-        <li>Bentonville, AR → Fremont, NE</li>
-        <li>Bags packed · Dog ready</li>
+        <li>Bentonville, AR to Fremont, NE</li>
+        <li>Bags packed · dog ready</li>
         <li>Family waiting</li>
       </ul>
     </div>
     <div style="flex:0 0 440px;">
       <div class="img-screen" style="border-radius:16px;">
-        <img src="/talks/screenshots/thanksgiving-2024.jpg" alt="Thanksgiving 2024 flight — Bentonville to Fremont" style="width:100%; height:auto; display:block; max-height:520px; object-fit:cover;">
+        <img src="/talks/screenshots/thanksgiving-2024.jpg" alt="Thanksgiving 2024 flight" style="width:100%; height:auto; display:block; max-height:520px; object-fit:cover;">
       </div>
     </div>
   </div>
 </div>
 
-<div class="slide bg-night" data-section="Origin Story" data-time="17:40"
-  data-notes="PAUSE. Days out I had nothing but I’ll know after the TAF.">
+<div class="slide bg-night" data-section="Origin" data-time="10:00"
+  data-notes="PAUSE. Days out I had nothing but I’ll know after the TAF. That is late decision culture.">
   <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px 100px;">
     <div style="max-width:900px;">
       <div class="subhead" style="margin-bottom:36px; font-size:22px; color:var(--muted);">What I told my wife every time:</div>
@@ -971,8 +866,8 @@
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="The Risk Problem" data-time="18:20"
-  data-notes="TAFs are 24h. Trips are planned days/weeks out. Decision forced to last 24 hours — when pressure is maximum. Terrible combination. This room books hotels and hangars weeks out.">
+<div class="slide bg-dark" data-section="Problem" data-time="11:00"
+  data-notes="TAFs are 24h. Trips planned days/weeks out. Good information arrives when pressure is maximum. Terrible combination for TBM missions with hotels and hangars.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="accent-bar"></div>
     <div class="headline-sm" style="margin-bottom:16px;">TAFs only go 24 hours</div>
@@ -1005,171 +900,98 @@
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="Origin Story" data-time="19:30"
-  data-notes="I tried to read the AFDs myself. Bentonville→Fremont needs Tulsa, Wichita, AND Omaha. Written for mets. 4×/day. Impossible as a manual process. That is what led to Synoptic Intelligence.">
+<div class="slide bg-dark" data-section="Problem" data-time="13:00"
+  data-notes="External pressures. FAA names this. A briefing alone does not name your get-there-itis.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="max-width:960px; width:100%;">
-      <div class="label" style="margin-bottom:16px;">Before TAFs exist</div>
-      <div class="headline-sm" style="font-size:40px; margin-bottom:12px;">Area Forecast Discussions</div>
-      <div class="subhead" style="font-size:20px; margin-bottom:32px; color:var(--muted); max-width:820px;">
-        Written by NWS meteorologists — for other meteorologists. Not for pilots.
+    <div style="max-width:920px; width:100%;">
+      <div class="label" style="margin-bottom:16px;">The hidden factor</div>
+      <div class="headline-sm" style="font-size:44px; margin-bottom:20px; line-height:1.15;">External pressure kills judgment</div>
+      <div class="subhead" style="font-size:22px; margin-bottom:36px; color:var(--muted); max-width:820px;">
+        The FAA calls external pressures a major factor in a majority of GA accidents.
       </div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:28px;">
-        <div style="padding:24px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); text-align:center;">
-          <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:10px;">Departure</div>
-          <div style="font-size:26px; font-weight:800; color:var(--white);">Tulsa</div>
-          <div style="font-size:15px; color:var(--muted); margin-top:8px;">covers Bentonville</div>
-        </div>
-        <div style="padding:24px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); text-align:center;">
-          <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:10px;">En route</div>
-          <div style="font-size:26px; font-weight:800; color:var(--white);">Wichita</div>
-          <div style="font-size:15px; color:var(--muted); margin-top:8px;">corridor weather</div>
-        </div>
-        <div style="padding:24px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); text-align:center;">
-          <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:10px;">Arrival</div>
-          <div style="font-size:26px; font-weight:800; color:var(--white);">Omaha</div>
-          <div style="font-size:15px; color:var(--muted); margin-top:8px;">covers Fremont</div>
-        </div>
-      </div>
-      <ul class="bullet-list tight" style="max-width:860px; font-size:22px;">
-        <li>I tried to learn every technical term</li>
-        <li>Updated <span style="color:var(--sky);">four times a day</span></li>
-        <li>Read three · synthesize · repeat until departure</li>
+      <ul class="bullet-list" style="max-width:780px;">
+        <li>Passengers who rearranged their week</li>
+        <li>A hotel that is non-refundable</li>
+        <li>A meeting that “needs” you there</li>
+        <li>Your own pride about canceling</li>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="slide bg-hero" data-section="Origin Story" data-time="20:30"
-  data-notes="Nov 2024 lightbulb. Sent Tulsa AFD to AI. Useful. Saw the potential. Built Synoptic Intelligence™ — not a fake extended TAF. Days-out schedule decisions. TAFs still day-of. 2025: started the company.">
-  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="max-width:920px; width:100%;">
-      <div class="label" style="margin-bottom:16px;">November 2024 · the lightbulb</div>
-      <div class="headline-sm" style="font-size:40px; margin-bottom:20px; line-height:1.2;">I sent the Tulsa AFD to AI and asked:<br><span style="color:var(--sky);">what are my chances?</span></div>
-      <div style="padding:28px 32px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.35); margin-bottom:24px;">
-        <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:12px;">What that became</div>
-        <div style="font-size:36px; font-weight:800; color:var(--white); margin-bottom:12px;">Synoptic Intelligence™</div>
-        <div style="font-size:20px; color:var(--muted); line-height:1.45;">NWS Area Forecast Discussions — synthesized for your route — in language a pilot can use. The big-picture layer <span style="color:var(--white);">before TAFs exist.</span></div>
+<div class="slide bg-night" data-section="DSS" data-time="14:30"
+  data-notes="Bridge from problem to DSS. Weather is necessary. Not the whole call.">
+  <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
+    <div style="max-width:880px;">
+      <div class="label" style="margin-bottom:28px;">Weather alone</div>
+      <div class="headline-sm" style="font-size:48px; line-height:1.2; margin-bottom:28px;">
+        A weather briefing is necessary.<br>
+        <span style="color:var(--sky);">It is only one input.</span>
       </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-        <div style="padding:22px 24px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25);">
-          <div style="font-size:15px; font-weight:700; color:var(--sky); margin-bottom:8px;">Synoptic · days out</div>
-          <div style="font-size:18px; color:var(--muted); line-height:1.4;">Schedule decisions — reschedule or don’t lock that day</div>
-        </div>
-        <div style="padding:22px 24px; border-radius:14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12);">
-          <div style="font-size:15px; font-weight:700; color:var(--white); margin-bottom:8px;">TAFs · day-of</div>
-          <div style="font-size:18px; color:var(--muted); line-height:1.4;">Execution decisions — still required, still yours</div>
-        </div>
+      <div class="subhead" style="font-size:22px; max-width:640px; margin:0 auto;">
+        Ceiling, visibility, wind, icing, convective trends. Measured conditions. Not the entire risk picture.
       </div>
     </div>
   </div>
 </div>
 
-<div class="slide slide-shot" data-section="Origin Story" data-time="21:20"
-  data-notes="Regional Watch — what that Thanksgiving experiment looks like in the product. Pattern-level VFR outlook. Pause, then three pillars.">
-  <div class="shot-frame">
-    <img src="/talks/screenshots/16-regional-watch-synoptic.jpg" alt="Regional Watch — powered by Synoptic Intelligence">
-  </div>
-  <div class="shot-caption">
-    <span class="shot-kicker">Regional Watch · Synoptic Intelligence™</span>
-    The big picture — before TAFs exist
+<div class="slide bg-hero" data-section="DSS" data-time="15:30"
+  data-notes="Define DSS in article language. Pressure-test while a change of plan is still a change of plan.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:920px; width:100%;">
+      <div class="label" style="margin-bottom:16px;">Decision support</div>
+      <div class="headline-sm" style="font-size:42px; margin-bottom:24px; line-height:1.15;">Pressure-test the flight<br>while you still have options</div>
+      <ul class="bullet-list" style="max-width:820px;">
+        <li>A high-quality briefing scored to your airplane and mins</li>
+        <li>An honest self-assessment (FRAT)</li>
+        <li>An objective mentor when the call is close</li>
+      </ul>
+      <div style="margin-top:32px; padding:22px 26px; border-radius:14px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); font-size:20px; color:var(--white); line-height:1.45;">
+        That is what a decision support system is for: pressure-testing the flight while a change of plan is still a change of plan.
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="slide bg-night" data-section="PlaneWX" data-time="22:00"
-  data-notes="LAND THIS. PlaneWX is a decision support system. Three pillars. Use all three and you get to a cleaner go/no-go. You stay PIC — 14 CFR 91.3. Complementary to ForeFlight and other EFBs. Do not say ‘not an official briefing’ — there is no such thing.">
+<div class="slide bg-night" data-section="DSS" data-time="17:00"
+  data-notes="LAND THE THREE PILLARS. Same frame as the AOPA article. Use all three. You still own the call.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div style="max-width:960px; width:100%;">
       <div class="label" style="margin-bottom:16px;">The pilot’s decision support system</div>
       <div class="headline-sm" style="font-size:44px; margin-bottom:14px; line-height:1.15;">Three pillars</div>
       <div class="subhead" style="font-size:20px; margin-bottom:32px; color:var(--muted); max-width:820px;">
-        Use all three. Get to a go/no-go. You still own the call.
+        Use all three. Get to a cleaner go/no-go. You still own the call.
       </div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:24px;">
         <div style="padding:28px 24px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3);">
           <div style="font-size:14px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:14px;">01</div>
           <div style="font-size:24px; font-weight:800; color:var(--white); line-height:1.2; margin-bottom:12px;">Weather briefing</div>
-          <div style="font-size:16px; color:var(--muted); line-height:1.45;">National, regional, and Synoptic Intelligence™ — scored to your airplane and your mins.</div>
+          <div style="font-size:16px; color:var(--muted); line-height:1.45;">WX SCORE against your aircraft and personal minimums.</div>
         </div>
         <div style="padding:28px 24px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3);">
           <div style="font-size:14px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:14px;">02</div>
-          <div style="font-size:24px; font-weight:800; color:var(--white); line-height:1.2; margin-bottom:12px;">Integrated FRAT</div>
-          <div style="font-size:16px; color:var(--muted); line-height:1.45;">Flight Risk Assessment Tool. Built on the FAA’s PAVE framework. Weather already filled in.</div>
+          <div style="font-size:24px; font-weight:800; color:var(--white); line-height:1.2; margin-bottom:12px;">Living FRAT</div>
+          <div style="font-size:16px; color:var(--muted); line-height:1.45;">Trip-tied PAVE. Environment from the live briefing. Pilot and Aircraft from your profile.</div>
         </div>
         <div style="padding:28px 24px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3);">
           <div style="font-size:14px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:14px;">03</div>
-          <div style="font-size:24px; font-weight:800; color:var(--white); line-height:1.2; margin-bottom:12px;">Mentor matchmaking</div>
-          <div style="font-size:16px; color:var(--muted); line-height:1.45;">A second set of eyes on your exact briefing — when the call still feels hard.</div>
+          <div style="font-size:24px; font-weight:800; color:var(--white); line-height:1.2; margin-bottom:12px;">Mentor network</div>
+          <div style="font-size:16px; color:var(--muted); line-height:1.45;">An objective second opinion. Mentor sees your exact briefing and flagged concerns.</div>
         </div>
       </div>
       <div style="padding:16px 22px; border-radius:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); font-size:18px; color:var(--white); text-align:center;">
-        Complementary to ForeFlight and other EFBs. <span style="color:var(--muted);">14 CFR 91.3 — you decide.</span>
+        Sits beside your EFB. Does not replace charts, filing, or official weather. <span style="color:var(--muted);">PIC remains responsible.</span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="PlaneWX" data-time="22:30"
-  data-notes="Philosophy. We don’t make pilots pay for safety. Briefing, FRAT, the decision tools — full quality on free. Paid is the machine that watches: auto-refresh, alerts, Labs. Don’t walk a price table. Pro Plus is the 5X5 path — Dan already covered the numbers.">
-  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="max-width:920px; width:100%;">
-      <div class="label" style="margin-bottom:16px;">How we charge</div>
-      <div class="headline-sm" style="font-size:42px; margin-bottom:16px; line-height:1.15;">We don’t make you<br>pay for safety</div>
-      <div class="subhead" style="font-size:20px; margin-bottom:32px; color:var(--muted); max-width:800px;">
-        The briefing is full quality on free. Paid is the watching — not a better go/no-go.
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-        <div style="padding:26px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3);">
-          <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:14px;">Free</div>
-          <ul class="bullet-list tight" style="font-size:18px;">
-            <li>Full-quality weather briefing</li>
-            <li>Integrated FRAT</li>
-            <li>Mentors</li>
-          </ul>
-        </div>
-        <div style="padding:26px; border-radius:16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12);">
-          <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:14px;">Paid</div>
-          <ul class="bullet-list tight" style="font-size:18px;">
-            <li>Auto-refresh · watches between flights</li>
-            <li>Alerts · Labs · more trips</li>
-            <li>Pro Plus is the 5X5 path</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-dark" data-section="Briefing" data-time="23:00"
-  data-notes="Pillar 1 depth. Three scales: national watch, 23 regional summaries, Synoptic Intelligence (multi-WFO AFDs + NBM + your local office). Don’t drown them in model names.">
-  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="max-width:960px; width:100%;">
-      <div class="label" style="margin-bottom:16px;">Pillar 1 · Weather briefing</div>
-      <div class="headline-sm" style="font-size:42px; margin-bottom:28px;">National · regional · synoptic</div>
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <div style="padding:22px 26px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25);">
-          <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky); margin-bottom:6px;">National</div>
-          <div style="font-size:20px; color:var(--white);">The pattern across the country — what is moving, and when.</div>
-        </div>
-        <div style="padding:22px 26px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25);">
-          <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky); margin-bottom:6px;">Regional</div>
-          <div style="font-size:20px; color:var(--white);">23 GA flight-planning regions. Multi-office AFDs blended into one pilot summary.</div>
-        </div>
-        <div style="padding:22px 26px; border-radius:14px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.35);">
-          <div style="font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--sky); margin-bottom:6px;">Synoptic Intelligence™</div>
-          <div style="font-size:20px; color:var(--white);">Your route. Your offices. Calibrated with NBM. Plus your single local forecast office — their words, their timing.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-hero" data-section="Briefing" data-time="24:00"
-  data-notes="At its core we quantify weather risk vs aircraft + personal minimums. Point at the WX Score card. Decision support — PIC still decides.">
+<div class="slide bg-hero" data-section="Pillar 1" data-time="19:00"
+  data-notes="Pillar 1. Quantify weather risk vs aircraft + personal mins. Point at WX Score card.">
   <div class="slide-inner pad" style="flex-direction:row; gap:48px; align-items:center; min-height:720px;">
     <div style="flex:1; text-align:left;">
-      <div class="label" style="margin-bottom:16px;">At its core</div>
-      <div class="headline" style="font-size:42px; margin-bottom:24px; line-height:1.15;">We quantify weather risk</div>
+      <div class="label" style="margin-bottom:16px;">Pillar 1 · Weather briefing</div>
+      <div class="headline" style="font-size:42px; margin-bottom:24px; line-height:1.15;">WX SCORE against<br>your airplane and mins</div>
       <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:24px; max-width:520px;">
         <div style="padding:18px 20px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); border-radius:14px;">
           <div style="font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:6px;">Aircraft</div>
@@ -1183,7 +1005,7 @@
         </div>
       </div>
       <div style="font-size:18px; font-weight:600; color:var(--white); max-width:520px; line-height:1.4;">
-        Not generic weather — a <span style="color:var(--sky);">WX Score</span> for this airplane and this pilot.
+        Not generic weather. A <span style="color:var(--sky);">WX SCORE</span> for this airplane and this pilot.
       </div>
     </div>
     <div style="flex:0 0 300px;">
@@ -1194,8 +1016,8 @@
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="Briefing" data-time="25:00"
-  data-notes="THIS ROOM. Same route, same day, two airplanes. SR22T 61 vs TBM 900 86. The briefing knows FIKI and FL260. That’s why it’s decision support, not a METAR reprint.">
+<div class="slide bg-dark" data-section="Pillar 1" data-time="21:00"
+  data-notes="THIS ROOM. Same route, same day, two airplanes. SR22T 61 vs TBM 900 86. The briefing knows FIKI and FL260. Decision support, not a METAR reprint.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="headline-sm" style="margin-bottom:40px; font-size:40px;">Same route · Same day · Two aircraft</div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:900px;">
@@ -1224,38 +1046,49 @@
         <ul class="bullet-list tight" style="font-size:17px;">
           <li>FIKI handles en-route icing</li>
           <li>FL260 available: above weather</li>
-          <li>TAS: 330 kts — minimizes exposure</li>
+          <li>TAS: 330 kts reduces exposure</li>
         </ul>
       </div>
     </div>
   </div>
 </div>
 
-<div class="slide bg-hero" data-section="Briefing" data-time="26:00"
-  data-notes="LIVE DEMO. Leave this up. Switch to PlaneWX. Open one of your own weather briefings. Walk the WX Score, the window, ceilings. You stay PIC. Then come back for pillar 2 — FRAT.">
+<div class="slide slide-shot" data-section="Pillar 1" data-time="22:30"
+  data-notes="Regional Watch / synoptic picture. Days-out schedule decisions. TAFs still day-of. Then live demo.">
+  <div class="shot-frame">
+    <img src="/talks/screenshots/16-regional-watch-synoptic.jpg" alt="Regional Watch powered by Synoptic Intelligence">
+  </div>
+  <div class="shot-caption">
+    <span class="shot-kicker">Pillar 1 · Days out</span>
+    The big picture before TAFs exist
+  </div>
+</div>
+
+<div class="slide bg-hero" data-section="Pillar 1" data-time="23:30"
+  data-notes="LIVE DEMO. Leave this up. Switch to PlaneWX. Open a real briefing. Walk WX SCORE, window, ceilings. Frame as pillar 1 of the DSS. Then return for FRAT.">
   <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
     <div style="max-width:880px;">
-      <div class="label" style="margin-bottom:24px;">Pillar 1 · Live demo</div>
-      <div class="headline" style="font-size:56px; margin-bottom:20px; line-height:1.1;">My weather briefing</div>
+      <div class="label" style="margin-bottom:24px;">Pillar 1 · Live look</div>
+      <div class="headline" style="font-size:56px; margin-bottom:20px; line-height:1.1;">A real weather briefing</div>
       <div class="subhead" style="font-size:24px; color:var(--muted); max-width:640px; margin:0 auto;">
-        A real trip — scored to this airplane and these mins
+        Scored to this airplane and these mins. One pillar of the decision.
       </div>
     </div>
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="FRAT" data-time="32:00"
-  data-notes="Pillar 2. Say FRAT first. Then: built on FAA PAVE — Pilot, Aircraft, enVironment, External. Unlocks in last 4 hours so it’s honest. Environment comes from the briefing. You add you.">
+<div class="slide bg-dark" data-section="Pillar 2" data-time="28:00"
+  data-notes="Pillar 2. Living FRAT. Trip-tied PAVE. Environment from live briefing. Pilot/Aircraft from profile. Not a static form you file away.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div style="max-width:900px; width:100%;">
-      <div class="label" style="margin-bottom:16px;">Pillar 2 · Integrated FRAT</div>
-      <div class="headline-sm" style="font-size:44px; margin-bottom:12px;">A Flight Risk Assessment Tool<br>with the weather already in it</div>
-      <div class="subhead" style="font-size:20px; margin-bottom:32px; color:var(--muted);">Built on the FAA’s PAVE framework. Opens in the last 4 hours — so it’s you, today.</div>
+      <div class="label" style="margin-bottom:16px;">Pillar 2 · Living FRAT</div>
+      <div class="headline-sm" style="font-size:42px; margin-bottom:12px;">A conversation with yourself<br>tied to the trip you are flying</div>
+      <div class="subhead" style="font-size:20px; margin-bottom:32px; color:var(--muted);">Built on the FAA’s PAVE framework. Risk updates as the forecast and plan change.</div>
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px;">
         <div style="padding:20px 16px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); text-align:center;">
           <div style="font-size:28px; font-weight:800; color:var(--sky);">P</div>
           <div style="font-size:16px; font-weight:700; color:var(--white); margin-top:8px;">Pilot</div>
-          <div style="font-size:13px; color:var(--muted); margin-top:6px;">IMSAFE · fatigue · currency</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:6px;">From your profile · currency · fatigue</div>
         </div>
         <div style="padding:20px 16px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); text-align:center;">
           <div style="font-size:28px; font-weight:800; color:var(--sky);">A</div>
@@ -1265,7 +1098,7 @@
         <div style="padding:20px 16px; border-radius:14px; background:rgba(14,165,233,0.12); border:1px solid rgba(14,165,233,0.4); text-align:center;">
           <div style="font-size:28px; font-weight:800; color:var(--sky);">V</div>
           <div style="font-size:16px; font-weight:700; color:var(--white); margin-top:8px;">enVironment</div>
-          <div style="font-size:13px; color:var(--muted); margin-top:6px;">Auto-filled from the briefing</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:6px;">From the live briefing</div>
         </div>
         <div style="padding:20px 16px; border-radius:14px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); text-align:center;">
           <div style="font-size:28px; font-weight:800; color:var(--sky);">E</div>
@@ -1277,29 +1110,29 @@
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="FRAT" data-time="34:00"
-  data-notes="Paper FRAT vs this one. Don’t say steroids. Say: same categories, weather not guessed, airplane-specific, saved. You document GO / modify / postpone / no-go. PlaneWX does not decide.">
+<div class="slide bg-dark" data-section="Pillar 2" data-time="30:00"
+  data-notes="Paper FRAT vs living. Same four boxes. Different homework. PlaneWX does not decide.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div style="max-width:920px; width:100%;">
-      <div class="label" style="margin-bottom:16px;">Paper FRAT vs. this FRAT</div>
+      <div class="label" style="margin-bottom:16px;">Paper FRAT vs. living FRAT</div>
       <div class="headline-sm" style="font-size:40px; margin-bottom:28px;">Same four boxes.<br>Different homework.</div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
         <div style="padding:26px; border-radius:16px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1);">
           <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">Typical paper FRAT</div>
           <ul class="bullet-list tight" style="font-size:18px;">
-            <li>You check the weather, then check boxes</li>
+            <li>You check weather, then check boxes</li>
             <li>Generic airplane</li>
             <li>Filed in a cabinet</li>
-            <li>No look-back</li>
+            <li>Static form you skip under pressure</li>
           </ul>
         </div>
         <div style="padding:26px; border-radius:16px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3);">
-          <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:16px;">Integrated FRAT</div>
+          <div style="font-size:14px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--sky); margin-bottom:16px;">Living FRAT</div>
           <ul class="bullet-list tight" style="font-size:18px;">
             <li>Environment comes from the briefing</li>
-            <li>Your TBM — FIKI, mins, equipment</li>
-            <li>Saved with the trip</li>
-            <li>Ready for the debrief later</li>
+            <li>Your TBM: FIKI, mins, equipment</li>
+            <li>Tied to the trip you are flying</li>
+            <li>Updates as forecast and plan change</li>
           </ul>
         </div>
       </div>
@@ -1307,173 +1140,116 @@
   </div>
 </div>
 
-<div class="slide slide-shot" data-section="FRAT" data-time="35:30"
-  data-notes="Final FRAT decision screen. YOU document the call. PlaneWX does not decide. Same philosophy as WX Score.">
+<div class="slide slide-shot" data-section="Pillar 2" data-time="32:00"
+  data-notes="FRAT decision screen. YOU document the call. PlaneWX does not decide. Same philosophy as WX SCORE.">
   <div class="shot-frame">
-    <img src="/talks/screenshots/14-pave-decision.png" alt="FRAT final decision — PIC owns the call">
+    <img src="/talks/screenshots/14-pave-decision.png" alt="FRAT final decision. PIC owns the call">
   </div>
   <div class="shot-caption">
     <span class="shot-kicker">FRAT · Your decision</span>
-    You document the call — PlaneWX does not make it
+    You document the call. PlaneWX does not make it.
   </div>
 </div>
 
-<div class="slide bg-hero" data-section="Mentors" data-time="37:00"
-  data-notes="Pillar 3. Mentors see the exact briefing and FRAT — not a phone description. Need Help Now vs Browse. Off-platform. Standing Mentors coming. Never assigned. Optional — sits beside the loop.">
+<div class="slide bg-hero" data-section="Pillar 3" data-time="33:30"
+  data-notes="Pillar 3. Mentors catch blind spots. They are not carrying your passengers or schedule. Mentors see exact briefing + flagged concerns.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div style="width:100%; max-width:960px;">
-      <div class="label" style="margin-bottom:14px;">Pillar 3 · Mentor matchmaking</div>
-      <div class="headline-sm" style="font-size:42px; margin-bottom:16px;">No pilot faces the call alone</div>
+      <div class="label" style="margin-bottom:14px;">Pillar 3 · Mentor network</div>
+      <div class="headline-sm" style="font-size:42px; margin-bottom:16px;">An objective second opinion</div>
       <div class="subhead" style="font-size:20px; margin-bottom:32px; color:var(--muted); max-width:820px;">
-        Mentors see your exact briefing and FRAT. The conversation starts with real data.
+        Good pilots miss their own blind spots. A mentor is not carrying your passengers, your schedule, or your get-there-itis.
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:24px;">
         <div style="padding:26px; border-radius:16px; background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.3);">
-          <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--label-accent); margin-bottom:12px;">Need Help Now</div>
-          <div style="font-size:18px; color:var(--muted); line-height:1.45;">Broadcast to available mentors. Shared briefing. Off-platform call — phone, text, WhatsApp.</div>
+          <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--label-accent); margin-bottom:12px;">What they see</div>
+          <div style="font-size:18px; color:var(--muted); line-height:1.45;">Your exact weather briefing and the concerns you flagged before they accept.</div>
         </div>
         <div style="padding:26px; border-radius:16px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25);">
-          <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:12px;">Browse Mentors</div>
-          <div style="font-size:18px; color:var(--muted); line-height:1.45;">Find someone who flies your type. Direct request. Experience finally transfers.</div>
+          <div style="font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--sky); margin-bottom:12px;">What they are not</div>
+          <div style="font-size:18px; color:var(--muted); line-height:1.45;">Not omniscient. Not a substitute for PIC judgment. Volunteer peers when the call is close.</div>
         </div>
       </div>
       <div style="padding:18px 24px; border-radius:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); font-size:18px; color:var(--white); line-height:1.4;">
-        Optional. We never assign a mentor. <span style="color:var(--muted);">Standing Mentors — a person you choose, on a cadence — is coming.</span>
+        Optional. We never assign a mentor. <span style="color:var(--muted);">The conversation starts with real data, not a phone description of the weather.</span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="slide slide-shot" data-section="Mentors" data-time="38:30"
+<div class="slide slide-shot" data-section="Pillar 3" data-time="35:30"
   data-notes="Ask a Mentor modal. They see the briefing. PIC disclaimer: volunteer peer, you retain 91.3.">
   <div class="shot-frame">
-    <img src="/talks/screenshots/15-ask-mentor.jpg" alt="Ask a Mentor — Need Help Now and Browse Mentors">
+    <img src="/talks/screenshots/15-ask-mentor.jpg" alt="Ask a Mentor">
   </div>
   <div class="shot-caption">
     <span class="shot-kicker">Ask a Mentor</span>
-    They see your briefing — you still own the call
+    They see your briefing. You still own the call.
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="Horizon" data-time="40:00"
-  data-notes="HORIZON. This is the help-doc loop with FRAT instead of PAVE. Brief → FRAT → fly or stay → self-debrief → feeds the next trip. Mentor sits beside. Self-debrief is live (Labs / Pro Plus). Living FRAT is the destination — say on the horizon. Do not claim the FRAT already rewrites itself.">
-  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="max-width:1040px; width:100%;">
-      <div class="label" style="margin-bottom:10px;">On the horizon</div>
-      <div style="font-size:18px; font-weight:800; color:var(--white); margin-bottom:20px;">The risk loop</div>
-      <div style="display:grid; grid-template-columns:1fr 160px 1fr 160px 1fr; gap:10px; align-items:center; margin-bottom:16px;">
-        <div style="padding:18px 16px; border-radius:14px; background:#e8f4fc; color:#0b3a52; text-align:center;">
-          <div style="font-size:16px; font-weight:800;">Weather briefing</div>
-          <div style="font-size:13px; margin-top:4px; opacity:0.75;">Watch early. Get precise.</div>
-        </div>
-        <div style="text-align:center; color:var(--sky); font-size:28px; font-weight:800;">→</div>
-        <div style="padding:18px 16px; border-radius:14px; background:#e8f4fc; color:#0b3a52; text-align:center;">
-          <div style="font-size:16px; font-weight:800;">FRAT</div>
-          <div style="font-size:13px; margin-top:4px; opacity:0.75;">Last 4 hours. You, today.<br><span style="font-size:11px;">FAA PAVE</span></div>
-        </div>
-        <div style="text-align:center; color:var(--sky); font-size:28px; font-weight:800;">→</div>
-        <div style="padding:18px 16px; border-radius:14px; background:#e8f4fc; color:#0b3a52; text-align:center;">
-          <div style="font-size:16px; font-weight:800;">Fly or stay</div>
-          <div style="font-size:13px; margin-top:4px; opacity:0.75;">The decision.</div>
-        </div>
-      </div>
-      <div style="display:grid; grid-template-columns:1fr 220px; gap:16px; align-items:stretch;">
-        <div style="padding:20px 22px; border-radius:14px; background:#e8f4fc; color:#0b3a52;">
-          <div style="font-size:16px; font-weight:800;">Pilot Self Debrief</div>
-          <div style="font-size:14px; margin-top:6px; opacity:0.8;">How it actually went — weather vs. brief, pressure, discipline. Feeds the next trip.</div>
-        </div>
-        <div style="padding:20px 22px; border-radius:14px; border:2px dashed rgba(127,179,211,0.45); text-align:center;">
-          <div style="font-size:16px; font-weight:800; color:var(--white);">Mentor</div>
-          <div style="font-size:13px; color:var(--muted); margin-top:6px;">Optional. Same data. Second set of eyes.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-hero" data-section="Horizon" data-time="42:00"
-  data-notes="Self-debrief is live for Pro Plus / Labs. It does not change the WX Score. The living FRAT — a FRAT that updates from your debriefs — is what we’re building next. That’s a more accurate, living FRAT. Horizon. Don’t overclaim.">
-  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
-    <div style="max-width:880px; width:100%;">
-      <div class="label" style="margin-bottom:16px;">On the horizon</div>
-      <div class="headline-sm" style="font-size:42px; margin-bottom:16px; line-height:1.15;">Self-debrief → a living FRAT</div>
-      <div class="subhead" style="font-size:20px; margin-bottom:32px; color:var(--muted); max-width:760px;">
-        The debrief asks how it actually went — while the flight is still in your head.
-      </div>
-      <ul class="bullet-list" style="max-width:780px;">
-        <li>Live today (Labs / Pro Plus): structured look-back after you land</li>
-        <li>Weather vs. brief · pressure · discipline · lessons</li>
-        <li>Does not change your WX Score</li>
-        <li>Next: those debriefs feed a <span style="color:var(--sky);">living FRAT</span> — updated from how you actually fly</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-hero" data-section="Horizon" data-time="42:30"
-  data-notes="LIVE DEMO. Leave this up. Switch to PlaneWX. Open one of your own self-debriefs. Walk weather vs. brief, pressure, discipline. Do not change the WX Score. Then come back for Bring it home.">
-  <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
-    <div style="max-width:880px;">
-      <div class="label" style="margin-bottom:24px;">Live demo</div>
-      <div class="headline" style="font-size:56px; margin-bottom:20px; line-height:1.1;">My self-debrief</div>
-      <div class="subhead" style="font-size:24px; color:var(--muted); max-width:640px; margin:0 auto;">
-        How the flight actually went — while it’s still in my head
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="slide bg-night" data-section="Close" data-time="43:20"
-  data-notes="BRING IT HOME. PlaneWX is a decision support system. Whole purpose: help the pilot come to a safe decision considering all the risks — weather, airplane, you, pressure. Briefing + FRAT + mentor + debrief. You still decide. 91.3.">
+<div class="slide bg-night" data-section="Together" data-time="37:00"
+  data-notes="Bring the three together. Workflow, not features. Beside EFB. Decision-support tools. PIC responsible.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div style="max-width:960px; width:100%;">
-      <div class="label" style="margin-bottom:16px;">Bring it home</div>
-      <div class="headline-sm" style="font-size:42px; margin-bottom:16px; line-height:1.15;">A decision support system</div>
-      <div class="subhead" style="font-size:22px; margin-bottom:32px; color:var(--muted); max-width:820px;">
-        The whole purpose of PlaneWX is to help you come to a safe decision — considering all the risks.
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px;">
-        <div style="padding:22px 16px; border-radius:14px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); text-align:center;">
+      <div class="label" style="margin-bottom:16px;">How the three work together</div>
+      <div class="headline-sm" style="font-size:42px; margin-bottom:28px; line-height:1.15;">One workflow. Not three apps.</div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px;">
+        <div style="padding:24px 18px; border-radius:14px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); text-align:center;">
           <div style="font-size:15px; font-weight:800; color:var(--white);">Briefing</div>
-          <div style="font-size:13px; color:var(--muted); margin-top:8px;">Weather · this airplane</div>
+          <div style="font-size:14px; color:var(--muted); margin-top:10px; line-height:1.4;">WX SCORE for this airplane and these mins</div>
         </div>
-        <div style="padding:22px 16px; border-radius:14px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); text-align:center;">
-          <div style="font-size:15px; font-weight:800; color:var(--white);">FRAT</div>
-          <div style="font-size:13px; color:var(--muted); margin-top:8px;">You · today · pressure</div>
+        <div style="padding:24px 18px; border-radius:14px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); text-align:center;">
+          <div style="font-size:15px; font-weight:800; color:var(--white);">Living FRAT</div>
+          <div style="font-size:14px; color:var(--muted); margin-top:10px; line-height:1.4;">Tied to that briefing and this mission</div>
         </div>
-        <div style="padding:22px 16px; border-radius:14px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); text-align:center;">
+        <div style="padding:24px 18px; border-radius:14px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); text-align:center;">
           <div style="font-size:15px; font-weight:800; color:var(--white);">Mentor</div>
-          <div style="font-size:13px; color:var(--muted); margin-top:8px;">Second set of eyes</div>
-        </div>
-        <div style="padding:22px 16px; border-radius:14px; background:rgba(14,165,233,0.1); border:1px solid rgba(14,165,233,0.3); text-align:center;">
-          <div style="font-size:15px; font-weight:800; color:var(--white);">Debrief</div>
-          <div style="font-size:13px; color:var(--muted); margin-top:8px;">How it actually went</div>
+          <div style="font-size:14px; color:var(--muted); margin-top:10px; line-height:1.4;">When pressure and weather get close</div>
         </div>
       </div>
-      <div style="padding:16px 22px; border-radius:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); font-size:18px; color:var(--white); text-align:center;">
-        That’s the go/no-go. <span style="color:var(--muted);">14 CFR 91.3 — you decide.</span>
+      <div style="padding:22px 26px; border-radius:14px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); font-size:20px; color:var(--white); line-height:1.45;">
+        PlaneWX sits beside your EFB. It does not replace charts, filing, or official weather. Outputs are decision-support tools. <span style="color:var(--sky);">The pilot in command remains responsible for the flight.</span>
       </div>
     </div>
   </div>
 </div>
 
-<div class="slide bg-dark" data-section="Close" data-time="44:00"
-  data-notes="After the hangar. Try it on a real trip. Code TBMOPA. Join the Touch and Go group. Then tagline, then QR. Don’t steal the 1:45 departure brief.">
+<div class="slide bg-dark" data-section="Together" data-time="39:00"
+  data-notes="Flight Chops example from the article. When the window is the mission. Choosing early enough that airplanes can move when weather says yes.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
+    <div style="max-width:920px; width:100%;">
+      <div class="label" style="margin-bottom:16px;">When the window is the mission</div>
+      <div class="headline-sm" style="font-size:40px; margin-bottom:20px; line-height:1.15;">Pick the window early enough<br>that you can still move</div>
+      <div class="subhead" style="font-size:20px; margin-bottom:28px; color:var(--muted); max-width:820px;">
+        In 2026, Flight Chops used PlaneWX to choose the weather window for Chipmunks from Windsor to Oshkosh.
+      </div>
+      <div style="padding:26px 28px; border-radius:16px; background:rgba(14,165,233,0.08); border:1px solid rgba(14,165,233,0.25); font-size:20px; color:var(--white); font-style:italic; line-height:1.5;">
+        “It was a particularly helpful tool while we figured out which weather window to fly the Chipmunks from the Museum (in Windsor near Detroit) to Oshkosh.”
+        <div style="margin-top:14px; font-size:15px; font-style:normal; color:var(--muted);">Flight Chops · The Smokiest AirVenture Arrival</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slide bg-hero" data-section="Close" data-time="41:00"
+  data-notes="Call to action from the article. Run the decision, not just the weather. Brief a real trip. Work the FRAT. Bring a mentor when close.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div style="max-width:880px; width:100%;">
-      <div class="label" style="margin-bottom:16px;">After this hangar</div>
-      <div class="headline-sm" style="font-size:42px; margin-bottom:32px; line-height:1.15;">Use it on a real trip</div>
+      <div class="label" style="margin-bottom:16px;">Before you promise a departure day</div>
+      <div class="headline-sm" style="font-size:42px; margin-bottom:32px; line-height:1.15;">Run the decision,<br>not just the weather</div>
       <ul class="bullet-list" style="max-width:760px;">
-        <li>Put a trip in this week — not a demo airport</li>
-        <li>Code <span style="color:var(--sky);">TBMOPA</span> · 20% off any plan</li>
-        <li>Join the Touch and Go group</li>
+        <li>Brief a real trip this week</li>
+        <li>Work the FRAT while options still exist</li>
+        <li>Bring a mentor in when the call is close</li>
+        <li>Code <span style="color:var(--sky);">TBMOPA</span> at planewx.ai</li>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="slide bg-night" data-section="Close" data-time="44:20"
-  data-notes="Say it slowly. Decision support isn’t flying in everything. It’s knowing the difference — early. Confidence to go, courage to stay.">
+<div class="slide bg-night" data-section="Close" data-time="42:30"
+  data-notes="Say it slowly. Decision support is not flying in everything. It is knowing the difference early. Confidence to go, courage to stay.">
   <div class="slide-inner" style="justify-content:center; align-items:center; min-height:720px; text-align:center; padding:64px;">
     <div style="max-width:900px;">
       <div class="tagline" style="font-size:56px;">
@@ -1488,31 +1264,32 @@
   </div>
 </div>
 
-<div class="slide bg-hero" data-section="Close" data-time="44:30" data-no-corner-qr
-  data-notes="CTA. TBMOPA is 20% off any plan. Join the Touch and Go group. Free trial, no card. Thank TBMOPA and Dan. Then Q&A. Don’t steal the 1:45 departure brief.">
+<div class="slide bg-hero" data-section="Close" data-time="43:30" data-no-corner-qr
+  data-notes="CTA + Q&A. Thank TBMOPA. Stay for questions. Free trial, no card. Code TBMOPA.">
   <div class="slide-inner pad" style="flex-direction:row; gap:72px; align-items:center; justify-content:center; min-height:720px;">
     <div style="text-align:center;">
       <div style="background:var(--white); padding:20px; border-radius:20px; display:inline-block; margin-bottom:16px;">
         <img src="/talks/tbmopa-signup-qr.png" alt="planewx.ai QR code" style="width:220px; height:220px; display:block;"
           onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'width:220px;height:220px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999\'>QR: planewx.ai</div>'">
       </div>
-      <div style="font-size:13px; color:var(--muted);">Scan — no app needed</div>
+      <div style="font-size:13px; color:var(--muted);">Scan · no app needed</div>
     </div>
     <div>
-      <div class="label" style="margin-bottom:16px;">For TBMOPA</div>
-      <div class="headline-sm" style="font-size:48px; margin-bottom:14px; line-height:1.1;">Try PlaneWX</div>
+      <div class="label" style="margin-bottom:16px;">TBMOPA Webinar</div>
+      <div class="headline-sm" style="font-size:48px; margin-bottom:14px; line-height:1.1;">Questions</div>
       <div class="subhead" style="font-size:24px; margin-bottom:10px; color:var(--sky);">
-        Code <span style="font-weight:800;">TBMOPA</span> · 20% off any plan
+        Code <span style="font-weight:800;">TBMOPA</span> · planewx.ai
       </div>
-      <div style="font-size:18px; color:var(--muted); margin-bottom:22px;">14-day trial · no credit card · join the Touch and Go group</div>
-      <div style="font-size:22px; font-weight:700; color:var(--white); margin-bottom:20px;">planewx.ai</div>
+      <div style="font-size:18px; color:var(--muted); margin-bottom:22px;">Brief a real trip · work the FRAT · ask a mentor when close</div>
+      <div style="font-size:22px; font-weight:700; color:var(--white); margin-bottom:20px;">mark@planewx.ai</div>
       <ul class="bullet-list tight" style="font-size:18px; color:var(--muted);">
-        <li>Apply TBMOPA at checkout</li>
-        <li>Questions now — then the 1:45 departure brief</li>
+        <li>Same decision support on Free as on paid</li>
+        <li>Automation is what you pay for. Safety is not.</li>
       </ul>
     </div>
   </div>
 </div>
+
 
   <a id="corner-qr" class="corner-qr is-hidden" href="https://www.planewx.ai/?ref=TBMOPA" target="_blank" rel="noopener" title="planewx.ai">
     <div class="corner-qr-pad">
