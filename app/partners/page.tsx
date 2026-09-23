@@ -8,11 +8,11 @@ import { SiteFooter } from "@/components/shared/site-footer"
 export const metadata: Metadata = {
   title: "Partners",
   description:
-    "Partners who help pilots fly safer. PlaneWX works with aviation organizations and companies that support general aviation decision support.",
+    "Partners who believe in PlaneWX. Companies and brands in active collaboration with PlaneWX.",
   openGraph: {
     title: "Partners | PlaneWX",
     description:
-      "Partners who help pilots fly safer. Meet the organizations working alongside PlaneWX for general aviation.",
+      "Partners who believe in PlaneWX. Companies and brands in active collaboration with PlaneWX.",
     type: "website",
     url: "https://www.planewx.ai/partners",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Partners | PlaneWX",
     description:
-      "Partners who help pilots fly safer. Meet the organizations working alongside PlaneWX for general aviation.",
+      "Partners who believe in PlaneWX. Companies and brands in active collaboration with PlaneWX.",
   },
   alternates: {
     canonical: "https://www.planewx.ai/partners",
@@ -81,6 +81,20 @@ const PARTNERS = [
     },
     blurb:
       "Training and storytelling that put real pilot decision-making on camera. A PlaneWX partner helping more pilots brief with intent.",
+  },
+  {
+    name: "IMC TV Media",
+    href: "https://imctvmedia.com/",
+    logo: {
+      // Light stacked mark for dark DSS cards; color master at /partners/imc-tv.png
+      src: "/partners/imc-tv-white.png",
+      alt: "Kneeboard Pro by IMC TV Media logo",
+      width: 1120,
+      height: 840,
+      className: "h-16 sm:h-[4.5rem] w-auto max-w-[11rem] object-contain",
+    },
+    blurb:
+      "Aviation media partner behind Kneeboard Pro. Flight instruction, consulting, and video production for the GA community.",
   },
   {
     name: "EAA",
@@ -220,14 +234,23 @@ export default function PartnersPage() {
             Partners
           </h1>
           <p className="text-lg sm:text-xl text-white/65 leading-relaxed">
-            Partners who help pilots fly safer.
+            Partners who believe in PlaneWX.
           </p>
           <p className="text-sm sm:text-base text-white/45 leading-relaxed">
-            PlaneWX is built with the GA community: clubs, brands, and pilots who
-            care about clearer go / no-go calls. Listing here means collaboration
-            or shared community, not an endorsement of PlaneWX by any partner. The
-            PIC still owns every decision.
+            We partner with companies and brands that believe in what we&rsquo;re
+            building. Listing here means an active collaboration with PlaneWX.
           </p>
+          <div className="pt-1 space-y-3">
+            <p className="text-sm sm:text-base text-white/55 leading-relaxed">
+              Want to partner with us? Reach out. We&rsquo;ll take it from there.
+            </p>
+            <a
+              href="mailto:hello@planewx.ai?subject=Partnership%20inquiry"
+              className="inline-flex items-center justify-center rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all"
+            >
+              Partner with us
+            </a>
+          </div>
         </header>
 
         <section aria-labelledby="partners-grid-heading" className="space-y-5">
