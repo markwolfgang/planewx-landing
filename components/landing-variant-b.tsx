@@ -52,7 +52,7 @@ export function LandingVariantB() {
       <nav className="relative z-10 border-b border-white/5">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <BrandLogo className="h-9 w-auto" priority />
+            <BrandLogo variant="wordmarkTransparent" className="h-9 w-auto" priority />
             <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
               The Pilot&apos;s Decision Support System
             </span>
