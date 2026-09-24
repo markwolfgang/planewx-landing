@@ -29,7 +29,7 @@ loop:
     accent: blue
     title: FRAT
     body: Pilot, Aircraft, enVironment, External. Unlocked in the final hours. Flags risk stacking when
-      3 or more factors are elevated, but never forces a no-go.
+      3 or more factors are elevated, but never makes the call for you.
   - num: 3
     accent: emerald
     title: Fly or Stay
@@ -66,7 +66,7 @@ problemSolution:
   problem:
     title: The Problem
     paragraphs:
-    - Pilots are forced into go/no-go decisions at the moment of maximum pressure, bags packed, family
+    - Pilots are forced into fly-or-stay decisions at the moment of maximum pressure, bags packed, family
       waiting, hotels booked, when TAFs only cover 24 hours. Nobody helps analyze the vast quantity of
       weather data available beyond that window.
     - And they face that decision alone. There's no system for connecting a student pilot or low-time
@@ -76,7 +76,7 @@ problemSolution:
     title: The Solution
     body: PlaneWX doesn't tell you not to fly. It gives you the information to make that decision yourself,
       days earlier, when you still have options. It's your early warning system that you might need to
-      reschedule your plans. The PIC always owns the final go/no-go.
+      reschedule your plans. The PIC always owns the final call.
   differentiator:
     title: The Differentiator
     body: This is the difference between a data display and a decision support system. Every EFB displays
@@ -287,7 +287,7 @@ positioning:
     Synoptic Intelligence, and provide aircraft-specific analysis that goes deeper than any EFB within
     24 hours. We complement, not compete with, existing tools.
   quote: Every EFB and weather tool displays raw data and hands the analysis back to you. The cognitive
-    work of synthesizing it, assessing risk, and forming a go/no-go judgment lands entirely on you, alone,
+    work of synthesizing it, assessing risk, and forming a fly-or-stay judgment lands entirely on you, alone,
     often under pressure. PlaneWX is the first tool that does that synthesis for you. You still own the
     decision.
 audienceHooks:
@@ -312,7 +312,7 @@ messaging:
   primary:
   - line: Every weather tool shows you data. PlaneWX helps you decide.
     note: Primary hero headline
-  - line: The confidence to go, or the courage to stay™
+  - line: Fly like it's your job.
     note: Brand tagline
   - line: Stop being your own meteorologist.
     note: Closing CTA

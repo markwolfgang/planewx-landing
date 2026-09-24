@@ -22,7 +22,7 @@
 
 ### Intentional brand-safe rewrites (Mark locks 2026-09-20)
 
-Where the portal named ForeFlight / Garmin in competitive or "bash vs complement" framing, copy now uses **your EFB** / **Flight Service**. Complement-not-replace and PIC-owns-go/no-go framing preserved or clarified. Em dashes avoided in those rewritten passages only; existing story facts were not invented or changed.
+Where the portal named ForeFlight / Garmin in competitive or "bash vs complement" framing, copy now uses **your EFB** / **Flight Service**. Complement-not-replace and PIC-owns-the-call framing preserved or clarified. Em dashes avoided in those rewritten passages only; existing story facts were not invented or changed.
 
 ### App docs deltas
 
@@ -30,6 +30,6 @@ Attempted to pull useful deltas from `markwolfgang/v0-planewx-v0` (`docs/PLANEWX
 
 ### 2026-09-20 - Mark preview copy locks
 
-- Replaced no-go stat framing that used "confidence" with courage-to-stay wording (keep 90/80). Trademark tagline unchanged.
+- Replaced stay-decision stat framing that used "confidence" with courage-to-stay wording (keep 90/80). Trademark tagline unchanged.
 - Removed Traction paid-subscriber headcount card from public brand materials. No paid/paying subscriber counts on /brand.
 - Expanded Founder on `/brand` (bio, Synoptic origin why, feedback cadence) plus Pilot Mark personal YouTube CTA. Full origin stays on `/brand/why`. Personal channel is Founder-only, not listed as an official PlaneWX account.
