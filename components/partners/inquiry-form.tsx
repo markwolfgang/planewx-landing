@@ -62,6 +62,7 @@ export function PartnerInquiryForm() {
           <input
             name="org"
             required
+            maxLength={200}
             value={org}
             onChange={(e) => setOrg(e.target.value)}
             autoComplete="organization"
@@ -74,6 +75,7 @@ export function PartnerInquiryForm() {
           <input
             name="name"
             required
+            maxLength={120}
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoComplete="name"
@@ -88,6 +90,7 @@ export function PartnerInquiryForm() {
           name="email"
           type="email"
           required
+          maxLength={254}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
@@ -102,6 +105,7 @@ export function PartnerInquiryForm() {
         <textarea
           name="note"
           required
+          maxLength={4000}
           rows={4}
           value={note}
           onChange={(e) => setNote(e.target.value)}

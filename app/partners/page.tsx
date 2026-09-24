@@ -163,9 +163,9 @@ const PARTNERS = [
     logo: {
       src: "/partners/tbmopa-logo.png",
       alt: "TBMOPA logo",
-      width: 2304,
-      height: 1728,
-      className: "h-14 sm:h-16 w-auto max-w-[10rem] object-contain",
+      width: 1427,
+      height: 425,
+      className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
     },
     blurb:
       "Owner and pilot organization for the TBM community. Events, education, and a place for TBM operators to learn and connect, including PlaneWX talks.",

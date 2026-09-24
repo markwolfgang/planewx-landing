@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react"
 
 type PhotoSlide = {
   type: "photo"
@@ -92,7 +92,9 @@ const AUTO_MS = 4500
 
 export function AmbassadorsMediaCarousel() {
   const scrollerRef = useRef<HTMLDivElement>(null)
-  const [paused, setPaused] = useState(false)
+  const [hoverPaused, setHoverPaused] = useState(false)
+  const [userPaused, setUserPaused] = useState(false)
+  const paused = hoverPaused || userPaused
 
   const scrollByCard = useCallback((dir: -1 | 1, wrap = false) => {
     const scroller = scrollerRef.current
@@ -103,7 +105,11 @@ export function AmbassadorsMediaCarousel() {
     const step = card.offsetWidth + gap
     const max = scroller.scrollWidth - scroller.clientWidth
     if (wrap && dir === 1 && scroller.scrollLeft + step >= max - 4) {
-      scroller.scrollTo({ left: 0, behavior: "auto" })
+      // Instant wrap: bypass CSS scroll-smooth on the container
+      const prev = scroller.style.scrollBehavior
+      scroller.style.scrollBehavior = "auto"
+      scroller.scrollLeft = 0
+      scroller.style.scrollBehavior = prev
       return
     }
     scroller.scrollBy({
@@ -133,11 +139,25 @@ export function AmbassadorsMediaCarousel() {
     const root = scrollerRef.current
     if (!root) return
     const videos = Array.from(root.querySelectorAll("video"))
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)")
+
+    const syncVideos = () => {
+      for (const video of videos) {
+        if (reduced.matches) {
+          video.pause()
+        }
+      }
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           const video = entry.target as HTMLVideoElement
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.45) {
+          if (
+            entry.isIntersecting &&
+            entry.intersectionRatio >= 0.45 &&
+            !reduced.matches
+          ) {
             const play = video.play()
             if (play) play.catch(() => {})
           } else {
@@ -148,7 +168,12 @@ export function AmbassadorsMediaCarousel() {
       { root, threshold: [0.45] }
     )
     videos.forEach((video) => observer.observe(video))
-    return () => observer.disconnect()
+    reduced.addEventListener("change", syncVideos)
+    syncVideos()
+    return () => {
+      observer.disconnect()
+      reduced.removeEventListener("change", syncVideos)
+    }
   }, [])
 
   return (
@@ -156,12 +181,12 @@ export function AmbassadorsMediaCarousel() {
       aria-roledescription="carousel"
       aria-label="PlaneWX community at Oshkosh"
       className="relative w-full"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
+      onMouseEnter={() => setHoverPaused(true)}
+      onMouseLeave={() => setHoverPaused(false)}
+      onFocusCapture={() => setHoverPaused(true)}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-          setPaused(false)
+          setHoverPaused(false)
         }
       }}
     >
@@ -235,6 +260,22 @@ export function AmbassadorsMediaCarousel() {
           className="shrink-0 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 border border-white/15 text-white"
         >
           <ChevronRight className="h-5 w-5" aria-hidden />
+        </button>
+      </div>
+      <div className="mt-3 flex justify-center">
+        <button
+          type="button"
+          onClick={() => setUserPaused((value) => !value)}
+          aria-pressed={userPaused}
+          aria-label={userPaused ? "Resume automatic scrolling" : "Pause automatic scrolling"}
+          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 hover:bg-white/20 px-3.5 py-1.5 text-xs font-medium text-white/80 hover:text-white transition-colors"
+        >
+          {userPaused ? (
+            <Play className="h-3.5 w-3.5" aria-hidden />
+          ) : (
+            <Pause className="h-3.5 w-3.5" aria-hidden />
+          )}
+          {userPaused ? "Resume" : "Pause"}
         </button>
       </div>
     </section>
