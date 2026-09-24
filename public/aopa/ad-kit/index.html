@@ -356,13 +356,13 @@ code {
     <div class="section-label">01 · Preview</div>
     <h2>Live unit and static states</h2>
     <p class="lead">
-      Left: live HTML5 300×250 that expands right to 600×250 (5X5 panel). Hover or tap to expand; close with ×.
+      Left: live HTML5 300×250 that expands right to 600×250 using the approved JPEG faces. Hover or tap to expand; close with × (top-right of the 5X5 half).
       Right: static JPEG previews of both states, left-anchored like the live unit.
     </p>
     <div class="preview-grid">
       <div class="preview-card">
         <h3>Live HTML5 (demo)</h3>
-        <p class="hint">Demo mode: expand and collapse without leaving this page. Production clicks open the clickTag. Expands rightward from a left-anchored 300×250.</p>
+        <p class="hint">Demo mode: expand and collapse without leaving this page. Production clicks open the clickTag. Expands rightward from a left-anchored 300×250. Faces are the approved static JPEGs (relative / same-origin URLs on this preview).</p>
         <div class="ad-stage" id="adStage">
           <div class="ad-slot" data-ad-slot="kit" id="adSlot">
             <iframe
@@ -410,8 +410,11 @@ code {
     <div class="section-label">02 · Embed source</div>
     <h2>Self-contained single-file HTML</h2>
     <p class="lead">
-      Exact contents of <code>/aopa/ad/single-file.html</code> (assets inlined as data URIs).
-      Default <code>clickTag</code> is <code>https://www.planewx.ai/?variant=a&amp;ref=AOPA-DISPLAY-OCT26&amp;utm_source=aopa&amp;utm_medium=display&amp;utm_campaign=oct2026</code>. Loaded from that file so this block cannot drift.
+      Exact contents of <code>/aopa/ad/single-file.html</code>. Image faces use absolute
+      <code>https://www.planewx.ai/aopa/ads/...</code> URLs (resolve after merge to production).
+      For trafficking, prefer the GAM zip with bundled relative JPEGs. Default <code>clickTag</code> is
+      <code>https://www.planewx.ai/?variant=a&amp;ref=AOPA-DISPLAY-OCT26&amp;utm_source=aopa&amp;utm_medium=display&amp;utm_campaign=oct2026</code>.
+      Loaded from that file so this block cannot drift.
     </p>
     <div class="code-block-wrap">
       <div class="code-block-toolbar">
@@ -462,9 +465,9 @@ code {
           <td><a class="dl-btn secondary" href="/aopa/ads/planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job@2x.jpg" download>Download @2x</a></td>
         </tr>
         <tr>
-          <td>HTML5 GAM zip (index.html at zip root)</td>
+          <td>HTML5 GAM zip (index.html at zip root; JPEG faces bundled)</td>
           <td class="dims">300×250 to 600×250</td>
-          <td class="size">39.9 KB</td>
+          <td class="size">287.5 KB</td>
           <td><a class="dl-btn" href="/aopa/planewx-aopa-html5-300x250-expand-600x250.zip" download>Download zip</a></td>
         </tr>
         <tr>
@@ -488,18 +491,28 @@ code {
         <span>AOPA.org ROS 300×250 Medium Rectangle, expandable to 600×250. Flight dates: Oct to Dec 2026.</span>
       </li>
       <li>
+        <strong>Creative</strong>
+        <span>
+          Both faces are the approved static JPEGs (collapsed 300×250 and expanded 600×250) with srcset 1x/2x.
+          No hand-built HTML/CSS text, logos, stripes, or wordmarks on the faces.
+        </span>
+      </li>
+      <li>
         <strong>Expand trigger and direction</strong>
         <span>
           Hover expands after about 120 ms; mouse leave collapses. Tap or click expands in this demo.
-          Expands rightward from a left-anchored 300×250 to 600×250. The PlaneWX panel stays at the left edge; the 5X5 panel opens to the right.
-          Close with the × control. In production traffic, a click opens the clickTag URL in a new window.
+          Expands rightward from a left-anchored 300×250 to 600×250. The container grows with overflow hidden;
+          the expanded JPEG is revealed in place (left 300px aligned with the collapsed art).
+          Close with the small × in the top-right navy corner of the 5X5 half (clear of lettering).
+          In production traffic, a click opens the clickTag URL in a new window.
         </span>
       </li>
       <li>
         <strong>File weights</strong>
-        <span>
-          HTML5 zip 39.9 KB. Single-file HTML 36.7 KB (assets inlined). Initial load of modular unit about 27.2 KB
-          (index.html + wordmark SVG + 5X5 panel art). Under the 150 KB initial-load target. No external requests from the unit.
+        <span id="opsWeights">
+          HTML5 zip 287.5 KB (JPEG faces + backup bundled with relative paths). Single-file HTML 7.6 KB
+          (absolute production <code>/aopa/ads/</code> image URLs; resolve after merge). Collapsed initial load 92.3 KB
+          (index.html + collapsed 1x/2x). Under the 150 KB initial-load target. No external requests from the GAM zip unit.
         </span>
       </li>
       <li>

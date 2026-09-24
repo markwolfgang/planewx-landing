@@ -23,7 +23,9 @@ CLICK URL
 NOTES
   The 600x250 is not a standalone AOPA placement. It matches the expanded size of the
   expandable 300x250 Medium Rectangle. Expands rightward from a left-anchored 300x250 to
-  600x250 (PlaneWX stays at left; 5X5 panel opens to the right). Running it as the expand
-  panel needs an HTML5/rich media build (collapsed 300x250 + expand) with a backup image,
-  or AOPA must confirm they can build the expand from static JPEGs.
+  600x250. The HTML5 unit uses these approved JPEGs as the collapsed and expanded faces
+  (srcset 1x/2x); no hand-built HTML/CSS text or logos on the faces. The container grows
+  from 300 to 600 wide with overflow hidden so the expanded JPEG is revealed in place.
+  Close X sits in the top-right navy corner of the 5X5 half, clear of lettering.
+  backup.jpg in the HTML5 zip is the collapsed 300x250 JPEG.
   Send materials to pilot.ads@aopa.org at least 5 business days before launch.

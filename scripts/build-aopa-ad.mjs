@@ -2,7 +2,7 @@
 /**
  * Rebuild AOPA HTML5 ad deliverables:
  *  - public/aopa/planewx-aopa-html5-300x250-expand-600x250.zip  (index.html at zip root)
- *  - public/aopa/ad/single-file.html  (self-contained for /aopa copy block)
+ *  - public/aopa/ad/single-file.html  (absolute planewx.ai /aopa/ads/ image URLs for embed copy)
  *
  * Usage: npm run build:aopa-ad
  */
@@ -14,30 +14,51 @@ import { fileURLToPath } from "url"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, "..")
 const AD_DIR = path.join(ROOT, "public/aopa/ad")
+const ADS_DIR = path.join(ROOT, "public/aopa/ads")
 const ZIP_PATH = path.join(
   ROOT,
   "public/aopa/planewx-aopa-html5-300x250-expand-600x250.zip"
 )
 const SINGLE_PATH = path.join(AD_DIR, "single-file.html")
-const ABS_BASE = "https://www.planewx.ai/aopa/ad"
+const ADS_ABS = "https://www.planewx.ai/aopa/ads"
 
 const INLINE_BUDGET = 150 * 1024
+
+// Map local asset filenames used by index.html → production /aopa/ads/ filenames
+const ASSET_TO_ADS = {
+  "assets/collapsed.jpg": "planewx-aopa-300x250-fly-like-its-your-job.jpg",
+  "assets/collapsed@2x.jpg": "planewx-aopa-300x250-fly-like-its-your-job@2x.jpg",
+  "assets/expanded.jpg":
+    "planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job.jpg",
+  "assets/expanded@2x.jpg":
+    "planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job@2x.jpg",
+}
 
 function kb(n) {
   return (n / 1024).toFixed(1) + " KB"
 }
 
 function listInitialAssets(html) {
-  const files = new Set(["index.html"])
-  const re = /(?:src|href)=["'](assets\/[^"']+)["']/g
-  let m
-  while ((m = re.exec(html))) files.add(m[1])
-  const bg = /url\(["']?(assets\/[^"')]+)["']?\)/g
-  while ((m = bg.exec(html))) files.add(m[1])
+  // Collapsed face only for first paint; expanded is preloaded after
+  const files = new Set(["index.html", "assets/collapsed.jpg"])
+  if (/collapsed@2x/.test(html)) files.add("assets/collapsed@2x.jpg")
   return [...files]
 }
 
-function initialLoadBytes(html) {
+function listAllBundledAssets() {
+  return [
+    "index.html",
+    "backup.jpg",
+    "assets/collapsed.jpg",
+    "assets/collapsed@2x.jpg",
+    "assets/expanded.jpg",
+    "assets/expanded@2x.jpg",
+    "README.md",
+  ]
+}
+
+function initialLoadBytes() {
+  const html = fs.readFileSync(path.join(AD_DIR, "index.html"), "utf8")
   let total = 0
   const rows = []
   for (const rel of listInitialAssets(html)) {
@@ -52,113 +73,91 @@ function initialLoadBytes(html) {
   return { total, rows }
 }
 
+function syncAssetsFromAds() {
+  const pairs = [
+    ["planewx-aopa-300x250-fly-like-its-your-job.jpg", "collapsed.jpg"],
+    ["planewx-aopa-300x250-fly-like-its-your-job@2x.jpg", "collapsed@2x.jpg"],
+    [
+      "planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job.jpg",
+      "expanded.jpg",
+    ],
+    [
+      "planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job@2x.jpg",
+      "expanded@2x.jpg",
+    ],
+  ]
+  for (const [from, to] of pairs) {
+    fs.copyFileSync(path.join(ADS_DIR, from), path.join(AD_DIR, "assets", to))
+  }
+  fs.copyFileSync(
+    path.join(ADS_DIR, "planewx-aopa-300x250-fly-like-its-your-job.jpg"),
+    path.join(AD_DIR, "backup.jpg")
+  )
+}
+
 function buildZip() {
   if (fs.existsSync(ZIP_PATH)) fs.unlinkSync(ZIP_PATH)
-  const args = [
-    "-r",
-    "-X",
-    ZIP_PATH,
-    "index.html",
-    "backup.jpg",
-    "assets/planewx-wordmark.svg",
-    "assets/x5-panel-art.jpg",
-    "assets/5x5-wordmark.svg",
-    "README.md",
-  ]
+  const args = ["-r", "-X", ZIP_PATH, ...listAllBundledAssets()]
   execFileSync("zip", args, { cwd: AD_DIR, stdio: "inherit" })
   return fs.statSync(ZIP_PATH).size
 }
 
-function toDataUri(filePath) {
-  const buf = fs.readFileSync(filePath)
-  const ext = path.extname(filePath).toLowerCase()
-  if (ext === ".svg") {
-    const utf8 = buf.toString("utf8")
-    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(utf8)
-  }
-  const mime =
-    ext === ".png"
-      ? "image/png"
-      : ext === ".jpg" || ext === ".jpeg"
-        ? "image/jpeg"
-        : ext === ".webp"
-          ? "image/webp"
-          : "application/octet-stream"
-  return "data:" + mime + ";base64," + buf.toString("base64")
-}
-
 function buildSingleFile(html) {
-  const assetMap = {}
-  const re = /(?:src|href)=["'](assets\/[^"']+)["']/g
-  let m
-  while ((m = re.exec(html))) {
-    assetMap[m[1]] = path.join(AD_DIR, m[1])
+  // Absolute production URLs under /aopa/ads/ (resolve after merge to main)
+  let out = html
+  for (const [rel, adsName] of Object.entries(ASSET_TO_ADS)) {
+    out = out.split(rel).join(ADS_ABS + "/" + adsName)
   }
-  const bg = /url\(["']?(assets\/[^"')]+)["']?\)/g
-  while ((m = bg.exec(html))) {
-    assetMap[m[1]] = path.join(AD_DIR, m[1])
-  }
-
-  let inlined = html
-  let mode = "inlined"
-  for (const [rel, full] of Object.entries(assetMap)) {
-    const uri = toDataUri(full)
-    inlined = inlined.split(rel).join(uri)
-  }
-
-  if (!/name="ad\.size"/.test(inlined)) {
+  out = out.replace(
+    "<title>",
+    "<!-- Image faces use absolute https://www.planewx.ai/aopa/ads/ URLs (available after merge). Prefer the GAM zip with bundled local assets for trafficking. -->\n<title>"
+  )
+  if (!/name="ad\.size"/.test(out)) {
     throw new Error("single-file missing ad.size meta")
   }
-  if (!/var\s+clickTag\s*=/.test(inlined)) {
+  if (!/var\s+clickTag\s*=/.test(out)) {
     throw new Error("single-file missing clickTag")
   }
-
-  let out = inlined
-  let size = Buffer.byteLength(out, "utf8")
-
-  if (size > INLINE_BUDGET) {
-    mode = "absolute-urls"
-    out = html
-    for (const rel of Object.keys(assetMap)) {
-      out = out.split(rel).join(ABS_BASE + "/" + rel)
-    }
-    out = out.replace(
-      "<title>",
-      "<!-- Assets use absolute planewx.ai URLs (inline exceeded ~150KB). GAM may flag external requests; prefer the zip with local assets. -->\n<title>"
-    )
-    size = Buffer.byteLength(out, "utf8")
+  if (!/AOPA-DISPLAY-OCT26/.test(out)) {
+    throw new Error("single-file missing display clickTag URL")
   }
-
   fs.writeFileSync(SINGLE_PATH, out, "utf8")
-  return { size, mode }
+  return { size: Buffer.byteLength(out, "utf8"), mode: "absolute-ads-urls" }
 }
 
 function main() {
+  syncAssetsFromAds()
   const html = fs.readFileSync(path.join(AD_DIR, "index.html"), "utf8")
-  const load = initialLoadBytes(html)
+  const load = initialLoadBytes()
   const zipSize = buildZip()
   const single = buildSingleFile(html)
+
+  const bundledTotal = listAllBundledAssets().reduce((sum, rel) => {
+    return sum + fs.statSync(path.join(AD_DIR, rel)).size
+  }, 0)
 
   console.log("\nAOPA HTML5 ad build")
   console.log("-------------------")
   for (const row of load.rows) {
     console.log("  " + row.rel.padEnd(36) + kb(row.size))
   }
-  console.log("  " + "INITIAL LOAD TOTAL".padEnd(36) + kb(load.total))
-  console.log("  " + "ZIP".padEnd(36) + kb(zipSize) + " -> " + path.relative(ROOT, ZIP_PATH))
+  console.log("  " + "INITIAL LOAD (collapsed)".padEnd(36) + kb(load.total))
+  console.log("  " + "ZIP (all faces bundled)".padEnd(36) + kb(zipSize))
+  console.log("  " + "ZIP uncompressed sum".padEnd(36) + kb(bundledTotal))
   console.log(
     "  " +
       "SINGLE-FILE".padEnd(36) +
       kb(single.size) +
       " (" +
       single.mode +
-      ") -> " +
-      path.relative(ROOT, SINGLE_PATH)
+      ")"
   )
+  console.log("  -> " + path.relative(ROOT, ZIP_PATH))
+  console.log("  -> " + path.relative(ROOT, SINGLE_PATH))
 
   if (load.total > INLINE_BUDGET) {
     console.warn(
-      "WARNING: initial load " + kb(load.total) + " exceeds 150KB target"
+      "WARNING: collapsed initial load " + kb(load.total) + " exceeds 150KB"
     )
     process.exitCode = 1
   }
