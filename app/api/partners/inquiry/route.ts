@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
+import {
+  inquiryClientKey,
+  takeInquiryRateLimit,
+} from "@/lib/inquiry-rate-limit"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -15,34 +19,57 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;")
 }
 
-function trimField(value: unknown, max: number): string {
-  if (typeof value !== "string") return ""
-  return value.trim().slice(0, max)
+function readField(
+  value: unknown,
+  max: number,
+): { ok: true; value: string } | { ok: false } {
+  if (typeof value !== "string") return { ok: false }
+  const trimmed = value.trim()
+  if (trimmed.length > max) return { ok: false }
+  return { ok: true, value: trimmed }
 }
 
 export async function POST(request: Request) {
   try {
-    const body = await request.json()
-    const org = trimField(body.org, 200)
-    const name = trimField(body.name, 120)
-    const email = trimField(body.email, 254).toLowerCase()
-    const note = trimField(body.note, 4000)
+    const limited = takeInquiryRateLimit(
+      inquiryClientKey(request, "partners-inquiry"),
+    )
+    if (!limited.ok) {
+      return NextResponse.json(
+        { error: "Too many inquiries. Please try again shortly." },
+        {
+          status: 429,
+          headers: { "Retry-After": String(limited.retryAfterSec) },
+        },
+      )
+    }
 
-    if (!org) {
+    const body = await request.json()
+    const orgField = readField(body.org, 200)
+    const nameField = readField(body.name, 120)
+    const emailField = readField(body.email, 254)
+    const noteField = readField(body.note, 4000)
+
+    if (!orgField.ok || !orgField.value) {
       return NextResponse.json({ error: "Organization is required" }, { status: 400 })
     }
-    if (!name) {
+    if (!nameField.ok || !nameField.value) {
       return NextResponse.json({ error: "Name is required" }, { status: 400 })
     }
-    if (!email) {
+    if (!emailField.ok || !emailField.value) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 })
     }
+    const email = emailField.value.toLowerCase()
     if (!EMAIL_REGEX.test(email)) {
       return NextResponse.json({ error: "Invalid email format" }, { status: 400 })
     }
-    if (!note) {
+    if (!noteField.ok || !noteField.value) {
       return NextResponse.json({ error: "A short note is required" }, { status: 400 })
     }
+
+    const org = orgField.value
+    const name = nameField.value
+    const note = noteField.value
 
     const resendApiKey = process.env.RESEND_API_KEY
     if (!resendApiKey) {
