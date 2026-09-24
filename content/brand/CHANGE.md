@@ -1,5 +1,9 @@
 # Brand content CHANGE log
 
+## 2026-09-24 - One-pager download at top of /brand
+
+- Moved the partner one-pager PDF download into the /brand page header so it is visible without scrolling on desktop and phone. Kept the lower download CTA under structural minimums.
+
 ## 2026-09-24 - Partner messaging sheet + brand overview
 
 - Replaced the old three-part framing on `/brand` with the four-part Loop (Weather Briefing, FRAT, Fly or Stay, Self Debrief) and Mentor as an optional layer alongside the loop.

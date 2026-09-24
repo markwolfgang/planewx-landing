@@ -57,7 +57,7 @@ structuralMinimums:
     and center on every briefing. FRAT is a chosen professional habit, and pilots can choose to require
     it before every flight.
 partnerOnePager:
-  label: Download the partner one-pager (PDF)
+  label: Download the one-pager (PDF)
   href: /brand/planewx-partner-messaging.pdf
   note: PlaneWX partner messaging, September 2026
 problemSolution:
