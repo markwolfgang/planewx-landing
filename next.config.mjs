@@ -28,6 +28,12 @@ const nextConfig = {
       { source: "/talk/remote.html", destination: "/talks/remote.html", permanent: false },
     ]
   },
+  async rewrites() {
+    return [
+      // public/aopa/index.html is the /aopa landing (Vercel serves it; local next start needs a rewrite)
+      { source: "/aopa", destination: "/aopa/index.html" },
+    ]
+  },
 }
 
 export default nextConfig
