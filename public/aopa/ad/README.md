@@ -5,7 +5,7 @@
 **Click URL (clickTag default):** https://www.planewx.ai/aopa  
 **Backup image:** `backup.jpg` (300×250 JPEG)  
 **Send to:** pilot.ads@aopa.org (at least 5 business days before launch)  
-**Booking:** AOPA.org ROS · Oct–Dec 2026 · see `../ads/SPECS.txt`
+**Booking:** AOPA.org ROS · Oct-Dec 2026 · see `../ads/SPECS.txt`
 
 ## Files
 
@@ -33,7 +33,7 @@ Output zip (index.html at zip root): `/aopa/planewx-aopa-html5-300x250-expand-60
 - **User-initiated:** expands on hover (desktop) or via click/tap when hosted with `?demo=1` on planewx.ai. Production GAM traffic uses hover/click per the live template; the whole unit click still fires `clickTag` via `window.open(clickTag)`.
 - **Close control:** visible × button while expanded; collapses without firing `clickTag`.
 - **Collapsed size never exceeds 300×250** (`overflow: hidden` on `#ad`).
-- **z-index:** collapsed `100` (within 0–4,999); expanded `50000` (within 5,000–1,999,999).
+- **z-index:** collapsed `100` (within 0-4,999); expanded `50000` (within 5,000-1,999,999).
 
 ## GAM / AOPA notes (needs publisher confirm)
 
@@ -58,7 +58,7 @@ Confirm with AOPA:
 - [x] 300×250 expandable to 600×250, user-initiated, visible close
 - [x] Collapsed never exceeds 300×250
 - [x] Animation ≤ 15s then stops (gauge fill ~1.4s; rAF cancelled at 15s)
-- [x] ~24–30 fps via CSS + `requestAnimationFrame` (no heavy loops)
+- [x] ~24-30 fps via CSS + `requestAnimationFrame` (no heavy loops)
 - [x] z-index bands as above
 - [x] No audio
 - [x] 1px `#BFDBFE` border on all edges (both states)

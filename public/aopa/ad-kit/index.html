@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>PlaneWX × AOPA · HTML5 Ad Kit (unlisted)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --aopa-navy: #002a3a;
+  --aopa-link: #0066a1;
+  --text: #333333;
+  --muted: #888888;
+  --rule: #e2e8f0;
+  --page: #ffffff;
+  --ink: #0f172a;
+}
+
+body {
+  background: #fff;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  color: var(--ink);
+  min-width: 0;
+}
+
+a { color: var(--aopa-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92em;
+  background: #f1f5f9;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.kit-banner {
+  background: #0f172a;
+  color: #fff;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+}
+
+.kit-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.kit-header {
+  padding: 0 0 28px;
+  margin-bottom: 36px;
+  border-bottom: 2px solid var(--rule);
+}
+.kit-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.kit-header .subtitle {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+  max-width: 62ch;
+}
+.kit-header .meta {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.section {
+  margin-bottom: 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--rule);
+}
+.section:last-child { border-bottom: 0; margin-bottom: 0; }
+.section-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+  margin: 0 0 10px;
+}
+.section h2 {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.section .lead {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.55;
+  margin: 0 0 22px;
+  max-width: 68ch;
+}
+
+/* Live + static preview */
+.preview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .preview-grid { grid-template-columns: 1fr; }
+}
+.preview-card {
+  background: #f8fafc;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 18px;
+}
+.preview-card h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+.preview-card .hint {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0 0 14px;
+  line-height: 1.45;
+}
+.ad-stage {
+  position: relative;
+  width: 100%;
+  min-height: 270px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  overflow: visible;
+  background:
+    linear-gradient(90deg, rgba(148,163,184,0.12) 1px, transparent 1px),
+    linear-gradient(rgba(148,163,184,0.12) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-color: #eef2f7;
+  border-radius: 6px;
+  padding: 12px;
+}
+.ad-slot {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  flex: 0 0 300px;
+  overflow: visible;
+}
+.ad-slot iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 250px;
+  border: 0;
+  background: transparent;
+  z-index: 100;
+  overflow: hidden;
+}
+.ad-slot.is-expanded iframe {
+  width: 600px;
+  z-index: 50000;
+}
+.ad-slot.is-expanded {
+  /* Room for leftward expand inside the stage */
+}
+.static-previews {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.static-item label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+.static-item img {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border: 1px solid #cbd5e1;
+  background: #0B1B33;
+}
+
+/* Code block */
+.code-block-wrap {
+  position: relative;
+  background: #0f172a;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+}
+.code-block-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+.code-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+.copy-code-btn {
+  appearance: none;
+  border: 0;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #fff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+.copy-code-btn:hover { background: #1d4ed8; }
+.copy-code-btn.is-copied { background: #059669; }
+.code-block {
+  margin: 0;
+  padding: 16px 18px 20px;
+  max-height: 420px;
+  overflow: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: #e2e8f0;
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* Downloads */
+.dl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.dl-table th,
+.dl-table td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.dl-table th {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.dl-table td.dims,
+.dl-table td.size { color: #64748b; white-space: nowrap; }
+.dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  background: #0f172a;
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+.dl-btn:hover { background: #1e293b; }
+.dl-btn.secondary {
+  background: #fff;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1;
+}
+.dl-btn.secondary:hover { background: #f8fafc; }
+
+/* Instructions */
+.ops-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.ops-list li {
+  background: #f8fafc;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.ops-list strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.ops-list span {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.55;
+}
+.ops-list a { color: var(--aopa-link); }
+
+.footer-note {
+  margin-top: 28px;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+
+<div class="kit-banner">AOPA Ad Kit · Unlisted · noindex · Oct to Dec 2026</div>
+
+<div class="kit-wrap">
+  <header class="kit-header">
+    <h1>PlaneWX × AOPA HTML5 Ad Kit</h1>
+    <p class="subtitle">
+      Materials for AOPA ad ops: live expandable unit, static JPEG previews, self-contained embed source,
+      downloads, and placement notes. This page is unlisted and noindexed.
+    </p>
+    <p class="meta">Campaign line: Fly like it's your job. · Click URL: https://www.planewx.ai/aopa</p>
+  </header>
+
+  <!-- 1. Live embed + static previews -->
+  <section class="section" id="preview">
+    <div class="section-label">01 · Preview</div>
+    <h2>Live unit and static states</h2>
+    <p class="lead">
+      Left: live HTML5 300×250 that expands left to 600×250 (5X5 panel). Hover or tap to expand; close with ×.
+      Right: static JPEG previews of both states.
+    </p>
+    <div class="preview-grid">
+      <div class="preview-card">
+        <h3>Live HTML5 (demo)</h3>
+        <p class="hint">Demo mode: expand and collapse without leaving this page. Production clicks open the clickTag.</p>
+        <div class="ad-stage" id="adStage">
+          <div class="ad-slot" data-ad-slot="kit" id="adSlot">
+            <iframe
+              id="adFrame"
+              title="PlaneWX AOPA display ad"
+              src="/aopa/ad/index.html?demo=1"
+              width="300"
+              height="250"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="preview-card">
+        <h3>Static JPEG previews</h3>
+        <p class="hint">Reference creative from the approved JPG set (72 dpi).</p>
+        <div class="static-previews">
+          <div class="static-item">
+            <label>Collapsed · 300×250</label>
+            <img
+              src="/aopa/ads/planewx-aopa-300x250-fly-like-its-your-job.jpg"
+              width="300"
+              height="250"
+              alt="PlaneWX AOPA collapsed 300 by 250"
+            >
+          </div>
+          <div class="static-item">
+            <label>Expanded · 600×250 (5X5 panel)</label>
+            <img
+              src="/aopa/ads/planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job.jpg"
+              width="600"
+              height="250"
+              alt="PlaneWX AOPA expanded 600 by 250 with 5X5 panel"
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Embed source -->
+  <section class="section" id="source">
+    <div class="section-label">02 · Embed source</div>
+    <h2>Self-contained single-file HTML</h2>
+    <p class="lead">
+      Exact contents of <code>/aopa/ad/single-file.html</code> (assets inlined as data URIs).
+      Default <code>clickTag</code> is <code>https://www.planewx.ai/aopa</code>. Loaded from that file so this block cannot drift.
+    </p>
+    <div class="code-block-wrap">
+      <div class="code-block-toolbar">
+        <span class="code-label">single-file.html</span>
+        <button type="button" class="copy-code-btn" id="copyAdCodeBtn">Copy</button>
+      </div>
+      <pre class="code-block" id="adSourceCode" tabindex="0">Loading ad source…</pre>
+    </div>
+  </section>
+
+  <!-- 3. Downloads -->
+  <section class="section" id="downloads">
+    <div class="section-label">03 · Downloads</div>
+    <h2>Files for AOPA</h2>
+    <p class="lead">JPEG units at 72 dpi, optional @2x, HTML5 GAM zip, and the static JPG package zip.</p>
+    <table class="dl-table">
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Pixels</th>
+          <th>Size</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Collapsed JPEG (booked unit)</td>
+          <td class="dims">300×250 · 72 dpi</td>
+          <td class="size">24.9 KB</td>
+          <td><a class="dl-btn" href="/aopa/ads/planewx-aopa-300x250-fly-like-its-your-job.jpg" download>Download JPG</a></td>
+        </tr>
+        <tr>
+          <td>Collapsed JPEG @2x (optional)</td>
+          <td class="dims">600×500 · 72 dpi</td>
+          <td class="size">60.7 KB</td>
+          <td><a class="dl-btn secondary" href="/aopa/ads/planewx-aopa-300x250-fly-like-its-your-job@2x.jpg" download>Download @2x</a></td>
+        </tr>
+        <tr>
+          <td>Expanded JPEG (5X5 panel)</td>
+          <td class="dims">600×250 · 72 dpi</td>
+          <td class="size">60.1 KB</td>
+          <td><a class="dl-btn" href="/aopa/ads/planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job.jpg" download>Download JPG</a></td>
+        </tr>
+        <tr>
+          <td>Expanded JPEG @2x (optional)</td>
+          <td class="dims">1200×500 · 72 dpi</td>
+          <td class="size">145.2 KB</td>
+          <td><a class="dl-btn secondary" href="/aopa/ads/planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job@2x.jpg" download>Download @2x</a></td>
+        </tr>
+        <tr>
+          <td>HTML5 GAM zip (index.html at zip root)</td>
+          <td class="dims">300×250 → 600×250</td>
+          <td class="size">39.5 KB</td>
+          <td><a class="dl-btn" href="/aopa/planewx-aopa-html5-300x250-expand-600x250.zip" download>Download zip</a></td>
+        </tr>
+        <tr>
+          <td>Static JPG package zip</td>
+          <td class="dims">JPGs + SPECS.txt</td>
+          <td class="size">262.5 KB</td>
+          <td><a class="dl-btn" href="/aopa/ads/planewx-aopa-fly-like-its-your-job.zip" download>Download zip</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4. Ad ops instructions -->
+  <section class="section" id="ops">
+    <div class="section-label">04 · Ad ops</div>
+    <h2>Short instructions for AOPA</h2>
+    <p class="lead">Source of truth for placement and files: <code>/aopa/ads/SPECS.txt</code>.</p>
+    <ul class="ops-list">
+      <li>
+        <strong>Placement</strong>
+        <span>AOPA.org ROS 300×250 Medium Rectangle, expandable to 600×250. Flight dates: Oct to Dec 2026.</span>
+      </li>
+      <li>
+        <strong>Expand trigger and direction</strong>
+        <span>
+          Hover expands after about 120 ms; mouse leave collapses. Tap or click expands in this demo.
+          Expand direction is leftward: the collapsed unit stays anchored on its right edge, and the 5X5 panel opens to the left (300×250 → 600×250).
+          Close with the × control. In production traffic, a click opens the clickTag URL in a new window.
+        </span>
+      </li>
+      <li>
+        <strong>File weights</strong>
+        <span>
+          HTML5 zip 39.5 KB. Single-file HTML 36.1 KB (assets inlined). Initial load of modular unit about 26.7 KB
+          (index.html + wordmark SVG + 5X5 panel art). Under the 150 KB initial-load target. No external requests from the unit.
+        </span>
+      </li>
+      <li>
+        <strong>Click URL</strong>
+        <span><code>https://www.planewx.ai/aopa</code> via the unit <code>clickTag</code> (publishers may rewrite clickTag).</span>
+      </li>
+      <li>
+        <strong>Fallback</strong>
+        <span>
+          If an expandable GAM / custom template is not available, run the 300×250 JPG as a standard Medium Rectangle,
+          or use <code>backup.jpg</code> from the HTML5 zip.
+        </span>
+      </li>
+      <li>
+        <strong>Delivery</strong>
+        <span>Send materials to <a href="mailto:pilot.ads@aopa.org">pilot.ads@aopa.org</a> at least 5 business days before launch.</span>
+      </li>
+      <li>
+        <strong>Questions</strong>
+        <span><a href="mailto:mark@planewx.ai">mark@planewx.ai</a></span>
+      </li>
+    </ul>
+    <p class="footer-note">
+      GAM notes: <code>ad.size</code> meta 300×250, animation capped at 15 s, 1px #BFDBFE border, z-index bands for collapsed and expanded states,
+      visible close control when expanded. Rebuild deliverables with <code>npm run build:aopa-ad</code>.
+    </p>
+  </section>
+</div>
+
+<script>
+(function () {
+  var slot = document.getElementById("adSlot");
+  var stage = document.getElementById("adStage");
+  var codeEl = document.getElementById("adSourceCode");
+  var copyBtn = document.getElementById("copyAdCodeBtn");
+  var sourceText = "";
+
+  function setExpanded(on) {
+    if (!slot) return;
+    if (on) slot.classList.add("is-expanded");
+    else slot.classList.remove("is-expanded");
+  }
+
+  window.addEventListener("message", function (ev) {
+    var data = ev && ev.data;
+    if (!data || data.type !== "planewx-aopa-ad") return;
+    setExpanded(!!data.expanded);
+  });
+
+  // Keep stage tall enough when expanded leftward
+  if (stage && slot) {
+    var obs = new MutationObserver(function () {
+      stage.style.minHeight = slot.classList.contains("is-expanded") ? "270px" : "270px";
+    });
+    obs.observe(slot, { attributes: true, attributeFilter: ["class"] });
+  }
+
+  function showSource(text) {
+    sourceText = text;
+    // textContent HTML-escapes for display inside <pre>
+    codeEl.textContent = text;
+  }
+
+  fetch("/aopa/ad/single-file.html", { credentials: "same-origin" })
+    .then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.text();
+    })
+    .then(showSource)
+    .catch(function () {
+      showSource("Could not load /aopa/ad/single-file.html. Run npm run build:aopa-ad and refresh.");
+    });
+
+  copyBtn.addEventListener("click", function () {
+    if (!sourceText) return;
+    function done() {
+      copyBtn.textContent = "Copied";
+      copyBtn.classList.add("is-copied");
+      setTimeout(function () {
+        copyBtn.textContent = "Copy";
+        copyBtn.classList.remove("is-copied");
+      }, 1600);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(sourceText).then(done).catch(function () {
+        fallbackCopy();
+        done();
+      });
+    } else {
+      fallbackCopy();
+      done();
+    }
+  });
+
+  function fallbackCopy() {
+    var range = document.createRange();
+    range.selectNodeContents(codeEl);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    try { document.execCommand("copy"); } catch (e) {}
+    sel.removeAllRanges();
+  }
+})();
+</script>
+</body>
+</html>
