@@ -86,8 +86,7 @@ type OverviewContent = {
   hero: {
     badge: string
     headline: string
-    line1: string
-    line2: string
+    subtitle: string
     meta: string[]
   }
   categoryClaim: { lead: string; support: string }
@@ -288,8 +287,7 @@ export default function BrandPortalPage() {
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-3 sm:mb-4">
           {content.hero.headline}
         </h1>
-        <p className="text-lg sm:text-xl text-white/70 mb-1 sm:mb-2">{content.hero.line1}</p>
-        <p className="text-base sm:text-lg text-white/60">{content.hero.line2}</p>
+        <p className="text-lg sm:text-xl text-white/70">{content.hero.subtitle}</p>
         <div className="mt-3 sm:mt-5 flex flex-wrap gap-4 text-sm text-white/60">
           <span>{content.hero.meta[0]}</span>
           <span>&middot;</span>

@@ -1,5 +1,10 @@
 # Brand content CHANGE log
 
+## 2026-09-24 - /brand hero subtitle + tools and habits
+
+- Replaced the two /brand hero subtitles with one line: Professional-grade tools and habits for general aviation.
+- Confirmed mission and one-pager already say professional-grade tools and habits (no PDF re-render needed).
+
 ## 2026-09-24 - One-pager download at top of /brand
 
 - Moved the partner one-pager PDF download into the /brand page header so it is visible without scrolling on desktop and phone. Kept the lower download CTA under structural minimums.

@@ -5,8 +5,7 @@ meta:
 hero:
   badge: Brand Overview
   headline: Fly like it's your job.
-  line1: The Pilot's Decision Support System
-  line2: Weather Intelligence for Pilots
+  subtitle: Professional-grade tools and habits for general aviation.
   meta:
   - planewx.ai
   - hello@planewx.ai
