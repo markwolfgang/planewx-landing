@@ -84,7 +84,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Brand portal password protection (skip the login page itself).
-  // Static files under /public/brand (logos, etc.) must stay public — the talk
+  // Static files under /public/brand (logos, etc.) must stay public  -  the talk
   // deck and marketing pages load them without the brand-portal cookie.
   if (pathname.startsWith("/brand") && !pathname.startsWith("/brand-login")) {
     const isStaticAsset =
@@ -96,7 +96,7 @@ export function middleware(request: NextRequest) {
   }
 
   // Partner short links (e.g. /runway → homepage funnel with ref=RUNWAY).
-  // Allowlist-only — never steals reserved routes like /apps, /osh, /news.
+  // Allowlist-only  -  never steals reserved routes like /apps, /osh, /news.
   const partnerCode = partnerCodeFromPathname(pathname)
   const isHomepageFunnel = pathname === "/" || Boolean(partnerCode)
 
