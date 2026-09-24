@@ -274,6 +274,25 @@
     font-size: calc(28px + (0.4 * var(--type-boost))); font-weight: 400; line-height: 1.4;
     color: var(--muted);
   }
+  /* Title slide hierarchy (slide 1 only) */
+  .slide[data-section="Title"] .title-lede {
+    /* keep default .subhead muted / light-blue look */
+  }
+  .slide[data-section="Title"] .title-dss {
+    margin-top: 14px;
+    max-width: 34em;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #f8fafc;
+  }
+  .slide[data-section="Title"] .title-byline {
+    margin-top: 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #94a3b8;
+  }
   .label {
     font-size: 13px; font-weight: 700; letter-spacing: 3px;
     text-transform: uppercase; color: var(--sky);
@@ -830,13 +849,13 @@
       <div class="headline-lg" style="margin-bottom:18px; line-height:1.02; font-size:64px;">
         Fly like it's<br>your job.
       </div>
-      <div class="subhead" style="font-size:24px; max-width:34em;">
+      <div class="subhead title-lede" style="font-size:24px; max-width:34em;">
         Professional-grade tools and professional-grade habits for pilots flying on their own time.
       </div>
-      <div class="subhead" style="font-size:20px; max-width:34em; margin-top:10px; line-height:1.35;">
+      <div class="title-dss">
         PlaneWX: a pilot decision support system for GA.
       </div>
-      <div style="margin-top:16px; font-size:16px; color:var(--muted);">Mark Wolfgang · Founder · TBM 900</div>
+      <div class="title-byline">Mark Wolfgang · Founder · TBM 900</div>
     </div>
     <div style="flex:0 0 auto; text-align:center;">
       <div style="background:var(--white); padding:18px; border-radius:20px; display:inline-block; margin-bottom:14px;">
