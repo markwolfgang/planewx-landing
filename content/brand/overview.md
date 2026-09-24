@@ -5,7 +5,9 @@ meta:
 hero:
   badge: Brand Overview
   headline: Fly like it's your job.
-  subtitle: Professional-grade tools and habits for general aviation.
+  subtitle: >-
+    PlaneWX is the decision support system for general aviation. It gives pilots
+    professional-grade tools and instills professional-grade habits that make flying safer.
   meta:
   - planewx.ai
   - hello@planewx.ai

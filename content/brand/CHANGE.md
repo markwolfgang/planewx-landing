@@ -1,5 +1,10 @@
 # Brand content CHANGE log
 
+## 2026-09-24 - Locked What is PlaneWX? line
+
+- Replaced the /brand hero subtitle with Mark's locked line: PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer.
+- Added the same line under the tagline on the partner one-pager and regenerated planewx-partner-messaging.pdf.
+
 ## 2026-09-24 - /brand hero subtitle + tools and habits
 
 - Replaced the two /brand hero subtitles with one line: Professional-grade tools and habits for general aviation.
