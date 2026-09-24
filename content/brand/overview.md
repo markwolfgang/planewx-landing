@@ -184,6 +184,8 @@ publicProof:
   - value: Up to 10%
     label: 5X5 insurance discount tied to PlaneWX platform usage
     color: sky
+  association: "Pilots who debrief a flight are about twice as likely to run a FRAT on the next one."
+  associationNote: "An association in PlaneWX data, not cause and effect."
 sayAvoid:
   title: How to talk about PlaneWX
   say:
