@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1280">
 <title>Fly like it's your job · TBMOPA Webinar v2 · Sep 24, 2026</title>
-<!-- cache-bust: tbmopa-webinar-v2-20260924b -->
+<!-- cache-bust: tbmopa-webinar-v2-20260924d -->
 <!-- Open: /talks/tbmopa/v2/ · Mission, purpose, personal mins, The Loop (brief / FRAT / fly-or-stay / debrief). -->
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -616,8 +616,8 @@
     background: rgba(14,165,233,0.08);
     border: 1px solid rgba(14,165,233,0.28);
     border-radius: 16px;
-    padding: 22px 24px;
-    min-height: 148px;
+    padding: 16px 18px;
+    min-height: 120px;
   }
   .loop-step .loop-num {
     font-size: 13px; font-weight: 800; letter-spacing: 2px;
@@ -627,7 +627,7 @@
     font-size: 26px; font-weight: 800; color: var(--white); margin-bottom: 8px; line-height: 1.15;
   }
   .loop-step .loop-desc {
-    font-size: 16px; color: var(--muted); line-height: 1.4;
+    font-size: 15px; color: var(--muted); line-height: 1.35;
   }
   .loop-mentor {
     background: rgba(34,197,94,0.08);
@@ -645,6 +645,82 @@
     font-size: 15px; font-weight: 700; color: var(--sky); letter-spacing: 0.04em;
   }
   .loop-flow span.arrow { color: var(--muted); font-weight: 500; }
+
+  /* FRAT inputs diagram */
+  .frat-diagram {
+    display: grid;
+    grid-template-columns: 1.35fr 40px 0.9fr;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    max-width: 1080px;
+    margin-top: 8px;
+  }
+  .frat-inputs { display: flex; flex-direction: column; gap: 7px; }
+  .frat-in {
+    background: rgba(14,165,233,0.08);
+    border: 1px solid rgba(14,165,233,0.28);
+    border-radius: 10px;
+    padding: 8px 12px;
+  }
+  .frat-in .frat-in-title {
+    font-size: 14px; font-weight: 800; color: var(--sky); margin-bottom: 1px;
+  }
+  .frat-in .frat-in-desc {
+    font-size: 12px; color: var(--muted); line-height: 1.3;
+  }
+  .frat-in.coming {
+    opacity: 0.55;
+    border-style: dashed;
+    border-color: rgba(245,158,11,0.45);
+    background: rgba(245,158,11,0.06);
+  }
+  .frat-in.coming .frat-in-title { color: var(--amber); }
+  .frat-arrows {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; color: var(--sky); font-weight: 700;
+  }
+  .frat-out {
+    background: rgba(14,165,233,0.14);
+    border: 2px solid rgba(14,165,233,0.5);
+    border-radius: 16px;
+    padding: 24px 18px;
+    text-align: center;
+    min-height: 140px;
+    display: flex; flex-direction: column; justify-content: center; gap: 8px;
+  }
+  .frat-out .frat-out-label {
+    font-size: 12px; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--sky);
+  }
+  .frat-out .frat-out-title {
+    font-size: 26px; font-weight: 900; color: var(--white);
+  }
+
+  .phone-row {
+    display: flex; gap: 14px; align-items: flex-end; justify-content: center;
+  }
+  .phone-frame {
+    width: 148px;
+    border-radius: 22px;
+    border: 2px solid rgba(255,255,255,0.18);
+    background: #020617;
+    padding: 6px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    overflow: hidden;
+  }
+  .phone-frame img {
+    display: block; width: 100%; height: auto;
+    border-radius: 16px;
+  }
+  .chip.coming-next {
+    background: rgba(245,158,11,0.15);
+    border-color: rgba(245,158,11,0.45);
+    color: var(--amber);
+    font-size: 11px;
+    padding: 4px 10px;
+    letter-spacing: 1.5px;
+  }
 </style>
 </head>
 <body>
@@ -653,7 +729,7 @@
 <div id="nav">
   <button onclick="prevSlide()" title="← / ↑">← Prev</button>
   <button onclick="nextSlide()" title="→ / ↓ / Space">Next →</button>
-  <span id="slide-counter">1 / 22</span>
+  <span id="slide-counter">1 / 25</span>
   <span id="section-label">Title</span>
 
   <div class="nav-group">
@@ -718,7 +794,7 @@
 </div>
 
 <!-- Progress bar -->
-<div id="progress-bar" style="width: 4.55%"></div>
+<div id="progress-bar" style="width: 4%"></div>
 
 <!-- Speaker notes panel -->
 <div id="notes-panel"></div>
@@ -769,7 +845,7 @@
 </div>
 
 <!-- 3. Mission -->
-<div class="slide bg-dark" data-section="Mission" data-time="3:00"
+<div class="slide bg-dark" data-section="Mission" data-time="2:30"
   data-notes="Mission. Professional-grade tools AND habits to GA. Same standard as pilots who do this for a living. Families aboard. Own time.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Mission</div>
@@ -784,7 +860,7 @@
 </div>
 
 <!-- 4. Purpose -->
-<div class="slide bg-night" data-section="Purpose" data-time="5:00"
+<div class="slide bg-night" data-section="Purpose" data-time="4:00"
   data-notes="Airline and charter stay safe because they run a process every time: brief, assess, decide, debrief. The system gives permission to stand down. Airline pilot can call in sick, no questions, no guilt. GA has no one to call.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Purpose</div>
@@ -813,7 +889,7 @@
 </div>
 
 <!-- 5. Pressure -->
-<div class="slide bg-danger" data-section="Pressure" data-time="7:30"
+<div class="slide bg-danger" data-section="Pressure" data-time="6:00"
   data-notes="Land the GA reality. No one to call. Pressure plus passengers plus the reservation. That is when good pilots need a process.">
   <div class="slide-inner pad-wide" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:20px; color:var(--label-danger);">The gap</div>
@@ -824,7 +900,7 @@
 </div>
 
 <!-- 6. Mins + FRAT as SOPs -->
-<div class="slide bg-dark" data-section="Minimums" data-time="9:30"
+<div class="slide bg-dark" data-section="Minimums" data-time="7:30"
   data-notes="Personal minimums and the FRAT are GA's version of professional SOPs. Most pilots write them once for a checkride and never look again. That is the problem PlaneWX solves.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">GA's professional SOPs</div>
@@ -840,7 +916,7 @@
 </div>
 
 <!-- 7. KEY: mins required -->
-<div class="slide bg-hero" data-section="Minimums" data-time="12:00"
+<div class="slide bg-hero" data-section="Minimums" data-time="9:30"
   data-notes="KEY SLIDE. Slow down. Every PlaneWX pilot must have personal minimums to get a WX Score. The score cannot generate without them. So 100% of PlaneWX pilots have documented personal minimums. And they are front and center on every briefing, not in a drawer.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Non-negotiable</div>
@@ -856,7 +932,7 @@
 </div>
 
 <!-- 8. Community polls -->
-<div class="slide bg-night" data-section="Context" data-time="14:30"
+<div class="slide bg-night" data-section="Context" data-time="11:30"
   data-notes="Both polls on one slide. TBMOPA: 12 voters, 5 did not know what a FRAT is. COPA: 53 voters, 43% rarely or never run one, 23% did not know what one is. Not a dunk. Shows the gap PlaneWX closes.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Community pulse</div>
@@ -881,8 +957,8 @@
 </div>
 
 <!-- 9. THE LOOP -->
-<div class="slide bg-dark" data-section="The Loop" data-time="17:00"
-  data-notes="LAND THIS. THE LOOP: four parts in a cycle. Mentor sits alongside, optional, pilot-opened. Standing Mentors coming soon. Walk the four boxes, then mentor.">
+<div class="slide bg-dark" data-section="The Loop" data-time="13:30"
+  data-notes="LAND THIS. THE LOOP: four parts in a cycle. Mentor sits alongside, optional, pilot-opened. Standing Mentors coming soon. On Self Debrief: today it looks back at the FRAT you ran. Coming next: every debrief feeds your next FRAT. Walk the four boxes, then mentor.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:12px;">The process</div>
     <div class="headline-sm" style="margin-bottom:8px; font-size:42px;">The Loop</div>
@@ -909,7 +985,9 @@
         <div class="loop-step">
           <div class="loop-num">4 · After</div>
           <div class="loop-title">Self Debrief</div>
-          <div class="loop-desc">How it actually went. Feeds the next FRAT.</div>
+          <div class="loop-desc">Your Self Debrief looks back at the FRAT you ran.</div>
+          <div style="margin-top:8px;"><span class="chip coming-next">Coming next</span></div>
+          <div class="loop-desc" style="margin-top:6px; font-size:13px;">Every debrief feeds your next FRAT.</div>
         </div>
       </div>
       <div class="loop-mentor">
@@ -922,7 +1000,7 @@
 </div>
 
 <!-- 10. Weather Briefing -->
-<div class="slide bg-night" data-section="Briefing" data-time="19:30"
+<div class="slide bg-night" data-section="Briefing" data-time="15:30"
   data-notes="Loop part 1. Weather briefing and WX Score from days out to hours out. Quantified against YOUR mins and airplane. Early enough to move the trip before the reservation locks you in.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Loop · 1</div>
@@ -936,7 +1014,7 @@
 </div>
 
 <!-- 11. Briefing proof + shot -->
-<div class="slide bg-dark" data-section="Briefing" data-time="21:30"
+<div class="slide bg-dark" data-section="Briefing" data-time="17:00"
   data-notes="Proof point only from the allowed list: 8.7/10 average briefing feedback from 1,724 responses. Not perfect. Continuously improving. Product shot on the right.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Briefing quality</div>
@@ -960,7 +1038,7 @@
 </div>
 
 <!-- 12. FRAT -->
-<div class="slide bg-night" data-section="FRAT" data-time="24:00"
+<div class="slide bg-night" data-section="FRAT" data-time="18:30"
   data-notes="Loop part 2. FRAT unlocks in the final hours so it is honest. PAVE: Pilot, Aircraft, enVironment, External. By design a CHOICE: pilots can require it before every flight. Professionals are not forced into discipline. They choose it. NEVER frame lower completion as a shortfall.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Loop · 2</div>
@@ -974,8 +1052,58 @@
   </div>
 </div>
 
-<!-- 13. FRAT by type -->
-<div class="slide bg-dark" data-section="FRAT" data-time="26:30"
+<!-- What makes this FRAT different -->
+<div class="slide bg-dark" data-section="FRAT" data-time="20:00"
+  data-notes="What is wired today. Walk the five live inputs: weather briefing, airport complexity, recent flying, day or night, your aircraft. PlaneWX fills these in automatically. COMING NEXT (dimmed box): Self Debrief and full flight history. Do not claim debrief feeds the next FRAT yet. True today: after the flight, your Self Debrief looks back at the FRAT you ran. Suggestions, not verdicts. You still make every call. Say automatically, never the slang form.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px; padding-top:44px; padding-bottom:36px;">
+    <div class="label" style="margin-bottom:8px;">Loop · 2 · FRAT</div>
+    <div class="headline-sm" style="margin-bottom:6px; font-size:32px;">What makes this FRAT different</div>
+    <div class="subhead" style="font-size:17px; margin-bottom:4px; max-width:48em;">
+      Not a blank paper form. PlaneWX fills in what it already knows, automatically.
+    </div>
+    <div class="frat-diagram">
+      <div class="frat-inputs">
+        <div class="frat-in">
+          <div class="frat-in-title">Weather briefing</div>
+          <div class="frat-in-desc">Your WX Score and briefing conditions suggest the weather and environment ratings.</div>
+        </div>
+        <div class="frat-in">
+          <div class="frat-in-title">Airport complexity</div>
+          <div class="frat-in-desc">Class B/C airspace, towered fields, training traffic, and traffic volume where we have the data.</div>
+        </div>
+        <div class="frat-in">
+          <div class="frat-in-title">Your recent flying</div>
+          <div class="frat-in-desc">Hours in this aircraft over the last 30 days, and whether you've flown into this destination before.</div>
+        </div>
+        <div class="frat-in">
+          <div class="frat-in-title">Day or night</div>
+          <div class="frat-in-desc">Sunrise and sunset at your airports against your planned times.</div>
+        </div>
+        <div class="frat-in">
+          <div class="frat-in-title">Your aircraft</div>
+          <div class="frat-in-desc">Runway fit against your aircraft's minimum runway, plus open squawks.</div>
+        </div>
+        <div class="frat-in coming">
+          <div style="margin-bottom:3px;"><span class="chip coming-next">Coming next</span></div>
+          <div class="frat-in-title">Self Debrief and full flight history</div>
+          <div class="frat-in-desc">Not wired today. After the flight, your Self Debrief looks back at the FRAT you ran.</div>
+        </div>
+      </div>
+      <div class="frat-arrows">→</div>
+      <div class="frat-out">
+        <div class="frat-out-label">Assembled for this flight</div>
+        <div class="frat-out-title">Your FRAT</div>
+        <div style="font-size:14px; color:var(--muted); line-height:1.35;">PAVE ratings you review and own</div>
+      </div>
+    </div>
+    <div style="margin-top:12px; font-size:15px; color:var(--muted); max-width:44em;">
+      Suggestions, not verdicts. You still make every call.
+    </div>
+  </div>
+</div>
+
+<!-- FRAT by type -->
+<div class="slide bg-dark" data-section="FRAT" data-time="22:00"
   data-notes="Neutral numbers. FRAT completion by aircraft type among pilots with that type. TBM 43%, PC-12 35%, other turboprop 27%, Cirrus 27%, Cessna 22%. About 12% of confirmed flown flights have a FRAT. Frame as choice, NOT a shortfall. TBMOPA room: you are leading.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Who chooses the FRAT</div>
@@ -1009,7 +1137,7 @@
 </div>
 
 <!-- 14. FRAT screenshot -->
-<div class="slide slide-shot" data-section="FRAT" data-time="28:30"
+<div class="slide slide-shot" data-section="FRAT" data-time="23:30"
   data-notes="Product shot. Living FRAT documents the call. You stay PIC. PlaneWX does not decide for you.">
   <div class="shot-frame">
     <img src="/talks/screenshots/14-pave-decision.png" alt="PlaneWX FRAT decision screen">
@@ -1021,7 +1149,7 @@
 </div>
 
 <!-- 15. Fly or Stay -->
-<div class="slide bg-night" data-section="Decide" data-time="30:00"
+<div class="slide bg-night" data-section="Decide" data-time="24:30"
   data-notes="Loop part 3. Fly or Stay. Staying is a legitimate outcome, not a failure. Say it twice if you need to. This is the permission airline systems give that GA lacks.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Loop · 3</div>
@@ -1035,7 +1163,7 @@
 </div>
 
 <!-- 16. Courage principle -->
-<div class="slide bg-hero" data-section="Decide" data-time="32:00"
+<div class="slide bg-hero" data-section="Decide" data-time="26:00"
   data-notes="Standalone principle. Read slowly. Sometimes it takes more courage to stay than to launch. When passengers are counting on you, when the reservation is already made, that is when pressure is highest and when the loop matters most.">
   <div class="slide-inner pad-wide" style="justify-content:center; min-height:720px; text-align:center;">
     <div class="accent-bar" style="margin:0 auto 28px;"></div>
@@ -1048,23 +1176,27 @@
   </div>
 </div>
 
-<!-- 17. Self Debrief -->
-<div class="slide bg-dark" data-section="Debrief" data-time="34:30"
-  data-notes="Loop part 4. Self Debrief: how it actually went. Feeds the next FRAT. PlaneWX Labs / Pro Plus. Optional supported line: pilots who debrief a flight are about twice as likely to run a FRAT on the next one. Association, not causation.">
+<!-- Self Debrief -->
+<div class="slide bg-dark" data-section="Debrief" data-time="27:30"
+  data-notes="Loop part 4. Today: your Self Debrief looks back at the FRAT you ran for that trip. Coming next: every debrief feeds your next FRAT. PlaneWX Labs / Pro Plus. Optional supported line: pilots who debrief a flight are about twice as likely to run a FRAT on the next one. Association, not causation.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Loop · 4</div>
     <div class="headline-sm" style="margin-bottom:28px; font-size:40px;">Self Debrief</div>
     <ul class="bullet-list" style="max-width:1000px;">
       <li>How it actually went, not how you hoped it would.</li>
-      <li>Feeds the next FRAT so the loop stays honest.</li>
+      <li>Your Self Debrief looks back at the FRAT you ran.</li>
       <li>PlaneWX Labs, on Pro Plus.</li>
       <li style="font-size:24px; color:var(--muted);">Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.</li>
     </ul>
+    <div style="margin-top:28px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <span class="chip coming-next">Coming next</span>
+      <div style="font-size:22px; color:var(--white); font-weight:600;">Every debrief feeds your next FRAT.</div>
+    </div>
   </div>
 </div>
 
 <!-- 18. Mentor -->
-<div class="slide bg-night" data-section="Mentor" data-time="37:00"
+<div class="slide bg-night" data-section="Mentor" data-time="29:00"
   data-notes="Mentor sits alongside all four. Optional. Pilot-opened. Not a required gate. Standing Mentors coming soon. Second set of eyes when the picture looks wrong. You stay PIC.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Alongside the loop</div>
@@ -1086,7 +1218,7 @@
 </div>
 
 <!-- 19. 5X5 -->
-<div class="slide bg-dark" data-section="Align" data-time="39:30"
+<div class="slide bg-dark" data-section="Align" data-time="30:30"
   data-notes="Light touch. 5X5 Aviation Insurance discount up to 10% tied to platform usage. Interests align. Do not invent other numbers. Privacy stays with the pilot.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Aligned incentives</div>
@@ -1098,9 +1230,20 @@
   </div>
 </div>
 
-<!-- 20. Vision -->
-<div class="slide bg-hero" data-section="Vision" data-time="41:30"
-  data-notes="Vision close. A GA community that closes the loop on every flight. Staying home is legitimate. Every debrief feeds the next FRAT. Desired outcome: measurably reduce GA accidents. Proof of reach: 2,200+ users in 35 countries. No other numbers.">
+
+<!-- Live product demo -->
+<div class="slide bg-sky" data-section="Demo" data-time="32:00"
+  data-notes="Switch to the live app. About five minutes. Walk a real briefing, personal minimums on the score, and a FRAT if time allows. Stay PIC framing. Then come back for Vision.">
+  <div class="slide-inner pad" style="justify-content:center; align-items:center; text-align:center; min-height:720px;">
+    <div class="label" style="margin-bottom:20px; color:#e0f2fe;">Live</div>
+    <div class="headline-lg" style="font-size:64px; margin-bottom:22px;">Live product demo</div>
+    <div class="subhead" style="font-size:28px; color:#e0f2fe;">app.planewx.ai</div>
+  </div>
+</div>
+
+<!-- Vision -->
+<div class="slide bg-hero" data-section="Vision" data-time="37:00"
+  data-notes="Vision close. A GA community that closes the loop on every flight. Staying home is legitimate. Today the Self Debrief looks back at the FRAT you ran. Coming next: every debrief feeds your next FRAT. Desired outcome: measurably reduce GA accidents. Proof of reach: 2,200+ users in 35 countries. No other numbers.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Vision</div>
     <div class="headline-sm" style="margin-bottom:24px; font-size:38px; max-width:18em;">
@@ -1108,15 +1251,19 @@
     </div>
     <ul class="bullet-list" style="max-width:980px; font-size:26px;">
       <li>Staying home is legitimate.</li>
-      <li>Every debrief feeds the next FRAT.</li>
+      <li>Your Self Debrief looks back at the FRAT you ran.</li>
       <li>Desired outcome: measurably reduce GA accidents.</li>
       <li style="color:var(--sky);">2,200+ users in 35 countries.</li>
     </ul>
+    <div style="margin-top:28px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+      <span class="chip coming-next">Coming next</span>
+      <div style="font-size:22px; color:var(--white); font-weight:600;">Every debrief feeds your next FRAT.</div>
+    </div>
   </div>
 </div>
 
 <!-- 21. Audience question -->
-<div class="slide bg-danger" data-section="Ask" data-time="43:30"
+<div class="slide bg-danger" data-section="Ask" data-time="38:30"
   data-notes="Optional audience beat. Leave silence. Are you fit to fly? Are you flying as safe as you could be? Then invite Q&A.">
   <div class="slide-inner pad-wide" style="justify-content:center; min-height:720px; text-align:center;">
     <div class="accent-bar" style="background:#fca5a5; margin:0 auto 28px;"></div>
@@ -1127,8 +1274,44 @@
   </div>
 </div>
 
+
+<!-- TBM Boldface -->
+<div class="slide bg-night" data-section="Boldface" data-time="40:00"
+  data-notes="One more thing for TBM owners. TBM Boldface: free App Store app for TBM memory items. Sources: live landing planewx.ai/boldface (hero line: Free iPhone/iPad app for TBM memory items, study, test, and chair-fly before the airplane asks) and App Store listing TBM Boldface at apps.apple.com/us/app/tbm-boldface/id6804532133. Screenshots on this slide are the same Home, Study, and Test assets used on the Boldface landing page under public/boldface/. Search TBM Boldface on the App Store. Then Q&A.">
+  <div class="slide-inner pad" style="justify-content:center; min-height:720px; padding-top:52px; padding-bottom:40px;">
+    <div class="label" style="margin-bottom:12px;">One more thing for TBM owners</div>
+    <div style="display:grid; grid-template-columns:1.05fr 1.15fr; gap:36px; align-items:center; max-width:1120px;">
+      <div>
+        <div style="display:flex; align-items:center; gap:16px; margin-bottom:18px;">
+          <img src="/boldface/tbm-boldface-icon.png" alt="TBM Boldface app icon"
+            style="width:72px; height:72px; border-radius:16px; display:block;">
+          <div class="headline-sm" style="font-size:40px; margin:0;">TBM Boldface</div>
+        </div>
+        <div class="subhead" style="font-size:22px; margin-bottom:22px; max-width:22em; line-height:1.4;">
+          Free iPhone and iPad app for TBM memory items: study, test, and chair-fly before the airplane asks.
+        </div>
+        <ul class="bullet-list tight" style="font-size:20px; max-width:28em;">
+          <li>Search <span style="color:var(--sky); font-weight:700;">TBM Boldface</span> on the App Store</li>
+          <li>Landing: <span style="color:var(--sky); font-weight:700;">planewx.ai/boldface</span></li>
+        </ul>
+      </div>
+      <div class="phone-row">
+        <div class="phone-frame">
+          <img src="/boldface/01-home.png" alt="TBM Boldface Home screen">
+        </div>
+        <div class="phone-frame">
+          <img src="/boldface/02-study.png" alt="TBM Boldface Study screen">
+        </div>
+        <div class="phone-frame">
+          <img src="/boldface/03-test.png" alt="TBM Boldface Test screen">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 22. Q&A -->
-<div class="slide bg-night" data-section="Close" data-time="45:00" data-no-corner-qr
+<div class="slide bg-night" data-section="Close" data-time="41:30" data-no-corner-qr
   data-notes="Q&A. Tagline again if useful: Fly like it's your job. Short bio only if asked: commercial multiengine IFR, TBM 900, Navy vet. Thank TBMOPA. planewx.ai code TBMOPA.">
   <div class="slide-inner pad" style="flex-direction:row; gap:56px; align-items:center; justify-content:center; min-height:720px;">
     <div style="flex:1; max-width:620px;">
