@@ -88,7 +88,7 @@ export function middleware(request: NextRequest) {
   // deck and marketing pages load them without the brand-portal cookie.
   if (pathname.startsWith("/brand") && !pathname.startsWith("/brand-login")) {
     const isStaticAsset =
-      /\.(svg|png|jpe?g|webp|gif|ico|css|js|map|woff2?|ttf|otf)$/i.test(pathname)
+      /\.(svg|png|jpe?g|webp|gif|ico|css|js|map|woff2?|ttf|otf|pdf|html)$/i.test(pathname)
     if (!isStaticAsset) {
       const authResponse = handleBrandAuth(request)
       if (authResponse) return authResponse

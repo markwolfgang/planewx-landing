@@ -28,6 +28,7 @@ import {
   Crown,
   Zap,
   Shield,
+  Download,
   type LucideIcon,
 } from "lucide-react"
 
@@ -60,10 +61,12 @@ const SOCIAL_ICONS = {
   FaTiktok,
 } as const
 
-const PILLAR_ACCENT: Record<string, { bg: string; border: string; text: string }> = {
+const LOOP_ACCENT: Record<string, { bg: string; border: string; text: string }> = {
   sky: { bg: "bg-sky-500/15", border: "border-sky-500/20", text: "text-sky-400" },
-  violet: { bg: "bg-violet-500/15", border: "border-violet-500/20", text: "text-violet-400" },
+  blue: { bg: "bg-blue-500/15", border: "border-blue-500/20", text: "text-blue-400" },
+  emerald: { bg: "bg-emerald-500/15", border: "border-emerald-500/20", text: "text-emerald-400" },
   amber: { bg: "bg-amber-500/15", border: "border-amber-500/20", text: "text-amber-400" },
+  violet: { bg: "bg-violet-500/15", border: "border-violet-500/20", text: "text-violet-400" },
 }
 
 const STAT_COLOR: Record<string, string> = {
@@ -88,10 +91,11 @@ type OverviewContent = {
     meta: string[]
   }
   categoryClaim: { lead: string; support: string }
-  pillars: {
+  loop: {
     title: string
     subtitle: string
     items: { num: number; accent: string; title: string; body: string }[]
+    mentorNote: string
   }
   missionVision: {
     title: string
@@ -99,6 +103,8 @@ type OverviewContent = {
     mission: { title: string; body: string }
     vision: { title: string; body: string }
   }
+  structuralMinimums: { title: string; body: string }
+  partnerOnePager: { label: string; href: string; note: string }
   problemSolution: {
     title: string
     subtitle: string
@@ -128,19 +134,15 @@ type OverviewContent = {
       fiveX5NoteOn?: string
     }[]
   }
-  safetyImpact: {
+  publicProof: {
     title: string
     subtitle: string
-    primaryStats: { value: string; label: string; color: string }[]
-    secondaryStats: { value: string; label: string; note: string; color: string }[]
-    keyStat: string
-    featuredTestimonial: {
-      quote: string
-      name: string
-      detail: string
-      route: string
-      recommend: string
-    }
+    items: { value: string; label: string; color: string }[]
+  }
+  sayAvoid: {
+    title: string
+    say: { title: string; items: string[] }
+    avoid: { title: string; items: string[] }
   }
   testimonials: {
     title: string
@@ -310,32 +312,37 @@ export default function BrandPortalPage() {
       </section>
 
       <section>
-        <h2 className="text-3xl font-bold text-white mb-2">{content.pillars.title}</h2>
-        <p className="text-white/60 mb-8">{content.pillars.subtitle}</p>
-        <div className="grid sm:grid-cols-3 gap-5">
-          {content.pillars.items.map((pillar) => {
-            const accent = PILLAR_ACCENT[pillar.accent] ?? PILLAR_ACCENT.sky
+        <h2 className="text-3xl font-bold text-white mb-2">{content.loop.title}</h2>
+        <p className="text-white/60 mb-8">{content.loop.subtitle}</p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {content.loop.items.map((item) => {
+            const accent = LOOP_ACCENT[item.accent] ?? LOOP_ACCENT.sky
             return (
               <div
-                key={pillar.title}
+                key={item.title}
                 className="p-6 rounded-2xl bg-white/[0.03] border border-white/10"
               >
                 <div
                   className={`h-10 w-10 rounded-xl ${accent.bg} border ${accent.border} flex items-center justify-center mb-4`}
                 >
                   <span className={`${accent.text} font-bold text-lg`}>
-                    {pillar.num}
+                    {item.num}
                   </span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
-                  {pillar.title}
+                  {item.title}
                 </h3>
                 <p className="text-white/65 text-sm leading-relaxed">
-                  <BrandText text={pillar.body} />
+                  <BrandText text={item.body} />
                 </p>
               </div>
             )
           })}
+        </div>
+        <div className="mt-5 p-4 rounded-xl bg-white/[0.03] border border-white/10 border-l-4 border-l-cyan-500/50">
+          <p className="text-white/70 text-sm leading-relaxed">
+            <BrandText text={content.loop.mentorNote} />
+          </p>
         </div>
       </section>
 
@@ -363,6 +370,27 @@ export default function BrandPortalPage() {
               {content.missionVision.vision.body}
             </p>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="p-6 rounded-2xl bg-sky-500/5 border border-sky-500/20">
+          <h2 className="text-xl font-bold text-white mb-3">
+            {content.structuralMinimums.title}
+          </h2>
+          <p className="text-white/70 leading-relaxed">
+            {content.structuralMinimums.body}
+          </p>
+        </div>
+        <div className="mt-6">
+          <a
+            href={content.partnerOnePager.href}
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold transition-colors"
+          >
+            <Download className="h-4 w-4" />
+            {content.partnerOnePager.label}
+          </a>
+          <p className="text-white/40 text-xs mt-2">{content.partnerOnePager.note}</p>
         </div>
       </section>
 
@@ -541,14 +569,14 @@ export default function BrandPortalPage() {
 
       <section>
         <h2 className="text-3xl font-bold text-white mb-2">
-          {content.safetyImpact.title}
+          {content.publicProof.title}
         </h2>
-        <p className="text-white/60 mb-8">{content.safetyImpact.subtitle}</p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          {content.safetyImpact.primaryStats.map((stat) => (
+        <p className="text-white/60 mb-8">{content.publicProof.subtitle}</p>
+        <div className="grid sm:grid-cols-3 gap-4">
+          {content.publicProof.items.map((stat) => (
             <div
               key={stat.label}
-              className="p-5 rounded-2xl bg-white/[0.03] border border-white/10"
+              className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center"
             >
               <div className={`text-2xl font-bold ${STAT_COLOR[stat.color] ?? "text-sky-400"}`}>
                 {stat.value}
@@ -559,44 +587,38 @@ export default function BrandPortalPage() {
             </div>
           ))}
         </div>
-        <div className="grid sm:grid-cols-3 gap-4 mb-6">
-          {content.safetyImpact.secondaryStats.map((stat) => (
-            <div
-              key={stat.label}
-              className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center"
-            >
-              <div className={`text-2xl font-bold ${STAT_COLOR[stat.color] ?? "text-sky-400"}`}>
-                {stat.value}
-              </div>
-              <div className="text-sm text-white/60 mt-1">{stat.label}</div>
-              <div className="text-xs text-white/30 mt-1">{stat.note}</div>
-            </div>
-          ))}
-        </div>
-        <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20 mb-6">
-          <p className="text-white/80 text-sm leading-relaxed">
-            <BrandText text={content.safetyImpact.keyStat} />
-          </p>
-        </div>
-        <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 border-l-4 border-l-emerald-500/60">
-          <div className="flex items-start gap-3">
-            <Quote className="h-5 w-5 text-emerald-400/60 shrink-0 mt-0.5" />
-            <div>
-              <p className="text-white/85 text-sm leading-relaxed italic mb-3">
-                &ldquo;{content.safetyImpact.featuredTestimonial.quote}&rdquo;
-              </p>
-              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-white/40">
-                <span className="text-emerald-400/80 font-medium">
-                  {content.safetyImpact.featuredTestimonial.name}
-                </span>
-                <span>&middot;</span>
-                <span>{content.safetyImpact.featuredTestimonial.detail}</span>
-                <span>&middot;</span>
-                <span>{content.safetyImpact.featuredTestimonial.route}</span>
-                <span>&middot;</span>
-                <span>{content.safetyImpact.featuredTestimonial.recommend}</span>
-              </div>
-            </div>
+      </section>
+
+      <section>
+        <h2 className="text-3xl font-bold text-white mb-2">
+          {content.sayAvoid.title}
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-5 mt-8">
+          <div className="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-400 mb-4">
+              {content.sayAvoid.say.title}
+            </h3>
+            <ul className="space-y-3">
+              {content.sayAvoid.say.items.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-white/80">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-emerald-400 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="p-6 rounded-2xl bg-red-500/5 border border-red-500/20">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-red-400 mb-4">
+              {content.sayAvoid.avoid.title}
+            </h3>
+            <ul className="space-y-3">
+              {content.sayAvoid.avoid.items.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-white/80">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-red-400 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
