@@ -111,7 +111,7 @@ async function main() {
   })
   compliance.push({
     item: "clickTag default",
-    pass: adFacts.clickTag === "https://www.planewx.ai/aopa",
+    pass: adFacts.clickTag === "https://www.planewx.ai/?variant=a&ref=AOPA-DISPLAY-OCT26&utm_source=aopa&utm_medium=display&utm_campaign=oct2026",
     detail: adFacts.clickTag,
   })
   compliance.push({

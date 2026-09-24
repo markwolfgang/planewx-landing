@@ -16,11 +16,11 @@
   }
   * { box-sizing: border-box; }
 
-  /* Expand direction: left (default) or right. Set via JS CONFIG.expandDirection. */
+  /* Expand direction: right (default) or left. Set via JS CONFIG.expandDirection. */
   #ad {
     position: absolute;
     top: 0;
-    right: 0; /* right edge anchored for leftward expand */
+    left: 0; /* left edge anchored for rightward expand */
     width: 300px;
     height: 250px;
     overflow: hidden;
@@ -38,23 +38,24 @@
     width: 600px;
     z-index: 50000; /* expanded: 5000-1999999 */
   }
-  #ad.expand-right {
-    right: auto;
-    left: 0;
+  #ad.expand-left {
+    left: auto;
+    right: 0;
   }
 
   .panels {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     width: 600px;
     height: 250px;
     display: flex;
     flex-direction: row;
   }
-  #ad.expand-right .panels {
-    right: auto;
-    left: 0;
+  #ad.expand-left .panels {
+    left: auto;
+    right: 0;
+    flex-direction: row-reverse;
   }
 
   .panel {
@@ -65,7 +66,7 @@
     overflow: hidden;
   }
 
-  /* Left = 5X5 expanded panel; Right = PlaneWX collapsed panel */
+  /* DOM order: PlaneWX (collapsed) then 5X5 (opens on expand to the right) */
   .panel-main {
     background: #0B1B33;
     padding: 10px 12px 10px;
@@ -270,10 +271,14 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
   }
-  #ad.is-expanded .close-btn { display: block; }
-  #ad.expand-right.is-expanded .close-btn {
+  #ad.is-expanded .close-btn {
+    display: block;
     left: auto;
-    right: 6px;
+    right: 6px; /* on 5X5 panel when expanding right */
+  }
+  #ad.expand-left.is-expanded .close-btn {
+    left: 6px;
+    right: auto;
   }
   .close-btn:hover { background: rgba(37, 99, 235, 0.9); }
 
@@ -295,23 +300,6 @@
 <div id="ad" role="link" aria-label="PlaneWX: Fly like it's your job. Start planning free." tabindex="0">
   <button type="button" class="close-btn" id="closeBtn" aria-label="Close expanded ad" title="Close">×</button>
   <div class="panels">
-    <div class="panel panel-5x5" aria-hidden="true">
-      <p class="x5-reward">5X5 rewards safety.</p>
-      <div class="x5-copy-stack">
-        <div class="x5-brand">
-          <svg class="x5-logo" viewBox="0 0 255 90" xmlns="http://www.w3.org/2000/svg" aria-label="5X5 Aviation Insurance">
-            <text x="0" y="56" font-family="Arial Black, Helvetica Black, Impact, Arial, sans-serif" font-size="78" font-weight="900" fill="#F97316" letter-spacing="-7">5X5</text>
-            <text x="1" y="84" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#F97316" letter-spacing="2.1">AVIATION INSURANCE</text>
-          </svg>
-        </div>
-        <div class="x5-powered">
-          <p class="x5-powered-label">Powered by</p>
-          <img class="x5-pw-logo" src="assets/planewx-wordmark.svg" width="120" height="24" alt="PlaneWX">
-        </div>
-        <p class="x5-offer">Up to 10% off your aviation insurance</p>
-      </div>
-    </div>
-
     <div class="panel panel-main">
       <div class="logo-row">
         <img class="logo-wordmark" src="assets/planewx-wordmark.svg" width="148" height="30" alt="PlaneWX">
@@ -337,19 +325,36 @@
         </div>
       </div>
 
-      <div class="cta" id="ctaBtn">Start Planning Free →</div>
+      <div class="cta" id="ctaBtn">Start Planning Free</div>
+    </div>
+
+    <div class="panel panel-5x5" aria-hidden="true">
+      <p class="x5-reward">5X5 rewards safety.</p>
+      <div class="x5-copy-stack">
+        <div class="x5-brand">
+          <svg class="x5-logo" viewBox="0 0 255 90" xmlns="http://www.w3.org/2000/svg" aria-label="5X5 Aviation Insurance">
+            <text x="0" y="56" font-family="Arial Black, Helvetica Black, Impact, Arial, sans-serif" font-size="78" font-weight="900" fill="#F97316" letter-spacing="-7">5X5</text>
+            <text x="1" y="84" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#F97316" letter-spacing="2.1">AVIATION INSURANCE</text>
+          </svg>
+        </div>
+        <div class="x5-powered">
+          <p class="x5-powered-label">Powered by</p>
+          <img class="x5-pw-logo" src="assets/planewx-wordmark.svg" width="120" height="24" alt="PlaneWX">
+        </div>
+        <p class="x5-offer">Up to 10% off your aviation insurance</p>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
   // GAM / DoubleClick Studio: publishers may rewrite clickTag.
-  var clickTag = "https://www.planewx.ai/aopa";
+  var clickTag = "https://www.planewx.ai/?variant=a&ref=AOPA-DISPLAY-OCT26&utm_source=aopa&utm_medium=display&utm_campaign=oct2026";
 
   var CONFIG = {
-    // "left" (default): expands leftward; collapsed right edge stays anchored.
-    // "right": expands rightward; collapsed left edge stays anchored.
-    expandDirection: "left",
+    // "right" (default): expands rightward; collapsed left edge stays anchored.
+    // "left": expands leftward; collapsed right edge stays anchored.
+    expandDirection: "right",
     targetScore: 76,
     gaugeMs: 1400,
     maxAnimationMs: 15000,
@@ -379,8 +384,8 @@
       CONFIG.expandDirection = params.expand;
     }
 
-    if (CONFIG.expandDirection === "right") {
-      ad.classList.add("expand-right");
+    if (CONFIG.expandDirection === "left") {
+      ad.classList.add("expand-left");
     }
 
     function openClick() {
@@ -403,7 +408,7 @@
     function expand(sticky) { setExpanded(true, sticky === true); }
     function collapse() { setExpanded(false, false); }
 
-    // Whole unit click → clickTag (buttons included), except close.
+    // Whole unit click to clickTag (buttons included), except close.
     // In demo mode, click/tap expands instead of navigating (close still collapses).
     ad.addEventListener("click", function (e) {
       if (e.target === closeBtn || closeBtn.contains(e.target)) return;

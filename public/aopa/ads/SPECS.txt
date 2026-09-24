@@ -18,11 +18,12 @@ FORMAT
   AOPA states no max file size and no 2x/retina requirement. The @2x files are extras.
 
 CLICK URL
-  https://www.planewx.ai/aopa
+  https://www.planewx.ai/?variant=a&ref=AOPA-DISPLAY-OCT26&utm_source=aopa&utm_medium=display&utm_campaign=oct2026
 
 NOTES
   The 600x250 is not a standalone AOPA placement. It matches the expanded size of the
-  expandable 300x250 Medium Rectangle. Running it as the expand panel needs an HTML5/rich
-  media build (collapsed 300x250 + expand) with a backup image, or AOPA must confirm they
-  can build the expand from static JPEGs.
+  expandable 300x250 Medium Rectangle. Expands rightward from a left-anchored 300x250 to
+  600x250 (PlaneWX stays at left; 5X5 panel opens to the right). Running it as the expand
+  panel needs an HTML5/rich media build (collapsed 300x250 + expand) with a backup image,
+  or AOPA must confirm they can build the expand from static JPEGs.
   Send materials to pilot.ads@aopa.org at least 5 business days before launch.

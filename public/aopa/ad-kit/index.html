@@ -140,7 +140,7 @@ code {
   width: 100%;
   min-height: 270px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: flex-start;
   overflow: visible;
   background:
@@ -155,13 +155,13 @@ code {
   position: relative;
   width: 300px;
   height: 250px;
-  flex: 0 0 300px;
+  flex: 0 0 auto;
   overflow: visible;
 }
 .ad-slot iframe {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   width: 300px;
   height: 250px;
   border: 0;
@@ -169,17 +169,22 @@ code {
   z-index: 100;
   overflow: hidden;
 }
+.ad-slot.is-expanded {
+  width: 600px;
+}
 .ad-slot.is-expanded iframe {
   width: 600px;
   z-index: 50000;
-}
-.ad-slot.is-expanded {
-  /* Room for leftward expand inside the stage */
 }
 .static-previews {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  align-items: flex-start;
+}
+.static-item {
+  width: 100%;
+  max-width: 600px;
 }
 .static-item label {
   display: block;
@@ -192,11 +197,18 @@ code {
 }
 .static-item img {
   display: block;
-  width: 100%;
-  max-width: 600px;
+  width: auto;
+  max-width: 100%;
   height: auto;
   border: 1px solid #cbd5e1;
   background: #0B1B33;
+}
+.static-item img.collapsed-preview {
+  width: 300px;
+}
+.static-item img.expanded-preview {
+  width: 600px;
+  max-width: 100%;
 }
 
 /* Code block */
@@ -336,7 +348,7 @@ code {
       Materials for AOPA ad ops: live expandable unit, static JPEG previews, self-contained embed source,
       downloads, and placement notes. This page is unlisted and noindexed.
     </p>
-    <p class="meta">Campaign line: Fly like it's your job. · Click URL: https://www.planewx.ai/aopa</p>
+    <p class="meta">Campaign line: Fly like it's your job. · Click URL: https://www.planewx.ai/?variant=a&amp;ref=AOPA-DISPLAY-OCT26&amp;utm_source=aopa&amp;utm_medium=display&amp;utm_campaign=oct2026</p>
   </header>
 
   <!-- 1. Live embed + static previews -->
@@ -344,13 +356,13 @@ code {
     <div class="section-label">01 · Preview</div>
     <h2>Live unit and static states</h2>
     <p class="lead">
-      Left: live HTML5 300×250 that expands left to 600×250 (5X5 panel). Hover or tap to expand; close with ×.
-      Right: static JPEG previews of both states.
+      Left: live HTML5 300×250 that expands right to 600×250 (5X5 panel). Hover or tap to expand; close with ×.
+      Right: static JPEG previews of both states, left-anchored like the live unit.
     </p>
     <div class="preview-grid">
       <div class="preview-card">
         <h3>Live HTML5 (demo)</h3>
-        <p class="hint">Demo mode: expand and collapse without leaving this page. Production clicks open the clickTag.</p>
+        <p class="hint">Demo mode: expand and collapse without leaving this page. Production clicks open the clickTag. Expands rightward from a left-anchored 300×250.</p>
         <div class="ad-stage" id="adStage">
           <div class="ad-slot" data-ad-slot="kit" id="adSlot">
             <iframe
@@ -366,11 +378,12 @@ code {
       </div>
       <div class="preview-card">
         <h3>Static JPEG previews</h3>
-        <p class="hint">Reference creative from the approved JPG set (72 dpi).</p>
+        <p class="hint">Reference creative from the approved JPG set (72 dpi). Same left-anchored layout as the live unit.</p>
         <div class="static-previews">
           <div class="static-item">
-            <label>Collapsed · 300×250</label>
+            <label>Collapsed · 300×250 (left-anchored)</label>
             <img
+              class="collapsed-preview"
               src="/aopa/ads/planewx-aopa-300x250-fly-like-its-your-job.jpg"
               width="300"
               height="250"
@@ -378,12 +391,13 @@ code {
             >
           </div>
           <div class="static-item">
-            <label>Expanded · 600×250 (5X5 panel)</label>
+            <label>Expanded · 600×250 (PlaneWX left, 5X5 right)</label>
             <img
+              class="expanded-preview"
               src="/aopa/ads/planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job.jpg"
               width="600"
               height="250"
-              alt="PlaneWX AOPA expanded 600 by 250 with 5X5 panel"
+              alt="PlaneWX AOPA expanded 600 by 250 with 5X5 panel on the right"
             >
           </div>
         </div>
@@ -397,7 +411,7 @@ code {
     <h2>Self-contained single-file HTML</h2>
     <p class="lead">
       Exact contents of <code>/aopa/ad/single-file.html</code> (assets inlined as data URIs).
-      Default <code>clickTag</code> is <code>https://www.planewx.ai/aopa</code>. Loaded from that file so this block cannot drift.
+      Default <code>clickTag</code> is <code>https://www.planewx.ai/?variant=a&amp;ref=AOPA-DISPLAY-OCT26&amp;utm_source=aopa&amp;utm_medium=display&amp;utm_campaign=oct2026</code>. Loaded from that file so this block cannot drift.
     </p>
     <div class="code-block-wrap">
       <div class="code-block-toolbar">
@@ -449,8 +463,8 @@ code {
         </tr>
         <tr>
           <td>HTML5 GAM zip (index.html at zip root)</td>
-          <td class="dims">300×250 → 600×250</td>
-          <td class="size">40.2 KB</td>
+          <td class="dims">300×250 to 600×250</td>
+          <td class="size">40.3 KB</td>
           <td><a class="dl-btn" href="/aopa/planewx-aopa-html5-300x250-expand-600x250.zip" download>Download zip</a></td>
         </tr>
         <tr>
@@ -477,20 +491,20 @@ code {
         <strong>Expand trigger and direction</strong>
         <span>
           Hover expands after about 120 ms; mouse leave collapses. Tap or click expands in this demo.
-          Expand direction is leftward: the collapsed unit stays anchored on its right edge, and the 5X5 panel opens to the left (300×250 → 600×250).
+          Expands rightward from a left-anchored 300×250 to 600×250. The PlaneWX panel stays at the left edge; the 5X5 panel opens to the right.
           Close with the × control. In production traffic, a click opens the clickTag URL in a new window.
         </span>
       </li>
       <li>
         <strong>File weights</strong>
         <span>
-          HTML5 zip 40.2 KB. Single-file HTML 37.0 KB (assets inlined). Initial load of modular unit about 27.4 KB
+          HTML5 zip 40.3 KB. Single-file HTML 37.2 KB (assets inlined). Initial load of modular unit about 27.5 KB
           (index.html + wordmark SVG + 5X5 panel art). Under the 150 KB initial-load target. No external requests from the unit.
         </span>
       </li>
       <li>
         <strong>Click URL</strong>
-        <span><code>https://www.planewx.ai/aopa</code> via the unit <code>clickTag</code> (publishers may rewrite clickTag).</span>
+        <span><code>https://www.planewx.ai/?variant=a&amp;ref=AOPA-DISPLAY-OCT26&amp;utm_source=aopa&amp;utm_medium=display&amp;utm_campaign=oct2026</code> via the unit <code>clickTag</code> (publishers may rewrite clickTag).</span>
       </li>
       <li>
         <strong>Fallback</strong>
@@ -535,10 +549,10 @@ code {
     setExpanded(!!data.expanded);
   });
 
-  // Keep stage tall enough when expanded leftward
+  // Keep stage wide enough when expanded rightward
   if (stage && slot) {
     var obs = new MutationObserver(function () {
-      stage.style.minHeight = slot.classList.contains("is-expanded") ? "270px" : "270px";
+      /* width handled by .ad-slot.is-expanded */
     });
     obs.observe(slot, { attributes: true, attributeFilter: ["class"] });
   }
