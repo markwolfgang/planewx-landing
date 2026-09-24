@@ -396,6 +396,63 @@ export default function BrandPortalPage() {
 
       <section>
         <h2 className="text-3xl font-bold text-white mb-2">
+          {content.publicProof.title}
+        </h2>
+        <p className="text-white/60 mb-8">{content.publicProof.subtitle}</p>
+        <div className="grid sm:grid-cols-3 gap-4">
+          {content.publicProof.items.map((stat) => (
+            <div
+              key={stat.label}
+              className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center"
+            >
+              <div className={`text-2xl font-bold ${STAT_COLOR[stat.color] ?? "text-sky-400"}`}>
+                {stat.value}
+              </div>
+              <div className="text-sm text-white/60 mt-2 leading-snug">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-3xl font-bold text-white mb-2">
+          {content.sayAvoid.title}
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-5 mt-8">
+          <div className="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-400 mb-4">
+              {content.sayAvoid.say.title}
+            </h3>
+            <ul className="space-y-3">
+              {content.sayAvoid.say.items.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-white/80">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-emerald-400 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="p-6 rounded-2xl bg-red-500/5 border border-red-500/20">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-red-400 mb-4">
+              {content.sayAvoid.avoid.title}
+            </h3>
+            <ul className="space-y-3">
+              {content.sayAvoid.avoid.items.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-white/80">
+                  <span className="mt-1.5 h-2 w-2 rounded-full bg-red-400 shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+      <section>
+        <h2 className="text-3xl font-bold text-white mb-2">
           {content.problemSolution.title}
         </h2>
         <p className="text-white/60 mb-8">{content.problemSolution.subtitle}</p>
@@ -567,61 +624,9 @@ export default function BrandPortalPage() {
         </p>
       </section>
 
-      <section>
-        <h2 className="text-3xl font-bold text-white mb-2">
-          {content.publicProof.title}
-        </h2>
-        <p className="text-white/60 mb-8">{content.publicProof.subtitle}</p>
-        <div className="grid sm:grid-cols-3 gap-4">
-          {content.publicProof.items.map((stat) => (
-            <div
-              key={stat.label}
-              className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-center"
-            >
-              <div className={`text-2xl font-bold ${STAT_COLOR[stat.color] ?? "text-sky-400"}`}>
-                {stat.value}
-              </div>
-              <div className="text-sm text-white/60 mt-2 leading-snug">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      
 
-      <section>
-        <h2 className="text-3xl font-bold text-white mb-2">
-          {content.sayAvoid.title}
-        </h2>
-        <div className="grid sm:grid-cols-2 gap-5 mt-8">
-          <div className="p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-emerald-400 mb-4">
-              {content.sayAvoid.say.title}
-            </h3>
-            <ul className="space-y-3">
-              {content.sayAvoid.say.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-white/80">
-                  <span className="mt-1.5 h-2 w-2 rounded-full bg-emerald-400 shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="p-6 rounded-2xl bg-red-500/5 border border-red-500/20">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-red-400 mb-4">
-              {content.sayAvoid.avoid.title}
-            </h3>
-            <ul className="space-y-3">
-              {content.sayAvoid.avoid.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-white/80">
-                  <span className="mt-1.5 h-2 w-2 rounded-full bg-red-400 shrink-0" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+      
 
       <section>
         <h2 className="text-3xl font-bold text-white mb-2">
