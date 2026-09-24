@@ -83,6 +83,20 @@ const PARTNERS = [
       "Training and storytelling that put real pilot decision-making on camera. A PlaneWX partner helping more pilots brief with intent.",
   },
   {
+    name: "Kneeboard Pro",
+    href: "https://kneeboardpro.imctvmedia.com/",
+    logo: {
+      // Dark-bg stacked mark (white Kneeboard text); light master at /partners/kneeboard-pro-light.png
+      src: "/partners/kneeboard-pro.png",
+      alt: "Kneeboard Pro logo",
+      width: 1120,
+      height: 840,
+      className: "h-14 sm:h-16 w-auto max-w-[10rem] object-contain",
+    },
+    blurb:
+      "Free browser tool that turns your flight plan into printable kneeboard sheets, one page per leg with frequencies and cockpit note fields. Built by IMC TV Media for VFR and IFR pilots.",
+  },
+  {
     name: "EAA",
     href: "https://www.eaa.org",
     logo: {
