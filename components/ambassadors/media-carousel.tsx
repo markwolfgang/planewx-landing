@@ -190,9 +190,17 @@ export function AmbassadorsMediaCarousel() {
         if (!ignoreFocusPauseRef.current) setFocusPaused(true)
       }}
       onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+        const nextTarget = event.relatedTarget as Node | null
+        if (!event.currentTarget.contains(nextTarget)) {
           setFocusPaused(false)
           ignoreFocusPauseRef.current = false
+          return
+        }
+        // Focus moved to another control inside the carousel after Resume:
+        // clear the one-shot override so the new control pauses rotation.
+        if (ignoreFocusPauseRef.current) {
+          ignoreFocusPauseRef.current = false
+          setFocusPaused(true)
         }
       }}
     >
@@ -264,18 +272,16 @@ export function AmbassadorsMediaCarousel() {
         <button
           type="button"
           onClick={() => {
-            setUserPaused((value) => {
-              const next = !value
-              if (!next) {
-                // Explicit Resume: clear focus pause so the interval restarts
-                // while the control retains keyboard focus. Hover still pauses.
-                ignoreFocusPauseRef.current = true
-                setFocusPaused(false)
-              } else {
-                ignoreFocusPauseRef.current = false
-              }
-              return next
-            })
+            const next = !userPaused
+            if (!next) {
+              // Explicit Resume: clear focus pause so the interval restarts
+              // while the control retains keyboard focus. Hover still pauses.
+              ignoreFocusPauseRef.current = true
+              setFocusPaused(false)
+            } else {
+              ignoreFocusPauseRef.current = false
+            }
+            setUserPaused(next)
           }}
           aria-pressed={userPaused}
           aria-label={userPaused ? "Resume automatic scrolling" : "Pause automatic scrolling"}

@@ -57,14 +57,20 @@ export async function POST(request: Request) {
       )
     }
 
-    const body = await request.json()
+    let body: unknown
+    try {
+      body = await request.json()
+    } catch {
+      return NextResponse.json({ error: "Invalid request body" }, { status: 400 })
+    }
     if (body === null || typeof body !== "object" || Array.isArray(body)) {
       return NextResponse.json({ error: "Invalid request body" }, { status: 400 })
     }
-    const orgField = readField(body.org, 200)
-    const nameField = readField(body.name, 120)
-    const emailField = readField(body.email, 254)
-    const noteField = readField(body.note, 4000)
+    const fields = body as Record<string, unknown>
+    const orgField = readField(fields.org, 200)
+    const nameField = readField(fields.name, 120)
+    const emailField = readField(fields.email, 254)
+    const noteField = readField(fields.note, 4000)
 
     if (!orgField.ok) {
       return NextResponse.json(
