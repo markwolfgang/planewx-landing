@@ -1,5 +1,9 @@
 # Brand content CHANGE log
 
+## 2026-09-24 - Avoid rule: habit compounds over time
+
+- Rewrote the Say/Avoid habit bullet so it no longer contradicts the locked "instills professional-grade habits" line. New avoid text: Claiming the habit compounds over time, or causal stats (the debrief/FRAT link is an association). Updated overview.md and the partner one-pager HTML/PDF. Mission box unchanged.
+
 ## 2026-09-24 - Locked What is PlaneWX? line
 
 - Replaced the /brand hero subtitle with Mark's locked line: PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer.

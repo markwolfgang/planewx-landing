@@ -201,7 +201,7 @@ sayAvoid:
     items:
     - '"Just another weather app"'
     - '"Tells you whether to fly" (the pilot decides; PlaneWX informs)'
-    - Any causal habit claim (do not say PlaneWX "builds a habit" over time)
+    - Claiming the habit compounds over time, or causal stats (the debrief/FRAT link is an association)
     - The old three-part framing; invented stats
 testimonials:
   title: What Pilots Are Saying
