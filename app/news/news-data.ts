@@ -1,7 +1,7 @@
 // PlaneWX Newsroom — press releases, product news, and partnership announcements.
 // To add an item: prepend a new object to NEWS_ITEMS (newest first). Body is HTML.
 
-import { FIVE_X_FIVE_SEES_LINE } from "@/lib/five-x-five"
+import { FIVE_X_FIVE_SEES_LINE, FIVE_X_FIVE_URL } from "@/lib/five-x-five"
 
 export type NewsCategory = "Partnerships" | "Product" | "Press Release" | "Company"
 
@@ -268,10 +268,10 @@ export const NEWS_ITEMS: NewsItem[] = [
       logo: "/logos/5x5-wordmark-white.webp",
       logoWidth: 1000,
       logoHeight: 327,
-      href: "https://www.5x5insurance.com",
+      href: FIVE_X_FIVE_URL,
     },
     body: `
-<p><strong>St. Petersburg, Florida &mdash; August 17, 2026 &mdash;</strong> PlaneWX, the pilot&rsquo;s decision support system, today named <a href="https://www.5x5insurance.com" target="_blank" rel="noopener noreferrer">5X5 Aviation Insurance</a> its exclusive insurance partner. Verified PlaneWX Pro Plus members are eligible for risk-based premium credits through 5X5&rsquo;s Safety Rewards program &mdash; recognition, in the underwriting process, of the preparation pilots already do before they fly. <a href="/privacy#insurance-partners">${FIVE_X_FIVE_SEES_LINE}</a></p>
+<p><strong>St. Petersburg, Florida &mdash; August 17, 2026 &mdash;</strong> PlaneWX, the pilot&rsquo;s decision support system, today named <a href="${FIVE_X_FIVE_URL}" target="_blank" rel="noopener noreferrer">5X5 Aviation Insurance</a> its exclusive insurance partner. Verified PlaneWX Pro Plus members are eligible for risk-based premium credits through 5X5&rsquo;s Safety Rewards program &mdash; recognition, in the underwriting process, of the preparation pilots already do before they fly. <a href="/privacy#insurance-partners">${FIVE_X_FIVE_SEES_LINE}</a></p>
 
 <p>PlaneWX was built for the gap every EFB leaves open. TAFs cover about 24 hours, and most trips are planned well before that. PlaneWX synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums into a WX Score, feeds that briefing into an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network so no one has to make a hard go/no-go call alone. That picture is available up to 14 days out.</p>
 
@@ -287,13 +287,13 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 <p>PlaneWX does not evaluate, recommend, or warrant the suitability of any insurance product for any pilot, and receives no compensation tied to the sale, quotation, or renewal of any insurance policy. PlaneWX members remain free to insure with any carrier they choose. 5X5 and PlaneWX have a paid co-marketing relationship supporting joint safety content.</p>
 
-<p>Pilots can learn more at <a href="https://www.planewx.ai">www.planewx.ai</a>. Coverage and credits are available through 5X5 at <a href="https://www.5x5insurance.com" target="_blank" rel="noopener noreferrer">www.5x5insurance.com</a>, subject to eligibility and underwriting guidelines. The two companies will also publish joint content on weather and better decision-making, including a video series and a quarterly newsletter.</p>
+<p>Pilots can learn more at <a href="https://www.planewx.ai">www.planewx.ai</a>. Coverage and credits are available through 5X5 at <a href="${FIVE_X_FIVE_URL}" target="_blank" rel="noopener noreferrer">5x5insurance.com</a>, subject to eligibility and underwriting guidelines. The two companies will also publish joint content on weather and better decision-making, including a video series and a quarterly newsletter.</p>
 
 <h2>About PlaneWX</h2>
 <p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
 
 <h2>About 5X5 Aviation Insurance</h2>
-<p>5X5 Aviation Insurance is an aviation insurance service company headquartered in Minneapolis, Minnesota. With a data-driven, direct-to-consumer model, 5X5 provides coverage to pilots and owners of fixed-wing, high-performance aircraft in 38 states and plans to expand underwriting to all 48 contiguous states. 5X5 writes on AM Best A- (Excellent) rated paper, backed by strong financial reserves and full compliance with all capitalization and regulatory requirements. 5X5 Aviation Insurance is an Invenshure-built company. <a href="https://www.5x5insurance.com" target="_blank" rel="noopener noreferrer">www.5x5insurance.com</a></p>
+<p>5X5 Aviation Insurance is an aviation insurance service company headquartered in Minneapolis, Minnesota. With a data-driven, direct-to-consumer model, 5X5 provides coverage to pilots and owners of fixed-wing, high-performance aircraft in 38 states and plans to expand underwriting to all 48 contiguous states. 5X5 writes on AM Best A- (Excellent) rated paper, backed by strong financial reserves and full compliance with all capitalization and regulatory requirements. 5X5 Aviation Insurance is an Invenshure-built company. <a href="${FIVE_X_FIVE_URL}" target="_blank" rel="noopener noreferrer">5x5insurance.com</a></p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
