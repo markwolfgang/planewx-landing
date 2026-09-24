@@ -22,11 +22,24 @@ function escapeHtml(value: string): string {
 function readField(
   value: unknown,
   max: number,
-): { ok: true; value: string } | { ok: false } {
-  if (typeof value !== "string") return { ok: false }
+):
+  | { ok: true; value: string }
+  | { ok: false; reason: "missing" | "too_long" | "invalid" } {
+  if (typeof value !== "string") return { ok: false, reason: "invalid" }
   const trimmed = value.trim()
-  if (trimmed.length > max) return { ok: false }
+  if (!trimmed) return { ok: false, reason: "missing" }
+  if (trimmed.length > max) return { ok: false, reason: "too_long" }
   return { ok: true, value: trimmed }
+}
+
+function fieldError(
+  label: string,
+  result: ReturnType<typeof readField>,
+): string {
+  if (result.ok) return ""
+  if (result.reason === "too_long") return `${label} is too long`
+  if (result.reason === "invalid") return `${label} is invalid`
+  return `${label} is required`
 }
 
 export async function POST(request: Request) {
@@ -45,26 +58,41 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json()
+    if (body === null || typeof body !== "object" || Array.isArray(body)) {
+      return NextResponse.json({ error: "Invalid request body" }, { status: 400 })
+    }
     const orgField = readField(body.org, 200)
     const nameField = readField(body.name, 120)
     const emailField = readField(body.email, 254)
     const noteField = readField(body.note, 4000)
 
-    if (!orgField.ok || !orgField.value) {
-      return NextResponse.json({ error: "Organization is required" }, { status: 400 })
+    if (!orgField.ok) {
+      return NextResponse.json(
+        { error: fieldError("Organization", orgField) },
+        { status: 400 },
+      )
     }
-    if (!nameField.ok || !nameField.value) {
-      return NextResponse.json({ error: "Name is required" }, { status: 400 })
+    if (!nameField.ok) {
+      return NextResponse.json(
+        { error: fieldError("Name", nameField) },
+        { status: 400 },
+      )
     }
-    if (!emailField.ok || !emailField.value) {
-      return NextResponse.json({ error: "Email is required" }, { status: 400 })
+    if (!emailField.ok) {
+      return NextResponse.json(
+        { error: fieldError("Email", emailField) },
+        { status: 400 },
+      )
     }
     const email = emailField.value.toLowerCase()
     if (!EMAIL_REGEX.test(email)) {
       return NextResponse.json({ error: "Invalid email format" }, { status: 400 })
     }
-    if (!noteField.ok || !noteField.value) {
-      return NextResponse.json({ error: "A short note is required" }, { status: 400 })
+    if (!noteField.ok) {
+      return NextResponse.json(
+        { error: fieldError("Note", noteField) },
+        { status: 400 },
+      )
     }
 
     const org = orgField.value

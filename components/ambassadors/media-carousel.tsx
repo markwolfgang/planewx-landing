@@ -20,15 +20,7 @@ type VideoSlide = {
   alt: string
 }
 
-type BadgeSlide = {
-  type: "badge"
-  src: string
-  alt: string
-  width: number
-  height: number
-}
-
-type MediaSlide = PhotoSlide | VideoSlide | BadgeSlide
+type MediaSlide = PhotoSlide | VideoSlide
 
 const SLIDES: MediaSlide[] = [
   {
@@ -80,10 +72,17 @@ const SLIDES: MediaSlide[] = [
     height: 2000,
   },
   {
-    type: "badge",
-    src: "/partners/media/eaa-proud-supporter-2026-white.png",
-    alt: "Proud Supporter of EAA AirVenture Oshkosh 2026, Copper sponsor",
-    width: 1200,
+    type: "photo",
+    src: "/ambassadors/don-medine-polo-1-web.jpg",
+    alt: "Don Medine in a PlaneWX polo in the cockpit, looking toward the camera",
+    width: 1600,
+    height: 1200,
+  },
+  {
+    type: "photo",
+    src: "/ambassadors/don-medine-polo-2-web.jpg",
+    alt: "Don Medine in a PlaneWX polo in the cockpit, smiling from the left seat",
+    width: 1600,
     height: 1200,
   },
 ]
@@ -92,9 +91,11 @@ const AUTO_MS = 4500
 
 export function AmbassadorsMediaCarousel() {
   const scrollerRef = useRef<HTMLDivElement>(null)
+  const ignoreFocusPauseRef = useRef(false)
   const [hoverPaused, setHoverPaused] = useState(false)
+  const [focusPaused, setFocusPaused] = useState(false)
   const [userPaused, setUserPaused] = useState(false)
-  const paused = hoverPaused || userPaused
+  const paused = userPaused || hoverPaused || focusPaused
 
   const scrollByCard = useCallback((dir: -1 | 1, wrap = false) => {
     const scroller = scrollerRef.current
@@ -104,7 +105,9 @@ export function AmbassadorsMediaCarousel() {
     const gap = Number.parseFloat(styles.columnGap || styles.gap || "12") || 12
     const step = card.offsetWidth + gap
     const max = scroller.scrollWidth - scroller.clientWidth
-    if (wrap && dir === 1 && scroller.scrollLeft + step >= max - 4) {
+    // Only wrap after the scroller is already at the final position so the
+    // last card(s) are shown for a full auto-advance interval first.
+    if (wrap && dir === 1 && scroller.scrollLeft >= max - 4) {
       // Instant wrap: bypass CSS scroll-smooth on the container
       const prev = scroller.style.scrollBehavior
       scroller.style.scrollBehavior = "auto"
@@ -183,10 +186,13 @@ export function AmbassadorsMediaCarousel() {
       className="relative w-full"
       onMouseEnter={() => setHoverPaused(true)}
       onMouseLeave={() => setHoverPaused(false)}
-      onFocusCapture={() => setHoverPaused(true)}
+      onFocusCapture={() => {
+        if (!ignoreFocusPauseRef.current) setFocusPaused(true)
+      }}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-          setHoverPaused(false)
+          setFocusPaused(false)
+          ignoreFocusPauseRef.current = false
         }
       }}
     >
@@ -225,14 +231,6 @@ export function AmbassadorsMediaCarousel() {
                         : undefined
                     }
                   />
-                ) : slide.type === "badge" ? (
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 80vw"
-                    className="object-contain p-6 sm:p-8"
-                  />
                 ) : (
                   <video
                     className="absolute inset-0 h-full w-full bg-black object-cover"
@@ -265,7 +263,20 @@ export function AmbassadorsMediaCarousel() {
       <div className="mt-3 flex justify-center">
         <button
           type="button"
-          onClick={() => setUserPaused((value) => !value)}
+          onClick={() => {
+            setUserPaused((value) => {
+              const next = !value
+              if (!next) {
+                // Explicit Resume: clear focus pause so the interval restarts
+                // while the control retains keyboard focus. Hover still pauses.
+                ignoreFocusPauseRef.current = true
+                setFocusPaused(false)
+              } else {
+                ignoreFocusPauseRef.current = false
+              }
+              return next
+            })
+          }}
           aria-pressed={userPaused}
           aria-label={userPaused ? "Resume automatic scrolling" : "Pause automatic scrolling"}
           className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 hover:bg-white/20 px-3.5 py-1.5 text-xs font-medium text-white/80 hover:text-white transition-colors"
