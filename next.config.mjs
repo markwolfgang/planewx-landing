@@ -28,7 +28,32 @@ const nextConfig = {
       { source: "/talk/remote.html", destination: "/talks/remote.html", permanent: false },
     ]
   },
+  async rewrites() {
+    return [
+      // public/ static HTML landings (Vercel serves them; local next start needs rewrites)
+      { source: "/aopa", destination: "/aopa/index.html" },
+      { source: "/aopa/ad-kit", destination: "/aopa/ad-kit/index.html" },
+      { source: "/aopa/ad-kit/", destination: "/aopa/ad-kit/index.html" },
+    ]
+  },
+  async headers() {
+    return [
+      {
+        source: "/aopa/ad-kit",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/aopa/ad-kit/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        source: "/aopa/ad/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ]
+  },
 }
+
 
 export default nextConfig
 
