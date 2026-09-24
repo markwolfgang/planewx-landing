@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ad.size" content="width=300,height=250">
+<title>PlaneWX AOPA 300x250 expandable</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+  }
+  * { box-sizing: border-box; }
+
+  /* Expand direction: left (default) or right. Set via JS CONFIG.expandDirection. */
+  #ad {
+    position: absolute;
+    top: 0;
+    right: 0; /* right edge anchored for leftward expand */
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+    z-index: 100; /* collapsed: 0–4999 */
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    border: 1px solid #BFDBFE;
+    background: #0B1B33;
+    color: #fff;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  #ad.is-expanded {
+    width: 600px;
+    z-index: 50000; /* expanded: 5000–1999999 */
+  }
+  #ad.expand-right {
+    right: auto;
+    left: 0;
+  }
+
+  .panels {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 600px;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+  }
+  #ad.expand-right .panels {
+    right: auto;
+    left: 0;
+  }
+
+  .panel {
+    position: relative;
+    width: 300px;
+    height: 250px;
+    flex: 0 0 300px;
+    overflow: hidden;
+  }
+
+  /* Left = 5X5 expanded panel; Right = PlaneWX collapsed panel */
+  .panel-5x5 {
+    background: #0B1B33;
+    padding: 14px 14px 10px;
+  }
+  .panel-main {
+    background: #0B1B33;
+    padding: 12px 14px 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .logo-wordmark {
+    display: block;
+    width: 148px;
+    height: 30px;
+    object-fit: contain;
+    object-position: left center;
+  }
+  .tagline {
+    margin: 2px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .main-body {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .gauge-wrap {
+    flex: 0 0 auto;
+    width: 88px;
+    text-align: center;
+  }
+  .gauge {
+    width: 88px;
+    height: 88px;
+    display: block;
+  }
+  .gauge-label {
+    margin-top: 2px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #94A3B8;
+    text-transform: uppercase;
+  }
+  .gauge-pct {
+    fill: #FACC15;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+  }
+
+  .copy-col {
+    flex: 1;
+    min-width: 0;
+    padding-top: 2px;
+  }
+  .lead {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #fff;
+  }
+  .steps {
+    margin: 8px 0 0;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #38BDF8;
+  }
+
+  .cta {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    height: 36px;
+    border: 0;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #22D3EE 0%, #2563EB 100%);
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    line-height: 36px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  /* 5X5 panel */
+  .x5-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .x5-brand {
+    flex: 0 0 auto;
+  }
+  .x5-logo {
+    display: block;
+    width: 118px;
+    height: 48px;
+  }
+  .x5-reward {
+    margin: 2px 0 0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #F97316;
+    text-align: right;
+    line-height: 1.25;
+    text-transform: uppercase;
+    max-width: 140px;
+  }
+  .x5-powered {
+    margin-top: 8px;
+  }
+  .x5-powered-label {
+    margin: 0;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #94A3B8;
+    text-transform: uppercase;
+  }
+  .x5-pw-logo {
+    display: block;
+    margin-top: 4px;
+    width: 120px;
+    height: 24px;
+    object-fit: contain;
+    object-position: left center;
+  }
+  .x5-offer {
+    margin: 8px 0 0;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    color: #fff;
+    text-transform: uppercase;
+    max-width: 180px;
+  }
+  .x5-art {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 210px;
+    height: 155px;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .x5-plane {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 210px;
+    height: auto;
+    display: block;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(11, 27, 51, 0.85);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #ad.is-expanded .close-btn { display: block; }
+  #ad.expand-right.is-expanded .close-btn {
+    left: auto;
+    right: 6px;
+  }
+  .close-btn:hover { background: rgba(37, 99, 235, 0.9); }
+
+  .expand-hint {
+    position: absolute;
+    right: 8px;
+    bottom: 44px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: rgba(148, 163, 184, 0.9);
+    text-transform: uppercase;
+    pointer-events: none;
+    opacity: 0;
+  }
+</style>
+</head>
+<body>
+<div id="ad" role="link" aria-label="PlaneWX: Fly like it's your job. Start planning free." tabindex="0">
+  <button type="button" class="close-btn" id="closeBtn" aria-label="Close expanded ad" title="Close">×</button>
+  <div class="panels">
+    <div class="panel panel-5x5" aria-hidden="true">
+      <div class="x5-top">
+        <div class="x5-brand">
+          <svg class="x5-logo" viewBox="0 0 280 70" xmlns="http://www.w3.org/2000/svg" aria-label="5X5 Aviation Insurance">
+            <text x="0" y="42" font-family="Arial Black, Helvetica Black, Impact, Arial, sans-serif" font-size="48" font-weight="900" fill="#F97316" letter-spacing="-1">5X5</text>
+            <text x="2" y="64" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#F97316" letter-spacing="2.2">AVIATION INSURANCE</text>
+          </svg>
+        </div>
+        <p class="x5-reward">5X5 rewards safety.</p>
+      </div>
+      <div class="x5-powered">
+        <p class="x5-powered-label">Powered by</p>
+        <img class="x5-pw-logo" src="assets/planewx-wordmark.svg" width="120" height="24" alt="PlaneWX">
+      </div>
+      <p class="x5-offer">Up to 10% off your aviation insurance</p>
+      <div class="x5-art" aria-hidden="true">
+        <img class="x5-plane" src="assets/tbm-stripes.png" width="200" height="150" alt="">
+      </div>
+    </div>
+
+    <div class="panel panel-main">
+      <div class="logo-row">
+        <img class="logo-wordmark" src="assets/planewx-wordmark.svg" width="148" height="30" alt="PlaneWX">
+      </div>
+      <p class="tagline">Fly like it's your job.</p>
+
+      <div class="main-body">
+        <div class="gauge-wrap">
+          <svg class="gauge" viewBox="0 0 88 88" aria-label="WX Score 76 percent">
+            <circle cx="44" cy="44" r="34" fill="none" stroke="#334155" stroke-width="7"></circle>
+            <circle id="gaugeArc" cx="44" cy="44" r="34" fill="none" stroke="#FACC15" stroke-width="7"
+              stroke-linecap="round"
+              stroke-dasharray="213.628"
+              stroke-dashoffset="213.628"
+              transform="rotate(-90 44 44)"></circle>
+            <text id="gaugeText" class="gauge-pct" x="44" y="50" text-anchor="middle">0%</text>
+          </svg>
+          <div class="gauge-label">WX Score</div>
+        </div>
+        <div class="copy-col">
+          <p class="lead">Professional-grade tools and habits for every flight.</p>
+          <p class="steps">Brief. Assess. Decide. Debrief.</p>
+        </div>
+      </div>
+
+      <div class="cta" id="ctaBtn">Start Planning Free →</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // GAM / DoubleClick Studio: publishers may rewrite clickTag.
+  var clickTag = "https://www.planewx.ai/aopa";
+
+  var CONFIG = {
+    // "left" (default): expands leftward; collapsed right edge stays anchored.
+    // "right": expands rightward; collapsed left edge stays anchored.
+    expandDirection: "left",
+    targetScore: 76,
+    gaugeMs: 1400,
+    maxAnimationMs: 15000,
+    hoverExpandDelayMs: 120
+  };
+
+  (function () {
+    var ad = document.getElementById("ad");
+    var closeBtn = document.getElementById("closeBtn");
+    var gaugeArc = document.getElementById("gaugeArc");
+    var gaugeText = document.getElementById("gaugeText");
+    var CIRC = 2 * Math.PI * 34; // ~213.628
+    var expanded = false;
+    var stickyExpand = false; // parent/demo held expand (ignore mouseleave)
+    var animStopped = false;
+    var hoverTimer = null;
+    var animStart = 0;
+    var rafId = 0;
+    var scoreDone = false;
+    var params = {};
+    try {
+      params = Object.fromEntries(new URLSearchParams(location.search));
+    } catch (e) {}
+    // ?demo=1 on /aopa iframe: expand/collapse without navigating away
+    var demoMode = params.demo === "1" || params.demo === "true";
+    if (params.expand === "left" || params.expand === "right") {
+      CONFIG.expandDirection = params.expand;
+    }
+
+    if (CONFIG.expandDirection === "right") {
+      ad.classList.add("expand-right");
+    }
+
+    function openClick() {
+      window.open(clickTag, "_blank");
+    }
+
+    function setExpanded(on, sticky) {
+      expanded = !!on;
+      if (typeof sticky === "boolean") stickyExpand = sticky;
+      if (!expanded) stickyExpand = false;
+      if (expanded) ad.classList.add("is-expanded");
+      else ad.classList.remove("is-expanded");
+      try {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: "planewx-aopa-ad", expanded: expanded }, "*");
+        }
+      } catch (e) {}
+    }
+
+    function expand(sticky) { setExpanded(true, sticky === true); }
+    function collapse() { setExpanded(false, false); }
+
+    // Whole unit click → clickTag (buttons included), except close.
+    // In demo mode, click/tap expands instead of navigating (close still collapses).
+    ad.addEventListener("click", function (e) {
+      if (e.target === closeBtn || closeBtn.contains(e.target)) return;
+      if (demoMode) {
+        if (!expanded) expand(true);
+        else openClick();
+        return;
+      }
+      openClick();
+    });
+
+    ad.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (demoMode) {
+          if (!expanded) expand(true);
+          else openClick();
+        } else {
+          openClick();
+        }
+      }
+    });
+
+    closeBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      collapse();
+    });
+
+    ad.addEventListener("mouseenter", function () {
+      if (hoverTimer) clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function () { expand(false); }, CONFIG.hoverExpandDelayMs);
+    });
+    ad.addEventListener("mouseleave", function () {
+      if (hoverTimer) clearTimeout(hoverTimer);
+      if (!stickyExpand) collapse();
+    });
+
+    // Parent-driven expand for demos / touch toggles
+    window.addEventListener("message", function (ev) {
+      var data = ev && ev.data;
+      if (!data || data.type !== "planewx-aopa-ad-cmd") return;
+      if (data.action === "expand") expand(true);
+      if (data.action === "collapse") collapse();
+      if (data.action === "toggle") setExpanded(!expanded, true);
+    });
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function tick(now) {
+      if (animStopped) return;
+      if (!animStart) animStart = now;
+      var elapsed = now - animStart;
+
+      if (!scoreDone) {
+        var t = Math.min(1, elapsed / CONFIG.gaugeMs);
+        var eased = easeOutCubic(t);
+        var score = Math.round(CONFIG.targetScore * eased);
+        var offset = CIRC * (1 - (CONFIG.targetScore / 100) * eased);
+        gaugeArc.setAttribute("stroke-dashoffset", String(offset));
+        gaugeText.textContent = score + "%";
+        if (t >= 1) {
+          scoreDone = true;
+          gaugeText.textContent = CONFIG.targetScore + "%";
+        }
+      }
+
+      if (elapsed >= CONFIG.maxAnimationMs) {
+        animStopped = true;
+        if (rafId) cancelAnimationFrame(rafId);
+        return;
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+
+    // Cap any animation at 15s, then stop.
+    rafId = requestAnimationFrame(tick);
+    setTimeout(function () {
+      animStopped = true;
+      if (rafId) cancelAnimationFrame(rafId);
+    }, CONFIG.maxAnimationMs);
+
+    // Expose tiny API for page demos
+    window.PlaneWxAopaAd = {
+      expand: expand,
+      collapse: collapse,
+      toggle: function () { setExpanded(!expanded); },
+      isExpanded: function () { return expanded; }
+    };
+  })();
+</script>
+</body>
+</html>

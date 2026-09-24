@@ -23,7 +23,7 @@ body {
   background: #fff;
   font-family: 'Inter', -apple-system, system-ui, sans-serif;
   color: #0f172a;
-  min-width: 760px;
+  min-width: 0;
 }
 
 a { color: var(--aopa-link); text-decoration: none; }
@@ -36,6 +36,7 @@ a:hover { text-decoration: underline; }
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow: visible;
 }
 
 .native-banner {
@@ -54,6 +55,224 @@ a:hover { text-decoration: underline; }
   margin: 0 auto;
   padding: 28px 20px 56px;
 }
+
+/* ─── Live HTML5 ad: desktop right rail + phone inline ─── */
+.native-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 28px 20px 40px;
+  display: block;
+  overflow: visible;
+}
+.native-shell .native-article {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+.native-rail {
+  display: none;
+  overflow: visible;
+  z-index: 2;
+}
+.ad-inline-mobile {
+  display: none;
+  margin: 0 0 1.5em;
+}
+.ad-slot {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  margin: 0 auto;
+  overflow: visible;
+}
+.ad-slot iframe {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 250px;
+  border: 0;
+  background: transparent;
+  z-index: 100;
+  overflow: hidden;
+  color-scheme: normal;
+}
+.ad-slot.is-expanded iframe {
+  width: 600px;
+  z-index: 50000;
+}
+.ad-slot-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin: 0 0 8px;
+  text-align: center;
+}
+.ad-demo-note {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Phone: collapsed 300 centered; expand scales to fit viewport (no horizontal scroll) */
+.ad-inline-mobile .ad-slot-phone-shell {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+.ad-inline-mobile .ad-slot {
+  transform-origin: top center;
+}
+.ad-inline-mobile .ad-slot.is-expanded {
+  width: calc(600px * var(--ad-phone-scale, 1));
+  height: calc(250px * var(--ad-phone-scale, 1));
+}
+.ad-inline-mobile .ad-slot.is-expanded iframe {
+  left: 0;
+  right: auto;
+  width: 600px;
+  height: 250px;
+  transform: scale(var(--ad-phone-scale, 1));
+  transform-origin: top left;
+}
+
+@media (min-width: 960px) {
+  .native-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 32px;
+    align-items: start;
+    padding: 28px 24px 56px;
+  }
+  .native-rail {
+    display: block;
+    position: sticky;
+    top: 16px;
+    padding-top: 8px;
+  }
+  .ad-inline-mobile { display: none !important; }
+}
+
+@media (max-width: 959px) {
+  .ad-inline-mobile { display: block; }
+  .native-rail { display: none !important; }
+}
+
+/* ─── For AOPA: ad source ─── */
+.aopa-source-wrap {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 48px 24px 64px;
+  border-bottom: 2px solid #e2e8f0;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+}
+.aopa-source {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.aopa-source h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+.aopa-source .source-lead {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.55;
+  margin: 0 0 22px;
+  max-width: 62ch;
+}
+.aopa-source .source-lead a { color: #38bdf8; }
+.aopa-source .source-meta {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0 0 18px;
+  line-height: 1.5;
+}
+.code-block-wrap {
+  position: relative;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  background: #020617;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+.code-block-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #1e293b;
+  background: #0b1220;
+}
+.code-block-toolbar .code-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.copy-code-btn {
+  appearance: none;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #e2e8f0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.copy-code-btn:hover { background: #334155; }
+.copy-code-btn.is-copied {
+  background: #14532d;
+  border-color: #16a34a;
+  color: #bbf7d0;
+}
+.code-block {
+  margin: 0;
+  padding: 14px 16px 18px;
+  max-height: 320px;
+  overflow: auto;
+  font-family: 'SF Mono', 'Fira Code', ui-monospace, Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #cbd5e1;
+  white-space: pre;
+  tab-size: 2;
+}
+.source-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+.source-downloads a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg,#00b6d1 0%,#2563eb 100%);
+  color: #fff !important;
+  text-decoration: none !important;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 7px;
+}
+.source-downloads a.secondary {
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+.source-downloads a:hover { filter: brightness(1.06); }
 
 .sponsorline {
   font-size: 12px;
@@ -483,6 +702,7 @@ h1.headline {
 <div class="native-wrap">
   <div class="native-banner">AOPA Native · October 2, 2026 · Sponsored Content preview for AOPA / Nick / Amelia</div>
 
+  <div class="native-shell">
   <article class="native-article">
 
     <p class="sponsorline">Sponsored Content <a href="https://www.planewx.ai/?variant=a&amp;ref=AOPA-NATIVE-OCT26&amp;utm_source=aopa&amp;utm_medium=native&amp;utm_campaign=oct2026">PlaneWX</a></p>
@@ -510,6 +730,24 @@ h1.headline {
     <div class="body-copy">
 
       <p>Most bad launches are not mysteries. They are late decisions.</p>
+
+      <!-- Phone / narrow: live HTML5 ad inline after first paragraph -->
+      <div class="ad-inline-mobile" id="aopaAdMobile">
+        <div class="ad-slot-label">Advertisement</div>
+        <div class="ad-slot-phone-shell">
+          <div class="ad-slot" data-ad-slot="mobile">
+            <iframe
+              title="PlaneWX AOPA display ad"
+              src="/aopa/ad/index.html?demo=1"
+              width="300"
+              height="250"
+              loading="lazy"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </div>
+        <p class="ad-demo-note">Tap the ad to expand. Close with ×. Scaled to fit this screen.</p>
+      </div>
 
       <p>Hotels are booked. Passengers have rearranged work. The airplane is reserved. Then the night before, "we'll see" becomes "we have to be there." By then you are not deciding. You are rationalizing.</p>
 
@@ -585,7 +823,61 @@ h1.headline {
     </aside>
 
   </article>
+
+  <!-- Desktop right rail: live 300x250, expands left over article -->
+  <aside class="native-rail" aria-label="Advertisement">
+    <div class="ad-slot-label">Advertisement</div>
+    <div class="ad-slot" data-ad-slot="desktop">
+      <iframe
+        title="PlaneWX AOPA display ad"
+        src="/aopa/ad/index.html?demo=1"
+        width="300"
+        height="250"
+        scrolling="no"
+      ></iframe>
+    </div>
+    <p class="ad-demo-note">Hover or click to expand left. Close with ×.</p>
+  </aside>
+  </div><!-- /.native-shell -->
 </div>
+
+<!-- ═══════════ FOR AOPA: HTML5 AD SOURCE ═══════════ -->
+<section class="aopa-source-wrap" id="aopa-ad-source" aria-labelledby="aopa-ad-source-heading">
+  <div class="aopa-source">
+    <h2 id="aopa-ad-source-heading">For AOPA: ad source</h2>
+    <p class="source-lead">
+      HTML5 expandable 300×250 (expands left to 600×250). Default <code style="color:#e2e8f0;">clickTag</code> is
+      <code style="color:#e2e8f0;">https://www.planewx.ai/aopa</code>.
+      Send materials to
+      <a href="mailto:pilot.ads@aopa.org">pilot.ads@aopa.org</a>
+      at least 5 business days before launch. Expanding units usually need an expandable / custom GAM template; confirm with AOPA. Collapsed-only fallback and <code style="color:#e2e8f0;">backup.jpg</code> are in the zip.
+    </p>
+    <p class="source-meta">
+      Specs: GAM HTML5 · ad.size 300×250 · animation ≤15s · 1px #BFDBFE border · no external requests · initial load under 150KB.
+      Rebuild zip anytime with <code style="color:#cbd5e1;">npm run build:aopa-ad</code>.
+    </p>
+
+    <div class="code-block-wrap">
+      <div class="code-block-toolbar">
+        <span class="code-label">single-file.html (self-contained)</span>
+        <button type="button" class="copy-code-btn" id="copyAdCodeBtn">Copy code</button>
+      </div>
+      <pre class="code-block" id="adSourceCode" tabindex="0">Loading ad source…</pre>
+    </div>
+
+    <div class="source-downloads">
+      <a href="/aopa/planewx-aopa-html5-300x250-expand-600x250.zip" download>Download HTML5 zip</a>
+      <a class="secondary" href="/aopa/ads/planewx-aopa-300x250-fly-like-its-your-job.jpg" download>JPG 300×250</a>
+      <a class="secondary" href="/aopa/ads/planewx-aopa-300x250-fly-like-its-your-job@2x.jpg" download>JPG 300×250 @2x</a>
+      <a class="secondary" href="/aopa/ads/planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job.jpg" download>JPG 600×250</a>
+      <a class="secondary" href="/aopa/ads/planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job@2x.jpg" download>JPG 600×250 @2x</a>
+    </div>
+    <p class="source-meta" style="margin:0;">
+      Reference creative JPGs and SPECS: <a href="/aopa/ads/SPECS.txt">/aopa/ads/SPECS.txt</a>.
+      Ad README: <a href="/aopa/ad/README.md">/aopa/ad/README.md</a>.
+    </p>
+  </div>
+</section>
 
 <!-- ═══════════ EXISTING AD CREATIVE PACKAGE (unchanged downloads) ═══════════ -->
 <div class="package-wrap">
@@ -834,6 +1126,83 @@ h1.headline {
     } finally {
       document.body.removeChild(ta);
     }
+  }
+
+  // ── Live ad iframe: resize slot on expand/collapse ──
+  function phoneScale() {
+    var avail = Math.min(window.innerWidth - 32, 360);
+    return Math.min(1, avail / 600);
+  }
+
+  function setSlotExpanded(slot, on) {
+    if (!slot) return;
+    if (on) {
+      slot.classList.add("is-expanded");
+      if (slot.getAttribute("data-ad-slot") === "mobile") {
+        slot.style.setProperty("--ad-phone-scale", String(phoneScale()));
+      }
+    } else {
+      slot.classList.remove("is-expanded");
+    }
+  }
+
+  window.addEventListener("message", function (ev) {
+    var data = ev && ev.data;
+    if (!data || data.type !== "planewx-aopa-ad") return;
+    var frames = document.querySelectorAll(".ad-slot iframe");
+    frames.forEach(function (frame) {
+      if (frame.contentWindow === ev.source) {
+        setSlotExpanded(frame.closest(".ad-slot"), !!data.expanded);
+      }
+    });
+  });
+
+  window.addEventListener("resize", function () {
+    document.querySelectorAll('.ad-slot[data-ad-slot="mobile"].is-expanded').forEach(function (slot) {
+      slot.style.setProperty("--ad-phone-scale", String(phoneScale()));
+    });
+  });
+
+  // ── For AOPA: load single-file source + Copy code ──
+  var codeEl = document.getElementById("adSourceCode");
+  var copyBtn = document.getElementById("copyAdCodeBtn");
+  var sourceText = "";
+
+  if (codeEl) {
+    fetch("/aopa/ad/single-file.html", { credentials: "same-origin" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.text();
+      })
+      .then(function (text) {
+        sourceText = text;
+        codeEl.textContent = text;
+      })
+      .catch(function () {
+        codeEl.textContent =
+          "Could not load /aopa/ad/single-file.html. Run npm run build:aopa-ad and refresh.";
+      });
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      if (!sourceText) return;
+      function flash() {
+        copyBtn.classList.add("is-copied");
+        copyBtn.textContent = "Copied";
+        setTimeout(function () {
+          copyBtn.classList.remove("is-copied");
+          copyBtn.textContent = "Copy code";
+        }, 2000);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(sourceText).then(flash).catch(function () {
+          fallbackCopy(sourceText, flash);
+        });
+      } else {
+        fallbackCopy(sourceText, flash);
+      }
+    });
   }
 })();
 </script>

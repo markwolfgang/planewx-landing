@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ad.size" content="width=300,height=250">
+<title>PlaneWX AOPA 300x250 expandable</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+  }
+  * { box-sizing: border-box; }
+
+  /* Expand direction: left (default) or right. Set via JS CONFIG.expandDirection. */
+  #ad {
+    position: absolute;
+    top: 0;
+    right: 0; /* right edge anchored for leftward expand */
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+    z-index: 100; /* collapsed: 0–4999 */
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+    border: 1px solid #BFDBFE;
+    background: #0B1B33;
+    color: #fff;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  #ad.is-expanded {
+    width: 600px;
+    z-index: 50000; /* expanded: 5000–1999999 */
+  }
+  #ad.expand-right {
+    right: auto;
+    left: 0;
+  }
+
+  .panels {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 600px;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+  }
+  #ad.expand-right .panels {
+    right: auto;
+    left: 0;
+  }
+
+  .panel {
+    position: relative;
+    width: 300px;
+    height: 250px;
+    flex: 0 0 300px;
+    overflow: hidden;
+  }
+
+  /* Left = 5X5 expanded panel; Right = PlaneWX collapsed panel */
+  .panel-5x5 {
+    background: #0B1B33;
+    padding: 14px 14px 10px;
+  }
+  .panel-main {
+    background: #0B1B33;
+    padding: 12px 14px 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .logo-wordmark {
+    display: block;
+    width: 148px;
+    height: 30px;
+    object-fit: contain;
+    object-position: left center;
+  }
+  .tagline {
+    margin: 2px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .main-body {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .gauge-wrap {
+    flex: 0 0 auto;
+    width: 88px;
+    text-align: center;
+  }
+  .gauge {
+    width: 88px;
+    height: 88px;
+    display: block;
+  }
+  .gauge-label {
+    margin-top: 2px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #94A3B8;
+    text-transform: uppercase;
+  }
+  .gauge-pct {
+    fill: #FACC15;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+  }
+
+  .copy-col {
+    flex: 1;
+    min-width: 0;
+    padding-top: 2px;
+  }
+  .lead {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #fff;
+  }
+  .steps {
+    margin: 8px 0 0;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #38BDF8;
+  }
+
+  .cta {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    height: 36px;
+    border: 0;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #22D3EE 0%, #2563EB 100%);
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    line-height: 36px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  /* 5X5 panel */
+  .x5-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .x5-brand {
+    flex: 0 0 auto;
+  }
+  .x5-logo {
+    display: block;
+    width: 118px;
+    height: 48px;
+  }
+  .x5-reward {
+    margin: 2px 0 0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #F97316;
+    text-align: right;
+    line-height: 1.25;
+    text-transform: uppercase;
+    max-width: 140px;
+  }
+  .x5-powered {
+    margin-top: 8px;
+  }
+  .x5-powered-label {
+    margin: 0;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #94A3B8;
+    text-transform: uppercase;
+  }
+  .x5-pw-logo {
+    display: block;
+    margin-top: 4px;
+    width: 120px;
+    height: 24px;
+    object-fit: contain;
+    object-position: left center;
+  }
+  .x5-offer {
+    margin: 8px 0 0;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    color: #fff;
+    text-transform: uppercase;
+    max-width: 180px;
+  }
+  .x5-art {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 200px;
+    height: 150px;
+    pointer-events: none;
+  }
+  .x5-stripes {
+    position: absolute;
+    right: -10px;
+    bottom: 8px;
+    width: 210px;
+    height: 120px;
+    background:
+      repeating-linear-gradient(
+        -38deg,
+        transparent 0 10px,
+        #F97316 10px 22px,
+        transparent 22px 30px,
+        #fff 30px 40px,
+        transparent 40px 48px,
+        #38BDF8 48px 60px,
+        transparent 60px 68px,
+        #fff 68px 78px,
+        transparent 78px 86px,
+        #F97316 86px 98px,
+        transparent 98px 120px
+      );
+    opacity: 0.95;
+    transform: skewX(-6deg);
+  }
+  .x5-plane {
+    position: absolute;
+    right: 4px;
+    bottom: 2px;
+    width: 168px;
+    height: auto;
+    display: block;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(11, 27, 51, 0.85);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #ad.is-expanded .close-btn { display: block; }
+  #ad.expand-right.is-expanded .close-btn {
+    left: auto;
+    right: 6px;
+  }
+  .close-btn:hover { background: rgba(37, 99, 235, 0.9); }
+
+  .expand-hint {
+    position: absolute;
+    right: 8px;
+    bottom: 44px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: rgba(148, 163, 184, 0.9);
+    text-transform: uppercase;
+    pointer-events: none;
+    opacity: 0;
+  }
+</style>
+</head>
+<body>
+<div id="ad" role="link" aria-label="PlaneWX: Fly like it's your job. Start planning free." tabindex="0">
+  <button type="button" class="close-btn" id="closeBtn" aria-label="Close expanded ad" title="Close">×</button>
+  <div class="panels">
+    <div class="panel panel-5x5" aria-hidden="true">
+      <div class="x5-top">
+        <div class="x5-brand">
+          <svg class="x5-logo" viewBox="0 0 280 70" xmlns="http://www.w3.org/2000/svg" aria-label="5X5 Aviation Insurance">
+            <text x="0" y="42" font-family="Arial Black, Helvetica Black, Impact, Arial, sans-serif" font-size="48" font-weight="900" fill="#F97316" letter-spacing="-1">5X5</text>
+            <text x="2" y="64" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#F97316" letter-spacing="2.2">AVIATION INSURANCE</text>
+          </svg>
+        </div>
+        <p class="x5-reward">5X5 rewards safety.</p>
+      </div>
+      <div class="x5-powered">
+        <p class="x5-powered-label">Powered by</p>
+        <img class="x5-pw-logo" src="data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%0A%20%20id%3D%22Layer_1%22%0A%20%20data-name%3D%22Layer%201%22%0A%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%0A%20%20viewBox%3D%22150%20430%20720%20140%22%0A%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20.cls-1%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20url(%23linear-gradient-4)%3B%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20.cls-2%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20url(%23linear-gradient-3)%3B%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20.cls-3%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20url(%23linear-gradient-2)%3B%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20.cls-4%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20url(%23linear-gradient)%3B%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20.cls-5%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20%23ffffff%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%3C%2Fstyle%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22linear-gradient%22%20x1%3D%22650.11%22%20y1%3D%22442.09%22%20x2%3D%22650.11%22%20y2%3D%22552.78%22%20gradientTransform%3D%22translate(133.97)%20skewX(-15)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300b6d1%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232563eb%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22linear-gradient-2%22%20x1%3D%22748.57%22%20y1%3D%22442.09%22%20x2%3D%22748.57%22%20y2%3D%22552.78%22%20xlink%3Ahref%3D%22%23linear-gradient%22%2F%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22linear-gradient-3%22%20x1%3D%22799.92%22%20y1%3D%22442.09%22%20x2%3D%22799.92%22%20y2%3D%22552.78%22%20xlink%3Ahref%3D%22%23linear-gradient%22%2F%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22linear-gradient-4%22%20x1%3D%22755.47%22%20y1%3D%22442.09%22%20x2%3D%22755.47%22%20y2%3D%22552.78%22%20xlink%3Ahref%3D%22%23linear-gradient%22%2F%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Cg%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-5%22%20d%3D%22M566.58%2C505l-25.94-.24c-6.73-.06-13.13%2C0-19.68-.41l2.83-9.98c3.96-.52%2C28.03-.19%2C37.81-.5l.34-1.16%2C3.08-11.48-8.18-.14-29.52-.06%2C2.54-9.12%2C46.23-.5%2C3.79-14.13-65.59.04c-1.41%2C5.27-16.25%2C60.39-16.25%2C60.39%2C1.93.12%2C3.98.21%2C6.09.29h58.99l3.48-12.99Z%22%2F%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-5%22%20d%3D%22M426.42%2C518l3.9-14.27%2C6.92-27.3c3.7%2C5.16%2C6.44%2C10.45%2C9.62%2C15.83l14.48%2C24.44c.41.69.81%2C1.31.81%2C1.31h18.25c1.27-.05%2C2.54-.1%2C3.83-.16%2C0%2C0%2C15.65-58.56%2C16.53-60.57l-17.47-.18c-.55%2C2.64-10.12%2C37.85-10.98%2C41.52l-14.05-24.33-9.66-17-22.86-.15-16.65%2C60.78%2C3.23.08h14.1Z%22%2F%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-5%22%20d%3D%22M260.91%2C518h47.98l3.74-13.96c-12.78-.01-24.31-.21-37.38-.21%2C2.72-11.63%2C11.69-46.69%2C11.69-46.69l-19.66-.17-15.57%2C60.99%2C9.19.05Z%22%2F%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-5%22%20d%3D%22M333.01%2C518l9.12-10.79h36.98s2.66%2C10.7%2C2.66%2C10.7c.45.04.9.06%2C1.35.1h17.96c.36-.03.72-.05%2C1.09-.09l-8.02-32.06-6.93-28.56-25.13.03s-46.81%2C58.31-48.32%2C60.68h19.24ZM370.59%2C470.48l6.21%2C22.72-24.41-.06%2C18.2-22.67Z%22%2F%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-5%22%20d%3D%22M252.95%2C469.83c1.31-5.27%2C1.32-10.31.16-14.87-1.29-5.1-6.08-6.62-11.83-6.6l-63.69.21-17.67%2C65.96-.88%2C3.38c.78.04%2C1.56.06%2C2.34.09h15.18c.67-.02%2C1.34-.04%2C2.02-.06l5.42-21.12%2C42.38-.4c8.65-.08%2C17.67-3.16%2C22.04-12.46%2C2.21-4.68%2C3.34-9.29%2C4.54-14.12ZM230.33%2C476.95c-1.63%2C3.26-5.04%2C5.7-8.64%2C5.67l-33.49-.19s4.12-16.12%2C5.09-19.74l35.11-.31c7.31-.06%2C4.19%2C10.04%2C1.94%2C14.56Z%22%2F%3E%0A%20%20%20%20%3Cg%3E%0A%20%20%20%20%20%20%3Cpolygon%20class%3D%22cls-4%22%20points%3D%22593.68%20442.52%20602.47%20518.37%20623.92%20518.37%20657.3%20468.64%20660.91%20518.37%20682.52%20518.37%20737.35%20442.52%20711.73%20442.52%20678.88%20495.99%20676.81%20442.52%20655.14%20442.52%20621.4%20494.13%20619.3%20442.52%20593.68%20442.52%22%2F%3E%0A%20%20%20%20%20%20%3Cpolygon%20class%3D%22cls-3%22%20points%3D%22781.59%20464.54%20762.86%20478.25%20740.45%20442.52%20768.9%20442.52%20781.59%20464.54%22%2F%3E%0A%20%20%20%20%20%20%3Cpolygon%20class%3D%22cls-2%22%20points%3D%22820.02%20519.16%20789.87%20519.16%20775.07%20498.55%20795.03%20484.82%20820.02%20519.16%22%2F%3E%0A%20%20%20%20%20%20%3Cpolygon%20class%3D%22cls-1%22%20points%3D%22816.57%20442.51%20816.36%20442.53%20659.34%20557.49%20719.72%20533.24%20851.6%20442.51%20816.57%20442.51%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" width="120" height="24" alt="PlaneWX">
+      </div>
+      <p class="x5-offer">Up to 10% off your aviation insurance</p>
+      <div class="x5-art" aria-hidden="true">
+        <div class="x5-stripes"></div>
+        <img class="x5-plane" src="data:image/png;base64,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" width="168" height="126" alt="">
+      </div>
+    </div>
+
+    <div class="panel panel-main">
+      <div class="logo-row">
+        <img class="logo-wordmark" src="data:image/svg+xml;charset=utf-8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%0A%20%20id%3D%22Layer_1%22%0A%20%20data-name%3D%22Layer%201%22%0A%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%0A%20%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%0A%20%20viewBox%3D%22150%20430%20720%20140%22%0A%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3Cstyle%3E%0A%20%20%20%20%20%20.cls-1%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20url(%23linear-gradient-4)%3B%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20.cls-2%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20url(%23linear-gradient-3)%3B%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20.cls-3%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20url(%23linear-gradient-2)%3B%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20.cls-4%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20url(%23linear-gradient)%3B%0A%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20.cls-5%20%7B%0A%20%20%20%20%20%20%20%20fill%3A%20%23ffffff%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%3C%2Fstyle%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22linear-gradient%22%20x1%3D%22650.11%22%20y1%3D%22442.09%22%20x2%3D%22650.11%22%20y2%3D%22552.78%22%20gradientTransform%3D%22translate(133.97)%20skewX(-15)%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2300b6d1%22%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%232563eb%22%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22linear-gradient-2%22%20x1%3D%22748.57%22%20y1%3D%22442.09%22%20x2%3D%22748.57%22%20y2%3D%22552.78%22%20xlink%3Ahref%3D%22%23linear-gradient%22%2F%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22linear-gradient-3%22%20x1%3D%22799.92%22%20y1%3D%22442.09%22%20x2%3D%22799.92%22%20y2%3D%22552.78%22%20xlink%3Ahref%3D%22%23linear-gradient%22%2F%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22linear-gradient-4%22%20x1%3D%22755.47%22%20y1%3D%22442.09%22%20x2%3D%22755.47%22%20y2%3D%22552.78%22%20xlink%3Ahref%3D%22%23linear-gradient%22%2F%3E%0A%20%20%3C%2Fdefs%3E%0A%20%20%3Cg%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-5%22%20d%3D%22M566.58%2C505l-25.94-.24c-6.73-.06-13.13%2C0-19.68-.41l2.83-9.98c3.96-.52%2C28.03-.19%2C37.81-.5l.34-1.16%2C3.08-11.48-8.18-.14-29.52-.06%2C2.54-9.12%2C46.23-.5%2C3.79-14.13-65.59.04c-1.41%2C5.27-16.25%2C60.39-16.25%2C60.39%2C1.93.12%2C3.98.21%2C6.09.29h58.99l3.48-12.99Z%22%2F%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-5%22%20d%3D%22M426.42%2C518l3.9-14.27%2C6.92-27.3c3.7%2C5.16%2C6.44%2C10.45%2C9.62%2C15.83l14.48%2C24.44c.41.69.81%2C1.31.81%2C1.31h18.25c1.27-.05%2C2.54-.1%2C3.83-.16%2C0%2C0%2C15.65-58.56%2C16.53-60.57l-17.47-.18c-.55%2C2.64-10.12%2C37.85-10.98%2C41.52l-14.05-24.33-9.66-17-22.86-.15-16.65%2C60.78%2C3.23.08h14.1Z%22%2F%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-5%22%20d%3D%22M260.91%2C518h47.98l3.74-13.96c-12.78-.01-24.31-.21-37.38-.21%2C2.72-11.63%2C11.69-46.69%2C11.69-46.69l-19.66-.17-15.57%2C60.99%2C9.19.05Z%22%2F%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-5%22%20d%3D%22M333.01%2C518l9.12-10.79h36.98s2.66%2C10.7%2C2.66%2C10.7c.45.04.9.06%2C1.35.1h17.96c.36-.03.72-.05%2C1.09-.09l-8.02-32.06-6.93-28.56-25.13.03s-46.81%2C58.31-48.32%2C60.68h19.24ZM370.59%2C470.48l6.21%2C22.72-24.41-.06%2C18.2-22.67Z%22%2F%3E%0A%20%20%20%20%3Cpath%20class%3D%22cls-5%22%20d%3D%22M252.95%2C469.83c1.31-5.27%2C1.32-10.31.16-14.87-1.29-5.1-6.08-6.62-11.83-6.6l-63.69.21-17.67%2C65.96-.88%2C3.38c.78.04%2C1.56.06%2C2.34.09h15.18c.67-.02%2C1.34-.04%2C2.02-.06l5.42-21.12%2C42.38-.4c8.65-.08%2C17.67-3.16%2C22.04-12.46%2C2.21-4.68%2C3.34-9.29%2C4.54-14.12ZM230.33%2C476.95c-1.63%2C3.26-5.04%2C5.7-8.64%2C5.67l-33.49-.19s4.12-16.12%2C5.09-19.74l35.11-.31c7.31-.06%2C4.19%2C10.04%2C1.94%2C14.56Z%22%2F%3E%0A%20%20%20%20%3Cg%3E%0A%20%20%20%20%20%20%3Cpolygon%20class%3D%22cls-4%22%20points%3D%22593.68%20442.52%20602.47%20518.37%20623.92%20518.37%20657.3%20468.64%20660.91%20518.37%20682.52%20518.37%20737.35%20442.52%20711.73%20442.52%20678.88%20495.99%20676.81%20442.52%20655.14%20442.52%20621.4%20494.13%20619.3%20442.52%20593.68%20442.52%22%2F%3E%0A%20%20%20%20%20%20%3Cpolygon%20class%3D%22cls-3%22%20points%3D%22781.59%20464.54%20762.86%20478.25%20740.45%20442.52%20768.9%20442.52%20781.59%20464.54%22%2F%3E%0A%20%20%20%20%20%20%3Cpolygon%20class%3D%22cls-2%22%20points%3D%22820.02%20519.16%20789.87%20519.16%20775.07%20498.55%20795.03%20484.82%20820.02%20519.16%22%2F%3E%0A%20%20%20%20%20%20%3Cpolygon%20class%3D%22cls-1%22%20points%3D%22816.57%20442.51%20816.36%20442.53%20659.34%20557.49%20719.72%20533.24%20851.6%20442.51%20816.57%20442.51%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A" width="148" height="30" alt="PlaneWX">
+      </div>
+      <p class="tagline">Fly like it's your job.</p>
+
+      <div class="main-body">
+        <div class="gauge-wrap">
+          <svg class="gauge" viewBox="0 0 88 88" aria-label="WX Score 76 percent">
+            <circle cx="44" cy="44" r="34" fill="none" stroke="#334155" stroke-width="7"></circle>
+            <circle id="gaugeArc" cx="44" cy="44" r="34" fill="none" stroke="#FACC15" stroke-width="7"
+              stroke-linecap="round"
+              stroke-dasharray="213.628"
+              stroke-dashoffset="213.628"
+              transform="rotate(-90 44 44)"></circle>
+            <text id="gaugeText" class="gauge-pct" x="44" y="50" text-anchor="middle">0%</text>
+          </svg>
+          <div class="gauge-label">WX Score</div>
+        </div>
+        <div class="copy-col">
+          <p class="lead">Professional-grade tools and habits for every flight.</p>
+          <p class="steps">Brief. Assess. Decide. Debrief.</p>
+        </div>
+      </div>
+
+      <div class="cta" id="ctaBtn">Start Planning Free →</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // GAM / DoubleClick Studio: publishers may rewrite clickTag.
+  var clickTag = "https://www.planewx.ai/aopa";
+
+  var CONFIG = {
+    // "left" (default): expands leftward; collapsed right edge stays anchored.
+    // "right": expands rightward; collapsed left edge stays anchored.
+    expandDirection: "left",
+    targetScore: 76,
+    gaugeMs: 1400,
+    maxAnimationMs: 15000,
+    hoverExpandDelayMs: 120
+  };
+
+  (function () {
+    var ad = document.getElementById("ad");
+    var closeBtn = document.getElementById("closeBtn");
+    var gaugeArc = document.getElementById("gaugeArc");
+    var gaugeText = document.getElementById("gaugeText");
+    var CIRC = 2 * Math.PI * 34; // ~213.628
+    var expanded = false;
+    var stickyExpand = false; // parent/demo held expand (ignore mouseleave)
+    var animStopped = false;
+    var hoverTimer = null;
+    var animStart = 0;
+    var rafId = 0;
+    var scoreDone = false;
+    var params = {};
+    try {
+      params = Object.fromEntries(new URLSearchParams(location.search));
+    } catch (e) {}
+    // ?demo=1 on /aopa iframe: expand/collapse without navigating away
+    var demoMode = params.demo === "1" || params.demo === "true";
+    if (params.expand === "left" || params.expand === "right") {
+      CONFIG.expandDirection = params.expand;
+    }
+
+    if (CONFIG.expandDirection === "right") {
+      ad.classList.add("expand-right");
+    }
+
+    function openClick() {
+      window.open(clickTag, "_blank");
+    }
+
+    function setExpanded(on, sticky) {
+      expanded = !!on;
+      if (typeof sticky === "boolean") stickyExpand = sticky;
+      if (!expanded) stickyExpand = false;
+      if (expanded) ad.classList.add("is-expanded");
+      else ad.classList.remove("is-expanded");
+      try {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: "planewx-aopa-ad", expanded: expanded }, "*");
+        }
+      } catch (e) {}
+    }
+
+    function expand(sticky) { setExpanded(true, sticky === true); }
+    function collapse() { setExpanded(false, false); }
+
+    // Whole unit click → clickTag (buttons included), except close.
+    // In demo mode, click/tap expands instead of navigating (close still collapses).
+    ad.addEventListener("click", function (e) {
+      if (e.target === closeBtn || closeBtn.contains(e.target)) return;
+      if (demoMode) {
+        if (!expanded) expand(true);
+        else openClick();
+        return;
+      }
+      openClick();
+    });
+
+    ad.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (demoMode) {
+          if (!expanded) expand(true);
+          else openClick();
+        } else {
+          openClick();
+        }
+      }
+    });
+
+    closeBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      collapse();
+    });
+
+    ad.addEventListener("mouseenter", function () {
+      if (hoverTimer) clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function () { expand(false); }, CONFIG.hoverExpandDelayMs);
+    });
+    ad.addEventListener("mouseleave", function () {
+      if (hoverTimer) clearTimeout(hoverTimer);
+      if (!stickyExpand) collapse();
+    });
+
+    // Parent-driven expand for demos / touch toggles
+    window.addEventListener("message", function (ev) {
+      var data = ev && ev.data;
+      if (!data || data.type !== "planewx-aopa-ad-cmd") return;
+      if (data.action === "expand") expand(true);
+      if (data.action === "collapse") collapse();
+      if (data.action === "toggle") setExpanded(!expanded, true);
+    });
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function tick(now) {
+      if (animStopped) return;
+      if (!animStart) animStart = now;
+      var elapsed = now - animStart;
+
+      if (!scoreDone) {
+        var t = Math.min(1, elapsed / CONFIG.gaugeMs);
+        var eased = easeOutCubic(t);
+        var score = Math.round(CONFIG.targetScore * eased);
+        var offset = CIRC * (1 - (CONFIG.targetScore / 100) * eased);
+        gaugeArc.setAttribute("stroke-dashoffset", String(offset));
+        gaugeText.textContent = score + "%";
+        if (t >= 1) {
+          scoreDone = true;
+          gaugeText.textContent = CONFIG.targetScore + "%";
+        }
+      }
+
+      if (elapsed >= CONFIG.maxAnimationMs) {
+        animStopped = true;
+        if (rafId) cancelAnimationFrame(rafId);
+        return;
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+
+    // Cap any animation at 15s, then stop.
+    rafId = requestAnimationFrame(tick);
+    setTimeout(function () {
+      animStopped = true;
+      if (rafId) cancelAnimationFrame(rafId);
+    }, CONFIG.maxAnimationMs);
+
+    // Expose tiny API for page demos
+    window.PlaneWxAopaAd = {
+      expand: expand,
+      collapse: collapse,
+      toggle: function () { setExpanded(!expanded); },
+      isExpanded: function () { return expanded; }
+    };
+  })();
+</script>
+</body>
+</html>
