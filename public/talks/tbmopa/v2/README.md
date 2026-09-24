@@ -16,7 +16,7 @@
 6. The gap: pressure, passengers, reservation
 7. Personal minimums and FRAT as GA's SOPs
 8. Key: no personal minimums, no WX Score (100%)
-9. Community polls: TBMOPA + COPA
+9. Community polls: TBMOPA + COPA + Airplanes and Coffee
 10. The Loop (four steps + Mentor alongside)
 11. Loop 1: Weather Briefing
 12. Briefing quality: 8.7/10
