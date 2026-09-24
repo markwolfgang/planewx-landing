@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, ExternalLink } from "lucide-react"
+import { ArrowLeft, ExternalLink, Play } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
 
@@ -95,6 +95,11 @@ const PARTNERS = [
     },
     blurb:
       "Free browser tool that turns your flight plan into printable kneeboard sheets, one page per leg with frequencies and cockpit note fields. Built by IMC TV Media for VFR and IFR pilots.",
+    // Sara / Discord #bot-hq: feature video on partners listing (not a separate IMC TV card)
+    featureVideo: {
+      href: "https://youtu.be/XqYzuOc3Y4o",
+      label: "Feature video",
+    },
   },
   {
     name: "EAA",
@@ -249,41 +254,82 @@ export default function PartnersPage() {
             Partner organizations
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {PARTNERS.map((partner) => (
-              <li key={partner.name} className="h-full">
-                <a
-                  href={partner.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
-                >
-                  <div className="flex min-h-[4.75rem] items-center justify-center rounded-xl bg-white/[0.04] px-4 py-4 mb-4">
-                    <Image
-                      src={partner.logo.src}
-                      alt={partner.logo.alt}
-                      width={partner.logo.width}
-                      height={partner.logo.height}
-                      className={partner.logo.className}
-                    />
+            {PARTNERS.map((partner) => {
+              const featureVideo =
+                "featureVideo" in partner ? partner.featureVideo : undefined
+              const logoWell = (
+                <div className="flex min-h-[4.75rem] items-center justify-center rounded-xl bg-white/[0.04] px-4 py-4 mb-4">
+                  <Image
+                    src={partner.logo.src}
+                    alt={partner.logo.alt}
+                    width={partner.logo.width}
+                    height={partner.logo.height}
+                    className={partner.logo.className}
+                  />
+                </div>
+              )
+              const body = (
+                <div className="flex items-start justify-between gap-3 mt-auto">
+                  <div className="space-y-2 min-w-0">
+                    <p className="font-semibold text-white group-hover:text-sky-300 transition-colors">
+                      {partner.name}
+                    </p>
+                    <p className="text-sm text-white/50 leading-relaxed">
+                      {partner.blurb}
+                    </p>
                   </div>
-                  <div className="flex items-start justify-between gap-3 mt-auto">
-                    <div className="space-y-2 min-w-0">
-                      <p className="font-semibold text-white group-hover:text-sky-300 transition-colors">
-                        {partner.name}
-                      </p>
-                      <p className="text-sm text-white/50 leading-relaxed">
-                        {partner.blurb}
-                      </p>
+                  <ExternalLink
+                    className="h-4 w-4 shrink-0 text-white/30 group-hover:text-sky-400 transition-colors mt-1"
+                    aria-hidden
+                  />
+                </div>
+              )
+
+              // Cards with a secondary feature-video link cannot wrap in a single <a>
+              if (featureVideo) {
+                return (
+                  <li key={partner.name} className="h-full">
+                    <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors">
+                      <a
+                        href={partner.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-1 flex-col rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                      >
+                        {logoWell}
+                        {body}
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </a>
+                      <a
+                        href={featureVideo.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex items-center gap-1.5 self-start text-sm font-medium text-sky-300/90 hover:text-sky-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                      >
+                        <Play className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                        {featureVideo.label}
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </a>
                     </div>
-                    <ExternalLink
-                      className="h-4 w-4 shrink-0 text-white/30 group-hover:text-sky-400 transition-colors mt-1"
-                      aria-hidden
-                    />
-                  </div>
-                  <span className="sr-only"> (opens in a new tab)</span>
-                </a>
-              </li>
-            ))}
+                  </li>
+                )
+              }
+
+              return (
+                <li key={partner.name} className="h-full">
+                  <a
+                    href={partner.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                  >
+                    {logoWell}
+                    {body}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </li>
+              )
+            })}
           </ul>
         </section>
 
