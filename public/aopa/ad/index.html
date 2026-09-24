@@ -66,10 +66,6 @@
   }
 
   /* Left = 5X5 expanded panel; Right = PlaneWX collapsed panel */
-  .panel-5x5 {
-    background: #0B1B33;
-    padding: 14px 14px 10px;
-  }
   .panel-main {
     background: #0B1B33;
     padding: 10px 12px 10px;
@@ -174,85 +170,84 @@
     padding: 0 10px;
   }
 
-  /* 5X5 panel */
-  .x5-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 8px;
+  /* 5X5 panel: art bleeds bottom/right of panel; HTML text sits in navy-cleared zone */
+  .panel-5x5 {
+    background: #0B1B33 url("assets/x5-panel-art.jpg") 0 0 / 300px 250px no-repeat;
+    padding: 0;
+    overflow: hidden;
+  }
+  .x5-copy-stack {
+    position: absolute;
+    top: 6px;
+    left: 28px;
+    z-index: 2;
+    width: 170px;
+    max-height: 128px;
+    overflow: hidden;
+    background: transparent;
+    padding: 0;
   }
   .x5-brand {
     flex: 0 0 auto;
   }
   .x5-logo {
     display: block;
-    width: 118px;
-    height: 48px;
+    width: 242px;
+    height: 74px;
+    margin-left: -2px;
+    filter: drop-shadow(0 1px 2px rgba(11, 27, 51, 0.95));
   }
   .x5-reward {
-    margin: 2px 0 0;
-    font-size: 11px;
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    z-index: 2;
+    margin: 0;
+    font-size: 10px;
     font-weight: 800;
     letter-spacing: 0.04em;
     color: #F97316;
     text-align: right;
-    line-height: 1.25;
+    line-height: 1.15;
     text-transform: uppercase;
-    max-width: 140px;
+    max-width: 96px;
+    text-shadow: 0 1px 2px rgba(11, 27, 51, 0.95);
   }
   .x5-powered {
-    margin-top: 8px;
+    position: relative;
+    z-index: 2;
+    margin-top: -2px;
   }
   .x5-powered-label {
     margin: 0;
-    font-size: 9px;
+    font-size: 7px;
     font-weight: 700;
     letter-spacing: 0.14em;
     color: #94A3B8;
     text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(11, 27, 51, 0.95);
   }
   .x5-pw-logo {
     display: block;
-    margin-top: 4px;
-    width: 120px;
-    height: 24px;
+    margin-top: 0;
+    width: 108px;
+    height: 20px;
     object-fit: contain;
     object-position: left center;
+    filter: drop-shadow(0 1px 2px rgba(11, 27, 51, 0.9));
   }
   .x5-offer {
     position: relative;
     z-index: 2;
-    margin: 8px 0 0;
-    font-size: 12px;
+    margin: 2px 0 0;
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 0.02em;
-    line-height: 1.25;
+    line-height: 1.1;
     color: #fff;
     text-transform: uppercase;
-    max-width: 168px;
-  }
-  .x5-art {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 165px;
-    height: 120px;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 1;
-  }
-  .x5-plane {
-    position: absolute;
-    right: -8px;
-    bottom: -4px;
-    width: 175px;
-    height: auto;
-    display: block;
-  }
-  .x5-powered {
-    position: relative;
-    z-index: 2;
-    margin-top: 8px;
+    max-width: 108px;
+    text-shadow: 0 1px 3px rgba(11, 27, 51, 1), 0 0 6px rgba(11, 27, 51, 0.9);
   }
 
   .close-btn {
@@ -301,22 +296,19 @@
   <button type="button" class="close-btn" id="closeBtn" aria-label="Close expanded ad" title="Close">×</button>
   <div class="panels">
     <div class="panel panel-5x5" aria-hidden="true">
-      <div class="x5-top">
+      <p class="x5-reward">5X5 rewards safety.</p>
+      <div class="x5-copy-stack">
         <div class="x5-brand">
-          <svg class="x5-logo" viewBox="0 0 280 70" xmlns="http://www.w3.org/2000/svg" aria-label="5X5 Aviation Insurance">
-            <text x="0" y="42" font-family="Arial Black, Helvetica Black, Impact, Arial, sans-serif" font-size="48" font-weight="900" fill="#F97316" letter-spacing="-1">5X5</text>
-            <text x="2" y="64" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#F97316" letter-spacing="2.2">AVIATION INSURANCE</text>
+          <svg class="x5-logo" viewBox="0 0 270 92" xmlns="http://www.w3.org/2000/svg" aria-label="5X5 Aviation Insurance">
+            <text x="0" y="58" font-family="Arial Black, Helvetica Black, Impact, Arial, sans-serif" font-size="76" font-weight="900" fill="#F97316" letter-spacing="-6">5X5</text>
+            <text x="1" y="86" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="700" fill="#F97316" letter-spacing="2.2">AVIATION INSURANCE</text>
           </svg>
         </div>
-        <p class="x5-reward">5X5 rewards safety.</p>
-      </div>
-      <div class="x5-powered">
-        <p class="x5-powered-label">Powered by</p>
-        <img class="x5-pw-logo" src="assets/planewx-wordmark.svg" width="120" height="24" alt="PlaneWX">
-      </div>
-      <p class="x5-offer">Up to 10% off your aviation insurance</p>
-      <div class="x5-art" aria-hidden="true">
-        <img class="x5-plane" src="assets/tbm-stripes.png" width="200" height="150" alt="">
+        <div class="x5-powered">
+          <p class="x5-powered-label">Powered by</p>
+          <img class="x5-pw-logo" src="assets/planewx-wordmark.svg" width="120" height="24" alt="PlaneWX">
+        </div>
+        <p class="x5-offer">Up to 10% off your aviation insurance</p>
       </div>
     </div>
 

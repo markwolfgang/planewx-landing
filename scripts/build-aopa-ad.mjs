@@ -32,6 +32,8 @@ function listInitialAssets(html) {
   const re = /(?:src|href)=["'](assets\/[^"']+)["']/g
   let m
   while ((m = re.exec(html))) files.add(m[1])
+  const bg = /url\(["']?(assets\/[^"')]+)["']?\)/g
+  while ((m = bg.exec(html))) files.add(m[1])
   return [...files]
 }
 
@@ -59,7 +61,7 @@ function buildZip() {
     "index.html",
     "backup.jpg",
     "assets/planewx-wordmark.svg",
-    "assets/tbm-stripes.png",
+    "assets/x5-panel-art.jpg",
     "assets/5x5-wordmark.svg",
     "README.md",
   ]
@@ -90,6 +92,10 @@ function buildSingleFile(html) {
   const re = /(?:src|href)=["'](assets\/[^"']+)["']/g
   let m
   while ((m = re.exec(html))) {
+    assetMap[m[1]] = path.join(AD_DIR, m[1])
+  }
+  const bg = /url\(["']?(assets\/[^"')]+)["']?\)/g
+  while ((m = bg.exec(html))) {
     assetMap[m[1]] = path.join(AD_DIR, m[1])
   }
 

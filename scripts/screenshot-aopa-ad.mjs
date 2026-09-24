@@ -180,7 +180,7 @@ async function main() {
   const initial =
     fs.statSync(path.join(adDir, "index.html")).size +
     fs.statSync(path.join(adDir, "assets/planewx-wordmark.svg")).size +
-    fs.statSync(path.join(adDir, "assets/tbm-stripes.png")).size
+    fs.statSync(path.join(adDir, "assets/x5-panel-art.jpg")).size
   compliance.push({
     item: "initial load under 150KB",
     pass: initial < 150 * 1024,
