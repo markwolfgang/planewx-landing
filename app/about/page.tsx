@@ -144,6 +144,12 @@ export default function AboutPage() {
             >
               Partners
             </Link>
+            <Link
+              href="/ambassadors"
+              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
+            >
+              Ambassadors
+            </Link>
             <span className="hidden sm:inline text-sm text-sky-400 font-medium" aria-current="page">
               About
             </span>
