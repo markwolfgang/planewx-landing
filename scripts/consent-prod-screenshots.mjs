@@ -104,21 +104,22 @@ async function main() {
     )
     await page.waitForSelector('[data-testid="cookie-consent-banner"]')
     await dismissEssential(page)
-    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+    const footer = page.locator("footer")
+    await footer.scrollIntoViewIfNeeded()
     await page.waitForTimeout(500)
-    const tagline = await page.locator("footer").innerText()
+    const tagline = await footer.innerText()
     if (!tagline.includes("Ambassadors")) {
       throw new Error("footer missing Ambassadors: " + tagline.slice(0, 300))
     }
     if (!tagline.includes("The Pilot's Decision Support System")) {
       throw new Error("footer tagline incomplete")
     }
-    await page.screenshot({ path: path.join(OUT, name) })
+    await footer.screenshot({ path: path.join(OUT, name) })
     console.log("saved", name)
     await context.close()
   }
 
-  // Do not sell: confirmation, then Manage panel afterwards
+  // Do not sell (US notice, no prior choice): confirmation, then Manage afterwards
   {
     const { context, page } = await freshPage(
       browser,
@@ -126,10 +127,7 @@ async function main() {
       { width: 1280, height: 900 },
     )
     await page.waitForSelector('[data-testid="cookie-consent-banner"]')
-    await dismissEssential(page)
-    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
-    await page.waitForTimeout(300)
-    await page.getByTestId("do-not-sell-link").click()
+    await page.getByTestId("banner-do-not-sell").click()
     await page.waitForSelector('[data-testid="do-not-sell-confirmation"]')
     await page.waitForTimeout(400)
     await page.screenshot({
@@ -137,7 +135,8 @@ async function main() {
     })
     console.log("saved do-not-sell-confirmation-1280.png")
 
-    // Open Manage afterwards: Analytics on, Marketing off
+    // Open Manage afterwards: Analytics on (notice default), Marketing off
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
     await page.getByTestId("cookie-settings-link").click()
     await page.waitForSelector('[data-testid="cookie-consent-banner"]')
     await page.getByTestId("cookie-manage-button").click()
