@@ -106,13 +106,13 @@ export function LandingVariantA() {
             <SignUpButton
               variant={VARIANT}
               path="/"
-              className="text-sm text-white/60 hover:text-white transition-colors"
+              className="text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap"
             >
               Log In
             </SignUpButton>
             <SignUpButton
               variant={VARIANT}
-              className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
+              className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-3 sm:px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors whitespace-nowrap"
             >
               Start Free 14-Day Trial
             </SignUpButton>
@@ -134,22 +134,22 @@ export function LandingVariantA() {
             </span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed text-balance">
             Weather tools show you data. PlaneWX helps you make the call.
           </p>
 
-          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed text-balance">
             PlaneWX is the decision support system for general aviation. It gives pilots
             professional-grade tools and instills professional-grade habits that make flying safer.
           </p>
-          <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed text-balance">
             The risk-management loop for pilots without a dispatcher, not just another weather app.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <SignUpButton
               variant={VARIANT}
-              className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all"
+              className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-6 sm:px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all whitespace-nowrap"
             >
               Start Free 14-Day Trial
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -162,7 +162,7 @@ export function LandingVariantA() {
             </a>
           </div>
 
-          <p className="text-sm text-white/30">Brief a real trip. Run the FRAT. Make the call. Debrief. Bring a mentor in when you want a second set of eyes.</p>
+          <p className="text-sm text-white/30">Brief a real trip. Run the FRAT. Make the call. Debrief. Add a mentor anytime.</p>
 
           <div className="flex items-center justify-center gap-2 mt-4 text-sm text-emerald-400/80">
             <Shield className="h-4 w-4" />
@@ -194,7 +194,7 @@ export function LandingVariantA() {
           <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium">
             Trusted by serious GA pilots
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center items-start">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-center items-start">
             <div>
               <div className="text-4xl md:text-5xl font-bold text-sky-400 mb-1">2,200+</div>
               <div className="text-sm text-white/50">pilots<br />on PlaneWX</div>
@@ -203,17 +203,17 @@ export function LandingVariantA() {
               <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-1">8.7/10</div>
               <div className="text-sm text-white/50">briefing feedback<br />(1,724 responses)</div>
             </div>
-            <div className="col-span-2 md:col-span-1">
+            <div className="col-span-2 lg:col-span-1">
               <div className="text-4xl md:text-5xl font-bold text-violet-400 mb-1">~2×</div>
               <div className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto">
-                debrief → FRAT
+                debrief, then FRAT
               </div>
               <p className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto mt-2">
                 Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
               </p>
             </div>
-            <div className="col-span-2 md:col-span-1">
-              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1 tracking-tighter whitespace-nowrap">
+            <div className="col-span-2 lg:col-span-1">
+              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1 tracking-[-0.08em] whitespace-nowrap">
                 Up to 10%
               </div>
               <div className="text-sm text-white/50 leading-snug max-w-[14rem] mx-auto">
@@ -333,7 +333,7 @@ export function LandingVariantA() {
                 <Plane className="h-5 w-5 text-emerald-400" />
               </div>
               <h3 className="text-2xl font-bold mb-2">Fly or Stay</h3>
-              <p className="text-emerald-400/90 text-xs font-medium mb-2">You make the call</p>
+              <p className="text-emerald-400/90 text-xs font-medium mb-2">PIC decision</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 You make the call. Staying is a legitimate outcome, not a failure.
               </p>
@@ -446,7 +446,7 @@ export function LandingVariantA() {
               <p className="text-white/60 text-sm leading-relaxed mb-4">
                 The WX Score feeds FRAT on PAVE: Pilot, Aircraft, enVironment, External pressures.
                 Airport complexity and traffic are scored in your FRAT.
-                You get a complete decision view. You make the call.
+                You get a complete decision view.
               </p>
               <ul className="space-y-1.5 text-xs text-white/40">
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />WX Score: 0-100% quantified risk</li>
@@ -482,7 +482,6 @@ export function LandingVariantA() {
               </p>
               <ul className="space-y-3">
                 {[
-                  "Every deduction is transparent and tied to your aircraft and minimums",
                   "0-100% metric calculated against YOUR minimums, not generic VFR/IFR",
                   "Ceiling, visibility, crosswind, turbulence, icing, all weighted",
                   "Different scores for each aircraft you fly",
@@ -581,7 +580,7 @@ export function LandingVariantA() {
                 color: "from-amber-950/60 to-amber-950/20 border-amber-500/20",
                 accent: "text-amber-400", bg: "bg-amber-500/20",
                 items: ["Time pressure", "Passenger / family expectations", "Business commitments", "Trip Watchers: share data and reduce pressure"],
-                filled: false, note: "Trip Watchers helps. Stakeholders see the same data.",
+                filled: false, note: "Trip Watchers takes the pressure off the conversation.",
               },
             ].map(({ letter, label, color, accent, bg, items, filled, note }) => (
               <div key={letter} className={`p-7 rounded-2xl bg-gradient-to-br ${color} border relative overflow-hidden`}>
@@ -678,7 +677,7 @@ export function LandingVariantA() {
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               Every layer of the decision support system, from Weather Briefing to Self Debrief,
-              with Mentor available when you want a second set of eyes.
+              with Mentor alongside.
             </p>
           </div>
 

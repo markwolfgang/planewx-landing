@@ -60,7 +60,7 @@ const jsonLd = {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/ComingSoon"
+        "availability": "https://schema.org/InStock"
       },
       "featureList": [
         "AI-powered weather briefings",
@@ -100,7 +100,7 @@ const jsonLd = {
           "name": "What is the WX Score?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The WX Score is a personalized 0-100% metric calculated against YOUR personal minimums, not generic VFR/IFR categories. It tells you the probability that weather conditions will meet your specific standards for the flight."
+            "text": "The WX Score is a 0-100% metric calculated against YOUR personal minimums and your specific aircraft, not generic VFR/IFR categories. It tells you, in a single number, how well conditions are expected to match your standards. Every deduction is transparent and explained."
           }
         },
         {
