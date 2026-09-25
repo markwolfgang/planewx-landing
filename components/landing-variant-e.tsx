@@ -382,7 +382,7 @@ export function LandingVariantE() {
               </span>
             </h2>
             <p className="text-white/50 text-lg max-w-2xl mx-auto">
-              A weather app gives you data. PlaneWX builds accountability around
+              Weather tools show you raw data. PlaneWX builds accountability around
               every flight: before you go, in the decision moment, and across
               your entire flying career.
             </p>
