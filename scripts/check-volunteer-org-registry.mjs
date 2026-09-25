@@ -85,18 +85,18 @@ assert.ok(!aca.pattern.test("CMF12345"))
 assert.ok(!aca.pattern.test("SYH1234"))
 assert.match(
   aca.unlockBody,
-  /30% off an annual plan, every year you remain an active volunteer pilot/,
-  "cmf_unlock_body_every_year_active_volunteer"
-)
-assert.match(
-  aca.unlockBody,
-  /We re-confirm your call sign once a year\./,
-  "cmf_unlock_body_reconfirm_sentence"
+  /30% off the annual plan for each year you're an active volunteer pilot/,
+  "cmf_unlock_body_each_year_active_volunteer"
 )
 assert.match(
   aca.unlockBody,
   /You do not type a separate coupon code\./,
   "cmf_unlock_body_keeps_coupon_sentence"
+)
+assert.equal(
+  aca.unlockBody.includes("re-confirm"),
+  false,
+  "cmf_unlock_body_no_reconfirm"
 )
 assert.equal(
   aca.unlockBody.includes("first year"),
@@ -115,13 +115,18 @@ assert.match(
 )
 assert.match(
   sky.unlockBody,
-  /30% off an annual plan, every year you remain an active volunteer pilot/,
-  "syh_unlock_body_every_year_active_volunteer"
+  /30% off the annual plan for each year you're an active volunteer pilot/,
+  "syh_unlock_body_each_year_active_volunteer"
 )
 assert.match(
   sky.unlockBody,
-  /We re-confirm your call sign once a year\./,
-  "syh_unlock_body_reconfirm_sentence"
+  /You do not type a separate coupon code\./,
+  "syh_unlock_body_keeps_coupon_sentence"
+)
+assert.equal(
+  sky.unlockBody.includes("re-confirm"),
+  false,
+  "syh_unlock_body_no_reconfirm"
 )
 assert.equal(
   sky.acceptedLead.includes("At purchase,"),
