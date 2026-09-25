@@ -29,8 +29,9 @@ loop:
   - num: 2
     accent: blue
     title: FRAT
-    body: Pilot, Aircraft, enVironment, External. Unlocked in the final hours. Flags risk stacking when
-      3 or more factors are elevated, but never makes the call for you.
+    body: Pilot, Aircraft, enVironment, External. Opens 4 hours before departure, when you
+      can honestly rate how you feel. Flags risk stacking when 3 or more factors are elevated,
+      but never makes the call for you.
   - num: 3
     accent: emerald
     title: GO / NO-GO
@@ -55,9 +56,9 @@ missionVision:
       Desired outcome: measurably reduce GA accidents.'
 structuralMinimums:
   title: Personal minimums are structural.
-  body: Every PlaneWX user has them, because the WX Score can't generate without them, and they show front
-    and center on every briefing. FRAT is a chosen professional habit, and pilots can choose to require
-    it before every flight.
+  body: Set your personal minimums once, and every WX Score checks the forecast against your
+    limits, not generic ones. FRAT is a chosen professional habit, and pilots can choose to
+    require it before every flight.
 partnerOnePager:
   label: Download the one-pager (PDF)
   href: /brand/planewx-partner-messaging.pdf
@@ -82,8 +83,9 @@ problemSolution:
   differentiator:
     title: The Differentiator
     body: This is the difference between a data display and a decision support system. Every EFB displays
-      raw METARs, TAFs, and PIREPs and hands the analysis back to you. PlaneWX synthesizes it all against
-      YOUR aircraft and YOUR minimums into a quantified WX Score.
+      raw METARs, TAFs, and PIREPs and hands the analysis back to you. PlaneWX synthesizes it for YOUR
+      aircraft into a quantified WX Score. Set your personal minimums once, and every WX Score checks
+      the forecast against your limits, not generic ones.
   community:
     title: The Community Layer
     paragraphs:

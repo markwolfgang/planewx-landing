@@ -8,6 +8,7 @@
 - Kept the approved debrief/FRAT association line ("Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.") and the Avoid parenthetical "(the debrief/FRAT link is an association)".
 - Locked proof labels: 8.7 is "how likely pilots are to recommend PlaneWX (1,724 responses)" (not NPS; not "average briefing feedback"); 5X5 is value "Up to 10%" + label "off 5X5 insurance with Pro Plus". Self Debrief body ends with "for that trip."
 - Partner one-pager PDF/HTML public under middleware allowlist only (`/brand/planewx-partner-messaging.pdf` and `/brand/partner-one-pager/`); other `/brand` routes stay password-protected.
+- Code-aligned copy: WX Score still generates without personal minimums (weather alone; skips personal-limit checks). Replaced "can't generate without them" with "Set your personal minimums once, and every WX Score checks the forecast against your limits, not generic ones." FRAT timing: "Opens 4 hours before departure, when you can honestly rate how you feel" (not "Unlocked in the final hours").
 
 ## 2026-09-24 - Avoid rule: habit compounds over time
 
