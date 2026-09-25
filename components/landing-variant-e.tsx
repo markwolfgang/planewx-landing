@@ -1,6 +1,6 @@
 "use client"
 
-import { Shield, ArrowRight, BookOpen, Users, CheckCircle, Star, CloudLightning, AlertTriangle } from "lucide-react"
+import { Shield, ArrowRight, BookOpen, Users, CheckCircle, CloudLightning, AlertTriangle } from "lucide-react"
 import {
   YouTubeSection,
   PricingSection,
@@ -18,7 +18,7 @@ import {
 const VARIANT = "e"
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Variant E — Founder Story / Accountability / "I wanted to live"
+// Variant E: Founder Story / Accountability / "I wanted to live"
 // Primary accent: amber/orange (human, warm, serious)
 // Secondary: sky blue (brand)
 // ─────────────────────────────────────────────────────────────────────────────
@@ -49,7 +49,7 @@ export function LandingVariantE() {
           </div>
           <span className="font-bold text-white tracking-tight">PlaneWX</span>
           <span className="hidden sm:block text-white/30 text-sm ml-1">
-            : The Pilot's Decision Support System
+            · The Pilot's Decision Support System
           </span>
         </div>
         <div className="flex items-center gap-6">
@@ -70,7 +70,7 @@ export function LandingVariantE() {
             variant={VARIANT}
             className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-white text-sm font-semibold transition-colors shadow-lg shadow-amber-500/20"
           >
-            Start free <ArrowRight className="h-3.5 w-3.5" />
+            Start Free 14-Day Trial <ArrowRight className="h-3.5 w-3.5" />
           </SignUpButton>
         </div>
       </nav>
@@ -101,7 +101,8 @@ export function LandingVariantE() {
           </p>
 
           <p className="text-white/40 text-sm mb-12 tracking-wide">
-            Mark Wolfgang, Founder · TBM 900 Pilot · over 1,000 hours
+            Mark Wolfgang, Founder · TBM 900 Pilot ·{" "}
+            <span className="whitespace-nowrap">over 1,000 hours</span>
           </p>
 
           {/* CTAs */}
@@ -110,7 +111,7 @@ export function LandingVariantE() {
               variant={VARIANT}
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white text-lg font-bold transition-all shadow-xl shadow-amber-500/20"
             >
-              Start flying with a system
+              Start Free 14-Day Trial
               <ArrowRight className="h-5 w-5" />
             </SignUpButton>
             <a
@@ -123,18 +124,12 @@ export function LandingVariantE() {
 
           {/* Social proof strip */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-sm text-white/40">
-            <div className="flex items-center gap-2">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />
-                ))}
-              </div>
-              <span>8.7/10 on how likely pilots are to recommend PlaneWX (1,724 responses)</span>
-            </div>
+            <span>
+              8.7/10 on how likely pilots are to recommend PlaneWX{" "}
+              <span className="whitespace-nowrap">(1,724 responses)</span>
+            </span>
             <div className="hidden sm:block w-px h-4 bg-white/10" />
             <span>{STATS.totalPilots} pilots</span>
-            <div className="hidden sm:block w-px h-4 bg-white/10" />
-            <span>64% of weather cancellations: pilots found the courage to stay</span>
           </div>
         </div>
       </section>
@@ -161,8 +156,7 @@ export function LandingVariantE() {
             <p>
               Before I ever touched the controls of an airplane, I spent a year
               listening to AOPA's{" "}
-              <em className="text-white not-italic font-medium">"And There I Was"</em>{" "}
-              , a podcast about mishaps, near-misses, and accidents. I watched every
+              <em className="text-white not-italic font-medium">"And There I Was"</em>: a podcast about mishaps, near-misses, and accidents. I watched every
               aviation accident/mishap video I could find. I wanted to understand exactly
               what separated the pilots who came home from the ones who didn't.
             </p>
@@ -222,7 +216,7 @@ export function LandingVariantE() {
       <section className="py-24 px-6 border-y border-white/5 bg-white/[0.02]">
         <div className="max-w-5xl mx-auto">
 
-          <div className="text-center mb-16">
+          <div className="text-center mb-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
               The FAA sets the floor.{" "}
               <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
@@ -231,47 +225,11 @@ export function LandingVariantE() {
             </h2>
             <p className="text-white/50 text-lg max-w-2xl mx-auto">
               PlaneWX is for the pilot who holds themselves to a standard above
-              what's required, not because someone is watching, but because
-              they've already decided what kind of pilot they're going to be.
+              what&apos;s required, not because someone is watching, but because
+              they&apos;ve already decided what kind of pilot they&apos;re going to be.
+              Personal minimums, a structured risk assessment, and a mentor network
+              are there when you want the bar higher than the regulatory floor.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
-            {[
-              {
-                value: "95.5%",
-                color: "text-sky-400",
-                bg: "from-sky-950/60 to-cyan-950/20",
-                border: "border-sky-500/20",
-                label: "of PlaneWX pilots voluntarily require a pre-flight risk assessment",
-                sub: "Nobody made them. They turned that on themselves.",
-              },
-              {
-                value: "64%",
-                color: "text-amber-400",
-                bg: "from-amber-950/60 to-orange-950/20",
-                border: "border-amber-500/20",
-                label: "of weather cancellations: pilots found the courage to stay",
-                sub: "Every cancelled flight is a story that didn't end badly.",
-              },
-              {
-                value: "92%",
-                color: "text-emerald-400",
-                bg: "from-emerald-950/60 to-teal-950/20",
-                border: "border-emerald-500/20",
-                label: "found their WX Score accurate or conservative",
-                sub: "Safety-first. Always. This is not a booking engine.",
-              },
-            ].map(stat => (
-              <div
-                key={stat.value}
-                className={`rounded-2xl bg-gradient-to-br ${stat.bg} border ${stat.border} p-6`}
-              >
-                <div className={`text-5xl font-bold ${stat.color} mb-3`}>{stat.value}</div>
-                <p className="text-white font-medium mb-2 leading-snug">{stat.label}</p>
-                <p className="text-white/40 text-sm">{stat.sub}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -377,14 +335,7 @@ export function LandingVariantE() {
           </div>
 
           <div className="rounded-2xl bg-gradient-to-br from-amber-950/40 to-orange-950/20 border border-amber-500/20 p-8 sm:p-10">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 text-amber-400 fill-amber-400" />
-                ))}
-              </div>
-              <span className="text-white/40 text-sm">10 / 10 · Promoter · Helped my decision: yes</span>
-            </div>
+            <p className="text-white/40 text-sm mb-6">10 / 10 · Helped my decision: yes</p>
 
             <blockquote className="text-xl sm:text-2xl text-white leading-relaxed font-light italic mb-6">
               "You were right on. I should not have flown. I tuned around within
@@ -419,8 +370,8 @@ export function LandingVariantE() {
               </span>
             </h2>
             <p className="text-white/50 text-lg max-w-2xl mx-auto">
-              Weather tools give you data. PlaneWX builds accountability around
-              every flight, before you go, in the decision moment, and across
+              Weather tools show you raw data. PlaneWX builds accountability around
+              every flight: before you go, in the decision moment, and across
               your entire flying career.
             </p>
           </div>
@@ -441,8 +392,8 @@ export function LandingVariantE() {
                 accent: "text-amber-400",
                 border: "border-amber-500/20",
                 bg: "from-amber-950/40 to-orange-950/10",
-                title: "A structured framework for go / no-go",
-                body: "The FAA's PAVE risk assessment, built into your pre-flight workflow. Not a checkbox: a genuine moment of honest reflection, documented and timestamped, before you ever start the engine.",
+                title: <>A structured framework for <span className="whitespace-nowrap">GO / NO-GO</span></>,
+                body: "The FAA's PAVE risk assessment, built into your pre-flight workflow. Not a checkbox: a genuine moment of honest reflection, documented and timestamped, before you ever start the engine. PlaneWX never recommends go or no-go. The pilot makes the call.",
                 features: ["PAVE Risk Assessment", "Pilot · Aircraft · enVironment · External", "Voluntary accountability", "Decision record", "Timestamped for your log"],
               },
               {
@@ -479,7 +430,7 @@ export function LandingVariantE() {
           {/* Tagline */}
           <div className="text-center py-10 border-t border-white/5">
             <p className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              "The confidence to go, or the courage to stay."
+              "Fly like it's your job."
             </p>
             <p className="text-white/30 text-sm">PlaneWX™</p>
           </div>
@@ -543,7 +494,7 @@ export function LandingVariantE() {
               variant={VARIANT}
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white text-lg font-bold transition-all shadow-xl shadow-amber-500/20"
             >
-              Start flying with a system
+              Start Free 14-Day Trial
               <ArrowRight className="h-5 w-5" />
             </SignUpButton>
           </div>
@@ -564,11 +515,6 @@ export function LandingVariantE() {
               key={t.name}
               className="rounded-2xl bg-gradient-to-br from-amber-950/40 to-orange-950/10 border border-amber-500/20 p-8 sm:p-10 mb-8"
             >
-              <div className="flex mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 text-amber-400 fill-amber-400" />
-                ))}
-              </div>
               <blockquote className="text-xl sm:text-2xl text-white font-light italic leading-relaxed mb-6">
                 "{t.quote}"
               </blockquote>
@@ -583,11 +529,6 @@ export function LandingVariantE() {
                 key={t.name}
                 className="rounded-xl bg-white/[0.03] border border-white/8 p-5"
               >
-                <div className="flex mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />
-                  ))}
-                </div>
                 <blockquote className="text-white/70 text-sm leading-relaxed italic mb-4">
                   "{t.quote}"
                 </blockquote>
@@ -598,20 +539,15 @@ export function LandingVariantE() {
         </div>
       </section>
 
-      {/* ── Stats bar ────────────────────────────────────────────────────── */}
+      {/* ── Trust bar ────────────────────────────────────────────────────── */}
       <section className="py-16 px-6 border-y border-white/5">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { value: STATS.cumulativeHours, label: "Hours of experience in our community" },
-            { value: STATS.instrumentRated, label: "Instrument rated" },
-            { value: STATS.jetAircraft, label: "Jet aircraft in our community" },
-            { value: STATS.maxPilotHours, label: "Hours, our most experienced pilot" },
-          ].map(s => (
-            <div key={s.label}>
-              <div className="text-3xl sm:text-4xl font-bold text-amber-400 mb-2">{s.value}</div>
-              <div className="text-white/40 text-sm">{s.label}</div>
-            </div>
-          ))}
+        <div className="max-w-4xl mx-auto text-center space-y-3">
+          <p className="text-3xl sm:text-4xl font-bold text-amber-400">
+            {STATS.totalPilots} pilots
+          </p>
+          <p className="text-white/40 text-sm">
+            A community of pilots who hold themselves to a higher standard.
+          </p>
         </div>
       </section>
 
@@ -660,7 +596,7 @@ export function LandingVariantE() {
               <div className="space-y-4 text-sm">
                 {[
                   { label: "Aircraft", value: "TBM 900" },
-                  { label: "Total hours", value: "~1,000" },
+                  { label: "Total hours", value: "Over 1,000 hours" },
                   { label: "Ratings", value: "Commercial · Instrument · Multi-Engine" },
                   { label: "Home base", value: "Rogers, AR (KROG)" },
                   { label: "Why he built it", value: "Needed a system that took it as seriously as he did" },

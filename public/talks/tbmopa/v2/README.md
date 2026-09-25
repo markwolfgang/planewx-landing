@@ -20,7 +20,7 @@
 10. Community polls: TBMOPA + COPA + Airplanes and Coffee
 11. The Loop (four steps + Mentor alongside)
 12. Loop 1: Weather Briefing
-13. Briefing quality: 8.7/10
+13. Would pilots recommend it?: 8.7/10 (1,724 responses)
 14. Loop 2: FRAT (choice, not mandate)
 15. What makes this FRAT different (live inputs + Coming next)
 16. FRAT completion by aircraft type
