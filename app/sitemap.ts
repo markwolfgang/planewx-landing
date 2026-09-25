@@ -1,6 +1,10 @@
 import { MetadataRoute } from 'next'
 import { getSoroArticles } from '@/lib/soro'
 import { getPublishedNewsItems } from '@/app/news/news-data'
+import {
+  getIndexableLearnArticles,
+  shouldIndexLearnHub,
+} from '@/app/learn/learn-data'
 
 export const revalidate = 3600
 
@@ -21,6 +25,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'monthly',
     priority: 0.7,
   }))
+
+  // Learning Center stays out of the sitemap while LEARN_PUBLIC is false
+  // or while individual articles remain draft (thin-content / placeholder safety).
+  const learnEntries: MetadataRoute.Sitemap = []
+  if (shouldIndexLearnHub()) {
+    learnEntries.push({
+      url: `${baseUrl}/learn`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.75,
+    })
+    for (const article of getIndexableLearnArticles()) {
+      learnEntries.push({
+        url: `${baseUrl}/learn/${article.slug}`,
+        lastModified: new Date(article.lastReviewed),
+        changeFrequency: 'monthly',
+        priority: 0.65,
+      })
+    }
+  }
 
   return [
     {
@@ -121,6 +145,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     ...newsPosts,
+    ...learnEntries,
     {
       url: `${baseUrl}/multi-model-analysis`,
       lastModified: new Date(),
