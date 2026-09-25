@@ -193,7 +193,7 @@ export function LandingVariantD() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Real pilots. Real decisions.</h2>
-            <p className="text-white/50">From student pilots to {STATS.maxPilotHoursPhrase} ATP captains.</p>
+            <p className="text-white/50">From student pilots to ATP captains.</p>
           </div>
           <TestimonialsCarousel />
         </div>
@@ -472,31 +472,16 @@ export function LandingVariantD() {
       </section>
 
 
-      {/* STATS BAR */}
+      {/* TRUST BAR */}
       <section className="relative py-12 px-4 border-y border-white/5 bg-white/[0.02]">
-        <div className="container mx-auto max-w-5xl">
-          <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium">
+        <div className="container mx-auto max-w-5xl text-center space-y-3">
+          <p className="text-xs text-white/30 uppercase tracking-widest font-medium">
             Trusted by serious GA pilots
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-1">{STATS.cumulativeHours}</div>
-              <div className="text-sm text-white/50">cumulative flight hours<br />in our pilot community</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-teal-400 mb-1">{STATS.instrumentRated}</div>
-              <div className="text-sm text-white/50">of our pilots are<br />instrument rated</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-sky-400 mb-1">{STATS.jetAircraft}</div>
-              <div className="text-sm text-white/50">jet aircraft<br />in our fleet</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">{STATS.avgHours}</div>
-              <div className="text-sm text-white/50">average flight hours<br />per pilot</div>
-            </div>
-          </div>
-          <p className="text-center text-xs text-white/25 mt-8">
+          <p className="text-3xl md:text-4xl font-bold text-emerald-400">
+            {STATS.totalPilots} pilots
+          </p>
+          <p className="text-sm text-white/50">
             From student pilots building hours to ATP captains flying Citations and Gulfstreams.
           </p>
         </div>
@@ -542,8 +527,7 @@ export function LandingVariantD() {
                 </em>
               </p>
               <p>
-                Now flying a TBM 900 and over 1,000 hours total time, including 784 hours of
-                cross-country PIC in under 2 years, Mark built PlaneWX to solve his own problem. What
+                Now flying a TBM 900, Mark built PlaneWX to solve his own problem. What
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-emerald-400">&ldquo;Is this flight going to happen?&rdquo;</em>
               </p>

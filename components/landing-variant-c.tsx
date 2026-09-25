@@ -101,16 +101,14 @@ export function LandingVariantC() {
       <section className="relative pt-24 pb-20 px-4">
         <div className="container mx-auto max-w-5xl text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            Trusted by {STATS.totalPilots} pilots:{" "}
+            Trusted by{" "}
             <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              {STATS.cumulativeHours} flight hours
-            </span>{" "}
-            across our community
+              {STATS.totalPilots} pilots
+            </span>
           </h1>
 
           <p className="text-lg md:text-xl text-white/60 max-w-3xl mx-auto leading-relaxed">
-            From student pilots to {STATS.maxPilotHoursPhrase} ATP captains. From Cessna 172s to Gulfstreams.{" "}
-            <strong className="text-white">{STATS.instrumentRated} instrument rated.</strong>
+            From student pilots to ATP captains. From Cessna 172s to Gulfstreams.
           </p>
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
@@ -141,7 +139,7 @@ export function LandingVariantC() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Real pilots. Real decisions.</h2>
-            <p className="text-white/50">From student pilots to {STATS.maxPilotHoursPhrase} ATP captains.</p>
+            <p className="text-white/50">From student pilots to ATP captains.</p>
           </div>
           <TestimonialsCarousel />
         </div>
@@ -152,30 +150,16 @@ export function LandingVariantC() {
 
 
 
-      {/* STATS GRID */}
+      {/* COMMUNITY */}
       <section className="relative py-20 px-4 border-y border-white/5 bg-white/[0.02]">
         <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold">
               A community of <span className="text-sky-400">serious pilots</span>
             </h2>
-            <p className="text-white/50">The pilots who demand more from their weather tools.</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
-            {[
-              { value: STATS.cumulativeHours, label: "Cumulative Flight Hours", color: "text-sky-400", border: "border-sky-500/20" },
-              { value: STATS.instrumentRated, label: "Instrument Rated", color: "text-emerald-400", border: "border-emerald-500/20" },
-              { value: STATS.jetAircraft, label: "Jet Aircraft", color: "text-violet-400", border: "border-violet-500/20" },
-              { value: STATS.atpPilots, label: "ATP Pilots", color: "text-amber-400", border: "border-amber-500/20" },
-              { value: STATS.avgHours, label: "Average Hours per Pilot", color: "text-cyan-400", border: "border-cyan-500/20" },
-              { value: STATS.maxPilotHours, label: "Highest-Time Pilot", color: "text-rose-400", border: "border-rose-500/20" },
-            ].map(({ value, label, color, border }) => (
-              <div key={label} className={`p-6 rounded-2xl bg-white/[0.03] border ${border} text-center`}>
-                <div className={`text-4xl md:text-5xl font-bold ${color} mb-2`}>{value}</div>
-                <div className="text-sm text-white/50">{label}</div>
-              </div>
-            ))}
+            <p className="text-white/50">
+              Trusted by {STATS.totalPilots} pilots who demand more from their weather tools.
+            </p>
           </div>
         </div>
       </section>
@@ -340,8 +324,7 @@ export function LandingVariantC() {
                 </em>
               </p>
               <p>
-                Now flying a TBM 900 and over 1,000 hours total time, including 784 hours of
-                cross-country PIC in under 2 years, Mark built PlaneWX to solve his own problem. What
+                Now flying a TBM 900, Mark built PlaneWX to solve his own problem. What
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-sky-400">&ldquo;Is this flight going to happen?&rdquo;</em>
               </p>

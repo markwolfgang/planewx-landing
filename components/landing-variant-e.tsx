@@ -101,7 +101,7 @@ export function LandingVariantE() {
           </p>
 
           <p className="text-white/40 text-sm mb-12 tracking-wide">
-            Mark Wolfgang, Founder · TBM 900 Pilot · over 1,000 hours
+            Mark Wolfgang, Founder · TBM 900 Pilot
           </p>
 
           {/* CTAs */}
@@ -132,7 +132,7 @@ export function LandingVariantE() {
               <span>8.7/10 on how likely pilots are to recommend PlaneWX (1,724 responses)</span>
             </div>
             <div className="hidden sm:block w-px h-4 bg-white/10" />
-            <span>{STATS.totalPilots} active pilots</span>
+            <span>{STATS.totalPilots} pilots</span>
           </div>
         </div>
       </section>
@@ -560,20 +560,15 @@ export function LandingVariantE() {
         </div>
       </section>
 
-      {/* ── Stats bar ────────────────────────────────────────────────────── */}
+      {/* ── Trust bar ────────────────────────────────────────────────────── */}
       <section className="py-16 px-6 border-y border-white/5">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { value: STATS.cumulativeHours, label: "Hours of experience in our community" },
-            { value: STATS.instrumentRated, label: "Instrument rated" },
-            { value: STATS.jetAircraft, label: "Jet aircraft in our community" },
-            { value: STATS.maxPilotHours, label: "Hours, our most experienced pilot" },
-          ].map(s => (
-            <div key={s.label}>
-              <div className="text-3xl sm:text-4xl font-bold text-amber-400 mb-2">{s.value}</div>
-              <div className="text-white/40 text-sm">{s.label}</div>
-            </div>
-          ))}
+        <div className="max-w-4xl mx-auto text-center space-y-3">
+          <p className="text-3xl sm:text-4xl font-bold text-amber-400">
+            {STATS.totalPilots} pilots
+          </p>
+          <p className="text-white/40 text-sm">
+            A community of pilots who hold themselves to a higher standard.
+          </p>
         </div>
       </section>
 
@@ -622,7 +617,6 @@ export function LandingVariantE() {
               <div className="space-y-4 text-sm">
                 {[
                   { label: "Aircraft", value: "TBM 900" },
-                  { label: "Total hours", value: "~1,000" },
                   { label: "Ratings", value: "Commercial · Instrument · Multi-Engine" },
                   { label: "Home base", value: "Rogers, AR (KROG)" },
                   { label: "Why he built it", value: "Needed a system that took it as seriously as he did" },
