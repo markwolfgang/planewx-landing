@@ -254,25 +254,6 @@ export default function PartnersPage() {
           </p>
         </header>
 
-        <section
-          id="apply"
-          aria-labelledby="apply-heading"
-          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
-        >
-          <div className="space-y-2">
-            <h2
-              id="apply-heading"
-              className="text-xl sm:text-2xl font-bold tracking-tight"
-            >
-              Be a part of our team
-            </h2>
-            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
-              Want to partner with us? Reach out. We&rsquo;ll take it from there.
-            </p>
-          </div>
-          <PartnerInquiryForm />
-        </section>
-
         <section aria-labelledby="partners-grid-heading" className="space-y-5">
           <h2 id="partners-grid-heading" className="sr-only">
             Partner organizations
@@ -355,6 +336,25 @@ export default function PartnersPage() {
               )
             })}
           </ul>
+        </section>
+
+        <section
+          id="apply"
+          aria-labelledby="apply-heading"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
+        >
+          <div className="space-y-2">
+            <h2
+              id="apply-heading"
+              className="text-xl sm:text-2xl font-bold tracking-tight"
+            >
+              Be a part of our team
+            </h2>
+            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
+              Want to partner with us? Reach out. We&rsquo;ll take it from there.
+            </p>
+          </div>
+          <PartnerInquiryForm />
         </section>
 
         <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-8 space-y-3 text-center sm:text-left">
