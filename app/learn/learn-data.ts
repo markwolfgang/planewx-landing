@@ -406,7 +406,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         "Without a dispatcher, looking at what airline dispatchers and traffic managers are planning around gives useful context days out. It is context for your own go/no-go decision, not a verdict. PlaneWX never recommends go or no-go. The pilot makes the call.",
       loopStage: ["Weather Briefing", "GO / NO-GO"],
       toolOrHabit:
-        "Brief early and re-brief as the flight gets closer, using the PlaneWX Weather Briefing with a WX Score against your personal minimums. That supports the GO / NO-GO step.",
+        "Brief early and re-brief as the flight gets closer, using the PlaneWX Weather Briefing with a WX Score against your personal minimums. That supports the GO\u00A0/\u00A0NO\u2011GO step.",
     },
     sources: [
       {
