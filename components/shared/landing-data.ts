@@ -88,7 +88,7 @@ export const FAQS: {
   },
   {
     q: "What is the WX Score?",
-    a: "The WX Score is a 0–100% metric calculated against YOUR personal minimums and your specific aircraft. not generic VFR/IFR categories. It tells you, in a single number, how well conditions are expected to match your standards. Every deduction is transparent and explained.",
+    a: "The WX Score is a 0-100% metric calculated against YOUR personal minimums and your specific aircraft, not generic VFR/IFR categories. It tells you, in a single number, how well conditions are expected to match your standards. Every deduction is transparent and explained.",
   },
   {
     q: "What is the PAVE framework?",
