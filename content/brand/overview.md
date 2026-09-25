@@ -6,7 +6,7 @@ meta:
     creators.
 hero:
   badge: Brand Overview
-  headline: 'The confidence to go, or the courage to stay™'
+  headline: 'Fly like it''s your job.'
   line1: The Pilot's Decision Support System
   line2: Weather Intelligence for Pilots
   meta:
@@ -18,48 +18,50 @@ categoryClaim:
   support: >-
     This is the single most important positioning statement. Every other tool
     displays raw data and hands the analysis back to the pilot. PlaneWX
-    synthesizes it into a structured, quantified decision.
-pillars:
-  title: Three Pillars
+    synthesizes it into a structured, quantified assessment for the pilot's
+    decision.
+loop:
+  title: The PlaneWX Loop
   subtitle: >-
-    PlaneWX is built on three interconnected pillars, each reinforcing the
-    others.
+    Four steps that structure how PlaneWX supports a trip decision, from
+    briefing through debrief.
   items:
     - num: 1
       accent: sky
-      title: Briefing
+      title: Weather Briefing (WX Score)
       body: >-
-        A continuously updated WX Score (0–100%) personalized to your aircraft,
-        your ratings, and your personal minimums. Synthesizes METARs, TAFs,
-        AIRMETs, SIGMETs, NOTAMs, CIP icing, GTG turbulence, and Synoptic
-        Intelligence™ into a single structured decision, not a data dump.
+        Continuously updated WX Score personalized to your aircraft, ratings,
+        and personal minimums.
     - num: 2
-      accent: violet
-      title: Mentors
+      accent: emerald
+      title: FRAT
       body: >-
-        A peer mentoring network so no pilot faces a hard decision alone. Free
-        users can broadcast a **Need Help Now** alert to the entire mentor
-        community. Pro users Browse Mentors: experienced instrument-rated pilots
-        who volunteer their time before a challenging flight. Experience finally
-        transfers.
+        Flight risk assessment for pilot, aircraft, environment and external
+        pressures, so stacked risk is visible before you decide.
     - num: 3
       accent: amber
-      title: PAVE
+      title: GO / NO-GO
       body: >-
-        Every briefing includes a structured **PAVE Risk Assessment**, the FAA's
-        four-factor framework built into the decision flow: **P**ilot,
-        **A**ircraft, en**V**ironment, and **E**xternal pressures. PlaneWX is
-        the first tool to automate this assessment against live weather data.
+        The pilot makes the call. In-app options are GO / NO-GO plus Modify and
+        Postpone.
+    - num: 4
+      accent: violet
+      title: Self Debrief
+      body: >-
+        Looks back at the flight and the FRAT you ran for that trip.
+  mentorNote: >-
+    Mentor is an optional layer alongside the loop, not a fifth step.
+  picLine: >-
+    PlaneWX never recommends go or no-go. The pilot makes the call.
 missionVision:
   title: Mission & Vision
   subtitle: The foundation of everything we build and communicate.
   mission:
     title: Mission
     body: >-
-      PlaneWX increases general aviation safety by equipping pilots with
-      continuously monitored weather intelligence, structured self-assessment,
-      and peer mentoring, giving pilots the confidence to go, or the courage to
-      stay.
+      Bring professional-grade tools and habits to general aviation so pilots
+      flying on their own time, with families aboard, hold the same standard as
+      paid pros.
   vision:
     title: Vision
     body: >-
@@ -197,9 +199,6 @@ safetyImpact:
   title: Measured Safety Impact
   subtitle: Real data from 831 post-flight feedback submissions (July 2026).
   primaryStats:
-    - value: '90'
-      label: pilots said PlaneWX gave them the courage to stay, or call a no-go
-      color: emerald
     - value: 78%
       label: of pilots said the WX Score was accurate or conservative
       color: sky
@@ -218,15 +217,6 @@ safetyImpact:
       label: said PlaneWX helped their decision
       note: 417 of 647 responses
       color: sky
-    - value: '90'
-      label: no-go decisions credited to PlaneWX
-      note: 80 weather-related cancellations
-      color: amber
-  keyStat: >-
-    **The key stat:** 90 pilots said PlaneWX gave them the courage to stay, or
-    call a no-go. 80 of those were weather-related. These are flights where a
-    pilot might have pushed into marginal weather without the data PlaneWX
-    provided.
   featuredTestimonial:
     quote: >-
       You were right on. I should not have flown. I tuned around within 30 mins
@@ -355,9 +345,7 @@ audienceHooks:
     - icon: Plane
       title: Real-world flying
       body: >-
-        The courage to stay. Pilots who share mistakes and lessons. Pair with
-        the Chris testimonial and the stat that 90 pilots said PlaneWX gave them
-        the courage to stay, or call a no-go. 80 of them weather-related.
+        Pilots who share mistakes and lessons. Pair with the Chris testimonial.
     - icon: GraduationCap
       title: IFR training
       body: >-
@@ -374,7 +362,7 @@ messaging:
   primary:
     - line: Every weather tool shows you data. PlaneWX helps you decide.
       note: Primary hero headline
-    - line: 'The confidence to go, or the courage to stay™'
+    - line: Fly like it's your job.
       note: Brand tagline
     - line: Stop being your own meteorologist.
       note: Closing CTA

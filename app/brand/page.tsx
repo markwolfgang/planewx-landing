@@ -60,10 +60,26 @@ const SOCIAL_ICONS = {
   FaTiktok,
 } as const
 
-const PILLAR_ACCENT: Record<string, { bg: string; border: string; text: string }> = {
+const LOOP_ACCENT: Record<string, { bg: string; border: string; text: string }> = {
   sky: { bg: "bg-sky-500/15", border: "border-sky-500/20", text: "text-sky-400" },
   violet: { bg: "bg-violet-500/15", border: "border-violet-500/20", text: "text-violet-400" },
   amber: { bg: "bg-amber-500/15", border: "border-amber-500/20", text: "text-amber-400" },
+  emerald: { bg: "bg-emerald-500/15", border: "border-emerald-500/20", text: "text-emerald-400" },
+}
+
+/** Keep "GO / NO-GO" from wrapping at the slash (NBSP + U+2011). */
+function LoopTitle({ title }: { title: string }) {
+  if (!title.includes("GO / NO-GO")) return <>{title}</>
+  const parts = title.split("GO / NO-GO")
+  return (
+    <>
+      {parts[0]}
+      <span className="whitespace-nowrap">
+        {"GO\u00A0/\u00A0NO\u2011GO"}
+      </span>
+      {parts[1]}
+    </>
+  )
 }
 
 const STAT_COLOR: Record<string, string> = {
@@ -88,10 +104,12 @@ type OverviewContent = {
     meta: string[]
   }
   categoryClaim: { lead: string; support: string }
-  pillars: {
+  loop: {
     title: string
     subtitle: string
     items: { num: number; accent: string; title: string; body: string }[]
+    mentorNote: string
+    picLine: string
   }
   missionVision: {
     title: string
@@ -133,7 +151,7 @@ type OverviewContent = {
     subtitle: string
     primaryStats: { value: string; label: string; color: string }[]
     secondaryStats: { value: string; label: string; note: string; color: string }[]
-    keyStat: string
+    keyStat?: string
     featuredTestimonial: {
       quote: string
       name: string
@@ -310,33 +328,39 @@ export default function BrandPortalPage() {
       </section>
 
       <section>
-        <h2 className="text-3xl font-bold text-white mb-2">{content.pillars.title}</h2>
-        <p className="text-white/60 mb-8">{content.pillars.subtitle}</p>
-        <div className="grid sm:grid-cols-3 gap-5">
-          {content.pillars.items.map((pillar) => {
-            const accent = PILLAR_ACCENT[pillar.accent] ?? PILLAR_ACCENT.sky
+        <h2 className="text-3xl font-bold text-white mb-2">{content.loop.title}</h2>
+        <p className="text-white/60 mb-8">{content.loop.subtitle}</p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {content.loop.items.map((step) => {
+            const accent = LOOP_ACCENT[step.accent] ?? LOOP_ACCENT.sky
             return (
               <div
-                key={pillar.title}
+                key={step.title}
                 className="p-6 rounded-2xl bg-white/[0.03] border border-white/10"
               >
                 <div
                   className={`h-10 w-10 rounded-xl ${accent.bg} border ${accent.border} flex items-center justify-center mb-4`}
                 >
                   <span className={`${accent.text} font-bold text-lg`}>
-                    {pillar.num}
+                    {step.num}
                   </span>
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
-                  {pillar.title}
+                  <LoopTitle title={step.title} />
                 </h3>
                 <p className="text-white/65 text-sm leading-relaxed">
-                  <BrandText text={pillar.body} />
+                  <BrandText text={step.body} />
                 </p>
               </div>
             )
           })}
         </div>
+        <p className="text-white/50 text-sm mt-5 leading-relaxed">
+          {content.loop.mentorNote}
+        </p>
+        <p className="text-sky-400/90 text-sm mt-3 font-medium leading-relaxed">
+          {content.loop.picLine}
+        </p>
       </section>
 
       <section>
@@ -544,7 +568,7 @@ export default function BrandPortalPage() {
           {content.safetyImpact.title}
         </h2>
         <p className="text-white/60 mb-8">{content.safetyImpact.subtitle}</p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div className="grid sm:grid-cols-3 gap-4 mb-6">
           {content.safetyImpact.primaryStats.map((stat) => (
             <div
               key={stat.label}
@@ -559,7 +583,7 @@ export default function BrandPortalPage() {
             </div>
           ))}
         </div>
-        <div className="grid sm:grid-cols-3 gap-4 mb-6">
+        <div className="grid sm:grid-cols-2 gap-4 mb-6">
           {content.safetyImpact.secondaryStats.map((stat) => (
             <div
               key={stat.label}
@@ -573,11 +597,13 @@ export default function BrandPortalPage() {
             </div>
           ))}
         </div>
-        <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20 mb-6">
-          <p className="text-white/80 text-sm leading-relaxed">
-            <BrandText text={content.safetyImpact.keyStat} />
-          </p>
-        </div>
+        {content.safetyImpact.keyStat ? (
+          <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20 mb-6">
+            <p className="text-white/80 text-sm leading-relaxed">
+              <BrandText text={content.safetyImpact.keyStat} />
+            </p>
+          </div>
+        ) : null}
         <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 border-l-4 border-l-emerald-500/60">
           <div className="flex items-start gap-3">
             <Quote className="h-5 w-5 text-emerald-400/60 shrink-0 mt-0.5" />

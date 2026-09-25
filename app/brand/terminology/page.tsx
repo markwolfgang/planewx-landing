@@ -62,7 +62,17 @@ export default function TerminologyPage() {
               className="p-6 rounded-2xl bg-white/[0.03] border border-white/10"
             >
               <h3 className="text-lg font-semibold text-white mb-2">
-                {item.term}
+                {item.term.includes("GO / NO-GO") ? (
+                  <>
+                    {item.term.split("GO / NO-GO")[0]}
+                    <span className="whitespace-nowrap">
+                      {"GO\u00A0/\u00A0NO\u2011GO"}
+                    </span>
+                    {item.term.split("GO / NO-GO")[1]}
+                  </>
+                ) : (
+                  item.term
+                )}
               </h3>
               <p className="text-white/70 leading-relaxed mb-2">
                 {item.definition}

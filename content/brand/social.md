@@ -2,16 +2,16 @@
 meta:
   title: Social Media Playbook | PlaneWX Brand Portal
   description: >-
-    PlaneWX social media guidelines, content pillars, platform guidance, and
+    PlaneWX social media guidelines, content themes, platform guidance, and
     response templates for partners and content creators.
 hero:
   badge: Social Media Playbook
   title: Social Media Playbook
   subtitle: >-
-    A comprehensive guide for partners and content creators. Use these pillars,
+    A comprehensive guide for partners and content creators. Use these themes,
     formats, and response guidelines to share PlaneWX authentically.
 pillars:
-  title: Content Pillars
+  title: Content Themes
   subtitle: >-
     Six core themes that define how we talk about PlaneWX. Use these as anchors
     for posts, reels, and conversations.
@@ -147,10 +147,6 @@ socialProof:
       label: aircraft types
   safetyTitle: 'Safety Impact (831 post-flight feedback submissions, July 2026)'
   safetyStats:
-    - value: 90 pilots
-      desc: >-
-        said PlaneWX gave them the courage to stay, or call a no-go. 80 of those
-        were weather-related
     - value: 78%
       desc: of pilots said the WX Score was accurate or conservative
     - value: 4.6 days
@@ -162,9 +158,9 @@ socialProof:
         per trip on average. Pilots check back repeatedly as departure
         approaches
   usageNote: >-
-    Lead with the "90 pilots" stat for safety messaging, community stats for
-    credibility, and 4.6-day planning horizon for the advance planning value
-    prop. Always cite "from post-flight feedback" for the safety numbers.
+    Lead with community stats for credibility and the 4.6-day planning horizon
+    for the advance planning value prop. Always cite "from post-flight feedback"
+    for the safety numbers.
 hashtags:
   title: Hashtag & Tagging
   subtitle: Use aviation-relevant tags naturally. Don't overuse hashtags.
