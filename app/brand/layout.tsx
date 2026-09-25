@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Plane, Home, Compass, Mic2, Palette, BookOpen, MessageSquare } from "lucide-react"
+import { Plane, Home, Compass, Mic2, Palette, BookOpen, MessageSquare, Download } from "lucide-react"
 
 const NAV_ITEMS = [
   { href: "/brand", label: "Overview", icon: Home },
@@ -32,12 +32,22 @@ export default function BrandLayout({ children }: { children: React.ReactNode })
             />
             <span className="text-white/40 text-sm hidden sm:inline">Brand Portal</span>
           </Link>
-          <Link
-            href="https://app.planewx.ai"
-            className="px-4 py-2 bg-sky-500 hover:bg-sky-400 text-white text-sm font-medium rounded-lg transition-colors"
-          >
-            Open App
-          </Link>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href="/brand/planewx-partner-messaging.pdf"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-4 py-2 bg-sky-500 hover:bg-sky-400 text-white text-xs sm:text-sm font-semibold rounded-lg transition-colors"
+            >
+              <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+              <span className="sm:hidden">PDF</span>
+              <span className="hidden sm:inline">Download the one-pager (PDF)</span>
+            </a>
+            <Link
+              href="https://app.planewx.ai"
+              className="hidden sm:inline-flex px-4 py-2 border border-white/15 hover:bg-white/5 text-white text-sm font-medium rounded-lg transition-colors"
+            >
+              Open App
+            </Link>
+          </div>
         </div>
       </nav>
 

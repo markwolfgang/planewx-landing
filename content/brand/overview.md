@@ -24,7 +24,7 @@ loop:
   items:
   - num: 1
     accent: sky
-    title: Weather Briefing
+    title: Brief
     body: WX Score, from days out to hours out. Personal minimums front and center on every briefing.
   - num: 2
     accent: blue
@@ -39,7 +39,7 @@ loop:
       call.
   - num: 4
     accent: amber
-    title: Self Debrief
+    title: Debrief
     body: Looks back at the flight and the FRAT you ran for that trip.
   mentorNote: '**Mentor** sits alongside all four parts of the loop. It is optional and opened by the
     pilot.'

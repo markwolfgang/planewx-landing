@@ -270,16 +270,24 @@ export default function BrandPortalPage() {
   return (
     <div className="space-y-16">
       <section>
-        <div className="mb-4 sm:mb-6">
+        <div className="mb-3 sm:mb-4 flex flex-wrap items-end justify-between gap-3">
           <Image
             src="/brand/planewx-og-wordmark.png"
             alt="PlaneWX"
             width={320}
             height={64}
-            className="h-12 sm:h-14 w-auto"
+            className="h-10 sm:h-14 w-auto"
             priority
           />
+          <a
+            href={content.partnerOnePager.href}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold transition-colors shrink-0"
+          >
+            <Download className="h-4 w-4" />
+            {content.partnerOnePager.label}
+          </a>
         </div>
+        <p className="text-lg sm:text-xl text-white/70 mb-3 sm:mb-4">{content.hero.subtitle}</p>
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium mb-3 sm:mb-4">
           <Target className="h-4 w-4" />
           {content.hero.badge}
@@ -287,7 +295,6 @@ export default function BrandPortalPage() {
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-3 sm:mb-4">
           {content.hero.headline}
         </h1>
-        <p className="text-lg sm:text-xl text-white/70">{content.hero.subtitle}</p>
         <div className="mt-3 sm:mt-5 flex flex-wrap gap-4 text-sm text-white/60">
           <span>{content.hero.meta[0]}</span>
           <span>&middot;</span>
@@ -300,16 +307,7 @@ export default function BrandPortalPage() {
           <span>&middot;</span>
           <span>{content.hero.meta[2]}</span>
         </div>
-        <div className="mt-4 sm:mt-5">
-          <a
-            href={content.partnerOnePager.href}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-sm font-semibold transition-colors"
-          >
-            <Download className="h-4 w-4" />
-            {content.partnerOnePager.label}
-          </a>
-          <p className="text-white/40 text-xs mt-2">{content.partnerOnePager.note}</p>
-        </div>
+        <p className="text-white/40 text-xs mt-2">{content.partnerOnePager.note}</p>
       </section>
 
       <section>

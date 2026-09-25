@@ -1,12 +1,18 @@
 # Brand content CHANGE log
 
+## 2026-09-25 - Loop labels: Brief, FRAT, GO / NO-GO, Debrief
+
+- Locked loop step titles on `/brand` and the partner one-pager: **Brief**, **FRAT**, **GO / NO-GO**, **Debrief** (not Weather Briefing / Self Debrief). Mentor remains the only optional layer.
+- Sticky `/brand` header includes "Download the one-pager (PDF)" so the CTA is visible without scrolling on desktop and phone. Removed draft-review and distribution-restriction markings from the one-pager HTML/PDF.
+- Scrubbed em dashes, en dashes, arrows, and Unicode minus from `content/brand/*.md` partner-facing copy.
+
 ## 2026-09-25 - Loop step rename: GO / NO-GO
 
-- Locked rename: the loop step formerly called "Fly or Stay" is now **GO / NO-GO** (caps, spaces around the slash). The loop reads: WX Score briefing, FRAT, GO / NO-GO, Self Debrief (Mentor stays an optional layer).
+- Locked rename: the loop step formerly called "Fly or Stay" is now **GO / NO-GO** (caps, spaces around the slash). The loop reads: Brief, FRAT, GO / NO-GO, Debrief (Mentor stays an optional layer).
 - Updated `overview.md` loop title and PlaneWX-authored fly-or-stay prose to go / no-go; partner one-pager HTML/PDF regenerated. GO / NO-GO body: "Staying is legitimate. PlaneWX never recommends go or no-go. The pilot makes the call." Trademark tagline unchanged.
 - Added `whitespace-nowrap` / `white-space: nowrap` on the loop step titles so **GO / NO-GO** does not wrap on /brand or the one-pager.
 - Kept the approved debrief/FRAT association line ("Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.") and the Avoid parenthetical "(the debrief/FRAT link is an association)".
-- Locked proof labels: 8.7 is "how likely pilots are to recommend PlaneWX (1,724 responses)" (not NPS; not "average briefing feedback"); 5X5 is value "Up to 10%" + label "off 5X5 insurance with Pro Plus". Self Debrief body ends with "for that trip."
+- Locked proof labels: 8.7 is "how likely pilots are to recommend PlaneWX (1,724 responses)" (not NPS; not "average briefing feedback"); 5X5 is value "Up to 10%" + label "off 5X5 insurance with Pro Plus". Debrief body ends with "for that trip."
 - Partner one-pager PDF/HTML public under middleware allowlist only (`/brand/planewx-partner-messaging.pdf` and `/brand/partner-one-pager/`); other `/brand` routes stay password-protected.
 - Code-aligned copy: WX Score still generates without personal minimums (weather alone; skips personal-limit checks). Replaced "can't generate without them" with "Set your personal minimums once, and every WX Score checks the forecast against your limits, not generic ones." FRAT timing: "Opens 4 hours before departure, when you can honestly rate how you feel" (not "Unlocked in the final hours").
 
@@ -39,14 +45,14 @@
 
 ## 2026-09-20 - Content SoT migration
 
-### Moved from `app/brand/*` (hardcoded TSX → `content/brand/`)
+### Moved from `app/brand/*` (hardcoded TSX  to  `content/brand/`)
 
-- Overview / positioning, product framing, mission/vision, problem-solution, pricing copy, safety stats framing, testimonials, founder blurb, audience hooks, key messaging, partner notes, social handles → `overview.md`
-- Origin story, three problems, emotional reality, philosophy quotes, without/with table, mentoring origin, audience profiles → `why.md`
-- We are / are not, voice attributes, tone by context, do/don't, quality checklist → `voice.md`
-- Proprietary terms, terms to avoid, elevator pitches → `terminology.md`
-- Social content themes, platforms, creator guide, FAQs, proof, never-say, community vision, enterprise use cases → `social.md`
-- Color/typography labels, logo usage rules, image guidelines, brand format strings → `assets.md`
+- Overview / positioning, product framing, mission/vision, problem-solution, pricing copy, safety stats framing, testimonials, founder blurb, audience hooks, key messaging, partner notes, social handles  to  `overview.md`
+- Origin story, three problems, emotional reality, philosophy quotes, without/with table, mentoring origin, audience profiles  to  `why.md`
+- We are / are not, voice attributes, tone by context, do/don't, quality checklist  to  `voice.md`
+- Proprietary terms, terms to avoid, elevator pitches  to  `terminology.md`
+- Social content themes, platforms, creator guide, FAQs, proof, never-say, community vision, enterprise use cases  to  `social.md`
+- Color/typography labels, logo usage rules, image guidelines, brand format strings  to  `assets.md`
 
 ### Intentional brand-safe rewrites (Mark locks 2026-09-20)
 
