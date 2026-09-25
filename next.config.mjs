@@ -1,5 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "planewx.ai" }],
+        destination: "https://www.planewx.ai/:path*",
+        permanent: true,
+      },
+    ]
+  },
+
   typescript: {
     ignoreBuildErrors: false,
   },

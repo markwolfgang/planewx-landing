@@ -131,5 +131,5 @@ export function middleware(request: NextRequest) {
 // Matcher must be a static array (Next.js compile-time). When adding a partner
 // slug to PARTNER_PATH_CODES in lib/partner-paths.ts, add `/{slug}` here too.
 export const config = {
-  matcher: ["/", "/brand/:path*", "/runway"],
+  matcher: ["/", "/brand/:path*", "/runway", "/flyte"],
 }
