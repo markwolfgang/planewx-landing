@@ -1,6 +1,6 @@
 # Brand content CHANGE log
 
-## 2026-09-25 — Loop step rename: GO / NO-GO
+## 2026-09-25: Loop step rename: GO / NO-GO
 
 Locked the PlaneWX loop step formerly called "Fly or Stay" as **GO / NO-GO** in brand terminology. The loop remains WX Score briefing, FRAT, GO / NO-GO, Self Debrief, with Mentor as an optional layer; the trademark tagline and stats are unchanged.
 
