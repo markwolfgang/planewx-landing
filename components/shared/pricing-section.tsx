@@ -28,7 +28,7 @@ const PLUS_BULLETS: {
   {
     name: "Pre-Flight Text",
     detail:
-      "Your WX Score by text 30 minutes before departure, with a link that opens the briefing without a login. Requires a verified phone number.",
+      "Pro Plus feature. Your WX Score by text about 30 minutes before departure, with a link that opens the briefing without a login. Requires a verified phone number.",
     helpPath: "/help/preflight-text",
   },
   {
@@ -45,7 +45,7 @@ const PLUS_BULLETS: {
   {
     name: "On-Demand Refresh",
     detail:
-      "Take complete control of your briefing refresh schedule. Refresh your briefing anytime you want. *15-minute cooldown between refreshes (5 minutes in the last hour).",
+      "Pro Plus manual refresh. Refresh your briefing when you want it. Cooldown is about 15 minutes between manual refreshes (about 5 minutes in the last hour before departure). This is not automatic refresh.",
     helpPath: "/help/on-demand-refresh",
   },
   {
@@ -58,7 +58,7 @@ const PLUS_BULLETS: {
   {
     name: "PlaneWX Labs",
     detail:
-      "Early access to features still in development. Altitude Profile cross-section, Route Map Forecast models, and Pilot Self Debrief.",
+      "Early access to features still in development. Altitude Profile cross-section, Route Map Forecast models, and Self Debrief.",
     helpPath: "/help/planewx-labs",
   },
 ]
@@ -139,7 +139,7 @@ export function PricingSection({ variant }: { variant: string }) {
           <p className="max-w-2xl mx-auto mb-10 px-4 py-3 rounded-xl border border-teal-500/40 bg-teal-500/10 text-sm font-semibold text-white/80 text-center">
             I priced annual when the app was new. It isn&apos;t anymore. This locks today&apos;s
             rate for two years. Grateful for your support. It&apos;s why I keep putting my
-            heart, soul, and wallet into PlaneWX. - Mark
+            heart, soul, and wallet into PlaneWX. (Mark)
           </p>
         )}
 

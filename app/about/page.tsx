@@ -77,7 +77,7 @@ const MISSION_POINTS = [
 const FAMILY_APPS = [
   {
     name: "PlaneWX (DSS)",
-    body: "The pilot's decision support system: weather briefing matched to your aircraft and personal minimums, WX Score, Synoptic Intelligence™, FRAT, and mentors.",
+    body: "PlaneWX is the decision support system for general aviation: weather briefing matched to your aircraft and personal minimums, WX Score, Synoptic Intelligence™, FRAT, a flight risk assessment built on the FAA's PAVE framework, and mentors.",
     links: [
       { label: "planewx.ai", href: "https://www.planewx.ai" },
       { label: "Sign up", href: SIGNUP_HREF },
@@ -122,7 +122,7 @@ export default function AboutPage() {
           <Link href="/" className="flex items-center gap-3" aria-label="PlaneWX home">
             <BrandLogo className="h-9 w-auto" />
             <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
-              The Pilot&apos;s Decision Support System
+              The decision support system for general aviation
             </span>
           </Link>
           <div className="flex items-center gap-4">
