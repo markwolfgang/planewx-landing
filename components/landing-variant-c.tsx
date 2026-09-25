@@ -324,7 +324,7 @@ export function LandingVariantC() {
                 </em>
               </p>
               <p>
-                Now flying a TBM 900, Mark built PlaneWX to solve his own problem. What
+                Now flying a TBM 900 and over 1,000 hours total time, Mark built PlaneWX to solve his own problem. What
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-sky-400">&ldquo;Is this flight going to happen?&rdquo;</em>
               </p>

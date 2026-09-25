@@ -101,7 +101,7 @@ export function LandingVariantE() {
           </p>
 
           <p className="text-white/40 text-sm mb-12 tracking-wide">
-            Mark Wolfgang, Founder · TBM 900 Pilot
+            Mark Wolfgang, Founder · TBM 900 Pilot · over 1,000 hours
           </p>
 
           {/* CTAs */}
@@ -617,6 +617,7 @@ export function LandingVariantE() {
               <div className="space-y-4 text-sm">
                 {[
                   { label: "Aircraft", value: "TBM 900" },
+                  { label: "Total hours", value: "Over 1,000 hours" },
                   { label: "Ratings", value: "Commercial · Instrument · Multi-Engine" },
                   { label: "Home base", value: "Rogers, AR (KROG)" },
                   { label: "Why he built it", value: "Needed a system that took it as seriously as he did" },
