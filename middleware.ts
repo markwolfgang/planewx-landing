@@ -89,7 +89,10 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith("/brand") && !pathname.startsWith("/brand-login")) {
     const isStaticAsset =
       /\.(svg|png|jpe?g|webp|gif|ico|css|js|map|woff2?|ttf|otf)$/i.test(pathname)
-    if (!isStaticAsset) {
+    const isPublicPartnerOnePager =
+      pathname === "/brand/planewx-partner-messaging.pdf" ||
+      pathname.startsWith("/brand/partner-one-pager/")
+    if (!isStaticAsset && !isPublicPartnerOnePager) {
       const authResponse = handleBrandAuth(request)
       if (authResponse) return authResponse
     }

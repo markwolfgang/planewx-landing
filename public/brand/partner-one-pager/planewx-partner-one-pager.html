@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>PlaneWX Partner Messaging Sheet</title>
+<style>
+  @font-face {
+    font-family: "Inter";
+    src: url("Inter-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("Inter-Italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("Inter-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("Inter-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("Inter-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("Inter-Bold.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Inter";
+    src: url("Inter-BoldItalic.woff2") format("woff2");
+    font-weight: 600 800;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  :root {
+    --navy: #0a0f1a;
+    --navy-2: #0B1120;
+    --navy-3: #111827;
+    --cyan: #00B6D1;
+    --blue: #3B82F6;
+    --sky: #38bdf8;
+    --accent: #0ea5e9;
+    --ink: #0a0f1a;
+    --muted: #4b5563;
+    --line: #d1d5db;
+    --soft: #f3f4f6;
+    --soft-blue: #eff6ff;
+    --green: #059669;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @page {
+    size: Letter;
+    margin: 0;
+  }
+
+  html, body {
+    width: 8.5in;
+    height: 11in;
+    margin: 0;
+    padding: 0;
+    background: var(--white);
+    color: var(--ink);
+    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 8.5in;
+    height: 11in;
+    padding: 0.42in 0.48in 0.36in;
+    display: flex;
+    flex-direction: column;
+    gap: 0.14in;
+    overflow: hidden;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 60%, #0c2d4a 100%);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 0.18in 0.22in;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.2in;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.14in;
+  }
+
+  .brand img.wordmark {
+    height: 0.34in;
+    width: auto;
+    display: block;
+  }
+
+  .brand img.icon {
+    height: 0.34in;
+    width: 0.34in;
+    border-radius: 6px;
+    display: block;
+  }
+
+  .header-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.04in;
+  }
+
+  .doc-label {
+    font-size: 8.5pt;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+  }
+
+  .tagline {
+    font-size: 11.5pt;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--sky);
+    margin-top: 0.02in;
+  }
+
+  .what-is {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.3;
+    margin: 0.08in 0 0.1in;
+  }
+
+  /* Positioning */
+  .positioning {
+    border: 1.5px solid #93c5fd;
+    background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 100%);
+    border-radius: 7px;
+    padding: 0.12in 0.16in;
+  }
+
+  .positioning .short {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+
+  .positioning .long {
+    margin-top: 0.06in;
+    font-size: 8.6pt;
+    line-height: 1.35;
+    color: #1f2937;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.12in;
+  }
+
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 0.1in 0.12in;
+    background: var(--white);
+  }
+
+  .card h3 {
+    font-size: 8pt;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.04in;
+  }
+
+  .card p {
+    font-size: 8.4pt;
+    line-height: 1.32;
+    color: #1f2937;
+  }
+
+  /* Section titles */
+  .section-title {
+    display: flex;
+    align-items: baseline;
+    gap: 0.1in;
+    margin-bottom: 0.06in;
+  }
+
+  .section-title h2 {
+    font-size: 9.5pt;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .section-title .hint {
+    font-size: 7.5pt;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* The Loop */
+  .loop-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.08in;
+  }
+
+  .loop-item {
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--blue);
+    border-radius: 6px;
+    padding: 0.08in 0.09in;
+    background: var(--white);
+    min-height: 0;
+  }
+
+  .loop-item .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.18in;
+    height: 0.18in;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    font-size: 7.5pt;
+    font-weight: 800;
+    margin-bottom: 0.04in;
+  }
+
+  .loop-item h4 {
+    font-size: 8.5pt;
+    font-weight: 750;
+    color: var(--navy);
+    margin-bottom: 0.03in;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .loop-item p {
+    font-size: 7.6pt;
+    line-height: 1.28;
+    color: #374151;
+  }
+
+  .mentor-note {
+    margin-top: 0.07in;
+    font-size: 7.8pt;
+    line-height: 1.3;
+    color: #1f2937;
+    background: var(--soft);
+    border-left: 3px solid var(--cyan);
+    padding: 0.06in 0.1in;
+    border-radius: 0 5px 5px 0;
+  }
+
+  .mentor-note strong { color: var(--navy); }
+
+  /* Minimums */
+  .minimums {
+    background: var(--navy);
+    color: white;
+    border-radius: 7px;
+    padding: 0.1in 0.14in;
+    font-size: 8.2pt;
+    line-height: 1.32;
+  }
+
+  .minimums strong {
+    color: var(--sky);
+  }
+
+  /* Proof */
+  .proof {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.08in;
+  }
+
+  .proof-item {
+    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 0.08in 0.06in;
+    background: #f8fafc;
+  }
+
+  .proof-item .stat {
+    font-size: 13pt;
+    font-weight: 800;
+    color: var(--blue);
+    line-height: 1.1;
+  }
+
+  .proof-item .label {
+    margin-top: 0.03in;
+    font-size: 7.4pt;
+    color: #374151;
+    line-height: 1.25;
+  }
+
+  .proof-item .label.nowrap {
+    white-space: nowrap;
+  }
+
+  .assoc {
+    margin-top: 0.06in;
+    font-size: 7.4pt;
+    color: #1f2937;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .assoc-note {
+    margin-top: 0.02in;
+    font-size: 6.8pt;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* Say / Avoid */
+  .talk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.1in;
+  }
+
+  .talk {
+    border-radius: 7px;
+    padding: 0.09in 0.11in;
+  }
+
+  .talk.say {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+  }
+
+  .talk.avoid {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+  }
+
+  .talk h3 {
+    font-size: 8pt;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.05in;
+  }
+
+  .talk.say h3 { color: #047857; }
+  .talk.avoid h3 { color: #b91c1c; }
+
+  .talk ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.035in;
+  }
+
+  .talk li {
+    font-size: 7.7pt;
+    line-height: 1.28;
+    color: #1f2937;
+    padding-left: 0.14in;
+    position: relative;
+  }
+
+  .talk.say li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.045in;
+    width: 0.07in;
+    height: 0.07in;
+    border-radius: 50%;
+    background: #10b981;
+  }
+
+  .talk.avoid li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.045in;
+    width: 0.07in;
+    height: 0.07in;
+    border-radius: 50%;
+    background: #ef4444;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: auto;
+    border-top: 1px solid var(--line);
+    padding-top: 0.08in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.15in;
+    font-size: 7.5pt;
+    color: var(--muted);
+  }
+
+  .footer .contact {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .footer .contact a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+
+  .footer .note {
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="brand">
+        <img class="icon" src="icon-64.png" alt="PlaneWX icon" />
+        <img class="wordmark" src="wordmark-header.png" alt="PlaneWX" />
+      </div>
+      <div class="header-meta">
+        <div class="doc-label">Partner Messaging Sheet</div>
+        <div class="tagline">Fly like it's your job.</div>
+      </div>
+    </header>
+
+    <p class="what-is">PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer.</p>
+
+    <section class="positioning">
+      <p class="short">PlaneWX is the risk-management loop for pilots who don't have a dispatcher.</p>
+      <p class="long">For GA pilots without a chief pilot or dispatcher, PlaneWX is the risk-management loop that brings airline-style discipline (brief, assess, decide, debrief) to every flight. Unlike EFBs, which stop at weather data, and unlike paper FRAT and minimums sheets filed away after a checkride, it keeps personal minimums live on every briefing.</p>
+    </section>
+
+    <section class="two-col">
+      <div class="card">
+        <h3>Mission</h3>
+        <p>Bring professional-grade tools and habits to general aviation so pilots flying on their own time, with families aboard, hold the same standard as paid pros.</p>
+      </div>
+      <div class="card">
+        <h3>Vision</h3>
+        <p>GA closes the loop on every flight, and staying home is a legitimate outcome, not a failure. Desired outcome: measurably reduce GA accidents.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>The Loop</h2>
+        <span class="hint">Four parts. Mentor sits alongside all four.</span>
+      </div>
+      <div class="loop-grid">
+        <div class="loop-item">
+          <div class="num">1</div>
+          <h4>Brief</h4>
+          <p>WX Score, from days out to hours out. Personal minimums front and center on every briefing.</p>
+        </div>
+        <div class="loop-item">
+          <div class="num">2</div>
+          <h4>FRAT</h4>
+          <p>Pilot, Aircraft, enVironment, External. Opens 4 hours before departure, when you can honestly rate how you feel. Flags risk stacking when 3 or more factors are elevated, but never makes the call for you.</p>
+        </div>
+        <div class="loop-item">
+          <div class="num">3</div>
+          <h4>GO / NO-GO</h4>
+          <p>Staying is legitimate. PlaneWX never recommends go or no-go. The pilot makes the call.</p>
+        </div>
+        <div class="loop-item">
+          <div class="num">4</div>
+          <h4>Debrief</h4>
+          <p>Looks back at the flight and the FRAT you ran for that trip.</p>
+        </div>
+      </div>
+      <div class="mentor-note"><strong>Mentor</strong> sits alongside all four parts of the loop. It is optional and opened by the pilot.</div>
+    </section>
+
+    <section class="minimums">
+      <strong>Personal minimums are structural.</strong>
+      Set your personal minimums once, and every WX Score checks the forecast against your limits, not generic ones. FRAT is a chosen professional habit, and pilots can choose to require it before every flight.
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>Public proof points</h2>
+        <span class="hint">Use only these. No invented stats.</span>
+      </div>
+      <div class="proof">
+        <div class="proof-item">
+          <div class="stat">2,200+</div>
+          <div class="label">pilots in 35 countries</div>
+        </div>
+        <div class="proof-item">
+          <div class="stat">8.7 / 10</div>
+          <div class="label">how likely pilots are to recommend PlaneWX (1,724 responses)</div>
+        </div>
+        <div class="proof-item">
+          <div class="stat">Up to 10%</div>
+          <div class="label nowrap">off 5X5 insurance with Pro Plus</div>
+        </div>
+      </div>
+      <p class="assoc">Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.</p>
+      <p class="assoc-note">An association in PlaneWX data, not cause and effect.</p>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <h2>How to talk about PlaneWX</h2>
+      </div>
+      <div class="talk-grid">
+        <div class="talk say">
+          <h3>Say</h3>
+          <ul>
+            <li>The risk-management loop</li>
+            <li>Professional-grade discipline for pilots without a dispatcher</li>
+            <li>Personal minimums on every briefing</li>
+            <li>Staying home is a good decision</li>
+          </ul>
+        </div>
+        <div class="talk avoid">
+          <h3>Avoid</h3>
+          <ul>
+            <li>"Just another weather app"</li>
+            <li>"Tells you whether to fly" (the pilot decides; PlaneWX informs)</li>
+            <li>Claiming the habit compounds over time, or causal stats (the debrief/FRAT link is an association)</li>
+            <li>The old three-part framing; invented stats</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="contact">
+        planewx.ai &nbsp;·&nbsp; hello@planewx.ai
+      </div>
+      <div class="note">
+        PlaneWX partner messaging, September 2026
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
