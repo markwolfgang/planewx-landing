@@ -33,7 +33,7 @@ loop:
       3 or more factors are elevated, but never makes the call for you.
   - num: 3
     accent: emerald
-    title: Fly or Stay
+    title: GO / NO-GO
     body: Staying is legitimate. The pilot decides. PlaneWX informs.
   - num: 4
     accent: amber
@@ -67,7 +67,7 @@ problemSolution:
   problem:
     title: The Problem
     paragraphs:
-    - Pilots are forced into fly-or-stay decisions at the moment of maximum pressure, bags packed, family
+    - Pilots are forced into go / no-go decisions at the moment of maximum pressure, bags packed, family
       waiting, hotels booked, when TAFs only cover 24 hours. Nobody helps analyze the vast quantity of
       weather data available beyond that window.
     - And they face that decision alone. There's no system for connecting a student pilot or low-time
@@ -288,7 +288,7 @@ positioning:
     Synoptic Intelligence, and provide aircraft-specific analysis that goes deeper than any EFB within
     24 hours. We complement, not compete with, existing tools.
   quote: Every EFB and weather tool displays raw data and hands the analysis back to you. The cognitive
-    work of synthesizing it, assessing risk, and forming a fly-or-stay judgment lands entirely on you, alone,
+    work of synthesizing it, assessing risk, and forming a go / no-go judgment lands entirely on you, alone,
     often under pressure. PlaneWX is the first tool that does that synthesis for you. You still own the
     decision.
 audienceHooks:
