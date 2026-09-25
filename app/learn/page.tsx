@@ -75,8 +75,9 @@ function SectionArticles({ section }: { section: LearnSection }) {
               {article.title}
             </h3>
             <p className="text-sm text-white/55">{article.summary}</p>
-            <span className="mt-1 text-sm font-medium text-sky-400 group-hover:text-sky-300">
-              Read article →
+            <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-sky-400 group-hover:text-sky-300">
+              Read article
+              <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
             </span>
           </Link>
         </li>

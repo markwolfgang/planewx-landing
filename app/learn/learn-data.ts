@@ -239,7 +239,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         "Without a dispatcher, you have to know whether you are reading an official forecaster TAF or automated guidance. That matters most at airports with no TAF, where MOS, LAMP or NBM may be what you have. Knowing which product you are looking at keeps the go/no-go call grounded in what the product actually is.",
       loopStage: ["Weather Briefing"],
       toolOrHabit:
-        "PlaneWX Weather Briefing and WX Score weigh forecast conditions against your own personal minimums. You still make the go/no-go call.",
+        "PlaneWX Weather Briefing and WX Score weigh forecast conditions against your own personal minimums. PlaneWX never recommends go or no-go. You make the GO\u00A0/\u00A0NO\u2011GO call.",
     },
     sources: [
       {
