@@ -43,6 +43,16 @@ proprietary:
       usage: >-
         Reference as 'FAA's PAVE framework' on first use. PlaneWX pre-fills
         Environment.
+    - term: The Loop (GO / NO-GO)
+      definition: >-
+        PlaneWX decision loop: WX Score briefing, FRAT, GO / NO-GO, Self Debrief.
+        Mentor is an optional layer alongside the loop, not a fifth step.
+      usage: >-
+        Locked Sep 25, 2026. The loop step formerly called "Fly or Stay" is
+        renamed "GO / NO-GO" everywhere. Wherever the step is explained, always
+        pair with: "PlaneWX never recommends go or no-go. The pilot makes the
+        call." In-app decision options are GO / NO-GO plus Modify and Postpone.
+        Lowercase "go/no-go" in educational prose is fine.
 avoid:
   title: Terms to Avoid
   intro: >-
@@ -52,6 +62,12 @@ avoid:
     - dontSay: Go Score
       sayInstead: WX Score
       why: Deprecated terminology
+    - dontSay: Fly or Stay
+      sayInstead: GO / NO-GO
+      why: >-
+        Locked Sep 25, 2026. Do not use "Fly or Stay" as the loop step name.
+        Trademark tagline "The confidence to go, or the courage to stay" is
+        unchanged. Lowercase go/no-go in educational prose is fine.
     - dontSay: Official weather briefing
       sayInstead: Weather intelligence / Weather analysis
       why: Regulatory concern. Removed Feb 2026
