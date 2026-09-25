@@ -632,7 +632,7 @@ export default function MultiModelAnalysis() {
               <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20">
                 <h3 className="font-semibold text-red-400 mb-2">Limit (Hard Limit)</h3>
                 <p className="text-sm text-white/60">
-                  Your absolute maximum. Exceeding this is unfavorable — WX Score drops to 0%. 
+                  Your absolute maximum. Exceeding this is unfavorable and marked as a hard-limit exceedance.
                   Non-FIKI aircraft are always unfavorable for any icing.
                 </p>
               </div>

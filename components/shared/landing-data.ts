@@ -17,8 +17,8 @@ export const STATS = {
 
 /**
  * Staged How It Works copy (easy to swap after CoS audit).
- * Badges must not say "No AI". Any "can't raise the score" line starts with
- * "Within 12 hours of departure".
+ * Badges must not say "No AI". Do not claim the WX Score goes to 0,
+ * or that AI cannot raise the score above the rule-based score.
  */
 export const HOW_IT_WORKS_STEPS: {
   title: string
@@ -33,12 +33,12 @@ export const HOW_IT_WORKS_STEPS: {
   {
     title: "Personalize",
     badge: "Rule-based within 12 hours of departure",
-    body: "Within 12 hours of departure, your personal minimums and aircraft limits are checked by rule-based code. If you're outside them, the server drives the WX Score to 0, not the AI. Further out, AI helps weigh some limits, like icing and turbulence.",
+    body: "Within 12 hours of departure, your personal minimums and aircraft limits are checked by rule-based code, not the AI. Further out, AI helps weigh some limits, like icing and turbulence.",
   },
   {
     title: "Synthesize",
     badge: "AI",
-    body: "AI reads the forecasters' written discussions and regional summaries, then writes the plain-language briefing for your route: the big picture, the hazard summary, and most section ratings. It also proposes a starting WX Score and deductions, such as for convection, and code bounds them. Ceiling and visibility are always scored by code. Within 12 hours of departure, the AI can't raise your WX Score above the rule-based score.",
+    body: "AI reads the forecasters' written discussions and regional summaries, then writes the plain-language briefing for your route: the big picture, the hazard summary, and most section ratings. It also proposes a starting WX Score and deductions, such as for convection. Ceiling and visibility are always scored by code.",
   },
   {
     title: "Inform",
@@ -141,7 +141,7 @@ export const FAQS: {
   },
   {
     q: "Does PlaneWX use AI?",
-    a: "Yes, in specific places. Weather reports, forecasts, model data and NOTAMs are fetched and decoded by code. AI reads forecaster discussions and writes the plain-language briefing, the hazard summary and most section ratings. It also proposes a starting WX Score and some deductions, such as for convection. Ceiling and visibility are always scored by code. Within 12 hours of departure, your personal minimums and aircraft limits are checked by rule-based code: if you're outside them the server drives the WX Score to 0, and the AI can't raise the score above the rule-based score. Further out, AI also helps weigh icing and turbulence against your limits. You always make the final call.",
+    a: "Yes, in specific places. Weather reports, forecasts, model data and NOTAMs are fetched and decoded by code. AI reads forecaster discussions and writes the plain-language briefing, the hazard summary and most section ratings. It also proposes a starting WX Score and some deductions, such as for convection. Ceiling and visibility are always scored by code. Within 12 hours of departure, your personal minimums and aircraft limits are checked by rule-based code, not the AI. Further out, AI also helps weigh icing and turbulence against your limits. You always make the final call.",
   },
   {
     q: "What is the WX Score?",
