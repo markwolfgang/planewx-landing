@@ -181,7 +181,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         items: [
           "MAV (short-range GFS MOS): runs 00, 06, 12 and 18 UTC, 6 to 72 hours, over 1500 stations. Includes ceiling (CIG), visibility (VIS) and obstruction to vision (OBV).",
           "MEX (extended-range GFS MOS): runs 00 and 12 UTC, 24 to 192 hours, over 1600 stations. The MEX card shows no ceiling or visibility elements.",
-          "MET (NAM MOS): runs 00 and 12 UTC, 6 to 72 hours, same element set as MAV including CIG, VIS and OBV. NAM MOS is terminated along with the NAM on October 14, 2026 at 1200 UTC (NWS SCN 26-47).",
+          "MET (NAM MOS): runs 00 and 12 UTC, 6 to 72 hours, same element set as MAV including CIG, VIS and OBV. NAM MOS is scheduled to end along with the NAM on October 14, 2026 at 1200 UTC (NWS SCN 26-47).",
         ],
       },
       {
@@ -228,7 +228,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         type: "list",
         items: [
           "TAF: Who makes it: NWS WFO forecasters (AvnFPS, professional judgment). How: official terminal forecast. Run times: scheduled 4x daily (every 6 hours), amendments as needed; Core 30 get scheduled amendments every 3 hours. Range: ordinarily 24 hr (30 hr at FAA-specified international airports). Ceiling and visibility: included. Stations: nearly 700 U.S. airports. Official or guidance: official.",
-          "MOS: Who makes it: MDL. How: statistical post-processing (multiple linear regression) on GFS and NAM. Run times: MAV 00/06/12/18 UTC; MEX and MET 00/12 UTC. Range: MAV 6 to 72 hr; MEX 24 to 192 hr; MET 6 to 72 hr (NAM MOS ends Oct 14, 2026 at 1200 UTC). Ceiling and visibility: MAV and MET include CIG, VIS, OBV; MEX card shows no ceiling or visibility. Stations: MAV over 1500; MEX over 1600. Official or guidance: guidance.",
+          "MOS: Who makes it: MDL. How: statistical post-processing (multiple linear regression) on GFS and NAM. Run times: MAV 00/06/12/18 UTC; MEX and MET 00/12 UTC. Range: MAV 6 to 72 hr; MEX 24 to 192 hr; MET 6 to 72 hr (NAM MOS scheduled to end Oct 14, 2026 at 1200 UTC). Ceiling and visibility: MAV and MET include CIG, VIS, OBV; MEX card shows no ceiling or visibility. Stations: MAV over 1500; MEX over 1600. Official or guidance: guidance.",
           "LAMP: Who makes it: MDL. How: statistical system that updates MOS every hour (ceiling and visibility every 15 minutes). Run times: hourly updates. Range: 1 to 25 hr standard; extends to 38 hr for key elements. Ceiling and visibility: yes (plus conditional ceiling/visibility, obstruction, lightning, convection). Stations: over 2000. Official or guidance: guidance.",
           "NBM: Who makes it: MDL. How: nationally consistent and skillful suite of calibrated forecast guidance; starting point for NDFD grids. Run times: every hour. Range: out to 264 hr (NBH 1 to 25 hr; NBS 6 to 72 hr; NBE 24 to 192 hr; NBX 204 to 264 hr). Ceiling and visibility: NBH and NBS yes; NBE no. Stations: over 9,000 land and marine. Official or guidance: guidance.",
         ],
