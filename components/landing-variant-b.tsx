@@ -103,7 +103,7 @@ export function LandingVariantB() {
         <div className="container mx-auto max-w-5xl text-center space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-sm font-medium">
             <AlertTriangle className="h-4 w-4" />
-            <span>72% of GA weather accidents involve VFR into IMC</span>
+            <span>Morning-of pressure is where weather accidents start</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">

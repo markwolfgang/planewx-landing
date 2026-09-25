@@ -131,7 +131,7 @@ export default function MultiModelAnalysis() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-1">High-Resolution Rapid Refresh</h3>
-                  <p className="text-white/50 text-sm mb-4">NOAA&rsquo;s highest-resolution hourly model: the gold standard for short-range icing and turbulence forecasts.</p>
+                  <p className="text-white/50 text-sm mb-4">NOAA&rsquo;s high-resolution rapid-refresh model, updated hourly for short-range icing and turbulence forecasts.</p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                     <div>
                       <span className="text-blue-400 text-xs font-mono uppercase tracking-wider">Resolution</span>
@@ -191,7 +191,7 @@ export default function MultiModelAnalysis() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-1">European Centre for Medium-Range Weather Forecasts</h3>
-                  <p className="text-white/50 text-sm mb-4">Widely regarded as the world&rsquo;s most accurate global forecast model.</p>
+                  <p className="text-white/50 text-sm mb-4">ECMWF global model from the European Centre for Medium-Range Weather Forecasts.</p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                     <div>
                       <span className="text-amber-400 text-xs font-mono uppercase tracking-wider">Resolution</span>

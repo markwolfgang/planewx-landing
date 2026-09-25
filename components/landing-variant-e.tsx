@@ -132,9 +132,7 @@ export function LandingVariantE() {
               <span>8.7/10 on how likely pilots are to recommend PlaneWX (1,724 responses)</span>
             </div>
             <div className="hidden sm:block w-px h-4 bg-white/10" />
-            <span>{STATS.totalPilots} pilots</span>
-            <div className="hidden sm:block w-px h-4 bg-white/10" />
-            <span>64% of weather cancellations: pilots chose to stay</span>
+            <span>{STATS.totalPilots} active pilots</span>
           </div>
         </div>
       </section>
@@ -236,7 +234,7 @@ export function LandingVariantE() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
             {[
               {
                 value: "95.5%",
@@ -245,14 +243,6 @@ export function LandingVariantE() {
                 border: "border-sky-500/20",
                 label: "of PlaneWX pilots voluntarily require a pre-flight risk assessment",
                 sub: "Nobody made them. They turned that on themselves.",
-              },
-              {
-                value: "64%",
-                color: "text-amber-400",
-                bg: "from-amber-950/60 to-orange-950/20",
-                border: "border-amber-500/20",
-                label: "of weather cancellations: pilots chose to stay",
-                sub: "Every cancelled flight is a story that didn't end badly.",
               },
               {
                 value: "92%",
