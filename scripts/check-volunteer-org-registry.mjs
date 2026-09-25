@@ -80,6 +80,34 @@ const sky = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.SKYHOPE
 assert.equal(aca.prefix, "CMF")
 assert.equal(aca.signupParam, "cmf")
 assert.equal(aca.storageKey, "planewx_cmf_call_sign")
+
+assert.equal(aca.label, "Your volunteer call sign", "bare_aca_label_is_volunteer_call_sign")
+assert.equal(
+  aca.hint,
+  "Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign. We'll validate it, then unlock signup.",
+  "bare_aca_hint_accepts_cmf_or_syh"
+)
+assert.equal(
+  aca.lockedHint,
+  "Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign. We'll validate it, then unlock signup",
+  "bare_aca_locked_hint_matches_hint_without_trailing_period"
+)
+assert.equal(
+  aca.srHint,
+  "Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign.",
+  "bare_aca_sr_hint_matches"
+)
+assert.equal(sky.label, "Your SkyHope call sign", "skyhope_label_unchanged")
+assert.equal(
+  sky.hint,
+  "Enter your SkyHope call sign. We'll validate it, then unlock signup.",
+  "skyhope_hint_unchanged"
+)
+assert.equal(
+  sky.error,
+  "That doesn't look like a valid SkyHope call sign. Use your SkyHope call sign, not a Compassion Flight one.",
+  "skyhope_error_unchanged"
+)
 assert.ok(aca.pattern.test("CMF1234"))
 assert.ok(!aca.pattern.test("CMF12345"))
 assert.ok(!aca.pattern.test("SYH1234"))
@@ -351,9 +379,30 @@ assert.equal(
   "ref_skyhope_syh_lowercase_accepted"
 )
 
+
+// how_offer_works_has_no_duplicate_subtitle
+const volunteerPage = fs.readFileSync(join(ROOT, "app/volunteer/page.tsx"), "utf8")
+assert.equal(
+  volunteerPage.includes(
+    "unlock signup for your Pro Plus trial and volunteer discount"
+  ),
+  false,
+  "how_offer_works_has_no_duplicate_subtitle"
+)
+assert.equal(
+  volunteerPage.includes("Enter your volunteer call sign"),
+  true,
+  "bare_step1_heading_is_volunteer_call_sign"
+)
+assert.match(
+  volunteerPage,
+  /isSkyHope\s*\?\s*"Enter your SkyHope call sign"\s*:\s*"Enter your volunteer call sign"/,
+  "bare_step1_heading_skyhope_unchanged"
+)
+
 console.log("Volunteer org registry + link builder checks passed.")
 console.log(
-  "Tests: production_syh_signup_href_carries_callsign, preview_unlocked_control_is_not_a_link, isVolunteerProductionDeploy_branches, bare_syh_lowercase_accepted_routes_skyhope, bare_cmf_accepted, bare_garbage_shows_new_error, ref_skyhope_cmf_rejected, ref_skyhope_syh_lowercase_accepted"
+  "Tests: production_syh_signup_href_carries_callsign, preview_unlocked_control_is_not_a_link, isVolunteerProductionDeploy_branches, bare_syh_lowercase_accepted_routes_skyhope, bare_cmf_accepted, bare_garbage_shows_new_error, ref_skyhope_cmf_rejected, ref_skyhope_syh_lowercase_accepted, how_offer_works_has_no_duplicate_subtitle, bare_aca_label_is_volunteer_call_sign"
 )
 console.log("ACA Sign up href:", acaHref)
 console.log("SKYHOPE Sign up href:", skyHref)

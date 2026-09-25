@@ -269,11 +269,6 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
             <h2 id="how-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
               How the offer works
             </h2>
-            <p className="text-white/55 leading-relaxed">
-              {isSkyHope
-                ? "Enter your SkyHope call sign. We'll validate it, then unlock signup for your Pro Plus trial and volunteer discount."
-                : "Enter your Compassion Flight call sign. We'll validate it, then unlock signup for your Pro Plus trial and volunteer discount."}
-            </p>
           </div>
 
           <ol className="grid gap-5 sm:gap-6">
@@ -285,7 +280,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                 <h3 className="text-lg font-semibold">
                   {isSkyHope
                     ? "Enter your SkyHope call sign"
-                    : "Enter your Compassion Flight call sign"}
+                    : "Enter your volunteer call sign"}
                 </h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
                   {isSkyHope

@@ -109,14 +109,14 @@ export const VOLUNTEER_ORG_CALL_SIGN_REGISTRY: Record<
     prefix: "CMF",
     /** ONE-LINE EDIT: CMF format. */
     pattern: /^CMF\d{1,4}$/i,
-    label: "Your Compassion Flight call sign",
+    label: "Your volunteer call sign",
     placeholder: "WWW",
-    hint: "Enter your Compassion Flight call sign. We'll validate it, then unlock signup.",
+    hint: "Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign. We'll validate it, then unlock signup.",
     error:
       "That doesn't look like a valid volunteer call sign. Use your Compassion Flight (CMF) or SkyHope (SYH) call sign.",
     lockedHint:
-      "Enter your Compassion Flight call sign. We'll validate it, then unlock signup",
-    srHint: "Enter your Compassion Flight call sign.",
+      "Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign. We'll validate it, then unlock signup",
+    srHint: "Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign.",
     acceptedLead:
       "Call sign accepted. Sign up below for your 2-week Pro Plus trial. PlaneWX applies the volunteer discount from the call sign you entered",
     unlockBody:
