@@ -77,10 +77,12 @@ type WhyContent = {
     subtitle: string
     quotes: { quote: string; context: string }[]
   }
-  pillars: {
+  loop: {
     title: string
     subtitle: string
     items: { icon: string; accent: string; title: string; body: string }[]
+    mentorNote: string
+    picLine: string
   }
   comparison: {
     title: string
@@ -237,12 +239,23 @@ export default function WhyPlaneWXPage() {
 
       <section>
         <h2 className="text-3xl font-bold text-white mb-2">
-          {content.pillars.title}
+          {content.loop.title}
         </h2>
-        <p className="text-white/60 mb-8">{content.pillars.subtitle}</p>
+        <p className="text-white/60 mb-8">{content.loop.subtitle}</p>
         <div className="space-y-4">
-          {content.pillars.items.map((item) => {
+          {content.loop.items.map((item) => {
             const Icon = ICONS[item.icon] ?? Cloud
+            const title = item.title.includes("GO / NO-GO") ? (
+              <>
+                {item.title.split("GO / NO-GO")[0]}
+                <span className="whitespace-nowrap">
+                  {"GO\u00A0/\u00A0NO\u2011GO"}
+                </span>
+                {item.title.split("GO / NO-GO")[1]}
+              </>
+            ) : (
+              item.title
+            )
             return (
               <div
                 key={item.title}
@@ -252,7 +265,7 @@ export default function WhyPlaneWXPage() {
                   <Icon
                     className={`h-6 w-6 ${ACCENT_ICON[item.accent] ?? "text-sky-400"}`}
                   />
-                  <h3 className="text-lg font-bold text-white">{item.title}</h3>
+                  <h3 className="text-lg font-bold text-white">{title}</h3>
                 </div>
                 <p className="text-white/70">
                   <BrandText text={item.body} />
@@ -261,6 +274,12 @@ export default function WhyPlaneWXPage() {
             )
           })}
         </div>
+        <p className="text-white/50 text-sm mt-5 leading-relaxed">
+          {content.loop.mentorNote}
+        </p>
+        <p className="text-sky-400/90 text-sm mt-3 font-medium leading-relaxed">
+          {content.loop.picLine}
+        </p>
       </section>
 
       <section>

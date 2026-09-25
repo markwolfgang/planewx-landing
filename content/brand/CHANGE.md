@@ -2,7 +2,7 @@
 
 ## 2026-09-25: Loop step rename: GO / NO-GO
 
-Locked the PlaneWX loop step formerly called "Fly or Stay" as **GO / NO-GO** in brand terminology. The loop remains WX Score briefing, FRAT, GO / NO-GO, Self Debrief, with Mentor as an optional layer. Tagline is **Fly like it's your job.** (the old confidence/courage line is retired). Also locked middle verdict wording: say **Marginal**, not Watch. Removed the retired tagline from overview and assets.
+Locked the PlaneWX loop step formerly called "Fly or Stay" as **GO / NO-GO** in brand terminology. The loop remains Weather Briefing (WX Score), FRAT, GO / NO-GO, Self Debrief, with Mentor as an optional layer. Tagline is **Fly like it's your job.** (the old confidence/courage line is retired). Also locked middle verdict wording: say **Marginal**, not Watch. Removed the retired tagline from overview and assets. Replaced Three Pillars with The PlaneWX Loop on overview and why, removed the courage-to-stay / 90-pilot no-go stat, and sharpened the positioning box to "assessment for the pilot's decision."
 
 ## 2026-09-20 — Content SoT migration
 

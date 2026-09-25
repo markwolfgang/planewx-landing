@@ -132,34 +132,39 @@ philosophy:
         The pilot-in-command owns the go/no-go. PlaneWX informs. It never
         decides.
       context: On PIC authority (14 CFR §91.3)
-pillars:
-  title: Three Pillars of Safer Flying
+loop:
+  title: The PlaneWX Loop
   subtitle: >-
-    Every feature supports one of three safety pillars. Together, they give
-    pilots the tools to make sound, confident decisions.
+    Four steps that structure how PlaneWX supports a trip decision, from
+    briefing through debrief.
   items:
     - icon: Cloud
       accent: sky
-      title: Weather Intelligence
+      title: Weather Briefing (WX Score)
       body: >-
-        Continuously monitored briefings from federal weather sources,
-        personalized to your aircraft and minimums. Synoptic Intelligence™
-        synthesizes every available source starting up to 14 days out.
+        Continuously updated WX Score personalized to your aircraft, ratings,
+        and personal minimums.
     - icon: ClipboardCheck
       accent: emerald
-      title: PAVE Self-Assessment
+      title: FRAT
       body: >-
-        Weather is only one part of flight safety. The FAA's PAVE framework
-        (Pilot, Aircraft, enVironment, External pressures), structured, timed to
-        departure, and integrated into the briefing.
+        Flight risk assessment fed by the briefing, so risk factors are visible
+        before the pressure peaks.
+    - icon: Shield
+      accent: amber
+      title: GO / NO-GO
+      body: >-
+        The pilot makes the call. In-app options are GO / NO-GO plus Modify and
+        Postpone.
     - icon: GraduationCap
       accent: violet
-      title: Peer Mentoring
+      title: Self Debrief
       body: >-
-        No pilot should face a critical go/no-go call alone. Matches you with
-        experienced volunteers who see your exact briefing: same WX Score, same
-        weather analysis, same personal minimums. The conversation starts with
-        real data.
+        Capture what happened after the flight so the next trip starts smarter.
+  mentorNote: >-
+    Mentor is an optional layer alongside the loop, not a fifth step.
+  picLine: >-
+    PlaneWX never recommends go or no-go. The pilot makes the call.
 comparison:
   title: Without PlaneWX vs. With PlaneWX
   subtitle: The tangible difference in a pilot's workflow.

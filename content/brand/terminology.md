@@ -45,8 +45,9 @@ proprietary:
         Environment.
     - term: The Loop (GO / NO-GO)
       definition: >-
-        PlaneWX decision loop: WX Score briefing, FRAT, GO / NO-GO, Self Debrief.
-        Mentor is an optional layer alongside the loop, not a fifth step.
+        PlaneWX decision loop: Weather Briefing (WX Score), FRAT, GO / NO-GO,
+        Self Debrief. Mentor is an optional layer alongside the loop, not a
+        fifth step.
       usage: >-
         Locked Sep 25, 2026. The loop step formerly called "Fly or Stay" is
         renamed "GO / NO-GO" everywhere. Wherever the step is explained, always
