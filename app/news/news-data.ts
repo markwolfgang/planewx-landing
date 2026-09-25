@@ -46,6 +46,54 @@ export interface NewsItem {
 }
 
 export const NEWS_ITEMS: NewsItem[] = [
+  // The Weekly PIREP: Edition 1 (draft). Publish Monday by flipping draft off
+  // after Monday metrics refresh. Do not list internal PR titles in the body.
+  {
+    slug: "weekly-pirep-2026-09-28",
+    category: "Product",
+    title: "The Weekly PIREP: Edition 1",
+    excerpt:
+      "What shipped in PlaneWX this week: ground-ops wind in Personal Minimums, clearer FRAT Environment ratings, and a suggest-then-you-decide FRAT flow. Plus a short tip on how the WX Score works.",
+    date: "September 28, 2026",
+    isoDate: "2026-09-28",
+    location: "St. Petersburg, Florida",
+    draft: true,
+    body: `
+<p>Hello from PlaneWX. This is The Weekly PIREP, our Monday roundup of what shipped for pilots in the last week (Mon Sep 21 through Sun Sep 27).</p>
+<p>We keep it short and plain: what you can see and use in the app, a count of the smaller polish work, and one tip worth a minute of your time.</p>
+
+<h2>What&rsquo;s new</h2>
+<ul>
+<li><strong>Max wind for ground ops in Personal Minimums.</strong> In the Wind section of your Personal Minimums, you can set a maximum wind for ground operations. It is a limit you store with your other mins, next to the wind numbers you already use when you plan.</li>
+<li><strong>FRAT Environment: you rate it, with short captions.</strong> On the Environment step, you rate the overall environment yourself. Each category also shows a short caption that explains what is driving that reading, so you can see why a factor lit up before you score it.</li>
+<li><strong>FRAT order: suggestion, then your call, then notes.</strong> PlaneWX shows its suggestion first. Then you make the call. Then you add notes. The sequence is built so you stay PIC: we surface a read, you decide Fly or Stay.</li>
+</ul>
+<!-- [SLOT: add features shipped Sep 25 to 27, or delete] -->
+
+<h2>Fixes and improvements</h2>
+${/* PROVISIONAL: recount Mon from weekly-metrics (customer fixes+improvements). Partial week figure is 8. */ ""}
+<p>Plus 8 other fixes and improvements across the app.</p>
+
+<h2>We read what you send</h2>
+${/* PROVISIONAL feedback reply rate: 100% (2 of 2). Replace Mon with the final full-week number from weekly-metrics. */ ""}
+<p>We replied to every piece of feedback you sent this week. <!-- provisional: 100% (2 of 2) --></p>
+
+<h2>Tip of the Week: what the WX Score actually is</h2>
+<p>The WX Score is not PlaneWX guessing whether a flight is safe. It is your own personal minimums, applied the same way every time, against the forecast for this route, altitude, and departure. That is why minimums are required: PlaneWX cannot generate a WX Score without them. The score starts at 100% and comes down when weather approaches or exceeds the limits you set. A low number is a prompt to open the breakdown and make your Fly or Stay call as PIC. It is advisory support, not a flight authorization. More at <a href="https://app.planewx.ai/help/wx-score">app.planewx.ai/help/wx-score</a>.</p>
+
+${/*
+  Coming soon: nothing approved yet. Keep this block commented out so future
+  features cannot render until something is cleared for customers.
+  <h2>Coming soon</h2>
+  <p></p>
+*/ ""}
+
+<p>Open PlaneWX when you are ready to brief the next trip: <a href="https://app.planewx.ai">app.planewx.ai</a>.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. Tagline: Fly like it&rsquo;s your job.</p>
+`,
+  },
   {
     slug: "aca-air-care-alliance-partnership",
     category: "Partnerships",
