@@ -118,10 +118,10 @@ export default function PrivacyPolicyPage() {
             </p>
             <ul className="list-disc space-y-2 pl-6">
               <li>
-                <strong className="text-white">Essential:</strong> first-party cookies 
-                <code className="text-white/80">planewx-variant</code> (homepage variant), 
-                <code className="text-white/80">planewx-brand-auth</code> (brand portal auth), 
-                <code className="text-white/80">pw_consent_region</code> (consent region from Vercel geo), 
+                <strong className="text-white">Essential:</strong> first-party cookies{" "}
+                <code className="text-white/80">planewx-variant</code> (homepage variant),{" "}
+                <code className="text-white/80">planewx-brand-auth</code> (brand portal auth),{" "}
+                <code className="text-white/80">pw_consent_region</code> (consent region from Vercel geo),{" "}
                 <code className="text-white/80">pw_gpc</code> (Global Privacy Control signal), and first-party
                 localStorage <code className="text-white/80">cookie_prefs_v1</code> for your cookie choice, referral
                 codes, and UI dismissals.
@@ -132,7 +132,8 @@ export default function PrivacyPolicyPage() {
               </li>
               <li>
                 <strong className="text-white">Marketing:</strong> Google Ads (
-                <code className="text-white/80">AW-18011683791</code>, <code className="text-white/80">AW-18016407179</code>
+                <code className="text-white/80">AW-18011683791</code>,{" "}
+                <code className="text-white/80">AW-18016407179</code>
                 ), Meta Pixel (<code className="text-white/80">1236857811920781</code>), and Reddit Pixel (
                 <code className="text-white/80">a2_iy53y8iesnik</code>). These can support cross-context advertising
                 and may count as a &quot;sale&quot; or &quot;sharing&quot; under CCPA/CPRA.
@@ -147,11 +148,11 @@ export default function PrivacyPolicyPage() {
               Marketing scripts stay blocked until you opt in (Accept all, or Manage and save). Essential
               only turns Analytics and Marketing off in one click. In the United States and other regions we
               show a notice. Global Privacy Control (
-              <code className="text-white/80">navigator.globalPrivacyControl</code> or 
-              <code className="text-white/80">Sec-GPC</code>) turns Marketing off. Do not sell or share (in
+              <code className="text-white/80">navigator.globalPrivacyControl</code>
+              {" "}or <code className="text-white/80">Sec-GPC</code>) turns Marketing off. Do not sell or share (in
               the notice banner and the footer) turns Marketing off (Google Ads, Meta Pixel, Reddit Pixel)
               while leaving Analytics allowed under the notice model. Cookie settings in the footer reopens
-              the banner so you can change your choice on any page. Full detail: 
+              the banner so you can change your choice on any page. Full detail:{" "}
               <a href="/cookies" className="text-sky-400 hover:underline">
                 Cookie Policy
               </a>

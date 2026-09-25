@@ -31,10 +31,10 @@ export default function CookiesPage() {
         <Section title="Categories we use on www.planewx.ai">
           <ul className="list-disc space-y-3 pl-6 text-sm leading-relaxed text-white/70">
             <li>
-              <strong className="text-white">Essential.</strong> First-party cookies 
-              <code className="text-white/80">planewx-variant</code> (homepage variant assignment), 
-              <code className="text-white/80">planewx-brand-auth</code> (brand portal auth), 
-              <code className="text-white/80">pw_consent_region</code> (consent region from Vercel geo), and 
+              <strong className="text-white">Essential.</strong> First-party cookies{" "}
+              <code className="text-white/80">planewx-variant</code> (homepage variant assignment),{" "}
+              <code className="text-white/80">planewx-brand-auth</code> (brand portal auth),{" "}
+              <code className="text-white/80">pw_consent_region</code> (consent region from Vercel geo), and{" "}
               <code className="text-white/80">pw_gpc</code> (Global Privacy Control signal). First-party
               localStorage key <code className="text-white/80">cookie_prefs_v1</code> stores your cookie choice
               (with a version field), plus referral codes and UI dismissals. These run so the site and
@@ -48,7 +48,8 @@ export default function CookiesPage() {
             </li>
             <li>
               <strong className="text-white">Marketing.</strong> Google Ads (
-              <code className="text-white/80">AW-18011683791</code>, <code className="text-white/80">AW-18016407179</code>
+              <code className="text-white/80">AW-18011683791</code>,{" "}
+              <code className="text-white/80">AW-18016407179</code>
               ), Meta Pixel (<code className="text-white/80">1236857811920781</code>), and Reddit Pixel (
               <code className="text-white/80">a2_iy53y8iesnik</code>). Used for ad measurement and remarketing.
               These can support cross-context advertising and may count as a &quot;sale&quot; or
@@ -76,8 +77,8 @@ export default function CookiesPage() {
               <strong className="text-white">United States and other regions:</strong> a notice banner is
               shown. Analytics may run under the notice model until you choose Essential only. Marketing
               stays off when Global Privacy Control is on (
-              <code className="text-white/80">navigator.globalPrivacyControl</code> or the 
-              <code className="text-white/80">Sec-GPC</code> request header), or when you choose Do not sell
+              <code className="text-white/80">navigator.globalPrivacyControl</code>
+              {" "}or the <code className="text-white/80">Sec-GPC</code> request header), or when you choose Do not sell
               or share / turn Marketing off in Manage.
             </li>
             <li>
@@ -90,7 +91,7 @@ export default function CookiesPage() {
 
         <Section title="Do not sell or share">
           <p className="text-sm leading-relaxed text-white/70">
-            Because Marketing tools on this site can support cross-context advertising, a 
+            Because Marketing tools on this site can support cross-context advertising, a{" "}
             <strong className="text-white">Do not sell or share</strong> control is available in the notice
             banner and in the site footer. Choosing it keeps Analytics on (where the notice model allows) and
             turns Marketing off, so Google Ads, Meta Pixel, and Reddit Pixel do not load. Global Privacy
@@ -101,7 +102,7 @@ export default function CookiesPage() {
         <Section title="Changing your choice">
           <p className="text-sm leading-relaxed text-white/70 mb-3">
             Use <strong className="text-white">Cookie settings</strong> in the footer on every page to reopen
-            the banner, or the controls below. You can also clear site data in your browser, which clears 
+            the banner, or the controls below. You can also clear site data in your browser, which clears{" "}
             <code className="text-white/80">cookie_prefs_v1</code> and shows the banner again.
           </p>
           <div className="flex flex-wrap gap-4 text-sm">
@@ -120,7 +121,7 @@ export default function CookiesPage() {
 
         <Section title="Contact">
           <p className="text-sm leading-relaxed text-white/70">
-            Questions about cookies or tracking: 
+            Questions about cookies or tracking:{" "}
             <a href="mailto:privacy@planewx.ai" className="text-sky-400 hover:underline">
               privacy@planewx.ai
             </a>
