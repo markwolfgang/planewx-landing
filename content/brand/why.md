@@ -148,8 +148,8 @@ loop:
       accent: emerald
       title: FRAT
       body: >-
-        Flight risk assessment fed by the briefing, so risk factors are visible
-        before the pressure peaks.
+        Flight risk assessment for pilot, aircraft, environment and external
+        pressures, so stacked risk is visible before you decide.
     - icon: Shield
       accent: amber
       title: GO / NO-GO
@@ -160,7 +160,7 @@ loop:
       accent: violet
       title: Self Debrief
       body: >-
-        Capture what happened after the flight so the next trip starts smarter.
+        Looks back at the flight and the FRAT you ran for that trip.
   mentorNote: >-
     Mentor is an optional layer alongside the loop, not a fifth step.
   picLine: >-
