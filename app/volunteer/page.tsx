@@ -12,14 +12,22 @@ import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { VolunteerCallSignGate } from "@/components/volunteer-call-sign-gate"
 import { VolunteerCampaignTracker } from "@/components/volunteer-campaign-tracker"
 import {
+  isSkyHopeRef,
+  isVolunteerProductionDeploy,
+  SKYHOPE_CAMPAIGN_CODE,
+  VOLUNTEER_CAMPAIGN_CODE,
   VOLUNTEER_FOUNDER_VIDEO_ID,
   VOLUNTEER_FOUNDER_VIDEO_TITLE,
 } from "@/lib/volunteer-landing"
 
-export const metadata: Metadata = {
+type VolunteerPageProps = {
+  searchParams: Promise<{ ref?: string; cmf?: string }>
+}
+
+const ACA_METADATA: Metadata = {
   title: "Volunteer Pilots | PlaneWX",
   description:
-    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your Compassion Flight call sign, start a 2-week Pro Plus trial, and get 30% off the annual plan at purchase.",
+    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your Compassion Flight call sign, start a 2-week Pro Plus trial, and get 30% off the annual plan for each year you're an active volunteer pilot.",
   openGraph: {
     title: "Welcome volunteer pilots | PlaneWX",
     description:
@@ -38,6 +46,37 @@ export const metadata: Metadata = {
   },
 }
 
+export async function generateMetadata({
+  searchParams,
+}: VolunteerPageProps): Promise<Metadata> {
+  const params = await searchParams
+  if (isSkyHopeRef(params.ref)) {
+    return {
+      title: "SkyHope Volunteer Pilots | PlaneWX",
+      description:
+        "SkyHope volunteer pilots get 30% off the annual plan for each year you're an active volunteer pilot. Start with a 2-week Pro Plus trial. No credit card for the trial. You remain PIC.",
+      robots: { index: false, follow: false },
+      openGraph: {
+        title: "SkyHope volunteer pilots | PlaneWX",
+        description:
+          "SkyHope volunteer pilots get 30% off the annual plan for each year you're an active volunteer pilot. 2-week Pro Plus trial. No card for the trial. You remain PIC.",
+        type: "website",
+        url: "https://www.planewx.ai/volunteer?ref=SKYHOPE",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "SkyHope volunteer pilots | PlaneWX",
+        description:
+          "SkyHope volunteer pilots get 30% off the annual plan for each year you're an active volunteer pilot. 2-week Pro Plus trial. No card for the trial. You remain PIC.",
+      },
+      alternates: {
+        canonical: "https://www.planewx.ai/volunteer",
+      },
+    }
+  }
+  return ACA_METADATA
+}
+
 function FounderWelcomeVideo() {
   return (
     <div
@@ -52,15 +91,23 @@ function FounderWelcomeVideo() {
   )
 }
 
-export default function VolunteerPage() {
+export default async function VolunteerPage({ searchParams }: VolunteerPageProps) {
+  const params = await searchParams
+  const isSkyHope = isSkyHopeRef(params.ref)
+  const gateOrgRef = isSkyHope ? SKYHOPE_CAMPAIGN_CODE : VOLUNTEER_CAMPAIGN_CODE
+  const isProduction = isVolunteerProductionDeploy()
+
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
       {/*
-        Campaign code: ACA (see migrations/20260922_aca_volunteer_campaign_code.sql).
-        Call signs: migrations/20260922_volunteer_call_signs.sql
+        Default campaign: ACA (migrations/20260922_aca_volunteer_campaign_code.sql).
+        Call signs (ACA): migrations/20260922_volunteer_call_signs.sql
         Format only (CMF + 1-4 digits). No ACA membership list lookup.
+        SkyHope: ?ref=SKYHOPE, SYH gate (lib/volunteer-landing.ts registry).
+        SKYHOPE seed lives only in the app repo.
+        Preview (VERCEL_ENV !== production): gate UX only; no signup link or writes.
       */}
-      <VolunteerCampaignTracker />
+      <VolunteerCampaignTracker allowNetworkWrites={isProduction} />
 
       <div
         className="fixed inset-0 -z-10"
@@ -94,20 +141,27 @@ export default function VolunteerPage() {
         <header className="space-y-7 text-center sm:text-left max-w-3xl mx-auto sm:mx-0 animate-fade-in-up">
           <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-semibold tracking-wide uppercase">
             <HeartHandshake className="h-3.5 w-3.5" aria-hidden />
-            For volunteer pilots
+            {isSkyHope ? "For SkyHope volunteer pilots" : "For volunteer pilots"}
           </p>
           <div className="space-y-4">
             <p className="text-sm sm:text-base font-semibold tracking-wide text-sky-300/90">
               PlaneWX
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-              Welcome volunteer pilots
+              {isSkyHope ? "Welcome SkyHope volunteer pilots" : "Welcome volunteer pilots"}
             </h1>
-            <p className="text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
-              Welcome pilots who fly volunteer missions for people and animals in need.
-              PlaneWX is proud to support you with clear weather intelligence and honest
-              decision support.
-            </p>
+            <div className="space-y-4 text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
+              <p>
+                Fly like it&apos;s your job. PlaneWX brings professional-grade tools and habits to
+                volunteer pilots, the same standard paid crews hold, on every mission.
+              </p>
+              <p>
+                30% off the annual plan for each year you&apos;re an active volunteer pilot.
+              </p>
+              <p>
+                Start with a 2-week Pro Plus trial. No credit card is needed for the trial.
+              </p>
+            </div>
           </div>
         </header>
 
@@ -118,19 +172,14 @@ export default function VolunteerPage() {
               <Shield className="h-5 w-5" aria-hidden />
             </span>
             <h2 id="dss-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Decision support, not a go/no-go oracle
+              Decision support. You remain PIC.
             </h2>
           </div>
           <p className="text-white/65 leading-relaxed text-base sm:text-lg">
-            PlaneWX is a <strong className="text-white font-semibold">decision support system</strong>.
-            It helps you see the weather against your airplane and your personal minimums,
-            surface risk early, and make a better call. It does not invent mission
-            probability. It does not tell you to go or stay. You remain PIC.
-          </p>
-          <p className="text-white/55 leading-relaxed">
-            Volunteer routes often run through busy corridors, weather that shifts mid-leg,
-            and fixes or waypoints you have not flown lately. Better information before you
-            fire up is how you protect the people and animals who need that ride.
+            PlaneWX is the decision support system for general aviation. It gives pilots
+            professional-grade tools and builds professional-grade habits that make flying
+            safer. Brief, FRAT, GO / NO-GO, Debrief, on every flight. You make the call. You
+            remain PIC.
           </p>
         </section>
 
@@ -139,21 +188,40 @@ export default function VolunteerPage() {
           className="rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.06] p-6 sm:p-10 space-y-4 max-w-3xl"
           aria-labelledby="pressure-heading"
         >
-          <h2 id="pressure-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-            These missions cost you more than fuel
-          </h2>
-          <p className="text-white/70 leading-relaxed">
-            Volunteer flying for people and animals carries external pressure and personal
-            cost. Someone is waiting on the ground. The schedule is not yours alone. The
-            money and the time come out of your pocket and your weekend.
-          </p>
-          <p className="text-white/70 leading-relaxed">
-            That is why this is the highest discount PlaneWX has ever given:{" "}
-            <strong className="text-white font-semibold">30% off annual</strong> at
-            purchase from the Compassion Flight call sign you enter below. We are glad
-            to do it. Safer decisions on missions like yours are exactly why we built
-            this.
-          </p>
+          {isSkyHope ? (
+            <>
+              <h2 id="pressure-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
+                The SkyHope volunteer offer
+              </h2>
+              <p className="text-white/70 leading-relaxed">
+                SkyHope volunteer pilots get{" "}
+                <strong className="text-white font-semibold">
+                  30% off the annual plan for each year you&apos;re an active volunteer pilot
+                </strong>
+                . Start with a 2-week Pro Plus trial. No credit card is needed for the trial.
+                Enter your SkyHope call sign below to unlock signup.
+              </p>
+            </>
+          ) : (
+            <>
+              <h2 id="pressure-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
+                These missions cost you more than fuel
+              </h2>
+              <p className="text-white/70 leading-relaxed">
+                Volunteer flying for people and animals carries external pressure and personal
+                cost. Someone is waiting on the ground. The schedule is not yours alone. The
+                money and the time come out of your pocket and your weekend.
+              </p>
+              <p className="text-white/70 leading-relaxed">
+                That is why this is the highest discount PlaneWX has ever given:{" "}
+                <strong className="text-white font-semibold">
+                  30% off the annual plan for each year you&apos;re an active volunteer pilot
+                </strong>
+                . Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign below. Safer
+                decisions on missions like yours are exactly why we built this.
+              </p>
+            </>
+          )}
         </section>
 
         {/* Founder note + video */}
@@ -201,10 +269,6 @@ export default function VolunteerPage() {
             <h2 id="how-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
               How the offer works
             </h2>
-            <p className="text-white/55 leading-relaxed">
-              Enter your Compassion Flight call sign. We&apos;ll validate it, then unlock
-              signup for your Pro Plus trial and volunteer discount.
-            </p>
           </div>
 
           <ol className="grid gap-5 sm:gap-6">
@@ -213,10 +277,15 @@ export default function VolunteerPage() {
                 1
               </span>
               <div className="space-y-2 min-w-0">
-                <h3 className="text-lg font-semibold">Enter your Compassion Flight call sign</h3>
+                <h3 className="text-lg font-semibold">
+                  {isSkyHope
+                    ? "Enter your SkyHope call sign"
+                    : "Enter your volunteer call sign"}
+                </h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-                  Enter your Compassion Flight call sign. We&apos;ll validate it, then unlock
-                  signup.
+                  {isSkyHope
+                    ? "Use your SkyHope (SYH) call sign. We validate it before signup unlocks."
+                    : "Use your Compassion Flight (CMF) or SkyHope (SYH) call sign. We validate it before signup unlocks."}
                 </p>
               </div>
             </li>
@@ -241,13 +310,29 @@ export default function VolunteerPage() {
               </span>
               <div className="space-y-3 min-w-0 flex-1">
                 <h3 className="text-lg font-semibold">
-                  30% off the annual plan at purchase
+                  30% off the annual plan for each year you&apos;re an active volunteer pilot
                 </h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-                  If you continue after the trial, PlaneWX applies{" "}
-                  <strong className="text-white font-semibold">30% off the annual plan</strong>{" "}
-                  at purchase from the call sign you entered on this page. You do not type
-                  a separate coupon code at checkout.
+                  {isSkyHope ? (
+                    <>
+                      If you continue after the trial, PlaneWX applies{" "}
+                      <strong className="text-white font-semibold">
+                        30% off the annual plan for each year you&apos;re an active volunteer
+                        pilot
+                      </strong>
+                      , from the SkyHope call sign you entered on this page. You do not type a separate coupon code at
+                      checkout. You remain PIC.
+                    </>
+                  ) : (
+                    <>
+                      If you continue after the trial, PlaneWX applies{" "}
+                      <strong className="text-white font-semibold">
+                        30% off the annual plan for each year you&apos;re an active volunteer
+                        pilot
+                      </strong>
+                      , from the call sign you entered on this page. You do not type a separate coupon code at checkout.
+                    </>
+                  )}
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-start gap-2">
@@ -256,7 +341,7 @@ export default function VolunteerPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" aria-hidden />
-                    Discount is applied at purchase from that stored call sign
+                    Applies for each year you&apos;re an active volunteer pilot
                   </li>
                 </ul>
               </div>
@@ -277,12 +362,12 @@ export default function VolunteerPage() {
             >
               Get started
             </h2>
-            <p className="text-white/55 leading-relaxed">
-              Enter your Compassion Flight call sign. We&apos;ll validate it, then unlock
-              signup.
-            </p>
           </div>
-          <VolunteerCallSignGate />
+          <VolunteerCallSignGate
+            orgRef={gateOrgRef}
+            allowSignup={isProduction}
+            allowNetworkWrites={isProduction}
+          />
         </section>
 
         <footer className="border-t border-white/5 pt-8 pb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/35">
