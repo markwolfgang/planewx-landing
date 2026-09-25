@@ -118,6 +118,7 @@ dosDonts:
     - Use pilot-native scenarios
     - Credit the community
     - Keep go/no-go ownership with the PIC
+    - Use loop step labels Brief, Assess, Decide, Debrief (FRAT under Assess; GO / NO-GO under Decide)
   donts:
     - Use fear-based language
     - 'Use startup buzzwords (disruptive, revolutionary)'

@@ -1,5 +1,12 @@
 # Brand content CHANGE log
 
+## 2026-09-25 - Loop step labels: Brief, Assess, Decide, Debrief
+
+- Locked loop step titles on `/brand` and the partner one-pager: **Brief**, **Assess**, **Decide**, **Debrief**.
+- Tool names stay visible in each card: Brief is the WX Score; Assess is the FRAT; Decide is the pilot's GO / NO-GO call; Debrief unchanged. Mentor stays optional, alongside all four.
+- Positioning parenthetical `(brief, assess, decide, debrief)` unchanged; it now matches the step titles.
+- Regenerated `planewx-partner-messaging.pdf` from the updated one-pager HTML (same path, one Letter page).
+
 ## 2026-09-25 - Loop labels: Brief, FRAT, GO / NO-GO, Debrief
 
 - Locked loop step titles on `/brand` and the partner one-pager: **Brief**, **FRAT**, **GO / NO-GO**, **Debrief** (not Weather Briefing / Self Debrief). Mentor remains the only optional layer.

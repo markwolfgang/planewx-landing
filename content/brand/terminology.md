@@ -44,6 +44,15 @@ proprietary:
       usage: >-
         Reference as 'FAA's PAVE framework' on first use. PlaneWX pre-fills
         Environment.
+    - term: Risk-management loop
+      definition: >-
+        Four steps: Brief, Assess, Decide, Debrief. Brief is the WX Score.
+        Assess is the FRAT. Decide is the pilot's GO / NO-GO call. Debrief looks
+        back at the flight and the FRAT. Mentor is optional, alongside all four.
+      usage: >-
+        Use these step titles exactly. Do not title the steps FRAT or GO / NO-GO;
+        name those tools under Assess and Decide. Keep the positioning
+        parenthetical (brief, assess, decide, debrief).
 avoid:
   title: Terms to Avoid
   intro: >-

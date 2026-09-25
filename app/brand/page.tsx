@@ -93,7 +93,7 @@ type OverviewContent = {
   loop: {
     title: string
     subtitle: string
-    items: { num: number; accent: string; title: string; body: string }[]
+    items: { num: number; accent: string; title: string; tool?: string; body: string }[]
     mentorNote: string
   }
   missionVision: {
@@ -337,9 +337,14 @@ export default function BrandPortalPage() {
                     {item.num}
                   </span>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2 whitespace-nowrap">
+                <h3 className="text-lg font-semibold text-white mb-1 whitespace-nowrap">
                   {item.title}
                 </h3>
+                {item.tool ? (
+                  <p className="text-white/45 text-xs font-medium mb-2 whitespace-nowrap">
+                    {item.tool}
+                  </p>
+                ) : null}
                 <p className="text-white/65 text-sm leading-relaxed">
                   <BrandText text={item.body} />
                 </p>
