@@ -53,7 +53,7 @@ export default function MultiModelAnalysis() {
         {/* The Problem */}
         <section className="space-y-8">
           <div className="text-center space-y-3">
-            <h2 className="text-3xl font-bold">The Problem with Traditional Icing &amp; Turbulence Information</h2>
+            <h2 className="text-3xl font-bold">Why one forecast isn&apos;t enough</h2>
             <p className="text-white/60 max-w-2xl mx-auto">
               Pilots today rely on two sources that were never designed for route-specific, altitude-specific decision-making.
             </p>
@@ -573,7 +573,7 @@ export default function MultiModelAnalysis() {
         <section className="space-y-8">
           <div className="text-center space-y-3">
             <h2 className="text-3xl font-bold">What You Get</h2>
-            <p className="text-white/60">Every briefing includes</p>
+            <p className="text-white/60">PlaneWX briefings include</p>
           </div>
 
           <div className="w-full">
