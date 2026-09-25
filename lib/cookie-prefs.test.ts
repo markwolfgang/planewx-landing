@@ -3,13 +3,17 @@
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 import {
+  COOKIE_DNS_CONFIRMED_EVENT,
   COOKIE_PREFS_CHANGED_EVENT,
   COOKIE_PREFS_STORAGE_KEY,
   COOKIE_PREFS_VERSION,
+  analyticsAfterDoNotSell,
+  effectiveCookieToggleState,
   hasAnalyticsConsent,
   hasMarketingConsent,
   hasValidCookieChoice,
   notifyCookiePrefsChanged,
+  optOutOfSaleOrSharing,
   parseCookiePrefs,
   readCookiePrefs,
   writeCookiePrefs,
@@ -165,5 +169,118 @@ describe("read / write cookie prefs", () => {
     notifyCookiePrefsChanged(prefs)
     expect(handler).toHaveBeenCalledTimes(1)
     window.removeEventListener(COOKIE_PREFS_CHANGED_EVENT, handler)
+  })
+})
+
+describe("effectiveCookieToggleState (Manage panel)", () => {
+  it("uses notice defaults when there is no prior choice", () => {
+    expect(effectiveCookieToggleState({ mode: "notice", prefs: null, gpc: false })).toEqual({
+      analytics: true,
+      marketing: true,
+    })
+  })
+
+  it("uses strict defaults when there is no prior choice", () => {
+    expect(effectiveCookieToggleState({ mode: "strict", prefs: null, gpc: false })).toEqual({
+      analytics: false,
+      marketing: false,
+    })
+  })
+
+  it("GPC forces Marketing off while keeping Analytics at region/prior value", () => {
+    expect(effectiveCookieToggleState({ mode: "notice", prefs: null, gpc: true })).toEqual({
+      analytics: true,
+      marketing: false,
+    })
+    expect(
+      effectiveCookieToggleState({
+        mode: "notice",
+        prefs: { analytics: true, marketing: true },
+        gpc: true,
+      }),
+    ).toEqual({ analytics: true, marketing: false })
+  })
+
+  it("Save without changes keeps the same effective values", () => {
+    const noticeDefaults = effectiveCookieToggleState({
+      mode: "notice",
+      prefs: null,
+      gpc: false,
+    })
+    // Writing those defaults is a no-op relative to what scripts already allow.
+    expect(noticeDefaults).toEqual({ analytics: true, marketing: true })
+
+    const essentialOnly = { analytics: false, marketing: false }
+    expect(
+      effectiveCookieToggleState({
+        mode: "notice",
+        prefs: essentialOnly,
+        gpc: false,
+      }),
+    ).toEqual(essentialOnly)
+  })
+})
+
+describe("optOutOfSaleOrSharing", () => {
+  beforeEach(() => {
+    localStorage.clear()
+    document.cookie = "pw_consent_region=; Max-Age=0; path=/"
+    document.cookie = "pw_gpc=; Max-Age=0; path=/"
+  })
+
+  afterEach(() => {
+    localStorage.clear()
+    document.cookie = "pw_consent_region=; Max-Age=0; path=/"
+    document.cookie = "pw_gpc=; Max-Age=0; path=/"
+  })
+
+  it("strict mode with no choice: analytics stays off, marketing off", () => {
+    const prefs = optOutOfSaleOrSharing(localStorage, "strict", false)
+    expect(prefs?.analytics).toBe(false)
+    expect(prefs?.marketing).toBe(false)
+    expect(hasAnalyticsConsent(readCookiePrefs())).toBe(false)
+  })
+
+  it("notice mode with no choice: analytics on, marketing off", () => {
+    const prefs = optOutOfSaleOrSharing(localStorage, "notice", false)
+    expect(prefs?.analytics).toBe(true)
+    expect(prefs?.marketing).toBe(false)
+  })
+
+  it("prior Essential-only choice: analytics stays off", () => {
+    writeCookiePrefs({ analytics: false, marketing: false })
+    const prefs = optOutOfSaleOrSharing(localStorage, "notice", false)
+    expect(prefs?.analytics).toBe(false)
+    expect(prefs?.marketing).toBe(false)
+  })
+
+  it("GPC: marketing off; analytics follows region default when no prior choice", () => {
+    const notice = optOutOfSaleOrSharing(localStorage, "notice", true)
+    expect(notice?.analytics).toBe(true)
+    expect(notice?.marketing).toBe(false)
+
+    localStorage.clear()
+    const strict = optOutOfSaleOrSharing(localStorage, "strict", true)
+    expect(strict?.analytics).toBe(false)
+    expect(strict?.marketing).toBe(false)
+  })
+
+  it("dispatches confirmation and prefs-changed events", () => {
+    const changed = vi.fn()
+    const confirmed = vi.fn()
+    window.addEventListener(COOKIE_PREFS_CHANGED_EVENT, changed)
+    window.addEventListener(COOKIE_DNS_CONFIRMED_EVENT, confirmed)
+    optOutOfSaleOrSharing(localStorage, "notice", false)
+    expect(changed).toHaveBeenCalledTimes(1)
+    expect(confirmed).toHaveBeenCalledTimes(1)
+    window.removeEventListener(COOKIE_PREFS_CHANGED_EVENT, changed)
+    window.removeEventListener(COOKIE_DNS_CONFIRMED_EVENT, confirmed)
+  })
+
+  it("analyticsAfterDoNotSell mirrors region and prior choice rules", () => {
+    expect(analyticsAfterDoNotSell({ mode: "strict", prefs: null })).toBe(false)
+    expect(analyticsAfterDoNotSell({ mode: "notice", prefs: null })).toBe(true)
+    expect(analyticsAfterDoNotSell({ mode: "notice", prefs: { analytics: false } })).toBe(false)
+    expect(analyticsAfterDoNotSell({ mode: "strict", prefs: { analytics: true } })).toBe(true)
   })
 })

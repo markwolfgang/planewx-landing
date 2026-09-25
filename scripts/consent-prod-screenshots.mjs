@@ -36,56 +36,10 @@ async function dismissEssential(page) {
 async function main() {
   const browser = await chromium.launch({ channel: "chrome", headless: true })
 
-  // 1 strict banners
+  // US notice Manage panel: correct checked state + Accept all
   for (const [w, h, name] of [
-    [1280, 800, "strict-banner-1280.png"],
-    [390, 844, "strict-banner-390.png"],
-  ]) {
-    const { context, page } = await freshPage(
-      browser,
-      { "x-vercel-ip-country": "DE" },
-      { width: w, height: h },
-    )
-    await page.waitForSelector('[data-testid="cookie-consent-banner"]')
-    await page.waitForTimeout(500)
-    await page.screenshot({ path: path.join(OUT, name) })
-    console.log("saved", name)
-    await context.close()
-  }
-
-  // 2 manage panel
-  for (const [w, h, name] of [
-    [1280, 900, "manage-panel-open-1280.png"],
-    [390, 844, "manage-panel-open-390.png"],
-  ]) {
-    const { context, page } = await freshPage(
-      browser,
-      { "x-vercel-ip-country": "DE" },
-      { width: w, height: h },
-    )
-    await page.waitForSelector('[data-testid="cookie-consent-banner"]')
-    await page.getByTestId("cookie-manage-button").click()
-    await page.waitForSelector('[data-testid="cookie-manage-panel"]')
-    // Defaults: essential on, analytics off, marketing off
-    if (!(await page.getByTestId("toggle-essential").isChecked())) {
-      throw new Error("essential should be on")
-    }
-    if (await page.getByTestId("toggle-analytics").isChecked()) {
-      throw new Error("analytics should be off in strict manage")
-    }
-    if (await page.getByTestId("toggle-marketing").isChecked()) {
-      throw new Error("marketing should be off in strict manage")
-    }
-    await page.waitForTimeout(400)
-    await page.screenshot({ path: path.join(OUT, name) })
-    console.log("saved", name)
-    await context.close()
-  }
-
-  // 3 US notice
-  for (const [w, h, name] of [
-    [1280, 800, "us-notice-banner-1280.png"],
-    [390, 844, "us-notice-banner-390.png"],
+    [1280, 900, "us-notice-manage-1280.png"],
+    [390, 844, "us-notice-manage-390.png"],
   ]) {
     const { context, page } = await freshPage(
       browser,
@@ -93,29 +47,19 @@ async function main() {
       { width: w, height: h },
     )
     await page.waitForSelector('[data-testid="cookie-consent-banner"]')
-    await page.waitForSelector('[data-testid="banner-do-not-sell"]')
-    await page.waitForTimeout(400)
-    await page.screenshot({ path: path.join(OUT, name) })
-    console.log("saved", name)
-    await context.close()
-  }
-
-  // 4 US + GPC manage
-  for (const [w, h, name] of [
-    [1280, 900, "us-gpc-manage-1280.png"],
-    [390, 844, "us-gpc-manage-390.png"],
-  ]) {
-    const { context, page } = await freshPage(
-      browser,
-      { "x-vercel-ip-country": "US", "Sec-GPC": "1" },
-      { width: w, height: h },
-    )
-    await page.waitForSelector('[data-testid="cookie-consent-banner"]')
     await page.getByTestId("cookie-manage-button").click()
     await page.waitForSelector('[data-testid="cookie-manage-panel"]')
-    await page.waitForSelector('[data-testid="gpc-note"]')
-    if (await page.getByTestId("toggle-marketing").isChecked()) {
-      throw new Error("marketing must be off under GPC")
+    if (!(await page.getByTestId("toggle-essential").isChecked())) {
+      throw new Error("essential should be on")
+    }
+    if (!(await page.getByTestId("toggle-analytics").isChecked())) {
+      throw new Error("analytics should be on in US notice manage")
+    }
+    if (!(await page.getByTestId("toggle-marketing").isChecked())) {
+      throw new Error("marketing should be on in US notice manage (no GPC)")
+    }
+    if (!(await page.getByTestId("manage-accept-all").isVisible())) {
+      throw new Error("Accept all must be in Manage panel")
     }
     await page.waitForTimeout(400)
     await page.screenshot({ path: path.join(OUT, name) })
@@ -123,28 +67,35 @@ async function main() {
     await context.close()
   }
 
-  // 5 banner closed mobile CTA
+  // Strict Manage panel at 1280
   {
     const { context, page } = await freshPage(
       browser,
       { "x-vercel-ip-country": "DE" },
-      { width: 390, height: 844 },
+      { width: 1280, height: 900 },
     )
     await page.waitForSelector('[data-testid="cookie-consent-banner"]')
-    await dismissEssential(page)
+    await page.getByTestId("cookie-manage-button").click()
+    await page.waitForSelector('[data-testid="cookie-manage-panel"]')
+    if (await page.getByTestId("toggle-analytics").isChecked()) {
+      throw new Error("analytics should be off in strict manage")
+    }
+    if (await page.getByTestId("toggle-marketing").isChecked()) {
+      throw new Error("marketing should be off in strict manage")
+    }
+    if (!(await page.getByTestId("manage-accept-all").isVisible())) {
+      throw new Error("Accept all must be in Manage panel")
+    }
     await page.waitForTimeout(400)
-    const cta = page.getByRole("link", { name: /Start Free 14-Day Trial/i }).first()
-    await cta.scrollIntoViewIfNeeded()
-    await page.waitForTimeout(200)
-    await page.screenshot({ path: path.join(OUT, "banner-closed-390.png") })
-    console.log("saved banner-closed-390.png")
+    await page.screenshot({ path: path.join(OUT, "strict-manage-1280.png") })
+    console.log("saved strict-manage-1280.png")
     await context.close()
   }
 
-  // 6 footer
+  // Footer showing Ambassadors
   for (const [w, h, name] of [
-    [1280, 900, "footer-1280.png"],
-    [390, 844, "footer-390.png"],
+    [1280, 900, "footer-ambassadors-1280.png"],
+    [390, 844, "footer-ambassadors-390.png"],
   ]) {
     const { context, page } = await freshPage(
       browser,
@@ -156,92 +107,52 @@ async function main() {
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
     await page.waitForTimeout(500)
     const tagline = await page.locator("footer").innerText()
+    if (!tagline.includes("Ambassadors")) {
+      throw new Error("footer missing Ambassadors: " + tagline.slice(0, 300))
+    }
     if (!tagline.includes("The Pilot's Decision Support System")) {
-      throw new Error("footer tagline incomplete: " + tagline.slice(0, 200))
-    }
-    if (!tagline.includes("Cookie settings")) {
-      throw new Error("missing Cookie settings")
-    }
-    if (!tagline.includes("Do not sell or share")) {
-      throw new Error("missing Do not sell or share")
+      throw new Error("footer tagline incomplete")
     }
     await page.screenshot({ path: path.join(OUT, name) })
     console.log("saved", name)
     await context.close()
   }
 
-  // 7 privacy section
+  // Do not sell: confirmation, then Manage panel afterwards
   {
-    const context = await browser.newContext({
-      viewport: { width: 1280, height: 900 },
-      colorScheme: "dark",
-      extraHTTPHeaders: { "x-vercel-ip-country": "US" },
+    const { context, page } = await freshPage(
+      browser,
+      { "x-vercel-ip-country": "US" },
+      { width: 1280, height: 900 },
+    )
+    await page.waitForSelector('[data-testid="cookie-consent-banner"]')
+    await dismissEssential(page)
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+    await page.waitForTimeout(300)
+    await page.getByTestId("do-not-sell-link").click()
+    await page.waitForSelector('[data-testid="do-not-sell-confirmation"]')
+    await page.waitForTimeout(400)
+    await page.screenshot({
+      path: path.join(OUT, "do-not-sell-confirmation-1280.png"),
     })
-    const page = await context.newPage()
-    await page.goto(BASE + "/privacy", { waitUntil: "networkidle" })
-    await page.evaluate(() => localStorage.clear())
-    await page.reload({ waitUntil: "networkidle" })
-    const banner = page.locator('[data-testid="cookie-consent-banner"]')
-    if (await banner.count()) {
-      await page.getByRole("button", { name: "Essential only" }).click()
-      await banner.waitFor({ state: "detached" })
+    console.log("saved do-not-sell-confirmation-1280.png")
+
+    // Open Manage afterwards: Analytics on, Marketing off
+    await page.getByTestId("cookie-settings-link").click()
+    await page.waitForSelector('[data-testid="cookie-consent-banner"]')
+    await page.getByTestId("cookie-manage-button").click()
+    await page.waitForSelector('[data-testid="cookie-manage-panel"]')
+    if (!(await page.getByTestId("toggle-analytics").isChecked())) {
+      throw new Error("after Do not sell, analytics should stay on in notice")
     }
-    const section = page.locator("#cookies-and-tracking")
-    await section.scrollIntoViewIfNeeded()
-    const text = await section.innerText()
-    for (const needle of [
-      "cookies planewx-variant",
-      "), planewx-brand-auth",
-      "or Sec-GPC",
-      "detail: Cookie Policy",
-    ]) {
-      if (!text.includes(needle)) {
-        throw new Error("privacy §6 missing spaced text: " + needle + "\n---\n" + text)
-      }
+    if (await page.getByTestId("toggle-marketing").isChecked()) {
+      throw new Error("after Do not sell, marketing should be off")
     }
     await page.waitForTimeout(400)
     await page.screenshot({
-      path: path.join(OUT, "privacy-cookies-section-1280.png"),
+      path: path.join(OUT, "do-not-sell-manage-after-1280.png"),
     })
-    console.log("saved privacy-cookies-section-1280.png")
-    await context.close()
-  }
-
-  // 8 cookies policy page
-  for (const [w, h, name] of [
-    [1280, 900, "cookies-page-1280.png"],
-    [390, 844, "cookies-page-390.png"],
-  ]) {
-    const context = await browser.newContext({
-      viewport: { width: w, height: h },
-      colorScheme: "dark",
-      extraHTTPHeaders: { "x-vercel-ip-country": "US" },
-    })
-    const page = await context.newPage()
-    await page.goto(BASE + "/cookies", { waitUntil: "networkidle" })
-    await page.evaluate(() => localStorage.clear())
-    await page.reload({ waitUntil: "networkidle" })
-    const banner = page.locator('[data-testid="cookie-consent-banner"]')
-    if (await banner.count()) {
-      await page.getByRole("button", { name: "Essential only" }).click()
-      await banner.waitFor({ state: "detached" })
-    }
-    const text = await page.locator("main, body").first().innerText()
-    for (const needle of [
-      "cookies planewx-variant",
-      "), planewx-brand-auth",
-      "or the Sec-GPC",
-      "a Do not sell or share",
-      "clears cookie_prefs_v1",
-      "tracking: privacy@planewx.ai",
-    ]) {
-      if (!text.includes(needle)) {
-        throw new Error("cookies page missing spaced text: " + needle)
-      }
-    }
-    await page.waitForTimeout(400)
-    await page.screenshot({ path: path.join(OUT, name), fullPage: w === 390 })
-    console.log("saved", name)
+    console.log("saved do-not-sell-manage-after-1280.png")
     await context.close()
   }
 

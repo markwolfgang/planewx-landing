@@ -77,7 +77,7 @@ export default function PrivacyPolicyPage() {
 
         <Section title="4. How We Share Information">
           <ul className="list-disc space-y-2 pl-6">
-            <li>Service providers: hosting, analytics, email, payments, support tools-only as needed to operate the Services.</li>
+            <li>Service providers: hosting, analytics, email, payments, support tools, only as needed to operate the Services.</li>
             <li>Legal and safety: to comply with law, protect rights, safety, and security.</li>
             <li>Business transfers: in connection with mergers, acquisitions, financing, or asset sales.</li>
             <li>With your direction: for example, when sharing trips with watchers/crew.</li>
@@ -151,8 +151,9 @@ export default function PrivacyPolicyPage() {
               <code className="text-white/80">navigator.globalPrivacyControl</code>
               {" "}or <code className="text-white/80">Sec-GPC</code>) turns Marketing off. Do not sell or share (in
               the notice banner and the footer) turns Marketing off (Google Ads, Meta Pixel, Reddit Pixel)
-              while leaving Analytics allowed under the notice model. Cookie settings in the footer reopens
-              the banner so you can change your choice on any page. Full detail:{" "}
+              and keeps Analytics as you already set it (notice default on; strict default off unless you
+              opted in). Cookie settings in the footer reopens the banner so you can change your choice on
+              any page. Full detail:{" "}
               <a href="/cookies" className="text-sky-400 hover:underline">
                 Cookie Policy
               </a>

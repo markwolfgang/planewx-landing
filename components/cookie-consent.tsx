@@ -3,10 +3,13 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
+  COOKIE_DNS_CONFIRMED_EVENT,
   COOKIE_PREFS_CHANGED_EVENT,
   COOKIE_PREFS_OPEN_EVENT,
+  effectiveCookieToggleState,
   hasValidCookieChoice,
   notifyCookiePrefsChanged,
+  optOutOfSaleOrSharing,
   readCookiePrefs,
   writeCookiePrefs,
   type CookiePrefs,
@@ -30,6 +33,17 @@ export function CookieConsent() {
   const [analytics, setAnalytics] = useState(false)
   const [marketing, setMarketing] = useState(false)
   const [gpcOn, setGpcOn] = useState(false)
+  const [dnsConfirm, setDnsConfirm] = useState<string | null>(null)
+
+  const syncTogglesFromEffective = (
+    consentMode: ConsentMode,
+    gpc: boolean,
+    prefs: CookiePrefs | null = readCookiePrefs(),
+  ) => {
+    const next = effectiveCookieToggleState({ mode: consentMode, prefs, gpc })
+    setAnalytics(next.analytics)
+    setMarketing(next.marketing)
+  }
 
   useEffect(() => {
     const consentMode = readConsentModeFromDocument()
@@ -38,50 +52,58 @@ export function CookieConsent() {
     setGpcOn(gpc)
 
     const prefs = readCookiePrefs()
+    syncTogglesFromEffective(consentMode, gpc, prefs)
     if (prefs && hasValidCookieChoice(prefs)) {
-      setAnalytics(prefs.analytics)
-      // GPC always wins for marketing.
-      setMarketing(gpc ? false : prefs.marketing)
       setShowBanner(false)
     } else {
       setShowBanner(true)
-      if (consentMode === "notice" && gpc) {
-        setMarketing(false)
-      }
     }
 
     const onOpen = () => {
       const current = readCookiePrefs()
       const gpcNow = hasGlobalPrivacyControl()
+      const modeNow = readConsentModeFromDocument()
       setGpcOn(gpcNow)
-      setMode(readConsentModeFromDocument())
-      if (current) {
-        setAnalytics(current.analytics)
-        setMarketing(gpcNow ? false : current.marketing)
-      } else if (gpcNow) {
-        setMarketing(false)
-      }
+      setMode(modeNow)
+      syncTogglesFromEffective(modeNow, gpcNow, current)
       setShowBanner(true)
       setShowModal(false)
     }
     const onChanged = (event: Event) => {
       const detail = (event as CustomEvent<CookiePrefs>).detail
       const gpcNow = hasGlobalPrivacyControl()
+      const modeNow = readConsentModeFromDocument()
       setGpcOn(gpcNow)
+      setMode(modeNow)
       if (detail && hasValidCookieChoice(detail)) {
-        setAnalytics(detail.analytics)
-        setMarketing(gpcNow ? false : detail.marketing)
+        syncTogglesFromEffective(modeNow, gpcNow, detail)
         setShowBanner(false)
         setShowModal(false)
       }
     }
+    const onDnsConfirmed = (event: Event) => {
+      const detail = (event as CustomEvent<CookiePrefs>).detail
+      const msg =
+        detail?.analytics === true
+          ? "Sale or sharing is off. Marketing is off. Analytics stays on."
+          : "Sale or sharing is off. Marketing is off. Analytics stays off."
+      setDnsConfirm(msg)
+    }
     window.addEventListener(COOKIE_PREFS_OPEN_EVENT, onOpen)
     window.addEventListener(COOKIE_PREFS_CHANGED_EVENT, onChanged)
+    window.addEventListener(COOKIE_DNS_CONFIRMED_EVENT, onDnsConfirmed)
     return () => {
       window.removeEventListener(COOKIE_PREFS_OPEN_EVENT, onOpen)
       window.removeEventListener(COOKIE_PREFS_CHANGED_EVENT, onChanged)
+      window.removeEventListener(COOKIE_DNS_CONFIRMED_EVENT, onDnsConfirmed)
     }
   }, [])
+
+  useEffect(() => {
+    if (!dnsConfirm) return
+    const t = window.setTimeout(() => setDnsConfirm(null), 5000)
+    return () => window.clearTimeout(t)
+  }, [dnsConfirm])
 
   const savePrefs = (opts: { analytics: boolean; marketing: boolean }) => {
     if (typeof window === "undefined") return
@@ -101,12 +123,23 @@ export function CookieConsent() {
     notifyCookiePrefsChanged(prefs)
   }
 
+  const openManage = () => {
+    const modeNow = readConsentModeFromDocument()
+    const gpcNow = hasGlobalPrivacyControl()
+    setMode(modeNow)
+    setGpcOn(gpcNow)
+    syncTogglesFromEffective(modeNow, gpcNow, readCookiePrefs())
+    setShowModal(true)
+  }
+
   const onAcceptAll = () => savePrefs({ analytics: true, marketing: true })
   const onEssentialOnly = () => savePrefs({ analytics: false, marketing: false })
   const onSaveModal = () => savePrefs({ analytics, marketing })
-  const onDoNotSell = () => savePrefs({ analytics: true, marketing: false })
+  const onDoNotSell = () => {
+    optOutOfSaleOrSharing()
+  }
 
-  if (!showBanner && !showModal) return null
+  if (!showBanner && !showModal && !dnsConfirm) return null
 
   const isStrict = mode === "strict"
   const bodyText = isStrict
@@ -115,6 +148,18 @@ export function CookieConsent() {
 
   return (
     <>
+      {dnsConfirm && (
+        <div
+          role="status"
+          data-testid="do-not-sell-confirmation"
+          className="fixed inset-x-0 bottom-0 z-[70] flex justify-center px-4 pb-[calc(1rem+env(safe-area-inset-bottom))] pointer-events-none"
+        >
+          <p className="pointer-events-auto max-w-lg rounded-lg border border-sky-500/40 bg-slate-900 px-4 py-3 text-sm text-sky-100 shadow-lg">
+            {dnsConfirm}
+          </p>
+        </div>
+      )}
+
       {showBanner && (
         <div
           data-testid="cookie-consent-banner"
@@ -142,7 +187,7 @@ export function CookieConsent() {
                 variant="outline"
                 size="sm"
                 className="border border-slate-600 bg-slate-800 text-slate-100 hover:bg-slate-700"
-                onClick={() => setShowModal(true)}
+                onClick={openManage}
                 data-testid="cookie-manage-button"
               >
                 Manage
@@ -250,7 +295,7 @@ export function CookieConsent() {
                 </span>
               </label>
             </div>
-            <div className="flex items-center justify-end gap-2 border-t border-slate-800 px-4 py-3">
+            <div className="flex flex-wrap items-center justify-end gap-2 border-t border-slate-800 px-4 py-3">
               <Button
                 type="button"
                 variant="ghost"
@@ -268,6 +313,16 @@ export function CookieConsent() {
                 onClick={onEssentialOnly}
               >
                 Essential only
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                className="border-slate-400 bg-slate-800 text-slate-100 hover:bg-slate-700 hover:text-white"
+                onClick={onAcceptAll}
+                data-testid="manage-accept-all"
+              >
+                Accept all
               </Button>
               <Button
                 type="button"

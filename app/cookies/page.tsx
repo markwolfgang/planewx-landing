@@ -58,7 +58,7 @@ export default function CookiesPage() {
             </li>
             <li>
               <strong className="text-white">Embedded third-party.</strong> YouTube videos use a click-to-load
-              player on youtube-nocookie.com. The video contact YouTube only after you press play. Inter is
+              player on youtube-nocookie.com. The video contacts YouTube only after you press play. Inter is
               self-hosted via next/font (no fonts.googleapis.com request at runtime). This site does not load
               a GTM container, PostHog, Calendly, a chat widget, or Vercel Speed Insights.
             </li>
@@ -93,9 +93,10 @@ export default function CookiesPage() {
           <p className="text-sm leading-relaxed text-white/70">
             Because Marketing tools on this site can support cross-context advertising, a{" "}
             <strong className="text-white">Do not sell or share</strong> control is available in the notice
-            banner and in the site footer. Choosing it keeps Analytics on (where the notice model allows) and
-            turns Marketing off, so Google Ads, Meta Pixel, and Reddit Pixel do not load. Global Privacy
-            Control is treated the same way for Marketing.
+            banner and in the site footer. Choosing it turns Marketing off so Google Ads, Meta Pixel, and
+            Reddit Pixel do not load, and keeps Analytics as you already set it (on by default in notice
+            regions; off in strict regions unless you opted in). Global Privacy Control is treated the same
+            way for Marketing.
           </p>
         </Section>
 
