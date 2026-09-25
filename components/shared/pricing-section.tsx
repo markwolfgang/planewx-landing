@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactNode } from "react"
 import { Check, Crown, Plane, Shield } from "lucide-react"
 import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
+import { FIVE_X_FIVE_URL } from "@/lib/five-x-five"
 
 const APP_HELP = "https://app.planewx.ai"
 const TWO_YEAR_OFFER_ENDS_AT_MS = Date.parse("2026-10-02T05:00:00.000Z")
@@ -52,7 +53,7 @@ const PLUS_BULLETS: {
     name: "5x5 Insurance Discount",
     detail:
       "Eligible for up to 10% off your aircraft insurance premium through our partner 5x5. Terms are set by 5x5.",
-    href: "https://www.5x5insurance.com",
+    href: FIVE_X_FIVE_URL,
     seesNote: true,
   },
   {
