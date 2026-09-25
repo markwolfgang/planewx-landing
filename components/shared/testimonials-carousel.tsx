@@ -23,7 +23,7 @@ const PODCASTS = [
     channel: "AeroExploration",
     duration: "1 hr 4 min",
     date: "Jul 1, 2026",
-    description: "Mark Wolfgang on how PlaneWX was built, why aviation weather is hard, and how AI supports safer Fly or Stay decisions.",
+    description: "Mark Wolfgang on how PlaneWX was built, why aviation weather is hard, and where AI fits in your GO / NO‑GO decision.",
   },
   {
     type: "podcast" as const,

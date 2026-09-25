@@ -120,9 +120,9 @@ export default async function Image() {
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             {[
-              { label: 'Weather Briefing', color: '#38bdf8' },
+              { label: 'WX Score briefing', color: '#38bdf8' },
               { label: 'FRAT', color: '#a78bfa' },
-              { label: 'Fly or Stay', color: '#34d399' },
+              { label: 'GO / NO‑GO', color: '#34d399' },
               { label: 'Self Debrief', color: '#fbbf24' },
             ].map(({ label, color }) => (
               <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

@@ -49,7 +49,7 @@ export function LandingVariantE() {
           </div>
           <span className="font-bold text-white tracking-tight">PlaneWX</span>
           <span className="hidden sm:block text-white/30 text-sm ml-1">
-            — The Pilot's Decision Support System
+            : The Pilot's Decision Support System
           </span>
         </div>
         <div className="flex items-center gap-6">
@@ -134,7 +134,7 @@ export function LandingVariantE() {
             <div className="hidden sm:block w-px h-4 bg-white/10" />
             <span>{STATS.totalPilots} pilots</span>
             <div className="hidden sm:block w-px h-4 bg-white/10" />
-            <span>64% of weather cancellations — pilots found the courage to stay</span>
+            <span>64% of weather cancellations: pilots found the courage to stay</span>
           </div>
         </div>
       </section>
@@ -162,7 +162,7 @@ export function LandingVariantE() {
               Before I ever touched the controls of an airplane, I spent a year
               listening to AOPA's{" "}
               <em className="text-white not-italic font-medium">"And There I Was"</em>{" "}
-              — a podcast about mishaps, near-misses, and accidents. I watched every
+              , a podcast about mishaps, near-misses, and accidents. I watched every
               aviation accident/mishap video I could find. I wanted to understand exactly
               what separated the pilots who came home from the ones who didn't.
             </p>
@@ -177,7 +177,7 @@ export function LandingVariantE() {
 
             <p>
               I thought about her family. I thought about my kids. I thought about
-              what it would mean to get it wrong — not abstractly, but specifically.
+              what it would mean to get it wrong, not abstractly, but specifically.
               If I made a bad decision and we didn't come home, the people who loved
               us would spend the rest of their lives wondering why I wasn't more careful.
             </p>
@@ -193,11 +193,11 @@ export function LandingVariantE() {
 
             <p>
               On one summer flight from Bentonville to Destin, there was a line
-              of thunderstorms to my left — gray skies and radar I wanted no
+              of thunderstorms to my left: gray skies and radar I wanted no
               part of. To my right and ahead: blue sky. I had a rule before I
               ever started the engine:{" "}
               <em className="text-amber-400 not-italic">don't turn into the gray</em>.
-              I had outs — airports every twenty minutes. I'd done the work to
+              I had outs: airports every twenty minutes. I'd done the work to
               know the difference between a storm to route around and a storm to
               avoid entirely.
             </p>
@@ -213,7 +213,7 @@ export function LandingVariantE() {
           </div>
 
           <p className="mt-8 pl-6 text-white/30 text-sm">
-            — Mark Wolfgang · Founder, PlaneWX
+            Mark Wolfgang · Founder, PlaneWX
           </p>
         </div>
       </section>
@@ -231,7 +231,7 @@ export function LandingVariantE() {
             </h2>
             <p className="text-white/50 text-lg max-w-2xl mx-auto">
               PlaneWX is for the pilot who holds themselves to a standard above
-              what's required — not because someone is watching, but because
+              what's required, not because someone is watching, but because
               they've already decided what kind of pilot they're going to be.
             </p>
           </div>
@@ -251,7 +251,7 @@ export function LandingVariantE() {
                 color: "text-amber-400",
                 bg: "from-amber-950/60 to-orange-950/20",
                 border: "border-amber-500/20",
-                label: "of weather cancellations — pilots found the courage to stay",
+                label: "of weather cancellations: pilots found the courage to stay",
                 sub: "Every cancelled flight is a story that didn't end badly.",
               },
               {
@@ -291,7 +291,7 @@ export function LandingVariantE() {
               </span>
             </h2>
             <p className="text-white/50 text-lg max-w-2xl mx-auto">
-              Share your trip with anyone. They'll follow along as conditions evolve —
+              Share your trip with anyone. They'll follow along as conditions evolve,
               without needing to understand a TAF.
             </p>
           </div>
@@ -312,7 +312,7 @@ export function LandingVariantE() {
                 dot: "bg-amber-400",
                 border: "border-amber-500/20",
                 bg: "from-amber-950/30 to-orange-950/10",
-                subject: "⚠️ Heads up — conditions are shifting",
+                subject: "⚠️ Heads up: conditions are shifting",
                 body: "The weather picture for Saturday has changed. Your pilot is aware and monitoring closely.",
               },
               {
@@ -321,7 +321,7 @@ export function LandingVariantE() {
                 border: "border-red-500/20",
                 bg: "from-red-950/30 to-orange-950/10",
                 subject: "🔴 Saturday's trip may need reconsideration",
-                body: "Conditions have deteriorated significantly. Your pilot will make the final call — but this one is worth a conversation.",
+                body: "Conditions have deteriorated significantly. Your pilot will make the final call, but this one is worth a conversation.",
               },
             ].map((email) => (
               <div
@@ -346,13 +346,13 @@ export function LandingVariantE() {
             </blockquote>
             <p className="text-white/60 leading-relaxed">
               She's not a pilot. She doesn't know what a TAF is. But she's been getting
-              those emails — and she can feel the tone shifting. She's not asking out of
+              those emails, and she can feel the tone shifting. She's not asking out of
               fear. She's asking because she knows something has changed, and she loves you.
             </p>
             <div className="mt-6 pt-6 border-t border-white/10">
               <p className="text-white/80 font-medium">
-                That question — asked by someone who loves you, with just enough information
-                to ask it — is one of the most powerful safety mechanisms a pilot can have.
+                That question, asked by someone who loves you, with just enough information
+                to ask it, is one of the most powerful safety mechanisms a pilot can have.
               </p>
             </div>
           </div>
@@ -372,7 +372,7 @@ export function LandingVariantE() {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium">
               <AlertTriangle className="h-3.5 w-3.5" />
-              Real user feedback — received this week
+              Real user feedback, received this week
             </div>
           </div>
 
@@ -398,7 +398,7 @@ export function LandingVariantE() {
           </div>
 
           <p className="text-white/30 text-sm mt-5 text-center">
-            He gave us a 10/10 after the system told him something he didn't want to hear — and was right.
+            He gave us a 10/10 after the system told him something he didn't want to hear, and was right.
             The product works because it tells the truth.
           </p>
         </div>
@@ -433,7 +433,7 @@ export function LandingVariantE() {
                 border: "border-sky-500/20",
                 bg: "from-sky-950/40 to-cyan-950/10",
                 title: "Weather intelligence that tells the truth",
-                body: "Your WX Score is aircraft-specific, minimums-aware, and honest — even when the answer is one you don't want. It covers the 24-hour gap that TAFs can't, so you know days early instead of hours before.",
+                body: "Your WX Score is aircraft-specific, minimums-aware, and honest, even when the answer is one you don't want. It covers the 24-hour gap that TAFs can't, so you know days early instead of hours before.",
                 features: ["WX Score (0–100%)", "Synoptic Intelligence™", "Aircraft-specific minimums", "Long-range outlook", "Trip monitoring & alerts"],
               },
               {
@@ -442,7 +442,7 @@ export function LandingVariantE() {
                 border: "border-amber-500/20",
                 bg: "from-amber-950/40 to-orange-950/10",
                 title: "A structured framework for go / no-go",
-                body: "The FAA's PAVE risk assessment, built into your pre-flight workflow. Not a checkbox — a genuine moment of honest reflection, documented and timestamped, before you ever start the engine.",
+                body: "The FAA's PAVE risk assessment, built into your pre-flight workflow. Not a checkbox: a genuine moment of honest reflection, documented and timestamped, before you ever start the engine.",
                 features: ["PAVE Risk Assessment", "Pilot · Aircraft · enVironment · External", "Voluntary accountability", "Decision record", "Timestamped for your log"],
               },
               {
@@ -481,7 +481,7 @@ export function LandingVariantE() {
             <p className="text-2xl sm:text-3xl font-bold text-white mb-2">
               "The confidence to go, or the courage to stay."
             </p>
-            <p className="text-white/30 text-sm">— PlaneWX™</p>
+            <p className="text-white/30 text-sm">PlaneWX™</p>
           </div>
         </div>
       </section>
@@ -497,7 +497,7 @@ export function LandingVariantE() {
             <p className="text-white/50 text-lg max-w-2xl mx-auto">
               If you want a fast weather check, there are free tools for that.
               PlaneWX is for the pilot who has thought carefully about what it
-              means to get it wrong — and decided to build a system around every
+              means to get it wrong, and decided to build a system around every
               flight so that doesn't happen.
             </p>
           </div>
@@ -509,7 +509,7 @@ export function LandingVariantE() {
                 bg: "from-amber-950/40 to-orange-950/10",
                 border: "border-amber-500/15",
                 title: "The self-accountable GA pilot",
-                body: "You hold yourself to a standard above what's required. You want a record that proves it — to yourself, and eventually to your insurer.",
+                body: "You hold yourself to a standard above what's required. You want a record that proves it: to yourself, and eventually to your insurer.",
               },
               {
                 icon: <Users className="h-5 w-5 text-sky-400" />,
@@ -641,7 +641,7 @@ export function LandingVariantE() {
               <div className="space-y-4 text-white/60 leading-relaxed">
                 <p>
                   Mark Wolfgang is a general aviation pilot based in Bentonville,
-                  Arkansas. He built PlaneWX because he needed it — as a husband,
+                  Arkansas. He built PlaneWX because he needed it, as a husband,
                   as a father, and as a pilot who understood exactly what was at
                   stake every time he flew.
                 </p>

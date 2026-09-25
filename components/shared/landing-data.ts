@@ -33,21 +33,21 @@ export const HOW_IT_WORKS_STEPS: {
   {
     title: "Personalize",
     badge: "Rule-based within 12 hours of departure",
-    body: "Your personal minimums and aircraft limits are checked by rule-based code. Within 12 hours of departure, if the forecast is outside them, the server sets the WX Score to 0, not the AI. Further out, fewer of these checks can run.",
+    body: "Within 12 hours of departure, your personal minimums and aircraft limits are checked by rule-based code. If you're outside them, the server drives the WX Score to 0, not the AI. Further out, AI helps weigh some limits, like icing and turbulence.",
   },
   {
     title: "Synthesize",
     badge: "AI",
-    body: "AI reads the forecasters' written discussions and regional summaries, then writes the plain-language briefing for your route: the big picture, the hazard summary, and most section ratings. It can also add deductions, such as for convection. Ceiling and visibility are always scored by code. Within 12 hours of departure, the AI can't raise your WX Score above the rule-based score.",
+    body: "AI reads the forecasters' written discussions and regional summaries, then writes the plain-language briefing for your route: the big picture, the hazard summary, and most section ratings. It also proposes a starting WX Score and deductions, such as for convection, and code bounds them. Ceiling and visibility are always scored by code. Within 12 hours of departure, the AI can't raise your WX Score above the rule-based score.",
   },
   {
     title: "Inform",
-    body: "You get your WX Score, the reasons behind it, and the hazards along your route, so you can make your Fly or Stay call as PIC. For monitored flights, the briefing keeps updating as the forecast changes.",
+    body: "You get your WX Score, the reasons behind it, and the hazards along your route, so you can make your GO / NO‑GO call as PIC. For monitored flights, the briefing keeps updating as the forecast changes.",
   },
 ]
 
 export const HOW_IT_WORKS_WHY =
-  "Weather data is handled by code, and close to departure so are your limits, the same way every time. AI reads forecaster text and explains it. You make the call."
+  "Weather data is handled by code, and close to departure so are your limits, the same way every time. AI turns it into a plain-language briefing. You make the call."
 
 export const TESTIMONIALS = [
   {
@@ -141,7 +141,7 @@ export const FAQS: {
   },
   {
     q: "Does PlaneWX use AI?",
-    a: "Yes, in specific places. Weather reports, forecasts, model data and NOTAMs are fetched and decoded by code. AI reads forecaster discussions and writes the plain-language briefing, the hazard summary and most section ratings, and it can add some deductions to the WX Score, such as for convection. Ceiling and visibility are always scored by code. Within 12 hours of departure, your personal minimums and aircraft limits are checked by rule-based code: if you're outside them the server sets the WX Score to 0, and the AI can't raise the score above the rule-based score. You always make the final call.",
+    a: "Yes, in specific places. Weather reports, forecasts, model data and NOTAMs are fetched and decoded by code. AI reads forecaster discussions and writes the plain-language briefing, the hazard summary and most section ratings. It also proposes a starting WX Score and some deductions, such as for convection. Ceiling and visibility are always scored by code. Within 12 hours of departure, your personal minimums and aircraft limits are checked by rule-based code: if you're outside them the server drives the WX Score to 0, and the AI can't raise the score above the rule-based score. Further out, AI also helps weigh icing and turbulence against your limits. You always make the final call.",
   },
   {
     q: "What is the WX Score?",

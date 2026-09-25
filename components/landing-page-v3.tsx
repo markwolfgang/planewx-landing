@@ -195,7 +195,7 @@ export function LandingPageV3() {
           <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium text-balance">
             Trusted by serious GA pilots. Partnered with the organizations that support them.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center items-start">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center items-start">
             <div>
               <div className="text-4xl md:text-5xl font-bold text-sky-400 mb-1">2,200+</div>
               <div className="text-sm text-white/50">pilots<br />on PlaneWX</div>
@@ -205,15 +205,6 @@ export function LandingPageV3() {
               <div className="text-sm text-white/50">
                 how likely pilots are<br />to recommend PlaneWX<br />(1,724 responses)
               </div>
-            </div>
-            <div className="col-span-2 md:col-span-1">
-              <div className="text-4xl md:text-5xl font-bold text-violet-400 mb-1">~2×</div>
-              <div className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto">
-                ~2x as likely to run a FRAT after a debrief
-              </div>
-              <p className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto mt-2">
-                Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
-              </p>
             </div>
             <div>
               <div className="text-2xl md:text-[2rem] lg:text-4xl font-bold text-amber-400 mb-1 tracking-tighter whitespace-nowrap">
@@ -281,7 +272,7 @@ export function LandingPageV3() {
                 ["Raw METARs, TAFs, PIREPs", "Weather Briefing with a WX Score"],
                 ["Generic VFR / IFR categories", "Your minimums and your aircraft"],
                 ["You invent the risk picture alone", "FRAT on the FAA PAVE framework"],
-                ["No structured Fly or Stay step", "You make the call. PlaneWX informs."],
+                ["No structured GO / NO‑GO step", "You make the call. PlaneWX informs."],
                 ["No habit loop after the flight", "Self Debrief feeds the next FRAT"],
               ].map(([left, right], i) => (
                 <>
@@ -325,7 +316,7 @@ export function LandingPageV3() {
               <span className="text-sky-400">loop</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Weather Briefing, FRAT, Fly or Stay, Self Debrief. Mentor is optional, alongside the loop,
+              WX Score briefing, FRAT, <span className="whitespace-nowrap">GO / NO-GO</span>, Self Debrief. Mentor is optional, alongside the loop,
               not a fifth step. Personal minimums are structural: the WX Score cannot generate without them.
             </p>
           </div>
@@ -362,7 +353,7 @@ export function LandingPageV3() {
               <div className="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
                 <Plane className="h-5 w-5 text-emerald-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Fly or Stay</h3>
+              <h3 className="text-2xl font-bold mb-2"><span className="whitespace-nowrap">GO / NO-GO</span></h3>
               <p className="text-emerald-400/90 text-xs font-medium mb-2">You make the call</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 The pilot makes the call. PlaneWX informs. It never decides. Staying is a legitimate
@@ -456,7 +447,7 @@ export function LandingPageV3() {
               <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm font-medium text-white/60">WX Score</span>
-                  <span className="text-xs text-emerald-400">SR22T · KPAO → KSBA</span>
+                  <span className="text-xs text-emerald-400">SR22T · KPAO to KSBA</span>
                 </div>
                 <div className="text-center py-4">
                   <div className="text-7xl font-bold text-emerald-400">86</div>
@@ -666,7 +657,7 @@ export function LandingPageV3() {
                 icon: <Clock className="h-6 w-6" />,
                 color: "text-sky-400 bg-sky-500/20",
                 title: "14-Day Planning Horizon",
-                desc: "Monitor WX trends from 2 weeks out. See Fly or Stay options early, before bags are packed and commitments harden.",
+                desc: "Monitor WX trends from 2 weeks out. See GO / NO‑GO options early, before bags are packed and commitments harden.",
               },
               {
                 icon: <Snowflake className="h-6 w-6" />,

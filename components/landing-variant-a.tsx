@@ -257,7 +257,7 @@ export function LandingVariantA() {
                 ["Displays raw METARs, TAFs, PIREPs", "Weather Briefing with a WX Score"],
                 ["Generic VFR / IFR categories", "Your minimums and your aircraft"],
                 ["You invent the risk picture alone", "FRAT on the FAA PAVE framework"],
-                ["No structured Fly or Stay step", "You make the call. PlaneWX informs."],
+                ["No structured GO / NO‑GO step", "You make the call. PlaneWX informs."],
                 ["No habit loop after the flight", "Self Debrief feeds the next FRAT"],
               ].map(([left, right], i) => (
                 <div key={i} className="contents">
@@ -284,7 +284,7 @@ export function LandingVariantA() {
       </section>
 
 
-      {/* RISK-MANAGEMENT LOOP (was three pillars) */}
+      {/* RISK-MANAGEMENT LOOP */}
       <section id="the-loop" className="relative py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-10 space-y-4">
@@ -296,7 +296,7 @@ export function LandingVariantA() {
               <span className="text-sky-400">You make the call.</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Weather Briefing, FRAT, Fly or Stay, Self Debrief. Mentor is optional, alongside the loop.
+              WX Score briefing, FRAT, <span className="whitespace-nowrap">GO / NO-GO</span>, Self Debrief. Mentor is optional, alongside the loop.
             </p>
           </div>
 
@@ -333,10 +333,11 @@ export function LandingVariantA() {
               <div className="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
                 <Plane className="h-5 w-5 text-emerald-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Fly or Stay</h3>
+              <h3 className="text-2xl font-bold mb-2"><span className="whitespace-nowrap">GO / NO-GO</span></h3>
               <p className="text-emerald-400/90 text-xs font-medium mb-2">PIC decision</p>
               <p className="text-white/60 text-sm leading-relaxed">
-                You make the call. Staying is a legitimate outcome, not a failure.
+                PlaneWX never recommends go or no-go. The pilot makes the call. Staying is a
+                legitimate outcome, not a failure.
               </p>
             </div>
 
@@ -505,7 +506,7 @@ export function LandingVariantA() {
               <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm font-medium text-white/60">WX Score</span>
-                  <span className="text-xs text-emerald-400">SR22T · KPAO → KSBA</span>
+                  <span className="text-xs text-emerald-400">SR22T · KPAO to KSBA</span>
                 </div>
                 <div className="text-center py-4">
                   <div className="text-7xl font-bold text-emerald-400">86</div>
@@ -689,7 +690,7 @@ export function LandingVariantA() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0-100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds." },
-              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. See Fly or Stay options early, before bags are packed and commitments harden." },
+              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. See GO / NO‑GO options early, before bags are packed and commitments harden." },
               { icon: <Snowflake className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across 3 to 7 sample points along your route, with confidence scoring on the agreement." },
               { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "FRAT on PAVE", desc: "The FAA PAVE framework pre-filled from your trip context. Pilot, Aircraft, enVironment, External pressures, all in one view." },
               { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Ask a Mentor", desc: "Optional layer alongside the loop. Experienced pilots see your full briefing: WX Score, aircraft profile, minimums. Shared context, not verbal descriptions." },
