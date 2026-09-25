@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=1280">
 <title>Fly like it's your job · TBMOPA Webinar · Sep 24, 2026</title>
 <!-- cache-bust: tbmopa-webinar-v2-20260924q -->
-<!-- Open: /talks/tbmopa/v2/ · Mission, purpose, personal mins, The Loop (brief / FRAT / fly-or-stay / debrief). -->
+<!-- Open: /talks/tbmopa/v2/ · Mission, purpose, personal mins, The Loop (WX Score briefing, FRAT, GO / NO-GO, Self Debrief). -->
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -656,8 +656,9 @@
   .loop-mentor .loop-num { color: var(--green); }
   .loop-mentor .loop-title { font-size: 24px; }
   .loop-flow {
-    display: flex; align-items: center; justify-content: center;
-    gap: 10px; margin: 18px 0 8px; flex-wrap: wrap;
+    display: block;
+    text-align: center;
+    margin: 18px 0 8px;
     font-size: 15px; font-weight: 700; color: var(--sky); letter-spacing: 0.04em;
   }
   .loop-flow span.arrow { color: var(--muted); font-weight: 500; }
@@ -1053,9 +1054,7 @@
     <div class="subhead" style="font-size:18px; margin-bottom:0; max-width:36em; line-height:1.35;">
       PlaneWX is a pilot decision support system built around one loop.
     </div>
-    <div class="loop-flow" style="margin:10px 0 6px;">
-      Brief <span class="arrow">→</span> FRAT <span class="arrow">→</span> Fly or Stay <span class="arrow">→</span> Debrief <span class="arrow">↻</span> Next flight
-    </div>
+    <div class="loop-flow" style="margin:10px 0 6px;">WX Score briefing, FRAT, <span style="white-space:nowrap">GO&nbsp;/&nbsp;NO&#8209;GO</span>, Self Debrief</div>
     <div class="loop-wrap" style="margin-top:8px; gap:20px;">
       <div class="loop-cycle">
         <div class="loop-step">
@@ -1064,14 +1063,15 @@
           <div class="loop-desc">WX Score against your personal minimums and airplane.</div>
         </div>
         <div class="loop-step">
-          <div class="loop-num">2 · Final hours</div>
+          <div class="loop-num">2 · 4 hours out</div>
           <div class="loop-title">FRAT</div>
           <div class="loop-desc">Pilot, Aircraft, enVironment, External pressures.</div>
         </div>
         <div class="loop-step">
           <div class="loop-num">3 · The call</div>
-          <div class="loop-title">Fly or Stay</div>
-          <div class="loop-desc">Staying is a legitimate outcome, not a failure.</div>
+          <div class="loop-title"><span style="white-space:nowrap">GO&nbsp;/&nbsp;NO&#8209;GO</span></div>
+          <div class="loop-desc">PlaneWX never recommends go or no-go. The pilot makes the call.</div>
+          <div class="loop-desc" style="margin-top:6px;">Staying is a legitimate outcome, not a failure.</div>
         </div>
         <div class="loop-step">
           <div class="loop-num">4 · After</div>
@@ -1130,13 +1130,13 @@
 
 <!-- 12. FRAT -->
 <div class="slide bg-night" data-section="FRAT" data-time="18:30"
-  data-notes="Loop part 2. FRAT unlocks in the final hours so it is honest. PAVE: Pilot, Aircraft, enVironment, External. By design a CHOICE: pilots can require it before every flight. Pros follow an SOP because their operator requires it. In GA, you're the operator. NEVER frame lower completion as a shortfall.">
+  data-notes="Loop part 2. FRAT opens 4 hours before departure so it is honest. Pilot, Aircraft, enVironment, External. By design a CHOICE: pilots can require it before every flight. Pros follow an SOP because their operator requires it. In GA, you're the operator. NEVER frame lower completion as a shortfall.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Loop · 2</div>
     <div class="headline-sm" style="margin-bottom:24px; font-size:40px;">FRAT, when it matters</div>
     <ul class="bullet-list" style="max-width:1000px;">
       <li>Pilot, Aircraft, enVironment, External pressures.</li>
-      <li>Unlocked in the final hours, when the picture is real.</li>
+      <li>Opens 4 hours before departure, when you can honestly rate how you feel.</li>
       <li>By design a choice: you can require it before every flight.</li>
       <li>Pros follow an SOP because their operator requires it. In GA, you're the operator.</li>
     </ul>
@@ -1248,14 +1248,15 @@
   </div>
 </div>
 
-<!-- 15. Fly or Stay -->
+<!-- 15. GO / NO-GO -->
 <div class="slide bg-night" data-section="Decide" data-time="24:00"
-  data-notes="Loop part 3. Fly or Stay. Staying is a legitimate outcome, not a failure. Say it twice if you need to. This is the permission airline systems give that GA lacks.">
+  data-notes="Loop part 3. GO / NO-GO. PlaneWX never recommends go or no-go. The pilot makes the call. Staying is a legitimate outcome, not a failure. Say it twice if you need to. This is the permission airline systems give that GA lacks.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Loop · 3</div>
-    <div class="headline-sm" style="margin-bottom:28px; font-size:44px;">Fly or Stay</div>
+    <div class="headline-sm" style="margin-bottom:28px; font-size:44px;"><span style="white-space:nowrap">GO&nbsp;/&nbsp;NO&#8209;GO</span></div>
     <ul class="bullet-list" style="max-width:960px;">
       <li>The loop ends in a decision, not a score.</li>
+      <li>PlaneWX never recommends go or no-go. The pilot makes the call.</li>
       <li>Staying is a legitimate outcome.</li>
       <li>It is not a failure.</li>
     </ul>
@@ -1278,7 +1279,7 @@
 
 <!-- Self Debrief -->
 <div class="slide bg-dark" data-section="Debrief" data-time="27:00"
-  data-notes="Loop part 4. Today: your Self Debrief looks back at the FRAT you ran for that trip. Coming next: every debrief feeds your next FRAT. PlaneWX Labs / Pro Plus. Optional supported line: pilots who debrief a flight are about twice as likely to run a FRAT on the next one. Association, not causation.">
+  data-notes="Loop part 4. Today: your Self Debrief looks back at the FRAT you ran for that trip. Coming next: every debrief feeds your next FRAT. PlaneWX Labs / Pro Plus. Optional supported line: Pilots who debrief a flight are about twice as likely to run a FRAT on the next one. Association, not causation.">
   <div class="slide-inner pad" style="justify-content:center; min-height:720px;">
     <div class="label" style="margin-bottom:16px;">Loop · 4</div>
     <div class="headline-sm" style="margin-bottom:28px; font-size:40px;">Self Debrief</div>
