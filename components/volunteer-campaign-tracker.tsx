@@ -4,7 +4,8 @@ import type { ReactNode } from "react"
 import { VariantTracker } from "@/components/shared/variant-tracker"
 import {
   buildVolunteerSignupHrefForOrg,
-  normalizeVolunteerCallSignForOrg,
+  isBareVolunteerGate,
+  normalizeVolunteerCallSignForPage,
   resolveVolunteerOrg,
   SKYHOPE_CAMPAIGN_CODE,
   VOLUNTEER_CAMPAIGN_CODE,
@@ -64,11 +65,19 @@ function resolveSignupRef(gateOrgRef?: string): string {
 }
 
 function resolveCallSignForGate(gateOrgRef?: string): string | null {
-  const org = resolveVolunteerOrg(gateOrgRef ?? VOLUNTEER_CAMPAIGN_CODE)
+  const pageRef = gateOrgRef ?? VOLUNTEER_CAMPAIGN_CODE
+  const org = resolveVolunteerOrg(pageRef)
   try {
-    const saved = localStorage.getItem(org.storageKey)
-    if (!saved) return null
-    return normalizeVolunteerCallSignForOrg(saved, org)
+    const keys = isBareVolunteerGate(pageRef)
+      ? [org.storageKey, resolveVolunteerOrg(SKYHOPE_CAMPAIGN_CODE).storageKey]
+      : [org.storageKey]
+    for (const key of keys) {
+      const saved = localStorage.getItem(key)
+      if (!saved) continue
+      const parsed = normalizeVolunteerCallSignForPage(saved, pageRef)
+      if (parsed) return parsed.callSign
+    }
+    return null
   } catch {
     return null
   }
@@ -77,23 +86,30 @@ function resolveCallSignForGate(gateOrgRef?: string): string | null {
 /**
  * Build app signup URL with ref and the active org's call-sign param.
  * ACA: ?cmf=CALLSIGN. SkyHope: ?callsign=CALLSIGN (never ?cmf=).
+ * On the bare page, an SYH call sign routes to ref=SKYHOPE + callsign=.
  * Pass gateOrgRef from the gate so the active page org wins over stale storage.
  */
 export function buildVolunteerSignupHref(
   callSign?: string | null,
   gateOrgRef?: string
 ): string {
-  const gate = resolveVolunteerOrg(gateOrgRef ?? readUrlRef())
-  const ref = resolveSignupRef(gate.ref)
-
-  const resolved =
+  const pageRef = gateOrgRef ?? readUrlRef() ?? VOLUNTEER_CAMPAIGN_CODE
+  const raw =
     callSign != null && callSign !== ""
-      ? normalizeVolunteerCallSignForOrg(callSign, gate)
-      : resolveCallSignForGate(gate.ref)
+      ? callSign
+      : resolveCallSignForGate(pageRef)
+
+  const parsed = raw
+    ? normalizeVolunteerCallSignForPage(raw, pageRef)
+    : null
+
+  // Prefer attribution org from the call sign (bare SYH -> SKYHOPE).
+  const gate = parsed?.org ?? resolveVolunteerOrg(pageRef)
+  const ref = parsed?.org.ref ?? resolveSignupRef(gate.ref)
 
   return buildVolunteerSignupHrefForOrg({
     ref,
-    callSign: resolved,
+    callSign: parsed?.callSign ?? null,
     gateOrg: gate,
   })
 }

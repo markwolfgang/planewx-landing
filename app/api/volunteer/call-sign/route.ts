@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { createClient } from "@supabase/supabase-js"
 import {
   isVolunteerProductionDeploy,
-  normalizeVolunteerCallSignForOrg,
+  normalizeVolunteerCallSignForPage,
   resolveVolunteerOrg,
   VOLUNTEER_CAMPAIGN_CODE,
 } from "@/lib/volunteer-landing"
@@ -10,7 +10,9 @@ import {
 /**
  * POST /api/volunteer/call-sign
  *
- * Format-only validation per org (ACA: CMF + 1-4 digits; SkyHope: SYH + 1-4 digits).
+ * Format-only validation per org.
+ * - SkyHope (ref=SKYHOPE): SYH + 1-4 digits only.
+ * - Bare / ACA: CMF or SYH (/^(CMF|SYH)\d{1,4}$/i). An SYH sign attributes to SKYHOPE.
  * No membership list lookup. Stores the normalized call sign with timestamp + ref
  * when Supabase is available. Always returns the normalized sign on success so the
  * client can pass it into signup even if durable storage is temporarily unavailable.
@@ -43,16 +45,19 @@ export async function POST(request: NextRequest) {
     typeof (body as { ref?: unknown })?.ref === "string"
       ? (body as { ref: string }).ref.trim().toUpperCase()
       : ""
-  const ref =
+  const pageRef =
     refRaw && refRaw.length >= 2 && refRaw.length <= 32
       ? refRaw
       : VOLUNTEER_CAMPAIGN_CODE
 
-  const org = resolveVolunteerOrg(ref)
-  const callSign = normalizeVolunteerCallSignForOrg(raw, org)
-  if (!callSign) {
-    return NextResponse.json({ ok: false, error: org.error }, { status: 400 })
+  const pageOrg = resolveVolunteerOrg(pageRef)
+  const parsed = normalizeVolunteerCallSignForPage(raw, pageRef)
+  if (!parsed) {
+    return NextResponse.json({ ok: false, error: pageOrg.error }, { status: 400 })
   }
+
+  const { callSign, org: effectiveOrg } = parsed
+  const ref = effectiveOrg.ref
 
   const lp =
     typeof (body as { lp?: unknown })?.lp === "string"

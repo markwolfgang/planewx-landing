@@ -9,7 +9,8 @@
  * Validated signs are stored (API + localStorage) and passed into app signup.
  *
  * SkyHope (ref=SKYHOPE) uses its own SYH call-sign gate, same UX as CMF.
- * Bare /volunteer and ?ref=ACA stay on the Compassion Flight (CMF) path.
+ * Bare /volunteer and ?ref=ACA accept both CMF and SYH. An SYH sign on the
+ * bare page switches attribution to SKYHOPE (ref + callsign=).
  * SKYHOPE campaign seed lives only in the app repo (not this landing repo).
  */
 
@@ -111,7 +112,8 @@ export const VOLUNTEER_ORG_CALL_SIGN_REGISTRY: Record<
     label: "Your Compassion Flight call sign",
     placeholder: "WWW",
     hint: "Enter your Compassion Flight call sign. We'll validate it, then unlock signup.",
-    error: "That doesn't look like a valid Compassion Flight call sign.",
+    error:
+      "That doesn't look like a valid volunteer call sign. Use your Compassion Flight (CMF) or SkyHope (SYH) call sign.",
     lockedHint:
       "Enter your Compassion Flight call sign. We'll validate it, then unlock signup",
     srHint: "Enter your Compassion Flight call sign.",
@@ -190,6 +192,34 @@ export function isSkyHopeRef(ref?: string | null): boolean {
   return (ref ?? "").trim().toUpperCase() === SKYHOPE_CAMPAIGN_CODE
 }
 
+/**
+ * Bare /volunteer (and ?ref=ACA) accept CMF or SYH, same shape as the app:
+ * /^(CMF|SYH)\d{1,4}$/i
+ */
+export const BARE_VOLUNTEER_CALL_SIGN_PATTERN = /^(CMF|SYH)\d{1,4}$/i
+
+export const BARE_VOLUNTEER_CALL_SIGN_ERROR =
+  VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ACA.error
+
+/** True when the page gate should accept both CMF and SYH (bare / ACA). */
+export function isBareVolunteerGate(ref?: string | null): boolean {
+  return !isSkyHopeRef(ref)
+}
+
+/** Resolve org from a normalized call sign prefix. */
+export function resolveVolunteerOrgFromCallSign(
+  callSign: string
+): VolunteerOrgCallSignConfig | null {
+  const cleaned = callSign.trim().toUpperCase().replace(/\s+/g, "")
+  if (/^SYH\d{1,4}$/i.test(cleaned)) {
+    return VOLUNTEER_ORG_CALL_SIGN_REGISTRY.SKYHOPE
+  }
+  if (/^CMF\d{1,4}$/i.test(cleaned)) {
+    return VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ACA
+  }
+  return null
+}
+
 /** Normalize raw input against an org pattern, or null if invalid. */
 export function normalizeVolunteerCallSignForOrg(
   raw: string,
@@ -198,6 +228,30 @@ export function normalizeVolunteerCallSignForOrg(
   const cleaned = raw.trim().toUpperCase().replace(/\s+/g, "")
   if (!org.pattern.test(cleaned)) return null
   return cleaned
+}
+
+/**
+ * Normalize for the page gate.
+ * SkyHope page: SYH only.
+ * Bare / ACA page: CMF or SYH; returns the org that should own attribution.
+ */
+export function normalizeVolunteerCallSignForPage(
+  raw: string,
+  pageOrgRef?: string | null
+): { callSign: string; org: VolunteerOrgCallSignConfig } | null {
+  const cleaned = raw.trim().toUpperCase().replace(/\s+/g, "")
+  if (!cleaned) return null
+
+  if (isSkyHopeRef(pageOrgRef)) {
+    const org = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.SKYHOPE
+    if (!org.pattern.test(cleaned)) return null
+    return { callSign: cleaned, org }
+  }
+
+  if (!BARE_VOLUNTEER_CALL_SIGN_PATTERN.test(cleaned)) return null
+  const org = resolveVolunteerOrgFromCallSign(cleaned)
+  if (!org) return null
+  return { callSign: cleaned, org }
 }
 
 /** Normalize raw input to uppercase CMF + digits, or null if format-invalid. */

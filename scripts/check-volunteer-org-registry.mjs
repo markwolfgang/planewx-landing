@@ -7,6 +7,11 @@
  * - production_syh_signup_href_carries_callsign
  * - preview_unlocked_control_is_not_a_link
  * - isVolunteerProductionDeploy_branches
+ * - bare_syh_lowercase_accepted_routes_skyhope
+ * - bare_cmf_accepted
+ * - bare_garbage_shows_new_error
+ * - ref_skyhope_cmf_rejected
+ * - ref_skyhope_syh_lowercase_accepted
  */
 import assert from "node:assert/strict"
 import fs from "node:fs"
@@ -45,11 +50,16 @@ const {
   SKYHOPE_CAMPAIGN_CODE,
   DEFAULT_APP_URL,
   VOLUNTEER_PREVIEW_SIGNUP_NOTICE,
+  BARE_VOLUNTEER_CALL_SIGN_PATTERN,
+  BARE_VOLUNTEER_CALL_SIGN_ERROR,
   resolveVolunteerOrg,
+  resolveVolunteerOrgFromCallSign,
   isSkyHopeRef,
+  isBareVolunteerGate,
   isVolunteerProductionDeploy,
   normalizeVolunteerCallSign,
   normalizeVolunteerCallSignForOrg,
+  normalizeVolunteerCallSignForPage,
   buildVolunteerSignupHrefForOrg,
   buildVolunteerUnlockedSignupControl,
   getVolunteerAppBaseUrl,
@@ -243,7 +253,103 @@ const leakedAca = buildVolunteerSignupHrefForOrg({
 })
 assert.equal(leakedAca, "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA")
 
+// bare_syh_lowercase_accepted_routes_skyhope
+assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.source, "^(CMF|SYH)\\d{1,4}$")
+assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.flags, "i")
+assert.equal(isBareVolunteerGate(null), true, "bare_syh_lowercase_accepted_routes_skyhope")
+assert.equal(isBareVolunteerGate("ACA"), true, "bare_syh_lowercase_accepted_routes_skyhope")
+assert.equal(isBareVolunteerGate("SKYHOPE"), false, "bare_syh_lowercase_accepted_routes_skyhope")
+const bareSyh = normalizeVolunteerCallSignForPage("syh123", null)
+assert.ok(bareSyh, "bare_syh_lowercase_accepted_routes_skyhope")
+assert.equal(bareSyh.callSign, "SYH123", "bare_syh_lowercase_accepted_routes_skyhope")
+assert.equal(bareSyh.org.ref, "SKYHOPE", "bare_syh_lowercase_accepted_routes_skyhope")
+assert.equal(
+  resolveVolunteerOrgFromCallSign("syh123")?.ref,
+  "SKYHOPE",
+  "bare_syh_lowercase_accepted_routes_skyhope"
+)
+const bareSyhHref = buildVolunteerSignupHrefForOrg({
+  ref: bareSyh.org.ref,
+  callSign: bareSyh.callSign,
+  gateOrg: bareSyh.org,
+})
+assert.equal(
+  bareSyhHref,
+  "https://app.planewx.ai/auth/sign-up?lp=vol&ref=SKYHOPE&callsign=SYH123",
+  "bare_syh_lowercase_accepted_routes_skyhope"
+)
+
+// bare_cmf_accepted
+const bareCmf = normalizeVolunteerCallSignForPage("cmf42", "ACA")
+assert.ok(bareCmf, "bare_cmf_accepted")
+assert.equal(bareCmf.callSign, "CMF42", "bare_cmf_accepted")
+assert.equal(bareCmf.org.ref, "ACA", "bare_cmf_accepted")
+const bareCmfHref = buildVolunteerSignupHrefForOrg({
+  ref: bareCmf.org.ref,
+  callSign: bareCmf.callSign,
+  gateOrg: bareCmf.org,
+})
+assert.equal(
+  bareCmfHref,
+  "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA&cmf=CMF42",
+  "bare_cmf_accepted"
+)
+
+// bare_garbage_shows_new_error
+assert.equal(
+  BARE_VOLUNTEER_CALL_SIGN_ERROR,
+  "That doesn't look like a valid volunteer call sign. Use your Compassion Flight (CMF) or SkyHope (SYH) call sign.",
+  "bare_garbage_shows_new_error"
+)
+assert.equal(aca.error, BARE_VOLUNTEER_CALL_SIGN_ERROR, "bare_garbage_shows_new_error")
+assert.equal(
+  normalizeVolunteerCallSignForPage("notasign", null),
+  null,
+  "bare_garbage_shows_new_error"
+)
+assert.equal(
+  normalizeVolunteerCallSignForPage("SYH", "ACA"),
+  null,
+  "bare_garbage_shows_new_error"
+)
+assert.equal(
+  normalizeVolunteerCallSignForPage("CMF12345", null),
+  null,
+  "bare_garbage_shows_new_error"
+)
+
+// ref_skyhope_cmf_rejected
+assert.equal(
+  normalizeVolunteerCallSignForPage("CMF123", "SKYHOPE"),
+  null,
+  "ref_skyhope_cmf_rejected"
+)
+assert.equal(
+  normalizeVolunteerCallSignForOrg("CMF123", sky),
+  null,
+  "ref_skyhope_cmf_rejected"
+)
+assert.match(
+  sky.error,
+  /not a Compassion Flight one/,
+  "ref_skyhope_cmf_rejected"
+)
+
+// ref_skyhope_syh_lowercase_accepted
+const skyLower = normalizeVolunteerCallSignForPage("syh99", "SKYHOPE")
+assert.ok(skyLower, "ref_skyhope_syh_lowercase_accepted")
+assert.equal(skyLower.callSign, "SYH99", "ref_skyhope_syh_lowercase_accepted")
+assert.equal(skyLower.org.ref, "SKYHOPE", "ref_skyhope_syh_lowercase_accepted")
+assert.equal(
+  normalizeVolunteerCallSignForOrg("syh99", sky),
+  "SYH99",
+  "ref_skyhope_syh_lowercase_accepted"
+)
+
 console.log("Volunteer org registry + link builder checks passed.")
-console.log("Tests: production_syh_signup_href_carries_callsign, preview_unlocked_control_is_not_a_link, isVolunteerProductionDeploy_branches")
+console.log(
+  "Tests: production_syh_signup_href_carries_callsign, preview_unlocked_control_is_not_a_link, isVolunteerProductionDeploy_branches, bare_syh_lowercase_accepted_routes_skyhope, bare_cmf_accepted, bare_garbage_shows_new_error, ref_skyhope_cmf_rejected, ref_skyhope_syh_lowercase_accepted"
+)
 console.log("ACA Sign up href:", acaHref)
 console.log("SKYHOPE Sign up href:", skyHref)
+console.log("Bare SYH123 Sign up href:", bareSyhHref)

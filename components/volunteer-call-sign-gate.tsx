@@ -7,7 +7,8 @@ import {
 } from "@/components/volunteer-campaign-tracker"
 import {
   buildVolunteerUnlockedSignupControl,
-  normalizeVolunteerCallSignForOrg,
+  isBareVolunteerGate,
+  normalizeVolunteerCallSignForPage,
   resolveVolunteerOrg,
   VOLUNTEER_CAMPAIGN_CODE,
   VOLUNTEER_LP,
@@ -24,6 +25,8 @@ const UNLOCKED_SIGNUP_CLASS =
  * reveal the letter prefix, digit pattern, or any working call-sign example.
  *
  * Pass orgRef="SKYHOPE" for the SkyHope SYH gate; default is ACA/CMF.
+ * Bare / ACA accepts CMF or SYH; an SYH sign switches the unlocked card and
+ * signup ref to SkyHope.
  * Pass allowSignup / allowNetworkWrites from the server (VERCEL_ENV === "production").
  */
 export function VolunteerCallSignGate({
@@ -37,9 +40,11 @@ export function VolunteerCallSignGate({
   /** When false, skip POST /api/volunteer/call-sign. */
   allowNetworkWrites?: boolean
 }) {
-  const org: VolunteerOrgCallSignConfig = resolveVolunteerOrg(orgRef)
+  const pageOrg: VolunteerOrgCallSignConfig = resolveVolunteerOrg(orgRef)
+  const bareGate = isBareVolunteerGate(orgRef)
   const [input, setInput] = useState("")
   const [callSign, setCallSign] = useState<string | null>(null)
+  const [activeOrg, setActiveOrg] = useState<VolunteerOrgCallSignConfig>(pageOrg)
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [storedRemotely, setStoredRemotely] = useState(false)
@@ -47,33 +52,45 @@ export function VolunteerCallSignGate({
   useEffect(() => {
     setInput("")
     setCallSign(null)
+    setActiveOrg(pageOrg)
     setError(null)
     setStoredRemotely(false)
     try {
-      const saved = localStorage.getItem(org.storageKey)
-      if (saved && normalizeVolunteerCallSignForOrg(saved, org)) {
-        setCallSign(saved)
-        setInput(saved)
+      const keys = bareGate
+        ? [pageOrg.storageKey, resolveVolunteerOrg("SKYHOPE").storageKey]
+        : [pageOrg.storageKey]
+      for (const key of keys) {
+        const saved = localStorage.getItem(key)
+        if (!saved) continue
+        const parsed = normalizeVolunteerCallSignForPage(saved, orgRef)
+        if (parsed) {
+          setCallSign(parsed.callSign)
+          setInput(parsed.callSign)
+          setActiveOrg(parsed.org)
+          break
+        }
       }
     } catch {
       /* ignore */
     }
-  }, [org.ref, org.storageKey])
+  }, [pageOrg.ref, pageOrg.storageKey, bareGate, orgRef])
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault()
     setError(null)
 
-    const normalized = normalizeVolunteerCallSignForOrg(input, org)
-    if (!normalized) {
-      setError(org.error)
+    const parsed = normalizeVolunteerCallSignForPage(input, orgRef)
+    if (!parsed) {
+      setError(pageOrg.error)
       setCallSign(null)
+      setActiveOrg(pageOrg)
       return
     }
 
+    const { callSign: normalized, org: effectiveOrg } = parsed
     setSubmitting(true)
     try {
-      localStorage.setItem(org.storageKey, normalized)
+      localStorage.setItem(effectiveOrg.storageKey, normalized)
     } catch {
       /* still continue with in-memory + signup query param */
     }
@@ -81,24 +98,23 @@ export function VolunteerCallSignGate({
     let remoteOk = false
     if (allowNetworkWrites) {
       try {
-        const fromUrl = new URLSearchParams(window.location.search).get("ref")?.trim()
-        const storedRef = localStorage.getItem("planewx_referral")
-        const ref =
-          (fromUrl ? fromUrl.toUpperCase() : null) ||
-          storedRef ||
-          org.ref
-
         const res = await fetch("/api/volunteer/call-sign", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             callSign: normalized,
-            ref,
+            ref: effectiveOrg.ref,
             lp: VOLUNTEER_LP,
           }),
         })
         const data = (await res.json().catch(() => null)) as
-          | { ok?: boolean; callSign?: string; stored?: boolean; error?: string }
+          | {
+              ok?: boolean
+              callSign?: string
+              ref?: string
+              stored?: boolean
+              error?: string
+            }
           | null
 
         if (!res.ok || !data?.ok) {
@@ -107,7 +123,7 @@ export function VolunteerCallSignGate({
           remoteOk = Boolean(data.stored)
           if (data.callSign) {
             try {
-              localStorage.setItem(org.storageKey, data.callSign)
+              localStorage.setItem(effectiveOrg.storageKey, data.callSign)
             } catch {
               /* ignore */
             }
@@ -120,6 +136,7 @@ export function VolunteerCallSignGate({
 
     setSubmitting(false)
     setStoredRemotely(remoteOk)
+    setActiveOrg(effectiveOrg)
     setCallSign(normalized)
   }
 
@@ -129,13 +146,13 @@ export function VolunteerCallSignGate({
       ? allowSignup
         ? {
             kind: "link" as const,
-            href: buildVolunteerSignupHref(callSign, org.ref),
+            href: buildVolunteerSignupHref(callSign, activeOrg.ref),
           }
         : buildVolunteerUnlockedSignupControl({
             isProduction: false,
-            ref: org.ref,
+            ref: activeOrg.ref,
             callSign,
-            gateOrg: org,
+            gateOrg: activeOrg,
           })
       : null
 
@@ -151,10 +168,10 @@ export function VolunteerCallSignGate({
             htmlFor="volunteer-call-sign"
             className="block text-sm font-semibold text-white"
           >
-            {org.label}
+            {pageOrg.label}
           </label>
           <p className="text-sm text-white/50 leading-relaxed">
-            {org.hint}
+            {pageOrg.hint}
           </p>
         </div>
 
@@ -167,7 +184,7 @@ export function VolunteerCallSignGate({
             autoCapitalize="characters"
             autoCorrect="off"
             spellCheck={false}
-            placeholder={org.placeholder}
+            placeholder={pageOrg.placeholder}
             value={input}
             onChange={(e) => {
               setInput(e.target.value)
@@ -198,7 +215,7 @@ export function VolunteerCallSignGate({
         </div>
 
         <p id="volunteer-call-sign-hint" className="sr-only">
-          {org.srHint}
+          {pageOrg.srHint}
         </p>
 
         {error ? (
@@ -215,7 +232,7 @@ export function VolunteerCallSignGate({
           <p className="inline-flex items-start gap-2 text-sm text-emerald-300 leading-relaxed">
             <Check className="h-4 w-4 mt-0.5 shrink-0" aria-hidden />
             <span>
-              {org.acceptedLead}
+              {activeOrg.acceptedLead}
               {storedRemotely ? "." : " (saved for signup on this device)."}
             </span>
           </p>
@@ -239,7 +256,7 @@ export function VolunteerCallSignGate({
           ) : (
             <>
               <Lock className="h-4 w-4 text-white/40" aria-hidden />
-              <span className="text-white/45">{org.lockedHint}</span>
+              <span className="text-white/45">{pageOrg.lockedHint}</span>
             </>
           )}
         </div>
@@ -248,7 +265,7 @@ export function VolunteerCallSignGate({
           Sign up for a 2-week Pro Plus trial
         </h3>
         <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-          {org.unlockBody}
+          {unlocked ? activeOrg.unlockBody : pageOrg.unlockBody}
         </p>
 
         {unlockedControl?.kind === "link" ? (
@@ -256,7 +273,10 @@ export function VolunteerCallSignGate({
             href={unlockedControl.href}
             className={UNLOCKED_SIGNUP_CLASS}
             onClick={(e) => {
-              e.currentTarget.href = buildVolunteerSignupHref(callSign, org.ref)
+              e.currentTarget.href = buildVolunteerSignupHref(
+                callSign,
+                activeOrg.ref
+              )
             }}
           >
             Sign up for PlaneWX
