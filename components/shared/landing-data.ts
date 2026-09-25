@@ -2,7 +2,7 @@
 // Replica (sync 07:24 UTC): 2,066 active · 3,550,417 hrs · 70% IR · 194 jets · 153 types · 174 ATP · max 35,000 · avg 1,909
 // Prod active pilots at write: 2,085
 export const STATS = {
-  totalPilots: "2,050+",
+  totalPilots: "2,200+",
   cumulativeHours: "3.5M+",
   instrumentRated: "70%",
   jetAircraft: "194",
@@ -40,7 +40,7 @@ export const TESTIMONIALS = [
     cert: "Instrument Rated",
   },
   {
-    quote: "I fly an SF50 and own a business that operates in multiple states. I also have 9 years experience as a Nav on C130s in the Marine Corps. This is the best product for long range weather planning. Executive time is valuable — schedules are tight. Having weather outlook 2 weeks out helps drive internal conversations if plans need to change early. It's certainly worth a try!",
+    quote: "I fly an SF50 and own a business that operates in multiple states. I also have 9 years experience as a Nav on C130s in the Marine Corps. This is the best product for long range weather planning. Executive time is valuable. Schedules are tight. Having weather outlook 2 weeks out helps drive internal conversations if plans need to change early. It's certainly worth a try!",
     name: "Clark",
     cert: "ATP · SF50",
     featured: true,
@@ -88,7 +88,7 @@ export const FAQS: {
   },
   {
     q: "What is the WX Score?",
-    a: "The WX Score is a 0–100% metric calculated against YOUR personal minimums and your specific aircraft — not generic VFR/IFR categories. It tells you, in a single number, how well conditions are expected to match your standards. Every deduction is transparent and explained.",
+    a: "The WX Score is a 0–100% metric calculated against YOUR personal minimums and your specific aircraft. not generic VFR/IFR categories. It tells you, in a single number, how well conditions are expected to match your standards. Every deduction is transparent and explained.",
   },
   {
     q: "What is the PAVE framework?",
@@ -113,7 +113,7 @@ export const FAQS: {
   },
   {
     q: "How far in advance can PlaneWX forecast weather?",
-    a: "PlaneWX provides weather intelligence from 14 days out through departure. Confidence improves as your flight approaches: ~55% at 14 days, ~80% at 72 hours, ~95%+ in the final 6 hours. We're transparent about uncertainty at every time horizon.",
+    a: "PlaneWX provides weather intelligence from 14 days out through departure. Confidence improves as your flight approaches. We are transparent about uncertainty at every time horizon.",
   },
   {
     q: "What is the mentor system?",

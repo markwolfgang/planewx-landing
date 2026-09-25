@@ -24,14 +24,14 @@ export function FooterCTA({ variant }: { variant: string }) {
     <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
       <div className="container mx-auto max-w-2xl text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-5">
-          Get to the decision —{" "}
+          Fly like it&apos;s{" "}
           <span className="bg-gradient-to-r from-sky-400 to-cyan-400 bg-clip-text text-transparent">
-            with confidence.
+            your job.
           </span>
         </h2>
         <p className="text-lg text-white/60 mb-10 max-w-lg mx-auto">
-          Join {STATS.totalPilots} pilots — from students to {STATS.maxPilotHoursPhrase} ATP captains — who use PlaneWX
-          to make better decisions.
+          Join {STATS.totalPilots} pilots, from students to {STATS.maxPilotHoursPhrase} ATP captains,
+          who use PlaneWX for Weather Briefing, FRAT, Fly or Stay, and Self Debrief.
         </p>
         <a
           href={href}

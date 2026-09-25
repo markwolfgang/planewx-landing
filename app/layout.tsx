@@ -53,7 +53,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "@id": "https://www.planewx.ai/#app",
       "name": "PlaneWX",
-      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and builds professional-grade habits that make flying safer. The risk-management loop for pilots who don't have a dispatcher.",
+      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots who don't have a dispatcher.",
       "applicationCategory": "WeatherApplication",
       "operatingSystem": "Web",
       "offers": {
@@ -91,7 +91,7 @@ const jsonLd = {
           "name": "What is PlaneWX?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and builds professional-grade habits that make flying safer. The loop is Weather Briefing (WX Score), FRAT, Fly or Stay, and Self Debrief, with Mentor optional alongside. You make the call. PlaneWX informs."
+            "text": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The loop is Weather Briefing (WX Score), FRAT, Fly or Stay, and Self Debrief, with Mentor optional alongside. You make the call. PlaneWX informs."
           }
         },
         {
@@ -99,7 +99,7 @@ const jsonLd = {
           "name": "How far in advance can PlaneWX predict flight weather?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PlaneWX provides reliable weather intelligence from 14 days out to departure time. The accuracy improves as your flight approaches, with 76% accuracy at 24 hours, 70% at 48 hours, and 61% at 72 hours."
+            "text": "PlaneWX provides weather intelligence from 14 days out through departure. Confidence improves as your flight approaches. We are transparent about uncertainty at every time horizon."
           }
         },
         {
@@ -129,7 +129,7 @@ export const metadata: Metadata = {
     template: "%s | PlaneWX",
   },
   description:
-    "PlaneWX is the decision support system for general aviation. Professional-grade tools and habits: Weather Briefing (WX Score), FRAT, Fly or Stay, Self Debrief. Fly like it's your job.",
+    "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. Fly like it's your job.",
   keywords: [
     "aviation weather",
     "flight planning",
@@ -163,7 +163,6 @@ export const metadata: Metadata = {
     "Bonanza weather",
     "Diamond DA40 weather",
     "SR22 weather planning",
-    "ForeFlight alternative",
     "aviation weather forecast",
     "pilot briefing app",
     "AIRMET SIGMET",

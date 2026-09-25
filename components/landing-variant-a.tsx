@@ -18,6 +18,7 @@ import {
   Quote,
   CloudSun,
   ClipboardCheck,
+  RotateCcw,
 } from "lucide-react"
 import {
   PricingSection,
@@ -76,12 +77,6 @@ export function LandingVariantA() {
           </div>
           <div className="flex items-center gap-4">
             <a
-              href="#pillars"
-              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Three Pillars
-            </a>
-            <a
               href="#how-it-works"
               className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
             >
@@ -130,7 +125,7 @@ export function LandingVariantA() {
         <div className="container mx-auto max-w-5xl text-center space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a1628] border border-sky-400/40 text-sky-400 text-sm font-medium">
             <BrainPlaneIcon className="h-4 w-4" />
-            <span>A new category in aviation technology</span>
+            <span>Decision support for general aviation</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
@@ -146,12 +141,15 @@ export function LandingVariantA() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/50 italic font-light tracking-wide">
-            &ldquo;The confidence to go, or the courage to stay&trade;&rdquo;
+            Fly like it&apos;s your job.
           </p>
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            PlaneWX improves GA safety by giving pilots a robust decision support system:
-            weather briefing, FRAT, and a mentor network. See weather and risk, and connect with a mentor pilot before the pressure locks in. Nobody has to make a tough decision alone.
+            PlaneWX is the decision support system for general aviation. It gives pilots
+            professional-grade tools and instills professional-grade habits that make flying safer.
+          </p>
+          <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+            The risk-management loop for pilots without a dispatcher, not just another weather app.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -159,18 +157,18 @@ export function LandingVariantA() {
               variant={VARIANT}
               className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
-              Put a trip on the calendar
+              Start Free 14-Day Trial
               <ArrowRight className="ml-2 h-5 w-5" />
             </SignUpButton>
             <a
-              href="#pillars"
+              href="#how-it-works"
               className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all"
             >
-              See the three pillars
+              See How It Works
             </a>
           </div>
 
-          <p className="text-sm text-white/30">Soft start: brief a real trip. Work the FRAT. Bring a mentor in when the call is close.</p>
+          <p className="text-sm text-white/30">Brief a real trip. Run the FRAT. Make the call. Debrief. Bring a mentor in when you want a second set of eyes.</p>
 
           <div className="flex items-center justify-center gap-2 mt-4 text-sm text-emerald-400/80">
             <Shield className="h-4 w-4" />
@@ -204,24 +202,24 @@ export function LandingVariantA() {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-sky-400 mb-1">{STATS.cumulativeHours}</div>
-              <div className="text-sm text-white/50">cumulative flight hours<br />in our pilot community</div>
+              <div className="text-4xl md:text-5xl font-bold text-sky-400 mb-1">2,200+</div>
+              <div className="text-sm text-white/50">pilots<br />on PlaneWX</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-1">{STATS.instrumentRated}</div>
-              <div className="text-sm text-white/50">of our pilots are<br />instrument rated</div>
+              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-1">8.7/10</div>
+              <div className="text-sm text-white/50">briefing feedback<br />(1,724 responses)</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-violet-400 mb-1">{STATS.jetAircraft}</div>
-              <div className="text-sm text-white/50">jet aircraft<br />in our fleet</div>
+              <div className="text-4xl md:text-5xl font-bold text-violet-400 mb-1">~2×</div>
+              <div className="text-sm text-white/50">FRAT rate after<br />a flight debrief</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">{STATS.avgHours}</div>
-              <div className="text-sm text-white/50">average flight hours<br />per pilot</div>
+              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">Up to 10%</div>
+              <div className="text-sm text-white/50">5X5 insurance discount<br />for eligible members</div>
             </div>
           </div>
           <p className="text-center text-xs text-white/25 mt-8">
-            From student pilots building hours to ATP captains flying Citations and Gulfstreams.
+            Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
           </p>
         </div>
       </section>
@@ -240,8 +238,9 @@ export function LandingVariantA() {
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               Most bad launches are not mysteries. They are late decisions. Hotels are booked.
               Passengers rearranged work. The airplane is reserved. Then the night before,
-              &ldquo;we&apos;ll see&rdquo; quietly becomes &ldquo;we have to go.&rdquo; By then you
-              are not deciding. You are rationalizing.
+              &ldquo;we&apos;ll see&rdquo; quietly becomes &ldquo;we have to launch.&rdquo; By then you
+              are not deciding. You are rationalizing. PlaneWX is the risk-management loop, not just
+              another weather app.
             </p>
           </div>
 
@@ -255,11 +254,11 @@ export function LandingVariantA() {
               </div>
 
               {[
-                ["Displays raw METARs, TAFs, PIREPs", "Weather briefing matched to your airplane and minimums"],
-                ["Generic VFR / IFR categories", "FRAT: Pilot, Aircraft, enVironment, External"],
-                ["You formulate the risk alone under pressure", "WX Score: quantified context for your decision"],
-                ["Weather as the whole call", "Weather, FRAT, and mentor counsel in one workflow"],
-                ["You decide alone", "Mentors who see your full briefing and catch blind spots"],
+                ["Displays raw METARs, TAFs, PIREPs", "Weather Briefing with a WX Score"],
+                ["Generic VFR / IFR categories", "Your minimums and your aircraft"],
+                ["You invent the risk picture alone", "FRAT on the FAA PAVE framework"],
+                ["No structured Fly or Stay step", "You make the call. PlaneWX informs."],
+                ["No habit loop after the flight", "Self Debrief feeds the next FRAT"],
               ].map(([left, right], i) => (
                 <div key={i} className="contents">
                   <div className="bg-rose-950/20 border-b border-r border-white/10 px-6 py-4 flex items-center gap-3">
@@ -285,52 +284,91 @@ export function LandingVariantA() {
       </section>
 
 
-      {/* THREE PILLARS */}
-      <section id="pillars" className="relative py-24 px-4">
+      {/* RISK-MANAGEMENT LOOP (was three pillars) */}
+      <section id="the-loop" className="relative py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-10 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium">
-              Three pillars
+              The risk-management loop
             </div>
+            <h2 className="text-3xl md:text-5xl font-bold">
+              Four steps.{" "}
+              <span className="text-sky-400">You make the call.</span>
+            </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              A decision support system is more than another weather tab. Structured inputs, clear
-              synthesis, and room for judgment before launch.
+              Weather Briefing, FRAT, Fly or Stay, Self Debrief. Mentor is optional, alongside the
+              loop, not a fifth step. Personal minimums are structural: the WX Score cannot generate
+              without them.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-sky-950/60 to-sky-950/20 border border-sky-500/20">
-              <div className="w-12 h-12 rounded-xl bg-sky-500/20 flex items-center justify-center mb-5">
-                <CloudSun className="h-6 w-6 text-sky-400" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-sky-950/60 to-sky-950/20 border border-sky-500/20">
+              <div className="text-5xl font-bold text-sky-500/20 absolute top-3 right-4 select-none">1</div>
+              <div className="w-11 h-11 rounded-xl bg-sky-500/20 flex items-center justify-center mb-4">
+                <CloudSun className="h-5 w-5 text-sky-400" />
               </div>
-              <h2 className="text-2xl font-bold mb-3">Weather</h2>
+              <h3 className="text-lg font-bold mb-2">Weather Briefing</h3>
+              <p className="text-sky-400/90 text-xs font-medium mb-2">WX Score</p>
               <p className="text-white/60 text-sm leading-relaxed">
-                A briefing matched to your airplane and personal minimums. Ceiling, visibility,
-                wind, icing, convective trends, and how those products evolve as the window
-                tightens. The WX Score updates as the forecast sharpens.
+                A briefing scored against your aircraft and personal minimums. Personal minimums are
+                structural: the WX Score cannot generate without them, and they appear on every
+                briefing.
               </p>
             </div>
 
-            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
-              <div className="w-12 h-12 rounded-xl bg-violet-500/20 flex items-center justify-center mb-5">
-                <ClipboardCheck className="h-6 w-6 text-violet-400" />
+            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
+              <div className="text-5xl font-bold text-violet-500/20 absolute top-3 right-4 select-none">2</div>
+              <div className="w-11 h-11 rounded-xl bg-violet-500/20 flex items-center justify-center mb-4">
+                <ClipboardCheck className="h-5 w-5 text-violet-400" />
               </div>
-              <h2 className="text-2xl font-bold mb-3">FRAT</h2>
+              <h3 className="text-lg font-bold mb-2">FRAT</h3>
+              <p className="text-violet-400/90 text-xs font-medium mb-2">PAVE risk assessment</p>
               <p className="text-white/60 text-sm leading-relaxed">
-                Pilot, Aircraft, enVironment, External. Fed by the high-quality WX briefing plus
-                airport complexity, day or night, unfamiliar destinations, and risk stacking.
-                Dynamic, not a static one-time checklist.
+                A living flight risk assessment on the FAA PAVE framework, pre-filled from your
+                briefing and trip context so you are not inventing the environment under pressure.
               </p>
             </div>
 
-            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-5">
-                <Users className="h-6 w-6 text-emerald-400" />
+            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
+              <div className="text-5xl font-bold text-emerald-500/20 absolute top-3 right-4 select-none">3</div>
+              <div className="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
+                <Plane className="h-5 w-5 text-emerald-400" />
               </div>
-              <h2 className="text-2xl font-bold mb-3">Mentors</h2>
+              <h3 className="text-lg font-bold mb-2">Fly or Stay</h3>
+              <p className="text-emerald-400/90 text-xs font-medium mb-2">You make the call</p>
               <p className="text-white/60 text-sm leading-relaxed">
-                Another set of eyes before you launch. Someone who will ask the awkward question
-                about fatigue, currency, or get-there-itis when the forecast looks good enough.
+                The pilot makes the call. PlaneWX informs. It never decides. Staying is a legitimate
+                outcome, not a failure.
+              </p>
+            </div>
+
+            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-amber-950/60 to-amber-950/20 border border-amber-500/20">
+              <div className="text-5xl font-bold text-amber-500/20 absolute top-3 right-4 select-none">4</div>
+              <div className="w-11 h-11 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+                <RotateCcw className="h-5 w-5 text-amber-400" />
+              </div>
+              <h3 className="text-lg font-bold mb-2">Self Debrief</h3>
+              <p className="text-amber-400/90 text-xs font-medium mb-2">Close the loop</p>
+              <p className="text-white/60 text-sm leading-relaxed">
+                After the flight, or the flight you skipped, a self-debrief feeds the next FRAT.
+                Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-teal-950/50 to-teal-950/20 border border-teal-500/20 flex flex-col sm:flex-row gap-4 items-start">
+            <div className="w-11 h-11 rounded-xl bg-teal-500/20 flex items-center justify-center shrink-0">
+              <HeartHandshake className="h-5 w-5 text-teal-400" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-1">
+                Mentor{" "}
+                <span className="text-white/40 font-medium text-sm">(optional, alongside the loop)</span>
+              </h3>
+              <p className="text-white/60 text-sm leading-relaxed">
+                Not a fifth step. When you want a second set of eyes, mentors see the same briefing
+                and FRAT you see. Shared context, not a phone description.
               </p>
             </div>
           </div>
@@ -357,10 +395,11 @@ export function LandingVariantA() {
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-5">
               From raw data to{" "}
-              <span className="text-sky-400">confident decision</span>
+              <span className="text-sky-400">a clearer picture</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Three steps that happen automatically, before you even open a briefing.
+              Under the hood of every Weather Briefing: synthesize, personalize, then put the
+              picture in front of you so you can decide.
             </p>
           </div>
 
@@ -408,17 +447,17 @@ export function LandingVariantA() {
               <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-5">
                 <Gauge className="h-6 w-6 text-emerald-400" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Decide</h3>
+              <h3 className="text-xl font-bold mb-3">Inform</h3>
               <p className="text-white/60 text-sm leading-relaxed mb-4">
                 The WX Score feeds FRAT on PAVE: Pilot, Aircraft, enVironment, External pressures.
                 Risk updates with the briefing, airport complexity, and the rest of the picture.
-                You get a complete decision view, not just a weather snapshot.
+                You get a complete decision view, not just a weather snapshot. You make the call.
               </p>
               <ul className="space-y-1.5 text-xs text-white/40">
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />WX Score: 0-100% quantified risk</li>
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />FRAT / PAVE, fed by briefing and context</li>
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />14-day trend to avoid last-minute pressure</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />Mentor connection for human perspective</li>
+                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />Mentor available alongside when you want it</li>
               </ul>
             </div>
           </div>
@@ -438,16 +477,18 @@ export function LandingVariantA() {
                 <span className="text-emerald-400">finally quantified</span>
               </h2>
               <p className="text-white/70 leading-relaxed mb-6">
-                Right now, your go/no-go judgment lives entirely in your head. You mentally juggle
-                ceilings, winds, icing, turbulence, currency, and fatigue, under pressure, often at
+                Right now, your weather judgment lives entirely in your head. You mentally juggle
+                ceilings, winds, icing, turbulence, currency, and fatigue under pressure, often at
                 the last minute.
               </p>
               <p className="text-white/70 leading-relaxed mb-6">
                 The WX Score externalizes that work. For the first time, the cognitive burden of
-                weather risk assessment lives in software, not your memory, not your gut.
+                weather risk assessment lives in software, not your memory, not your gut. Personal
+                minimums are structural: without them, the WX Score cannot generate.
               </p>
               <ul className="space-y-3">
                 {[
+                  "Personal minimums are required: the WX Score cannot generate without them",
                   "0-100% metric calculated against YOUR minimums, not generic VFR/IFR",
                   "Ceiling, visibility, crosswind, turbulence, icing, all weighted",
                   "Different scores for each aircraft you fly",
@@ -588,9 +629,9 @@ export function LandingVariantA() {
               <ol className="space-y-4">
                 {[
                   "Plans made weeks in advance, hotels booked, family waiting",
-                  "Weather monitored, but TAFs only go 24 hours. \"We'll know the night before.\"",
+                  "Weather monitored, but TAFs only cover 24 hours. \"We'll know the night before.\"",
                   "Morning of departure: conditions marginal. Bags are packed. Commitments made.",
-                  "The pressure to go is immense. The decision feels impossible.",
+                  "The pressure to launch is immense. The decision feels impossible.",
                 ].map((step, i) => (
                   <li key={i} className="flex items-start gap-3 text-white/70 text-sm">
                     <span className="text-rose-400 font-bold mt-0.5 shrink-0">{i + 1}.</span>
@@ -642,18 +683,19 @@ export function LandingVariantA() {
               <span className="text-sky-400">requires</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Every layer of the decision support system, from raw data to community connection.
+              Every layer of the decision support system, from Weather Briefing to Self Debrief,
+              with Mentor available when you want a second set of eyes.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0-100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds. Structured context so you can decide with a clearer picture." },
-              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute go/no-go with bags packed and commitments made." },
-              { icon: <Snowflake className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across 3-7 sample points along your route with confidence scoring. Nobody else does this." },
-              { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "FRAT (PAVE)", desc: "Pilot, Aircraft, enVironment, External. Fed by the WX briefing, airport complexity, day or night, unfamiliar destinations, and risk stacking. Dynamic risk assessment, not a static checklist." },
-              { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Mentor network", desc: "Connect with experienced pilots who see your full briefing: WX Score, aircraft profile, minimums. Mentors catch what you cannot see alone." },
-              { icon: <Users className="h-6 w-6" />, color: "text-amber-400 bg-amber-500/20", title: "Trip Watchers", desc: "Family, passengers, schedulers see the same live data. Rescheduling becomes a shared decision, not a confrontation at 6 AM." },
+              { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0-100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds. Personal minimums are required before a score can generate." },
+              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. See Fly or Stay options early, before bags are packed and commitments harden." },
+              { icon: <Snowflake className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across 3 to 7 sample points along your route with confidence scoring. Nobody else does this." },
+              { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "FRAT on PAVE", desc: "The FAA PAVE framework pre-filled from your trip context. Pilot, Aircraft, enVironment, External pressures, all in one view." },
+              { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Ask a Mentor", desc: "Optional layer alongside the loop. Experienced pilots see your full briefing: WX Score, aircraft profile, minimums. Shared context, not verbal descriptions." },
+              { icon: <Users className="h-6 w-6" />, color: "text-amber-400 bg-amber-500/20", title: "Trip Watchers", desc: "Family, passengers, and schedulers see the same live data. Rescheduling becomes a shared decision, not a confrontation at 6 AM." },
               { icon: <Route className="h-6 w-6" />, color: "text-rose-400 bg-rose-500/20", title: "Corridor Watch", desc: "Route-specific intelligence at departure, waypoints, and arrival. TFRs, NOTAMs, and icing overlays along your exact path." },
               { icon: <Wind className="h-6 w-6" />, color: "text-cyan-400 bg-cyan-500/20", title: "Synoptic Intelligence™", desc: "NWS forecaster narratives synthesized into regional summaries that explain the big picture, not just the numbers." },
               { icon: <Brain className="h-6 w-6" />, color: "text-violet-400 bg-violet-500/20", title: "Multi-City Optimizer", desc: "Planning a multi-leg trip? Enter all your stops and PlaneWX finds the optimal departure sequence based on weather windows." },
