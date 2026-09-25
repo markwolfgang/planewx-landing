@@ -6,7 +6,7 @@ meta:
     creators.
 hero:
   badge: Brand Overview
-  headline: 'The confidence to go, or the courage to stay™'
+  headline: 'Fly like it''s your job.'
   line1: The Pilot's Decision Support System
   line2: Weather Intelligence for Pilots
   meta:
@@ -58,8 +58,7 @@ missionVision:
     body: >-
       PlaneWX increases general aviation safety by equipping pilots with
       continuously monitored weather intelligence, structured self-assessment,
-      and peer mentoring, giving pilots the confidence to go, or the courage to
-      stay.
+      and peer mentoring.
   vision:
     title: Vision
     body: >-
@@ -374,7 +373,7 @@ messaging:
   primary:
     - line: Every weather tool shows you data. PlaneWX helps you decide.
       note: Primary hero headline
-    - line: 'The confidence to go, or the courage to stay™'
+    - line: Fly like it's your job.
       note: Brand tagline
     - line: Stop being your own meteorologist.
       note: Closing CTA

@@ -151,7 +151,7 @@ brandFormat:
     - label: Full
       text: PlaneWX. The Pilot's Decision Support System
     - label: With tagline
-      text: 'The confidence to go, or the courage to stay™'
+      text: Fly like it's your job.
     - label: Contact
       text: hello@planewx.ai
       href: 'mailto:hello@planewx.ai'
