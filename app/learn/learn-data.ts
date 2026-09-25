@@ -34,13 +34,13 @@ export type LearnBodyBlock =
 export type LearnLoopStage =
   | "Weather Briefing"
   | "FRAT"
-  | "Fly or Stay"
+  | "GO / NO-GO"
   | "Self Debrief"
 
 export const LEARN_LOOP_STAGES: readonly LearnLoopStage[] = [
   "Weather Briefing",
   "FRAT",
-  "Fly or Stay",
+  "GO / NO-GO",
   "Self Debrief",
 ] as const
 
@@ -403,10 +403,10 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     ],
     puttingItIntoPractice: {
       whyItMatters:
-        "Without a dispatcher, looking at what airline dispatchers and traffic managers are planning around gives useful context days out. It is context for your own go/no-go decision, not a verdict. PlaneWX never recommends go or no-go. You decide.",
-      loopStage: ["Weather Briefing", "Fly or Stay"],
+        "Without a dispatcher, looking at what airline dispatchers and traffic managers are planning around gives useful context days out. It is context for your own go/no-go decision, not a verdict. PlaneWX never recommends go or no-go. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "GO / NO-GO"],
       toolOrHabit:
-        "Brief early and re-brief as the flight gets closer, using the PlaneWX Weather Briefing with a WX Score against your personal minimums. That supports the Fly or Stay step. You still make the go/no-go call.",
+        "Brief early and re-brief as the flight gets closer, using the PlaneWX Weather Briefing with a WX Score against your personal minimums. That supports the GO / NO-GO step.",
     },
     sources: [
       {

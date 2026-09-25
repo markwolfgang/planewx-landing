@@ -124,7 +124,7 @@ function LoopStageIndicator({ active }: { active: LearnLoopStage[] }) {
               >
                 {index + 1}
               </span>
-              <span className="block text-xs font-medium leading-snug sm:text-[13px]">
+              <span className="block text-[11px] font-medium leading-snug sm:text-[13px]">
                 {stage}
               </span>
             </li>
