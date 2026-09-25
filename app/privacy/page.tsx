@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
         </header>
 
         <aside className="rounded-xl border border-sky-500/30 bg-sky-500/10 px-4 py-3 space-y-1">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-sky-300">What&apos;s new — {EFFECTIVE_DATE}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-sky-300">What&apos;s new - {EFFECTIVE_DATE}</p>
           <p className="text-sm leading-relaxed text-white/80">
             Updated{" "}
             <a href="#insurance-partners" className="text-sky-400 hover:underline font-medium">
@@ -77,7 +77,7 @@ export default function PrivacyPolicyPage() {
 
         <Section title="4. How We Share Information">
           <ul className="list-disc space-y-2 pl-6">
-            <li>Service providers: hosting, analytics, email, payments, support tools—only as needed to operate the Services.</li>
+            <li>Service providers: hosting, analytics, email, payments, support tools-only as needed to operate the Services.</li>
             <li>Legal and safety: to comply with law, protect rights, safety, and security.</li>
             <li>Business transfers: in connection with mergers, acquisitions, financing, or asset sales.</li>
             <li>With your direction: for example, when sharing trips with watchers/crew.</li>
@@ -112,10 +112,20 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <Section title="6. Cookies and Tracking">
-          <p className="text-sm leading-relaxed text-white/70">
-            We use cookies and similar technologies for authentication, preferences, and analytics. Where required, we will request consent.
-            You can manage cookies through your browser settings, but core functionality may be impacted.
-          </p>
+          <div className="text-sm leading-relaxed text-white/70 space-y-3">
+            <p>
+              On www.planewx.ai we use first-party essential cookies and storage for variant assignment, brand-portal auth, consent
+              region, and your cookie choice. Optional analytics: Google Analytics (G-FKM0TMPH4M) and Vercel Analytics. Optional marketing:
+              Google Ads (AW-18011683791, AW-18016407179), Meta Pixel (1236857811920781), and Reddit Pixel (a2_iy53y8iesnik). Marketing tools can support
+              cross-context advertising and may count as a &quot;sale&quot; or &quot;sharing&quot; under CCPA/CPRA.
+            </p>
+            <p>
+              In the EU, UK, EEA, and Switzerland (and when geo is unknown), non-essential scripts stay blocked until you opt in.
+              Elsewhere we show a notice, honor Global Privacy Control as a marketing opt-out, and provide Do not sell or share and
+              Cookie settings controls in the footer. YouTube embeds use youtube-nocookie.com and load only after you press play.
+              Details: <a href="/cookies" className="text-sky-400 hover:underline">Cookie Policy</a>.
+            </p>
+          </div>
         </Section>
 
         <Section title="7. Data Retention">
@@ -146,7 +156,7 @@ export default function PrivacyPolicyPage() {
               <strong className="text-white">Opt-in:</strong> PlaneWX may send transactional SMS messages to users who opt in through their account settings. SMS is used for time-sensitive notifications, such as alerting volunteer mentors when a pilot requests flight decision support. You opt in to SMS by selecting &quot;Phone / Text&quot; or &quot;Phone &amp; Email&quot; as your preferred contact method in your Mentor profile settings and providing your phone number.
             </li>
             <li>
-              <strong className="text-white">Message frequency:</strong> SMS messages are infrequent and event-driven, typically 1–3 messages per mentor request. We do not send marketing messages via SMS.
+              <strong className="text-white">Message frequency:</strong> SMS messages are infrequent and event-driven, typically 1-3 messages per mentor request. We do not send marketing messages via SMS.
             </li>
             <li>
               <strong className="text-white">Opt-out:</strong> You can stop SMS at any time by changing your contact preference to &quot;Email&quot; in your profile settings, enabling &quot;Do Not Disturb,&quot; or replying STOP to any message. Email <a href="mailto:support@planewx.ai" className="text-sky-400 hover:underline">support@planewx.ai</a> for assistance.

@@ -7,8 +7,10 @@
     "build": "node scripts/check-wx-score-copy.mjs && next build",
     "start": "next start",
     "lint": "next lint && node scripts/check-wx-score-copy.mjs",
-    "test": "node scripts/check-wx-score-copy.mjs",
-    "build:aopa-ad": "node scripts/build-aopa-ad.mjs"
+    "test": "vitest run && node scripts/check-wx-score-copy.mjs",
+    "build:aopa-ad": "node scripts/build-aopa-ad.mjs",
+    "test:unit": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.1.4",
@@ -34,8 +36,11 @@
     "autoprefixer": "^10.4.17",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.0.10",
+    "jsdom": "^29.1.1",
+    "playwright": "^1.63.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.7"
   }
 }

@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import Script from "next/script"
 import { OshBanner } from "@/components/osh-banner"
 import { PartnerGreetingBanner } from "@/components/partner-greeting-banner"
+import { CookieConsent } from "@/components/cookie-consent"
+import { WebTrackingScripts } from "@/components/web-tracking-scripts"
+import { WebVercelMetrics } from "@/components/web-vercel-metrics"
 import { FAQS, faqAnswerToPlainText } from "@/components/shared/landing-data"
 import "./globals.css"
 
@@ -222,10 +223,6 @@ export default function RootLayout({
         
         {/* Preconnect/prefetch for third-party domains actually contacted at runtime.
             Note: fonts.googleapis.com is NOT needed — next/font self-hosts Inter at build time. */}
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://connect.facebook.net" />
-        <link rel="dns-prefetch" href="https://www.redditstatic.com" />
         <link rel="dns-prefetch" href="https://img.youtube.com" />
         
         {/* LLMs.txt for AI discovery */}
@@ -237,57 +234,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-FKM0TMPH4M"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-FKM0TMPH4M');
-            gtag('config', 'AW-18011683791');
-            gtag('config', 'AW-18016407179');
-          `}
-        </Script>
-
-        {/* Meta Pixel — lazyOnload fires after page is fully loaded and idle */}
-        <Script id="meta-pixel" strategy="lazyOnload">
-          {`
-            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-            (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1236857811920781');
-            fbq('track', 'PageView');
-          `}
-        </Script>
-        <noscript>
-          <img height="1" width="1" style={{display:"none"}} src="https://www.facebook.com/tr?id=1236857811920781&ev=PageView&noscript=1" alt="" />
-        </noscript>
-
-        {/* Reddit Pixel — lazyOnload fires after page is fully loaded and idle */}
-        <Script id="reddit-pixel" strategy="lazyOnload">
-          {`
-            !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?
-            p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};
-            p.callQueue=[];var t=d.createElement("script");
-            t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_iy53y8iesnik";
-            t.async=!0;var s=d.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(t,s)}}(window,document);
-            rdt('init','a2_iy53y8iesnik');
-            rdt('track', 'PageVisit');
-          `}
-        </Script>
-      </head>
+        </head>
       <body className={inter.className}>
         <OshBanner />
         <PartnerGreetingBanner />
         {children}
-        <Analytics />
+        <CookieConsent />
+        <WebTrackingScripts />
+        <WebVercelMetrics />
       </body>
     </html>
   )

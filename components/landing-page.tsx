@@ -1,5 +1,7 @@
 "use client"
 
+import { openCookieSettings } from "@/lib/cookie-prefs"
+
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
@@ -2227,6 +2229,8 @@ export function LandingPage() {
               <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
               <a href="/terms" className="hover:text-white transition-colors">Terms</a>
               <a href="/cookies" className="hover:text-white transition-colors">Cookies</a>
+              <button type="button" onClick={() => openCookieSettings()} className="hover:text-white transition-colors">Cookie settings</button>
+              <button type="button" onClick={() => openCookieSettings()} className="hover:text-white transition-colors">Do not sell or share</button>
               <a href="/news" className="hover:text-white transition-colors">News</a>
               <a href="/research/turbulence-safety" className="hover:text-white transition-colors">Research</a>
               <a href="mailto:hello@planewx.ai" className="hover:text-white transition-colors">Contact</a>

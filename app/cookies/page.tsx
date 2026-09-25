@@ -1,13 +1,14 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
+import { CookiePrefsLinks } from "@/components/cookie-prefs-links"
 
 export const metadata = {
   title: "Cookie Policy | PlaneWX",
   description: "Cookie and tracking preferences for PlaneWX.",
 }
 
-const EFFECTIVE_DATE = "January 5, 2026"
+const EFFECTIVE_DATE = "September 25, 2026"
 
 export default function CookiesPage() {
   return (
@@ -27,39 +28,81 @@ export default function CookiesPage() {
           </div>
         </header>
 
-        <Section title="What We Use">
+        <Section title="What We Use on www.planewx.ai">
           <ul className="list-disc space-y-2 pl-6 text-sm leading-relaxed text-white/70">
-            <li>Essential cookies for authentication, session continuity, and security.</li>
-            <li>Preference cookies to remember settings (theme, recent routes) where applicable.</li>
-            <li>Analytics to understand usage and improve the product (aggregated where possible).</li>
-            <li>No marketing/ads trackers are planned at this time; if added, we will update and request consent where required.</li>
+            <li>
+              <strong className="text-white">Essential:</strong> first-party cookies for A/B variant assignment (
+              <code className="text-white/80">planewx-variant</code>), brand-portal auth (
+              <code className="text-white/80">planewx-brand-auth</code>), consent region (
+              <code className="text-white/80">pw_consent_region</code>), GPC signal (
+              <code className="text-white/80">pw_gpc</code>), and first-party localStorage for consent prefs (
+              <code className="text-white/80">cookie_prefs_v1</code>), referral codes, and UI dismissals.
+            </li>
+            <li>
+              <strong className="text-white">Analytics (optional):</strong> Google Analytics (
+              <code className="text-white/80">G-FKM0TMPH4M</code>) and Vercel Analytics.
+            </li>
+            <li>
+              <strong className="text-white">Marketing (optional):</strong> Google Ads (
+              <code className="text-white/80">AW-18011683791</code>, <code className="text-white/80">AW-18016407179</code>
+              ), Meta Pixel (<code className="text-white/80">1236857811920781</code>), and Reddit Pixel (
+              <code className="text-white/80">a2_iy53y8iesnik</code>). These can support cross-context advertising and may count as a
+              &quot;sale&quot; or &quot;sharing&quot; under CCPA/CPRA.
+            </li>
+            <li>
+              <strong className="text-white">Embedded third-party:</strong> YouTube embeds load only after you press play, via
+              youtube-nocookie.com. An unused Soro blog embed script exists in the codebase and is gated the same way if mounted.
+            </li>
+            <li>
+              Inter is self-hosted by next/font (no fonts.googleapis.com request at runtime). No GTM container, PostHog, Calendly,
+              chat widget, or Speed Insights on this site today.
+            </li>
           </ul>
         </Section>
 
         <Section title="Managing Preferences">
-          <p className="text-sm leading-relaxed text-white/70">
-            You can manage cookies via your browser settings. Where required (e.g., EU/UK), we will present a consent banner to accept or
-            decline non-essential cookies. If you block cookies, some features (login, saved trips) may not work.
+          <p className="text-sm leading-relaxed text-white/70 mb-3">
+            Use the on-site controls below, or your browser settings. Blocking essential storage can break variant assignment and
+            preference memory.
           </p>
+          <div className="flex flex-wrap gap-4 text-sm">
+            <CookiePrefsLinks className="text-sky-400 hover:text-sky-300 underline underline-offset-2" />
+          </div>
         </Section>
 
         <Section title="Regional Consent">
-          <p className="text-sm leading-relaxed text-white/70">
-            If you are in a region that requires consent for analytics/marketing cookies, we will request consent before setting them. You can
-            change your choice anytime via the banner (when shown) or by clearing cookies and reloading.
-          </p>
+          <ul className="list-disc space-y-2 pl-6 text-sm leading-relaxed text-white/70">
+            <li>
+              <strong className="text-white">EU, UK, EEA, Switzerland:</strong> non-essential analytics and marketing scripts stay
+              blocked until you opt in. Equal-prominence Accept all and Essential only; Manage for per-category choice.
+            </li>
+            <li>
+              <strong className="text-white">US and elsewhere:</strong> a notice is shown. Global Privacy Control (navigator and
+              Sec-GPC) is treated as an opt-out of marketing / sale-or-share scripts. A Do not sell or share control is available
+              because marketing pixels are present.
+            </li>
+            <li>
+              If geo detection is missing, we default to the strict (opt-in) behavior. Country comes from Vercel request geo only
+              (no third-party geo API).
+            </li>
+          </ul>
         </Section>
 
         <Section title="Data Retention">
           <p className="text-sm leading-relaxed text-white/70">
-            Cookie lifetimes vary by purpose. Essential session cookies typically expire when you log out or after a short period of inactivity.
-            Preference and analytics cookies may persist longer to improve your experience.
+            Consent prefs live in first-party localStorage with a version field so we can ask again if categories change. Variant and
+            consent-region cookies are first-party with finite max-age. Third-party cookie lifetimes are controlled by those vendors
+            when you allow marketing or analytics.
           </p>
         </Section>
 
         <Section title="Contact">
           <p className="text-sm leading-relaxed text-white/70">
-            Questions about cookies or tracking? Contact us at <a href="mailto:privacy@planewx.ai" className="text-sky-400 hover:underline">privacy@planewx.ai</a>.
+            Questions about cookies or tracking? Contact us at{" "}
+            <a href="mailto:privacy@planewx.ai" className="text-sky-400 hover:underline">
+              privacy@planewx.ai
+            </a>
+            .
           </p>
         </Section>
       </div>
@@ -75,4 +118,3 @@ function Section({ title, children }: { title: string; children: React.ReactNode
     </section>
   )
 }
-
