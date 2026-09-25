@@ -62,13 +62,6 @@ const jsonLd = {
         "priceCurrency": "USD",
         "availability": "https://schema.org/ComingSoon"
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "42",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
       "featureList": [
         "AI-powered weather briefings",
         "Multi-model icing and turbulence analysis (HRRR, GFS, ECMWF)",

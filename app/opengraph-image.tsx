@@ -69,16 +69,36 @@ export default async function Image() {
           >
             Fly like it&apos;s your job.
           </span>
-          <span
+          <div
             style={{
               marginTop: '20px',
-              fontSize: '26px',
-              fontWeight: 400,
-              color: 'rgba(255,255,255,0.65)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '6px',
+              maxWidth: '980px',
             }}
           >
-            The risk-management loop for pilots without a dispatcher, not just another weather app.
-          </span>
+            <span
+              style={{
+                fontSize: '24px',
+                fontWeight: 400,
+                color: 'rgba(255,255,255,0.65)',
+                lineHeight: 1.35,
+              }}
+            >
+              The risk-management loop for pilots without a dispatcher.
+            </span>
+            <span
+              style={{
+                fontSize: '24px',
+                fontWeight: 400,
+                color: 'rgba(255,255,255,0.65)',
+                lineHeight: 1.35,
+              }}
+            >
+              Not just another weather app.
+            </span>
+          </div>
         </div>
 
         {/* Bottom bar */}

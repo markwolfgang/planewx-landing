@@ -9,11 +9,11 @@ const PODCASTS = [
   {
     type: "podcast" as const,
     videoId: "qu7ppznhcGM",
-    title: "Pilots: Meet PlaneWX, Decision Support for Fly or Stay",
+    title: "Video review from Your Vision Jet Pilot",
     channel: "Your Vision Jet Pilot",
     duration: "10 min",
     date: "2026",
-    description: "See how PlaneWX synthesizes METARs, TAFs, AIRMETs, SIGMETs, NOTAMs, and more into a single actionable WX Score for your flight.",
+    description: "A third-party video walkthrough of how PlaneWX turns weather products into a WX Score for a real trip.",
     badge: "video" as const,
   },
   {

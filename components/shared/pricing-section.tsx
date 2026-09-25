@@ -139,7 +139,8 @@ export function PricingSection({ variant }: { variant: string }) {
           <p className="max-w-2xl mx-auto mb-10 px-4 py-3 rounded-xl border border-teal-500/40 bg-teal-500/10 text-sm font-semibold text-white/80 text-center">
             I priced annual when the app was new. It isn&apos;t anymore. This locks today&apos;s
             rate for two years. Grateful for your support. It&apos;s why I keep putting my
-            heart, soul, and wallet into PlaneWX. Mark Wolfgang, founder
+            heart, soul, and wallet into PlaneWX.
+            <span className="block mt-2">Mark Wolfgang, founder</span>
           </p>
         )}
 
@@ -363,7 +364,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 <h3 className="text-xl font-bold">Pro Monthly</h3>
               </div>
               <p className="text-sm text-white/40">
-                Auto-monitoring &amp; advanced tools. Join 2,200+ pilots on PlaneWX.
+                Auto-monitoring &amp; advanced tools for frequent flyers.
               </p>
             </div>
             <div className="mb-6">
