@@ -70,7 +70,7 @@ export function LandingVariantA() {
       <nav className="relative z-10 border-b border-white/5">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between gap-3 sm:gap-4">
           <div className="flex items-center gap-3 shrink-0">
-            <BrandLogo className="h-9 w-auto" priority />
+            <BrandLogo className="h-6 sm:h-9 w-auto" priority />
             <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
               The Pilot&apos;s Decision Support System
             </span>
@@ -112,7 +112,7 @@ export function LandingVariantA() {
             </SignUpButton>
             <SignUpButton
               variant={VARIANT}
-              className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-3 sm:px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors whitespace-nowrap"
+              className="inline-flex items-center justify-center rounded-md text-xs font-semibold px-3 py-1.5 sm:h-9 sm:px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors whitespace-nowrap"
             >
               Start Free 14-Day Trial
             </SignUpButton>
