@@ -77,7 +77,7 @@ export default async function Image() {
               color: 'rgba(255,255,255,0.65)',
             }}
           >
-            Every weather tool shows you data. PlaneWX helps you make the call.
+            The risk-management loop for pilots without a dispatcher, not just another weather app.
           </span>
         </div>
 

@@ -128,7 +128,7 @@ export function LandingPageV3() {
               href={signUpUrl}
               className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
             >
-              Start Free Trial
+              Start Free 14-Day Trial
             </a>
           </div>
         </div>
@@ -206,12 +206,15 @@ export function LandingPageV3() {
             <div className="col-span-2 md:col-span-1">
               <div className="text-4xl md:text-5xl font-bold text-violet-400 mb-1">~2×</div>
               <div className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto">
-                Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
+                ~2x as likely to run a FRAT after a debrief
               </div>
+              <p className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto mt-2">
+                Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
+              </p>
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">Up to 10%</div>
-              <div className="text-sm text-white/50">5X5 insurance discount<br />for eligible members</div>
+              <div className="text-sm text-white/50 leading-snug max-w-[14rem] mx-auto">Up to 10% off 5X5 insurance<br />with Pro Plus</div>
             </div>
           </div>
         </div>
@@ -243,8 +246,8 @@ export function LandingPageV3() {
               The Problem
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-5">
-              Every other tool makes{" "}
-              <span className="text-rose-400">you the analyst.</span>
+              Raw weather still leaves{" "}
+              <span className="text-rose-400">you as the analyst.</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               EFBs and weather portals display raw data. Synthesizing it, assessing risk, and
@@ -258,7 +261,7 @@ export function LandingPageV3() {
             <div className="grid grid-cols-2">
               {/* Headers */}
               <div className="bg-rose-950/40 border-b border-r border-white/10 px-3 sm:px-6 py-3 sm:py-4 text-center">
-                <p className="text-xs sm:text-sm font-semibold text-rose-300 uppercase tracking-wider">Every EFB & Weather Tool</p>
+                <p className="text-xs sm:text-sm font-semibold text-rose-300 uppercase tracking-wider">Weather data alone</p>
               </div>
               <div className="bg-sky-950/40 border-b border-white/10 px-3 sm:px-6 py-3 sm:py-4 text-center">
                 <p className="text-xs sm:text-sm font-semibold text-sky-300 uppercase tracking-wider">PlaneWX</p>
@@ -317,13 +320,13 @@ export function LandingPageV3() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-blue-950/60 to-blue-950/20 border border-blue-500/20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-blue-950/60 to-blue-950/20 border border-blue-500/20">
               <div className="text-5xl font-bold text-blue-500/20 absolute top-3 right-4 select-none">1</div>
               <div className="w-11 h-11 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
                 <Brain className="h-5 w-5 text-blue-400" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Weather Briefing</h3>
+              <h3 className="text-2xl font-bold mb-2">Weather Briefing</h3>
               <p className="text-sky-400/90 text-xs font-medium mb-2">WX Score</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 A briefing scored against your aircraft and personal minimums. Personal minimums are structural:
@@ -331,12 +334,12 @@ export function LandingPageV3() {
               </p>
             </div>
 
-            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
               <div className="text-5xl font-bold text-violet-500/20 absolute top-3 right-4 select-none">2</div>
               <div className="w-11 h-11 rounded-xl bg-violet-500/20 flex items-center justify-center mb-4">
                 <ClipboardCheck className="h-5 w-5 text-violet-400" />
               </div>
-              <h3 className="text-lg font-bold mb-2">FRAT</h3>
+              <h3 className="text-2xl font-bold mb-2">FRAT</h3>
               <p className="text-violet-400/90 text-xs font-medium mb-2">PAVE risk assessment</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 A living flight risk assessment on the FAA PAVE framework, pre-filled from your briefing
@@ -344,12 +347,12 @@ export function LandingPageV3() {
               </p>
             </div>
 
-            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
               <div className="text-5xl font-bold text-emerald-500/20 absolute top-3 right-4 select-none">3</div>
               <div className="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
                 <Plane className="h-5 w-5 text-emerald-400" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Fly or Stay</h3>
+              <h3 className="text-2xl font-bold mb-2">Fly or Stay</h3>
               <p className="text-emerald-400/90 text-xs font-medium mb-2">You make the call</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 The pilot makes the call. PlaneWX informs. It never decides. Staying is a legitimate
@@ -357,12 +360,12 @@ export function LandingPageV3() {
               </p>
             </div>
 
-            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-amber-950/60 to-amber-950/20 border border-amber-500/20">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-amber-950/60 to-amber-950/20 border border-amber-500/20">
               <div className="text-5xl font-bold text-amber-500/20 absolute top-3 right-4 select-none">4</div>
               <div className="w-11 h-11 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
                 <RotateCcw className="h-5 w-5 text-amber-400" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Self Debrief</h3>
+              <h3 className="text-2xl font-bold mb-2">Self Debrief</h3>
               <p className="text-amber-400/90 text-xs font-medium mb-2">Close the loop</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 After the flight, or the flight you skipped, a self-debrief feeds the next FRAT.
@@ -371,12 +374,12 @@ export function LandingPageV3() {
             </div>
           </div>
 
-          <div className="mt-6 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-teal-950/50 to-teal-950/20 border border-teal-500/20 flex flex-col sm:flex-row gap-4 items-start">
+          <div className="mt-6 p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-teal-950/50 to-teal-950/20 border border-teal-500/20 flex flex-col sm:flex-row gap-4 items-start">
             <div className="w-11 h-11 rounded-xl bg-teal-500/20 flex items-center justify-center shrink-0">
               <HeartHandshake className="h-5 w-5 text-teal-400" />
             </div>
             <div>
-              <h3 className="text-lg font-bold mb-1">Mentor <span className="text-white/40 font-medium text-sm">(optional, alongside the loop)</span></h3>
+              <h3 className="text-2xl font-bold mb-1">Mentor <span className="text-white/40 font-medium text-sm">(optional, alongside the loop)</span></h3>
               <p className="text-white/60 text-sm leading-relaxed">
                 Not a fifth step. When you want a second set of eyes, mentors see the same briefing and FRAT you see.
                 Shared context, not a phone description.
@@ -417,7 +420,7 @@ export function LandingPageV3() {
                 >
                   WX Score
                 </a>{" "}
-                externalizes that work. For the first time, the cognitive burden of weather risk
+                externalizes that work. The cognitive burden of weather risk
                 assessment lives in software, not your memory, not your gut. Personal minimums are
                 structural: without them, the WX Score cannot generate.
               </p>
@@ -729,7 +732,7 @@ export function LandingPageV3() {
             <p className="text-white/60 text-sm leading-relaxed">
               Every free briefing uses the same AI engine, the same weather models, and the same
               scoring methodology as a Pro briefing. We limit how much you can use PlaneWX,
-              not how well it works. Paid plans unlock convenience and scale &mdash; not the
+              not how well it works. Paid plans unlock convenience and scale, not the
               quality of the analysis that keeps you safe.
             </p>
           </div>
@@ -741,7 +744,7 @@ export function LandingPageV3() {
               <p className="text-white/40 text-sm mb-4">For students and occasional flyers</p>
               <div className="px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 mb-6">
                 <p className="text-xs text-emerald-300 font-medium text-center">
-                  Full safety analysis &mdash; same engine as Pro
+                  Full safety analysis, same engine as Pro
                 </p>
               </div>
               <div className="mb-6">
@@ -803,7 +806,7 @@ export function LandingPageV3() {
                 href={signUpUrl}
                 className="block text-center py-3 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white font-semibold transition-colors mb-8 shadow-lg shadow-sky-500/25"
               >
-                Start 14-Day Free Trial
+                Start Free 14-Day Trial
               </a>
               <div className="space-y-3 text-sm">
                 <p className="text-xs text-white/30 uppercase tracking-wider font-medium mb-4">Everything in Free, plus</p>
@@ -976,7 +979,7 @@ export function LandingPageV3() {
             href={signUpUrl}
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 sm:px-12 py-4 sm:py-5 text-lg sm:text-xl font-semibold shadow-2xl shadow-sky-500/30 transition-all"
           >
-            Start Your Free 14-Day Trial
+            Start Free 14-Day Trial
             <ArrowRight className="ml-3 h-6 w-6" />
           </a>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8 text-sm text-white/40">

@@ -36,7 +36,7 @@ export default function MultiModelAnalysis() {
         <section className="text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium">
             <Layers className="h-4 w-4" />
-            Nobody else does this
+            Multi-model consensus along your route
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             Three Models.<br />

@@ -114,7 +114,7 @@ export function LandingVariantA() {
               variant={VARIANT}
               className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
             >
-              Start Free Trial
+              Start Free 14-Day Trial
             </SignUpButton>
           </div>
         </div>
@@ -206,12 +206,15 @@ export function LandingVariantA() {
             <div className="col-span-2 md:col-span-1">
               <div className="text-4xl md:text-5xl font-bold text-violet-400 mb-1">~2×</div>
               <div className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto">
-                Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
+                ~2x as likely to run a FRAT after a debrief
               </div>
+              <p className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto mt-2">
+                Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
+              </p>
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">Up to 10%</div>
-              <div className="text-sm text-white/50">5X5 insurance discount<br />for eligible members</div>
+              <div className="text-sm text-white/50 leading-snug max-w-[14rem] mx-auto">Up to 10% off 5X5 insurance<br />with Pro Plus</div>
             </div>
           </div>
         </div>
@@ -225,8 +228,8 @@ export function LandingVariantA() {
               The Problem
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-5">
-              Every other tool makes{" "}
-              <span className="text-rose-400">you the analyst.</span>
+              Raw weather still leaves{" "}
+              <span className="text-rose-400">you as the analyst.</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               Most bad launches are not mysteries. They are late decisions. Hotels are booked.
@@ -240,7 +243,7 @@ export function LandingVariantA() {
           <div className="rounded-2xl overflow-hidden border border-white/10">
             <div className="grid grid-cols-2">
               <div className="bg-rose-950/40 border-b border-r border-white/10 px-6 py-4 text-center">
-                <p className="text-sm font-semibold text-rose-300 uppercase tracking-wider">Every EFB & Weather Tool</p>
+                <p className="text-sm font-semibold text-rose-300 uppercase tracking-wider">Weather data alone</p>
               </div>
               <div className="bg-sky-950/40 border-b border-white/10 px-6 py-4 text-center">
                 <p className="text-sm font-semibold text-sky-300 uppercase tracking-wider">PlaneWX</p>
@@ -295,13 +298,13 @@ export function LandingVariantA() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-sky-950/60 to-sky-950/20 border border-sky-500/20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-sky-950/60 to-sky-950/20 border border-sky-500/20">
               <div className="text-5xl font-bold text-sky-500/20 absolute top-3 right-4 select-none">1</div>
               <div className="w-11 h-11 rounded-xl bg-sky-500/20 flex items-center justify-center mb-4">
                 <CloudSun className="h-5 w-5 text-sky-400" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Weather Briefing</h3>
+              <h3 className="text-2xl font-bold mb-2">Weather Briefing</h3>
               <p className="text-sky-400/90 text-xs font-medium mb-2">WX Score</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 A briefing scored against your aircraft and personal minimums. Personal minimums are
@@ -310,12 +313,12 @@ export function LandingVariantA() {
               </p>
             </div>
 
-            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
               <div className="text-5xl font-bold text-violet-500/20 absolute top-3 right-4 select-none">2</div>
               <div className="w-11 h-11 rounded-xl bg-violet-500/20 flex items-center justify-center mb-4">
                 <ClipboardCheck className="h-5 w-5 text-violet-400" />
               </div>
-              <h3 className="text-lg font-bold mb-2">FRAT</h3>
+              <h3 className="text-2xl font-bold mb-2">FRAT</h3>
               <p className="text-violet-400/90 text-xs font-medium mb-2">PAVE risk assessment</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 A living flight risk assessment on the FAA PAVE framework, pre-filled from your
@@ -323,12 +326,12 @@ export function LandingVariantA() {
               </p>
             </div>
 
-            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
               <div className="text-5xl font-bold text-emerald-500/20 absolute top-3 right-4 select-none">3</div>
               <div className="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
                 <Plane className="h-5 w-5 text-emerald-400" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Fly or Stay</h3>
+              <h3 className="text-2xl font-bold mb-2">Fly or Stay</h3>
               <p className="text-emerald-400/90 text-xs font-medium mb-2">You make the call</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 The pilot makes the call. PlaneWX informs. It never decides. Staying is a legitimate
@@ -336,12 +339,12 @@ export function LandingVariantA() {
               </p>
             </div>
 
-            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-amber-950/60 to-amber-950/20 border border-amber-500/20">
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-amber-950/60 to-amber-950/20 border border-amber-500/20">
               <div className="text-5xl font-bold text-amber-500/20 absolute top-3 right-4 select-none">4</div>
               <div className="w-11 h-11 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
                 <RotateCcw className="h-5 w-5 text-amber-400" />
               </div>
-              <h3 className="text-lg font-bold mb-2">Self Debrief</h3>
+              <h3 className="text-2xl font-bold mb-2">Self Debrief</h3>
               <p className="text-amber-400/90 text-xs font-medium mb-2">Close the loop</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 After the flight, or the flight you skipped, a self-debrief feeds the next FRAT.
@@ -350,12 +353,12 @@ export function LandingVariantA() {
             </div>
           </div>
 
-          <div className="mt-6 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-teal-950/50 to-teal-950/20 border border-teal-500/20 flex flex-col sm:flex-row gap-4 items-start">
+          <div className="mt-6 p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-teal-950/50 to-teal-950/20 border border-teal-500/20 flex flex-col sm:flex-row gap-4 items-start">
             <div className="w-11 h-11 rounded-xl bg-teal-500/20 flex items-center justify-center shrink-0">
               <HeartHandshake className="h-5 w-5 text-teal-400" />
             </div>
             <div>
-              <h3 className="text-lg font-bold mb-1">
+              <h3 className="text-2xl font-bold mb-1">
                 Mentor{" "}
                 <span className="text-white/40 font-medium text-sm">(optional, alongside the loop)</span>
               </h3>
@@ -443,8 +446,9 @@ export function LandingVariantA() {
               <h3 className="text-xl font-bold mb-3">Inform</h3>
               <p className="text-white/60 text-sm leading-relaxed mb-4">
                 The WX Score feeds FRAT on PAVE: Pilot, Aircraft, enVironment, External pressures.
-                Risk updates with the briefing, airport complexity, and the rest of the picture.
-                You get a complete decision view, not just a weather snapshot. You make the call.
+                The Weather Briefing covers weather risk against your minimums. Airport complexity
+                and busyness belong in the FRAT only, never in the Weather Briefing. You get a
+                complete decision view. You make the call.
               </p>
               <ul className="space-y-1.5 text-xs text-white/40">
                 <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />WX Score: 0-100% quantified risk</li>
@@ -475,8 +479,8 @@ export function LandingVariantA() {
                 the last minute.
               </p>
               <p className="text-white/70 leading-relaxed mb-6">
-                The WX Score externalizes that work. For the first time, the cognitive burden of
-                weather risk assessment lives in software, not your memory, not your gut. Personal
+                The WX Score externalizes that work. The cognitive burden of weather risk
+                assessment lives in software, not your memory, not your gut. Personal
                 minimums are structural: without them, the WX Score cannot generate.
               </p>
               <ul className="space-y-3">
@@ -579,8 +583,8 @@ export function LandingVariantA() {
                 letter: "E", label: "External Pressures",
                 color: "from-amber-950/60 to-amber-950/20 border-amber-500/20",
                 accent: "text-amber-400", bg: "bg-amber-500/20",
-                items: ["Time pressure", "Passenger / family expectations", "Business commitments", "Trip Watchers, share data, reduce pressure"],
-                filled: false, note: "Trip Watchers helps, stakeholders see the same data.",
+                items: ["Time pressure", "Passenger / family expectations", "Business commitments", "Trip Watchers: share data and reduce pressure"],
+                filled: false, note: "Trip Watchers helps. Stakeholders see the same data.",
               },
             ].map(({ letter, label, color, accent, bg, items, filled, note }) => (
               <div key={letter} className={`p-7 rounded-2xl bg-gradient-to-br ${color} border relative overflow-hidden`}>
@@ -645,21 +649,21 @@ export function LandingVariantA() {
               </h3>
               <ul className="space-y-4">
                 {[
-                  ["Know 7+ days out", "WX Score trends visible before you commit to anything"],
-                  ["40+ automatic updates", "Watch conditions evolve, no scramble the night before"],
-                  ["Alternative windows", "'Friday looks bad. Thursday afternoon shows 85%.'"],
-                  ["Trip Watchers", "Stakeholders see the same data, rescheduling is shared"],
+                  ["Know 7+ days out", "WX Score trends visible before you commit to anything."],
+                  ["40+ automatic updates", "Watch conditions evolve. No scramble the night before."],
+                  ["Alternative windows", "Friday looks bad. Thursday afternoon shows 85%."],
+                  ["Trip Watchers", "Stakeholders see the same data. Rescheduling is shared."],
                 ].map(([title, detail], i) => (
                   <li key={i} className="flex items-start gap-3">
                     <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
                     <span className="text-sm text-white/70">
-                      <strong className="text-white">{title}</strong>, {detail}
+                      <strong className="text-white">{title}</strong>. {detail}
                     </span>
                   </li>
                 ))}
               </ul>
               <p className="mt-5 text-sm text-emerald-300/60 italic">
-                The safest pilots aren&apos;t the ones who can fly in anything, they&apos;re the ones who
+                The safest pilots aren&apos;t the ones who can fly in anything. They&apos;re the ones who
                 never put themselves in that position.
               </p>
             </div>

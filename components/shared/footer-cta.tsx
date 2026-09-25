@@ -37,7 +37,7 @@ export function FooterCTA({ variant }: { variant: string }) {
           href={href}
           className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-12 py-5 text-xl font-semibold shadow-2xl shadow-sky-500/30 transition-all"
         >
-          Start Your Free 14-Day Trial
+          Start Free 14-Day Trial
           <ArrowRight className="ml-3 h-6 w-6" />
         </a>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8 text-sm text-white/40">
