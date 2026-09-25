@@ -7,7 +7,7 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Multi-Model Icing & Turbulence Analysis | PlaneWX: Weather Intelligence for Pilots",
+  title: "Multi-Model Icing & Turbulence Analysis: Weather Intelligence for Pilots",
   description: "PlaneWX queries three independent weather models (HRRR, GFS, ECMWF), builds consensus with confidence scoring, and corroborates with PIREPs and AIRMETs. Pilots get altitude-specific icing and turbulence intelligence for the route they plan to fly.",
 }
 
@@ -25,7 +25,7 @@ export default function MultiModelAnalysis() {
             href="https://app.planewx.ai" 
             className="px-4 py-2 bg-sky-500 hover:bg-sky-400 text-white text-sm font-medium rounded-lg transition-colors"
           >
-            Get Started Free
+            Start Free 14-Day Trial
           </Link>
         </div>
       </nav>
@@ -161,7 +161,7 @@ export default function MultiModelAnalysis() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-1">Global Forecast System</h3>
-                  <p className="text-white/50 text-sm mb-4">NOAA&rsquo;s primary global model: the backbone of most weather predictions worldwide.</p>
+                  <p className="text-white/50 text-sm mb-4">NOAA&rsquo;s primary global forecast model.</p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                     <div>
                       <span className="text-purple-400 text-xs font-mono uppercase tracking-wider">Resolution</span>
@@ -191,7 +191,7 @@ export default function MultiModelAnalysis() {
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-1">European Centre for Medium-Range Weather Forecasts</h3>
-                  <p className="text-white/50 text-sm mb-4">ECMWF global model from the European Centre for Medium-Range Weather Forecasts.</p>
+                  <p className="text-white/50 text-sm mb-4">Europe&rsquo;s global forecast model, with a 10-day range.</p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                     <div>
                       <span className="text-amber-400 text-xs font-mono uppercase tracking-wider">Resolution</span>
@@ -207,7 +207,7 @@ export default function MultiModelAnalysis() {
                     </div>
                     <div>
                       <span className="text-amber-400 text-xs font-mono uppercase tracking-wider">Best for</span>
-                      <p className="text-white/70">Overall accuracy, moisture, jet stream dynamics</p>
+                      <p className="text-white/70">Medium-range patterns, moisture, jet stream dynamics</p>
                     </div>
                   </div>
                 </div>
@@ -222,8 +222,8 @@ export default function MultiModelAnalysis() {
             <h2 className="text-2xl font-bold mb-4">Why Three Models?</h2>
             <p className="text-white/70 text-lg leading-relaxed mb-6">
               No single model is always right. By comparing three independent models, PlaneWX determines 
-              <strong className="text-white"> how much to trust the forecast</strong>. When all three agree, you can fly with 
-              high confidence. When they disagree, that disagreement is itself valuable intelligence: it tells 
+              <strong className="text-white"> how much to trust the forecast</strong>. When all three agree, forecast confidence is high. 
+              When they disagree, that disagreement is itself valuable intelligence: it tells 
               you the atmosphere is uncertain and conditions could go either way.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
@@ -546,7 +546,7 @@ export default function MultiModelAnalysis() {
           <div className="text-center space-y-3">
             <h2 className="text-3xl font-bold">Full Transparency</h2>
             <p className="text-white/60 max-w-2xl mx-auto">
-              Weather apps often present conclusions without evidence. PlaneWX shows you everything.
+              PlaneWX shows the data behind every assessment, not just the conclusion.
             </p>
           </div>
 
@@ -595,10 +595,10 @@ export default function MultiModelAnalysis() {
                   ["Ice type prediction", "Clear / rime / mixed", "Not provided"],
                   ["SLD / warm nose detection", "Temperature profile scanning", "SLD AIRMETs only"],
                   ["Total icing exposure", "Climb / cruise / descent minutes", "Not calculated"],
-                  ["Turbulence physics", "Wind shear + Richardson number", "Not available to pilots"],
+                  ["Turbulence physics", "Wind shear + Richardson number", "Severity products only"],
                   ["PIREP / AIRMET corroboration", "Fused with model output", "Displayed separately"],
                   ["Personal minimums", "Soft + hard limits per aircraft", "Generic severity"],
-                  ["Raw data access", "Full transparency", "Conclusions only"],
+                  ["Raw data access", "Full transparency", "Summary views"],
                 ].map(([capability, planewx, traditional]) => (
                   <tr key={capability}>
                     <td className="py-3 px-4 text-white/70">{capability}</td>
@@ -654,7 +654,7 @@ export default function MultiModelAnalysis() {
               href="https://app.planewx.ai" 
               className="px-8 py-3 bg-sky-500 hover:bg-sky-400 text-white font-semibold rounded-xl transition-colors text-lg"
             >
-              Get Started Free
+              Start Free 14-Day Trial
             </Link>
             <Link 
               href="/" 

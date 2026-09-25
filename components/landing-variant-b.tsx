@@ -103,7 +103,7 @@ export function LandingVariantB() {
         <div className="container mx-auto max-w-5xl text-center space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-300 text-sm font-medium">
             <AlertTriangle className="h-4 w-4" />
-            <span>Morning-of pressure is where weather accidents start</span>
+            <span>Morning-of pressure makes hard weather calls harder</span>
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
@@ -293,7 +293,7 @@ export function LandingVariantB() {
               <span className="text-sky-400">away from the airport</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Three capabilities that eliminate the morning-of pressure entirely.
+              Three capabilities that help move the decision earlier.
             </p>
           </div>
 

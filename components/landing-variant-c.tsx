@@ -275,7 +275,7 @@ export function LandingVariantC() {
               Why they <span className="text-sky-400">stay</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              The features that make PlaneWX the decision support system pilots won&apos;t fly without.
+              The features that make PlaneWX a decision support system pilots rely on.
             </p>
           </div>
 

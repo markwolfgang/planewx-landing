@@ -220,7 +220,7 @@ export function LandingVariantE() {
       <section className="py-24 px-6 border-y border-white/5 bg-white/[0.02]">
         <div className="max-w-5xl mx-auto">
 
-          <div className="text-center mb-16">
+          <div className="text-center mb-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
               The FAA sets the floor.{" "}
               <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
@@ -229,39 +229,11 @@ export function LandingVariantE() {
             </h2>
             <p className="text-white/50 text-lg max-w-2xl mx-auto">
               PlaneWX is for the pilot who holds themselves to a standard above
-              what's required, not because someone is watching, but because
-              they've already decided what kind of pilot they're going to be.
+              what&apos;s required, not because someone is watching, but because
+              they&apos;ve already decided what kind of pilot they&apos;re going to be.
+              Personal minimums, a structured risk assessment, and a mentor network
+              are there when you want the bar higher than the regulatory floor.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
-            {[
-              {
-                value: "95.5%",
-                color: "text-sky-400",
-                bg: "from-sky-950/60 to-cyan-950/20",
-                border: "border-sky-500/20",
-                label: "of PlaneWX pilots voluntarily require a pre-flight risk assessment",
-                sub: "Nobody made them. They turned that on themselves.",
-              },
-              {
-                value: "92%",
-                color: "text-emerald-400",
-                bg: "from-emerald-950/60 to-teal-950/20",
-                border: "border-emerald-500/20",
-                label: "found their WX Score accurate or conservative",
-                sub: "Safety-first. Always. This is not a booking engine.",
-              },
-            ].map(stat => (
-              <div
-                key={stat.value}
-                className={`rounded-2xl bg-gradient-to-br ${stat.bg} border ${stat.border} p-6`}
-              >
-                <div className={`text-5xl font-bold ${stat.color} mb-3`}>{stat.value}</div>
-                <p className="text-white font-medium mb-2 leading-snug">{stat.label}</p>
-                <p className="text-white/40 text-sm">{stat.sub}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
