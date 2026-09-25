@@ -76,12 +76,18 @@ ${/* PROVISIONAL: recount Mon from weekly-metrics (customer fixes+improvements).
 
 <h2>Briefing reviews this week</h2>
 <p>After each flight you can leave a quick review. Here&rsquo;s what you told us this week.</p>
-<p><strong>Briefing reviews</strong></p>
+${/* PRELIMINARY: data through Fri Sep 25 06:50 CT. Growth recounts Mon Sep 28 08:43 CT; update before draft flips off. Source: /workspace/reports/pirep-1-briefing-reviews.md */ ""}
 <ul>
-<li>Briefing reviews received: <strong>[TK: count, from Growth]</strong></li>
-<li>Average rating: <strong>[TK: average rating and scale, from Growth]</strong></li>
-<li>Misses investigated: <strong>[TK: count, from Growth]</strong></li>
-<li>Fixes that came from reviews: <strong>[TK: count, from Growth]</strong></li>
+<li>Briefing reviews received: <strong>29</strong>, from <strong>23</strong> pilots</li>
+<li>On flights you flew (<strong>22</strong> reviews), the WX Score was:
+<ul>
+<li>About right: <strong>10</strong></li>
+<li>Too low, meaning conditions were better than the score suggested: <strong>11</strong></li>
+<li>Too high, meaning conditions were worse than the score suggested: <strong>1</strong></li>
+</ul>
+</li>
+<li>Misses you flagged: <strong>5</strong> (a weather section you marked &ldquo;Understated it&rdquo;, or a surprise you wrote in)</li>
+<li>Fixes that came from reviews: <strong>1</strong> (a FRAT update that gives more weight to your own assessment of the environment)</li>
 </ul>
 
 <h2>Tip of the Week: what the WX Score actually is</h2>
