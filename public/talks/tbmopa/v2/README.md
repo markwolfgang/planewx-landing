@@ -16,7 +16,7 @@
 6. Purpose: airline process vs GA (no one to call)
 7. The gap: pressure, passengers, reservation
 8. Personal minimums and FRAT as GA's SOPs
-9. Key: no personal minimums, no WX Score (100%)
+9. Personal minimums, front and center
 10. Community polls: TBMOPA + COPA + Airplanes and Coffee
 11. The Loop (four steps + Mentor alongside)
 12. Loop 1: Weather Briefing
