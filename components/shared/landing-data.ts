@@ -60,10 +60,10 @@ export const FAQS: {
   fiveX5SeesNote?: boolean
 }[] = [
   {
-    q: "How is PlaneWX different from ForeFlight or aviationweather.gov?",
+    q: "How is PlaneWX different from my EFB or aviationweather.gov?",
     a: [
       [
-        "ForeFlight and Garmin Pilot are excellent EFBs for charts, filing, and day-of flying. Aviationweather.gov and Flight Service (including 1800WXBRIEF) give you official weather products. PlaneWX sits beside those tools. It does not replace them.",
+        "Your EFB is excellent for charts, filing, and day-of flying. Aviationweather.gov and Flight Service (including 1800WXBRIEF) give you official weather products. PlaneWX sits beside those tools. It does not replace them.",
       ],
       [
         "What PlaneWX adds is decision support days out: a ",
@@ -79,7 +79,7 @@ export const FAQS: {
         ", and mentors who see the same briefing you see. Read how ",
         {
           href: "https://www.planewx.ai/news/foreflight-share-to-planewx",
-          label: "ForeFlight share into PlaneWX",
+          label: "EFB share into PlaneWX",
         },
         " works when you already plan in your EFB.",
       ],
@@ -117,7 +117,7 @@ export const FAQS: {
   },
   {
     q: "What is the mentor system?",
-    a: "PlaneWX connects you with experienced pilots who can review your full briefing — WX Score, aircraft profile, personal minimums — and provide a go/no-go perspective grounded in shared data, not guesswork. It's the community layer of the decision support system.",
+    a: "PlaneWX connects you with experienced pilots who can review your full briefing (WX Score, aircraft profile, personal minimums) and offer a second set of eyes grounded in shared data, not guesswork. Mentor sits alongside the risk-management loop when you want it.",
   },
   {
     q: "Is there a free plan?",

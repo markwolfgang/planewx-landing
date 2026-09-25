@@ -19,7 +19,7 @@ const jsonLd = {
       "@id": "https://www.planewx.ai/#website",
       "url": "https://www.planewx.ai",
       "name": "PlaneWX",
-      "description": "The Pilot's Decision Support System: weather briefing, FRAT, and a mentor network for general aviation pilots.",
+      "description": "PlaneWX is the decision support system for general aviation. Weather Briefing (WX Score), FRAT, Fly or Stay, and Self Debrief, with Mentor alongside. Fly like it's your job.",
       "publisher": {
         "@id": "https://www.planewx.ai/#organization"
       },
@@ -53,7 +53,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "@id": "https://www.planewx.ai/#app",
       "name": "PlaneWX",
-      "description": "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, and a mentor network. Every weather tool shows you data. PlaneWX helps you decide.",
+      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and builds professional-grade habits that make flying safer. The risk-management loop for pilots who don't have a dispatcher.",
       "applicationCategory": "WeatherApplication",
       "operatingSystem": "Web",
       "offers": {
@@ -91,7 +91,7 @@ const jsonLd = {
           "name": "What is PlaneWX?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PlaneWX is the Pilot's Decision Support System for general aviation. It combines weather briefing, FRAT, and a mentor network so pilots can see weather and risk, and connect with a mentor before the pressure locks in."
+            "text": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and builds professional-grade habits that make flying safer. The loop is Weather Briefing (WX Score), FRAT, Fly or Stay, and Self Debrief, with Mentor optional alongside. You make the call. PlaneWX informs."
           }
         },
         {
@@ -129,7 +129,7 @@ export const metadata: Metadata = {
     template: "%s | PlaneWX",
   },
   description:
-    "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, and a mentor network. The confidence to go, or the courage to stay™.",
+    "PlaneWX is the decision support system for general aviation. Professional-grade tools and habits: Weather Briefing (WX Score), FRAT, Fly or Stay, Self Debrief. Fly like it's your job.",
   keywords: [
     "aviation weather",
     "flight planning",
@@ -196,14 +196,14 @@ export const metadata: Metadata = {
     siteName: "PlaneWX",
     title: "PlaneWX | The Pilot's Decision Support System",
     description:
-      "Every weather tool shows you data. PlaneWX helps you decide. Weather briefing, FRAT, and a mentor network.",
+      "PlaneWX is the decision support system for general aviation. Weather Briefing, FRAT, Fly or Stay, Self Debrief. Fly like it's your job.",
     // OG image is auto-generated from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
     title: "PlaneWX | The Pilot's Decision Support System",
     description:
-      "Every weather tool shows you data. PlaneWX helps you decide. Weather briefing, FRAT, and a mentor network.",
+      "PlaneWX is the decision support system for general aviation. Weather Briefing, FRAT, Fly or Stay, Self Debrief. Fly like it's your job.",
     // Twitter image is auto-generated from app/twitter-image.tsx
     creator: "@planewx",
   },

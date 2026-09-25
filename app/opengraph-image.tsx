@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 import fs from 'fs'
 import path from 'path'
 
-export const alt = "PlaneWX | The Pilot's Decision Support System"
+export const alt = "PlaneWX | Fly like it's your job."
 export const size = {
   width: 1200,
   height: 630,
@@ -88,7 +88,7 @@ export default async function Image() {
               color: 'rgba(255,255,255,0.65)',
             }}
           >
-            Every weather tool shows you data. PlaneWX helps you decide.
+            The risk-management loop for pilots who do not have a dispatcher.
           </span>
         </div>
 
@@ -107,13 +107,14 @@ export default async function Image() {
               color: 'rgba(255,255,255,0.45)',
             }}
           >
-            The confidence to go, or the courage to stay.™
+            Fly like it's your job.
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             {[
               { label: 'Weather Briefing', color: '#38bdf8' },
               { label: 'FRAT', color: '#a78bfa' },
-              { label: 'Mentor Network', color: '#10b981' },
+              { label: 'Fly or Stay', color: '#34d399' },
+              { label: 'Self Debrief', color: '#fbbf24' },
             ].map(({ label, color }) => (
               <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div

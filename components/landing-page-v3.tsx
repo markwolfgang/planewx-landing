@@ -32,6 +32,8 @@ import {
   Wind,
   Route,
   Quote,
+  ClipboardCheck,
+  RotateCcw,
 } from "lucide-react"
 
 
@@ -157,16 +159,15 @@ export function LandingPageV3() {
 
           {/* Brand tagline */}
           <p className="text-lg md:text-xl text-white/50 italic font-light tracking-wide">
-            "The confidence to go, or the courage to stay™"
+            Fly like it&apos;s your job.
           </p>
 
           <p className="text-lg md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            We synthesize the same authoritative weather data every EFB uses — against{" "}
-            <strong className="text-white">your aircraft</strong> and{" "}
-            <strong className="text-white">your personal minimums</strong> — into a{" "}
-            <strong className="text-sky-400">WX Score</strong>: a quantified risk assessment
-            integrated into the{" "}
-            <strong className="text-white">PAVE decision framework.</strong>
+            PlaneWX is the decision support system for general aviation. It gives pilots
+            professional-grade tools and builds professional-grade habits that make flying safer.
+          </p>
+          <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+            The risk-management loop for pilots who don&apos;t have a dispatcher.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -189,7 +190,7 @@ export function LandingPageV3() {
 
           <div className="flex items-center justify-center gap-2 mt-4 text-sm text-emerald-400/80">
             <Shield className="h-4 w-4" />
-            <span>Full safety analysis on every plan — <strong className="text-emerald-300">free forever</strong></span>
+            <span>Full safety analysis on every plan. <strong className="text-emerald-300">Free forever.</strong></span>
           </div>
         </div>
       </section>
@@ -202,24 +203,24 @@ export function LandingPageV3() {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-sky-400 mb-1">{STATS.cumulativeHours}</div>
-              <div className="text-sm text-white/50">cumulative flight hours<br />in our pilot community</div>
+              <div className="text-4xl md:text-5xl font-bold text-sky-400 mb-1">2,200+</div>
+              <div className="text-sm text-white/50">pilots in<br />35 countries</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-1">{STATS.instrumentRated}</div>
-              <div className="text-sm text-white/50">of our pilots are<br />instrument rated</div>
+              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-1">8.7/10</div>
+              <div className="text-sm text-white/50">briefing feedback<br />(1,724 responses)</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-violet-400 mb-1">{STATS.jetAircraft}</div>
-              <div className="text-sm text-white/50">jet aircraft<br />in our fleet</div>
+              <div className="text-4xl md:text-5xl font-bold text-violet-400 mb-1">~2×</div>
+              <div className="text-sm text-white/50">more likely to run a FRAT<br />after a self-debrief</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">{STATS.avgHours}</div>
-              <div className="text-sm text-white/50">average flight hours<br />per pilot</div>
+              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">Up to 10%</div>
+              <div className="text-sm text-white/50">5X5 insurance discount<br />for eligible members</div>
             </div>
           </div>
           <p className="text-center text-xs text-white/25 mt-8">
-            From student pilots building hours to ATP captains flying Citations and Gulfstreams.
+            Pilots who self-debrief a flight are about twice as likely to run a FRAT on the next one.
           </p>
         </div>
       </section>
@@ -254,8 +255,8 @@ export function LandingPageV3() {
               <span className="text-rose-400">you the analyst.</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              EFBs and weather portals display raw data. The cognitive work — synthesizing it,
-              assessing risk, forming a go/no-go judgment — lands entirely on you. Alone. Often
+              EFBs and weather portals display raw data. The cognitive work of synthesizing it,
+              assessing risk, and forming a clear judgment lands entirely on you. Alone. Often
               under pressure.
             </p>
           </div>
@@ -274,7 +275,7 @@ export function LandingPageV3() {
               {[
                 ["Raw METARs, TAFs, PIREPs", "Synthesizes all of it using AI"],
                 ["Generic VFR / IFR categories", "Your minimums + your aircraft"],
-                ["You formulate the risk yourself", "WX Score — quantified, done for you"],
+                ["You formulate the risk yourself", "WX Score: quantified, done for you"],
                 ["Data only", "WX Score feeds into PAVE framework"],
                 ["You decide alone", "Mentor who sees your full briefing"],
               ].map(([left, right], i) => (
@@ -315,81 +316,86 @@ export function LandingPageV3() {
               How It Works
             </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-5">
-              From raw data to{" "}
-              <span className="text-sky-400">confident decision</span>
+              The risk-management{" "}
+              <span className="text-sky-400">loop</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Three steps that happen automatically, before you even open a briefing.
+              One risk-management loop. Four parts. Mentor sits alongside when you want a second set of eyes.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Step 1 */}
-            <div className="relative p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-blue-950/60 to-blue-950/20 border border-blue-500/20">
-              <div className="text-6xl font-bold text-blue-500/20 absolute top-4 right-6 select-none">1</div>
-              <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-5">
-                <Brain className="h-6 w-6 text-blue-400" />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-blue-950/60 to-blue-950/20 border border-blue-500/20">
+              <div className="text-5xl font-bold text-blue-500/20 absolute top-3 right-4 select-none">1</div>
+              <div className="w-11 h-11 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
+                <Brain className="h-5 w-5 text-blue-400" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Synthesize</h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-4">
-                Our AI reads METARs, TAFs, PIREPs, SIGMETs, winds aloft, HRRR/GFS/ECMWF model
-                data, and NWS forecaster narratives — then synthesizes them into a coherent picture
-                along your entire route.
+              <h3 className="text-lg font-bold mb-2">Weather Briefing</h3>
+              <p className="text-sky-400/90 text-xs font-medium mb-2">WX Score</p>
+              <p className="text-white/60 text-sm leading-relaxed">
+                A briefing scored against your aircraft and personal minimums. Personal minimums are structural:
+                the WX Score cannot generate without them, and they appear on every briefing.
               </p>
-              <ul className="space-y-1.5 text-xs text-white/40">
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-blue-400" />METARs · TAFs · PIREPs</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-blue-400" />SIGMETs · AIRMETs · G-AIRMETs</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-blue-400" />HRRR · GFS · ECMWF model consensus</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-blue-400" />NWS forecaster narratives</li>
-              </ul>
             </div>
 
-            {/* Step 2 */}
-            <div className="relative p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
-              <div className="text-6xl font-bold text-violet-500/20 absolute top-4 right-6 select-none">2</div>
-              <div className="w-12 h-12 rounded-xl bg-violet-500/20 flex items-center justify-center mb-5">
-                <Target className="h-6 w-6 text-violet-400" />
+            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
+              <div className="text-5xl font-bold text-violet-500/20 absolute top-3 right-4 select-none">2</div>
+              <div className="w-11 h-11 rounded-xl bg-violet-500/20 flex items-center justify-center mb-4">
+                <ClipboardCheck className="h-5 w-5 text-violet-400" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Personalize</h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-4">
-                The synthesis is matched against your aircraft&apos;s actual capabilities — FIKI, TAS,
-                service ceiling, autopilot — and your{" "}
-                <a
-                  href="https://www.planewx.ai/blog/personal-minimums-weather-planning"
-                  className="text-sky-400 underline underline-offset-2 decoration-sky-400/50 hover:text-sky-300"
-                >
-                  personal minimums
-                </a>
-                . Your SR22T has different limits than a rental 172.
+              <h3 className="text-lg font-bold mb-2">FRAT</h3>
+              <p className="text-violet-400/90 text-xs font-medium mb-2">PAVE risk assessment</p>
+              <p className="text-white/60 text-sm leading-relaxed">
+                A living flight risk assessment on the FAA PAVE framework, pre-filled from your briefing
+                and trip context so you are not inventing the environment under pressure.
               </p>
-              <ul className="space-y-1.5 text-xs text-white/40">
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-violet-400" />Per-aircraft minimums (ceiling, vis, crosswind)</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-violet-400" />Icing & turbulence tolerance per aircraft</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-violet-400" />FIKI, TAS, autopilot, weather radar aware</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-violet-400" />Multiple aircraft profiles supported</li>
-              </ul>
             </div>
 
-            {/* Step 3 */}
-            <div className="relative p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
-              <div className="text-6xl font-bold text-emerald-500/20 absolute top-4 right-6 select-none">3</div>
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-5">
-                <Gauge className="h-6 w-6 text-emerald-400" />
+            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
+              <div className="text-5xl font-bold text-emerald-500/20 absolute top-3 right-4 select-none">3</div>
+              <div className="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
+                <Plane className="h-5 w-5 text-emerald-400" />
               </div>
-              <h3 className="text-xl font-bold mb-3">Decide</h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-4">
-                The WX Score feeds into a structured PAVE risk assessment — Pilot, Aircraft,
-                enVironment, External pressures. You get a complete decision picture, not just a
-                weather snapshot.
+              <h3 className="text-lg font-bold mb-2">Fly or Stay</h3>
+              <p className="text-emerald-400/90 text-xs font-medium mb-2">You make the call</p>
+              <p className="text-white/60 text-sm leading-relaxed">
+                PlaneWX informs. It never decides. You stay PIC. Staying is a legitimate outcome,
+                not a failure.
               </p>
-              <ul className="space-y-1.5 text-xs text-white/40">
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />WX Score: 0–100% quantified risk</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />Full PAVE framework, pre-filled from context</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />14-day trend to avoid last-minute pressure</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />Mentor connection for human perspective</li>
-              </ul>
+            </div>
+
+            <div className="relative p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-amber-950/60 to-amber-950/20 border border-amber-500/20">
+              <div className="text-5xl font-bold text-amber-500/20 absolute top-3 right-4 select-none">4</div>
+              <div className="w-11 h-11 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
+                <RotateCcw className="h-5 w-5 text-amber-400" />
+              </div>
+              <h3 className="text-lg font-bold mb-2">Self Debrief</h3>
+              <p className="text-amber-400/90 text-xs font-medium mb-2">Close the loop</p>
+              <p className="text-white/60 text-sm leading-relaxed">
+                After the flight, or the flight you skipped, a self-debrief feeds the next FRAT.
+                That is how professional-grade habits stick.
+              </p>
             </div>
           </div>
+
+          <div className="mt-6 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-teal-950/50 to-teal-950/20 border border-teal-500/20 flex flex-col sm:flex-row gap-4 items-start">
+            <div className="w-11 h-11 rounded-xl bg-teal-500/20 flex items-center justify-center shrink-0">
+              <HeartHandshake className="h-5 w-5 text-teal-400" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-1">Mentor <span className="text-white/40 font-medium text-sm">(optional, alongside the loop)</span></h3>
+              <p className="text-white/60 text-sm leading-relaxed">
+                Not a fifth step. When you want a second set of eyes, mentors see the same briefing and FRAT you see.
+                Shared context, not a phone description.
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-8 text-center text-sm text-white/45 max-w-2xl mx-auto">
+            PlaneWX complements Flight Service and your EFB. Charts, filing, and official sources stay where they belong.
+            You stay PIC.
+          </p>
+
         </div>
       </section>
 
@@ -406,8 +412,8 @@ export function LandingPageV3() {
                 <span className="text-emerald-400">finally quantified</span>
               </h2>
               <p className="text-white/70 leading-relaxed mb-6">
-                Right now, your go/no-go judgment lives entirely in your head. You mentally juggle
-                ceilings, winds, icing, turbulence, currency, and fatigue — under pressure, often at
+                Right now, your weather judgment lives entirely in your head. You mentally juggle
+                ceilings, winds, icing, turbulence, currency, and fatigue under pressure, often at
                 the last minute.
               </p>
               <p className="text-white/70 leading-relaxed mb-6">
@@ -419,7 +425,7 @@ export function LandingPageV3() {
                   WX Score
                 </a>{" "}
                 externalizes that work. For the first time, the cognitive burden of weather risk
-                assessment lives in software — not your memory, not your gut.
+                assessment lives in software, not your memory, not your gut.
               </p>
               <ul className="space-y-3">
                 {[
@@ -651,7 +657,7 @@ export function LandingPageV3() {
                 icon: <Clock className="h-6 w-6" />,
                 color: "text-sky-400 bg-sky-500/20",
                 title: "14-Day Planning Horizon",
-                desc: "Monitor WX trends from 2 weeks out. Never face a last-minute go/no-go with bags packed and commitments made.",
+                desc: "Monitor WX trends from 2 weeks out. Never face a last-minute stay-or-fly call with bags packed and commitments made.",
               },
               {
                 icon: <Snowflake className="h-6 w-6" />,
