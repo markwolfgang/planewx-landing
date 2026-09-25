@@ -34,11 +34,12 @@ loop:
   - num: 3
     accent: emerald
     title: GO / NO-GO
-    body: Staying is legitimate. The pilot decides. PlaneWX informs.
+    body: Staying is legitimate. PlaneWX never recommends go or no-go. The pilot makes the
+      call.
   - num: 4
     accent: amber
     title: Self Debrief
-    body: Looks back at the flight and the FRAT you ran.
+    body: Looks back at the flight and the FRAT you ran for that trip.
   mentorNote: '**Mentor** sits alongside all four parts of the loop. It is optional and opened by the
     pilot.'
 missionVision:
@@ -180,10 +181,10 @@ publicProof:
     label: pilots in 35 countries
     color: sky
   - value: 8.7 / 10
-    label: average briefing feedback (1,724 responses)
+    label: how likely pilots are to recommend PlaneWX (1,724 responses)
     color: sky
   - value: Up to 10%
-    label: 5X5 insurance discount tied to PlaneWX platform usage
+    label: off 5X5 insurance with Pro Plus
     color: sky
   association: "Pilots who debrief a flight are about twice as likely to run a FRAT on the next one."
   associationNote: "An association in PlaneWX data, not cause and effect."

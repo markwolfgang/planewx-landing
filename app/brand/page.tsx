@@ -418,7 +418,7 @@ export default function BrandPortalPage() {
               <div className={`text-2xl font-bold ${STAT_COLOR[stat.color] ?? "text-sky-400"}`}>
                 {stat.value}
               </div>
-              <div className="text-sm text-white/60 mt-2 leading-snug">
+              <div className={`text-sm text-white/60 mt-2 leading-snug ${stat.value === "Up to 10%" ? "whitespace-nowrap" : ""}`}>
                 {stat.label}
               </div>
             </div>
