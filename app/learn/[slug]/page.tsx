@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowRight } from "lucide-react"
@@ -7,10 +8,13 @@ import {
   LEARN_ARTICLES,
   LEARN_DISCLAIMER,
   LEARN_DRAFT_BANNER,
+  LEARN_LOOP_STAGES,
   getLearnArticle,
   shouldEmitArticleJsonLd,
   shouldIndexLearnArticle,
   type LearnBodyBlock,
+  type LearnLoopStage,
+  type PuttingItIntoPractice,
 } from "../learn-data"
 
 interface Props {
@@ -58,6 +62,16 @@ function BodyBlocks({ blocks }: { blocks: LearnBodyBlock[] }) {
   return (
     <div className="space-y-5 text-base leading-relaxed text-white/75">
       {blocks.map((block, i) => {
+        if (block.type === "htmlComment") {
+          return (
+            <div
+              key={i}
+              className="hidden"
+              aria-hidden="true"
+              dangerouslySetInnerHTML={{ __html: `<!-- ${block.text} -->` }}
+            />
+          )
+        }
         if (block.type === "heading") {
           return (
             <h2
@@ -80,6 +94,112 @@ function BodyBlocks({ blocks }: { blocks: LearnBodyBlock[] }) {
         return <p key={i}>{block.text}</p>
       })}
     </div>
+  )
+}
+
+function LoopStageIndicator({ active }: { active: LearnLoopStage[] }) {
+  const activeSet = new Set(active)
+
+  return (
+    <div className="space-y-2">
+      <p className="text-xs font-medium uppercase tracking-widest text-white/40">
+        Decision loop
+      </p>
+      <ol className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+        {LEARN_LOOP_STAGES.map((stage, index) => {
+          const isOn = activeSet.has(stage)
+          return (
+            <li
+              key={stage}
+              className={`relative rounded-lg border px-2.5 py-3 text-center transition-colors ${
+                isOn
+                  ? "border-sky-400/50 bg-sky-500/15 text-sky-100"
+                  : "border-white/10 bg-white/[0.03] text-white/35"
+              }`}
+            >
+              <span
+                className={`mb-1 block text-[10px] font-semibold uppercase tracking-wider ${
+                  isOn ? "text-sky-300/80" : "text-white/25"
+                }`}
+              >
+                {index + 1}
+              </span>
+              <span className="block text-xs font-medium leading-snug sm:text-[13px]">
+                {stage}
+              </span>
+            </li>
+          )
+        })}
+      </ol>
+      <p className="text-xs text-white/35">
+        Mentor is an optional layer on any step, not a fifth stage.
+      </p>
+    </div>
+  )
+}
+
+function PuttingItIntoPracticeSection({
+  practice,
+  draft,
+}: {
+  practice: PuttingItIntoPractice
+  draft: boolean
+}) {
+  return (
+    <section
+      aria-labelledby="practice-heading"
+      className="mt-12 border-t border-white/10 pt-8"
+    >
+      <h2
+        id="practice-heading"
+        className="mb-4 text-xl font-semibold tracking-tight text-white"
+      >
+        Putting it into practice
+      </h2>
+
+      {draft ? (
+        <div
+          role="status"
+          className="mb-5 rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 py-2 text-center text-xs font-semibold tracking-wide text-amber-200"
+        >
+          {LEARN_DRAFT_BANNER}
+        </div>
+      ) : null}
+
+      <div className="space-y-6 rounded-xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
+        <div>
+          <h3 className="mb-2 text-xs font-medium uppercase tracking-widest text-white/40">
+            Why it matters
+          </h3>
+          <p className="text-sm leading-relaxed text-white/70 sm:text-base">
+            {practice.whyItMatters}
+          </p>
+        </div>
+
+        <LoopStageIndicator active={practice.loopStage} />
+
+        <div>
+          <h3 className="mb-2 text-xs font-medium uppercase tracking-widest text-white/40">
+            Tool or habit
+          </h3>
+          <p className="text-sm leading-relaxed text-white/70 sm:text-base">
+            {practice.toolOrHabit}
+          </p>
+        </div>
+
+        {practice.screenshot ? (
+          <figure className="overflow-hidden rounded-lg border border-white/10 bg-black/30">
+            <Image
+              src={practice.screenshot.src}
+              alt={practice.screenshot.alt}
+              width={1200}
+              height={800}
+              className="h-auto w-full"
+            />
+          </figure>
+        ) : null}
+      </div>
+    </section>
   )
 }
 
@@ -137,6 +257,11 @@ export default async function LearnArticlePage({ params }: Props) {
         ) : null}
 
         <BodyBlocks blocks={article.body} />
+
+        <PuttingItIntoPracticeSection
+          practice={article.puttingItIntoPractice}
+          draft={article.draft}
+        />
 
         <section
           aria-labelledby="sources-heading"
