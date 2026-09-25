@@ -119,6 +119,16 @@ export async function POST(request: Request) {
     const name = nameField.value
     const note = noteField.value
 
+    // Local/CI verify only. Never set in production; skips Resend entirely.
+    if (process.env.INQUIRY_EMAIL_DRY_RUN === "1") {
+      return NextResponse.json({
+        success: true,
+        message: "Thanks. We got your note and will reply soon.",
+        dryRun: true,
+        received: { org, name, email, note },
+      })
+    }
+
     const resendApiKey = process.env.RESEND_API_KEY
     if (!resendApiKey) {
       console.error("[Ambassadors Inquiry] RESEND_API_KEY missing")

@@ -16,7 +16,6 @@ const INVOLVEMENT_OPTIONS = [
 
 export function AmbassadorInquiryForm() {
   const [handle, setHandle] = useState("")
-  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [involvement, setInvolvement] = useState("")
   const [status, setStatus] = useState<Status>("idle")
@@ -28,13 +27,14 @@ export function AmbassadorInquiryForm() {
     setMessage("")
 
     try {
-      // API still accepts org + note; map handle -> org, involvement -> note.
+      // API still requires org + name + note; map handle -> org and name,
+      // involvement -> note. Single UI field, no duplicate name inputs.
       const res = await fetch("/api/ambassadors/inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           org: handle,
-          name,
+          name: handle,
           email,
           note: involvement,
         }),
@@ -48,7 +48,6 @@ export function AmbassadorInquiryForm() {
       setStatus("success")
       setMessage(data.message || "Thanks. We got your note and will reply soon.")
       setHandle("")
-      setName("")
       setEmail("")
       setInvolvement("")
     } catch {
@@ -71,36 +70,19 @@ export function AmbassadorInquiryForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 text-left">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <label className="block space-y-1.5">
-          <span className="text-xs font-medium text-white/55">
-            Name or handle
-          </span>
-          <input
-            name="handle"
-            required
-            maxLength={200}
-            value={handle}
-            onChange={(e) => setHandle(e.target.value)}
-            autoComplete="nickname"
-            placeholder="Your name, call sign, or social handle"
-            className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/40"
-          />
-        </label>
-        <label className="block space-y-1.5">
-          <span className="text-xs font-medium text-white/55">Your name</span>
-          <input
-            name="name"
-            required
-            maxLength={120}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            autoComplete="name"
-            placeholder="Who should we reply to"
-            className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/40"
-          />
-        </label>
-      </div>
+      <label className="block space-y-1.5">
+        <span className="text-xs font-medium text-white/55">Name or handle</span>
+        <input
+          name="handle"
+          required
+          maxLength={200}
+          value={handle}
+          onChange={(e) => setHandle(e.target.value)}
+          autoComplete="nickname"
+          placeholder="Your name, call sign, or social handle"
+          className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/40"
+        />
+      </label>
       <label className="block space-y-1.5">
         <span className="text-xs font-medium text-white/55">Email</span>
         <input
