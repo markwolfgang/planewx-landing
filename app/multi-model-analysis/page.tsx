@@ -489,19 +489,19 @@ export default function MultiModelAnalysis() {
               <ul className="space-y-3 text-sm text-white/60">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">PIREPs confirm model</strong> → Confidence boosted</span>
+                  <span><strong className="text-white">PIREPs confirm model</strong>: Confidence boosted</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">Negative PIREPs in model zone</strong> → Confidence lowered</span>
+                  <span><strong className="text-white">Negative PIREPs in model zone</strong>: Confidence lowered</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">PIREPs where model says none</strong> → PIREP severity adopted, layer bounds updated</span>
+                  <span><strong className="text-white">PIREPs where model says none</strong>: PIREP severity adopted, layer bounds updated</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">PIREPs exceed model</strong> → Prioritized as ground truth</span>
+                  <span><strong className="text-white">PIREPs exceed model</strong>: Prioritized as ground truth</span>
                 </li>
               </ul>
             </div>
@@ -514,19 +514,19 @@ export default function MultiModelAnalysis() {
               <ul className="space-y-3 text-sm text-white/60">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-4 w-4 text-violet-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">Active G-AIRMET + model agreement</strong> → Corroborated, confidence boosted</span>
+                  <span><strong className="text-white">Active G-AIRMET + model agreement</strong>: Corroborated, confidence boosted</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-4 w-4 text-violet-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">Active AIRMET, model shows none</strong> → Model upgraded to trace</span>
+                  <span><strong className="text-white">Active AIRMET, model shows none</strong>: Model upgraded to trace</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-4 w-4 text-violet-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">G-AIRMET freezing level</strong> → Caps or corrects model freezing levels</span>
+                  <span><strong className="text-white">G-AIRMET freezing level</strong>: Caps or corrects model freezing levels</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle className="h-4 w-4 text-violet-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">SIGMETs</strong> → Always override model predictions for severe conditions</span>
+                  <span><strong className="text-white">SIGMETs</strong>: Always override model predictions for severe conditions</span>
                 </li>
               </ul>
             </div>
@@ -630,7 +630,7 @@ export default function MultiModelAnalysis() {
               <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20">
                 <h3 className="font-semibold text-red-400 mb-2">Limit (Hard Limit)</h3>
                 <p className="text-sm text-white/60">
-                  Your absolute maximum. Exceeding this is unfavorable: WX Score drops to 0%. 
+                  Your absolute maximum. Exceeding this is unfavorable and marked as a hard-limit exceedance. 
                   Non-FIKI aircraft are always unfavorable for any icing.
                 </p>
               </div>
