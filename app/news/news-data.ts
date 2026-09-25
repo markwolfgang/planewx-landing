@@ -91,7 +91,7 @@ ${/*
 <p>Open PlaneWX when you are ready to brief the next trip: <a href="https://app.planewx.ai">app.planewx.ai</a>.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. Tagline: Fly like it&rsquo;s your job.</p>
+<p>PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. Fly like it&rsquo;s your job.</p>
 `,
   },
   {
