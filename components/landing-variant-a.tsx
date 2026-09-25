@@ -68,14 +68,14 @@ export function LandingVariantA() {
 
       {/* NAV */}
       <nav className="relative z-10 border-b border-white/5">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between gap-3 sm:gap-4">
+          <div className="flex items-center gap-3 shrink-0">
             <BrandLogo className="h-9 w-auto" priority />
             <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
               The Pilot&apos;s Decision Support System
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
             <a
               href="#how-it-works"
               className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
@@ -123,8 +123,8 @@ export function LandingVariantA() {
       {/* HERO */}
       <section className="relative pt-24 pb-20 px-4">
         <div className="container mx-auto max-w-5xl text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a1628] border border-sky-400/40 text-sky-400 text-sm font-medium">
-            <BrainPlaneIcon className="h-4 w-4" />
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#0a1628] border border-sky-400/40 text-sky-400 text-xs sm:text-sm font-medium whitespace-nowrap max-w-full">
+            <BrainPlaneIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
             <span>Decision support for general aviation</span>
           </div>
 
@@ -213,7 +213,7 @@ export function LandingVariantA() {
               </p>
             </div>
             <div className="col-span-2 lg:col-span-1">
-              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1 tracking-[-0.08em] whitespace-nowrap">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-400 mb-1 lg:tracking-tight whitespace-nowrap">
                 Up to 10%
               </div>
               <div className="text-sm text-white/50 leading-snug max-w-[14rem] mx-auto">
