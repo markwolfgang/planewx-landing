@@ -588,7 +588,7 @@ export default function MultiModelAnalysis() {
               <tbody className="divide-y divide-white/10">
                 {[
                   ["Multi-model comparison", "3 independent models", "Single product"],
-                  ["Confidence scoring", "Unanimous / Majority / Split", "Not available"],
+                  ["Confidence scoring", "Unanimous / Majority / Split", "Single-source forecasts"],
                   ["Route-specific sampling", "3–7 points along YOUR route", "Broad geographic areas"],
                   ["Altitude-specific assessment", "8 pressure levels per point", "Altitude range only"],
                   ["Cloud layer boundaries", "RH-derived at each sample point", "Not provided"],

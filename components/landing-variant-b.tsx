@@ -118,7 +118,7 @@ export function LandingVariantB() {
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             Plans made weeks in advance. Hotels booked. Family waiting. And then, the morning of
             departure, conditions are marginal.{" "}
-            <strong className="text-rose-300">This is when accidents happen.</strong>
+            <strong className="text-rose-300">That&apos;s when the pressure is highest.</strong>
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
