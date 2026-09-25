@@ -74,9 +74,15 @@ export const NEWS_ITEMS: NewsItem[] = [
 ${/* PROVISIONAL: recount Mon from weekly-metrics (customer fixes+improvements). Partial week figure is 8. */ ""}
 <p>Plus 8 other fixes and improvements across the app.</p>
 
-<h2>We read what you send</h2>
-${/* PROVISIONAL feedback reply rate: 100% (2 of 2). Replace Mon with the final full-week number from weekly-metrics. */ ""}
-<p>We replied to every piece of feedback you sent this week. <!-- provisional: 100% (2 of 2) --></p>
+<h2>Briefing reviews this week</h2>
+<p>After each flight you can leave a quick review. Here&rsquo;s what you told us this week.</p>
+<p><strong>Briefing reviews</strong></p>
+<ul>
+<li>Briefing reviews received: <strong>[TK: count, from Growth]</strong></li>
+<li>Average rating: <strong>[TK: average rating and scale, from Growth]</strong></li>
+<li>Misses investigated: <strong>[TK: count, from Growth]</strong></li>
+<li>Fixes that came from reviews: <strong>[TK: count, from Growth]</strong></li>
+</ul>
 
 <h2>Tip of the Week: what the WX Score actually is</h2>
 <p>The WX Score is not PlaneWX guessing whether a flight is safe. It is your own personal minimums, applied the same way every time, against the forecast for this route, altitude, and departure. That is why minimums are required: PlaneWX cannot generate a WX Score without them. The score starts at 100% and comes down when weather approaches or exceeds the limits you set. A low number is a prompt to open the breakdown and make your Fly or Stay call as PIC. It is advisory support, not a flight authorization. More at <a href="https://app.planewx.ai/help/wx-score">app.planewx.ai/help/wx-score</a>.</p>
