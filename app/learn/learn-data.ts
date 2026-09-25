@@ -227,10 +227,10 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       {
         type: "list",
         items: [
-          "TAF: NWS WFO forecasters (AvnFPS, professional judgment). Official terminal forecast. Scheduled 4x daily (every 6 hours), amendments as needed. Ordinarily 24 hr (30 hr at FAA-specified international airports). Ceiling and visibility included. Nearly 700 U.S. airports.",
-          "MOS: MDL statistical post-processing on GFS and NAM. Guidance. MAV 6 to 72 hr (CIG/VIS/OBV); MEX 24 to 192 hr (no CIG/VIS on the card); MET NAM MOS ends Oct 14, 2026. About 1,500 to 1,600+ stations depending on product.",
-          "LAMP: MDL hourly update of MOS (ceiling and visibility every 15 minutes). Guidance. 1 to 25 hr standard, to 38 hr for key elements. Over 2,000 stations. Includes ceiling, visibility, obstruction, lightning and convection.",
-          "NBM: MDL blend of model and post-processed guidance for NDFD starting point. Guidance. Hourly runs out to 264 hr. Over 9,000 stations. NBH/NBS carry ceiling and visibility; NBE does not.",
+          "TAF: Who makes it: NWS WFO forecasters (AvnFPS, professional judgment). How: official terminal forecast. Run times: scheduled 4x daily (every 6 hours), amendments as needed; Core 30 get scheduled amendments every 3 hours. Range: ordinarily 24 hr (30 hr at FAA-specified international airports). Ceiling and visibility: included. Stations: nearly 700 U.S. airports. Official or guidance: official.",
+          "MOS: Who makes it: MDL. How: statistical post-processing (multiple linear regression) on GFS and NAM. Run times: MAV 00/06/12/18 UTC; MEX and MET 00/12 UTC. Range: MAV 6 to 72 hr; MEX 24 to 192 hr; MET 6 to 72 hr (NAM MOS ends Oct 14, 2026 at 1200 UTC). Ceiling and visibility: MAV and MET include CIG, VIS, OBV; MEX card shows no ceiling or visibility. Stations: MAV over 1500; MEX over 1600. Official or guidance: guidance.",
+          "LAMP: Who makes it: MDL. How: statistical system that updates MOS every hour (ceiling and visibility every 15 minutes). Run times: hourly updates. Range: 1 to 25 hr standard; extends to 38 hr for key elements. Ceiling and visibility: yes (plus conditional ceiling/visibility, obstruction, lightning, convection). Stations: over 2000. Official or guidance: guidance.",
+          "NBM: Who makes it: MDL. How: nationally consistent and skillful suite of calibrated forecast guidance; starting point for NDFD grids. Run times: every hour. Range: out to 264 hr (NBH 1 to 25 hr; NBS 6 to 72 hr; NBE 24 to 192 hr; NBX 204 to 264 hr). Ceiling and visibility: NBH and NBS yes; NBE no. Stations: over 9,000 land and marine. Official or guidance: guidance.",
         ],
       },
     ],
@@ -364,7 +364,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "Audience: traffic flow managers at the FAA ATCSCC and ARTCC Traffic Management Units, and airline and corporate flight operations centers. Stated purpose: authoritative source of convective weather forecast information for Traffic Flow Management strategic planning. FAA TFM training is at tfmlearning.faa.gov.",
+        text: "Audience: traffic flow managers at the FAA ATCSCC and ARTCC Traffic Management Units, and airline and corporate flight operations centers. Stated purpose: \"Authoritative source of convective weather forecast information for Traffic Flow Management strategic planning.\" FAA TFM training is at tfmlearning.faa.gov.",
       },
       {
         type: "heading",
@@ -384,7 +384,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "Probability contours are drawn at 30, 50 and 70%: blue hash 30 to 49%, solid orange line 50 to 69%, solid magenta fill above 70%. Stated purpose: a quick-look planning tool for where thunderstorm probability is greatest, supporting planning beyond the 8-hour TCF. Range covers later periods, roughly days 2 through 4 per AWC's product page. The FAA handbook describes it as covering up to about 3 days.",
+        text: "Probability contours are drawn at 30, 50 and 70%: blue hash 30 to 49%, solid orange line 50 to 69%, solid magenta fill above 70%. Stated purpose: a \"quick-look\" planning tool for where thunderstorm probability is greatest, supporting planning beyond the 8-hour TCF. Range covers later periods, roughly days 2 through 4 per AWC's product page. The FAA handbook describes it as covering up to about 3 days.",
       },
       {
         type: "heading",
