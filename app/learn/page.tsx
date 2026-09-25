@@ -196,10 +196,10 @@ export default function LearnHubPage() {
           </p>
           <a
             href="https://app.planewx.ai"
-            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:from-sky-400 hover:to-cyan-400"
+            className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:from-sky-400 hover:to-cyan-400 sm:px-8"
           >
             Try a PlaneWX briefing
-            <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
+            <ArrowRight className="ml-2 h-5 w-5 shrink-0" aria-hidden="true" />
           </a>
         </div>
       </section>
