@@ -86,7 +86,7 @@ ${/* PRELIMINARY: data through Fri Sep 25 06:50 CT. Growth recounts Mon Sep 28 0
 <li>Too high, meaning conditions were worse than the score suggested: <strong>1</strong></li>
 </ul>
 </li>
-<li>Misses you flagged: <strong>5</strong> (a weather section you marked &ldquo;Understated it&rdquo;, or a surprise you wrote in)</li>
+<li>Misses you flagged: <strong>5</strong> (a weather section you marked &ldquo;Understated it&rdquo;, or a surprise you wrote in). We looked into all 5, and 1 led to a detail we&rsquo;re looking into further.</li>
 <li>Fixes that came from reviews: <strong>1</strong> (a FRAT update that gives more weight to your own assessment of the environment)</li>
 </ul>
 
