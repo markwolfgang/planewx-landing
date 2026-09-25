@@ -35,7 +35,7 @@ export function LandingVariantB() {
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
       <VariantTracker variant={VARIANT} />
 
-      {/* Background — radial-gradient avoids GPU compositing layers caused by filter:blur */}
+      {/* Background: radial-gradient avoids GPU compositing layers caused by filter:blur */}
       <div
         className="fixed inset-0 -z-10"
         style={{
@@ -92,7 +92,7 @@ export function LandingVariantB() {
               variant={VARIANT}
               className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
             >
-              Start Free Trial
+              Start Free 14-Day Trial
             </SignUpButton>
           </div>
         </div>
@@ -107,7 +107,7 @@ export function LandingVariantB() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            The go/no-go decision{" "}
+            The Fly or Stay call{" "}
             <span className="bg-gradient-to-r from-rose-400 to-orange-400 bg-clip-text text-transparent">
               shouldn&apos;t happen
             </span>
@@ -117,7 +117,7 @@ export function LandingVariantB() {
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             Plans made weeks in advance. Hotels booked. Family waiting. And then, the morning of
-            departure — conditions are marginal.{" "}
+            departure, conditions are marginal.{" "}
             <strong className="text-rose-300">This is when accidents happen.</strong>
           </p>
 
@@ -126,7 +126,7 @@ export function LandingVariantB() {
               variant={VARIANT}
               className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
-              Get Early Warning — Free
+              Start Free 14-Day Trial
               <ArrowRight className="ml-2 h-5 w-5" />
             </SignUpButton>
             <a
@@ -173,7 +173,7 @@ export function LandingVariantB() {
               <span className="text-rose-400">situation before.</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              It&apos;s not a lack of skill. It&apos;s the pressure of the moment — and every pilot
+              It&apos;s not a lack of skill. It&apos;s the pressure of the moment, and every pilot
               has felt it.
             </p>
           </div>
@@ -220,7 +220,7 @@ export function LandingVariantB() {
                   </div>
                 ))}
                 <p className="text-xs text-rose-300/50 italic pt-2 border-t border-rose-500/10">
-                  Not because you lack skill — because you were forced into a decision when the
+                  Not because you lack skill: because you were forced into a decision when the
                   stakes were highest.
                 </p>
               </div>
@@ -264,7 +264,7 @@ export function LandingVariantB() {
                 ))}
                 <div className="pt-4 border-t border-emerald-500/10">
                   <p className="text-sm text-emerald-300/80 italic">
-                    &ldquo;The confidence to go, or the courage to stay&trade;&rdquo;
+                    &ldquo;Fly or Stay. You make the call.&rdquo;
                   </p>
                 </div>
               </div>
@@ -273,7 +273,7 @@ export function LandingVariantB() {
 
           <div className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-sky-950/50 to-indigo-950/50 border border-sky-500/20 text-center">
             <p className="text-lg font-semibold text-white">
-              The safest pilots aren&apos;t the ones who can fly in anything — they&apos;re the ones
+              The safest pilots aren&apos;t the ones who can fly in anything. They&apos;re the ones
               who{" "}
               <span className="text-sky-400">never put themselves in that position.</span>
             </p>
@@ -306,8 +306,7 @@ export function LandingVariantB() {
               <h3 className="text-xl font-bold mb-3">14-Day Early Warning</h3>
               <p className="text-white/60 text-sm leading-relaxed">
                 See WX Score trends before you commit to anything. Cancel hotels, not your safety
-                margins. You&apos;ll know days in advance whether conditions are trending toward a go or
-                a no-go — while you still have options.
+                margins. You&apos;ll know days in advance whether conditions are trending toward Fly or Stay, while you still have options.
               </p>
             </div>
 
@@ -319,7 +318,7 @@ export function LandingVariantB() {
               <h3 className="text-xl font-bold mb-3">Alternative Departure Windows</h3>
               <p className="text-white/60 text-sm leading-relaxed">
                 &ldquo;Friday looks bad. Thursday afternoon shows 85%.&rdquo; PlaneWX finds better
-                options automatically. Flexibility is safety — and PlaneWX gives you the data to flex
+                options automatically. Flexibility is safety, and PlaneWX gives you the data to flex
                 with confidence.
               </p>
             </div>
@@ -353,21 +352,21 @@ export function LandingVariantB() {
                 <span className="text-emerald-400">finally quantified</span>
               </h2>
               <p className="text-white/70 leading-relaxed mb-6">
-                Right now, your go/no-go judgment lives entirely in your head. You mentally juggle
-                ceilings, winds, icing, turbulence, currency, and fatigue — under pressure, often at
+                Right now, your Fly or Stay judgment lives entirely in your head. You mentally juggle
+                ceilings, winds, icing, turbulence, currency, and fatigue under pressure, often at
                 the last minute.
               </p>
               <p className="text-white/70 leading-relaxed mb-6">
-                The WX Score externalizes that work. For the first time, the cognitive burden of
-                weather risk assessment lives in software — not your memory, not your gut.
+                The WX Score externalizes that work. The cognitive burden of
+                weather risk assessment lives in software, not your memory, not your gut.
               </p>
               <ul className="space-y-3">
                 {[
-                  "0–100% metric calculated against YOUR minimums — not generic VFR/IFR",
-                  "Ceiling, visibility, crosswind, turbulence, icing — all weighted",
+                  "0–100% metric calculated against YOUR minimums, not generic VFR/IFR",
+                  "Ceiling, visibility, crosswind, turbulence, icing: all weighted",
                   "Different scores for each aircraft you fly",
                   "Every deduction is transparent and explained",
-                  "Updates automatically as weather evolves — 40+ times over 14 days",
+                  "Updates automatically as weather evolves, 40+ times over 14 days",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-white/70">
                     <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />

@@ -34,7 +34,7 @@ export function LandingVariantC() {
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
       <VariantTracker variant={VARIANT} />
 
-      {/* Background — radial-gradient avoids GPU compositing layers caused by filter:blur */}
+      {/* Background: radial-gradient avoids GPU compositing layers caused by filter:blur */}
       <div
         className="fixed inset-0 -z-10"
         style={{
@@ -91,17 +91,17 @@ export function LandingVariantC() {
               variant={VARIANT}
               className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
             >
-              Start Free Trial
+              Start Free 14-Day Trial
             </SignUpButton>
           </div>
         </div>
       </nav>
 
-      {/* HERO — Community-first */}
+      {/* HERO: Community-first */}
       <section className="relative pt-24 pb-20 px-4">
         <div className="container mx-auto max-w-5xl text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            Trusted by {STATS.totalPilots} pilots —{" "}
+            Trusted by {STATS.totalPilots} pilots:{" "}
             <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
               {STATS.cumulativeHours} flight hours
             </span>{" "}
@@ -124,7 +124,7 @@ export function LandingVariantC() {
               variant={VARIANT}
               className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
-              Join the Community — Free
+              Start Free 14-Day Trial
               <ArrowRight className="ml-2 h-5 w-5" />
             </SignUpButton>
           </div>
@@ -192,8 +192,8 @@ export function LandingVariantC() {
               What are they all <span className="text-sky-400">using?</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              PlaneWX is the first decision support system built specifically for GA pilots.
-              It doesn&apos;t just show weather — it tells you what it means for{" "}
+              PlaneWX is a decision support system built specifically for GA pilots.
+              It doesn&apos;t just show weather: it tells you what it means for{" "}
               <strong className="text-white">your aircraft</strong> and{" "}
               <strong className="text-white">your minimums</strong>.
             </p>
@@ -212,7 +212,7 @@ export function LandingVariantC() {
               {[
                 ["Displays raw METARs, TAFs, PIREPs", "Synthesizes all of it using AI"],
                 ["Generic VFR / IFR categories", "Your personal minimums + your aircraft"],
-                ["You formulate the risk in your head", "WX Score — quantified risk, done for you"],
+                ["You formulate the risk in your head", "WX Score: quantified risk, done for you"],
                 ["Data only", "WX Score feeds into the PAVE framework"],
                 ["You decide alone", "Connects you to a mentor who sees your full briefing"],
               ].map(([left, right], i) => (
@@ -241,8 +241,8 @@ export function LandingVariantC() {
                 aircraft. Not generic VFR/IFR categories. Every deduction is transparent and explained.
               </p>
               <p className="text-white/60 leading-relaxed">
-                It updates automatically as weather evolves &mdash; 40+ times over 14 days &mdash; so
-                you never face a last-minute go/no-go scramble.
+                It updates automatically as weather evolves, 40+ times over 14 days, so
+                you never face a last-minute scramble to decide.
               </p>
             </div>
             <div className="space-y-4">
@@ -267,7 +267,7 @@ export function LandingVariantC() {
         </div>
       </section>
 
-      {/* KEY FEATURES — Compact 6-card layout */}
+      {/* KEY FEATURES: Compact 6-card layout */}
       <section id="features" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
@@ -281,12 +281,12 @@ export function LandingVariantC() {
 
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0–100% risk metric calculated against your minimums and your aircraft — not generic VFR/IFR thresholds." },
-              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute go/no-go with bags packed and commitments made." },
+              { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0–100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds." },
+              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute Fly or Stay scramble with bags packed and commitments made." },
               { icon: <Brain className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across sample points along your route with confidence scoring." },
-              { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "PAVE Risk Assessment", desc: "The FAA's decision-making framework, pre-filled from your trip context — all four quadrants in one view." },
-              { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Ask a Mentor", desc: "Connect with experienced pilots who see your full briefing — WX Score, aircraft profile, minimums." },
-              { icon: <Users className="h-6 w-6" />, color: "text-amber-400 bg-amber-500/20", title: "Trip Watchers", desc: "Family and schedulers see live data. Rescheduling becomes a shared decision — not a confrontation at 6 AM." },
+              { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "PAVE Risk Assessment", desc: "The FAA's decision-making framework, pre-filled from your trip context: all four quadrants in one view." },
+              { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Ask a Mentor", desc: "Connect with experienced pilots who see your full briefing: WX Score, aircraft profile, minimums." },
+              { icon: <Users className="h-6 w-6" />, color: "text-amber-400 bg-amber-500/20", title: "Trip Watchers", desc: "Family and schedulers see live data. Rescheduling becomes a shared decision, not a confrontation at 6 AM." },
             ].map(({ icon, color, title, desc }, i) => (
               <div key={i} className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors">
                 <div className={`w-10 h-10 rounded-lg ${color.split(" ")[1]} ${color.split(" ")[0]} flex items-center justify-center mb-4`}>

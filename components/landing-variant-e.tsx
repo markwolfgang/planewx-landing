@@ -18,7 +18,7 @@ import {
 const VARIANT = "e"
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Variant E — Founder Story / Accountability / "I wanted to live"
+// Variant E: Founder Story / Accountability / "I wanted to live"
 // Primary accent: amber/orange (human, warm, serious)
 // Secondary: sky blue (brand)
 // ─────────────────────────────────────────────────────────────────────────────
@@ -70,7 +70,7 @@ export function LandingVariantE() {
             variant={VARIANT}
             className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-white text-sm font-semibold transition-colors shadow-lg shadow-amber-500/20"
           >
-            Start free <ArrowRight className="h-3.5 w-3.5" />
+            Start Free 14-Day Trial <ArrowRight className="h-3.5 w-3.5" />
           </SignUpButton>
         </div>
       </nav>
@@ -110,7 +110,7 @@ export function LandingVariantE() {
               variant={VARIANT}
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white text-lg font-bold transition-all shadow-xl shadow-amber-500/20"
             >
-              Start flying with a system
+              Start Free 14-Day Trial
               <ArrowRight className="h-5 w-5" />
             </SignUpButton>
             <a
@@ -134,7 +134,7 @@ export function LandingVariantE() {
             <div className="hidden sm:block w-px h-4 bg-white/10" />
             <span>{STATS.totalPilots} pilots</span>
             <div className="hidden sm:block w-px h-4 bg-white/10" />
-            <span>64% of weather cancellations: pilots found the courage to stay</span>
+            <span>64% of weather cancellations: pilots chose to stay</span>
           </div>
         </div>
       </section>
@@ -162,7 +162,7 @@ export function LandingVariantE() {
               Before I ever touched the controls of an airplane, I spent a year
               listening to AOPA's{" "}
               <em className="text-white not-italic font-medium">"And There I Was"</em>{" "}
-              , a podcast about mishaps, near-misses, and accidents. I watched every
+              : a podcast about mishaps, near-misses, and accidents. I watched every
               aviation accident/mishap video I could find. I wanted to understand exactly
               what separated the pilots who came home from the ones who didn't.
             </p>
@@ -251,7 +251,7 @@ export function LandingVariantE() {
                 color: "text-amber-400",
                 bg: "from-amber-950/60 to-orange-950/20",
                 border: "border-amber-500/20",
-                label: "of weather cancellations: pilots found the courage to stay",
+                label: "of weather cancellations: pilots chose to stay",
                 sub: "Every cancelled flight is a story that didn't end badly.",
               },
               {
@@ -419,8 +419,8 @@ export function LandingVariantE() {
               </span>
             </h2>
             <p className="text-white/50 text-lg max-w-2xl mx-auto">
-              Weather tools give you data. PlaneWX builds accountability around
-              every flight, before you go, in the decision moment, and across
+              A weather app gives you data. PlaneWX builds accountability around
+              every flight: before you go, in the decision moment, and across
               your entire flying career.
             </p>
           </div>
@@ -479,7 +479,7 @@ export function LandingVariantE() {
           {/* Tagline */}
           <div className="text-center py-10 border-t border-white/5">
             <p className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              "The confidence to go, or the courage to stay."
+              "Fly or Stay. You make the call."
             </p>
             <p className="text-white/30 text-sm">PlaneWX™</p>
           </div>
@@ -543,7 +543,7 @@ export function LandingVariantE() {
               variant={VARIANT}
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white text-lg font-bold transition-all shadow-xl shadow-amber-500/20"
             >
-              Start flying with a system
+              Start Free 14-Day Trial
               <ArrowRight className="h-5 w-5" />
             </SignUpButton>
           </div>

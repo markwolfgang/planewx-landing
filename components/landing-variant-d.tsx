@@ -80,7 +80,7 @@ export function LandingVariantD() {
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
       <VariantTracker variant={VARIANT} />
 
-      {/* Background — radial-gradient avoids GPU compositing layers caused by filter:blur */}
+      {/* Background: radial-gradient avoids GPU compositing layers caused by filter:blur */}
       <div
         className="fixed inset-0 -z-10"
         style={{
@@ -161,7 +161,7 @@ export function LandingVariantD() {
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             PlaneWX will never put safety behind a paywall. Every pilot gets the same AI engine,
-            the same weather models, the same WX Score — whether you pay or not.{" "}
+            the same weather models, the same WX Score, whether you pay or not.{" "}
             <strong className="text-white">We limit how much you can use it, not how well it works.</strong>
           </p>
 
@@ -170,7 +170,7 @@ export function LandingVariantD() {
               variant={VARIANT}
               className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-emerald-500/25 transition-all"
             >
-              Start for Free — No Credit Card
+              Start for Free. No Credit Card
               <ArrowRight className="ml-2 h-5 w-5" />
             </SignUpButton>
             <a
@@ -388,9 +388,9 @@ export function LandingVariantD() {
               accident. That&apos;s not something we&apos;re willing to do.
             </p>
             <p className="text-white/80">
-              Pro doesn&apos;t make your briefings better — they&apos;re already full quality.{" "}
+              Pro doesn&apos;t make your briefings better. They&apos;re already full quality.{" "}
               <strong className="text-teal-300">Casual</strong> makes PlaneWX{" "}
-              <strong className="text-teal-300">watch the weather for you</strong> — auto-refresh,
+              <strong className="text-teal-300">watch the weather for you</strong>: auto-refresh,
               email alerts, Trip Watchers. <strong className="text-sky-300">Pro</strong>{" "}
               adds <strong className="text-sky-300">route intelligence and maximum scale</strong>:
               Corridor Watch, Multi-City Optimizer, and the mentor directory.
@@ -436,7 +436,7 @@ export function LandingVariantD() {
               <h3 className="text-xl font-bold mb-3">Monthly Flyers</h3>
               <p className="text-white/60 text-sm leading-relaxed">
                 A few cross-country flights per month. You want PlaneWX to watch the weather
-                and alert you to changes — not just brief you when you remember to check.
+                and alert you to changes, not just brief you when you remember to check.
               </p>
             </div>
 
