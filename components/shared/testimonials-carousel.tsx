@@ -9,11 +9,11 @@ const PODCASTS = [
   {
     type: "podcast" as const,
     videoId: "qu7ppznhcGM",
-    title: "Pilots: Meet PlaneWX — Decision Support for Your Go/No-Go",
+    title: "Video review from Your Vision Jet Pilot",
     channel: "Your Vision Jet Pilot",
     duration: "10 min",
     date: "2026",
-    description: "See how PlaneWX synthesizes METARs, TAFs, AIRMETs, SIGMETs, NOTAMs, and more into a single actionable WX Score for your flight.",
+    description: "A third-party video walkthrough of how PlaneWX turns weather products into a WX Score for a real trip.",
     badge: "video" as const,
   },
   {
@@ -23,12 +23,12 @@ const PODCASTS = [
     channel: "AeroExploration",
     duration: "1 hr 4 min",
     date: "Jul 1, 2026",
-    description: "Mark Wolfgang on how PlaneWX was built, why aviation weather is hard, and how AI changes the go/no-go decision.",
+    description: "Mark Wolfgang on how PlaneWX was built, why aviation weather is hard, and where AI fits in your GO / NO‑GO decision.",
   },
   {
     type: "podcast" as const,
     videoId: "187vVsdRErE",
-    title: "The Future in Flight — AirVenture 2026 & PlaneWX",
+    title: "The Future in Flight: AirVenture 2026 and PlaneWX",
     channel: "AviNation USA",
     duration: "25 min",
     date: "Jul 2, 2026",

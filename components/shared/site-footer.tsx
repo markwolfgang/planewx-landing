@@ -46,6 +46,7 @@ export function SiteFooter({ variant }: { variant: string }) {
             <a href="/about" className="hover:text-white/60 transition-colors">About</a>
             <a href="/news" className="hover:text-white/60 transition-colors">News</a>
             <a href="/partners" className="hover:text-white/60 transition-colors">Partners</a>
+            <a href="/ambassadors" className="hover:text-white/60 transition-colors">Ambassadors</a>
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
             <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
             <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">Contact</a>
