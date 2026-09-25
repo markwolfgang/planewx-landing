@@ -67,9 +67,9 @@ const PARTNERS = [
       height: 96,
       className: "h-10 sm:h-11 w-auto max-w-[13rem] object-contain",
     },
-    // Sara Round 2: exact member sentence. No coupon code.
+    // Sara: exact offer line with COPA20 code.
     memberBenefit:
-      "COPA members receive a discount on their PlaneWX subscription.",
+      "COPA members get 20% off the Pro annual plan with code COPA20.",
     blurb:
       "Cirrus Owners and Pilots Association. Community for Cirrus owners and pilots focused on safety, training, and shared experience.",
   },
