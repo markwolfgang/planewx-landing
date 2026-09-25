@@ -47,7 +47,7 @@ export function FlightChopsEndorsement() {
               <span className="font-semibold text-white text-sm">Steve Thorne</span>
               <span className="hidden sm:inline text-white/20">·</span>
               <span className="text-xs text-white/40">
-                Flight Chops
+                Flight Chops &nbsp;·&nbsp; 20+ years GA
               </span>
             </div>
           </div>

@@ -49,7 +49,7 @@ export function LandingVariantE() {
           </div>
           <span className="font-bold text-white tracking-tight">PlaneWX</span>
           <span className="hidden sm:block text-white/30 text-sm ml-1">
-            : The Pilot's Decision Support System
+            · The Pilot's Decision Support System
           </span>
         </div>
         <div className="flex items-center gap-6">
@@ -101,7 +101,8 @@ export function LandingVariantE() {
           </p>
 
           <p className="text-white/40 text-sm mb-12 tracking-wide">
-            Mark Wolfgang, Founder · TBM 900 Pilot · over 1,000 hours
+            Mark Wolfgang, Founder · TBM 900 Pilot ·{" "}
+            <span className="whitespace-nowrap">over 1,000 hours</span>
           </p>
 
           {/* CTAs */}

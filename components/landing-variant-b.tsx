@@ -424,7 +424,7 @@ export function LandingVariantB() {
             {STATS.totalPilots} pilots
           </p>
           <p className="text-sm text-white/50">
-            From student pilots building hours to ATP captains flying Citations and Gulfstreams.
+            From Cessna 172s to Gulfstreams.
           </p>
         </div>
       </section>

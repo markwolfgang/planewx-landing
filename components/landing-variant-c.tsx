@@ -158,7 +158,7 @@ export function LandingVariantC() {
               A community of <span className="text-sky-400">serious pilots</span>
             </h2>
             <p className="text-white/50">
-              Trusted by {STATS.totalPilots} pilots who demand more from their weather tools.
+              The pilots who demand more from their weather tools.
             </p>
           </div>
         </div>
