@@ -746,9 +746,10 @@ export function LandingVariantA() {
                 </em>
               </p>
               <p>
-                Now flying a TBM 900 and over 1,000 hours total time, including 784 hours of
-                cross-country PIC in under 2 years, Mark built PlaneWX to solve his own problem. What
-                started as personal frustration became a mission to help every pilot answer the question:{" "}
+                Now flying a TBM 900 with{" "}
+                <span className="whitespace-nowrap">over 1,000 hours</span> total time, Mark built
+                PlaneWX to solve his own problem. What started as personal frustration became a
+                mission to help every pilot answer the question:{" "}
                 <em className="text-sky-400">&ldquo;Is this flight going to happen?&rdquo;</em>
               </p>
               <div className="pt-4 border-t border-white/10 space-y-3">
