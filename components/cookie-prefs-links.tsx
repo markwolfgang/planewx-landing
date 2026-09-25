@@ -1,13 +1,13 @@
 "use client"
 
-import { openCookieSettings } from "@/lib/cookie-prefs"
+import { openCookieSettings, optOutOfSaleOrSharing } from "@/lib/cookie-prefs"
 
 type Props = {
   className?: string
   showDoNotSell?: boolean
 }
 
-/** Footer controls to reopen the cookie banner / Do not sell flow. */
+/** Footer controls: reopen Cookie settings, or apply Do not sell or share. */
 export function CookiePrefsLinks({ className = "", showDoNotSell = true }: Props) {
   return (
     <>
@@ -22,7 +22,9 @@ export function CookiePrefsLinks({ className = "", showDoNotSell = true }: Props
       {showDoNotSell ? (
         <button
           type="button"
-          onClick={() => openCookieSettings()}
+          onClick={() => {
+            optOutOfSaleOrSharing()
+          }}
           className={className}
           data-testid="do-not-sell-link"
         >

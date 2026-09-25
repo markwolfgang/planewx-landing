@@ -122,3 +122,13 @@ export function openCookieSettings(): void {
     /* ignore */
   }
 }
+
+/**
+ * Do not sell or share: keep analytics allowed where the notice model allows it,
+ * turn marketing off (Google Ads, Meta Pixel, Reddit Pixel).
+ */
+export function optOutOfSaleOrSharing(): CookiePrefs | null {
+  const prefs = writeCookiePrefs({ analytics: true, marketing: false })
+  if (prefs) notifyCookiePrefsChanged(prefs)
+  return prefs
+}

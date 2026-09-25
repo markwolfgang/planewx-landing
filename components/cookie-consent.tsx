@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
+  COOKIE_PREFS_CHANGED_EVENT,
   COOKIE_PREFS_OPEN_EVENT,
   hasValidCookieChoice,
   notifyCookiePrefsChanged,
@@ -28,44 +29,69 @@ export function CookieConsent() {
   const [mode, setMode] = useState<ConsentMode>("strict")
   const [analytics, setAnalytics] = useState(false)
   const [marketing, setMarketing] = useState(false)
+  const [gpcOn, setGpcOn] = useState(false)
 
   useEffect(() => {
     const consentMode = readConsentModeFromDocument()
+    const gpc = hasGlobalPrivacyControl()
     setMode(consentMode)
+    setGpcOn(gpc)
 
     const prefs = readCookiePrefs()
     if (prefs && hasValidCookieChoice(prefs)) {
       setAnalytics(prefs.analytics)
-      setMarketing(prefs.marketing)
+      // GPC always wins for marketing.
+      setMarketing(gpc ? false : prefs.marketing)
       setShowBanner(false)
     } else {
-      // Missing or unknown/stale value: show banner. Do not migrate unknowns.
       setShowBanner(true)
-      // Notice mode + GPC: treat as marketing opt-out even before a stored choice.
-      if (consentMode === "notice" && hasGlobalPrivacyControl()) {
+      if (consentMode === "notice" && gpc) {
         setMarketing(false)
       }
     }
 
     const onOpen = () => {
       const current = readCookiePrefs()
+      const gpcNow = hasGlobalPrivacyControl()
+      setGpcOn(gpcNow)
+      setMode(readConsentModeFromDocument())
       if (current) {
         setAnalytics(current.analytics)
-        setMarketing(current.marketing)
+        setMarketing(gpcNow ? false : current.marketing)
+      } else if (gpcNow) {
+        setMarketing(false)
       }
       setShowBanner(true)
       setShowModal(false)
     }
+    const onChanged = (event: Event) => {
+      const detail = (event as CustomEvent<CookiePrefs>).detail
+      const gpcNow = hasGlobalPrivacyControl()
+      setGpcOn(gpcNow)
+      if (detail && hasValidCookieChoice(detail)) {
+        setAnalytics(detail.analytics)
+        setMarketing(gpcNow ? false : detail.marketing)
+        setShowBanner(false)
+        setShowModal(false)
+      }
+    }
     window.addEventListener(COOKIE_PREFS_OPEN_EVENT, onOpen)
-    return () => window.removeEventListener(COOKIE_PREFS_OPEN_EVENT, onOpen)
+    window.addEventListener(COOKIE_PREFS_CHANGED_EVENT, onChanged)
+    return () => {
+      window.removeEventListener(COOKIE_PREFS_OPEN_EVENT, onOpen)
+      window.removeEventListener(COOKIE_PREFS_CHANGED_EVENT, onChanged)
+    }
   }, [])
 
   const savePrefs = (opts: { analytics: boolean; marketing: boolean }) => {
     if (typeof window === "undefined") return
-    const prefs: CookiePrefs | null = writeCookiePrefs(opts)
+    const marketingValue = gpcOn || hasGlobalPrivacyControl() ? false : opts.marketing
+    const prefs: CookiePrefs | null = writeCookiePrefs({
+      analytics: opts.analytics,
+      marketing: marketingValue,
+    })
     if (!prefs) {
       console.warn("[cookie-consent] failed to save prefs")
-      // Keep banner visible so the user knows the choice did not stick.
       return
     }
     setAnalytics(prefs.analytics)
@@ -104,6 +130,7 @@ export function CookieConsent() {
                   type="button"
                   onClick={onDoNotSell}
                   className="text-xs text-sky-400 hover:text-sky-300 underline underline-offset-2 text-left"
+                  data-testid="banner-do-not-sell"
                 >
                   Do not sell or share my personal information
                 </button>
@@ -116,6 +143,7 @@ export function CookieConsent() {
                 size="sm"
                 className="border border-slate-600 bg-slate-800 text-slate-100 hover:bg-slate-700"
                 onClick={() => setShowModal(true)}
+                data-testid="cookie-manage-button"
               >
                 Manage
               </Button>
@@ -148,6 +176,7 @@ export function CookieConsent() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="cookie-prefs-title"
+          data-testid="cookie-manage-panel"
         >
           <div className="w-full max-w-md rounded-xl border border-slate-800 bg-slate-900 text-slate-100 shadow-xl">
             <div className="flex items-center justify-between border-b border-slate-800 px-4 py-3">
@@ -165,12 +194,26 @@ export function CookieConsent() {
               </Button>
             </div>
             <div className="space-y-4 px-4 py-4 text-sm">
+              {gpcOn && (
+                <p
+                  className="rounded-md border border-sky-500/30 bg-sky-500/10 px-3 py-2 text-xs text-sky-200"
+                  data-testid="gpc-note"
+                >
+                  Global Privacy Control is on. Marketing stays off.
+                </p>
+              )}
               <label className="flex items-start gap-3">
-                <input type="checkbox" checked disabled className="mt-1" />
+                <input
+                  type="checkbox"
+                  checked
+                  disabled
+                  className="mt-1"
+                  data-testid="toggle-essential"
+                />
                 <span>
                   <span className="font-medium">Essential</span>
                   <span className="block text-slate-400 text-xs mt-0.5">
-                    Required for the site to work (security, variant assignment, consent storage).
+                    Required for the site to work (security, variant assignment, consent storage). Always on.
                   </span>
                 </span>
               </label>
@@ -180,11 +223,12 @@ export function CookieConsent() {
                   className="mt-1"
                   checked={analytics}
                   onChange={(e) => setAnalytics(e.target.checked)}
+                  data-testid="toggle-analytics"
                 />
                 <span>
                   <span className="font-medium">Analytics</span>
                   <span className="block text-slate-400 text-xs mt-0.5">
-                    Helps us understand site usage (Google Analytics, Vercel Analytics).
+                    Helps us understand site usage (Google Analytics G-FKM0TMPH4M, Vercel Analytics).
                   </span>
                 </span>
               </label>
@@ -192,13 +236,16 @@ export function CookieConsent() {
                 <input
                   type="checkbox"
                   className="mt-1"
-                  checked={marketing}
+                  checked={marketing && !gpcOn}
+                  disabled={gpcOn}
                   onChange={(e) => setMarketing(e.target.checked)}
+                  data-testid="toggle-marketing"
                 />
                 <span>
                   <span className="font-medium">Marketing</span>
                   <span className="block text-slate-400 text-xs mt-0.5">
                     Ad measurement and remarketing (Google Ads, Meta Pixel, Reddit Pixel).
+                    {gpcOn ? " Off while Global Privacy Control is on." : ""}
                   </span>
                 </span>
               </label>

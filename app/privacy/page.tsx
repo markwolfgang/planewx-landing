@@ -81,7 +81,7 @@ export default function PrivacyPolicyPage() {
             <li>Legal and safety: to comply with law, protect rights, safety, and security.</li>
             <li>Business transfers: in connection with mergers, acquisitions, financing, or asset sales.</li>
             <li>With your direction: for example, when sharing trips with watchers/crew.</li>
-            <li>We do not sell personal information.</li>
+            <li>We do not sell personal information for money. Marketing pixels on www.planewx.ai can support cross-context advertising and may count as a &quot;sale&quot; or &quot;sharing&quot; under CCPA/CPRA; you can opt out with Do not sell or share or Global Privacy Control (see section 6).</li>
             <li>
               Insurance partners: {FIVE_X_FIVE_SEES_LINE} See{" "}
               <a href="#insurance-partners" className="text-sky-400 hover:underline">
@@ -112,18 +112,50 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <Section title="6. Cookies and Tracking">
-          <div className="text-sm leading-relaxed text-white/70 space-y-3">
+          <div className="text-sm leading-relaxed text-white/70 space-y-3" id="cookies-and-tracking">
             <p>
-              On www.planewx.ai we use first-party essential cookies and storage for variant assignment, brand-portal auth, consent
-              region, and your cookie choice. Optional analytics: Google Analytics (G-FKM0TMPH4M) and Vercel Analytics. Optional marketing:
-              Google Ads (AW-18011683791, AW-18016407179), Meta Pixel (1236857811920781), and Reddit Pixel (a2_iy53y8iesnik). Marketing tools can support
-              cross-context advertising and may count as a &quot;sale&quot; or &quot;sharing&quot; under CCPA/CPRA.
+              On www.planewx.ai we use cookies and similar technologies in these categories:
             </p>
+            <ul className="list-disc space-y-2 pl-6">
+              <li>
+                <strong className="text-white">Essential:</strong> first-party cookies 
+                <code className="text-white/80">planewx-variant</code> (homepage variant), 
+                <code className="text-white/80">planewx-brand-auth</code> (brand portal auth), 
+                <code className="text-white/80">pw_consent_region</code> (consent region from Vercel geo), 
+                <code className="text-white/80">pw_gpc</code> (Global Privacy Control signal), and first-party
+                localStorage <code className="text-white/80">cookie_prefs_v1</code> for your cookie choice, referral
+                codes, and UI dismissals.
+              </li>
+              <li>
+                <strong className="text-white">Analytics:</strong> Google Analytics (
+                <code className="text-white/80">G-FKM0TMPH4M</code>) and Vercel Analytics.
+              </li>
+              <li>
+                <strong className="text-white">Marketing:</strong> Google Ads (
+                <code className="text-white/80">AW-18011683791</code>, <code className="text-white/80">AW-18016407179</code>
+                ), Meta Pixel (<code className="text-white/80">1236857811920781</code>), and Reddit Pixel (
+                <code className="text-white/80">a2_iy53y8iesnik</code>). These can support cross-context advertising
+                and may count as a &quot;sale&quot; or &quot;sharing&quot; under CCPA/CPRA.
+              </li>
+              <li>
+                <strong className="text-white">Embedded third-party:</strong> YouTube embeds use
+                youtube-nocookie.com and load only after you press play.
+              </li>
+            </ul>
             <p>
-              In the EU, UK, EEA, and Switzerland (and when geo is unknown), non-essential scripts stay blocked until you opt in.
-              Elsewhere we show a notice, honor Global Privacy Control as a marketing opt-out, and provide Do not sell or share and
-              Cookie settings controls in the footer. YouTube embeds use youtube-nocookie.com and load only after you press play.
-              Details: <a href="/cookies" className="text-sky-400 hover:underline">Cookie Policy</a>.
+              In the EU, UK, EEA, and Switzerland, and when location cannot be determined, Analytics and
+              Marketing scripts stay blocked until you opt in (Accept all, or Manage and save). Essential
+              only turns Analytics and Marketing off in one click. In the United States and other regions we
+              show a notice. Global Privacy Control (
+              <code className="text-white/80">navigator.globalPrivacyControl</code> or 
+              <code className="text-white/80">Sec-GPC</code>) turns Marketing off. Do not sell or share (in
+              the notice banner and the footer) turns Marketing off (Google Ads, Meta Pixel, Reddit Pixel)
+              while leaving Analytics allowed under the notice model. Cookie settings in the footer reopens
+              the banner so you can change your choice on any page. Full detail: 
+              <a href="/cookies" className="text-sky-400 hover:underline">
+                Cookie Policy
+              </a>
+              .
             </p>
           </div>
         </Section>
@@ -146,7 +178,7 @@ export default function PrivacyPolicyPage() {
           <ul className="list-disc space-y-2 pl-6">
             <li>Account settings: update or delete certain info in your profile.</li>
             <li>Emails: opt out of marketing via email footer; transactional/service emails will still be sent.</li>
-            <li>Cookies: manage via browser or consent tools (where provided).</li>
+            <li>Cookies: use Cookie settings in the footer to reopen the banner, or use Do not sell or share to turn Marketing off. You can also manage cookies in your browser.</li>
           </ul>
         </Section>
 
