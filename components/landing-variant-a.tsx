@@ -33,6 +33,7 @@ import {
   FounderImageModal,
   STATS,
 } from "./shared"
+import { HomepagePartnerLogos } from "@/components/shared/homepage-partner-logos"
 import { YouTubeFacade } from "./shared/youtube-facade"
 
 const VARIANT = "a"
@@ -193,8 +194,8 @@ export function LandingVariantA() {
       {/* STATS BAR */}
       <section className="relative py-12 px-4 border-y border-white/5 bg-white/[0.02]">
         <div className="container mx-auto max-w-6xl">
-          <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium">
-            Trusted by serious GA pilots
+          <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium text-balance">
+            Trusted by serious GA pilots. Partnered with the organizations that support them.
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-center items-start">
             <div>
@@ -225,6 +226,7 @@ export function LandingVariantA() {
               </div>
             </div>
           </div>
+          <HomepagePartnerLogos />
         </div>
       </section>
 
@@ -257,6 +259,8 @@ export function LandingVariantA() {
               </div>
 
               {[
+                ["Every chart, and you pick the right one", "The prog chart closest to your departure time"],
+                ["You sort and interpret it all yourself", "Less preflight workload, more attention on the decision"],
                 ["Displays raw METARs, TAFs, PIREPs", "Weather Briefing with a WX Score"],
                 ["Generic VFR / IFR categories", "Your minimums and your aircraft"],
                 ["You invent the risk picture alone", "FRAT on the FAA PAVE framework"],
@@ -264,13 +268,13 @@ export function LandingVariantA() {
                 ["No habit loop after the flight", "Self Debrief feeds the next FRAT"],
               ].map(([left, right], i) => (
                 <div key={i} className="contents">
-                  <div className="bg-rose-950/20 border-b border-r border-white/10 px-6 py-4 flex items-center gap-3">
-                    <X className="h-4 w-4 text-rose-500 shrink-0" />
-                    <span className="text-sm text-white/60">{left}</span>
+                  <div className="bg-rose-950/20 border-b border-r border-white/10 px-3 sm:px-6 py-3 sm:py-4 flex items-start gap-2 sm:gap-3">
+                    <X className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-rose-500 shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm text-white/60 leading-snug">{left}</span>
                   </div>
-                  <div className="bg-sky-950/20 border-b border-white/10 px-6 py-4 flex items-center gap-3">
-                    <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                    <span className="text-sm text-white/80">{right}</span>
+                  <div className="bg-sky-950/20 border-b border-white/10 px-3 sm:px-6 py-3 sm:py-4 flex items-start gap-2 sm:gap-3">
+                    <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <span className="text-xs sm:text-sm text-white/80 leading-snug">{right}</span>
                   </div>
                 </div>
               ))}
@@ -688,13 +692,14 @@ export function LandingVariantA() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0-100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds." },
-              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. See Fly or Stay options early, before bags are packed and commitments harden." },
+              { icon: <ClipboardCheck className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "Lower preflight workload", desc: "PlaneWX pulls the products that matter for your route and time, so your attention goes to the decision, not the digging." },
+              { icon: <Clock className="h-6 w-6" />, color: "text-cyan-400 bg-cyan-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. See Fly or Stay options early, before bags are packed and commitments harden." },
               { icon: <Snowflake className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across 3 to 7 sample points along your route, with confidence scoring on the agreement." },
               { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "FRAT on PAVE", desc: "The FAA PAVE framework pre-filled from your trip context. Pilot, Aircraft, enVironment, External pressures, all in one view." },
               { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Ask a Mentor", desc: "Optional layer alongside the loop. Experienced pilots see your full briefing: WX Score, aircraft profile, minimums. Shared context, not verbal descriptions." },
               { icon: <Users className="h-6 w-6" />, color: "text-amber-400 bg-amber-500/20", title: "Trip Watchers", desc: "Family, passengers, and schedulers see the same live data. Rescheduling becomes a shared decision, not a confrontation at 6 AM." },
               { icon: <Route className="h-6 w-6" />, color: "text-rose-400 bg-rose-500/20", title: "Corridor Watch", desc: "Route-specific intelligence at departure, waypoints, and arrival. TFRs, NOTAMs, and icing overlays along your exact path." },
-              { icon: <Wind className="h-6 w-6" />, color: "text-cyan-400 bg-cyan-500/20", title: "Synoptic Intelligence™", desc: "NWS forecaster narratives synthesized into regional summaries that explain the big picture, not just the numbers." },
+              { icon: <Wind className="h-6 w-6" />, color: "text-orange-400 bg-orange-500/20", title: "Synoptic Intelligence™", desc: "NWS forecaster narratives synthesized into regional summaries that explain the big picture, not just the numbers." },
               { icon: <Brain className="h-6 w-6" />, color: "text-violet-400 bg-violet-500/20", title: "Multi-City Optimizer", desc: "Planning a multi-leg trip? Enter all your stops and PlaneWX finds the optimal departure sequence based on weather windows." },
             ].map(({ icon, color, title, desc }, i) => (
               <div key={i} className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors">

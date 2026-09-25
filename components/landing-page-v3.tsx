@@ -12,6 +12,7 @@ import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 import { FlightChopsEndorsement } from "@/components/shared/flight-chops-endorsement"
 import { TestimonialsCarousel } from "@/components/shared/testimonials-carousel"
 import { PartnerBadges } from "@/components/shared/partner-badges"
+import { HomepagePartnerLogos } from "@/components/shared/homepage-partner-logos"
 import { OshHomeCard } from "@/components/osh-home-card"
 import {
   ArrowRight,
@@ -191,8 +192,8 @@ export function LandingPageV3() {
       {/* ── STATS BAR ──────────────────────────────────────────────────────────── */}
       <section className="relative py-12 px-4 border-y border-white/5 bg-white/[0.02]">
         <div className="container mx-auto max-w-5xl">
-          <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium">
-            Trusted by serious GA pilots
+          <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium text-balance">
+            Trusted by serious GA pilots. Partnered with the organizations that support them.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center items-start">
             <div>
@@ -223,6 +224,7 @@ export function LandingPageV3() {
               </div>
             </div>
           </div>
+          <HomepagePartnerLogos />
         </div>
       </section>
 
@@ -274,6 +276,8 @@ export function LandingPageV3() {
               </div>
 
               {[
+                ["Every chart, and you pick the right one", "The prog chart closest to your departure time"],
+                ["You sort and interpret it all yourself", "Less preflight workload, more attention on the decision"],
                 ["Raw METARs, TAFs, PIREPs", "Weather Briefing with a WX Score"],
                 ["Generic VFR / IFR categories", "Your minimums and your aircraft"],
                 ["You invent the risk picture alone", "FRAT on the FAA PAVE framework"],
@@ -659,8 +663,14 @@ export function LandingPageV3() {
                 desc: "A 0 to 100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds. Personal minimums are required before a score can generate.",
               },
               {
-                icon: <Clock className="h-6 w-6" />,
+                icon: <ClipboardCheck className="h-6 w-6" />,
                 color: "text-sky-400 bg-sky-500/20",
+                title: "Lower preflight workload",
+                desc: "PlaneWX pulls the products that matter for your route and time, so your attention goes to the decision, not the digging.",
+              },
+              {
+                icon: <Clock className="h-6 w-6" />,
+                color: "text-cyan-400 bg-cyan-500/20",
                 title: "14-Day Planning Horizon",
                 desc: "Monitor WX trends from 2 weeks out. See Fly or Stay options early, before bags are packed and commitments harden.",
               },
