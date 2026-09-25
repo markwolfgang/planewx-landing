@@ -4,6 +4,7 @@ import {
   inquiryClientKey,
   takeInquiryRateLimit,
 } from "@/lib/inquiry-rate-limit"
+import { resolveInquiryRecipients } from "@/lib/inquiry-recipients"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -118,6 +119,7 @@ export async function POST(request: Request) {
     const org = orgField.value
     const name = nameField.value
     const note = noteField.value
+    const to = resolveInquiryRecipients()
 
     // Local/CI verify only. Never set in production; skips Resend entirely.
     if (process.env.INQUIRY_EMAIL_DRY_RUN === "1") {
@@ -125,6 +127,7 @@ export async function POST(request: Request) {
         success: true,
         message: "Thanks. We got your note and will reply soon.",
         dryRun: true,
+        to,
         received: { org, name, email, note },
       })
     }
@@ -135,10 +138,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
     }
 
-    const to =
-      process.env.PARTNERSHIP_INQUIRY_EMAIL ||
-      process.env.ADMIN_NOTIFICATION_EMAIL ||
-      "hello@planewx.ai"
     const rawFrom =
       process.env.FROM_EMAIL ||
       process.env.EMAIL_FROM ||
