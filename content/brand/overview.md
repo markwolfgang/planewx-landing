@@ -25,16 +25,19 @@ loop:
   - num: 1
     accent: sky
     title: Brief
+    tool: WX Score
     body: WX Score, from days out to hours out. Personal minimums front and center on every briefing.
   - num: 2
     accent: blue
-    title: FRAT
+    title: Assess
+    tool: FRAT
     body: Pilot, Aircraft, enVironment, External. Opens 4 hours before departure, when you
       can honestly rate how you feel. Flags risk stacking when 3 or more factors are elevated,
       but never makes the call for you.
   - num: 3
     accent: emerald
-    title: GO / NO-GO
+    title: Decide
+    tool: GO / NO-GO
     body: Staying is legitimate. PlaneWX never recommends go or no-go. The pilot makes the
       call.
   - num: 4
