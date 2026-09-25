@@ -13,6 +13,7 @@ import { VolunteerCallSignGate } from "@/components/volunteer-call-sign-gate"
 import { VolunteerCampaignTracker } from "@/components/volunteer-campaign-tracker"
 import {
   isSkyHopeRef,
+  isVolunteerProductionDeploy,
   SKYHOPE_CAMPAIGN_CODE,
   VOLUNTEER_CAMPAIGN_CODE,
   VOLUNTEER_FOUNDER_VIDEO_ID,
@@ -94,6 +95,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
   const params = await searchParams
   const isSkyHope = isSkyHopeRef(params.ref)
   const gateOrgRef = isSkyHope ? SKYHOPE_CAMPAIGN_CODE : VOLUNTEER_CAMPAIGN_CODE
+  const isProduction = isVolunteerProductionDeploy()
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
@@ -103,8 +105,9 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
         Format only (CMF + 1-4 digits). No ACA membership list lookup.
         SkyHope: ?ref=SKYHOPE, SYH gate (lib/volunteer-landing.ts registry).
         SKYHOPE seed lives only in the app repo.
+        Preview (VERCEL_ENV !== production): gate UX only; no signup link or writes.
       */}
-      <VolunteerCampaignTracker />
+      <VolunteerCampaignTracker allowNetworkWrites={isProduction} />
 
       <div
         className="fixed inset-0 -z-10"
@@ -387,7 +390,11 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                 : "Enter your Compassion Flight call sign. We'll validate it, then unlock signup."}
             </p>
           </div>
-          <VolunteerCallSignGate orgRef={gateOrgRef} />
+          <VolunteerCallSignGate
+            orgRef={gateOrgRef}
+            allowSignup={isProduction}
+            allowNetworkWrites={isProduction}
+          />
         </section>
 
         <footer className="border-t border-white/5 pt-8 pb-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/35">

@@ -21,19 +21,40 @@ export const SKYHOPE_CAMPAIGN_CODE = "SKYHOPE"
 /** lp variant; must be <=8 chars (campaign-visit truncates to 8). */
 export const VOLUNTEER_LP = "vol"
 
-/** Default app origin for signup links. Override with NEXT_PUBLIC_APP_URL. */
+/** Default app origin for production signup links. Override with NEXT_PUBLIC_APP_URL. */
 export const DEFAULT_APP_URL = "https://app.planewx.ai"
 
 /**
- * App base URL for volunteer signup links.
- * Preview deployments can point at an app PR preview via NEXT_PUBLIC_APP_URL.
- * When unset, production behavior is identical (https://app.planewx.ai).
+ * App base URL for volunteer signup links (production only).
+ * Preview never links to the app (see isVolunteerProductionDeploy).
+ * When unset, production uses https://app.planewx.ai.
  */
 export function getVolunteerAppBaseUrl(): string {
   const fromEnv = process.env.NEXT_PUBLIC_APP_URL?.trim()
   if (fromEnv) return fromEnv.replace(/\/+$/, "")
   return DEFAULT_APP_URL
 }
+
+/**
+ * True only when Vercel reports production.
+ * Preview and local (VERCEL_ENV unset or "preview" / "development") must not
+ * link to signup or write volunteer attribution data. Relies on Vercel setting
+ * VERCEL_ENV=production on the production deploy; if that is missing, signups
+ * stay blocked by design.
+ */
+export function isVolunteerProductionDeploy(
+  vercelEnv: string | undefined = process.env.VERCEL_ENV
+): boolean {
+  return vercelEnv === "production"
+}
+
+/** Shown under the unlocked Sign up control on non-production deploys. */
+export const VOLUNTEER_PREVIEW_SIGNUP_NOTICE =
+  "Preview. Please don't create an account."
+
+export type VolunteerUnlockedSignupControl =
+  | { kind: "link"; href: string }
+  | { kind: "preview"; notice: string }
 
 /** Signup query param used for the validated call sign. */
 export type VolunteerCallSignSignupParam = "cmf" | "callsign"
@@ -217,4 +238,27 @@ export function buildVolunteerSignupHrefForOrg(options: {
   }
 
   return `${getVolunteerAppBaseUrl()}/auth/sign-up?${params.toString()}`
+}
+
+/**
+ * Production: real app signup link with the org call-sign param.
+ * Preview: unlocked look only; no href, no navigation target.
+ */
+export function buildVolunteerUnlockedSignupControl(options: {
+  isProduction: boolean
+  ref: string
+  callSign: string
+  gateOrg?: VolunteerOrgCallSignConfig
+}): VolunteerUnlockedSignupControl {
+  if (!options.isProduction) {
+    return { kind: "preview", notice: VOLUNTEER_PREVIEW_SIGNUP_NOTICE }
+  }
+  return {
+    kind: "link",
+    href: buildVolunteerSignupHrefForOrg({
+      ref: options.ref,
+      callSign: options.callSign,
+      gateOrg: options.gateOrg,
+    }),
+  }
 }

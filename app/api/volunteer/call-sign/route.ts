@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createClient } from "@supabase/supabase-js"
 import {
+  isVolunteerProductionDeploy,
   normalizeVolunteerCallSignForOrg,
   resolveVolunteerOrg,
   VOLUNTEER_CAMPAIGN_CODE,
@@ -14,8 +15,16 @@ import {
  * when Supabase is available. Always returns the normalized sign on success so the
  * client can pass it into signup even if durable storage is temporarily unavailable.
  * Never blocks signup when storage fails.
+ *
+ * Preview / non-production: reject writes (landing preview shares prod Supabase).
  */
 export async function POST(request: NextRequest) {
+  if (!isVolunteerProductionDeploy()) {
+    return NextResponse.json(
+      { ok: false, error: "Call-sign storage is disabled outside production." },
+      { status: 403 }
+    )
+  }
   let body: unknown
   try {
     body = await request.json()

@@ -1,7 +1,12 @@
 #!/usr/bin/env node
 /**
- * Registry + signup link builder checks for /volunteer org call signs.
+ * Registry + signup link builder + preview-guard checks for /volunteer.
  * No jest/vitest in this repo; run via `npm test`.
+ *
+ * Named checks (reported on failure / for PR report):
+ * - production_syh_signup_href_carries_callsign
+ * - preview_unlocked_control_is_not_a_link
+ * - isVolunteerProductionDeploy_branches
  */
 import assert from "node:assert/strict"
 import fs from "node:fs"
@@ -39,11 +44,14 @@ const {
   VOLUNTEER_CAMPAIGN_CODE,
   SKYHOPE_CAMPAIGN_CODE,
   DEFAULT_APP_URL,
+  VOLUNTEER_PREVIEW_SIGNUP_NOTICE,
   resolveVolunteerOrg,
   isSkyHopeRef,
+  isVolunteerProductionDeploy,
   normalizeVolunteerCallSign,
   normalizeVolunteerCallSignForOrg,
   buildVolunteerSignupHrefForOrg,
+  buildVolunteerUnlockedSignupControl,
   getVolunteerAppBaseUrl,
 } = await loadLib()
 
@@ -51,6 +59,10 @@ assert.equal(VOLUNTEER_CAMPAIGN_CODE, "ACA")
 assert.equal(SKYHOPE_CAMPAIGN_CODE, "SKYHOPE")
 assert.equal(DEFAULT_APP_URL, "https://app.planewx.ai")
 assert.equal(getVolunteerAppBaseUrl(), DEFAULT_APP_URL)
+assert.equal(
+  VOLUNTEER_PREVIEW_SIGNUP_NOTICE,
+  "Preview. Please don't create an account."
+)
 
 const aca = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ACA
 const sky = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.SKYHOPE
@@ -93,15 +105,79 @@ assert.equal(
   "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA&cmf=CMF1234"
 )
 
+// production_syh_signup_href_carries_callsign
 const skyHref = buildVolunteerSignupHrefForOrg({
   ref: "SKYHOPE",
   callSign: "SYH1234",
 })
 assert.equal(
   skyHref,
-  "https://app.planewx.ai/auth/sign-up?lp=vol&ref=SKYHOPE&callsign=SYH1234"
+  "https://app.planewx.ai/auth/sign-up?lp=vol&ref=SKYHOPE&callsign=SYH1234",
+  "production_syh_signup_href_carries_callsign"
 )
-assert.ok(!skyHref.includes("cmf="))
+assert.ok(!skyHref.includes("cmf="), "production_syh_signup_href_carries_callsign")
+
+const productionControl = buildVolunteerUnlockedSignupControl({
+  isProduction: true,
+  ref: "SKYHOPE",
+  callSign: "SYH1234",
+  gateOrg: sky,
+})
+assert.equal(productionControl.kind, "link", "production_syh_signup_href_carries_callsign")
+assert.equal(
+  productionControl.href,
+  "https://app.planewx.ai/auth/sign-up?lp=vol&ref=SKYHOPE&callsign=SYH1234",
+  "production_syh_signup_href_carries_callsign"
+)
+
+// preview_unlocked_control_is_not_a_link
+const previewControl = buildVolunteerUnlockedSignupControl({
+  isProduction: false,
+  ref: "SKYHOPE",
+  callSign: "SYH1234",
+  gateOrg: sky,
+})
+assert.equal(previewControl.kind, "preview", "preview_unlocked_control_is_not_a_link")
+assert.equal(
+  previewControl.notice,
+  VOLUNTEER_PREVIEW_SIGNUP_NOTICE,
+  "preview_unlocked_control_is_not_a_link"
+)
+assert.equal(
+  "href" in previewControl,
+  false,
+  "preview_unlocked_control_is_not_a_link"
+)
+
+const previewAca = buildVolunteerUnlockedSignupControl({
+  isProduction: false,
+  ref: "ACA",
+  callSign: "CMF1234",
+  gateOrg: aca,
+})
+assert.equal(previewAca.kind, "preview", "preview_unlocked_control_is_not_a_link")
+
+// isVolunteerProductionDeploy_branches
+assert.equal(
+  isVolunteerProductionDeploy("production"),
+  true,
+  "isVolunteerProductionDeploy_branches"
+)
+assert.equal(
+  isVolunteerProductionDeploy("preview"),
+  false,
+  "isVolunteerProductionDeploy_branches"
+)
+assert.equal(
+  isVolunteerProductionDeploy("development"),
+  false,
+  "isVolunteerProductionDeploy_branches"
+)
+assert.equal(
+  isVolunteerProductionDeploy(undefined),
+  false,
+  "isVolunteerProductionDeploy_branches"
+)
 
 const leaked = buildVolunteerSignupHrefForOrg({
   ref: "SKYHOPE",
@@ -116,5 +192,6 @@ const leakedAca = buildVolunteerSignupHrefForOrg({
 assert.equal(leakedAca, "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA")
 
 console.log("Volunteer org registry + link builder checks passed.")
+console.log("Tests: production_syh_signup_href_carries_callsign, preview_unlocked_control_is_not_a_link, isVolunteerProductionDeploy_branches")
 console.log("ACA Sign up href:", acaHref)
 console.log("SKYHOPE Sign up href:", skyHref)

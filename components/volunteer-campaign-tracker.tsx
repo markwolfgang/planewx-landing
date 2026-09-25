@@ -14,8 +14,14 @@ import {
 /**
  * Records visits on /volunteer as ACA by default.
  * Explicit ?ref= still wins (stored for signup CTAs).
+ * On non-production deploys, skip entirely (no campaign-visit POST, no gtag/fbq).
  */
-export function VolunteerCampaignTracker() {
+export function VolunteerCampaignTracker({
+  allowNetworkWrites = true,
+}: {
+  allowNetworkWrites?: boolean
+}) {
+  if (!allowNetworkWrites) return null
   return (
     <VariantTracker variant={VOLUNTEER_LP} defaultCode={VOLUNTEER_CAMPAIGN_CODE} />
   )
