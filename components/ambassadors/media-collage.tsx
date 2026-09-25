@@ -24,7 +24,7 @@ type MediaSlide = PhotoSlide | VideoSlide
 
 /**
  * Round 2 collage: about 8 tiles visible, arrows page to the next set.
- * One Don polo only (duplicate selfie removed).
+ * Don polo selfie stays in the collage only (roster uses the SF50 logo).
  */
 const SLIDES: MediaSlide[] = [
   {

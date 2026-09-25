@@ -30,21 +30,20 @@ export const metadata: Metadata = {
 }
 
 /**
- * Compact roster tiles (Round 2 i): square tile left; name + link + one-line
- * description right. One Don photo only (f/h). Sara asked for Sara/Mark/Don by
- * Don's SF50 on Don's tile; that file is not in the repo, so polo-1 is interim
- * (flagged in Round 2 report).
+ * Compact roster tiles: square tile left; name + link + one-line description
+ * right. Don uses the SF50 logo (distinct from the collage polo selfie).
  */
 const AMBASSADORS = [
   {
     name: "Don Medine",
     description: "SF50 Flight Support",
     tile: {
-      src: "/ambassadors/don-medine-polo-1-web.jpg",
-      alt: "Don Medine in a PlaneWX polo in the cockpit",
-      width: 1600,
-      height: 1200,
-      objectFit: "cover" as const,
+      src: "/ambassadors/sf50-fs-flight-support-logo.png",
+      alt: "SF50 FS Flight Support logo",
+      width: 1254,
+      height: 1254,
+      objectFit: "contain" as const,
+      wellClassName: "bg-white",
     },
   },
   {
@@ -156,7 +155,6 @@ export default function AmbassadorsPage() {
           </h1>
         </header>
 
-        {/* Round 2 l: WHO WE WORK WITH from PR #83 (ambassadors only) */}
         <section
           aria-labelledby="who-we-work-with"
           className="mx-auto max-w-3xl text-center space-y-5 sm:space-y-6"
@@ -169,8 +167,8 @@ export default function AmbassadorsPage() {
           </h2>
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
             We work with people who use PlaneWX and can share that experience.
-            Organizations, ambassadors, and content creators. We grow together.
-            Real relationships. Meetups and community when the fit is there.
+            Ambassadors and content creators. We grow together. Real
+            relationships. Meetups and community when the fit is there.
           </p>
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
             If you&apos;re using PlaneWX and can see yourself working with us,
@@ -186,7 +184,6 @@ export default function AmbassadorsPage() {
           </div>
         </section>
 
-        {/* Round 2 m: Why partner + What a partnership is (ambassadors only) */}
         <section
           aria-labelledby="benefits-heading"
           className="space-y-3 max-w-2xl"
@@ -195,12 +192,12 @@ export default function AmbassadorsPage() {
             id="benefits-heading"
             className="text-2xl sm:text-3xl font-bold tracking-tight"
           >
-            Why partner with PlaneWX
+            Why become a PlaneWX ambassador
           </h2>
           <p className="text-base sm:text-lg text-white/60 leading-relaxed">
-            We want to be around good people and good pilots. Organizations,
-            ambassadors, creators. If it&apos;s a real win-win and we can stand
-            behind the work, let&apos;s talk.
+            We want to be around good people and good pilots. Ambassadors and
+            creators. If it&apos;s a real win-win and we can stand behind the
+            work, let&apos;s talk.
           </p>
         </section>
 
@@ -210,7 +207,7 @@ export default function AmbassadorsPage() {
               id="program-heading"
               className="text-2xl sm:text-3xl font-bold tracking-tight"
             >
-              What a PlaneWX partnership is
+              What being a PlaneWX ambassador looks like
             </h2>
             <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
               Community or co-marketing.
@@ -229,25 +226,6 @@ export default function AmbassadorsPage() {
               </li>
             ))}
           </ul>
-        </section>
-
-        <section
-          id="join"
-          aria-labelledby="join-heading"
-          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
-        >
-          <div className="space-y-2">
-            <h2
-              id="join-heading"
-              className="text-xl sm:text-2xl font-bold tracking-tight"
-            >
-              Come be a part of our community
-            </h2>
-            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
-              Send a short note. We&rsquo;ll take it from there.
-            </p>
-          </div>
-          <AmbassadorInquiryForm />
         </section>
 
         <section aria-labelledby="roster-heading" className="space-y-5">
@@ -374,7 +352,6 @@ export default function AmbassadorsPage() {
           </div>
         </section>
 
-        {/* Round 2 j: fly-ins box last, just above the footer. Copy unchanged. */}
         <section
           aria-labelledby="fly-ins-heading"
           className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-4 max-w-3xl"
@@ -412,6 +389,26 @@ export default function AmbassadorsPage() {
             </a>
             .
           </p>
+        </section>
+
+        {/* Round 3: inquiry form at the bottom, above the footer. */}
+        <section
+          id="join"
+          aria-labelledby="join-heading"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
+        >
+          <div className="space-y-2">
+            <h2
+              id="join-heading"
+              className="text-xl sm:text-2xl font-bold tracking-tight"
+            >
+              Come be a part of our community
+            </h2>
+            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
+              Send a short note. We&rsquo;ll take it from there.
+            </p>
+          </div>
+          <AmbassadorInquiryForm />
         </section>
       </main>
 

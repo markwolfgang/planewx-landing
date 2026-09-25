@@ -74,7 +74,7 @@ export async function POST(request: Request) {
 
     if (!orgField.ok) {
       return NextResponse.json(
-        { error: fieldError("Organization", orgField) },
+        { error: fieldError("Name or handle", orgField) },
         { status: 400 },
       )
     }
@@ -96,7 +96,21 @@ export async function POST(request: Request) {
     }
     if (!noteField.ok) {
       return NextResponse.json(
-        { error: fieldError("Note", noteField) },
+        { error: fieldError("Involvement", noteField) },
+        { status: 400 },
+      )
+    }
+
+    const ALLOWED_INVOLVEMENT = new Set([
+      "Social media content creator",
+      "YouTube or podcast creator",
+      "Flight instructor (CFI)",
+      "Host a fly-in or event",
+      "Share with my flying club or owners group",
+    ])
+    if (!ALLOWED_INVOLVEMENT.has(noteField.value)) {
+      return NextResponse.json(
+        { error: "Involvement is invalid" },
         { status: 400 },
       )
     }
@@ -133,7 +147,7 @@ export async function POST(request: Request) {
           <p>New note from the PlaneWX Ambassadors page:</p>
           <table style="border-collapse: collapse; width: 100%; margin: 20px 0;">
             <tr>
-              <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Organization</td>
+              <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Name or handle</td>
               <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${escapeHtml(org)}</td>
             </tr>
             <tr>
@@ -144,8 +158,11 @@ export async function POST(request: Request) {
               <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Email</td>
               <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${escapeHtml(email)}</td>
             </tr>
+            <tr>
+              <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Involvement</td>
+              <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${escapeHtml(note)}</td>
+            </tr>
           </table>
-          <p style="white-space: pre-wrap; line-height: 1.55;">${escapeHtml(note)}</p>
         </div>
       `,
     })

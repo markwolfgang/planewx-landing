@@ -5,11 +5,20 @@ import { CheckCircle2, Loader2 } from "lucide-react"
 
 type Status = "idle" | "loading" | "success" | "error"
 
+/** Sara Round 3 exact involvement options. Keep labels identical. */
+const INVOLVEMENT_OPTIONS = [
+  "Social media content creator",
+  "YouTube or podcast creator",
+  "Flight instructor (CFI)",
+  "Host a fly-in or event",
+  "Share with my flying club or owners group",
+] as const
+
 export function AmbassadorInquiryForm() {
-  const [org, setOrg] = useState("")
+  const [handle, setHandle] = useState("")
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-  const [note, setNote] = useState("")
+  const [involvement, setInvolvement] = useState("")
   const [status, setStatus] = useState<Status>("idle")
   const [message, setMessage] = useState("")
 
@@ -19,10 +28,16 @@ export function AmbassadorInquiryForm() {
     setMessage("")
 
     try {
+      // API still accepts org + note; map handle -> org, involvement -> note.
       const res = await fetch("/api/ambassadors/inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ org, name, email, note }),
+        body: JSON.stringify({
+          org: handle,
+          name,
+          email,
+          note: involvement,
+        }),
       })
       const data = await res.json()
       if (!res.ok) {
@@ -32,10 +47,10 @@ export function AmbassadorInquiryForm() {
       }
       setStatus("success")
       setMessage(data.message || "Thanks. We got your note and will reply soon.")
-      setOrg("")
+      setHandle("")
       setName("")
       setEmail("")
-      setNote("")
+      setInvolvement("")
     } catch {
       setStatus("error")
       setMessage("Network error. Please try again.")
@@ -59,16 +74,16 @@ export function AmbassadorInquiryForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <label className="block space-y-1.5">
           <span className="text-xs font-medium text-white/55">
-            Organization or club
+            Name or handle
           </span>
           <input
-            name="org"
+            name="handle"
             required
             maxLength={200}
-            value={org}
-            onChange={(e) => setOrg(e.target.value)}
-            autoComplete="organization"
-            placeholder="Club, brand, or owners group"
+            value={handle}
+            onChange={(e) => setHandle(e.target.value)}
+            autoComplete="nickname"
+            placeholder="Your name, call sign, or social handle"
             className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/40"
           />
         </label>
@@ -100,21 +115,30 @@ export function AmbassadorInquiryForm() {
           className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/40"
         />
       </label>
-      <label className="block space-y-1.5">
-        <span className="text-xs font-medium text-white/55">
+      <fieldset className="space-y-2.5">
+        <legend className="text-xs font-medium text-white/55">
           How do you want to get involved?
-        </span>
-        <textarea
-          name="note"
-          required
-          maxLength={4000}
-          rows={4}
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-          placeholder="A short note on fly-ins, events, or community ideas."
-          className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/40 resize-y min-h-[6.5rem]"
-        />
-      </label>
+        </legend>
+        <div className="space-y-2">
+          {INVOLVEMENT_OPTIONS.map((option) => (
+            <label
+              key={option}
+              className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm text-white/85 hover:border-sky-500/30 cursor-pointer"
+            >
+              <input
+                type="radio"
+                name="involvement"
+                required
+                value={option}
+                checked={involvement === option}
+                onChange={() => setInvolvement(option)}
+                className="mt-0.5 h-4 w-4 shrink-0 accent-sky-400"
+              />
+              <span>{option}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
       {status === "error" ? (
         <p className="text-sm text-rose-400" role="alert">
           {message}
