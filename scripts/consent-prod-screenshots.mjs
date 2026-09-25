@@ -186,12 +186,62 @@ async function main() {
       await page.getByRole("button", { name: "Essential only" }).click()
       await banner.waitFor({ state: "detached" })
     }
-    await page.locator("#cookies-and-tracking").scrollIntoViewIfNeeded()
+    const section = page.locator("#cookies-and-tracking")
+    await section.scrollIntoViewIfNeeded()
+    const text = await section.innerText()
+    for (const needle of [
+      "cookies planewx-variant",
+      "), planewx-brand-auth",
+      "or Sec-GPC",
+      "detail: Cookie Policy",
+    ]) {
+      if (!text.includes(needle)) {
+        throw new Error("privacy §6 missing spaced text: " + needle + "\n---\n" + text)
+      }
+    }
     await page.waitForTimeout(400)
     await page.screenshot({
       path: path.join(OUT, "privacy-cookies-section-1280.png"),
     })
     console.log("saved privacy-cookies-section-1280.png")
+    await context.close()
+  }
+
+  // 8 cookies policy page
+  for (const [w, h, name] of [
+    [1280, 900, "cookies-page-1280.png"],
+    [390, 844, "cookies-page-390.png"],
+  ]) {
+    const context = await browser.newContext({
+      viewport: { width: w, height: h },
+      colorScheme: "dark",
+      extraHTTPHeaders: { "x-vercel-ip-country": "US" },
+    })
+    const page = await context.newPage()
+    await page.goto(BASE + "/cookies", { waitUntil: "networkidle" })
+    await page.evaluate(() => localStorage.clear())
+    await page.reload({ waitUntil: "networkidle" })
+    const banner = page.locator('[data-testid="cookie-consent-banner"]')
+    if (await banner.count()) {
+      await page.getByRole("button", { name: "Essential only" }).click()
+      await banner.waitFor({ state: "detached" })
+    }
+    const text = await page.locator("main, body").first().innerText()
+    for (const needle of [
+      "cookies planewx-variant",
+      "), planewx-brand-auth",
+      "or the Sec-GPC",
+      "a Do not sell or share",
+      "clears cookie_prefs_v1",
+      "tracking: privacy@planewx.ai",
+    ]) {
+      if (!text.includes(needle)) {
+        throw new Error("cookies page missing spaced text: " + needle)
+      }
+    }
+    await page.waitForTimeout(400)
+    await page.screenshot({ path: path.join(OUT, name), fullPage: w === 390 })
+    console.log("saved", name)
     await context.close()
   }
 
