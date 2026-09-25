@@ -150,20 +150,21 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
               {isSkyHope ? "Welcome SkyHope volunteer pilots" : "Welcome volunteer pilots"}
             </h1>
-            {isSkyHope ? (
-              <p className="text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
-                SkyHope volunteer pilots get 30% off an annual plan, every year you remain an
-                active volunteer pilot. We re-confirm your call sign once a year. Start with a
-                2-week Pro Plus trial. No credit card is needed for the trial. PlaneWX is
-                decision support. You remain PIC.
+            <div className="space-y-4 text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
+              <p>
+                Fly like it&apos;s your job. PlaneWX brings professional-grade tools and habits to
+                volunteer pilots, the same standard paid crews hold, on every mission.
               </p>
-            ) : (
-              <p className="text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
-                Welcome pilots who fly volunteer missions for people and animals in need.
-                PlaneWX is proud to support you with clear weather intelligence and honest
-                decision support.
+              {isSkyHope ? (
+                <p>
+                  30% off an annual plan, every year you remain an active volunteer pilot. We
+                  re-confirm your call sign once a year.
+                </p>
+              ) : null}
+              <p>
+                Start with a 2-week Pro Plus trial. No credit card is needed for the trial.
               </p>
-            )}
+            </div>
           </div>
         </header>
 
@@ -174,33 +175,15 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
               <Shield className="h-5 w-5" aria-hidden />
             </span>
             <h2 id="dss-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-              {isSkyHope
-                ? "Decision support. You remain PIC."
-                : "Decision support, not a go/no-go oracle"}
+              Decision support. You remain PIC.
             </h2>
           </div>
-          {isSkyHope ? (
-            <p className="text-white/65 leading-relaxed text-base sm:text-lg">
-              PlaneWX is a{" "}
-              <strong className="text-white font-semibold">decision support system</strong>.
-              It shows the weather against your airplane and your personal minimums.
-              It does not make the flight decision for you. You remain PIC.
-            </p>
-          ) : (
-            <>
-              <p className="text-white/65 leading-relaxed text-base sm:text-lg">
-                PlaneWX is a <strong className="text-white font-semibold">decision support system</strong>.
-                It helps you see the weather against your airplane and your personal minimums,
-                surface risk early, and make a better call. It does not invent mission
-                probability. It does not tell you to go or stay. You remain PIC.
-              </p>
-              <p className="text-white/55 leading-relaxed">
-                Volunteer routes often run through busy corridors, weather that shifts mid-leg,
-                and fixes or waypoints you have not flown lately. Better information before you
-                fire up is how you protect the people and animals who need that ride.
-              </p>
-            </>
-          )}
+          <p className="text-white/65 leading-relaxed text-base sm:text-lg">
+            PlaneWX is the decision support system for general aviation. It gives pilots
+            professional-grade tools and builds professional-grade habits that make flying
+            safer. Brief, FRAT, GO / NO-GO, Debrief, on every flight. You make the call. You
+            remain PIC.
+          </p>
         </section>
 
         {/* Pressure and discount */}
@@ -391,11 +374,6 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
             >
               Get started
             </h2>
-            <p className="text-white/55 leading-relaxed">
-              {isSkyHope
-                ? "Enter your SkyHope call sign. We'll validate it, then unlock signup."
-                : "Enter your Compassion Flight call sign. We'll validate it, then unlock signup."}
-            </p>
           </div>
           <VolunteerCallSignGate
             orgRef={gateOrgRef}
