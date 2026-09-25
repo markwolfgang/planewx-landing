@@ -264,7 +264,7 @@ export function LandingVariantB() {
                 ))}
                 <div className="pt-4 border-t border-emerald-500/10">
                   <p className="text-sm text-emerald-300/80 italic">
-                    &ldquo;Fly or Stay. You make the call.&rdquo;
+                    &ldquo;Fly like it&apos;s your job.&rdquo;
                   </p>
                 </div>
               </div>

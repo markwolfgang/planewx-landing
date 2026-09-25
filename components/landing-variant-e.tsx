@@ -156,8 +156,7 @@ export function LandingVariantE() {
             <p>
               Before I ever touched the controls of an airplane, I spent a year
               listening to AOPA's{" "}
-              <em className="text-white not-italic font-medium">"And There I Was"</em>{" "}
-              : a podcast about mishaps, near-misses, and accidents. I watched every
+              <em className="text-white not-italic font-medium">"And There I Was"</em>: a podcast about mishaps, near-misses, and accidents. I watched every
               aviation accident/mishap video I could find. I wanted to understand exactly
               what separated the pilots who came home from the ones who didn't.
             </p>
@@ -431,7 +430,7 @@ export function LandingVariantE() {
           {/* Tagline */}
           <div className="text-center py-10 border-t border-white/5">
             <p className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              "Fly or Stay. You make the call."
+              "Fly like it's your job."
             </p>
             <p className="text-white/30 text-sm">PlaneWX™</p>
           </div>
