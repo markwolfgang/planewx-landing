@@ -117,7 +117,7 @@ export const FAQS: {
   },
   {
     q: "What briefing views does PlaneWX offer?",
-    a: "Every briefing has the same weather content in three views: Quick (compact status pills; phone default), Enhanced (color-coded grids and gauges), and Visual (Enhanced plus live forecast imagery). Classic view has been removed. Pick the view that fits the moment; the WX Score and sources stay the same.",
+    a: "Every briefing has the same weather content in three views: Quick (compact status pills; phone default), Enhanced (color-coded grids and gauges), and Visual (Enhanced plus live forecast imagery). Pick the view that fits the moment; the WX Score and sources stay the same.",
   },
   {
     q: "What is the mentor system?",
