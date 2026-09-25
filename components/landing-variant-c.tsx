@@ -225,7 +225,7 @@ export function LandingVariantC() {
                 aircraft. Not generic VFR/IFR categories. Every deduction is transparent and explained.
               </p>
               <p className="text-white/60 leading-relaxed">
-                It updates automatically as weather evolves, 40+ times over 14 days, so
+                For monitored flights, it updates automatically as weather evolves, 40+ times over 14 days, so
                 you never face a last-minute scramble to decide.
               </p>
             </div>
@@ -233,7 +233,7 @@ export function LandingVariantC() {
               <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm font-medium text-white/60">WX Score</span>
-                  <span className="text-xs text-emerald-400">SR22T · KPAO → KSBA</span>
+                  <span className="text-xs text-emerald-400">SR22T · KPAO to KSBA</span>
                 </div>
                 <div className="text-center py-4">
                   <div className="text-7xl font-bold text-emerald-400">86</div>
@@ -266,7 +266,7 @@ export function LandingVariantC() {
           <div className="grid md:grid-cols-3 gap-5">
             {[
               { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0–100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds." },
-              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute GO / NO-GO scramble with bags packed and commitments made." },
+              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning", desc: <>Monitor WX trends from 2 weeks out. Never face a last-minute <span className="whitespace-nowrap">GO / NO-GO</span> scramble with bags packed and commitments made.</> },
               { icon: <Brain className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across sample points along your route with confidence scoring." },
               { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "PAVE Risk Assessment", desc: "The FAA's decision-making framework, pre-filled from your trip context: all four quadrants in one view." },
               { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Ask a Mentor", desc: "Connect with experienced pilots who see your full briefing: WX Score, aircraft profile, minimums." },

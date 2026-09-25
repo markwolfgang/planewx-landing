@@ -19,13 +19,13 @@
 9. Key: no personal minimums, no WX Score (100%)
 10. Community polls: TBMOPA + COPA + Airplanes and Coffee
 11. The Loop (four steps + Mentor alongside)
-12. Loop 1: WX Score briefing
+12. Loop 1: Weather Briefing
 13. Would pilots recommend it?: 8.7/10 (1,724 responses)
 14. Loop 2: FRAT (choice, not mandate)
 15. What makes this FRAT different (live inputs + Coming next)
 16. FRAT completion by aircraft type
 17. FRAT product shot
-18. Loop 3: GO / NO-GO
+18. Loop 3: Fly or Stay
 19. Principle: courage to stay
 20. Loop 4: Self Debrief (today + Coming next)
 21. Mentor alongside the loop

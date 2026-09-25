@@ -107,7 +107,7 @@ export function LandingVariantB() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            The GO / NO-GO call{" "}
+            The <span className="whitespace-nowrap">GO / NO-GO</span> call{" "}
             <span className="bg-gradient-to-r from-rose-400 to-orange-400 bg-clip-text text-transparent">
               shouldn&apos;t happen
             </span>
@@ -306,7 +306,8 @@ export function LandingVariantB() {
               <h3 className="text-xl font-bold mb-3">14-Day Early Warning</h3>
               <p className="text-white/60 text-sm leading-relaxed">
                 See WX Score trends before you commit to anything. Cancel hotels, not your safety
-                margins. You&apos;ll know days in advance whether conditions are trending toward GO / NO-GO, while you still have options.
+                margins. You&apos;ll know days in advance whether conditions are trending toward{" "}
+                <span className="whitespace-nowrap">GO / NO-GO</span>, while you still have options.
               </p>
             </div>
 
@@ -352,13 +353,14 @@ export function LandingVariantB() {
                 <span className="text-emerald-400">finally quantified</span>
               </h2>
               <p className="text-white/70 leading-relaxed mb-6">
-                Right now, your GO / NO-GO judgment lives entirely in your head. You mentally juggle
+                Right now, your <span className="whitespace-nowrap">GO / NO-GO</span> judgment lives
+                entirely in your head. You mentally juggle
                 ceilings, winds, icing, turbulence, currency, and fatigue under pressure, often at
                 the last minute.
               </p>
               <p className="text-white/70 leading-relaxed mb-6">
                 PlaneWX never recommends go or no-go. The pilot makes the call. The WX Score
-                externalizes that work. The cognitive burden of
+                externalizes that work. The workload of
                 weather risk assessment lives in software, not your memory, not your gut.
               </p>
               <ul className="space-y-3">
@@ -367,7 +369,7 @@ export function LandingVariantB() {
                   "Ceiling, visibility, crosswind, turbulence, icing: all weighted",
                   "Different scores for each aircraft you fly",
                   "Every deduction is transparent and explained",
-                  "Updates automatically as weather evolves, 40+ times over 14 days",
+                  "For monitored flights, updates automatically as weather evolves, 40+ times over 14 days",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-white/70">
                     <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
@@ -381,7 +383,7 @@ export function LandingVariantB() {
               <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm font-medium text-white/60">WX Score</span>
-                  <span className="text-xs text-emerald-400">SR22T · KPAO → KSBA</span>
+                  <span className="text-xs text-emerald-400">SR22T · KPAO to KSBA</span>
                 </div>
                 <div className="text-center py-4">
                   <div className="text-7xl font-bold text-emerald-400">86</div>

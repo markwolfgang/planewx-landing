@@ -392,7 +392,7 @@ export function LandingVariantE() {
                 accent: "text-amber-400",
                 border: "border-amber-500/20",
                 bg: "from-amber-950/40 to-orange-950/10",
-                title: "A structured framework for go / no-go",
+                title: <>A structured framework for <span className="whitespace-nowrap">GO / NO-GO</span></>,
                 body: "The FAA's PAVE risk assessment, built into your pre-flight workflow. Not a checkbox: a genuine moment of honest reflection, documented and timestamped, before you ever start the engine. PlaneWX never recommends go or no-go. The pilot makes the call.",
                 features: ["PAVE Risk Assessment", "Pilot · Aircraft · enVironment · External", "Voluntary accountability", "Decision record", "Timestamped for your log"],
               },
