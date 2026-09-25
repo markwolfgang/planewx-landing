@@ -394,6 +394,37 @@ assert.equal(
   true,
   "bare_step1_heading_is_volunteer_call_sign"
 )
+assert.equal(
+  volunteerPage.includes(
+    "Use your Compassion Flight (CMF) or SkyHope (SYH) call sign. We validate it before signup unlocks."
+  ),
+  true,
+  "bare_step1_body_dual_org"
+)
+assert.equal(
+  volunteerPage.includes(
+    "Use your SkyHope (SYH) call sign. We validate it before signup unlocks."
+  ),
+  true,
+  "skyhope_step1_body_no_gate_hint_repeat"
+)
+assert.equal(
+  volunteerPage.includes(
+    "Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign below."
+  ),
+  true,
+  "bare_pressure_cta_dual_org"
+)
+assert.equal(
+  volunteerPage.includes("Enter your Compassion Flight call sign below."),
+  false,
+  "bare_pressure_cta_not_cmf_only"
+)
+assert.equal(
+  volunteerPage.includes("We'll validate it, then unlock signup."),
+  false,
+  "step1_body_not_gate_hint_repeat"
+)
 assert.match(
   volunteerPage,
   /isSkyHope\s*\?\s*"Enter your SkyHope call sign"\s*:\s*"Enter your volunteer call sign"/,
@@ -402,7 +433,7 @@ assert.match(
 
 console.log("Volunteer org registry + link builder checks passed.")
 console.log(
-  "Tests: production_syh_signup_href_carries_callsign, preview_unlocked_control_is_not_a_link, isVolunteerProductionDeploy_branches, bare_syh_lowercase_accepted_routes_skyhope, bare_cmf_accepted, bare_garbage_shows_new_error, ref_skyhope_cmf_rejected, ref_skyhope_syh_lowercase_accepted, how_offer_works_has_no_duplicate_subtitle, bare_aca_label_is_volunteer_call_sign"
+  "Tests: production_syh_signup_href_carries_callsign, preview_unlocked_control_is_not_a_link, isVolunteerProductionDeploy_branches, bare_syh_lowercase_accepted_routes_skyhope, bare_cmf_accepted, bare_garbage_shows_new_error, ref_skyhope_cmf_rejected, ref_skyhope_syh_lowercase_accepted, how_offer_works_has_no_duplicate_subtitle, bare_aca_label_is_volunteer_call_sign, bare_step1_body_dual_org, skyhope_step1_body_no_gate_hint_repeat, bare_pressure_cta_dual_org"
 )
 console.log("ACA Sign up href:", acaHref)
 console.log("SKYHOPE Sign up href:", skyHref)

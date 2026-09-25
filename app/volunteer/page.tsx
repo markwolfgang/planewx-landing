@@ -217,7 +217,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                 <strong className="text-white font-semibold">
                   30% off the annual plan for each year you&apos;re an active volunteer pilot
                 </strong>
-                . Enter your Compassion Flight call sign below. We are glad to do it. Safer
+                . Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign below. Safer
                 decisions on missions like yours are exactly why we built this.
               </p>
             </>
@@ -284,8 +284,8 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                 </h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
                   {isSkyHope
-                    ? "Enter your SkyHope call sign. We'll validate it, then unlock signup."
-                    : "Enter your Compassion Flight call sign. We'll validate it, then unlock signup."}
+                    ? "Use your SkyHope (SYH) call sign. We validate it before signup unlocks."
+                    : "Use your Compassion Flight (CMF) or SkyHope (SYH) call sign. We validate it before signup unlocks."}
                 </p>
               </div>
             </li>
