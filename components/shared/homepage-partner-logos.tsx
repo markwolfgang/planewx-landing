@@ -51,7 +51,7 @@ const HOMEPAGE_PARTNER_LOGOS = [
   {
     name: "TBMOPA",
     alt: "TBMOPA logo",
-    src: "/partners/tbmopa-logo-dark.png",
+    src: "/partners/tbmopa-white.png",
     width: 800,
     height: 377,
     // Wider ~2.1:1 mark with two-line subtitle; taller box so the wordmark matches peers.
