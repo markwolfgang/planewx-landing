@@ -1,18 +1,19 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createClient } from "@supabase/supabase-js"
 import {
-  normalizeVolunteerCallSign,
+  normalizeVolunteerCallSignForOrg,
+  resolveVolunteerOrg,
   VOLUNTEER_CAMPAIGN_CODE,
-  VOLUNTEER_CALL_SIGN_FORMAT_ERROR,
 } from "@/lib/volunteer-landing"
 
 /**
  * POST /api/volunteer/call-sign
  *
- * Format-only validation (CMF + 1–4 digits). No ACA membership list lookup.
- * Stores the normalized call sign with timestamp + ref when Supabase is available.
- * Always returns the normalized sign on success so the client can pass it into
- * signup (?cmf=CMF42&ref=ACA) even if durable storage is temporarily unavailable.
+ * Format-only validation per org (ACA: CMF + 1-4 digits; SkyHope: SYH + 1-4 digits).
+ * No membership list lookup. Stores the normalized call sign with timestamp + ref
+ * when Supabase is available. Always returns the normalized sign on success so the
+ * client can pass it into signup even if durable storage is temporarily unavailable.
+ * Never blocks signup when storage fails.
  */
 export async function POST(request: NextRequest) {
   let body: unknown
@@ -29,14 +30,6 @@ export async function POST(request: NextRequest) {
         ? (body as { call_sign: string }).call_sign
         : ""
 
-  const callSign = normalizeVolunteerCallSign(raw)
-  if (!callSign) {
-    return NextResponse.json(
-      { ok: false, error: VOLUNTEER_CALL_SIGN_FORMAT_ERROR },
-      { status: 400 }
-    )
-  }
-
   const refRaw =
     typeof (body as { ref?: unknown })?.ref === "string"
       ? (body as { ref: string }).ref.trim().toUpperCase()
@@ -45,6 +38,12 @@ export async function POST(request: NextRequest) {
     refRaw && refRaw.length >= 2 && refRaw.length <= 32
       ? refRaw
       : VOLUNTEER_CAMPAIGN_CODE
+
+  const org = resolveVolunteerOrg(ref)
+  const callSign = normalizeVolunteerCallSignForOrg(raw, org)
+  if (!callSign) {
+    return NextResponse.json({ ok: false, error: org.error }, { status: 400 })
+  }
 
   const lp =
     typeof (body as { lp?: unknown })?.lp === "string"

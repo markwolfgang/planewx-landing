@@ -6,21 +6,26 @@ import {
   buildVolunteerSignupHref,
 } from "@/components/volunteer-campaign-tracker"
 import {
-  normalizeVolunteerCallSign,
-  VOLUNTEER_CALL_SIGN_FORMAT_ERROR,
-  VOLUNTEER_CALL_SIGN_FORMAT_HINT,
-  VOLUNTEER_CALL_SIGN_PLACEHOLDER,
-  VOLUNTEER_CALL_SIGN_STORAGE_KEY,
+  normalizeVolunteerCallSignForOrg,
+  resolveVolunteerOrg,
   VOLUNTEER_CAMPAIGN_CODE,
   VOLUNTEER_LP,
+  type VolunteerOrgCallSignConfig,
 } from "@/lib/volunteer-landing"
 
 /**
  * Call-sign gate for /volunteer.
  * Server/client format validation stays internal. User-facing copy must not
  * reveal the letter prefix, digit pattern, or any working call-sign example.
+ *
+ * Pass orgRef="SKYHOPE" for the SkyHope SYH gate; default is ACA/CMF.
  */
-export function VolunteerCallSignGate() {
+export function VolunteerCallSignGate({
+  orgRef = VOLUNTEER_CAMPAIGN_CODE,
+}: {
+  orgRef?: string
+}) {
+  const org: VolunteerOrgCallSignConfig = resolveVolunteerOrg(orgRef)
   const [input, setInput] = useState("")
   const [callSign, setCallSign] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -28,31 +33,35 @@ export function VolunteerCallSignGate() {
   const [storedRemotely, setStoredRemotely] = useState(false)
 
   useEffect(() => {
+    setInput("")
+    setCallSign(null)
+    setError(null)
+    setStoredRemotely(false)
     try {
-      const saved = localStorage.getItem(VOLUNTEER_CALL_SIGN_STORAGE_KEY)
-      if (saved && normalizeVolunteerCallSign(saved)) {
+      const saved = localStorage.getItem(org.storageKey)
+      if (saved && normalizeVolunteerCallSignForOrg(saved, org)) {
         setCallSign(saved)
         setInput(saved)
       }
     } catch {
       /* ignore */
     }
-  }, [])
+  }, [org.ref, org.storageKey])
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault()
     setError(null)
 
-    const normalized = normalizeVolunteerCallSign(input)
+    const normalized = normalizeVolunteerCallSignForOrg(input, org)
     if (!normalized) {
-      setError(VOLUNTEER_CALL_SIGN_FORMAT_ERROR)
+      setError(org.error)
       setCallSign(null)
       return
     }
 
     setSubmitting(true)
     try {
-      localStorage.setItem(VOLUNTEER_CALL_SIGN_STORAGE_KEY, normalized)
+      localStorage.setItem(org.storageKey, normalized)
     } catch {
       /* still continue with in-memory + signup query param */
     }
@@ -64,7 +73,7 @@ export function VolunteerCallSignGate() {
       const ref =
         (fromUrl ? fromUrl.toUpperCase() : null) ||
         storedRef ||
-        VOLUNTEER_CAMPAIGN_CODE
+        org.ref
 
       const res = await fetch("/api/volunteer/call-sign", {
         method: "POST",
@@ -85,7 +94,7 @@ export function VolunteerCallSignGate() {
         remoteOk = Boolean(data.stored)
         if (data.callSign) {
           try {
-            localStorage.setItem(VOLUNTEER_CALL_SIGN_STORAGE_KEY, data.callSign)
+            localStorage.setItem(org.storageKey, data.callSign)
           } catch {
             /* ignore */
           }
@@ -102,7 +111,7 @@ export function VolunteerCallSignGate() {
   }
 
   const unlocked = Boolean(callSign)
-  const signupHref = buildVolunteerSignupHref(callSign)
+  const signupHref = buildVolunteerSignupHref(callSign, org.ref)
 
   return (
     <div className="space-y-6">
@@ -116,10 +125,10 @@ export function VolunteerCallSignGate() {
             htmlFor="volunteer-call-sign"
             className="block text-sm font-semibold text-white"
           >
-            Your Compassion Flight call sign
+            {org.label}
           </label>
           <p className="text-sm text-white/50 leading-relaxed">
-            {VOLUNTEER_CALL_SIGN_FORMAT_HINT}
+            {org.hint}
           </p>
         </div>
 
@@ -132,7 +141,7 @@ export function VolunteerCallSignGate() {
             autoCapitalize="characters"
             autoCorrect="off"
             spellCheck={false}
-            placeholder={VOLUNTEER_CALL_SIGN_PLACEHOLDER}
+            placeholder={org.placeholder}
             value={input}
             onChange={(e) => {
               setInput(e.target.value)
@@ -163,7 +172,7 @@ export function VolunteerCallSignGate() {
         </div>
 
         <p id="volunteer-call-sign-hint" className="sr-only">
-          Enter your Compassion Flight call sign.
+          {org.srHint}
         </p>
 
         {error ? (
@@ -180,9 +189,7 @@ export function VolunteerCallSignGate() {
           <p className="inline-flex items-start gap-2 text-sm text-emerald-300 leading-relaxed">
             <Check className="h-4 w-4 mt-0.5 shrink-0" aria-hidden />
             <span>
-              Call sign accepted. Sign up below for your 2-week Pro Plus trial. At
-              purchase, PlaneWX applies the volunteer discount from the call sign you
-              entered
+              {org.acceptedLead}
               {storedRemotely ? "." : " (saved for signup on this device)."}
             </span>
           </p>
@@ -206,10 +213,7 @@ export function VolunteerCallSignGate() {
           ) : (
             <>
               <Lock className="h-4 w-4 text-white/40" aria-hidden />
-              <span className="text-white/45">
-                Enter your Compassion Flight call sign. We&apos;ll validate it, then unlock
-                signup
-              </span>
+              <span className="text-white/45">{org.lockedHint}</span>
             </>
           )}
         </div>
@@ -218,10 +222,7 @@ export function VolunteerCallSignGate() {
           Sign up for a 2-week Pro Plus trial
         </h3>
         <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-          Full access to Pro Plus, our highest tier. No credit card required to
-          start the trial. When you continue after the trial, PlaneWX applies{" "}
-          30% off the annual plan at purchase from the call sign you entered here.
-          You do not type a separate coupon code.
+          {org.unlockBody}
         </p>
 
         {unlocked && callSign ? (
@@ -229,7 +230,7 @@ export function VolunteerCallSignGate() {
             href={signupHref}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
             onClick={(e) => {
-              e.currentTarget.href = buildVolunteerSignupHref(callSign)
+              e.currentTarget.href = buildVolunteerSignupHref(callSign, org.ref)
             }}
           >
             Sign up for PlaneWX

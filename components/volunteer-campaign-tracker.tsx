@@ -3,7 +3,10 @@
 import type { ReactNode } from "react"
 import { VariantTracker } from "@/components/shared/variant-tracker"
 import {
-  VOLUNTEER_CALL_SIGN_STORAGE_KEY,
+  buildVolunteerSignupHrefForOrg,
+  normalizeVolunteerCallSignForOrg,
+  resolveVolunteerOrg,
+  SKYHOPE_CAMPAIGN_CODE,
   VOLUNTEER_CAMPAIGN_CODE,
   VOLUNTEER_LP,
 } from "@/lib/volunteer-landing"
@@ -18,46 +21,79 @@ export function VolunteerCampaignTracker() {
   )
 }
 
-function resolveRef(): string {
+function readUrlRef(): string | null {
   try {
     const fromUrl = new URLSearchParams(window.location.search).get("ref")?.trim()
-    const stored = localStorage.getItem("planewx_referral")
-    return (
-      (fromUrl ? fromUrl.toUpperCase() : null) ||
-      stored ||
-      VOLUNTEER_CAMPAIGN_CODE
-    )
-  } catch {
-    return VOLUNTEER_CAMPAIGN_CODE
-  }
-}
-
-function resolveCallSign(): string | null {
-  try {
-    return localStorage.getItem(VOLUNTEER_CALL_SIGN_STORAGE_KEY)
+    return fromUrl ? fromUrl.toUpperCase() : null
   } catch {
     return null
   }
 }
 
-/** Build app signup URL with ref=ACA and optional cmf=CALLSIGN. */
-export function buildVolunteerSignupHref(callSign?: string | null): string {
-  const params = new URLSearchParams({
-    lp: VOLUNTEER_LP,
-    ref: VOLUNTEER_CAMPAIGN_CODE,
-  })
+function readStoredReferral(): string | null {
   try {
-    params.set("ref", resolveRef())
-    const cmf = callSign ?? resolveCallSign()
-    if (cmf) params.set("cmf", cmf)
+    return localStorage.getItem("planewx_referral")
   } catch {
-    if (callSign) params.set("cmf", callSign)
+    return null
   }
-  return `https://app.planewx.ai/auth/sign-up?${params.toString()}`
 }
 
 /**
- * Primary CTA: app signup with ref=ACA (and cmf= when a call sign is stored).
+ * Resolve signup `ref` for the active gate.
+ * URL wins. Stale SKYHOPE storage must not take over the ACA/CMF gate
+ * (and the reverse), so a wrong-org call sign never rides into the link.
+ */
+function resolveSignupRef(gateOrgRef?: string): string {
+  const urlRef = readUrlRef()
+  if (urlRef) return urlRef
+
+  const gate = resolveVolunteerOrg(gateOrgRef ?? VOLUNTEER_CAMPAIGN_CODE)
+  if (gate.ref === SKYHOPE_CAMPAIGN_CODE) return SKYHOPE_CAMPAIGN_CODE
+
+  const stored = readStoredReferral()
+  if (stored && stored.toUpperCase() === SKYHOPE_CAMPAIGN_CODE) {
+    return VOLUNTEER_CAMPAIGN_CODE
+  }
+  return stored || VOLUNTEER_CAMPAIGN_CODE
+}
+
+function resolveCallSignForGate(gateOrgRef?: string): string | null {
+  const org = resolveVolunteerOrg(gateOrgRef ?? VOLUNTEER_CAMPAIGN_CODE)
+  try {
+    const saved = localStorage.getItem(org.storageKey)
+    if (!saved) return null
+    return normalizeVolunteerCallSignForOrg(saved, org)
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Build app signup URL with ref and the active org's call-sign param.
+ * ACA: ?cmf=CALLSIGN. SkyHope: ?callsign=CALLSIGN (never ?cmf=).
+ * Pass gateOrgRef from the gate so the active page org wins over stale storage.
+ */
+export function buildVolunteerSignupHref(
+  callSign?: string | null,
+  gateOrgRef?: string
+): string {
+  const gate = resolveVolunteerOrg(gateOrgRef ?? readUrlRef())
+  const ref = resolveSignupRef(gate.ref)
+
+  const resolved =
+    callSign != null && callSign !== ""
+      ? normalizeVolunteerCallSignForOrg(callSign, gate)
+      : resolveCallSignForGate(gate.ref)
+
+  return buildVolunteerSignupHrefForOrg({
+    ref,
+    callSign: resolved,
+    gateOrg: gate,
+  })
+}
+
+/**
+ * Primary CTA: app signup with ref (and org call-sign param when stored).
  * Prefer VolunteerCallSignGate for the locked flow; this link is for unlocked CTAs.
  */
 export function VolunteerSignUpLink({
