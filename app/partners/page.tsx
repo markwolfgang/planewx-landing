@@ -174,11 +174,10 @@ const PARTNERS = [
     name: "Runway to Oshkosh",
     href: "https://www.planewx.ai/runway",
     logo: {
-      // PLACEHOLDER: campaign mark not in handoff; keep despite Gleam hold. Not Creative Relay.
-      src: "/partners/runway-placeholder.svg",
-      alt: "Runway to Oshkosh logo placeholder",
-      width: 360,
-      height: 96,
+      src: "/partners/runway-to-oshkosh-logo.png",
+      alt: "Runway to Oshkosh",
+      width: 512,
+      height: 67,
       className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
     },
     blurb:
@@ -253,6 +252,25 @@ export default function PartnersPage() {
             building. Listing here means an active collaboration with PlaneWX.
           </p>
         </header>
+
+        <section
+          id="apply"
+          aria-labelledby="apply-heading"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
+        >
+          <div className="space-y-2">
+            <h2
+              id="apply-heading"
+              className="text-xl sm:text-2xl font-bold tracking-tight"
+            >
+              Be a part of our team
+            </h2>
+            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
+              Want to partner with us? Reach out. We&rsquo;ll take it from there.
+            </p>
+          </div>
+          <PartnerInquiryForm />
+        </section>
 
         <section aria-labelledby="partners-grid-heading" className="space-y-5">
           <h2 id="partners-grid-heading" className="sr-only">
@@ -336,25 +354,6 @@ export default function PartnersPage() {
               )
             })}
           </ul>
-        </section>
-
-        <section
-          id="apply"
-          aria-labelledby="apply-heading"
-          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
-        >
-          <div className="space-y-2">
-            <h2
-              id="apply-heading"
-              className="text-xl sm:text-2xl font-bold tracking-tight"
-            >
-              Be a part of our team
-            </h2>
-            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
-              Want to partner with us? Reach out. We&rsquo;ll take it from there.
-            </p>
-          </div>
-          <PartnerInquiryForm />
         </section>
 
         <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-8 space-y-3 text-center sm:text-left">
