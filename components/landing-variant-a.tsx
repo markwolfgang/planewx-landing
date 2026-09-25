@@ -68,51 +68,51 @@ export function LandingVariantA() {
 
       {/* NAV */}
       <nav className="relative z-10 border-b border-white/5">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between gap-3 sm:gap-4">
-          <div className="flex items-center gap-3 shrink-0">
-            <BrandLogo className="h-6 sm:h-9 w-auto" priority />
-            <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
+        <div className="container mx-auto pl-4 pr-5 sm:px-4 py-4 flex items-center justify-between gap-3 sm:gap-4">
+          <div className="flex items-center gap-3 min-w-0">
+            <BrandLogo className="h-6 sm:h-9 w-auto shrink-0" priority />
+            <span className="hidden xl:inline text-xs text-white/40 font-medium tracking-wide ml-1 whitespace-nowrap">
               The Pilot&apos;s Decision Support System
             </span>
           </div>
-          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0 shrink">
             <a
               href="#how-it-works"
-              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
+              className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap"
             >
               How It Works
             </a>
             <a
               href="#features"
-              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
+              className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap"
             >
               Features
             </a>
             <a
               href="#pricing"
-              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
+              className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap"
             >
               Pricing
             </a>
-            <a href="/about" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
+            <a href="/about" className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap">
               About
             </a>
-            <a href="/news" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
+            <a href="/news" className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap">
               News
             </a>
-            <a href="/research/turbulence-safety" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
+            <a href="/research/turbulence-safety" className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap">
               Research
             </a>
             <SignUpButton
               variant={VARIANT}
               path="/"
-              className="text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap"
+              className="text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap shrink-0"
             >
               Log In
             </SignUpButton>
             <SignUpButton
               variant={VARIANT}
-              className="inline-flex items-center justify-center rounded-md text-xs font-semibold px-3 py-1.5 sm:h-9 sm:px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors whitespace-nowrap"
+              className="inline-flex items-center justify-center rounded-md text-xs font-semibold px-3 py-1.5 sm:h-9 sm:px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors whitespace-nowrap shrink-0"
             >
               Start Free 14-Day Trial
             </SignUpButton>
@@ -190,21 +190,21 @@ export function LandingVariantA() {
 
       {/* STATS BAR */}
       <section className="relative py-12 px-4 border-y border-white/5 bg-white/[0.02]">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-6xl">
           <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium">
             Trusted by serious GA pilots
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-center items-start">
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-sky-400 mb-1">2,200+</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-sky-400 mb-1 whitespace-nowrap">2,200+</div>
               <div className="text-sm text-white/50">pilots<br />on PlaneWX</div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-1">8.7/10</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-emerald-400 mb-1 whitespace-nowrap">8.7/10</div>
               <div className="text-sm text-white/50">briefing feedback<br />(1,724 responses)</div>
             </div>
             <div className="col-span-2 lg:col-span-1">
-              <div className="text-4xl md:text-5xl font-bold text-violet-400 mb-1">~2×</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-violet-400 mb-1 whitespace-nowrap">~2×</div>
               <div className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto">
                 debrief, then FRAT
               </div>
@@ -213,7 +213,7 @@ export function LandingVariantA() {
               </p>
             </div>
             <div className="col-span-2 lg:col-span-1">
-              <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-400 mb-1 lg:tracking-tight whitespace-nowrap">
+              <div className="text-3xl md:text-4xl xl:text-5xl font-bold text-amber-400 mb-1 whitespace-nowrap">
                 Up to 10%
               </div>
               <div className="text-sm text-white/50 leading-snug max-w-[14rem] mx-auto">
