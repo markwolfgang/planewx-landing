@@ -36,7 +36,7 @@ export default function MultiModelAnalysis() {
         <section className="text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-sm font-medium">
             <Layers className="h-4 w-4" />
-            Nobody else does this
+            Multi-model consensus along your route
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             Three Models.<br />
@@ -632,7 +632,7 @@ export default function MultiModelAnalysis() {
               <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20">
                 <h3 className="font-semibold text-red-400 mb-2">Limit (Hard Limit)</h3>
                 <p className="text-sm text-white/60">
-                  Your absolute maximum. Exceeding this is unfavorable — WX Score drops to 0%. 
+                  Your absolute maximum. Exceeding this is unfavorable and marked as a hard-limit exceedance.
                   Non-FIKI aircraft are always unfavorable for any icing.
                 </p>
               </div>

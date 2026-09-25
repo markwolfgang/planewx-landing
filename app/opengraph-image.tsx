@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 import fs from 'fs'
 import path from 'path'
 
-export const alt = "PlaneWX | The Pilot's Decision Support System"
+export const alt = "PlaneWX | Fly like it's your job."
 export const size = {
   width: 1200,
   height: 630,
@@ -56,19 +56,8 @@ export default async function Image() {
           <span style={{ fontSize: '28px', fontWeight: 700, color: '#38bdf8' }}>PlaneWX</span>
         )}
 
-        {/* Headline: Variant A DSS voice */}
+        {/* Headline: locked tagline as H1 voice */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <span
-            style={{
-              fontSize: '56px',
-              fontWeight: 800,
-              color: 'white',
-              lineHeight: 1.05,
-              letterSpacing: '-0.02em',
-            }}
-          >
-            The Pilot's Decision
-          </span>
           <span
             style={{
               fontSize: '56px',
@@ -78,18 +67,38 @@ export default async function Image() {
               letterSpacing: '-0.02em',
             }}
           >
-            Support System
+            Fly like it&apos;s your job.
           </span>
-          <span
+          <div
             style={{
               marginTop: '20px',
-              fontSize: '26px',
-              fontWeight: 400,
-              color: 'rgba(255,255,255,0.65)',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '6px',
+              maxWidth: '980px',
             }}
           >
-            Every weather tool shows you data. PlaneWX helps you decide.
-          </span>
+            <span
+              style={{
+                fontSize: '24px',
+                fontWeight: 400,
+                color: 'rgba(255,255,255,0.65)',
+                lineHeight: 1.35,
+              }}
+            >
+              The risk-management loop for pilots without a dispatcher.
+            </span>
+            <span
+              style={{
+                fontSize: '24px',
+                fontWeight: 400,
+                color: 'rgba(255,255,255,0.65)',
+                lineHeight: 1.35,
+              }}
+            >
+              Beyond the weather briefing.
+            </span>
+          </div>
         </div>
 
         {/* Bottom bar */}
@@ -102,18 +111,19 @@ export default async function Image() {
         >
           <span
             style={{
-              fontSize: '20px',
-              fontStyle: 'italic',
+              fontSize: '18px',
+              fontWeight: 500,
               color: 'rgba(255,255,255,0.45)',
             }}
           >
-            The confidence to go, or the courage to stay.™
+            The Pilot&apos;s Decision Support System
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             {[
-              { label: 'Weather Briefing', color: '#38bdf8' },
+              { label: 'WX Score briefing', color: '#38bdf8' },
               { label: 'FRAT', color: '#a78bfa' },
-              { label: 'Mentor Network', color: '#10b981' },
+              { label: 'GO / NO‑GO', color: '#34d399' },
+              { label: 'Self Debrief', color: '#fbbf24' },
             ].map(({ label, color }) => (
               <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div

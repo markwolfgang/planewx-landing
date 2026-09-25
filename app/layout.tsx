@@ -4,11 +4,21 @@ import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import { OshBanner } from "@/components/osh-banner"
 import { PartnerGreetingBanner } from "@/components/partner-greeting-banner"
+import { FAQS, faqAnswerToPlainText } from "@/components/shared/landing-data"
 import "./globals.css"
 
 // aopa native preview redeploy trigger (static /aopa closer CTA text)
 
 const inter = Inter({ subsets: ["latin"] })
+
+const faqPageMainEntity = FAQS.map((faq) => ({
+  "@type": "Question",
+  name: faq.q,
+  acceptedAnswer: {
+    "@type": "Answer",
+    text: faqAnswerToPlainText(faq.a),
+  },
+}))
 
 // Structured Data (JSON-LD) for SEO
 const jsonLd = {
@@ -19,7 +29,7 @@ const jsonLd = {
       "@id": "https://www.planewx.ai/#website",
       "url": "https://www.planewx.ai",
       "name": "PlaneWX",
-      "description": "The Pilot's Decision Support System: weather briefing, FRAT, and a mentor network for general aviation pilots.",
+      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
       "publisher": {
         "@id": "https://www.planewx.ai/#organization"
       },
@@ -53,21 +63,14 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "@id": "https://www.planewx.ai/#app",
       "name": "PlaneWX",
-      "description": "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, and a mentor network. Every weather tool shows you data. PlaneWX helps you decide.",
+      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
       "applicationCategory": "WeatherApplication",
       "operatingSystem": "Web",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/ComingSoon"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "42",
-        "bestRating": "5",
-        "worstRating": "1"
+        "availability": "https://schema.org/InStock"
       },
       "featureList": [
         "AI-powered weather briefings",
@@ -75,7 +78,7 @@ const jsonLd = {
         "14-day advance forecasting",
         "Personalized WX Score",
         "Synoptic Intelligence™ technology",
-        "40+ automatic briefing updates",
+        "40+ automatic briefing updates for monitored flights",
         "Personal minimums tracking",
         "Aircraft-specific analysis",
         "PAVE risk assessment",
@@ -85,51 +88,18 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is PlaneWX?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "PlaneWX is the Pilot's Decision Support System for general aviation. It combines weather briefing, FRAT, and a mentor network so pilots can see weather and risk, and connect with a mentor before the pressure locks in."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How far in advance can PlaneWX predict flight weather?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "PlaneWX provides reliable weather intelligence from 14 days out to departure time. The accuracy improves as your flight approaches, with 76% accuracy at 24 hours, 70% at 48 hours, and 61% at 72 hours."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the WX Score?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The WX Score is a personalized 0-100% metric calculated against YOUR personal minimums, not generic VFR/IFR categories. It tells you the probability that weather conditions will meet your specific standards for the flight."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Synoptic Intelligence™?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Synoptic Intelligence™ is PlaneWX's proprietary AI technology that synthesizes NWS forecaster narratives, METARs, TAFs, NBM data, and other weather products into regional summaries and actionable insights."
-          }
-        }
-      ]
+      "mainEntity": faqPageMainEntity
     }
   ]
 }
 
 export const metadata: Metadata = {
   title: {
-    default: "PlaneWX | The Pilot's Decision Support System",
+    default: "PlaneWX | Fly like it's your job.",
     template: "%s | PlaneWX",
   },
   description:
-    "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, and a mentor network. The confidence to go, or the courage to stay™.",
+    "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
   keywords: [
     "aviation weather",
     "flight planning",
@@ -163,7 +133,6 @@ export const metadata: Metadata = {
     "Bonanza weather",
     "Diamond DA40 weather",
     "SR22 weather planning",
-    "ForeFlight alternative",
     "aviation weather forecast",
     "pilot briefing app",
     "AIRMET SIGMET",
@@ -194,16 +163,16 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.planewx.ai",
     siteName: "PlaneWX",
-    title: "PlaneWX | The Pilot's Decision Support System",
+    title: "PlaneWX | Fly like it's your job.",
     description:
-      "Every weather tool shows you data. PlaneWX helps you decide. Weather briefing, FRAT, and a mentor network.",
+      "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
     // OG image is auto-generated from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "PlaneWX | The Pilot's Decision Support System",
+    title: "PlaneWX | Fly like it's your job.",
     description:
-      "Every weather tool shows you data. PlaneWX helps you decide. Weather briefing, FRAT, and a mentor network.",
+      "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
     // Twitter image is auto-generated from app/twitter-image.tsx
     creator: "@planewx",
   },
