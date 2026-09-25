@@ -53,7 +53,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "@id": "https://www.planewx.ai/#app",
       "name": "PlaneWX",
-      "description": "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, Fly or Stay, and Self Debrief, with mentors optional. Every weather tool shows you data. PlaneWX helps you decide.",
+      "description": "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, GO / NO-GO, and Self Debrief, with mentors optional. Every weather tool shows you data. PlaneWX helps you decide.",
       "applicationCategory": "WeatherApplication",
       "operatingSystem": "Web",
       "offers": {
@@ -91,7 +91,7 @@ const jsonLd = {
           "name": "What is PlaneWX?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PlaneWX is the decision support system for general aviation. It combines Weather Briefing, FRAT, Fly or Stay, and Self Debrief, with mentors as an optional layer, so pilots can see weather and risk before pressure locks in."
+            "text": "PlaneWX is the decision support system for general aviation. It combines Weather Briefing, FRAT, GO / NO-GO, and Self Debrief, with mentors as an optional layer, so pilots can see weather and risk before pressure locks in. PlaneWX never recommends go or no-go. You make the call."
           }
         },
         {
@@ -129,7 +129,7 @@ export const metadata: Metadata = {
     template: "%s | PlaneWX",
   },
   description:
-    "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, Fly or Stay, and Self Debrief, with mentors optional. Fly like it's your job.",
+    "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, GO / NO-GO, and Self Debrief, with mentors optional. Fly like it's your job.",
   keywords: [
     "aviation weather",
     "flight planning",

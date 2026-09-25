@@ -9,7 +9,7 @@ const PODCASTS = [
   {
     type: "podcast" as const,
     videoId: "qu7ppznhcGM",
-    title: "Pilots: Meet PlaneWX: Decision Support for Fly or Stay",
+    title: "Pilots: Meet PlaneWX: Decision Support for GO / NO-GO",
     channel: "Your Vision Jet Pilot",
     duration: "10 min",
     date: "2026",
@@ -23,7 +23,7 @@ const PODCASTS = [
     channel: "AeroExploration",
     duration: "1 hr 4 min",
     date: "Jul 1, 2026",
-    description: "Mark Wolfgang on how PlaneWX was built, why aviation weather is hard, and how AI changes the Fly or Stay decision.",
+    description: "Mark Wolfgang on how PlaneWX was built, why aviation weather is hard, and how AI changes the GO / NO-GO decision.",
   },
   {
     type: "podcast" as const,

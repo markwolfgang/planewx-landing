@@ -17,11 +17,11 @@ import { SiteFooter } from "@/components/shared/site-footer"
 export const metadata: Metadata = {
   title: "Pilot Decision Support System | PlaneWX",
   description:
-    "PlaneWX is the decision support system for general aviation. Weather Briefing, FRAT, Fly or Stay, and Self Debrief, with Mentor as an optional layer. Beside your EFB. You remain PIC.",
+    "PlaneWX is the decision support system for general aviation. Weather Briefing, FRAT, GO / NO-GO, and Self Debrief, with Mentor as an optional layer. Beside your EFB. You remain PIC.",
   openGraph: {
     title: "Decide before you launch | PlaneWX",
     description:
-      "Weather Briefing, FRAT, Fly or Stay, and Self Debrief in one workflow. Put a real trip on the calendar and pressure-test the call before trip pressure locks in.",
+      "Weather Briefing, FRAT, GO / NO-GO, and Self Debrief in one workflow. Put a real trip on the calendar and pressure-test the call before trip pressure locks in.",
     type: "website",
     url: "https://www.planewx.ai/decision-support",
   },
@@ -57,8 +57,8 @@ const LOOP = [
     iconBg: "bg-amber-500/20",
     border: "border-amber-500/20",
     gradient: "from-amber-950/60 to-amber-950/20",
-    title: "Fly or Stay",
-    body: "The call stays with the pilot in command. PlaneWX does not issue an automatic fly or stay verdict. It gives you a clear picture so you can own the decision while options still exist.",
+    title: "GO / NO-GO",
+    body: "PlaneWX never recommends go or no-go. You make the call. The decision buttons are GO and NO-GO (Modify and Postpone stay available). PlaneWX gives you a clear picture so you can own the decision while options still exist.",
   },
   {
     icon: FileText,
@@ -138,7 +138,7 @@ export default function DecisionSupportPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/65 max-w-2xl mx-auto leading-relaxed">
-              PlaneWX is the decision support system for general aviation. The hard Fly or Stay
+              PlaneWX is the decision support system for general aviation. The hard GO / NO-GO
               calls happen after the trip already has momentum. PlaneWX helps you see weather,
               risk, and counsel before you commit.
             </p>
@@ -197,7 +197,7 @@ export default function DecisionSupportPage() {
                 The decision loop
               </div>
               <h2 className="text-3xl md:text-4xl font-bold">
-                Weather Briefing. FRAT. Fly or Stay. Self Debrief.
+                Weather Briefing. FRAT. GO / NO-GO. Self Debrief.
               </h2>
               <p className="text-lg text-white/55 max-w-2xl mx-auto">
                 PlaneWX is built around that loop. Mentors are an optional layer when you want a
@@ -231,7 +231,7 @@ export default function DecisionSupportPage() {
                     Even good pilots miss their own blind spots. Mentors give you another set of
                     eyes before you launch: someone who will ask the awkward question about fatigue,
                     currency, or get-there-itis when the forecast looks good enough. Counsel is
-                    available when you want it. The Fly or Stay call stays yours.
+                    available when you want it. The GO / NO-GO call stays yours.
                   </p>
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function DecisionSupportPage() {
             <p className="text-white/65 leading-relaxed text-center text-lg">
               The weather briefing synthesizes authoritative products against your airplane and
               personal minimums. FRAT walks Pilot, Aircraft, enVironment, and External pressures so
-              risk is visible before departure. You make the Fly or Stay call. Afterward, Self
+              risk is visible before departure. You make the GO / NO-GO call. Afterward, Self
               Debrief closes the loop. Mentors can join when the call is close.
             </p>
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-4">

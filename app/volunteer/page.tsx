@@ -118,14 +118,14 @@ export default function VolunteerPage() {
               <Shield className="h-5 w-5" aria-hidden />
             </span>
             <h2 id="dss-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Decision support, not a Fly or Stay oracle
+              Decision support, not a GO / NO-GO oracle
             </h2>
           </div>
           <p className="text-white/65 leading-relaxed text-base sm:text-lg">
             PlaneWX is a <strong className="text-white font-semibold">decision support system</strong>.
             It helps you see the weather against your airplane and your personal minimums,
             surface risk early, and make a better call. It does not invent mission
-            probability. It does not tell you to go or stay. You remain PIC.
+            probability. PlaneWX never recommends go or no-go. You make the call. You remain PIC.
           </p>
           <p className="text-white/55 leading-relaxed">
             Volunteer routes often run through busy corridors, weather that shifts mid-leg,

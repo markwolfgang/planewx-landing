@@ -171,7 +171,7 @@ export function LandingVariantA() {
             </a>
           </div>
 
-          <p className="text-sm text-white/30">Soft start: brief a real trip. Work the FRAT. Make the Fly or Stay call. Debrief. Bring a mentor in when the call is close.</p>
+          <p className="text-sm text-white/30">Soft start: brief a real trip. Work the FRAT. Make the GO / NO-GO call. Debrief. Bring a mentor in when the call is close.</p>
 
           <div className="flex items-center justify-center gap-2 mt-4 text-sm text-emerald-400/80">
             <Shield className="h-4 w-4" />
@@ -294,8 +294,9 @@ export function LandingVariantA() {
               The decision loop
             </div>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Weather Briefing, FRAT, Fly or Stay, and Self Debrief. Mentors are an optional layer
-              when you want a second set of eyes before launch.
+              Weather Briefing, FRAT, GO / NO-GO, and Self Debrief. Mentors are an optional layer
+              when you want a second set of eyes before launch. PlaneWX never recommends go or
+              no-go. You make the call.
             </p>
           </div>
 
@@ -321,7 +322,7 @@ export function LandingVariantA() {
               <p className="text-white/60 text-sm leading-relaxed">
                 Pilot, Aircraft, enVironment, External on the FAA PAVE framework. Fed by the WX
                 briefing plus airport complexity, day or night, unfamiliar destinations, and risk
-                stacking. Dynamic, not a static one-time checklist. Then you make the Fly or Stay
+                stacking. Dynamic, not a static one-time checklist. Then you make the GO / NO-GO
                 call.
               </p>
             </div>
@@ -442,7 +443,7 @@ export function LandingVariantA() {
                 <span className="text-emerald-400">finally quantified</span>
               </h2>
               <p className="text-white/70 leading-relaxed mb-6">
-                Right now, your Fly or Stay judgment lives entirely in your head. You mentally juggle
+                Right now, your GO / NO-GO judgment lives entirely in your head. You mentally juggle
                 ceilings, winds, icing, turbulence, currency, and fatigue, under pressure, often at
                 the last minute.
               </p>
@@ -653,7 +654,7 @@ export function LandingVariantA() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0-100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds. Structured context so you can decide with a clearer picture." },
-              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute Fly or Stay with bags packed and commitments made." },
+              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute GO / NO-GO with bags packed and commitments made." },
               { icon: <Snowflake className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across 3-7 sample points along your route with confidence scoring. Nobody else does this." },
               { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "FRAT (PAVE)", desc: "Pilot, Aircraft, enVironment, External. Fed by the WX briefing, airport complexity, day or night, unfamiliar destinations, and risk stacking. Dynamic risk assessment, not a static checklist." },
               { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Mentor network", desc: "Connect with experienced pilots who see your full briefing: WX Score, aircraft profile, minimums. Mentors catch what you cannot see alone." },

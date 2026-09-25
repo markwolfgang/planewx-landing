@@ -173,7 +173,7 @@ export default function AboutPage() {
             </p>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08]">
-              Built for the Fly or Stay call that only a{" "}
+              Built for the GO / NO-GO call that only a{" "}
               <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
                 pilot can make
               </span>
@@ -182,7 +182,7 @@ export default function AboutPage() {
             <p className="text-lg md:text-xl text-white/65 max-w-2xl mx-auto leading-relaxed">
               PlaneWX is the decision support system for general aviation. We exist to make a
               measurable impact on GA safety by equipping pilots to make clearer, safer decisions.
-              The pilot in command always owns the call.
+              PlaneWX never recommends go or no-go. You make the call.
             </p>
 
             <p className="text-white/45 italic font-light tracking-wide">
@@ -232,7 +232,7 @@ export default function AboutPage() {
             </p>
             <p className="text-white/65 leading-relaxed">
               We sit beside Flight Service and your EFB. They remain essential. PlaneWX adds the
-              layer that turns weather products into a structured Fly or Stay conversation before bags
+              layer that turns weather products into a structured GO / NO-GO conversation before bags
               are packed and options disappear.
             </p>
           </div>

@@ -121,7 +121,7 @@ export const FAQS: {
   },
   {
     q: "What is the mentor system?",
-    a: "PlaneWX connects you with experienced pilots who can review your full briefing (WX Score, aircraft profile, personal minimums) and offer a second set of eyes grounded in shared data, not guesswork. Mentors are an optional layer on the decision support loop. The pilot still makes the Fly or Stay call.",
+    a: "PlaneWX connects you with experienced pilots who can review your full briefing (WX Score, aircraft profile, personal minimums) and offer a second set of eyes grounded in shared data, not guesswork. Mentors are an optional layer on the decision support loop. PlaneWX never recommends go or no-go. You make the call.",
   },
   {
     q: "Is there a free plan?",
