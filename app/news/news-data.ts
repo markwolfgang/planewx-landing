@@ -91,7 +91,7 @@ ${/* PRELIMINARY: data through Fri Sep 25 06:50 CT. Growth recounts Mon Sep 28 0
 </ul>
 
 <h2>Tip of the Week: what the WX Score actually is</h2>
-<p>The WX Score is not PlaneWX guessing whether a flight is safe. It is your own personal minimums, applied the same way every time, against the forecast for this route, altitude, and departure. That is why minimums are required: PlaneWX cannot generate a WX Score without them. The score starts at 100% and comes down when weather approaches or exceeds the limits you set. A low number is a prompt to open the breakdown and make your Fly or Stay call as PIC. It is advisory support, not a flight authorization. More at <a href="https://app.planewx.ai/help/wx-score">app.planewx.ai/help/wx-score</a>.</p>
+<p>The WX Score is not PlaneWX guessing whether a flight is safe. It is your own personal minimums, applied the same way every time, against the forecast for this route, altitude, and departure. That is why minimums are required: PlaneWX cannot generate a WX Score without them. The score starts at 100% and comes down when weather approaches or exceeds the limits you set. A low number is a prompt to open the breakdown and make your GO / NO-GO call as PIC. It is advisory support, not a flight authorization. More at <a href="https://app.planewx.ai/help/wx-score">app.planewx.ai/help/wx-score</a>.</p>
 
 ${/*
   Coming soon: nothing approved yet. Keep this block commented out so future
