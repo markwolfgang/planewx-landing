@@ -125,7 +125,7 @@ export const VOLUNTEER_ORG_CALL_SIGN_REGISTRY: Record<
   SKYHOPE: {
     ref: SKYHOPE_CAMPAIGN_CODE,
     prefix: "SYH",
-    /** ONE-LINE EDIT: SYH format (exact SkyHope format not yet confirmed). */
+    /** ONE-LINE EDIT: SYH format (same shape as CMF: prefix + 1-4 digits). */
     pattern: /^SYH\d{1,4}$/i,
     label: "Your SkyHope call sign",
     placeholder: "WWW",
