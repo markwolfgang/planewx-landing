@@ -67,6 +67,9 @@ const PARTNERS = [
       height: 96,
       className: "h-10 sm:h-11 w-auto max-w-[13rem] object-contain",
     },
+    // Sara Round 2: exact member sentence. No coupon code.
+    memberBenefit:
+      "COPA members receive a discount on their PlaneWX subscription.",
     blurb:
       "Cirrus Owners and Pilots Association. Community for Cirrus owners and pilots focused on safety, training, and shared experience.",
   },
@@ -159,16 +162,19 @@ const PARTNERS = [
   },
   {
     name: "TBMOPA",
-    href: "https://www.planewx.ai/talks/tbmopa",
+    href: "https://tbmowners.org",
     logo: {
       src: "/partners/tbmopa-logo.png",
-      alt: "TBMOPA logo",
+      alt: "TBMOPA (TBM Owners and Pilots Association) logo",
       width: 1427,
       height: 425,
       className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
     },
+    // Sara Round 2: exact member sentence. No coupon code. Link is tbmowners.org.
+    memberBenefit:
+      "TBMOPA members receive a discount on their PlaneWX subscription.",
     blurb:
-      "Owner and pilot organization for the TBM community. Events, education, and a place for TBM operators to learn and connect, including PlaneWX talks.",
+      "TBM Owners and Pilots Association. Events, education, and a place for TBM operators to learn and connect, including PlaneWX talks.",
   },
   {
     name: "Runway to Oshkosh",
@@ -291,12 +297,19 @@ export default function PartnersPage() {
                   />
                 </div>
               )
+              const memberBenefit =
+                "memberBenefit" in partner ? partner.memberBenefit : undefined
               const body = (
                 <div className="flex items-start justify-between gap-3 mt-auto">
                   <div className="space-y-2 min-w-0">
                     <p className="font-semibold text-white group-hover:text-sky-300 transition-colors">
                       {partner.name}
                     </p>
+                    {memberBenefit ? (
+                      <p className="text-sm font-semibold text-sky-300 leading-snug">
+                        {memberBenefit}
+                      </p>
+                    ) : null}
                     <p className="text-sm text-white/50 leading-relaxed">
                       {partner.blurb}
                     </p>
