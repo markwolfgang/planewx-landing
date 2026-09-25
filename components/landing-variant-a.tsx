@@ -7,6 +7,7 @@ import {
   Brain,
   Gauge,
   Users,
+  FileText,
   Clock,
   HeartHandshake,
   Target,
@@ -76,10 +77,10 @@ export function LandingVariantA() {
           </div>
           <div className="flex items-center gap-4">
             <a
-              href="#pillars"
+              href="#loop"
               className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
             >
-              Three Pillars
+              The decision loop
             </a>
             <a
               href="#how-it-works"
@@ -163,14 +164,14 @@ export function LandingVariantA() {
               <ArrowRight className="ml-2 h-5 w-5" />
             </SignUpButton>
             <a
-              href="#pillars"
+              href="#loop"
               className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all"
             >
-              See the three pillars
+              See the decision loop
             </a>
           </div>
 
-          <p className="text-sm text-white/30">Soft start: brief a real trip. Work the FRAT. Bring a mentor in when the call is close.</p>
+          <p className="text-sm text-white/30">Soft start: brief a real trip. Work the FRAT. Make the Fly or Stay call. Debrief. Bring a mentor in when the call is close.</p>
 
           <div className="flex items-center justify-center gap-2 mt-4 text-sm text-emerald-400/80">
             <Shield className="h-4 w-4" />
@@ -285,16 +286,16 @@ export function LandingVariantA() {
       </section>
 
 
-      {/* THREE PILLARS */}
-      <section id="pillars" className="relative py-24 px-4">
+      {/* DECISION LOOP */}
+      <section id="loop" className="relative py-24 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-10 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium">
-              Three pillars
+              The decision loop
             </div>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              A decision support system is more than another weather tab. Structured inputs, clear
-              synthesis, and room for judgment before launch.
+              Weather Briefing, FRAT, Fly or Stay, and Self Debrief. Mentors are an optional layer
+              when you want a second set of eyes before launch.
             </p>
           </div>
 
@@ -303,11 +304,12 @@ export function LandingVariantA() {
               <div className="w-12 h-12 rounded-xl bg-sky-500/20 flex items-center justify-center mb-5">
                 <CloudSun className="h-6 w-6 text-sky-400" />
               </div>
-              <h2 className="text-2xl font-bold mb-3">Weather</h2>
+              <h2 className="text-2xl font-bold mb-3">Weather Briefing</h2>
               <p className="text-white/60 text-sm leading-relaxed">
                 A briefing matched to your airplane and personal minimums. Ceiling, visibility,
                 wind, icing, convective trends, and how those products evolve as the window
-                tightens. The WX Score updates as the forecast sharpens.
+                tightens. The WX Score updates as the forecast sharpens. Personal minimums are
+                required for a WX Score.
               </p>
             </div>
 
@@ -317,20 +319,22 @@ export function LandingVariantA() {
               </div>
               <h2 className="text-2xl font-bold mb-3">FRAT</h2>
               <p className="text-white/60 text-sm leading-relaxed">
-                Pilot, Aircraft, enVironment, External. Fed by the high-quality WX briefing plus
-                airport complexity, day or night, unfamiliar destinations, and risk stacking.
-                Dynamic, not a static one-time checklist.
+                Pilot, Aircraft, enVironment, External on the FAA PAVE framework. Fed by the WX
+                briefing plus airport complexity, day or night, unfamiliar destinations, and risk
+                stacking. Dynamic, not a static one-time checklist. Then you make the Fly or Stay
+                call.
               </p>
             </div>
 
-            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-5">
-                <Users className="h-6 w-6 text-emerald-400" />
+            <div className="relative p-7 sm:p-8 rounded-3xl bg-gradient-to-br from-cyan-950/60 to-cyan-950/20 border border-cyan-500/20">
+              <div className="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-5">
+                <FileText className="h-6 w-6 text-cyan-400" />
               </div>
-              <h2 className="text-2xl font-bold mb-3">Mentors</h2>
+              <h2 className="text-2xl font-bold mb-3">Self Debrief</h2>
               <p className="text-white/60 text-sm leading-relaxed">
-                Another set of eyes before you launch. Someone who will ask the awkward question
-                about fatigue, currency, or get-there-itis when the forecast looks good enough.
+                After the flight, a short structured look back on how the weather and the call
+                actually went. It does not change the WX Score. Mentors stay optional when you want
+                a second set of eyes before the next launch.
               </p>
             </div>
           </div>
@@ -438,7 +442,7 @@ export function LandingVariantA() {
                 <span className="text-emerald-400">finally quantified</span>
               </h2>
               <p className="text-white/70 leading-relaxed mb-6">
-                Right now, your go/no-go judgment lives entirely in your head. You mentally juggle
+                Right now, your Fly or Stay judgment lives entirely in your head. You mentally juggle
                 ceilings, winds, icing, turbulence, currency, and fatigue, under pressure, often at
                 the last minute.
               </p>
@@ -649,7 +653,7 @@ export function LandingVariantA() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0-100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds. Structured context so you can decide with a clearer picture." },
-              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute go/no-go with bags packed and commitments made." },
+              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute Fly or Stay with bags packed and commitments made." },
               { icon: <Snowflake className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across 3-7 sample points along your route with confidence scoring. Nobody else does this." },
               { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "FRAT (PAVE)", desc: "Pilot, Aircraft, enVironment, External. Fed by the WX briefing, airport complexity, day or night, unfamiliar destinations, and risk stacking. Dynamic risk assessment, not a static checklist." },
               { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Mentor network", desc: "Connect with experienced pilots who see your full briefing: WX Score, aircraft profile, minimums. Mentors catch what you cannot see alone." },

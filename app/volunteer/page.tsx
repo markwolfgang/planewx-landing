@@ -118,7 +118,7 @@ export default function VolunteerPage() {
               <Shield className="h-5 w-5" aria-hidden />
             </span>
             <h2 id="dss-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Decision support, not a go/no-go oracle
+              Decision support, not a Fly or Stay oracle
             </h2>
           </div>
           <p className="text-white/65 leading-relaxed text-base sm:text-lg">

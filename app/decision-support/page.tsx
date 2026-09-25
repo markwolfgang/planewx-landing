@@ -8,6 +8,7 @@ import {
   Users,
   Shield,
   CalendarDays,
+  FileText,
 } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SignUpButton } from "@/components/shared/sign-up-button"
@@ -16,11 +17,11 @@ import { SiteFooter } from "@/components/shared/site-footer"
 export const metadata: Metadata = {
   title: "Pilot Decision Support System | PlaneWX",
   description:
-    "PlaneWX improves general aviation safety with a pilot decision support system built on three pillars: weather briefing, living FRAT, and a mentor network. Beside your EFB. You remain PIC.",
+    "PlaneWX is the decision support system for general aviation. Weather Briefing, FRAT, Fly or Stay, and Self Debrief, with Mentor as an optional layer. Beside your EFB. You remain PIC.",
   openGraph: {
     title: "Decide before you launch | PlaneWX",
     description:
-      "Weather briefing, FRAT, and mentor counsel in one workflow. Put a real trip on the calendar and pressure-test the call before trip pressure locks in.",
+      "Weather Briefing, FRAT, Fly or Stay, and Self Debrief in one workflow. Put a real trip on the calendar and pressure-test the call before trip pressure locks in.",
     type: "website",
     url: "https://www.planewx.ai/decision-support",
   },
@@ -31,15 +32,15 @@ export const metadata: Metadata = {
 
 const VARIANT = "a"
 
-const PILLARS = [
+const LOOP = [
   {
     icon: CloudSun,
     accent: "text-sky-400",
     iconBg: "bg-sky-500/20",
     border: "border-sky-500/20",
     gradient: "from-sky-950/60 to-sky-950/20",
-    title: "Weather briefing",
-    body: "Ceiling, visibility, wind, icing, convective trends, and how those products evolve as the window tightens. Matched to your airplane and personal minimums, with a WX Score that updates as the forecast sharpens. Weather is the environment. It is not the entire risk picture.",
+    title: "Weather Briefing",
+    body: "Ceiling, visibility, wind, icing, convective trends, and how those products evolve as the window tightens. Matched to your airplane and personal minimums, with a WX Score that updates as the forecast sharpens. Personal minimums are required; without them there is no WX Score. TAFs stay authoritative inside their valid window.",
   },
   {
     icon: ClipboardCheck,
@@ -48,16 +49,25 @@ const PILLARS = [
     border: "border-violet-500/20",
     gradient: "from-violet-950/60 to-violet-950/20",
     title: "FRAT",
-    body: "A living flight risk assessment that asks what the weather briefing does not. How current are you. What is on the airplane. How complex is the environment. What external pressure is riding in the cabin. Done early and honestly, FRAT keeps personal minimums from living only in a forgotten note.",
+    body: "A living flight risk assessment on the FAA PAVE framework (Pilot, Aircraft, enVironment, External). PlaneWX fills what it already knows from the briefing and airport context. You self-rate near departure. When risks stack, you see it. You still decide.",
   },
   {
-    icon: Users,
-    accent: "text-emerald-400",
-    iconBg: "bg-emerald-500/20",
-    border: "border-emerald-500/20",
-    gradient: "from-emerald-950/60 to-emerald-950/20",
-    title: "Mentor network",
-    body: "Even good pilots miss their own blind spots. Mentors give you another set of eyes before you launch: someone who will ask the awkward question about fatigue, currency, or get-there-itis when the forecast looks good enough. Counsel is part of decision support, not an afterthought.",
+    icon: Shield,
+    accent: "text-amber-400",
+    iconBg: "bg-amber-500/20",
+    border: "border-amber-500/20",
+    gradient: "from-amber-950/60 to-amber-950/20",
+    title: "Fly or Stay",
+    body: "The call stays with the pilot in command. PlaneWX does not issue an automatic fly or stay verdict. It gives you a clear picture so you can own the decision while options still exist.",
+  },
+  {
+    icon: FileText,
+    accent: "text-cyan-400",
+    iconBg: "bg-cyan-500/20",
+    border: "border-cyan-500/20",
+    gradient: "from-cyan-950/60 to-cyan-950/20",
+    title: "Self Debrief",
+    body: "After the flight, a short structured look back on how the weather and the call actually went. It does not change the WX Score. It helps the next trip start smarter.",
   },
 ] as const
 
@@ -79,17 +89,17 @@ export default function DecisionSupportPage() {
       <nav className="relative z-10 border-b border-white/5">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3" aria-label="PlaneWX home">
-            <BrandLogo className="h-9 w-auto" priority />
+            <BrandLogo className="h-9 w-auto" />
             <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
               The Pilot&apos;s Decision Support System
             </span>
           </Link>
           <div className="flex items-center gap-4">
             <a
-              href="#pillars"
+              href="#loop"
               className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
             >
-              Three pillars
+              The loop
             </a>
             <SignUpButton
               variant={VARIANT}
@@ -109,13 +119,16 @@ export default function DecisionSupportPage() {
       </nav>
 
       <main>
-        {/* Hero: brand + one headline + one supporting line + soft CTA */}
         <section className="relative pt-20 pb-16 px-4 sm:pt-24 sm:pb-20">
           <div className="container mx-auto max-w-4xl text-center space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-300 text-sm font-medium">
               <Brain className="h-4 w-4" />
               <span>Pilot decision support</span>
             </div>
+
+            <p className="text-sm sm:text-base font-semibold tracking-wide text-sky-300/90">
+              PlaneWX
+            </p>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08]">
               Decide before you{" "}
@@ -125,8 +138,13 @@ export default function DecisionSupportPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/65 max-w-2xl mx-auto leading-relaxed">
-              The hardest go/no-go calls happen after the trip already has momentum.
-              PlaneWX helps you see weather, risk, and counsel before you commit.
+              PlaneWX is the decision support system for general aviation. The hard Fly or Stay
+              calls happen after the trip already has momentum. PlaneWX helps you see weather,
+              risk, and counsel before you commit.
+            </p>
+
+            <p className="text-white/45 italic font-light tracking-wide">
+              Fly like it&apos;s your job.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -138,10 +156,10 @@ export default function DecisionSupportPage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </SignUpButton>
               <a
-                href="#pillars"
+                href="#loop"
                 className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-8 py-3.5 text-base transition-all"
               >
-                See the three pillars
+                See the decision loop
               </a>
             </div>
 
@@ -151,7 +169,6 @@ export default function DecisionSupportPage() {
           </div>
         </section>
 
-        {/* Mission */}
         <section className="relative py-16 px-4 border-y border-white/5 bg-white/[0.02]">
           <div className="container mx-auto max-w-3xl text-center space-y-5">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-sky-400/80">
@@ -173,24 +190,23 @@ export default function DecisionSupportPage() {
           </div>
         </section>
 
-        {/* Three pillars */}
-        <section id="pillars" className="relative py-20 sm:py-24 px-4">
+        <section id="loop" className="relative py-20 sm:py-24 px-4">
           <div className="container mx-auto max-w-5xl">
             <div className="text-center mb-14 space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium">
-                Three pillars
+                The decision loop
               </div>
               <h2 className="text-3xl md:text-4xl font-bold">
-                Weather. FRAT. Mentors.
+                Weather Briefing. FRAT. Fly or Stay. Self Debrief.
               </h2>
               <p className="text-lg text-white/55 max-w-2xl mx-auto">
-                PlaneWX is built around structured inputs, clear synthesis, and room for judgment
-                before launch.
+                PlaneWX is built around that loop. Mentors are an optional layer when you want a
+                second set of eyes, not a required step.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {PILLARS.map(({ icon: Icon, accent, iconBg, border, gradient, title, body }) => (
+            <div className="grid sm:grid-cols-2 gap-6">
+              {LOOP.map(({ icon: Icon, accent, iconBg, border, gradient, title, body }) => (
                 <div
                   key={title}
                   className={`relative p-7 rounded-3xl bg-gradient-to-br ${gradient} border ${border}`}
@@ -203,20 +219,36 @@ export default function DecisionSupportPage() {
                 </div>
               ))}
             </div>
+
+            <div className="mt-6 relative p-7 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
+              <div className="flex flex-col sm:flex-row sm:items-start gap-5">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center shrink-0">
+                  <Users className="h-6 w-6 text-emerald-400" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-3">Mentor (optional)</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">
+                    Even good pilots miss their own blind spots. Mentors give you another set of
+                    eyes before you launch: someone who will ask the awkward question about fatigue,
+                    currency, or get-there-itis when the forecast looks good enough. Counsel is
+                    available when you want it. The Fly or Stay call stays yours.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* How PlaneWX puts them together */}
         <section className="relative py-16 sm:py-20 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
           <div className="container mx-auto max-w-3xl space-y-6">
             <h2 className="text-2xl md:text-3xl font-bold text-center">
-              How PlaneWX puts the three together
+              How PlaneWX puts the loop together
             </h2>
             <p className="text-white/65 leading-relaxed text-center text-lg">
               The weather briefing synthesizes authoritative products against your airplane and
-              personal minimums. FRAT walks Pilot, Aircraft, Environment, and External pressures so
-              risk is visible before departure. The mentor network brings trusted counsel into the
-              same workflow.
+              personal minimums. FRAT walks Pilot, Aircraft, enVironment, and External pressures so
+              risk is visible before departure. You make the Fly or Stay call. Afterward, Self
+              Debrief closes the loop. Mentors can join when the call is close.
             </p>
             <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-4">
               <div className="flex items-start gap-3">
@@ -231,7 +263,6 @@ export default function DecisionSupportPage() {
           </div>
         </section>
 
-        {/* Mid-horizon window (generic; no named partner vignette) */}
         <section className="relative py-16 sm:py-20 px-4">
           <div className="container mx-auto max-w-3xl text-center space-y-5">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-medium">
@@ -250,7 +281,6 @@ export default function DecisionSupportPage() {
           </div>
         </section>
 
-        {/* Soft CTA */}
         <section className="relative py-20 sm:py-24 px-4">
           <div className="container mx-auto max-w-2xl text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold">
@@ -264,7 +294,7 @@ export default function DecisionSupportPage() {
               FRAT. Bring a mentor in when the call is close.
             </p>
             <p className="text-white/45 italic font-light tracking-wide">
-              The confidence to go. Or the courage to stay.&trade;
+              Fly like it&apos;s your job.
             </p>
             <SignUpButton
               variant={VARIANT}

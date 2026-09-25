@@ -39,7 +39,7 @@ const PLUS_BULLETS: {
   {
     name: "Briefed Fuel Stops",
     detail:
-      "Your fuel stops get NOTAM-screened, so a closed runway — or an outage of the fuel you actually burn — rules a stop out before you plan around it.",
+      "Your fuel stops get NOTAM-screened, so a closed runway or an outage of the fuel you actually burn rules a stop out before you plan around it.",
     helpPath: "/help/briefed-fuel-stops",
   },
   {
@@ -126,11 +126,11 @@ export function PricingSection({ variant }: { variant: string }) {
             Safety is not a premium feature.
           </h3>
           <p className="text-white/60 text-sm leading-relaxed">
-            Every briefing — free, Casual, Pro, or Pro Plus — uses the same AI engine, the same
+            Every briefing (free, Casual, Pro, or Pro Plus) uses the same AI engine, the same
             weather models, and the same scoring methodology. We limit how much you can use
             PlaneWX, not how well it works. Paid plans unlock{" "}
             <span className="text-teal-300 font-medium">automation</span> and{" "}
-            <span className="text-sky-300 font-medium">scale</span> &mdash; not the quality of
+            <span className="text-sky-300 font-medium">scale</span>, not the quality of
             the analysis that keeps you safe.
           </p>
         </div>
@@ -138,8 +138,8 @@ export function PricingSection({ variant }: { variant: string }) {
         {twoYearOpen && (
           <p className="max-w-2xl mx-auto mb-10 px-4 py-3 rounded-xl border border-teal-500/40 bg-teal-500/10 text-sm font-semibold text-white/80 text-center">
             I priced annual when the app was new. It isn&apos;t anymore. This locks today&apos;s
-            rate for two years. Grateful for your support — it&apos;s why I keep putting my
-            heart, soul, and wallet into PlaneWX. — Mark
+            rate for two years. Grateful for your support. It&apos;s why I keep putting my
+            heart, soul, and wallet into PlaneWX. - Mark
           </p>
         )}
 
@@ -147,7 +147,7 @@ export function PricingSection({ variant }: { variant: string }) {
         <div className="rounded-2xl border-2 border-indigo-500/40 bg-indigo-950/30 p-6 sm:p-8 shadow-lg shadow-indigo-500/10 relative mb-10">
           {twoYearOpen && (
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white text-xs font-bold whitespace-nowrap">
-              Lock today&apos;s price — 2 years
+              Lock today&apos;s price for 2 years
             </div>
           )}
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
@@ -159,7 +159,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 <h3 className="text-2xl font-bold">Pro Plus</h3>
               </div>
               <p className="text-sm text-white/50 mb-4 max-w-xl">
-                For pilots who want PlaneWX working between flights — parked-aircraft watch,
+                For pilots who want PlaneWX working between flights: parked-aircraft watch,
                 briefings on file, and early access to tools still in development. Decision
                 support only; you stay PIC.
               </p>
@@ -201,7 +201,7 @@ export function PricingSection({ variant }: { variant: string }) {
                     <span className="text-3xl font-bold">$249</span>
                     <span className="text-white/40 ml-1">/year</span>
                   </div>
-                  <p className="text-xs text-white/40 mb-1">$20.75/mo effective — save $111 vs monthly</p>
+                  <p className="text-xs text-white/40 mb-1">$20.75/mo effective; save $111 vs monthly</p>
                 </>
               ) : (
                 <>
@@ -209,11 +209,11 @@ export function PricingSection({ variant }: { variant: string }) {
                     <span className="text-3xl font-bold">$29.99</span>
                     <span className="text-white/40 ml-1">/month</span>
                   </div>
-                  <p className="text-xs text-white/40 mb-1">or $249/year — save $111 vs monthly</p>
+                  <p className="text-xs text-white/40 mb-1">or $249/year; save $111 vs monthly</p>
                 </>
               )}
               <p className="text-xs text-white/40 mb-4">
-                Also includes higher limits than Pro — 25 monitored / 500 saved flights, 10
+                Also includes higher limits than Pro: 25 monitored / 500 saved flights, 10
                 aircraft, unlimited saved routes, and 25 Corridor Watch routes.
               </p>
               <div className="grid grid-cols-2 gap-2 mb-3">
@@ -251,7 +251,7 @@ export function PricingSection({ variant }: { variant: string }) {
                   href={appUrl}
                   className="block text-center py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-colors text-sm"
                 >
-                  Lock 2 years — $498
+                  Lock 2 years: $498
                 </TrialLink>
               )}
             </div>
@@ -288,7 +288,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 "15 briefing refreshes per week",
                 "Full WX Score breakdown",
                 "Synoptic Intelligence™",
-                "PAVE Risk Assessment",
+                "FRAT",
                 "Flight Window Explorer",
                 "Access to mentors",
               ].map((f) => (
@@ -316,7 +316,7 @@ export function PricingSection({ variant }: { variant: string }) {
               <span className="text-4xl font-bold">$7.99</span>
               <span className="text-white/30 ml-1">/month</span>
             </div>
-            <p className="text-xs text-white/40 mb-1">or $59.99/yr — 4 months free</p>
+            <p className="text-xs text-white/40 mb-1">or $59.99/yr (4 months free)</p>
             <p className="text-xs text-teal-400 mb-5">$5.00/mo effective</p>
             <TrialLink
               href={appUrl}
@@ -329,7 +329,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 href={appUrl}
                 className="block text-center py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold transition-colors text-sm mb-6"
               >
-                Lock 2 years — $120
+                Lock 2 years: $120
               </TrialLink>
             )}
             <ul className="space-y-3 text-sm flex-1">
@@ -339,6 +339,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 ["3", " aircraft profiles"],
                 ["Unlimited", " briefing refreshes"],
                 ["", "Auto-refresh briefings"],
+                ["", "Fuel Advisor"],
                 ["", "Email weather alerts"],
                 ["", "Trip watchers (4/flight)"],
                 ["", "Access to mentors"],
@@ -414,7 +415,7 @@ export function PricingSection({ variant }: { variant: string }) {
                   4 months free
                 </span>
               </div>
-              <p className="text-sm text-white/40">Best value — save $60.88 vs monthly</p>
+              <p className="text-sm text-white/40">Best value: save $60.88 vs monthly</p>
             </div>
             <div className="mb-1">
               <span className="text-4xl font-bold">$119</span>
@@ -432,7 +433,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 href={appUrl}
                 className="block text-center py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors text-sm mb-6"
               >
-                Lock 2 years — $238
+                Lock 2 years: $238
               </TrialLink>
             )}
             <ul className="space-y-3 text-sm flex-1">
@@ -473,8 +474,8 @@ export function PricingSection({ variant }: { variant: string }) {
         </div>
 
         <p className="text-center text-xs text-white/30 mt-8">
-          All plans include WX Score, PAVE Risk Assessment, Synoptic Intelligence™, mentor
-          broadcast, and 14-day planning.
+          All plans include WX Score, FRAT, Synoptic Intelligence™, mentor
+          broadcast, and 14-day planning. Personal minimums are required for every WX Score.
         </p>
       </div>
     </section>

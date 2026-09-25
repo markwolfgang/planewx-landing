@@ -1,7 +1,7 @@
 import { YouTubeFacade } from "./youtube-facade"
 
 const VIDEO_ID = "qu7ppznhcGM"
-const VIDEO_TITLE = "Pilots: Meet PlaneWX — The AI Tool That Scores Your Flight Risk"
+const VIDEO_TITLE = "Pilots: Meet PlaneWX: The AI Tool That Scores Your Flight Risk"
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function YouTubeSection({ variant: _variant }: { variant?: string }) {
