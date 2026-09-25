@@ -73,6 +73,26 @@ assert.equal(aca.storageKey, "planewx_cmf_call_sign")
 assert.ok(aca.pattern.test("CMF1234"))
 assert.ok(!aca.pattern.test("CMF12345"))
 assert.ok(!aca.pattern.test("SYH1234"))
+assert.match(
+  aca.unlockBody,
+  /30% off the first year of an annual plan from the call sign you entered here/,
+  "cmf_unlock_body_first_year_annual"
+)
+assert.match(
+  aca.unlockBody,
+  /You do not type a separate coupon code\./,
+  "cmf_unlock_body_keeps_coupon_sentence"
+)
+assert.equal(
+  aca.unlockBody.includes("30% off the annual plan at purchase"),
+  false,
+  "cmf_unlock_body_not_renewing_annual"
+)
+assert.match(
+  sky.unlockBody,
+  /30% off the first year of an annual plan from the SkyHope call sign you entered here/,
+  "syh_unlock_body_unchanged"
+)
 
 assert.equal(sky.prefix, "SYH")
 assert.equal(sky.signupParam, "callsign")

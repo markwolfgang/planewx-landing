@@ -51,7 +51,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     category: "Partnerships",
     title: "PlaneWX Partners with Air Care Alliance to Support Volunteer Mission Pilots",
     excerpt:
-      "Compassion Flight volunteer pilots can unlock PlaneWX Pro Plus with a call sign, start a free trial, and get 30% off the annual plan. The partnership puts decision support behind the pilots who fly for those in need.",
+      "Compassion Flight volunteer pilots can unlock PlaneWX Pro Plus with a call sign, start a free trial, and get 30% off the first year of an annual plan. The partnership puts decision support behind the pilots who fly for those in need.",
     date: "September 22, 2026",
     isoDate: "2026-09-22",
     location: "St. Petersburg, Florida",
@@ -66,11 +66,11 @@ export const NEWS_ITEMS: NewsItem[] = [
     body: `
 <p><strong>DRAFT FOR REVIEW &mdash; partner review only; not listed in the public Newsroom.</strong></p>
 
-<p><strong>St. Petersburg, Florida &mdash; September 22, 2026 &mdash;</strong> PlaneWX today announced a partnership with <a href="https://aircarealliance.org" target="_blank" rel="noopener noreferrer">Air Care Alliance</a> (ACA) to support volunteer mission pilots. Eligible Compassion Flight pilots can access PlaneWX through a dedicated volunteer offer: enter a Compassion Flight call sign, start a two-week Pro Plus trial, and receive 30% off Pro Plus annual when they continue.</p>
+<p><strong>St. Petersburg, Florida &mdash; September 22, 2026 &mdash;</strong> PlaneWX today announced a partnership with <a href="https://aircarealliance.org" target="_blank" rel="noopener noreferrer">Air Care Alliance</a> (ACA) to support volunteer mission pilots. Eligible Compassion Flight pilots can access PlaneWX through a dedicated volunteer offer: enter a Compassion Flight call sign, start a two-week Pro Plus trial, and receive 30% off the first year of a Pro Plus annual plan when they continue.</p>
 
 <p>Air Care Alliance connects and supports organizations that use general aviation to help people in medical and humanitarian need. PlaneWX is the pilot&rsquo;s decision support system for go/no-go weather &mdash; a WX Score against each pilot&rsquo;s specific aircraft and personal minimums, an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework (FRAT), and a peer mentor network so planning can start up to 14 days out, not the night before.</p>
 
-<p>Eligible pilots start at <a href="https://www.planewx.ai/volunteer?ref=ACA">www.planewx.ai/volunteer?ref=ACA</a>. A Compassion Flight call sign unlocks signup. The two-week Pro Plus trial begins from there. When the pilot continues on Pro Plus annual, the 30% discount applies automatically from the stored call sign &mdash; no promo code to type. More on the partnership and other collaborators is at <a href="https://www.planewx.ai/partners">www.planewx.ai/partners</a>.</p>
+<p>Eligible pilots start at <a href="https://www.planewx.ai/volunteer?ref=ACA">www.planewx.ai/volunteer?ref=ACA</a>. A Compassion Flight call sign unlocks signup. The two-week Pro Plus trial begins from there. When the pilot continues on Pro Plus annual, 30% off the first year applies automatically from the stored call sign &mdash; no promo code to type. More on the partnership and other collaborators is at <a href="https://www.planewx.ai/partners">www.planewx.ai/partners</a>.</p>
 
 <blockquote><p>&ldquo;I built PlaneWX to give myself a safety framework for personal and volunteer flights. Volunteer pilots give their time and money, and share the gift of private flight with people who need it. I am proud to partner with Air Care Alliance and put our Decision Support System in front of their volunteer pilots, to improve the safety of flight and to help more missions get dispatched.&rdquo;</p><cite>&mdash; Mark Wolfgang, founder of PlaneWX, Navy veteran, commercial instrument-rated pilot, and Veterans Airlift Command volunteer pilot</cite></blockquote>
 
