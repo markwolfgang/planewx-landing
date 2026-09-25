@@ -70,7 +70,7 @@ export function LandingVariantA() {
       <nav className="relative z-10 border-b border-white/5">
         <div className="container mx-auto pl-4 pr-5 sm:px-4 py-4 flex items-center justify-between gap-3 sm:gap-4">
           <div className="flex items-center gap-3 min-w-0">
-            <BrandLogo className="h-6 sm:h-9 w-auto shrink-0" priority />
+            <BrandLogo className="h-5 min-[390px]:h-6 sm:h-9 w-auto max-w-none shrink-0" priority />
             <span className="hidden xl:inline text-xs text-white/40 font-medium tracking-wide ml-1 whitespace-nowrap">
               The Pilot&apos;s Decision Support System
             </span>
@@ -179,7 +179,7 @@ export function LandingVariantA() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Real pilots. Real decisions.</h2>
-            <p className="text-white/50">From student pilots to {STATS.maxPilotHoursPhrase} ATP captains.</p>
+            <p className="text-white/50">From student pilots to ATP captains.</p>
           </div>
           <TestimonialsCarousel />
         </div>
@@ -519,9 +519,9 @@ export function LandingVariantA() {
                   { label: "Icing", score: "95", color: "text-emerald-400" },
                   { label: "Convective", score: "100", color: "text-emerald-400" },
                 ].map(({ label, score, color }) => (
-                  <div key={label} className="p-3 rounded-xl bg-white/5 border border-white/10 text-center">
+                  <div key={label} className="p-3 rounded-xl bg-white/5 border border-white/10 text-center min-w-0">
                     <div className={`text-2xl font-bold ${color}`}>{score}</div>
-                    <div className="text-xs text-white/40 mt-0.5">{label}</div>
+                    <div className="text-[11px] sm:text-xs text-white/40 mt-0.5 leading-tight">{label}</div>
                   </div>
                 ))}
               </div>

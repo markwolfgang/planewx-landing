@@ -1,14 +1,15 @@
 // Last updated: 2026-08-17
-// Replica (sync 07:24 UTC): 2,066 active · 3,550,417 hrs · 70% IR · 194 jets · 153 types · 174 ATP · max 35,000 · avg 1,909
+// Replica (sync 07:24 UTC): 2,066 active · 3,550,417 hrs · 70% IR · 194 jets · 153 types · 174 ATP · avg 1,909
 // Prod active pilots at write: 2,085
+// Do not cite a max-hours marketing claim; use "ATP captains" without an hour total.
 export const STATS = {
   totalPilots: "2,200+",
   cumulativeHours: "3.5M+",
   instrumentRated: "70%",
   jetAircraft: "194",
   aircraftTypes: "153",
-  maxPilotHours: "35,000+",
-  maxPilotHoursPhrase: "35,000-hour",
+  maxPilotHours: "",
+  maxPilotHoursPhrase: "",
   atpPilots: "174",
   avgHours: "1,900+",
 }
