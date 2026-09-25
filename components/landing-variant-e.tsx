@@ -129,7 +129,7 @@ export function LandingVariantE() {
                   <Star key={i} className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />
                 ))}
               </div>
-              <span>8.7/10 briefing feedback (1,724 responses)</span>
+              <span>8.7/10 on how likely pilots are to recommend PlaneWX (1,724 responses)</span>
             </div>
             <div className="hidden sm:block w-px h-4 bg-white/10" />
             <span>{STATS.totalPilots} pilots</span>

@@ -203,7 +203,9 @@ export function LandingVariantA() {
             </div>
             <div>
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-emerald-400 mb-1 whitespace-nowrap">8.7/10</div>
-              <div className="text-sm text-white/50">briefing feedback<br />(1,724 responses)</div>
+              <div className="text-sm text-white/50">
+                how likely pilots are<br />to recommend PlaneWX<br />(1,724 responses)
+              </div>
             </div>
             <div className="col-span-2 lg:col-span-1">
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-violet-400 mb-1 whitespace-nowrap">~2×</div>
