@@ -128,11 +128,11 @@ const PARTNERS = [
     name: "FLYTE",
     href: "https://www.planewx.ai/flyte",
     logo: {
-      // PLACEHOLDER for Sara: Drive Partners Assets empty at launch; social share JPG is weak.
-      src: "/partners/flyte-placeholder.svg",
-      alt: "FLYTE logo placeholder",
-      width: 320,
-      height: 96,
+      // Interim white wordmark until Sara supplies the official mark.
+      src: "/partners/flyte-wordmark.svg",
+      alt: "FLYTE",
+      width: 337,
+      height: 116,
       className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
     },
     blurb:
@@ -155,11 +155,11 @@ const PARTNERS = [
     name: "Runway to Oshkosh",
     href: "https://www.planewx.ai/runway",
     logo: {
-      // PLACEHOLDER for Sara: campaign mark not in handoff; keep despite Gleam hold. Not Creative Relay.
-      src: "/partners/runway-placeholder.svg",
-      alt: "Runway to Oshkosh logo placeholder",
-      width: 360,
-      height: 96,
+      // Interim white wordmark until Sara supplies the official campaign mark. Not Creative Relay.
+      src: "/partners/runway-to-oshkosh-wordmark.svg",
+      alt: "Runway to Oshkosh",
+      width: 694,
+      height: 88,
       className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
     },
     blurb:
