@@ -160,7 +160,7 @@ export function LandingPageV3() {
             professional-grade tools and instills professional-grade habits that make flying safer.
           </p>
           <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
-            The risk-management loop for pilots without a dispatcher, not just another weather app.
+            The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -256,7 +256,7 @@ export function LandingPageV3() {
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               EFBs and weather portals display raw data. Synthesizing it, assessing risk, and
               forming a clear judgment still lands entirely on you. Alone. Often under pressure.
-              PlaneWX is not just another weather app. It is the risk-management loop.
+              PlaneWX goes beyond the weather briefing. It is the risk-management loop.
             </p>
           </div>
 

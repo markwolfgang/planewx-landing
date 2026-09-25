@@ -413,14 +413,14 @@ export function LandingVariantE() {
 
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Not a weather app.{" "}
+              Beyond the weather briefing.{" "}
               <span className="bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
                 A system.
               </span>
             </h2>
             <p className="text-white/50 text-lg max-w-2xl mx-auto">
-              A weather app gives you data. PlaneWX builds accountability around
-              every flight — before you go, in the decision moment, and across
+              Weather tools give you data. PlaneWX builds accountability around
+              every flight, before you go, in the decision moment, and across
               your entire flying career.
             </p>
           </div>

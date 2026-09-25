@@ -135,7 +135,9 @@ export function LandingVariantA() {
           </h1>
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed text-balance">
-            Weather tools show you data. PlaneWX helps you make the call.
+            Weather tools show you raw data. PlaneWX shows you what matters for your
+            flight and helps you{" "}
+            <span className="whitespace-nowrap">make the call.</span>
           </p>
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed text-balance">
@@ -143,7 +145,7 @@ export function LandingVariantA() {
             professional-grade tools and instills professional-grade habits that make flying safer.
           </p>
           <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed text-balance">
-            The risk-management loop for pilots without a dispatcher, not just another weather app.
+            The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">

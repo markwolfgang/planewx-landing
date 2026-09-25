@@ -19,7 +19,7 @@ const jsonLd = {
       "@id": "https://www.planewx.ai/#website",
       "url": "https://www.planewx.ai",
       "name": "PlaneWX",
-      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher, not just another weather app.",
+      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
       "publisher": {
         "@id": "https://www.planewx.ai/#organization"
       },
@@ -53,7 +53,7 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "@id": "https://www.planewx.ai/#app",
       "name": "PlaneWX",
-      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher, not just another weather app.",
+      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
       "applicationCategory": "WeatherApplication",
       "operatingSystem": "Web",
       "offers": {
@@ -122,7 +122,7 @@ export const metadata: Metadata = {
     template: "%s | PlaneWX",
   },
   description:
-    "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher, not just another weather app.",
+    "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
   keywords: [
     "aviation weather",
     "flight planning",
@@ -188,14 +188,14 @@ export const metadata: Metadata = {
     siteName: "PlaneWX",
     title: "PlaneWX | Fly like it's your job.",
     description:
-      "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher, not just another weather app.",
+      "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
     // OG image is auto-generated from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
     title: "PlaneWX | Fly like it's your job.",
     description:
-      "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher, not just another weather app.",
+      "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
     // Twitter image is auto-generated from app/twitter-image.tsx
     creator: "@planewx",
   },

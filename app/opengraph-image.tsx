@@ -96,7 +96,7 @@ export default async function Image() {
                 lineHeight: 1.35,
               }}
             >
-              Not just another weather app.
+              Beyond the weather briefing.
             </span>
           </div>
         </div>
