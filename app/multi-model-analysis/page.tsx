@@ -569,41 +569,39 @@ export default function MultiModelAnalysis() {
           </div>
         </section>
 
-        {/* Comparison Table */}
+        {/* What You Get */}
         <section className="space-y-8">
           <div className="text-center space-y-3">
-            <h2 className="text-3xl font-bold">How This Compares</h2>
-            <p className="text-white/60">PlaneWX alongside common briefing workflows today</p>
+            <h2 className="text-3xl font-bold">What You Get</h2>
+            <p className="text-white/60">Every briefing includes</p>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+          <div className="w-full">
+            <table className="w-full text-sm table-fixed">
               <thead>
                 <tr className="border-b border-white/20">
-                  <th className="text-left py-3 px-4 text-white font-semibold">Capability</th>
-                  <th className="text-center py-3 px-3 text-sky-400 font-semibold">PlaneWX</th>
-                  <th className="text-center py-3 px-3 text-white/40 font-semibold">Traditional</th>
+                  <th className="text-left py-3 pr-3 sm:pr-4 text-white font-semibold w-[42%]">Capability</th>
+                  <th className="text-left py-3 pl-3 sm:pl-4 text-emerald-400 font-semibold w-[58%]">What PlaneWX gives you</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/10">
                 {[
-                  ["Multi-model comparison", "3 independent models", "Single product"],
-                  ["Confidence scoring", "Unanimous / Majority / Split", "Single-source forecasts"],
-                  ["Route-specific sampling", "3–7 points along YOUR route", "Broad geographic areas"],
-                  ["Altitude-specific assessment", "8 pressure levels per point", "Altitude range only"],
-                  ["Cloud layer boundaries", "RH-derived at each sample point", "Not provided"],
-                  ["Ice type prediction", "Clear / rime / mixed", "Not provided"],
-                  ["SLD / warm nose detection", "Temperature profile scanning", "SLD AIRMETs only"],
-                  ["Total icing exposure", "Climb / cruise / descent minutes", "Not calculated"],
-                  ["Turbulence physics", "Wind shear + Richardson number", "Severity products only"],
-                  ["PIREP / AIRMET corroboration", "Fused with model output", "Displayed separately"],
-                  ["Personal minimums", "Soft + hard limits per aircraft", "Generic severity"],
-                  ["Raw data access", "Full transparency", "Summary views"],
-                ].map(([capability, planewx, traditional]) => (
+                  ["Multi-model analysis", "3 independent models"],
+                  ["Confidence scoring", "Unanimous / Majority / Split"],
+                  ["Route-specific sampling", "3–7 points along YOUR route"],
+                  ["Altitude-specific assessment", "8 pressure levels per point"],
+                  ["Cloud layer boundaries", "RH-derived at each sample point"],
+                  ["Ice type prediction", "Clear / rime / mixed"],
+                  ["SLD / warm nose detection", "Temperature profile scanning"],
+                  ["Total icing exposure", "Climb / cruise / descent minutes"],
+                  ["Turbulence physics", "Wind shear + Richardson number"],
+                  ["PIREP / AIRMET corroboration", "Fused with model output"],
+                  ["Personal minimums", "Soft + hard limits per aircraft"],
+                  ["Raw data access", "Full transparency"],
+                ].map(([capability, detail]) => (
                   <tr key={capability}>
-                    <td className="py-3 px-4 text-white/70">{capability}</td>
-                    <td className="py-3 px-3 text-center text-emerald-400 font-medium">{planewx}</td>
-                    <td className="py-3 px-3 text-center text-white/30">{traditional}</td>
+                    <td className="py-3 pr-3 sm:pr-4 text-white/70 align-top break-words">{capability}</td>
+                    <td className="py-3 pl-3 sm:pl-4 text-emerald-400 font-medium align-top break-words">{detail}</td>
                   </tr>
                 ))}
               </tbody>
