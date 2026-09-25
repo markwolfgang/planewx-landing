@@ -142,11 +142,10 @@ const PARTNERS = [
     name: "TBMOPA",
     href: "https://www.planewx.ai/talks/tbmopa",
     logo: {
-      // PLACEHOLDER for Sara: official mark not in handoff; swap when Drive assets land.
-      src: "/partners/tbmopa-placeholder.svg",
-      alt: "TBMOPA logo placeholder",
-      width: 320,
-      height: 96,
+      src: "/partners/tbmopa-white.png",
+      alt: "TBMOPA logo",
+      width: 800,
+      height: 377,
       className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
     },
     blurb:
