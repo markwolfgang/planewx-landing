@@ -25,7 +25,7 @@
 15. What makes this FRAT different (live inputs + Coming next)
 16. FRAT completion by aircraft type
 17. FRAT product shot
-18. Loop 3: Fly or Stay
+18. Loop 3: GO / NO-GO
 19. Principle: courage to stay
 20. Loop 4: Self Debrief (today + Coming next)
 21. Mentor alongside the loop

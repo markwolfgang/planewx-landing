@@ -88,7 +88,7 @@ export const FAQS: {
   },
   {
     q: "What is the WX Score?",
-    a: "The WX Score is a 0–100% metric calculated against YOUR personal minimums and your specific aircraft — not generic VFR/IFR categories. It tells you, in a single number, how well conditions are expected to match your standards. Every deduction is transparent and explained.",
+    a: "The WX Score is a 0–100% metric calculated against YOUR personal minimums and your specific aircraft, not generic VFR/IFR categories. Personal minimums are required: PlaneWX cannot generate a WX Score without them, and every briefing shows them up front. The score tells you, in a single number, how well conditions are expected to match your standards. Every deduction is transparent and explained.",
   },
   {
     q: "What is the PAVE framework?",
@@ -113,11 +113,15 @@ export const FAQS: {
   },
   {
     q: "How far in advance can PlaneWX forecast weather?",
-    a: "PlaneWX provides weather intelligence from 14 days out through departure. Confidence improves as your flight approaches: ~55% at 14 days, ~80% at 72 hours, ~95%+ in the final 6 hours. We're transparent about uncertainty at every time horizon.",
+    a: "PlaneWX provides weather intelligence from 14 days out through departure. Practical flyable-vs-challenging accuracy on our published validation is about 73% at 24 hours, 70% at 48 hours, and 69% at 72 hours. Confidence is lower further out, and we stay transparent about uncertainty at every time horizon. TAFs remain authoritative inside their valid window.",
+  },
+  {
+    q: "What briefing views does PlaneWX offer?",
+    a: "Every briefing has the same weather content in three views: Quick (compact status pills; phone default), Enhanced (color-coded grids and gauges), and Visual (Enhanced plus live forecast imagery). Pick the view that fits the moment; the WX Score and sources stay the same.",
   },
   {
     q: "What is the mentor system?",
-    a: "PlaneWX connects you with experienced pilots who can review your full briefing — WX Score, aircraft profile, personal minimums — and provide a go/no-go perspective grounded in shared data, not guesswork. It's the community layer of the decision support system.",
+    a: "PlaneWX connects you with experienced pilots who can review your full briefing (WX Score, aircraft profile, personal minimums) and offer a second set of eyes grounded in shared data, not guesswork. Mentors are an optional layer on the decision support loop. PlaneWX never recommends go or no-go. You make the call.",
   },
   {
     q: "Is there a free plan?",

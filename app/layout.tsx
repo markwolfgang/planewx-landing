@@ -53,14 +53,14 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "@id": "https://www.planewx.ai/#app",
       "name": "PlaneWX",
-      "description": "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, and a mentor network. Every weather tool shows you data. PlaneWX helps you decide.",
+      "description": "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, GO / NO-GO, and Self Debrief, with mentors optional. Every weather tool shows you data. PlaneWX helps you decide.",
       "applicationCategory": "WeatherApplication",
       "operatingSystem": "Web",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/ComingSoon"
+        "availability": "https://schema.org/InStock"
       },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -78,7 +78,7 @@ const jsonLd = {
         "40+ automatic briefing updates",
         "Personal minimums tracking",
         "Aircraft-specific analysis",
-        "PAVE risk assessment",
+        "FRAT",
         "Peer mentoring system",
         "Trip Crew sharing"
       ]
@@ -91,7 +91,7 @@ const jsonLd = {
           "name": "What is PlaneWX?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PlaneWX is the Pilot's Decision Support System for general aviation. It combines weather briefing, FRAT, and a mentor network so pilots can see weather and risk, and connect with a mentor before the pressure locks in."
+            "text": "PlaneWX is the decision support system for general aviation. It combines Weather Briefing, FRAT, GO / NO-GO, and Self Debrief, with mentors as an optional layer, so pilots can see weather and risk before pressure locks in. PlaneWX never recommends go or no-go. You make the call."
           }
         },
         {
@@ -99,7 +99,7 @@ const jsonLd = {
           "name": "How far in advance can PlaneWX predict flight weather?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "PlaneWX provides reliable weather intelligence from 14 days out to departure time. The accuracy improves as your flight approaches, with 76% accuracy at 24 hours, 70% at 48 hours, and 61% at 72 hours."
+            "text": "PlaneWX provides weather intelligence from 14 days out to departure. Published practical flyable-vs-challenging accuracy is about 73% at 24 hours, 70% at 48 hours, and 69% at 72 hours. Confidence is lower further out, and TAFs remain authoritative inside their valid window."
           }
         },
         {
@@ -107,7 +107,7 @@ const jsonLd = {
           "name": "What is the WX Score?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The WX Score is a personalized 0-100% metric calculated against YOUR personal minimums, not generic VFR/IFR categories. It tells you the probability that weather conditions will meet your specific standards for the flight."
+            "text": "The WX Score is a personalized 0-100% metric calculated against YOUR personal minimums, not generic VFR/IFR categories. Personal minimums are required; PlaneWX cannot generate a WX Score without them. Every briefing shows them up front."
           }
         },
         {
@@ -129,7 +129,7 @@ export const metadata: Metadata = {
     template: "%s | PlaneWX",
   },
   description:
-    "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, and a mentor network. The confidence to go, or the courage to stay™.",
+    "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, GO / NO-GO, and Self Debrief, with mentors optional. Fly like it's your job.",
   keywords: [
     "aviation weather",
     "flight planning",
@@ -139,7 +139,7 @@ export const metadata: Metadata = {
     "aviation weather app",
     "pilot weather",
     "WX Score",
-    "PAVE risk assessment",
+    "FRAT",
     "cross country flight planning",
     "IFR weather",
     "VFR weather",
