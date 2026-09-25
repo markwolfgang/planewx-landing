@@ -59,9 +59,9 @@ missionVision:
   mission:
     title: Mission
     body: >-
-      PlaneWX increases general aviation safety by equipping pilots with
-      continuously monitored weather intelligence, structured self-assessment,
-      and peer mentoring.
+      Bring professional-grade tools and habits to general aviation so pilots
+      flying on their own time, with families aboard, hold the same standard as
+      paid pros.
   vision:
     title: Vision
     body: >-
