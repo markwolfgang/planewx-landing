@@ -19,6 +19,8 @@ import {
   CloudSun,
   ClipboardCheck,
   RotateCcw,
+  Database,
+  Sparkles,
 } from "lucide-react"
 import {
   PricingSection,
@@ -31,6 +33,8 @@ import {
   SignUpButton,
   FounderImageModal,
   STATS,
+  HOW_IT_WORKS_STEPS,
+  HOW_IT_WORKS_WHY,
 } from "./shared"
 import { HomepagePartnerLogos } from "@/components/shared/homepage-partner-logos"
 import { YouTubeFacade } from "./shared/youtube-facade"
@@ -380,7 +384,7 @@ export function LandingVariantA() {
 
       {/* HOW IT WORKS */}
       <section id="how-it-works" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
-        <div className="container mx-auto max-w-5xl">
+        <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-5">
               How It Works
@@ -390,69 +394,73 @@ export function LandingVariantA() {
               <span className="text-sky-400">a clearer picture</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Under the hood of every Weather Briefing: synthesize, personalize, then put the
-              picture in front of you so you can decide.
+              Under the hood of every Weather Briefing: retrieve, personalize, synthesize, then
+              put the picture in front of you so you can decide.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-blue-950/60 to-blue-950/20 border border-blue-500/20">
-              <div className="text-6xl font-bold text-blue-500/20 absolute top-4 right-6 select-none">1</div>
-              <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-5">
-                <Brain className="h-6 w-6 text-blue-400" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Synthesize</h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-4">
-                Our AI reads METARs, TAFs, PIREPs, SIGMETs, winds aloft, HRRR/GFS/ECMWF model
-                data, and NWS forecaster narratives, then synthesizes them into a coherent picture
-                along your entire route.
-              </p>
-              <ul className="space-y-1.5 text-xs text-white/40">
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-blue-400" />METARs · TAFs · PIREPs</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-blue-400" />SIGMETs · AIRMETs · G-AIRMETs</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-blue-400" />HRRR · GFS · ECMWF model consensus</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-blue-400" />NWS forecaster narratives</li>
-              </ul>
-            </div>
-
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-violet-950/60 to-violet-950/20 border border-violet-500/20">
-              <div className="text-6xl font-bold text-violet-500/20 absolute top-4 right-6 select-none">2</div>
-              <div className="w-12 h-12 rounded-xl bg-violet-500/20 flex items-center justify-center mb-5">
-                <Target className="h-6 w-6 text-violet-400" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Personalize</h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-4">
-                The synthesis is matched against your aircraft&apos;s actual capabilities: FIKI, TAS,
-                service ceiling, autopilot, and your personal minimums. Your SR22T has different
-                limits than a rental 172.
-              </p>
-              <ul className="space-y-1.5 text-xs text-white/40">
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-violet-400" />Per-aircraft minimums (ceiling, vis, crosswind)</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-violet-400" />Icing & turbulence tolerance per aircraft</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-violet-400" />FIKI, TAS, autopilot, weather radar aware</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-violet-400" />Multiple aircraft profiles supported</li>
-              </ul>
-            </div>
-
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-emerald-950/20 border border-emerald-500/20">
-              <div className="text-6xl font-bold text-emerald-500/20 absolute top-4 right-6 select-none">3</div>
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-5">
-                <Gauge className="h-6 w-6 text-emerald-400" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Inform</h3>
-              <p className="text-white/60 text-sm leading-relaxed mb-4">
-                The WX Score feeds FRAT on PAVE: Pilot, Aircraft, enVironment, External pressures.
-                Airport complexity and traffic are scored in your FRAT.
-                You get a complete decision view.
-              </p>
-              <ul className="space-y-1.5 text-xs text-white/40">
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />WX Score: 0-100% quantified risk</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />FRAT / PAVE, fed by briefing and context</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />14-day trend to avoid last-minute pressure</li>
-                <li className="flex items-center gap-2"><Check className="h-3 w-3 text-emerald-400" />Mentor available alongside when you want it</li>
-              </ul>
-            </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {HOW_IT_WORKS_STEPS.map((step, i) => {
+              const styles = [
+                {
+                  card: "from-sky-950/60 to-sky-950/20 border-sky-500/20",
+                  num: "text-sky-500/20",
+                  iconWrap: "bg-sky-500/20",
+                  icon: "text-sky-400",
+                  Icon: Database,
+                },
+                {
+                  card: "from-violet-950/60 to-violet-950/20 border-violet-500/20",
+                  num: "text-violet-500/20",
+                  iconWrap: "bg-violet-500/20",
+                  icon: "text-violet-400",
+                  Icon: Target,
+                },
+                {
+                  card: "from-blue-950/60 to-blue-950/20 border-blue-500/20",
+                  num: "text-blue-500/20",
+                  iconWrap: "bg-blue-500/20",
+                  icon: "text-blue-400",
+                  Icon: Sparkles,
+                },
+                {
+                  card: "from-emerald-950/60 to-emerald-950/20 border-emerald-500/20",
+                  num: "text-emerald-500/20",
+                  iconWrap: "bg-emerald-500/20",
+                  icon: "text-emerald-400",
+                  Icon: Gauge,
+                },
+              ][i]
+              const Icon = styles.Icon
+              return (
+                <div
+                  key={step.title}
+                  className={`relative p-6 sm:p-7 rounded-3xl bg-gradient-to-br border ${styles.card}`}
+                >
+                  <div className={`text-5xl font-bold ${styles.num} absolute top-3 right-5 select-none`}>
+                    {i + 1}
+                  </div>
+                  <div className={`w-11 h-11 rounded-xl ${styles.iconWrap} flex items-center justify-center mb-4`}>
+                    <Icon className={`h-5 w-5 ${styles.icon}`} />
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2 mb-3 pr-8">
+                    <h3 className="text-lg font-bold">{step.title}</h3>
+                    {step.badge ? (
+                      <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-white/55">
+                        {step.badge}
+                      </span>
+                    ) : null}
+                  </div>
+                  <p className="text-white/60 text-sm leading-relaxed">{step.body}</p>
+                </div>
+              )
+            })}
           </div>
+
+          <p className="mt-10 text-center text-sm sm:text-base text-white/55 max-w-3xl mx-auto leading-relaxed">
+            <span className="text-white/70 font-medium">Why this matters. </span>
+            {HOW_IT_WORKS_WHY}
+          </p>
         </div>
       </section>
 

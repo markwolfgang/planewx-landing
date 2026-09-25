@@ -15,6 +15,40 @@ export const STATS = {
   avgHours: "1,900+",
 }
 
+/**
+ * Staged How It Works copy (easy to swap after CoS audit).
+ * Badges must not say "No AI". Any "can't raise the score" line starts with
+ * "Within 12 hours of departure".
+ */
+export const HOW_IT_WORKS_STEPS: {
+  title: string
+  badge?: string
+  body: string
+}[] = [
+  {
+    title: "Retrieve",
+    badge: "Code",
+    body: "Every METAR, TAF, PIREP, advisory, model product and NOTAM along your route is fetched, decoded and filtered by code.",
+  },
+  {
+    title: "Personalize",
+    badge: "Rule-based within 12 hours of departure",
+    body: "Your personal minimums and aircraft limits are checked by rule-based code. Within 12 hours of departure, if the forecast is outside them, the server sets the WX Score to 0, not the AI. Further out, fewer of these checks can run.",
+  },
+  {
+    title: "Synthesize",
+    badge: "AI",
+    body: "AI reads the forecasters' written discussions and regional summaries, then writes the plain-language briefing for your route: the big picture, the hazard summary, and most section ratings. It can also add deductions, such as for convection. Ceiling and visibility are always scored by code. Within 12 hours of departure, the AI can't raise your WX Score above the rule-based score.",
+  },
+  {
+    title: "Inform",
+    body: "You get your WX Score, the reasons behind it, and the hazards along your route, so you can make your Fly or Stay call as PIC. For monitored flights, the briefing keeps updating as the forecast changes.",
+  },
+]
+
+export const HOW_IT_WORKS_WHY =
+  "Weather data is handled by code, and close to departure so are your limits, the same way every time. AI reads forecaster text and explains it. You make the call."
+
 export const TESTIMONIALS = [
   {
     quote: "I've been beta testing this product for a few weeks now and I'm really enjoying it. It does a very good job of synthesizing multiple weather products and highlighting the key factors to be aware of. It links everything back to the source data so you can verify if anything looks amiss.",
@@ -104,6 +138,10 @@ export const FAQS: {
   {
     q: "How can I make my briefing more accurate?",
     a: "Enter the flight the way you'll really fly it: a realistic departure time, the route you expect to file or be cleared, your planned altitude, and the right aircraft profile. If any of those change, update the trip and brief again. Check again close to departure, when the forecasts are freshest.",
+  },
+  {
+    q: "Does PlaneWX use AI?",
+    a: "Yes, in specific places. Weather reports, forecasts, model data and NOTAMs are fetched and decoded by code. AI reads forecaster discussions and writes the plain-language briefing, the hazard summary and most section ratings, and it can add some deductions to the WX Score, such as for convection. Ceiling and visibility are always scored by code. Within 12 hours of departure, your personal minimums and aircraft limits are checked by rule-based code: if you're outside them the server sets the WX Score to 0, and the AI can't raise the score above the rule-based score. You always make the final call.",
   },
   {
     q: "What is the WX Score?",
