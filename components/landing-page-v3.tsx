@@ -273,7 +273,7 @@ export function LandingPageV3() {
                 ["Generic VFR / IFR categories", "Your minimums and your aircraft"],
                 ["You invent the risk picture alone", "FRAT on the FAA PAVE framework"],
                 ["No structured GO / NO‑GO step", "You make the call. PlaneWX informs."],
-                ["No habit loop after the flight", "Self Debrief feeds the next FRAT"],
+                ["No habit loop after the flight", "Self Debrief looks back at every trip"],
               ].map(([left, right], i) => (
                 <>
                   <div
@@ -369,8 +369,7 @@ export function LandingPageV3() {
               <h3 className="text-2xl font-bold mb-2">Self Debrief</h3>
               <p className="text-amber-400/90 text-xs font-medium mb-2">Close the loop</p>
               <p className="text-white/60 text-sm leading-relaxed">
-                After the flight, or the flight you skipped, a self-debrief feeds the next FRAT.
-                Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
+                After the flight, or the flight you skipped, your Self Debrief looks back at the FRAT you ran for that trip.
               </p>
             </div>
           </div>
