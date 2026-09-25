@@ -107,7 +107,7 @@ export function LandingVariantB() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            The Fly or Stay call{" "}
+            The GO / NO-GO call{" "}
             <span className="bg-gradient-to-r from-rose-400 to-orange-400 bg-clip-text text-transparent">
               shouldn&apos;t happen
             </span>
@@ -306,7 +306,7 @@ export function LandingVariantB() {
               <h3 className="text-xl font-bold mb-3">14-Day Early Warning</h3>
               <p className="text-white/60 text-sm leading-relaxed">
                 See WX Score trends before you commit to anything. Cancel hotels, not your safety
-                margins. You&apos;ll know days in advance whether conditions are trending toward Fly or Stay, while you still have options.
+                margins. You&apos;ll know days in advance whether conditions are trending toward GO / NO-GO, while you still have options.
               </p>
             </div>
 
@@ -352,12 +352,13 @@ export function LandingVariantB() {
                 <span className="text-emerald-400">finally quantified</span>
               </h2>
               <p className="text-white/70 leading-relaxed mb-6">
-                Right now, your Fly or Stay judgment lives entirely in your head. You mentally juggle
+                Right now, your GO / NO-GO judgment lives entirely in your head. You mentally juggle
                 ceilings, winds, icing, turbulence, currency, and fatigue under pressure, often at
                 the last minute.
               </p>
               <p className="text-white/70 leading-relaxed mb-6">
-                The WX Score externalizes that work. The cognitive burden of
+                PlaneWX never recommends go or no-go. The pilot makes the call. The WX Score
+                externalizes that work. The cognitive burden of
                 weather risk assessment lives in software, not your memory, not your gut.
               </p>
               <ul className="space-y-3">

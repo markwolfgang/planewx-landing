@@ -266,7 +266,7 @@ export function LandingVariantC() {
           <div className="grid md:grid-cols-3 gap-5">
             {[
               { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0–100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds." },
-              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute Fly or Stay scramble with bags packed and commitments made." },
+              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning", desc: "Monitor WX trends from 2 weeks out. Never face a last-minute GO / NO-GO scramble with bags packed and commitments made." },
               { icon: <Brain className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across sample points along your route with confidence scoring." },
               { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "PAVE Risk Assessment", desc: "The FAA's decision-making framework, pre-filled from your trip context: all four quadrants in one view." },
               { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Ask a Mentor", desc: "Connect with experienced pilots who see your full briefing: WX Score, aircraft profile, minimums." },
