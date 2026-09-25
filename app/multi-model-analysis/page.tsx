@@ -55,13 +55,13 @@ export default function MultiModelAnalysis() {
           <div className="text-center space-y-3">
             <h2 className="text-3xl font-bold">Why one forecast isn&apos;t enough</h2>
             <p className="text-white/60 max-w-2xl mx-auto">
-              Pilots today rely on two sources that were never designed for route-specific, altitude-specific decision-making.
+              Pilots today rely on two sources built for wide-area coverage, not a specific route and altitude.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="p-6 rounded-2xl bg-amber-500/5 border border-amber-500/20">
-              <h3 className="text-xl font-semibold text-amber-400 mb-4">G-AIRMETs: Too Broad</h3>
+              <h3 className="text-xl font-semibold text-amber-400 mb-4">G-AIRMETs: Broad by design</h3>
               <ul className="space-y-3 text-white/70 text-sm">
                 <li className="flex items-start gap-3">
                   <AlertTriangle className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
@@ -82,7 +82,7 @@ export default function MultiModelAnalysis() {
               </ul>
             </div>
             <div className="p-6 rounded-2xl bg-amber-500/5 border border-amber-500/20">
-              <h3 className="text-xl font-semibold text-amber-400 mb-4">PIREPs: Too Sparse</h3>
+              <h3 className="text-xl font-semibold text-amber-400 mb-4">PIREPs: Sparse by nature</h3>
               <ul className="space-y-3 text-white/70 text-sm">
                 <li className="flex items-start gap-3">
                   <AlertTriangle className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
@@ -106,7 +106,7 @@ export default function MultiModelAnalysis() {
 
           <div className="p-6 rounded-2xl bg-sky-500/5 border border-sky-500/20 text-center">
             <p className="text-white/80 text-lg">
-              <strong className="text-white">PlaneWX&rsquo;s approach:</strong> Instead of relying on broad products or sparse reports,
+              <strong className="text-white">PlaneWX&rsquo;s approach:</strong> Alongside broad products and sparse reports,
               we query three independent numerical weather models at multiple points along <em>your specific route</em>, 
               then corroborate the model output with real-world observations.
             </p>
