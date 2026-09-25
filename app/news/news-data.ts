@@ -53,7 +53,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     category: "Product",
     title: "The Weekly PIREP: Edition 1",
     excerpt:
-      "What shipped in PlaneWX this week: ground-ops wind in Personal Minimums, clearer FRAT Environment ratings, and a suggest-then-you-decide FRAT flow. Plus a short tip on how the WX Score works.",
+      "What shipped in PlaneWX this week: ground-ops wind in Personal Minimums, clearer FRAT Environment ratings, and FRAT that shows a suggested risk level before you rate and add notes. Plus a short tip on how the WX Score works.",
     date: "September 28, 2026",
     isoDate: "2026-09-28",
     location: "St. Petersburg, Florida",
@@ -66,7 +66,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <ul>
 <li><strong>Max wind for ground ops in Personal Minimums.</strong> In the Wind section of your Personal Minimums, you can set a maximum wind for ground operations. It is a limit you store with your other mins, next to the wind numbers you already use when you plan.</li>
 <li><strong>FRAT Environment: you rate it, with short captions.</strong> On the Environment step, you rate the overall environment yourself. Each category also shows a short caption that explains what is driving that reading, so you can see why a factor lit up before you score it.</li>
-<li><strong>FRAT order: suggestion, then your call, then notes.</strong> PlaneWX shows its suggestion first. Then you make the call. Then you add notes. The sequence is built so you stay PIC: we surface a read, you decide Fly or Stay.</li>
+<li><strong>FRAT order: suggested risk level, then your call, then notes.</strong> At the bottom of each category, PlaneWX shows a suggested risk level and what is driving it. Then you rate that category yourself. Then you add notes. The risk read is a hint; you make the call.</li>
 </ul>
 <!-- [SLOT: add features shipped Sep 25 to 27, or delete] -->
 
