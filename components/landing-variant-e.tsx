@@ -1,6 +1,6 @@
 "use client"
 
-import { Shield, ArrowRight, BookOpen, Users, CheckCircle, Star, CloudLightning, AlertTriangle } from "lucide-react"
+import { Shield, ArrowRight, BookOpen, Users, CheckCircle, CloudLightning, AlertTriangle } from "lucide-react"
 import {
   YouTubeSection,
   PricingSection,
@@ -336,14 +336,7 @@ export function LandingVariantE() {
           </div>
 
           <div className="rounded-2xl bg-gradient-to-br from-amber-950/40 to-orange-950/20 border border-amber-500/20 p-8 sm:p-10">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 text-amber-400 fill-amber-400" />
-                ))}
-              </div>
-              <span className="text-white/40 text-sm">10 / 10 · Promoter · Helped my decision: yes</span>
-            </div>
+            <p className="text-white/40 text-sm mb-6">10 / 10 · Helped my decision: yes</p>
 
             <blockquote className="text-xl sm:text-2xl text-white leading-relaxed font-light italic mb-6">
               "You were right on. I should not have flown. I tuned around within
@@ -523,11 +516,6 @@ export function LandingVariantE() {
               key={t.name}
               className="rounded-2xl bg-gradient-to-br from-amber-950/40 to-orange-950/10 border border-amber-500/20 p-8 sm:p-10 mb-8"
             >
-              <div className="flex mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 text-amber-400 fill-amber-400" />
-                ))}
-              </div>
               <blockquote className="text-xl sm:text-2xl text-white font-light italic leading-relaxed mb-6">
                 "{t.quote}"
               </blockquote>
@@ -542,11 +530,6 @@ export function LandingVariantE() {
                 key={t.name}
                 className="rounded-xl bg-white/[0.03] border border-white/8 p-5"
               >
-                <div className="flex mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 text-amber-400 fill-amber-400" />
-                  ))}
-                </div>
                 <blockquote className="text-white/70 text-sm leading-relaxed italic mb-4">
                   "{t.quote}"
                 </blockquote>
