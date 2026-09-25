@@ -213,8 +213,12 @@ export function LandingPageV3() {
               </p>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">Up to 10%</div>
-              <div className="text-sm text-white/50 leading-snug max-w-[14rem] mx-auto">Up to 10% off 5X5 insurance<br />with Pro Plus</div>
+              <div className="text-2xl md:text-[2rem] lg:text-4xl font-bold text-amber-400 mb-1 tracking-tighter whitespace-nowrap">
+                Up to 10%
+              </div>
+              <div className="text-sm text-white/50 leading-snug max-w-[14rem] mx-auto">
+                off 5X5 insurance with Pro Plus
+              </div>
             </div>
           </div>
         </div>

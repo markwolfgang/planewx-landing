@@ -363,7 +363,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 <h3 className="text-xl font-bold">Pro Monthly</h3>
               </div>
               <p className="text-sm text-white/40">
-                Auto-monitoring &amp; advanced tools for active pilots
+                Auto-monitoring &amp; advanced tools. Join 2,200+ pilots on PlaneWX.
               </p>
             </div>
             <div className="mb-6">
