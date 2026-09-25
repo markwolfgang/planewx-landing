@@ -137,6 +137,8 @@ type OverviewContent = {
     title: string
     subtitle: string
     items: { value: string; label: string; color: string }[]
+    association: string
+    associationNote: string
   }
   sayAvoid: {
     title: string
@@ -337,7 +339,7 @@ export default function BrandPortalPage() {
                     {item.num}
                   </span>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-lg font-semibold text-white mb-2 whitespace-nowrap">
                   {item.title}
                 </h3>
                 <p className="text-white/65 text-sm leading-relaxed">
@@ -422,6 +424,12 @@ export default function BrandPortalPage() {
             </div>
           ))}
         </div>
+        <p className="text-white/70 text-sm mt-5 leading-relaxed text-center">
+          {content.publicProof.association}
+        </p>
+        <p className="text-white/40 text-xs mt-2 text-center italic">
+          {content.publicProof.associationNote}
+        </p>
       </section>
 
       <section>

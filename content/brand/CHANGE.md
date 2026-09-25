@@ -4,7 +4,8 @@
 
 - Locked rename: the loop step formerly called "Fly or Stay" is now **GO / NO-GO** (caps, spaces around the slash). The loop reads: WX Score briefing, FRAT, GO / NO-GO, Self Debrief (Mentor stays an optional layer).
 - Updated `overview.md` loop title and PlaneWX-authored fly-or-stay prose to go / no-go; partner one-pager HTML/PDF regenerated. Kept existing equivalent PIC-owns-the-call body on the step ("Staying is legitimate. The pilot decides. PlaneWX informs.") rather than duplicating the locked pairing line. Trademark tagline unchanged.
-- Removed the unsourced debrief/FRAT "twice as likely" association line from overview, /brand, and the partner one-pager (no source). Simplified the Avoid habit bullet to "Claiming the habit compounds over time, or causal stats."
+- Added `whitespace-nowrap` / `white-space: nowrap` on the loop step titles so **GO / NO-GO** does not wrap on /brand or the one-pager.
+- Kept the approved debrief/FRAT association line ("Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.") and the Avoid parenthetical "(the debrief/FRAT link is an association)".
 
 ## 2026-09-24 - Avoid rule: habit compounds over time
 
