@@ -485,7 +485,7 @@ export function LandingVariantA() {
                 the last minute.
               </p>
               <p className="text-white/70 leading-relaxed mb-6">
-                The WX Score externalizes that work. The cognitive burden of weather risk
+                The WX Score externalizes that work. The workload of weather risk
                 assessment lives in software, not your memory, not your gut.
               </p>
               <ul className="space-y-3">
@@ -692,14 +692,13 @@ export function LandingVariantA() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: <Gauge className="h-6 w-6" />, color: "text-emerald-400 bg-emerald-500/20", title: "Personalized WX Score", desc: "A 0-100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds." },
-              { icon: <ClipboardCheck className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "Lower preflight workload", desc: "PlaneWX pulls the products that matter for your route and time, so your attention goes to the decision, not the digging." },
-              { icon: <Clock className="h-6 w-6" />, color: "text-cyan-400 bg-cyan-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. See Fly or Stay options early, before bags are packed and commitments harden." },
+              { icon: <Clock className="h-6 w-6" />, color: "text-sky-400 bg-sky-500/20", title: "14-Day Planning Horizon", desc: "Monitor WX trends from 2 weeks out. See Fly or Stay options early, before bags are packed and commitments harden." },
               { icon: <Snowflake className="h-6 w-6" />, color: "text-blue-400 bg-blue-500/20", title: "Multi-Model Analysis", desc: "HRRR, GFS, and ECMWF consensus across 3 to 7 sample points along your route, with confidence scoring on the agreement." },
               { icon: <Shield className="h-6 w-6" />, color: "text-indigo-400 bg-indigo-500/20", title: "FRAT on PAVE", desc: "The FAA PAVE framework pre-filled from your trip context. Pilot, Aircraft, enVironment, External pressures, all in one view." },
               { icon: <HeartHandshake className="h-6 w-6" />, color: "text-teal-400 bg-teal-500/20", title: "Ask a Mentor", desc: "Optional layer alongside the loop. Experienced pilots see your full briefing: WX Score, aircraft profile, minimums. Shared context, not verbal descriptions." },
               { icon: <Users className="h-6 w-6" />, color: "text-amber-400 bg-amber-500/20", title: "Trip Watchers", desc: "Family, passengers, and schedulers see the same live data. Rescheduling becomes a shared decision, not a confrontation at 6 AM." },
               { icon: <Route className="h-6 w-6" />, color: "text-rose-400 bg-rose-500/20", title: "Corridor Watch", desc: "Route-specific intelligence at departure, waypoints, and arrival. TFRs, NOTAMs, and icing overlays along your exact path." },
-              { icon: <Wind className="h-6 w-6" />, color: "text-orange-400 bg-orange-500/20", title: "Synoptic Intelligence™", desc: "NWS forecaster narratives synthesized into regional summaries that explain the big picture, not just the numbers." },
+              { icon: <Wind className="h-6 w-6" />, color: "text-cyan-400 bg-cyan-500/20", title: "Synoptic Intelligence™", desc: "NWS forecaster narratives synthesized into regional summaries that explain the big picture, not just the numbers." },
               { icon: <Brain className="h-6 w-6" />, color: "text-violet-400 bg-violet-500/20", title: "Multi-City Optimizer", desc: "Planning a multi-leg trip? Enter all your stops and PlaneWX finds the optimal departure sequence based on weather windows." },
             ].map(({ icon, color, title, desc }, i) => (
               <div key={i} className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors">

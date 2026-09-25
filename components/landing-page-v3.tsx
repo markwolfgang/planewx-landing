@@ -430,7 +430,7 @@ export function LandingPageV3() {
                 >
                   WX Score
                 </a>{" "}
-                externalizes that work. The cognitive burden of weather risk
+                externalizes that work. The workload of weather risk
                 assessment lives in software, not your memory, not your gut. Personal minimums are
                 structural: without them, the WX Score cannot generate.
               </p>
@@ -663,14 +663,8 @@ export function LandingPageV3() {
                 desc: "A 0 to 100% risk metric calculated against your minimums and your aircraft, not generic VFR/IFR thresholds. Personal minimums are required before a score can generate.",
               },
               {
-                icon: <ClipboardCheck className="h-6 w-6" />,
-                color: "text-sky-400 bg-sky-500/20",
-                title: "Lower preflight workload",
-                desc: "PlaneWX pulls the products that matter for your route and time, so your attention goes to the decision, not the digging.",
-              },
-              {
                 icon: <Clock className="h-6 w-6" />,
-                color: "text-cyan-400 bg-cyan-500/20",
+                color: "text-sky-400 bg-sky-500/20",
                 title: "14-Day Planning Horizon",
                 desc: "Monitor WX trends from 2 weeks out. See Fly or Stay options early, before bags are packed and commitments harden.",
               },
