@@ -66,8 +66,16 @@ avoid:
       sayInstead: GO / NO-GO
       why: >-
         Locked Sep 25, 2026. Do not use "Fly or Stay" as the loop step name.
-        Trademark tagline "The confidence to go, or the courage to stay" is
-        unchanged. Lowercase go/no-go in educational prose is fine.
+        Lowercase go/no-go in educational prose is fine.
+    - dontSay: 'The confidence to go, or the courage to stay'
+      sayInstead: Fly like it's your job.
+      why: Retired under the Sep 24, 2026 messaging lock.
+    - dontSay: Watch
+      sayInstead: Marginal
+      why: >-
+        Locked Sep 25, 2026. PlaneWX verdicts are Favorable / Marginal /
+        Unfavorable. Weather products such as convective watches and feature
+        names such as Corridor Watch are fine.
     - dontSay: Official weather briefing
       sayInstead: Weather intelligence / Weather analysis
       why: Regulatory concern. Removed Feb 2026
