@@ -56,19 +56,8 @@ export default async function Image() {
           <span style={{ fontSize: '28px', fontWeight: 700, color: '#38bdf8' }}>PlaneWX</span>
         )}
 
-        {/* Headline: Variant A DSS voice */}
+        {/* Headline: locked tagline as H1 voice */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <span
-            style={{
-              fontSize: '56px',
-              fontWeight: 800,
-              color: 'white',
-              lineHeight: 1.05,
-              letterSpacing: '-0.02em',
-            }}
-          >
-            The Pilot's Decision
-          </span>
           <span
             style={{
               fontSize: '56px',
@@ -78,7 +67,7 @@ export default async function Image() {
               letterSpacing: '-0.02em',
             }}
           >
-            Support System
+            Fly like it&apos;s your job.
           </span>
           <span
             style={{
@@ -88,7 +77,7 @@ export default async function Image() {
               color: 'rgba(255,255,255,0.65)',
             }}
           >
-            The risk-management loop for pilots who do not have a dispatcher.
+            Every weather tool shows you data. PlaneWX helps you make the call.
           </span>
         </div>
 
@@ -102,12 +91,12 @@ export default async function Image() {
         >
           <span
             style={{
-              fontSize: '20px',
-              fontStyle: 'italic',
+              fontSize: '18px',
+              fontWeight: 500,
               color: 'rgba(255,255,255,0.45)',
             }}
           >
-            Fly like it's your job.
+            The Pilot&apos;s Decision Support System
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             {[

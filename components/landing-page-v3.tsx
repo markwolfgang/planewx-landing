@@ -146,20 +146,13 @@ export function LandingPageV3() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            Every weather tool{" "}
-            <span className="bg-gradient-to-r from-rose-400 to-orange-400 bg-clip-text text-transparent">
-              shows you data.
-            </span>
-            <br />
-            PlaneWX{" "}
             <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              helps you decide.
+              Fly like it&apos;s your job.
             </span>
           </h1>
 
-          {/* Brand tagline */}
-          <p className="text-lg md:text-xl text-white/50 italic font-light tracking-wide">
-            Fly like it&apos;s your job.
+          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+            Every weather tool shows you data. PlaneWX helps you make the call.
           </p>
 
           <p className="text-lg md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
@@ -201,7 +194,7 @@ export function LandingPageV3() {
           <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium">
             Trusted by serious GA pilots
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center items-start">
             <div>
               <div className="text-4xl md:text-5xl font-bold text-sky-400 mb-1">2,200+</div>
               <div className="text-sm text-white/50">pilots<br />on PlaneWX</div>
@@ -210,18 +203,17 @@ export function LandingPageV3() {
               <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-1">8.7/10</div>
               <div className="text-sm text-white/50">briefing feedback<br />(1,724 responses)</div>
             </div>
-            <div>
+            <div className="col-span-2 md:col-span-1">
               <div className="text-4xl md:text-5xl font-bold text-violet-400 mb-1">~2×</div>
-              <div className="text-sm text-white/50">FRAT rate after<br />a flight debrief</div>
+              <div className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto">
+                Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
+              </div>
             </div>
             <div>
               <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">Up to 10%</div>
               <div className="text-sm text-white/50">5X5 insurance discount<br />for eligible members</div>
             </div>
           </div>
-          <p className="text-center text-xs text-white/25 mt-8">
-            Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
-          </p>
         </div>
       </section>
 
@@ -667,7 +659,7 @@ export function LandingPageV3() {
                 icon: <Snowflake className="h-6 w-6" />,
                 color: "text-blue-400 bg-blue-500/20",
                 title: "Multi-Model Analysis",
-                desc: "HRRR, GFS, and ECMWF consensus across 3 to 7 sample points along your route with confidence scoring. Nobody else does this.",
+                desc: "HRRR, GFS, and ECMWF consensus across 3 to 7 sample points along your route, with confidence scoring on the agreement.",
               },
               {
                 icon: <Shield className="h-6 w-6" />,

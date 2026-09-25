@@ -125,7 +125,7 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   title: {
-    default: "PlaneWX | The Pilot's Decision Support System",
+    default: "PlaneWX | Fly like it's your job.",
     template: "%s | PlaneWX",
   },
   description:
@@ -193,14 +193,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.planewx.ai",
     siteName: "PlaneWX",
-    title: "PlaneWX | The Pilot's Decision Support System",
+    title: "PlaneWX | Fly like it's your job.",
     description:
       "PlaneWX is the decision support system for general aviation. Weather Briefing, FRAT, Fly or Stay, Self Debrief. Fly like it's your job.",
     // OG image is auto-generated from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "PlaneWX | The Pilot's Decision Support System",
+    title: "PlaneWX | Fly like it's your job.",
     description:
       "PlaneWX is the decision support system for general aviation. Weather Briefing, FRAT, Fly or Stay, Self Debrief. Fly like it's your job.",
     // Twitter image is auto-generated from app/twitter-image.tsx
