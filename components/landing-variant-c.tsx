@@ -114,9 +114,9 @@ export function LandingVariantC() {
           </p>
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            We didn&apos;t build a weather display. We built the{" "}
-            <strong className="text-sky-400">decision support system</strong> that serious
-            pilots asked for.
+            We built a{" "}
+            <strong className="text-sky-400">decision support system</strong> for pilots who
+            hold themselves to a higher standard.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
