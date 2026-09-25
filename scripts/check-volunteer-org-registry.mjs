@@ -75,8 +75,13 @@ assert.ok(!aca.pattern.test("CMF12345"))
 assert.ok(!aca.pattern.test("SYH1234"))
 assert.match(
   aca.unlockBody,
-  /30% off the first year of an annual plan from the call sign you entered here/,
-  "cmf_unlock_body_first_year_annual"
+  /30% off an annual plan, every year you remain an active volunteer pilot/,
+  "cmf_unlock_body_every_year_active_volunteer"
+)
+assert.match(
+  aca.unlockBody,
+  /We re-confirm your call sign once a year\./,
+  "cmf_unlock_body_reconfirm_sentence"
 )
 assert.match(
   aca.unlockBody,
@@ -84,14 +89,34 @@ assert.match(
   "cmf_unlock_body_keeps_coupon_sentence"
 )
 assert.equal(
-  aca.unlockBody.includes("30% off the annual plan at purchase"),
+  aca.unlockBody.includes("first year"),
   false,
-  "cmf_unlock_body_not_renewing_annual"
+  "cmf_unlock_body_not_first_year_only"
+)
+assert.equal(
+  aca.acceptedLead.includes("At purchase,"),
+  false,
+  "cmf_accepted_lead_drops_at_purchase"
+)
+assert.match(
+  aca.acceptedLead,
+  /PlaneWX applies the volunteer discount from the call sign you entered$/,
+  "cmf_accepted_lead_discount_line"
 )
 assert.match(
   sky.unlockBody,
-  /30% off the first year of an annual plan from the SkyHope call sign you entered here/,
-  "syh_unlock_body_unchanged"
+  /30% off an annual plan, every year you remain an active volunteer pilot/,
+  "syh_unlock_body_every_year_active_volunteer"
+)
+assert.match(
+  sky.unlockBody,
+  /We re-confirm your call sign once a year\./,
+  "syh_unlock_body_reconfirm_sentence"
+)
+assert.equal(
+  sky.acceptedLead.includes("At purchase,"),
+  false,
+  "syh_accepted_lead_drops_at_purchase"
 )
 
 assert.equal(sky.prefix, "SYH")

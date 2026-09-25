@@ -116,9 +116,9 @@ export const VOLUNTEER_ORG_CALL_SIGN_REGISTRY: Record<
       "Enter your Compassion Flight call sign. We'll validate it, then unlock signup",
     srHint: "Enter your Compassion Flight call sign.",
     acceptedLead:
-      "Call sign accepted. Sign up below for your 2-week Pro Plus trial. At purchase, PlaneWX applies the volunteer discount from the call sign you entered",
+      "Call sign accepted. Sign up below for your 2-week Pro Plus trial. PlaneWX applies the volunteer discount from the call sign you entered",
     unlockBody:
-      "Full access to Pro Plus, our highest tier. No credit card required to start the trial. When you continue after the trial, PlaneWX applies 30% off the first year of an annual plan from the call sign you entered here. You do not type a separate coupon code.",
+      "Full access to Pro Plus, our highest tier. No credit card required to start the trial. When you continue after the trial, PlaneWX applies 30% off an annual plan, every year you remain an active volunteer pilot, from the call sign you entered here. We re-confirm your call sign once a year. You do not type a separate coupon code.",
     storageKey: "planewx_cmf_call_sign",
     signupParam: "cmf",
   },
@@ -136,9 +136,9 @@ export const VOLUNTEER_ORG_CALL_SIGN_REGISTRY: Record<
       "Enter your SkyHope call sign. We'll validate it, then unlock signup",
     srHint: "Enter your SkyHope call sign.",
     acceptedLead:
-      "Call sign accepted. Sign up below for your 2-week Pro Plus trial. At purchase, PlaneWX applies the volunteer discount from the call sign you entered",
+      "Call sign accepted. Sign up below for your 2-week Pro Plus trial. PlaneWX applies the volunteer discount from the call sign you entered",
     unlockBody:
-      "Full access to Pro Plus, our highest tier. No credit card required to start the trial. When you continue after the trial, PlaneWX applies 30% off the first year of an annual plan from the SkyHope call sign you entered here. You remain PIC.",
+      "Full access to Pro Plus, our highest tier. No credit card required to start the trial. When you continue after the trial, PlaneWX applies 30% off an annual plan, every year you remain an active volunteer pilot, from the SkyHope call sign you entered here. We re-confirm your call sign once a year. You remain PIC.",
     storageKey: "planewx_syh_call_sign",
     signupParam: "callsign",
   },

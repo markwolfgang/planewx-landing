@@ -27,7 +27,7 @@ type VolunteerPageProps = {
 const ACA_METADATA: Metadata = {
   title: "Volunteer Pilots | PlaneWX",
   description:
-    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your Compassion Flight call sign, start a 2-week Pro Plus trial, and get 30% off the first year of an annual plan.",
+    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your Compassion Flight call sign, start a 2-week Pro Plus trial, and get 30% off an annual plan, every year you remain an active volunteer pilot. We re-confirm your call sign once a year.",
   openGraph: {
     title: "Welcome volunteer pilots | PlaneWX",
     description:
@@ -54,12 +54,12 @@ export async function generateMetadata({
     return {
       title: "SkyHope Volunteer Pilots | PlaneWX",
       description:
-        "SkyHope volunteer pilots get 30% off the first year of an annual plan. Start with a 2-week Pro Plus trial. No credit card for the trial. You remain PIC.",
+        "SkyHope volunteer pilots get 30% off an annual plan, every year you remain an active volunteer pilot. We re-confirm your call sign once a year. Start with a 2-week Pro Plus trial. No credit card for the trial. You remain PIC.",
       robots: { index: false, follow: false },
       openGraph: {
         title: "SkyHope volunteer pilots | PlaneWX",
         description:
-          "SkyHope volunteer pilots get 30% off the first year of an annual plan, with a 2-week Pro Plus trial. No card for the trial. You remain PIC.",
+          "SkyHope volunteer pilots get 30% off an annual plan, every year you remain an active volunteer pilot. We re-confirm your call sign once a year. 2-week Pro Plus trial. No card for the trial. You remain PIC.",
         type: "website",
         url: "https://www.planewx.ai/volunteer?ref=SKYHOPE",
       },
@@ -67,7 +67,7 @@ export async function generateMetadata({
         card: "summary_large_image",
         title: "SkyHope volunteer pilots | PlaneWX",
         description:
-          "SkyHope volunteer pilots get 30% off the first year of an annual plan, with a 2-week Pro Plus trial. No card for the trial. You remain PIC.",
+          "SkyHope volunteer pilots get 30% off an annual plan, every year you remain an active volunteer pilot. We re-confirm your call sign once a year. 2-week Pro Plus trial. No card for the trial. You remain PIC.",
       },
       alternates: {
         canonical: "https://www.planewx.ai/volunteer",
@@ -152,9 +152,10 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
             </h1>
             {isSkyHope ? (
               <p className="text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
-                SkyHope volunteer pilots get 30% off the first year of an annual plan.
-                Start with a 2-week Pro Plus trial. No credit card is needed for the trial.
-                PlaneWX is decision support. You remain PIC.
+                SkyHope volunteer pilots get 30% off an annual plan, every year you remain an
+                active volunteer pilot. We re-confirm your call sign once a year. Start with a
+                2-week Pro Plus trial. No credit card is needed for the trial. PlaneWX is
+                decision support. You remain PIC.
               </p>
             ) : (
               <p className="text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
@@ -215,10 +216,11 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
               <p className="text-white/70 leading-relaxed">
                 SkyHope volunteer pilots get{" "}
                 <strong className="text-white font-semibold">
-                  30% off the first year of an annual plan
+                  30% off an annual plan, every year you remain an active volunteer pilot
                 </strong>
-                . Start with a 2-week Pro Plus trial. No credit card is needed for the trial.
-                Enter your SkyHope call sign below to unlock signup.
+                . We re-confirm your call sign once a year. Start with a 2-week Pro Plus trial.
+                No credit card is needed for the trial. Enter your SkyHope call sign below to
+                unlock signup.
               </p>
             </>
           ) : (
@@ -234,10 +236,11 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
               <p className="text-white/70 leading-relaxed">
                 That is why this is the highest discount PlaneWX has ever given:{" "}
                 <strong className="text-white font-semibold">
-                  30% off the first year of an annual plan
-                </strong>{" "}
-                from the Compassion Flight call sign you enter below. We are glad to do
-                it. Safer decisions on missions like yours are exactly why we built this.
+                  30% off an annual plan, every year you remain an active volunteer pilot
+                </strong>
+                . We re-confirm your call sign once a year. Enter your Compassion Flight call
+                sign below. We are glad to do it. Safer decisions on missions like yours are
+                exactly why we built this.
               </p>
             </>
           )}
@@ -334,26 +337,29 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
               </span>
               <div className="space-y-3 min-w-0 flex-1">
                 <h3 className="text-lg font-semibold">
-                  30% off the first year of an annual plan
+                  30% off an annual plan, every year you remain an active volunteer pilot
                 </h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
                   {isSkyHope ? (
                     <>
                       If you continue after the trial, PlaneWX applies{" "}
                       <strong className="text-white font-semibold">
-                        30% off the first year of an annual plan
-                      </strong>{" "}
-                      at purchase from the SkyHope call sign you entered on this page. You do
-                      not type a separate coupon code at checkout. You remain PIC.
+                        30% off an annual plan, every year you remain an active volunteer
+                        pilot
+                      </strong>
+                      , from the SkyHope call sign you entered on this page. We re-confirm your
+                      call sign once a year. You do not type a separate coupon code at
+                      checkout. You remain PIC.
                     </>
                   ) : (
                     <>
                       If you continue after the trial, PlaneWX applies{" "}
                       <strong className="text-white font-semibold">
-                        30% off the first year of an annual plan
-                      </strong>{" "}
-                      from the call sign you entered on this page. You do not type a separate
-                      coupon code at checkout.
+                        30% off an annual plan, every year you remain an active volunteer
+                        pilot
+                      </strong>
+                      , from the call sign you entered on this page. We re-confirm your call
+                      sign once a year. You do not type a separate coupon code at checkout.
                     </>
                   )}
                 </p>
@@ -364,7 +370,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" aria-hidden />
-                    Discount is applied at purchase from that stored call sign
+                    Discount renews each year after we re-confirm your call sign
                   </li>
                 </ul>
               </div>
