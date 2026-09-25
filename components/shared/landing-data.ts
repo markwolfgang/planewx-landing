@@ -4,6 +4,7 @@
 // Do not cite a max-hours marketing claim; use "ATP captains" without an hour total.
 export const STATS = {
   totalPilots: "2,200+",
+  countries: "35",
   cumulativeHours: "3.5M+",
   instrumentRated: "70%",
   jetAircraft: "194",
@@ -54,6 +55,16 @@ export type FaqSegment = string | { href: string; label: string }
 /** Single-paragraph string, or multi-paragraph rich answer (array of segment arrays). */
 export type FaqAnswer = string | FaqSegment[][]
 
+/** Flatten rich FAQ answers to plain text for FAQPage JSON-LD. */
+export function faqAnswerToPlainText(answer: FaqAnswer): string {
+  if (typeof answer === "string") return answer
+  return answer
+    .map((paragraph) =>
+      paragraph.map((segment) => (typeof segment === "string" ? segment : segment.label)).join("")
+    )
+    .join(" ")
+}
+
 export const FAQS: {
   q: string
   a: FaqAnswer
@@ -85,6 +96,14 @@ export const FAQS: {
       ],
       ["You stay PIC. Charts, filing, and official sources stay where they belong."],
     ],
+  },
+  {
+    q: "Is the briefing accurate?",
+    a: "Your briefing uses the same official observations and forecasts every pilot relies on: METARs, TAFs, PIREPs, SIGMETs and model guidance. It can only be as accurate as those forecasts, and every forecast carries some uncertainty. Every weather briefing, from any provider, also has the same built-in limit. It describes one departure time, one route, one altitude and one arrival time. Real flights change. You leave late, get rerouted, or get assigned a different altitude, and each change puts you in weather the briefing didn't look at. That's why PlaneWX can keep updating your briefing for monitored flights as the forecast changes, and why your decision-making continues in the air.",
+  },
+  {
+    q: "How can I make my briefing more accurate?",
+    a: "Enter the flight the way you'll really fly it: a realistic departure time, the route you expect to file or be cleared, your planned altitude, and the right aircraft profile. If any of those change, update the trip and brief again. Check again close to departure, when the forecasts are freshest.",
   },
   {
     q: "What is the WX Score?",

@@ -4,11 +4,21 @@ import { Analytics } from "@vercel/analytics/next"
 import Script from "next/script"
 import { OshBanner } from "@/components/osh-banner"
 import { PartnerGreetingBanner } from "@/components/partner-greeting-banner"
+import { FAQS, faqAnswerToPlainText } from "@/components/shared/landing-data"
 import "./globals.css"
 
 // aopa native preview redeploy trigger (static /aopa closer CTA text)
 
 const inter = Inter({ subsets: ["latin"] })
+
+const faqPageMainEntity = FAQS.map((faq) => ({
+  "@type": "Question",
+  name: faq.q,
+  acceptedAnswer: {
+    "@type": "Answer",
+    text: faqAnswerToPlainText(faq.a),
+  },
+}))
 
 // Structured Data (JSON-LD) for SEO
 const jsonLd = {
@@ -68,7 +78,7 @@ const jsonLd = {
         "14-day advance forecasting",
         "Personalized WX Score",
         "Synoptic Intelligence™ technology",
-        "40+ automatic briefing updates",
+        "40+ automatic briefing updates for monitored flights",
         "Personal minimums tracking",
         "Aircraft-specific analysis",
         "PAVE risk assessment",
@@ -78,40 +88,7 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is PlaneWX?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The loop is Weather Briefing (WX Score), FRAT, Fly or Stay, and Self Debrief, with Mentor optional alongside. You make the call. PlaneWX informs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How far in advance can PlaneWX predict flight weather?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "PlaneWX provides weather intelligence from 14 days out through departure. Confidence improves as your flight approaches. We are transparent about uncertainty at every time horizon."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the WX Score?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The WX Score is a 0-100% metric calculated against YOUR personal minimums and your specific aircraft, not generic VFR/IFR categories. It tells you, in a single number, how well conditions are expected to match your standards. Every deduction is transparent and explained."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Synoptic Intelligence™?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Synoptic Intelligence™ is PlaneWX's proprietary AI technology that synthesizes NWS forecaster narratives, METARs, TAFs, NBM data, and other weather products into regional summaries and actionable insights."
-          }
-        }
-      ]
+      "mainEntity": faqPageMainEntity
     }
   ]
 }

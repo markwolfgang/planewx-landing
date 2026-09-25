@@ -27,7 +27,6 @@ import {
   SiteFooter,
   VariantTracker,
   FlightChopsEndorsement,
-  PartnerBadges,
   TestimonialsCarousel,
   SignUpButton,
   FounderImageModal,
@@ -188,19 +187,18 @@ export function LandingVariantA() {
         </div>
       </section>
 
-      <PartnerBadges />
-
-
       {/* STATS BAR */}
       <section className="relative py-12 px-4 border-y border-white/5 bg-white/[0.02]">
         <div className="container mx-auto max-w-6xl">
           <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium text-balance">
             Trusted by serious GA pilots. Partnered with the organizations that support them.
           </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-center items-start">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center items-start">
             <div>
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-sky-400 mb-1 whitespace-nowrap">2,200+</div>
-              <div className="text-sm text-white/50">pilots<br />on PlaneWX</div>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-sky-400 mb-1 whitespace-nowrap">{STATS.totalPilots}</div>
+              <div className="text-sm text-white/50">
+                pilots in {STATS.countries} countries
+              </div>
             </div>
             <div>
               <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-emerald-400 mb-1 whitespace-nowrap">8.7/10</div>
@@ -208,16 +206,7 @@ export function LandingVariantA() {
                 how likely pilots are<br />to recommend PlaneWX<br />(1,724 responses)
               </div>
             </div>
-            <div className="col-span-2 lg:col-span-1">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-violet-400 mb-1 whitespace-nowrap">~2×</div>
-              <div className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto">
-                debrief, then FRAT
-              </div>
-              <p className="text-sm text-white/50 leading-snug max-w-[18rem] mx-auto mt-2">
-                Pilots who debrief a flight are about twice as likely to run a FRAT on the next one.
-              </p>
-            </div>
-            <div className="col-span-2 lg:col-span-1">
+            <div>
               <div className="text-3xl md:text-4xl xl:text-5xl font-bold text-amber-400 mb-1 whitespace-nowrap">
                 Up to 10%
               </div>
@@ -494,7 +483,7 @@ export function LandingVariantA() {
                   "Ceiling, visibility, crosswind, turbulence, icing, all weighted",
                   "Different scores for each aircraft you fly",
                   "Every deduction is transparent and explained",
-                  "Updates automatically as weather evolves, 40+ times over 14 days",
+                  "Updates automatically for monitored flights as weather evolves, 40+ times over 14 days",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-white/70">
                     <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
@@ -654,7 +643,7 @@ export function LandingVariantA() {
               <ul className="space-y-4">
                 {[
                   ["Know 7+ days out", "WX Score trends visible before you commit to anything."],
-                  ["40+ automatic updates", "Watch conditions evolve. No scramble the night before."],
+                  ["40+ automatic updates for monitored flights", "Watch conditions evolve. No scramble the night before."],
                   ["Alternative windows", "Friday looks bad. Thursday afternoon shows 85%."],
                   ["Trip Watchers", "Stakeholders see the same data. Rescheduling is shared."],
                 ].map(([title, detail], i) => (
