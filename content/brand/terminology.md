@@ -16,11 +16,12 @@ proprietary:
   terms:
     - term: WX Score
       definition: >-
-        0–100% risk metric calculated against YOUR personal minimums and YOUR
-        specific aircraft
+        0-100% risk metric built from the weather for your aircraft. When you
+        set personal minimums, every WX Score also checks the forecast against
+        your limits, not generic ones.
       usage: >-
         Always capitalize. Never call it 'Go Score' (deprecated). Emphasize
-        personalization.
+        personalization. Do not claim the score cannot generate without minimums.
     - term: Synoptic Intelligence™
       definition: PlaneWX's umbrella brand for all AI-powered weather analysis
       usage: Always use ™ until registered. Always capitalize both words.
@@ -43,6 +44,15 @@ proprietary:
       usage: >-
         Reference as 'FAA's PAVE framework' on first use. PlaneWX pre-fills
         Environment.
+    - term: Risk-management loop
+      definition: >-
+        Four steps: Brief, Assess, Decide, Debrief. Brief is the WX Score.
+        Assess is the FRAT. Decide is the pilot's GO / NO-GO call. Debrief looks
+        back at the flight and the FRAT. Mentor is optional, alongside all four.
+      usage: >-
+        Use these step titles exactly. Do not title the steps FRAT or GO / NO-GO;
+        name those tools under Assess and Decide. Keep the positioning
+        parenthetical (brief, assess, decide, debrief).
 avoid:
   title: Terms to Avoid
   intro: >-
@@ -85,10 +95,12 @@ pitches:
     label: One Sentence
     text: >-
       PlaneWX is an Aviation Decision Support System that synthesizes federal
-      weather data against your specific aircraft and personal minimums into a
-      continuously updated WX Score across a 14-day planning horizon, so pilots
-      can make go/no-go decisions before the pressure to commit makes those
-      decisions hard. The pilot-in-command always owns the final call.
+      weather data for your specific aircraft into a continuously updated WX
+      Score across a 14-day planning horizon, so pilots can make go/no-go
+      decisions before the pressure to commit makes those decisions hard. Set
+      your personal minimums once, and every WX Score checks the forecast
+      against your limits, not generic ones. The pilot-in-command always owns
+      the final call.
   thirtySecond:
     label: 30-Second
     text: >-
@@ -97,9 +109,10 @@ pitches:
       wait. You check the night before. You look at the TAF the morning of. And
       by then, the bags are packed, the family is ready, and the decision to say
       no costs you something real. PlaneWX fixes that. It takes the same federal
-      weather data every EFB uses, synthesizes it across three models, matches
-      it against your specific aircraft and your personal minimums, and gives
-      you a WX Score that updates automatically starting 14 days before your
-      flight. Built by pilots, for pilots. PlaneWX.ai.
+      weather data every EFB uses, synthesizes it across three models for your
+      specific aircraft, and gives you a WX Score that updates automatically
+      starting 14 days before your flight. Set your personal minimums once, and
+      every WX Score checks the forecast against your limits, not generic ones.
+      Built by pilots, for pilots. PlaneWX.ai.
 ---
 

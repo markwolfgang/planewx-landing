@@ -1,20 +1,32 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createClient } from "@supabase/supabase-js"
 import {
-  normalizeVolunteerCallSign,
+  isVolunteerProductionDeploy,
+  normalizeVolunteerCallSignForPage,
+  resolveVolunteerOrg,
   VOLUNTEER_CAMPAIGN_CODE,
-  VOLUNTEER_CALL_SIGN_FORMAT_ERROR,
 } from "@/lib/volunteer-landing"
 
 /**
  * POST /api/volunteer/call-sign
  *
- * Format-only validation (CMF + 1–4 digits). No ACA membership list lookup.
- * Stores the normalized call sign with timestamp + ref when Supabase is available.
- * Always returns the normalized sign on success so the client can pass it into
- * signup (?cmf=CMF42&ref=ACA) even if durable storage is temporarily unavailable.
+ * Format-only validation per org.
+ * - SkyHope (ref=SKYHOPE): SYH + 1-4 digits only.
+ * - Bare / ACA: CMF or SYH (/^(CMF|SYH)\d{1,4}$/i). An SYH sign attributes to SKYHOPE.
+ * No membership list lookup. Stores the normalized call sign with timestamp + ref
+ * when Supabase is available. Always returns the normalized sign on success so the
+ * client can pass it into signup even if durable storage is temporarily unavailable.
+ * Never blocks signup when storage fails.
+ *
+ * Preview / non-production: reject writes (landing preview shares prod Supabase).
  */
 export async function POST(request: NextRequest) {
+  if (!isVolunteerProductionDeploy()) {
+    return NextResponse.json(
+      { ok: false, error: "Call-sign storage is disabled outside production." },
+      { status: 403 }
+    )
+  }
   let body: unknown
   try {
     body = await request.json()
@@ -29,22 +41,23 @@ export async function POST(request: NextRequest) {
         ? (body as { call_sign: string }).call_sign
         : ""
 
-  const callSign = normalizeVolunteerCallSign(raw)
-  if (!callSign) {
-    return NextResponse.json(
-      { ok: false, error: VOLUNTEER_CALL_SIGN_FORMAT_ERROR },
-      { status: 400 }
-    )
-  }
-
   const refRaw =
     typeof (body as { ref?: unknown })?.ref === "string"
       ? (body as { ref: string }).ref.trim().toUpperCase()
       : ""
-  const ref =
+  const pageRef =
     refRaw && refRaw.length >= 2 && refRaw.length <= 32
       ? refRaw
       : VOLUNTEER_CAMPAIGN_CODE
+
+  const pageOrg = resolveVolunteerOrg(pageRef)
+  const parsed = normalizeVolunteerCallSignForPage(raw, pageRef)
+  if (!parsed) {
+    return NextResponse.json({ ok: false, error: pageOrg.error }, { status: 400 })
+  }
+
+  const { callSign, org: effectiveOrg } = parsed
+  const ref = effectiveOrg.ref
 
   const lp =
     typeof (body as { lp?: unknown })?.lp === "string"

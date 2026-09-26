@@ -17,7 +17,7 @@ This is the Sara-facing marketing source of truth for PlaneWX tone, story, termi
 
 1. Open the relevant `.md` file.
 2. Update YAML frontmatter fields (headlines, body copy, lists, tables).
-3. Keep layout/design in `app/brand/*` — only prose and structured messaging live here.
+3. Keep layout/design in `app/brand/*`  -  only prose and structured messaging live here.
 4. Use `{{stats.totalPilots}}` (and other `STATS` keys) when you need live community numbers.
 5. Open a PR; Mark reviews via the preview URL.
 
