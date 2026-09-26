@@ -131,12 +131,6 @@ export default function AmbassadorsPage() {
               Partners
             </Link>
             <Link
-              href="/advisors"
-              className="hidden sm:inline text-sm text-white/50 hover:text-white transition-colors"
-            >
-              Advisors
-            </Link>
-            <Link
               href="/"
               className="inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors"
             >

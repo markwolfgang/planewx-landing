@@ -226,12 +226,6 @@ export default function PartnersPage() {
           </Link>
           <div className="flex items-center gap-4 shrink-0">
             <Link
-              href="/advisors"
-              className="hidden sm:inline text-sm text-white/50 hover:text-white transition-colors"
-            >
-              Advisors
-            </Link>
-            <Link
               href="/ambassadors"
               className="hidden sm:inline text-sm text-white/50 hover:text-white transition-colors"
             >
@@ -262,7 +256,7 @@ export default function PartnersPage() {
           <p className="text-sm sm:text-base text-white/45 leading-relaxed">
             We work with companies, clubs, and brands that help pilots fly like
             professionals. Together, we give pilots better tools to make their
-            own go/no-go call.
+            own GO / NO-GO call.
           </p>
         </header>
 

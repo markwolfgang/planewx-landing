@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react"
 import { AdvisorInquiryForm } from "@/components/advisors/inquiry-form"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
+import { ADVISOR_EXPERTISE_OPTIONS } from "@/lib/advisor-expertise"
 
 export const metadata: Metadata = {
   title: "Board of Advisors",
@@ -26,14 +27,6 @@ export const metadata: Metadata = {
     canonical: "https://www.planewx.ai/advisors",
   },
 }
-
-const LOOKING_FOR = [
-  "General aviation experience (pilots, CFIs, owners, type club and OPA leaders)",
-  "Weather and flight operations know-how",
-  "Aviation industry relationships (avionics, insurance, flight schools, FBOs, media, organizations)",
-  "Company-building experience (SaaS, subscriptions, marketing, fundraising)",
-  "A safety and training perspective",
-] as const
 
 const ADVISOR_LOOKS_LIKE = [
   "A few conversations a quarter with Sara and Mark",
@@ -76,18 +69,6 @@ export default function AdvisorsPage() {
             </span>
           </Link>
           <div className="flex items-center gap-4 shrink-0">
-            <Link
-              href="/partners"
-              className="hidden sm:inline text-sm text-white/50 hover:text-white transition-colors"
-            >
-              Partners
-            </Link>
-            <Link
-              href="/ambassadors"
-              className="hidden sm:inline text-sm text-white/50 hover:text-white transition-colors"
-            >
-              Ambassadors
-            </Link>
             <Link
               href="/"
               className="inline-flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors"
@@ -144,7 +125,7 @@ export default function AdvisorsPage() {
             What we&apos;re looking for
           </h2>
           <ul className="space-y-3">
-            {LOOKING_FOR.map((item) => (
+            {ADVISOR_EXPERTISE_OPTIONS.map((item) => (
               <li
                 key={item}
                 className="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm sm:text-base text-white/65 leading-relaxed"
