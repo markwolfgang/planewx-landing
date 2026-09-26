@@ -226,7 +226,6 @@ export default async function LearnArticlePage({ params }: Props) {
       <NewsNav
         maxWidthClass="max-w-3xl"
         back={{ href: "/learn", label: "Learning Center" }}
-        showBackArrow={false}
       />
 
       <article className="mx-auto max-w-3xl px-6 py-12 pb-16">

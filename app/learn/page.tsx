@@ -146,7 +146,6 @@ export default function LearnHubPage() {
       <NewsNav
         maxWidthClass="max-w-5xl"
         back={{ href: "/", label: "Home" }}
-        showBackArrow={false}
       />
 
       <section className="px-6 py-16 text-center">
