@@ -69,7 +69,6 @@ export const NEWS_ITEMS: NewsItem[] = [
 <li><strong>FRAT Environment: you rate it, with short captions.</strong> On the Environment step, you rate the overall environment yourself. Each category also shows a short caption that explains what is driving that reading, so you can see why a factor lit up before you score it. More in <a href="https://app.planewx.ai/help/frat">the FRAT guide</a>.</li>
 <li><strong>FRAT order: suggested risk level, then your call, then notes.</strong> At the bottom of each category, PlaneWX shows a suggested risk level and what is driving it. Then you rate that category yourself. Then you add notes. The suggestion is a hint. You make the call. More in <a href="https://app.planewx.ai/help/frat">the FRAT guide</a>.</li>
 </ul>
-<!-- [SLOT: add features shipped Sep 25 to 27, or delete] -->
 
 <h2>Fixes and improvements</h2>
 ${/* PROVISIONAL: recount Mon from weekly-metrics (customer fixes+improvements). Partial week figure is 8. */ ""}
