@@ -31,7 +31,7 @@ export function SiteFooter({ variant }: { variant: string }) {
           ))}
         </div>
         <div className="w-full flex flex-col lg:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5 shrink-0">
+          <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2.5 shrink-0 max-w-full">
             <Link href="/" className="shrink-0" aria-label="PlaneWX home">
               {/* Same light-on-dark wordmark as partners / dark DSS nav */}
               <BrandLogo
@@ -40,11 +40,11 @@ export function SiteFooter({ variant }: { variant: string }) {
                 className="h-7 sm:h-8 w-auto"
               />
             </Link>
-            <span className="whitespace-nowrap">
+            <span className="text-center sm:text-left sm:whitespace-nowrap">
               · The Pilot&apos;s Decision Support System
             </span>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6 max-w-full">
             <a href="/about" className="hover:text-white/60 transition-colors">About</a>
             <a href="/news" className="hover:text-white/60 transition-colors">News</a>
             <a href="/partners" className="hover:text-white/60 transition-colors">Partners</a>
