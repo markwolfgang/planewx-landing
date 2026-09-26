@@ -65,8 +65,9 @@ export const NEWS_ITEMS: NewsItem[] = [
 <h2>What&rsquo;s new</h2>
 <ul>
 <li><strong>Max wind for ground ops in Personal Minimums.</strong> In the Wind section of your Personal Minimums, you can set a maximum wind for ground operations. It is a limit you store with your other mins, next to the wind numbers you already use when you plan.</li>
-<li><strong>FRAT Environment: you rate it, with short captions.</strong> On the Environment step, you rate the overall environment yourself. Each category also shows a short caption that explains what is driving that reading, so you can see why a factor lit up before you score it.</li>
-<li><strong>FRAT order: suggested risk level, then your call, then notes.</strong> At the bottom of each category, PlaneWX shows a suggested risk level and what is driving it. Then you rate that category yourself. Then you add notes. The risk read is a hint; you make the call.</li>
+<!-- HELP LINK NEEDED: no live help page covers ground-ops wind yet (checked app.planewx.ai/help/personal-minimums 2026-09-26). Flagged to CoS. -->
+<li><strong>FRAT Environment: you rate it, with short captions.</strong> On the Environment step, you rate the overall environment yourself. Each category also shows a short caption that explains what is driving that reading, so you can see why a factor lit up before you score it. More in <a href="https://app.planewx.ai/help/frat">the FRAT guide</a>.</li>
+<li><strong>FRAT order: suggested risk level, then your call, then notes.</strong> At the bottom of each category, PlaneWX shows a suggested risk level and what is driving it. Then you rate that category yourself. Then you add notes. The suggestion is a hint. You make the call. More in <a href="https://app.planewx.ai/help/frat">the FRAT guide</a>.</li>
 </ul>
 <!-- [SLOT: add features shipped Sep 25 to 27, or delete] -->
 
@@ -91,7 +92,7 @@ ${/* PRELIMINARY: data through Fri Sep 25 06:50 CT. Growth recounts Mon Sep 28 0
 </ul>
 
 <h2>Tip of the Week: what the WX Score actually is</h2>
-<p>The WX Score is not PlaneWX guessing whether a flight is safe. It is your own personal minimums, applied the same way every time, against the forecast for this route, altitude, and departure. That is why minimums are required: PlaneWX cannot generate a WX Score without them. The score starts at 100% and comes down when weather approaches or exceeds the limits you set. A low number is a prompt to open the breakdown and make your GO / NO-GO call as PIC. It is advisory support, not a flight authorization. More at <a href="https://app.planewx.ai/help/wx-score">app.planewx.ai/help/wx-score</a>.</p>
+<p>The WX Score is not PlaneWX&rsquo;s opinion of what is safe to fly. It is your own <a href="https://app.planewx.ai/help/personal-minimums">personal minimums</a>, applied the same way every time, against the forecast for your route, cruise altitude, and departure time. The score starts at 100% and points come off for each weather factor that approaches or exceeds the limits you set, so two pilots can get different scores for the same flight. A low score does not mean don&rsquo;t fly. It means don&rsquo;t fly without asking why the number is what it is: open the breakdown and make your GO&nbsp;/&nbsp;NO&#8209;GO call as PIC. It is advisory support, not a flight authorization. More in <a href="https://app.planewx.ai/help/wx-score">the WX Score guide</a>.</p>
 
 ${/*
   Coming soon: nothing approved yet. Keep this block commented out so future
