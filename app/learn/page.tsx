@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
 import { NewsNav } from "@/components/news-nav"
 import {
   LEARN_PUBLIC,
@@ -75,9 +74,8 @@ function SectionArticles({ section }: { section: LearnSection }) {
               {article.title}
             </h3>
             <p className="text-sm text-white/55">{article.summary}</p>
-            <span className="mt-1 inline-flex items-center gap-1.5 text-sm font-medium text-sky-400 group-hover:text-sky-300">
+            <span className="mt-1 inline-flex items-center text-sm font-medium text-sky-400 group-hover:text-sky-300">
               Read article
-              <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
             </span>
           </Link>
         </li>
@@ -148,6 +146,7 @@ export default function LearnHubPage() {
       <NewsNav
         maxWidthClass="max-w-5xl"
         back={{ href: "/", label: "Home" }}
+        showBackArrow={false}
       />
 
       <section className="px-6 py-16 text-center">
@@ -212,7 +211,6 @@ export default function LearnHubPage() {
             className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:from-sky-400 hover:to-cyan-400 sm:px-8"
           >
             Try a PlaneWX briefing
-            <ArrowRight className="ml-2 h-5 w-5 shrink-0" aria-hidden="true" />
           </a>
         </div>
       </section>

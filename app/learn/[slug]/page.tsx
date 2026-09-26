@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowRight } from "lucide-react"
 import { NewsNav } from "@/components/news-nav"
 import {
   LEARN_ARTICLES,
@@ -227,6 +226,7 @@ export default async function LearnArticlePage({ params }: Props) {
       <NewsNav
         maxWidthClass="max-w-3xl"
         back={{ href: "/learn", label: "Learning Center" }}
+        showBackArrow={false}
       />
 
       <article className="mx-auto max-w-3xl px-6 py-12 pb-16">
@@ -326,7 +326,7 @@ export default async function LearnArticlePage({ params }: Props) {
         <div className="mx-auto max-w-3xl space-y-6">
           <p className="text-center text-sm text-white/40">
             <Link href="/learn" className="text-sky-400 hover:text-sky-300">
-              ← Back to Learning Center
+              Back to Learning Center
             </Link>
           </p>
           <div className="rounded-xl border border-sky-500/20 bg-gradient-to-r from-sky-950/40 to-cyan-950/20 px-6 py-10 text-center">
@@ -338,7 +338,6 @@ export default async function LearnArticlePage({ params }: Props) {
               className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:from-sky-400 hover:to-cyan-400 sm:px-8"
             >
               Try a PlaneWX briefing
-              <ArrowRight className="ml-2 h-5 w-5 shrink-0" aria-hidden="true" />
             </a>
           </div>
         </div>
