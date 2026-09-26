@@ -12,6 +12,17 @@ const SOCIAL_LINKS = [
   { icon: FaYoutube, href: "https://youtube.com/@planewx", label: "YouTube" },
 ]
 
+const FOOTER_LINKS = [
+  { href: "/about", label: "About" },
+  { href: "/news", label: "News" },
+  { href: "/partners", label: "Partners" },
+  { href: "/ambassadors", label: "Ambassadors" },
+  { href: "/advisors", label: "Advisors" },
+  { href: "https://app.planewx.ai/help/faqs", label: "FAQ" },
+  { href: "/research/turbulence-safety", label: "Research" },
+  { href: "mailto:hello@planewx.ai", label: "Contact" },
+] as const
+
 export function SiteFooter({ variant }: { variant: string }) {
   return (
     <footer className="relative py-10 px-4 border-t border-white/5">
@@ -30,29 +41,40 @@ export function SiteFooter({ variant }: { variant: string }) {
             </a>
           ))}
         </div>
-        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <Link href="/" className="shrink-0" aria-label="PlaneWX home">
-              {/* Same light-on-dark wordmark as partners / dark DSS nav */}
-              <BrandLogo
-                variant="wordmarkTransparent"
-                alt="PlaneWX"
-                className="h-7 sm:h-8 w-auto"
-              />
-            </Link>
-            <span className="truncate">· The Pilot&apos;s Decision Support System</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a href="/about" className="hover:text-white/60 transition-colors">About</a>
-            <a href="/news" className="hover:text-white/60 transition-colors">News</a>
-            <a href="/partners" className="hover:text-white/60 transition-colors">Partners</a>
-            <a href="/ambassadors" className="hover:text-white/60 transition-colors">Ambassadors</a>
-            <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
-            <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
-            <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">Contact</a>
-            <span>© 2026 PlaneWX, LLC</span>
-          </div>
+
+        <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-2.5 max-w-full">
+          <Link href="/" className="shrink-0" aria-label="PlaneWX home">
+            {/* Same light-on-dark wordmark as partners / dark DSS nav */}
+            <BrandLogo
+              variant="wordmarkTransparent"
+              alt="PlaneWX"
+              className="h-7 sm:h-8 w-auto"
+            />
+          </Link>
+          <span className="text-center sm:text-left sm:whitespace-nowrap">
+            <span className="hidden sm:inline" aria-hidden="true">
+              ·{" "}
+            </span>
+            The Pilot&apos;s Decision Support System
+          </span>
         </div>
+
+        <nav
+          aria-label="Footer"
+          className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-6 max-w-full"
+        >
+          {FOOTER_LINKS.map(({ href, label }) => (
+            <a
+              key={label}
+              href={href}
+              className="hover:text-white/60 transition-colors"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+
+        <span className="whitespace-nowrap">© 2026 PlaneWX, LLC</span>
       </div>
     </footer>
   )

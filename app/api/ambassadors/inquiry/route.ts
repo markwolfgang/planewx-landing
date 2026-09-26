@@ -4,6 +4,7 @@ import {
   inquiryClientKey,
   takeInquiryRateLimit,
 } from "@/lib/inquiry-rate-limit"
+import { resolveInquiryRecipients } from "@/lib/inquiry-recipients"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -74,7 +75,7 @@ export async function POST(request: Request) {
 
     if (!orgField.ok) {
       return NextResponse.json(
-        { error: fieldError("Organization", orgField) },
+        { error: fieldError("Name or handle", orgField) },
         { status: 400 },
       )
     }
@@ -96,7 +97,21 @@ export async function POST(request: Request) {
     }
     if (!noteField.ok) {
       return NextResponse.json(
-        { error: fieldError("Note", noteField) },
+        { error: fieldError("Involvement", noteField) },
+        { status: 400 },
+      )
+    }
+
+    const ALLOWED_INVOLVEMENT = new Set([
+      "Social media content creator",
+      "YouTube or podcast creator",
+      "Flight instructor (CFI)",
+      "Host a fly-in or event",
+      "Share with my flying club or owners group",
+    ])
+    if (!ALLOWED_INVOLVEMENT.has(noteField.value)) {
+      return NextResponse.json(
+        { error: "Involvement is invalid" },
         { status: 400 },
       )
     }
@@ -104,6 +119,18 @@ export async function POST(request: Request) {
     const org = orgField.value
     const name = nameField.value
     const note = noteField.value
+    const to = resolveInquiryRecipients()
+
+    // Local/CI verify only. Never set in production; skips Resend entirely.
+    if (process.env.INQUIRY_EMAIL_DRY_RUN === "1") {
+      return NextResponse.json({
+        success: true,
+        message: "Thanks. We got your note and will reply soon.",
+        dryRun: true,
+        to,
+        received: { org, name, email, note },
+      })
+    }
 
     const resendApiKey = process.env.RESEND_API_KEY
     if (!resendApiKey) {
@@ -111,10 +138,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
     }
 
-    const to =
-      process.env.PARTNERSHIP_INQUIRY_EMAIL ||
-      process.env.ADMIN_NOTIFICATION_EMAIL ||
-      "hello@planewx.ai"
     const rawFrom =
       process.env.FROM_EMAIL ||
       process.env.EMAIL_FROM ||
@@ -133,7 +156,7 @@ export async function POST(request: Request) {
           <p>New note from the PlaneWX Ambassadors page:</p>
           <table style="border-collapse: collapse; width: 100%; margin: 20px 0;">
             <tr>
-              <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Organization</td>
+              <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Name or handle</td>
               <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${escapeHtml(org)}</td>
             </tr>
             <tr>
@@ -144,8 +167,11 @@ export async function POST(request: Request) {
               <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Email</td>
               <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${escapeHtml(email)}</td>
             </tr>
+            <tr>
+              <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Involvement</td>
+              <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${escapeHtml(note)}</td>
+            </tr>
           </table>
-          <p style="white-space: pre-wrap; line-height: 1.55;">${escapeHtml(note)}</p>
         </div>
       `,
     })

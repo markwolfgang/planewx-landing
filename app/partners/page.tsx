@@ -9,11 +9,11 @@ import { SiteFooter } from "@/components/shared/site-footer"
 export const metadata: Metadata = {
   title: "Partners",
   description:
-    "Partners who believe in PlaneWX. Companies and brands in active collaboration with PlaneWX.",
+    "Partners who help pilots fly like professionals. Companies, clubs, and brands working with PlaneWX.",
   openGraph: {
     title: "Partners | PlaneWX",
     description:
-      "Partners who believe in PlaneWX. Companies and brands in active collaboration with PlaneWX.",
+      "Partners who help pilots fly like professionals. Companies, clubs, and brands working with PlaneWX.",
     type: "website",
     url: "https://www.planewx.ai/partners",
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Partners | PlaneWX",
     description:
-      "Partners who believe in PlaneWX. Companies and brands in active collaboration with PlaneWX.",
+      "Partners who help pilots fly like professionals. Companies, clubs, and brands working with PlaneWX.",
   },
   alternates: {
     canonical: "https://www.planewx.ai/partners",
@@ -67,6 +67,9 @@ const PARTNERS = [
       height: 96,
       className: "h-10 sm:h-11 w-auto max-w-[13rem] object-contain",
     },
+    // Sara: exact offer line with COPA20 code.
+    memberBenefit:
+      "COPA members get 20% off the Pro annual plan with code COPA20.",
     blurb:
       "Cirrus Owners and Pilots Association. Community for Cirrus owners and pilots focused on safety, training, and shared experience.",
   },
@@ -159,26 +162,28 @@ const PARTNERS = [
   },
   {
     name: "TBMOPA",
-    href: "https://www.planewx.ai/talks/tbmopa",
+    href: "https://tbmowners.org",
     logo: {
       src: "/partners/tbmopa-logo.png",
-      alt: "TBMOPA logo",
+      alt: "TBMOPA (TBM Owners and Pilots Association) logo",
       width: 1427,
       height: 425,
       className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
     },
+    // Sara Round 2: exact member sentence. No coupon code. Link is tbmowners.org.
+    memberBenefit:
+      "TBMOPA members receive a discount on their PlaneWX subscription.",
     blurb:
-      "Owner and pilot organization for the TBM community. Events, education, and a place for TBM operators to learn and connect, including PlaneWX talks.",
+      "TBM Owners and Pilots Association. Events, education, and a place for TBM operators to learn and connect, including PlaneWX talks.",
   },
   {
     name: "Runway to Oshkosh",
     href: "https://www.planewx.ai/runway",
     logo: {
-      // PLACEHOLDER: campaign mark not in handoff; keep despite Gleam hold. Not Creative Relay.
-      src: "/partners/runway-placeholder.svg",
-      alt: "Runway to Oshkosh logo placeholder",
-      width: 360,
-      height: 96,
+      src: "/partners/runway-to-oshkosh-logo.png",
+      alt: "Runway to Oshkosh",
+      width: 512,
+      height: 67,
       className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
     },
     blurb:
@@ -246,11 +251,12 @@ export default function PartnersPage() {
             Partners
           </h1>
           <p className="text-lg sm:text-xl text-white/65 leading-relaxed">
-            Partners who believe in PlaneWX.
+            Partners who help pilots fly like professionals.
           </p>
           <p className="text-sm sm:text-base text-white/45 leading-relaxed">
-            We partner with companies and brands that believe in what we&rsquo;re
-            building. Listing here means an active collaboration with PlaneWX.
+            We work with companies, clubs, and brands that help pilots fly like
+            professionals. Together, we give pilots better tools to make their
+            own GO / NO-GO call.
           </p>
         </header>
 
@@ -273,12 +279,19 @@ export default function PartnersPage() {
                   />
                 </div>
               )
+              const memberBenefit =
+                "memberBenefit" in partner ? partner.memberBenefit : undefined
               const body = (
                 <div className="flex items-start justify-between gap-3 mt-auto">
                   <div className="space-y-2 min-w-0">
                     <p className="font-semibold text-white group-hover:text-sky-300 transition-colors">
                       {partner.name}
                     </p>
+                    {memberBenefit ? (
+                      <p className="text-sm font-semibold text-sky-300 leading-snug">
+                        {memberBenefit}
+                      </p>
+                    ) : null}
                     <p className="text-sm text-white/50 leading-relaxed">
                       {partner.blurb}
                     </p>
@@ -338,33 +351,14 @@ export default function PartnersPage() {
           </ul>
         </section>
 
-        <section
-          id="apply"
-          aria-labelledby="apply-heading"
-          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
-        >
-          <div className="space-y-2">
-            <h2
-              id="apply-heading"
-              className="text-xl sm:text-2xl font-bold tracking-tight"
-            >
-              Be a part of our team
-            </h2>
-            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
-              Want to partner with us? Reach out. We&rsquo;ll take it from there.
-            </p>
-          </div>
-          <PartnerInquiryForm />
-        </section>
-
         <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-8 space-y-3 text-center sm:text-left">
           {/* Sara lock: CTA heading must stay exactly this string. */}
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
             Built with pilots, for pilots
           </h2>
           <p className="text-white/55 leading-relaxed max-w-2xl">
-            PlaneWX works with the pilots, clubs, and brands that make flying
-            safer and more useful.
+            PlaneWX works with the pilots, clubs, and brands who want to fly
+            like professionals.
           </p>
           <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:items-center">
             <Link
@@ -380,6 +374,26 @@ export default function PartnersPage() {
               Ambassadors
             </Link>
           </div>
+        </section>
+
+        <section
+          id="apply"
+          aria-labelledby="apply-heading"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
+        >
+          <div className="space-y-2">
+            <h2
+              id="apply-heading"
+              className="text-xl sm:text-2xl font-bold tracking-tight"
+            >
+              Be a part of our team
+            </h2>
+            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
+              Want to help pilots fly like professionals? Reach out.
+              We&rsquo;ll take it from there.
+            </p>
+          </div>
+          <PartnerInquiryForm />
         </section>
       </main>
 
