@@ -112,6 +112,18 @@ function TipsArchive() {
           </div>
           <h3 className="text-lg font-semibold text-white">{tip.title}</h3>
           <p className="mt-2 text-sm text-white/55">{tip.summary}</p>
+          {tip.body.some((b) => b.type === "paragraph" && b.text.includes("https://app.planewx.ai/help/wx-score")) ? (
+            <p className="mt-3 text-sm">
+              <a
+                href="https://app.planewx.ai/help/wx-score"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-sky-400 hover:text-sky-300 hover:underline"
+              >
+                More in the WX Score guide.
+              </a>
+            </p>
+          ) : null}
         </li>
       ))}
     </ul>

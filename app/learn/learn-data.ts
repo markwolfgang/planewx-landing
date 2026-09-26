@@ -1,6 +1,6 @@
 // PlaneWX Learning Center: weather product explainers, concepts, and ADM.
 // To add an article: prepend a new object to LEARN_ARTICLES (or append within section order).
-// To add a tip: prepend to TIPS_OF_THE_WEEK (newest first), starting at Weekly PIREP issue #2.
+// To add a tip: prepend to TIPS_OF_THE_WEEK (newest first), starting at Weekly PIREP issue #1.
 //
 // Indexing safety: keep LEARN_PUBLIC false until at least LEARN_PUBLIC_MIN_ARTICLES
 // real, sourced (non-draft) articles exist. Draft articles stay reachable by URL
@@ -85,7 +85,7 @@ export interface LearnArticle {
 
 /**
  * Weekly PIREP tip archive. Same list/prepend pattern as NEWS_ITEMS.
- * Empty until issue #2. Hub shows a standing empty-state line until then.
+ * Tips start at issue #1. Hub shows a standing empty-state line when none are published.
  */
 export interface TipOfTheWeek {
   slug: string
@@ -95,7 +95,7 @@ export interface TipOfTheWeek {
   date: string
   /** ISO date, e.g. "2026-09-25" */
   isoDate: string
-  /** Weekly PIREP issue number (tips start at #2) */
+  /** Weekly PIREP issue number (tips start at #1) */
   issueNumber: number
   body: LearnBodyBlock[]
   draft?: boolean
@@ -236,7 +236,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     ],
     puttingItIntoPractice: {
       whyItMatters:
-        "Without a dispatcher, you have to know whether you are reading an official forecaster TAF or automated guidance. That matters most at airports with no TAF, where MOS, LAMP or NBM may be what you have. Knowing which product you are looking at keeps the go/no-go call grounded in what the product actually is.",
+        "Without a dispatcher, you have to know whether you are reading an official forecaster TAF or automated guidance. That matters most at airports with no TAF, where MOS, LAMP or NBM may be what you have. Knowing which product you are looking at keeps the go/\u2060no\u2011go call grounded in what the product actually is.",
       loopStage: ["Weather Briefing"],
       toolOrHabit:
         "PlaneWX Weather Briefing and WX Score weigh forecast conditions against your own personal minimums. PlaneWX never recommends go or no-go. You make the GO\u00A0/\u00A0NO\u2011GO call.",
@@ -334,13 +334,13 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "TCF vs ECFP: Reading the Airline System's Convective Forecasts",
     section: "Weather Products",
     summary:
-      "How the TFM Convective Forecast and Extended Convective Forecast Product help traffic managers and airline dispatch plan around storms, and how a GA pilot can read them as context (not as a go/no-go product).",
+      "How the TFM Convective Forecast and Extended Convective Forecast Product help traffic managers and airline dispatch plan around storms, and how a GA pilot can read them as context (not as a go/\u2060no\u2011go product).",
     lastReviewed: "2026-09-25",
     draft: false,
     body: [
       {
         type: "paragraph",
-        text: "TCF and ECFP are products built for traffic flow managers and airline dispatch, not as a pilot's go/no-go product. They help a GA pilot see where the airline system expects storm trouble. They are not a substitute for SIGMETs, Convective SIGMETs, TAFs, radar or a Flight Service briefing.",
+        text: "TCF and ECFP are products built for traffic flow managers and airline dispatch, not as a pilot's go/\u2060no\u2011go product. They help a GA pilot see where the airline system expects storm trouble. They are not a substitute for SIGMETs, Convective SIGMETs, TAFs, radar or a Flight Service briefing.",
       },
       {
         type: "heading",
@@ -403,7 +403,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     ],
     puttingItIntoPractice: {
       whyItMatters:
-        "Without a dispatcher, looking at what airline dispatchers and traffic managers are planning around gives useful context days out. It is context for your own go/no-go decision, not a verdict. PlaneWX never recommends go or no-go. The pilot makes the call.",
+        "Without a dispatcher, looking at what airline dispatchers and traffic managers are planning around gives useful context days out. It is context for your own go/\u2060no\u2011go decision, not a verdict. PlaneWX never recommends go or no-go. The pilot makes the call.",
       loopStage: ["Weather Briefing", "GO / NO-GO"],
       toolOrHabit:
         "Brief early and re-brief as the flight gets closer, using the PlaneWX Weather Briefing with a WX Score against your personal minimums. That supports the GO\u00A0/\u00A0NO\u2011GO step.",
@@ -438,8 +438,28 @@ export const LEARN_ARTICLES: LearnArticle[] = [
   },
 ]
 
-/** Tips start with Weekly PIREP issue #2. Prepend newest first when adding. */
-export const TIPS_OF_THE_WEEK: TipOfTheWeek[] = []
+/** Tips start with Weekly PIREP issue #1. Prepend newest first when adding. */
+export const TIPS_OF_THE_WEEK: TipOfTheWeek[] = [
+  {
+    slug: "what-the-wx-score-actually-is",
+    title: "What the WX Score actually is",
+    issueNumber: 1,
+    date: "September 28, 2026",
+    isoDate: "2026-09-28",
+    summary:
+      "The WX Score is your own personal minimums, applied the same way every time, against the forecast for your route, altitude, and departure time.",
+    body: [
+      {
+        type: "paragraph",
+        text: "The WX Score is not PlaneWX's opinion of what is safe to fly. It is your own personal minimums, applied the same way every time, against the forecast for your route, cruise altitude, and departure time. The score starts at 100% and points come off for each weather factor that approaches or exceeds the limits you set, so two pilots can get different scores for the same flight. A low score does not mean don't fly. It means don't fly without asking why the number is what it is: open the breakdown and make your GO\u00A0/\u00A0NO\u2011GO call as PIC. It is advisory support, not a flight authorization.",
+      },
+      {
+        type: "paragraph",
+        text: "More in the WX Score guide: https://app.planewx.ai/help/wx-score",
+      },
+    ],
+  },
+]
 
 export const LEARN_DISCLAIMER =
   "PlaneWX complements FAA and Flight Service weather products. It does not replace an official briefing."
@@ -447,7 +467,7 @@ export const LEARN_DISCLAIMER =
 export const LEARN_DRAFT_BANNER = "DRAFT: facts pending source review"
 
 export const TIPS_EMPTY_LINE =
-  "Tips start with Weekly PIREP issue #2."
+  "New tips arrive with each Weekly PIREP."
 
 export function getLearnArticle(slug: string): LearnArticle | undefined {
   return LEARN_ARTICLES.find((a) => a.slug === slug)
