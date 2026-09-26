@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { FaInstagram, FaFacebook, FaXTwitter, FaTiktok, FaYoutube } from "react-icons/fa6"
 import { BrandLogo } from "@/components/shared/brand-logo"
+import { openCookieSettings, optOutOfSaleOrSharing } from "@/lib/cookie-prefs"
 
 const SOCIAL_LINKS = [
   { icon: FaInstagram, href: "https://instagram.com/plane_wx", label: "Instagram" },
@@ -30,28 +31,70 @@ export function SiteFooter({ variant }: { variant: string }) {
             </a>
           ))}
         </div>
-        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <Link href="/" className="shrink-0" aria-label="PlaneWX home">
-              {/* Same light-on-dark wordmark as partners / dark DSS nav */}
-              <BrandLogo
-                variant="wordmarkTransparent"
-                alt="PlaneWX"
-                className="h-7 sm:h-8 w-auto"
-              />
-            </Link>
-            <span className="truncate">· The Pilot&apos;s Decision Support System</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a href="/about" className="hover:text-white/60 transition-colors">About</a>
-            <a href="/news" className="hover:text-white/60 transition-colors">News</a>
-            <a href="/partners" className="hover:text-white/60 transition-colors">Partners</a>
-            <a href="/ambassadors" className="hover:text-white/60 transition-colors">Ambassadors</a>
-            <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
-            <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
-            <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">Contact</a>
-            <span>© 2026 PlaneWX, LLC</span>
-          </div>
+
+        {/* Brand + full tagline on its own row so legal links cannot truncate it */}
+        <div className="w-full flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
+          <Link href="/" className="shrink-0" aria-label="PlaneWX home">
+            <BrandLogo
+              variant="wordmarkTransparent"
+              alt="PlaneWX"
+              className="h-7 sm:h-8 w-auto"
+            />
+          </Link>
+          <span className="text-center sm:text-left whitespace-normal">
+            · The Pilot&apos;s Decision Support System
+          </span>
+        </div>
+
+        {/* Legal / nav links wrap on a second row at all widths */}
+        <div className="w-full flex flex-wrap items-center justify-center sm:justify-start gap-x-5 gap-y-2">
+          <a href="/about" className="hover:text-white/60 transition-colors">
+            About
+          </a>
+          <a href="/news" className="hover:text-white/60 transition-colors">
+            News
+          </a>
+          <a href="/partners" className="hover:text-white/60 transition-colors">
+            Partners
+          </a>
+          <a href="/ambassadors" className="hover:text-white/60 transition-colors">
+            Ambassadors
+          </a>
+          <a
+            href="https://app.planewx.ai/help/faqs"
+            className="hover:text-white/60 transition-colors"
+          >
+            FAQ
+          </a>
+          <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">
+            Research
+          </a>
+          <a href="/privacy" className="hover:text-white/60 transition-colors">
+            Privacy
+          </a>
+          <a href="/cookies" className="hover:text-white/60 transition-colors">
+            Cookies
+          </a>
+          <button
+            type="button"
+            onClick={() => openCookieSettings()}
+            className="hover:text-white/60 transition-colors"
+            data-testid="cookie-settings-link"
+          >
+            Cookie settings
+          </button>
+          <button
+            type="button"
+            onClick={() => optOutOfSaleOrSharing()}
+            className="hover:text-white/60 transition-colors"
+            data-testid="do-not-sell-link"
+          >
+            Do not sell or share
+          </button>
+          <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">
+            Contact
+          </a>
+          <span>© 2026 PlaneWX, LLC</span>
         </div>
       </div>
     </footer>

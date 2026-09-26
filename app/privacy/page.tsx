@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
         </header>
 
         <aside className="rounded-xl border border-sky-500/30 bg-sky-500/10 px-4 py-3 space-y-1">
-          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-sky-300">What&apos;s new — {EFFECTIVE_DATE}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-sky-300">What&apos;s new - {EFFECTIVE_DATE}</p>
           <p className="text-sm leading-relaxed text-white/80">
             Updated{" "}
             <a href="#insurance-partners" className="text-sky-400 hover:underline font-medium">
@@ -77,11 +77,11 @@ export default function PrivacyPolicyPage() {
 
         <Section title="4. How We Share Information">
           <ul className="list-disc space-y-2 pl-6">
-            <li>Service providers: hosting, analytics, email, payments, support tools—only as needed to operate the Services.</li>
+            <li>Service providers: hosting, analytics, email, payments, support tools, only as needed to operate the Services.</li>
             <li>Legal and safety: to comply with law, protect rights, safety, and security.</li>
             <li>Business transfers: in connection with mergers, acquisitions, financing, or asset sales.</li>
             <li>With your direction: for example, when sharing trips with watchers/crew.</li>
-            <li>We do not sell personal information.</li>
+            <li>We do not sell personal information for money. Marketing pixels on www.planewx.ai can support cross-context advertising and may count as a &quot;sale&quot; or &quot;sharing&quot; under CCPA/CPRA; you can opt out with Do not sell or share or Global Privacy Control (see section 6).</li>
             <li>
               Insurance partners: {FIVE_X_FIVE_SEES_LINE} See{" "}
               <a href="#insurance-partners" className="text-sky-400 hover:underline">
@@ -112,10 +112,54 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <Section title="6. Cookies and Tracking">
-          <p className="text-sm leading-relaxed text-white/70">
-            We use cookies and similar technologies for authentication, preferences, and analytics. Where required, we will request consent.
-            You can manage cookies through your browser settings, but core functionality may be impacted.
-          </p>
+          <div className="text-sm leading-relaxed text-white/70 space-y-3" id="cookies-and-tracking">
+            <p>
+              On www.planewx.ai we use cookies and similar technologies in these categories:
+            </p>
+            <ul className="list-disc space-y-2 pl-6">
+              <li>
+                <strong className="text-white">Essential:</strong> first-party cookies{" "}
+                <code className="text-white/80">planewx-variant</code> (homepage variant),{" "}
+                <code className="text-white/80">planewx-brand-auth</code> (brand portal auth),{" "}
+                <code className="text-white/80">pw_consent_region</code> (consent region from Vercel geo),{" "}
+                <code className="text-white/80">pw_gpc</code> (Global Privacy Control signal), and first-party
+                localStorage <code className="text-white/80">cookie_prefs_v1</code> for your cookie choice, referral
+                codes, and UI dismissals.
+              </li>
+              <li>
+                <strong className="text-white">Analytics:</strong> Google Analytics (
+                <code className="text-white/80">G-FKM0TMPH4M</code>) and Vercel Analytics.
+              </li>
+              <li>
+                <strong className="text-white">Marketing:</strong> Google Ads (
+                <code className="text-white/80">AW-18011683791</code>,{" "}
+                <code className="text-white/80">AW-18016407179</code>
+                ), Meta Pixel (<code className="text-white/80">1236857811920781</code>), and Reddit Pixel (
+                <code className="text-white/80">a2_iy53y8iesnik</code>). These can support cross-context advertising
+                and may count as a &quot;sale&quot; or &quot;sharing&quot; under CCPA/CPRA.
+              </li>
+              <li>
+                <strong className="text-white">Embedded third-party:</strong> YouTube embeds use
+                youtube-nocookie.com and load only after you press play.
+              </li>
+            </ul>
+            <p>
+              In the EU, UK, EEA, and Switzerland, and when location cannot be determined, Analytics and
+              Marketing scripts stay blocked until you opt in (Accept all, or Manage and save). Essential
+              only turns Analytics and Marketing off in one click. In the United States and other regions we
+              show a notice. Global Privacy Control (
+              <code className="text-white/80">navigator.globalPrivacyControl</code>
+              {" "}or <code className="text-white/80">Sec-GPC</code>) turns Marketing off. Do not sell or share (in
+              the notice banner and the footer) turns Marketing off (Google Ads, Meta Pixel, Reddit Pixel)
+              and keeps Analytics as you already set it (notice default on; strict default off unless you
+              opted in). Cookie settings in the footer reopens the banner so you can change your choice on
+              any page. Full detail:{" "}
+              <a href="/cookies" className="text-sky-400 hover:underline">
+                Cookie Policy
+              </a>
+              .
+            </p>
+          </div>
         </Section>
 
         <Section title="7. Data Retention">
@@ -136,7 +180,7 @@ export default function PrivacyPolicyPage() {
           <ul className="list-disc space-y-2 pl-6">
             <li>Account settings: update or delete certain info in your profile.</li>
             <li>Emails: opt out of marketing via email footer; transactional/service emails will still be sent.</li>
-            <li>Cookies: manage via browser or consent tools (where provided).</li>
+            <li>Cookies: use Cookie settings in the footer to reopen the banner, or use Do not sell or share to turn Marketing off. You can also manage cookies in your browser.</li>
           </ul>
         </Section>
 
@@ -146,7 +190,7 @@ export default function PrivacyPolicyPage() {
               <strong className="text-white">Opt-in:</strong> PlaneWX may send transactional SMS messages to users who opt in through their account settings. SMS is used for time-sensitive notifications, such as alerting volunteer mentors when a pilot requests flight decision support. You opt in to SMS by selecting &quot;Phone / Text&quot; or &quot;Phone &amp; Email&quot; as your preferred contact method in your Mentor profile settings and providing your phone number.
             </li>
             <li>
-              <strong className="text-white">Message frequency:</strong> SMS messages are infrequent and event-driven, typically 1–3 messages per mentor request. We do not send marketing messages via SMS.
+              <strong className="text-white">Message frequency:</strong> SMS messages are infrequent and event-driven, typically 1-3 messages per mentor request. We do not send marketing messages via SMS.
             </li>
             <li>
               <strong className="text-white">Opt-out:</strong> You can stop SMS at any time by changing your contact preference to &quot;Email&quot; in your profile settings, enabling &quot;Do Not Disturb,&quot; or replying STOP to any message. Email <a href="mailto:support@planewx.ai" className="text-sky-400 hover:underline">support@planewx.ai</a> for assistance.
