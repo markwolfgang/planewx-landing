@@ -72,7 +72,7 @@ export default async function NewsPage({ searchParams }: NewsPageProps) {
                 </h2>
                 <p className="text-sm text-white/55">{item.excerpt}</p>
                 <span className="mt-1 text-sm font-medium text-sky-400 group-hover:text-sky-300">
-                  Read more →
+                  Read more
                 </span>
               </Link>
             ))}

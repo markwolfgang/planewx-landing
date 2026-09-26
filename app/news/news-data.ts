@@ -46,6 +46,70 @@ export interface NewsItem {
 }
 
 export const NEWS_ITEMS: NewsItem[] = [
+  // The Weekly PIREP: Edition 1 (draft). Publish Monday by flipping draft off
+  // after Monday metrics refresh. Do not list internal PR titles in the body.
+  {
+    slug: "weekly-pirep-2026-09-28",
+    category: "Product",
+    title: "The Weekly PIREP: Edition 1",
+    excerpt:
+      "What shipped in PlaneWX this week: weather alerts near your route, ground-ops wind that now counts in your WX Score, clearer FRAT Environment ratings, and FRAT that shows a suggested risk level before you rate and add notes. Plus a short tip on how the WX Score works.",
+    date: "September 28, 2026",
+    isoDate: "2026-09-28",
+    location: "St. Petersburg, Florida",
+    draft: true,
+    body: `
+<p>Hello from PlaneWX. This is The Weekly PIREP, our Monday roundup of what shipped for pilots in the last week (Mon Sep 21 through Sun Sep 27).</p>
+<p>We keep it short and plain: what you can see and use in the app, a count of the smaller polish work, and one tip worth a minute of your time.</p>
+
+<h2>What&rsquo;s new</h2>
+<ul>
+<li><strong>Weather alerts near your route.</strong> When a National Weather Service watch, warning or advisory touches your departure, destination or route during your flight, your briefing now shows it in a banner beside the WX Score, with the alert, when it is in effect, and the NWS office that issued it. The alert is shown, not scored. Your WX Score does not change because of it.</li>
+<!-- HELP LINK NEEDED: no live help page covers the route weather alert banner yet (checked app.planewx.ai/help 2026-09-26). Flagged to CoS. -->
+<li><strong>Max wind for ground ops, now part of your WX Score.</strong> Set the most total surface wind, steady or gusting, you want at departure and arrival, in Personal Minimums or in Aircraft preferences under Wind Limits. Once you set your own value, it is treated like your other personal minimums: steady wind above your limit sets the WX Score to 0%, gusts above it lower the score by up to 20 points, and steady wind above 75% of it lowers the score by up to 10. Leave the field blank and PlaneWX uses a suggested value for your aircraft category: 20&nbsp;kt for light trainers and light-sport, 25&nbsp;kt for other light fixed-gear singles, and 30&nbsp;kt for high-performance singles, twins, turboprops and jets. Wind above a suggested value lowers the score by up to 20 points per airport (up to 10 when only gusts are above it) and never sets the score to 0% by itself. Suggested values are PlaneWX suggestions, not aircraft manual or FAA limits, so set your own. More in <a href="https://app.planewx.ai/help/aircraft-profiles#ground-ops-wind">the ground operations wind guide</a>.</li>
+<!-- LINK SWAP: when app help PR #2357 merges, change this link to https://app.planewx.ai/help/personal-minimums (Max Ground Operations Wind section; use its anchor id if it has one). -->
+<li><strong>FRAT Environment: you rate it, with short captions.</strong> On the Environment step, you rate the overall environment yourself. Each category also shows a short caption that explains what is driving that reading, so you can see why a factor lit up before you score it. More in <a href="https://app.planewx.ai/help/frat">the FRAT guide</a>.</li>
+<li><strong>FRAT order: suggested risk level, then your call, then notes.</strong> At the bottom of each category, PlaneWX shows a suggested risk level and what is driving it. Then you rate that category yourself. Then you add notes. The suggestion is a hint. You make the call. More in <a href="https://app.planewx.ai/help/frat">the FRAT guide</a>.</li>
+</ul>
+
+<h2>Fixes and improvements</h2>
+${/* PROVISIONAL: recount Mon from weekly-metrics (customer fixes+improvements). Partial week figure is 8. */ ""}
+<p>Forecast sources: for trips 12 to 72 hours out, the WX Score now checks how old its forecast guidance is. If an airport&rsquo;s guidance comes from an older model run, your briefing says so, and that older data can no longer raise your score.</p>
+<!-- HELP LINK NEEDED: no live help page covers forecast guidance age yet (checked app.planewx.ai/help 2026-09-26). Flagged to CoS. -->
+<p>Plus 8 other fixes and improvements across the app.</p>
+
+<h2>Briefing reviews this week</h2>
+<p>After each flight you can leave a quick review. Here&rsquo;s what you told us this week.</p>
+${/* PRELIMINARY: data through Fri Sep 25 06:50 CT. Growth recounts Mon Sep 28 08:43 CT; update before draft flips off. Source: /workspace/reports/pirep-1-briefing-reviews.md */ ""}
+<ul>
+<li>Briefing reviews received: <strong>29</strong>, from <strong>23</strong> pilots</li>
+<li>On flights you flew (<strong>22</strong> reviews), the WX Score was:
+<ul>
+<li>About right: <strong>10</strong></li>
+<li>Too low, meaning conditions were better than the score suggested: <strong>11</strong></li>
+<li>Too high, meaning conditions were worse than the score suggested: <strong>1</strong></li>
+</ul>
+</li>
+<li>Misses you flagged: <strong>5</strong> (a weather section you marked &ldquo;Understated it&rdquo;, or a surprise you wrote in). We looked into all 5, and 1 led to a detail we&rsquo;re looking into further.</li>
+<li>Fixes that came from reviews: <strong>1</strong> (a FRAT update that gives more weight to your own assessment of the environment)</li>
+</ul>
+
+<h2>Tip of the Week: what the WX Score actually is</h2>
+<p>The WX Score is not PlaneWX&rsquo;s opinion of what is safe to fly. It is your own <a href="https://app.planewx.ai/help/personal-minimums">personal minimums</a>, applied the same way every time, against the forecast for your route, cruise altitude, and departure time. The score starts at 100% and points come off for each weather factor that approaches or exceeds the limits you set, so two pilots can get different scores for the same flight. A low score does not mean don&rsquo;t fly. It means don&rsquo;t fly without asking why the number is what it is: open the breakdown and make your GO&nbsp;/&nbsp;NO&#8209;GO call as PIC. It is advisory support, not a flight authorization. More in <a href="https://app.planewx.ai/help/wx-score">the WX Score guide</a>.</p>
+
+${/*
+  Coming soon: nothing approved yet. Keep this block commented out so future
+  features cannot render until something is cleared for customers.
+  <h2>Coming soon</h2>
+  <p></p>
+*/ ""}
+
+<p>Open PlaneWX when you are ready to brief the next trip: <a href="https://app.planewx.ai">app.planewx.ai</a>.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. Fly like it&rsquo;s your job.</p>
+`,
+  },
   {
     slug: "aca-air-care-alliance-partnership",
     category: "Partnerships",
