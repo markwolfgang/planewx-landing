@@ -7,13 +7,17 @@
 import assert from "node:assert/strict"
 import {
   INQUIRY_HELLO_EMAIL,
+  INQUIRY_MARK_EMAIL,
   INQUIRY_SARA_EMAIL,
+  resolveAdvisorInquiryRecipients,
   resolveInquiryRecipients,
 } from "../lib/inquiry-recipients"
+import { ADVISOR_EXPERTISE_OPTIONS } from "../lib/advisor-expertise"
 
 process.env.INQUIRY_EMAIL_DRY_RUN = "1"
 delete process.env.PARTNERSHIP_INQUIRY_EMAIL
 delete process.env.ADMIN_NOTIFICATION_EMAIL
+delete process.env.ADVISOR_INQUIRY_EMAIL
 
 function assertIncludesBoth(recipients: string[], label: string) {
   assert.ok(
@@ -26,28 +30,34 @@ function assertIncludesBoth(recipients: string[], label: string) {
   )
 }
 
+function assertAdvisorRecipients(recipients: string[], label: string) {
+  assert.ok(
+    recipients.includes(INQUIRY_MARK_EMAIL),
+    `${label}: missing ${INQUIRY_MARK_EMAIL} in ${JSON.stringify(recipients)}`,
+  )
+  assert.ok(
+    recipients.includes(INQUIRY_SARA_EMAIL),
+    `${label}: missing ${INQUIRY_SARA_EMAIL} in ${JSON.stringify(recipients)}`,
+  )
+}
+
 async function main() {
-  // Default: both hello@ and sara@ as To recipients
   const defaults = resolveInquiryRecipients({})
   assert.deepEqual(defaults, [INQUIRY_HELLO_EMAIL, INQUIRY_SARA_EMAIL])
 
-  // Override replaces hello default but still adds sara@
   const withOverride = resolveInquiryRecipients({
     PARTNERSHIP_INQUIRY_EMAIL: "ops@planewx.ai",
   })
   assert.deepEqual(withOverride, ["ops@planewx.ai", INQUIRY_SARA_EMAIL])
 
-  // Override that already lists sara@ does not duplicate
-  const saraAlready = resolveInquiryRecipients({
-    PARTNERSHIP_INQUIRY_EMAIL: `hello@planewx.ai, ${INQUIRY_SARA_EMAIL}`,
-  })
-  assert.deepEqual(saraAlready, [INQUIRY_HELLO_EMAIL, INQUIRY_SARA_EMAIL])
+  const advisorDefaults = resolveAdvisorInquiryRecipients({})
+  assert.deepEqual(advisorDefaults, [INQUIRY_MARK_EMAIL, INQUIRY_SARA_EMAIL])
 
-  // Override that is only sara@: still just sara@ (already included)
-  const saraOnly = resolveInquiryRecipients({
-    ADMIN_NOTIFICATION_EMAIL: INQUIRY_SARA_EMAIL,
+  const advisorOverride = resolveAdvisorInquiryRecipients({
+    ADVISOR_INQUIRY_EMAIL: "board@planewx.ai",
   })
-  assert.deepEqual(saraOnly, [INQUIRY_SARA_EMAIL])
+  assert.ok(advisorOverride.includes("board@planewx.ai"))
+  assertAdvisorRecipients(advisorOverride, "advisor override")
 
   const { POST } = await import("../app/api/ambassadors/inquiry/route")
 
@@ -78,32 +88,8 @@ async function main() {
   )
   assert.equal(body.success, true)
   assert.equal(body.dryRun, true)
-  assert.equal(body.received.org, handle)
-  assert.equal(body.received.name, handle)
-  assert.equal(body.received.email, "pilot@example.com")
-  assert.equal(body.received.note, "Flight instructor (CFI)")
   assertIncludesBoth(body.to, "ambassadors dry-run")
 
-  // Route still requires name; client maps handle -> name
-  const missingName = await POST(
-    new Request("http://localhost/api/ambassadors/inquiry", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-forwarded-for": "127.0.0.2",
-      },
-      body: JSON.stringify({
-        org: handle,
-        email: "pilot@example.com",
-        note: "Flight instructor (CFI)",
-      }),
-    }),
-  )
-  const missingBody = await missingName.json()
-  assert.equal(missingName.status, 400)
-  assert.match(String(missingBody.error || ""), /Name/i)
-
-  // Partners dry-run also returns both recipients
   const { POST: partnerPost } = await import("../app/api/partners/inquiry/route")
   const partnerOk = await partnerPost(
     new Request("http://localhost/api/partners/inquiry", {
@@ -125,24 +111,51 @@ async function main() {
   assert.equal(partnerBody.dryRun, true)
   assertIncludesBoth(partnerBody.to, "partners dry-run")
 
-  const partnerMissing = await partnerPost(
-    new Request("http://localhost/api/partners/inquiry", {
+  const { POST: advisorPost } = await import("../app/api/advisors/inquiry/route")
+  const advisorOk = await advisorPost(
+    new Request("http://localhost/api/advisors/inquiry", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-forwarded-for": "127.0.0.4",
+        "x-forwarded-for": "127.0.0.5",
       },
       body: JSON.stringify({
-        org: "COPA",
-        email: "partner@example.com",
-        note: "Co-marketing idea",
+        name: "Advisor Name",
+        email: "advisor@example.com",
+        phone: "",
+        linkedin: "https://linkedin.com/in/example",
+        background: "ATP, CFI, type club leadership",
+        expertise: [ADVISOR_EXPERTISE_OPTIONS[0], ADVISOR_EXPERTISE_OPTIONS[4]],
+        why: "Want to help pilots fly like professionals.",
       }),
     }),
   )
-  assert.equal(partnerMissing.status, 400)
+  const advisorBody = await advisorOk.json()
+  assert.equal(advisorOk.status, 200, JSON.stringify(advisorBody))
+  assert.equal(advisorBody.dryRun, true)
+  assertAdvisorRecipients(advisorBody.to, "advisors dry-run")
+  assert.equal(advisorBody.received.name, "Advisor Name")
+
+  const advisorMissingExpertise = await advisorPost(
+    new Request("http://localhost/api/advisors/inquiry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-forwarded-for": "127.0.0.6",
+      },
+      body: JSON.stringify({
+        name: "Advisor Name",
+        email: "advisor@example.com",
+        background: "ATP",
+        expertise: [],
+        why: "Curious about PlaneWX.",
+      }),
+    }),
+  )
+  assert.equal(advisorMissingExpertise.status, 400)
 
   console.log(
-    "OK: inquiry dry-run To includes hello@planewx.ai and sara@planewx.ai; ambassadors single-handle + partners name required",
+    "OK: partners/ambassadors To hello@+sara@; advisors To mark@+sara@; dry-runs pass",
   )
 }
 

@@ -9,11 +9,11 @@ import { SiteFooter } from "@/components/shared/site-footer"
 export const metadata: Metadata = {
   title: "Partners",
   description:
-    "Partners who believe in PlaneWX. Companies and brands in active collaboration with PlaneWX.",
+    "Partners who help pilots fly like professionals. Companies, clubs, and brands working with PlaneWX.",
   openGraph: {
     title: "Partners | PlaneWX",
     description:
-      "Partners who believe in PlaneWX. Companies and brands in active collaboration with PlaneWX.",
+      "Partners who help pilots fly like professionals. Companies, clubs, and brands working with PlaneWX.",
     type: "website",
     url: "https://www.planewx.ai/partners",
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Partners | PlaneWX",
     description:
-      "Partners who believe in PlaneWX. Companies and brands in active collaboration with PlaneWX.",
+      "Partners who help pilots fly like professionals. Companies, clubs, and brands working with PlaneWX.",
   },
   alternates: {
     canonical: "https://www.planewx.ai/partners",
@@ -226,6 +226,12 @@ export default function PartnersPage() {
           </Link>
           <div className="flex items-center gap-4 shrink-0">
             <Link
+              href="/advisors"
+              className="hidden sm:inline text-sm text-white/50 hover:text-white transition-colors"
+            >
+              Advisors
+            </Link>
+            <Link
               href="/ambassadors"
               className="hidden sm:inline text-sm text-white/50 hover:text-white transition-colors"
             >
@@ -251,32 +257,14 @@ export default function PartnersPage() {
             Partners
           </h1>
           <p className="text-lg sm:text-xl text-white/65 leading-relaxed">
-            Partners who believe in PlaneWX.
+            Partners who help pilots fly like professionals.
           </p>
           <p className="text-sm sm:text-base text-white/45 leading-relaxed">
-            We partner with companies and brands that believe in what we&rsquo;re
-            building. Listing here means an active collaboration with PlaneWX.
+            We work with companies, clubs, and brands that help pilots fly like
+            professionals. Together, we give pilots better tools to make their
+            own go/no-go call.
           </p>
         </header>
-
-        <section
-          id="apply"
-          aria-labelledby="apply-heading"
-          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
-        >
-          <div className="space-y-2">
-            <h2
-              id="apply-heading"
-              className="text-xl sm:text-2xl font-bold tracking-tight"
-            >
-              Be a part of our team
-            </h2>
-            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
-              Want to partner with us? Reach out. We&rsquo;ll take it from there.
-            </p>
-          </div>
-          <PartnerInquiryForm />
-        </section>
 
         <section aria-labelledby="partners-grid-heading" className="space-y-5">
           <h2 id="partners-grid-heading" className="sr-only">
@@ -375,8 +363,8 @@ export default function PartnersPage() {
             Built with pilots, for pilots
           </h2>
           <p className="text-white/55 leading-relaxed max-w-2xl">
-            PlaneWX works with the pilots, clubs, and brands that make flying
-            safer and more useful.
+            PlaneWX works with the pilots, clubs, and brands who want to fly
+            like professionals.
           </p>
           <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:items-center">
             <Link
@@ -392,6 +380,26 @@ export default function PartnersPage() {
               Ambassadors
             </Link>
           </div>
+        </section>
+
+        <section
+          id="apply"
+          aria-labelledby="apply-heading"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
+        >
+          <div className="space-y-2">
+            <h2
+              id="apply-heading"
+              className="text-xl sm:text-2xl font-bold tracking-tight"
+            >
+              Be a part of our team
+            </h2>
+            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
+              Want to help pilots fly like professionals? Reach out.
+              We&rsquo;ll take it from there.
+            </p>
+          </div>
+          <PartnerInquiryForm />
         </section>
       </main>
 
