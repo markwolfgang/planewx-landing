@@ -53,7 +53,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     category: "Product",
     title: "The Weekly PIREP: Edition 1",
     excerpt:
-      "What shipped in PlaneWX this week: ground-ops wind in Personal Minimums, clearer FRAT Environment ratings, and FRAT that shows a suggested risk level before you rate and add notes. Plus a short tip on how the WX Score works.",
+      "What shipped in PlaneWX this week: weather alerts near your route, ground-ops wind that now counts in your WX Score, clearer FRAT Environment ratings, and FRAT that shows a suggested risk level before you rate and add notes. Plus a short tip on how the WX Score works.",
     date: "September 28, 2026",
     isoDate: "2026-09-28",
     location: "St. Petersburg, Florida",
@@ -64,14 +64,17 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 <h2>What&rsquo;s new</h2>
 <ul>
-<li><strong>Max wind for ground ops in Personal Minimums.</strong> In the Wind section of your Personal Minimums, you can set a maximum wind for ground operations. It is a limit you store with your other mins, next to the wind numbers you already use when you plan.</li>
-<!-- HELP LINK NEEDED: no live help page covers ground-ops wind yet (checked app.planewx.ai/help/personal-minimums 2026-09-26). Flagged to CoS. -->
+<li><strong>Weather alerts near your route.</strong> When a National Weather Service watch, warning or advisory touches your departure, destination or route during your flight, your briefing now shows it in a banner beside the WX Score, with the alert, when it is in effect, and the NWS office that issued it. The alert is shown, not scored. Your WX Score does not change because of it.</li>
+<!-- HELP LINK NEEDED: no live help page covers the route weather alert banner yet (checked app.planewx.ai/help 2026-09-26). Flagged to CoS. -->
+<li><strong>Max wind for ground ops, now part of your WX Score.</strong> Set the most total surface wind, steady or gusting, you want at departure and arrival, in Personal Minimums or in Aircraft preferences under Wind Limits. Wind over that limit now takes points off your WX Score, gusts included. Leave it blank and PlaneWX suggests a limit based on your aircraft category: 20 kt for light trainers and light-sport, 25 kt for other light fixed-gear singles, and 30 kt for high-performance singles, twins, turboprops and jets. It is a starting point, so set your own. More in <a href="https://app.planewx.ai/help/aircraft-profiles#ground-ops-wind">the ground operations wind guide</a>.</li>
 <li><strong>FRAT Environment: you rate it, with short captions.</strong> On the Environment step, you rate the overall environment yourself. Each category also shows a short caption that explains what is driving that reading, so you can see why a factor lit up before you score it. More in <a href="https://app.planewx.ai/help/frat">the FRAT guide</a>.</li>
 <li><strong>FRAT order: suggested risk level, then your call, then notes.</strong> At the bottom of each category, PlaneWX shows a suggested risk level and what is driving it. Then you rate that category yourself. Then you add notes. The suggestion is a hint. You make the call. More in <a href="https://app.planewx.ai/help/frat">the FRAT guide</a>.</li>
 </ul>
 
 <h2>Fixes and improvements</h2>
 ${/* PROVISIONAL: recount Mon from weekly-metrics (customer fixes+improvements). Partial week figure is 8. */ ""}
+<p>Forecast sources: for trips 12 to 72 hours out, the WX Score now checks how old its forecast guidance is. If an airport&rsquo;s guidance comes from an older model run, your briefing says so, and that older data can no longer raise your score.</p>
+<!-- HELP LINK NEEDED: no live help page covers forecast guidance age yet (checked app.planewx.ai/help 2026-09-26). Flagged to CoS. -->
 <p>Plus 8 other fixes and improvements across the app.</p>
 
 <h2>Briefing reviews this week</h2>
