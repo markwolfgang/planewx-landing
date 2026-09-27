@@ -12,6 +12,7 @@
 /** Lowercase path slug → uppercase campaign_codes.code */
 export const PARTNER_PATH_CODES: Record<string, string> = {
   runway: "RUNWAY",
+  flyte: "FLYTE",
 }
 
 /**
