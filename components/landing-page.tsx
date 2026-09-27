@@ -732,8 +732,8 @@ export function LandingPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-3">Ask a Mentor</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
-                  Connect with experienced pilots for GO / NO-GO decision support. Unlike a phone call to a friend, 
-                  your mentor sees your full briefing. WX Score, personal minimums, aircraft profile, so advice is grounded in shared data, not guesswork.
+                  Connect with experienced pilots for GO / NO-GO decision support. Unlike a phone call to a friend,
+                  your mentor sees your full briefing (WX Score, personal minimums, and aircraft profile), so advice is grounded in shared data, not guesswork.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-center gap-2">
@@ -980,7 +980,7 @@ export function LandingPage() {
               Your Briefing <span className="text-emerald-400">Evolves</span> With the Weather
             </h2>
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
-              Plan a trip 14 days out? We&apos;ll update your briefing <strong className="text-white">40+ times</strong> before departure. 
+              Plan a trip 14 days out? We&apos;ll update your briefing <strong className="text-white">40+ times</strong> before departure,
               automatically, every time new weather products are issued.
             </p>
           </div>
@@ -1171,7 +1171,7 @@ export function LandingPage() {
                 </div>
               </div>
               <p className="text-xs text-white/40 mt-4">
-                Each briefing includes Regional Weather for <strong className="text-white/60">origin</strong>, <strong className="text-white/60">en-route</strong>, and <strong className="text-white/60">destination</strong>. 
+                Each briefing includes Regional Weather for <strong className="text-white/60">origin</strong>, <strong className="text-white/60">en-route</strong>, and <strong className="text-white/60">destination</strong>,
                 synthesized from NWS forecaster narratives via Synoptic Intelligence™.
               </p>
             </div>
@@ -1327,8 +1327,7 @@ export function LandingPage() {
               What is <span className="text-sky-400">Synoptic Intelligence</span>™?
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto mb-4">
-              "Synoptic Intelligence captures what human forecasters know but models don't , 
-              then calibrates it with what models can quantify."
+              "Synoptic Intelligence captures what human forecasters know but models don't, then calibrates it with what models can quantify."
             </p>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               <strong className="text-white">PlaneWX is the first and only AI-powered aviation weather product.</strong> No other
@@ -1530,8 +1529,7 @@ export function LandingPage() {
                     <h3 className="text-lg font-semibold">What is Synoptic Intelligence™?</h3>
                   </div>
                   <p className="text-white/90 text-lg mb-4 italic">
-                    "Synoptic Intelligence captures what human forecasters know but models don't. 
-                    then calibrates it with what models can quantify."
+                    "Synoptic Intelligence captures what human forecasters know but models don't, then calibrates it with what models can quantify."
                   </p>
                   <p className="text-white/70 mb-4">
                     <strong className="text-white">No existing product combines human forecaster insight with quantitative data beyond 24 hours.</strong> TAFs 
@@ -1539,7 +1537,7 @@ export function LandingPage() {
                     AFDs contain 7-day human insight, but they're written for meteorologists and scattered across 122 offices.
                   </p>
                   <p className="text-white/70 mb-4">
-                    Synoptic Intelligence uses AI to synthesize AFD narratives, capturing pattern-level reasoning and uncertainty. 
+                    Synoptic Intelligence uses AI to synthesize AFD narratives, capturing pattern-level reasoning and uncertainty,
                     then calibrates with objective NBM/GFS model data to produce quantified VFR probability estimates out to 7 days.
                   </p>
                   <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
