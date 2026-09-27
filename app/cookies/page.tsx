@@ -65,9 +65,9 @@ export default function CookiesPage() {
               cookies via your browser settings. If you block essential storage, login and saved trips may not work.
             </p>
             <p>
-              Global Privacy Control (GPC), when signaled by your browser or the Sec-GPC header, keeps Marketing off
-              and disables the Marketing toggle. Do not sell or share turns Marketing off and keeps your existing
-              Analytics choice (or leaves Analytics off if you have not chosen yet).
+              When your browser sends Global Privacy Control (GPC), we keep Marketing off and disable the Marketing
+              toggle. Do not sell or share turns Marketing off and keeps your existing Analytics choice (or leaves
+              Analytics off if you have not chosen yet).
             </p>
           </div>
         </Section>
