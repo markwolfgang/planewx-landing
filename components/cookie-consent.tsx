@@ -228,10 +228,22 @@ export function CookieConsent() {
     document.addEventListener("keydown", onKeyDown)
     return () => {
       document.removeEventListener("keydown", onKeyDown)
-      const opener = manageButtonRef.current ?? previouslyFocused
-      if (opener && typeof opener.focus === "function") {
-        opener.focus()
+      const tryFocus = (el: HTMLElement | null | undefined) => {
+        if (el && el.isConnected && typeof el.focus === "function") {
+          el.focus()
+          return true
+        }
+        return false
       }
+      if (tryFocus(manageButtonRef.current) || tryFocus(previouslyFocused)) return
+      const banner = document.querySelector(
+        '[data-testid="cookie-consent-banner"]',
+      ) as HTMLElement | null
+      if (tryFocus(banner)) return
+      const settings = document.querySelector(
+        '[data-testid="cookie-settings-link"]',
+      ) as HTMLElement | null
+      tryFocus(settings)
     }
   }, [showModal])
 

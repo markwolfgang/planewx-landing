@@ -3,6 +3,13 @@
  * next/script does not unload tags, so choice changes are handled here in JS.
  */
 
+declare global {
+  interface Window {
+    dataLayer?: unknown[]
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
 export const GA_MEASUREMENT_ID = "G-FKM0TMPH4M"
 export const GOOGLE_ADS_IDS = ["AW-18011683791", "AW-18016407179"] as const
 export const META_PIXEL_ID = "1236857811920781"
@@ -21,7 +28,6 @@ export type ConsentUpdatePayload = {
   ad_storage: "granted" | "denied"
   ad_user_data: "granted" | "denied"
   ad_personalization: "granted" | "denied"
-  ads_data_redaction?: "true"
 }
 
 /** True when any previously granted tracker becomes denied. */
@@ -43,16 +49,12 @@ export function newlyGrantedTrackers(
 export function buildConsentUpdatePayload(active: ActiveTrackers): ConsentUpdatePayload {
   const analyticsStorage = active.ga ? "granted" : "denied"
   const adState = active.marketing ? "granted" : "denied"
-  const payload: ConsentUpdatePayload = {
+  return {
     analytics_storage: analyticsStorage,
     ad_storage: adState,
     ad_user_data: adState,
     ad_personalization: adState,
   }
-  if (adState === "denied") {
-    payload.ads_data_redaction = "true"
-  }
-  return payload
 }
 
 export const CONSENT_DEFAULT_DENIED: ConsentUpdatePayload = {
@@ -60,7 +62,6 @@ export const CONSENT_DEFAULT_DENIED: ConsentUpdatePayload = {
   ad_storage: "denied",
   ad_user_data: "denied",
   ad_personalization: "denied",
-  ads_data_redaction: "true",
 }
 
 export type TrackingTransition =
@@ -132,6 +133,31 @@ export function planTrackingTransition(opts: {
     configAds: firstBootstrap ? next.marketing : granted.marketing,
     loadMetaReddit: firstBootstrap ? next.marketing : granted.marketing,
     debugMode: debugMode && next.ga,
+  }
+}
+
+/**
+ * Install the gtag stub that pushes an Arguments object into dataLayer.
+ * gtag.js ignores plain arrays, so rest-args array pushes never fire /g/collect.
+ */
+export function ensureGtagStub(): void {
+  if (typeof window === "undefined") return
+  window.dataLayer = window.dataLayer || []
+  if (typeof window.gtag !== "function") {
+    // Non-arrow so `arguments` is an Arguments object gtag.js accepts.
+    window.gtag = function gtag() {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer!.push(arguments)
+    }
+  }
+}
+
+/** Consent Mode ignores ads_data_redaction inside consent payloads; set it separately. */
+export function applyAdsDataRedaction(adStorage: "granted" | "denied"): void {
+  if (typeof window === "undefined") return
+  ensureGtagStub()
+  if (adStorage === "denied") {
+    window.gtag!("set", "ads_data_redaction", true)
   }
 }
 

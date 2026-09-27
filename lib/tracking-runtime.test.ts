@@ -1,6 +1,8 @@
-import { describe, expect, it } from "vitest"
+import { afterEach, describe, expect, it } from "vitest"
 import {
+  applyAdsDataRedaction,
   buildConsentUpdatePayload,
+  ensureGtagStub,
   isTrackerDowngrade,
   newlyGrantedTrackers,
   planTrackingTransition,
@@ -35,18 +37,43 @@ describe("isTrackerDowngrade / newlyGrantedTrackers", () => {
 })
 
 describe("buildConsentUpdatePayload", () => {
-  it("sets ads_data_redaction when ad_storage is denied", () => {
-    expect(buildConsentUpdatePayload({ ga: true, marketing: false })).toMatchObject({
+  it("omits ads_data_redaction from the consent payload (Consent Mode ignores it there)", () => {
+    const denied = buildConsentUpdatePayload({ ga: true, marketing: false })
+    expect(denied).toEqual({
       analytics_storage: "granted",
       ad_storage: "denied",
-      ads_data_redaction: "true",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
     })
+    expect("ads_data_redaction" in denied).toBe(false)
+
+    const granted = buildConsentUpdatePayload({ ga: true, marketing: true })
+    expect(granted.ad_storage).toBe("granted")
+    expect("ads_data_redaction" in granted).toBe(false)
+  })
+})
+
+describe("ensureGtagStub / ads_data_redaction", () => {
+  afterEach(() => {
+    delete window.gtag
+    delete window.dataLayer
   })
 
-  it("omits ads_data_redaction when marketing is granted", () => {
-    const payload = buildConsentUpdatePayload({ ga: true, marketing: true })
-    expect(payload.ad_storage).toBe("granted")
-    expect(payload.ads_data_redaction).toBeUndefined()
+  it("pushes an Arguments object into dataLayer (not a plain array)", () => {
+    ensureGtagStub()
+    window.gtag!("consent", "default", { analytics_storage: "denied" })
+    const entry = window.dataLayer![0]
+    expect(Object.prototype.toString.call(entry)).toBe("[object Arguments]")
+  })
+
+  it("sets ads_data_redaction via gtag set when ad_storage is denied", () => {
+    ensureGtagStub()
+    applyAdsDataRedaction("denied")
+    const entry = window.dataLayer![0] as IArguments
+    expect(Object.prototype.toString.call(entry)).toBe("[object Arguments]")
+    expect(entry[0]).toBe("set")
+    expect(entry[1]).toBe("ads_data_redaction")
+    expect(entry[2]).toBe(true)
   })
 })
 

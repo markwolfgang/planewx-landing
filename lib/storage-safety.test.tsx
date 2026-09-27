@@ -1,6 +1,7 @@
 /**
  * @vitest-environment jsdom
  */
+import { cleanup, render, screen } from "@testing-library/react"
 import { afterEach, describe, expect, it, vi } from "vitest"
 import {
   getLocalStorage,
@@ -8,9 +9,11 @@ import {
   readCookiePrefs,
   writeCookiePrefs,
 } from "./cookie-prefs"
+import { SignUpButton } from "@/components/shared/sign-up-button"
 
 describe("storage access when site data is blocked", () => {
   afterEach(() => {
+    cleanup()
     vi.unstubAllGlobals()
   })
 
@@ -51,5 +54,22 @@ describe("storage access when site data is blocked", () => {
       getItem: () => null,
     }
     expect(writeCookiePrefs({ analytics: true, marketing: false }, storage)).toBeNull()
+  })
+
+  it("SignUpButton still renders when localStorage throws", () => {
+    Object.defineProperty(window, "localStorage", {
+      configurable: true,
+      get() {
+        throw new Error("blocked")
+      },
+    })
+    expect(() =>
+      render(
+        <SignUpButton variant="a" className="btn">
+          Start free trial
+        </SignUpButton>,
+      ),
+    ).not.toThrow()
+    expect(screen.getByText("Start free trial")).toBeTruthy()
   })
 })

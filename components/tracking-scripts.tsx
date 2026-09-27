@@ -13,7 +13,6 @@ import {
   COOKIE_PREFS_STORAGE_KEY,
   getSessionStorage,
   hasValidCookieChoice,
-  parseCookiePrefs,
   readCookiePrefs,
   type CookiePrefs,
 } from "@/lib/cookie-prefs"
@@ -25,7 +24,9 @@ import {
 } from "@/lib/consent-region"
 import { resolveGaDebugOptIn, resolveTrackingLoad } from "@/lib/tracking-host"
 import {
+  applyAdsDataRedaction,
   CONSENT_DEFAULT_DENIED,
+  ensureGtagStub,
   GA_MEASUREMENT_ID,
   GOOGLE_ADS_IDS,
   GTAG_SCRIPT_DOM_ID,
@@ -35,6 +36,7 @@ import {
   signalGtagReady,
   type ActiveTrackers,
   type ConsentUpdatePayload,
+  type TrackingTransition,
 } from "@/lib/tracking-runtime"
 
 declare global {
@@ -51,7 +53,7 @@ function emptyActive(): ActiveTrackers {
   return { ga: false, marketing: false }
 }
 
-function planToActive(prefs: CookiePrefs | null): {
+export function planToActive(prefs: CookiePrefs | null): {
   active: ActiveTrackers
   debugMode: boolean
 } {
@@ -75,23 +77,16 @@ function planToActive(prefs: CookiePrefs | null): {
   }
 }
 
-function ensureGtagStub(): void {
-  window.dataLayer = window.dataLayer || []
-  if (typeof window.gtag !== "function") {
-    window.gtag = function gtag(...args: unknown[]) {
-      window.dataLayer!.push(args)
-    }
-  }
-}
-
 function pushConsentDefault(): void {
   ensureGtagStub()
   window.gtag!("consent", "default", CONSENT_DEFAULT_DENIED)
+  applyAdsDataRedaction("denied")
 }
 
 function pushConsentUpdate(payload: ConsentUpdatePayload): void {
   ensureGtagStub()
   window.gtag!("consent", "update", payload)
+  applyAdsDataRedaction(payload.ad_storage)
 }
 
 function loadGtagJsOnce(gtagId: string): Promise<void> {
@@ -166,90 +161,158 @@ function loadMetaRedditOnce(): void {
   }
 }
 
-async function applyTransition(
+function gtagScriptPresent(): boolean {
+  return typeof document !== "undefined" && !!document.getElementById(GTAG_SCRIPT_DOM_ID)
+}
+
+/**
+ * Apply a planned transition. After awaiting gtag.js, re-reads the latest stored
+ * choice so a mid-load Essential only / Do not sell is not overwritten by a stale
+ * Accept all plan. If gtag.js is blocked, Meta and Reddit can still load.
+ */
+export async function applyTrackingTransition(
   prev: ActiveTrackers,
   next: ActiveTrackers,
   gtagLoaded: boolean,
   debugMode: boolean,
+  deps: {
+    loadGtagJs?: (gtagId: string) => Promise<void>
+    readLatest?: () => { active: ActiveTrackers; debugMode: boolean }
+  } = {},
 ): Promise<{ active: ActiveTrackers; gtagLoaded: boolean }> {
-  const transition = planTrackingTransition({
+  const loadGtagJs = deps.loadGtagJs ?? loadGtagJsOnce
+  const readLatest = deps.readLatest ?? (() => planToActive(readCookiePrefs()))
+
+  const initial: TrackingTransition = planTrackingTransition({
     prev,
     next,
     gtagAlreadyLoaded: gtagLoaded,
     debugMode,
   })
 
-  if (transition.type === "noop") {
+  if (initial.type === "noop") {
     return { active: prev, gtagLoaded }
   }
 
-  if (transition.type === "downgrade_reload") {
-    pushConsentUpdate(transition.consent)
+  if (initial.type === "downgrade_reload") {
+    pushConsentUpdate(initial.consent)
     window.location.reload()
     return { active: next, gtagLoaded }
   }
 
-  if (transition.callGtagJs) {
+  const needsJsBootstrap = initial.callGtagJs
+  let gtagAvailable = gtagLoaded
+
+  if (needsJsBootstrap) {
     pushConsentDefault()
   }
-  if (transition.ensureGtag) {
-    await loadGtagJsOnce(transition.gtagId)
-  }
-  if (transition.callGtagJs) {
-    ensureGtagStub()
-    window.gtag!("js", new Date())
-    signalGtagReady()
-  }
-  pushConsentUpdate(transition.consent)
-  if (transition.configGa) configGa(transition.debugMode)
-  if (transition.configAds) configAds()
-  if (transition.loadMetaReddit) loadMetaRedditOnce()
 
-  return { active: transition.active, gtagLoaded: true }
+  if (initial.ensureGtag) {
+    try {
+      await loadGtagJs(initial.gtagId)
+      gtagAvailable = true
+    } catch {
+      // Ad blockers can reject gtag.js; Meta/Reddit may still load below.
+      gtagAvailable = gtagScriptPresent() || gtagLoaded
+    }
+  }
+
+  // NS2: choice may have changed while gtag.js was loading.
+  const latest = readLatest()
+  let transition: TrackingTransition = planTrackingTransition({
+    prev,
+    next: latest.active,
+    gtagAlreadyLoaded: gtagAvailable,
+    debugMode: latest.debugMode,
+  })
+
+  if (transition.type === "apply" && needsJsBootstrap) {
+    transition = { ...transition, callGtagJs: true }
+  }
+
+  if (transition.type === "noop") {
+    return { active: prev, gtagLoaded: gtagAvailable }
+  }
+
+  if (transition.type === "downgrade_reload") {
+    if (gtagAvailable) {
+      pushConsentUpdate(transition.consent)
+    }
+    window.location.reload()
+    return { active: latest.active, gtagLoaded: gtagAvailable }
+  }
+
+  if (gtagAvailable) {
+    if (transition.callGtagJs) {
+      ensureGtagStub()
+      window.gtag!("js", new Date())
+    }
+    pushConsentUpdate(transition.consent)
+    if (transition.configGa) configGa(transition.debugMode)
+    if (transition.configAds) configAds()
+    // S1: fire ready after consent update and config so landing_variant_view is not lost.
+    if (transition.callGtagJs || transition.configGa || transition.configAds) {
+      signalGtagReady()
+    }
+  }
+
+  if (transition.loadMetaReddit) {
+    loadMetaRedditOnce()
+  }
+
+  return { active: transition.active, gtagLoaded: gtagAvailable }
 }
 
 export function TrackingScripts() {
   const activeRef = useRef<ActiveTrackers>(emptyActive())
   const gtagLoadedRef = useRef(false)
   const applyingRef = useRef(false)
+  const pendingRef = useRef(false)
 
   useEffect(() => {
     let cancelled = false
 
-    const sync = async (prefs?: CookiePrefs | null) => {
-      if (applyingRef.current) return
+    const sync = async () => {
+      if (applyingRef.current) {
+        pendingRef.current = true
+        return
+      }
       applyingRef.current = true
       try {
-        const resolved = prefs === undefined ? readCookiePrefs() : prefs
-        const { active: next, debugMode } = planToActive(resolved)
-        if (cancelled) return
-        const result = await applyTransition(
-          activeRef.current,
-          next,
-          gtagLoadedRef.current,
-          debugMode,
-        )
-        if (cancelled) return
-        activeRef.current = result.active
-        gtagLoadedRef.current = result.gtagLoaded
+        do {
+          pendingRef.current = false
+          const { active: next, debugMode } = planToActive(readCookiePrefs())
+          if (cancelled) return
+          const result = await applyTrackingTransition(
+            activeRef.current,
+            next,
+            gtagLoadedRef.current,
+            debugMode,
+          )
+          if (cancelled) return
+          activeRef.current = result.active
+          gtagLoadedRef.current = result.gtagLoaded
+        } while (pendingRef.current && !cancelled)
       } catch (err) {
         console.warn("[tracking-scripts] apply failed", err)
       } finally {
         applyingRef.current = false
+        if (pendingRef.current && !cancelled) {
+          pendingRef.current = false
+          void sync()
+        }
       }
     }
 
     void sync()
 
-    const onPrefs = (event: Event) => {
-      const detail = (event as CustomEvent<CookiePrefs>).detail
-      void sync(detail ?? readCookiePrefs())
+    const onPrefs = () => {
+      void sync()
     }
 
     const onStorage = (event: StorageEvent) => {
       if (event.key !== null && event.key !== COOKIE_PREFS_STORAGE_KEY) return
-      const next = parseCookiePrefs(event.newValue)
-      void sync(next)
+      void sync()
     }
 
     window.addEventListener(COOKIE_PREFS_CHANGED_EVENT, onPrefs)

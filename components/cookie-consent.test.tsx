@@ -74,7 +74,7 @@ describe("CookieConsent banner and manage dialog", () => {
     expect((screen.getByTestId("toggle-marketing") as HTMLInputElement).checked).toBe(false)
   })
 
-  it("traps focus and closes on Escape, returning focus to Manage", async () => {
+  it("traps focus with Tab wrap and closes on Escape, returning focus to Manage", async () => {
     render(<CookieConsent />)
     await screen.findByTestId("cookie-consent-banner")
     const manage = screen.getByTestId("cookie-manage-button")
@@ -83,8 +83,24 @@ describe("CookieConsent banner and manage dialog", () => {
     const panel = await screen.findByTestId("cookie-manage-panel")
     expect(panel).toBeTruthy()
 
+    const focusable = Array.from(
+      panel.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((el) => !el.hasAttribute("disabled") && el.tabIndex !== -1)
+    expect(focusable.length).toBeGreaterThan(1)
+    const first = focusable[0]
+    const last = focusable[focusable.length - 1]
+    last.focus()
+    fireEvent.keyDown(document, { key: "Tab" })
+    expect(document.activeElement).toBe(first)
+    first.focus()
+    fireEvent.keyDown(document, { key: "Tab", shiftKey: true })
+    expect(document.activeElement).toBe(last)
+
     fireEvent.keyDown(document, { key: "Escape" })
     expect(screen.queryByTestId("cookie-manage-panel")).toBeNull()
+    expect(document.activeElement).toBe(manage)
   })
 
   it("Accept all persists prefs and hides the banner", async () => {

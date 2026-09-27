@@ -64,14 +64,18 @@ export function parseConsentMode(raw: string | null | undefined): ConsentMode {
 
 /** Read region cookie set by middleware. Defaults to strict if missing. */
 export function readConsentModeFromDocument(): ConsentMode {
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined" && process.env.NODE_ENV !== "production") {
     const override = (window as Window & { __PLANWX_CONSENT_MODE__?: ConsentMode })
       .__PLANWX_CONSENT_MODE__
     if (override === "notice" || override === "strict") return override
   }
   if (typeof document === "undefined") return "strict"
-  const match = document.cookie.match(/(?:^|;\s*)pw_consent_region=([^;]*)/)
-  return parseConsentMode(match?.[1] ? decodeURIComponent(match[1]) : null)
+  try {
+    const match = document.cookie.match(/(?:^|;\s*)pw_consent_region=([^;]*)/)
+    return parseConsentMode(match?.[1] ? decodeURIComponent(match[1]) : null)
+  } catch {
+    return "strict"
+  }
 }
 
 /** Sec-GPC / navigator.globalPrivacyControl. Cookie set by middleware when header present. */
@@ -80,10 +84,9 @@ export function hasGlobalPrivacyControl(
     typeof navigator === "undefined"
       ? null
       : (navigator as Navigator & { globalPrivacyControl?: boolean }),
-  cookieSource: string | null | undefined =
-    typeof document === "undefined" ? null : document.cookie,
+  cookieSource: string | null | undefined = undefined,
 ): boolean {
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined" && process.env.NODE_ENV !== "production") {
     const override = (window as Window & { __PLANWX_GPC__?: boolean }).__PLANWX_GPC__
     if (override === true) return true
     if (override === false) {
@@ -91,7 +94,19 @@ export function hasGlobalPrivacyControl(
     }
   }
   if (nav && nav.globalPrivacyControl === true) return true
-  if (cookieSource && /(?:^|;\s*)pw_gpc=1(?:;|$)/.test(cookieSource)) return true
+  let cookie = cookieSource
+  if (cookie === undefined) {
+    if (typeof document === "undefined") {
+      cookie = null
+    } else {
+      try {
+        cookie = document.cookie
+      } catch {
+        cookie = null
+      }
+    }
+  }
+  if (cookie && /(?:^|;\s*)pw_gpc=1(?:;|$)/.test(cookie)) return true
   return false
 }
 
