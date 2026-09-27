@@ -16,7 +16,26 @@ export const META_PIXEL_ID = "1236857811920781"
 export const REDDIT_PIXEL_ID = "a2_iy53y8iesnik"
 
 export const GTAG_READY_EVENT = "planewx:gtag-ready"
+export const META_READY_EVENT = "planewx:meta-ready"
 export const GTAG_SCRIPT_DOM_ID = "planewx-gtag-js"
+
+let gtagReadyFlag = false
+let metaReadyFlag = false
+
+/** True after consent update and config (or Meta pixel init) for this page load. */
+export function isGtagReady(): boolean {
+  return gtagReadyFlag
+}
+
+export function isMetaReady(): boolean {
+  return metaReadyFlag
+}
+
+/** Test helper: reset ready flags between vitest cases. */
+export function resetTrackingReadyFlags(): void {
+  gtagReadyFlag = false
+  metaReadyFlag = false
+}
 
 export type ActiveTrackers = {
   ga: boolean
@@ -163,8 +182,19 @@ export function applyAdsDataRedaction(adStorage: "granted" | "denied"): void {
 
 export function signalGtagReady(): void {
   if (typeof window === "undefined") return
+  gtagReadyFlag = true
   try {
     window.dispatchEvent(new CustomEvent(GTAG_READY_EVENT))
+  } catch {
+    /* ignore */
+  }
+}
+
+export function signalMetaReady(): void {
+  if (typeof window === "undefined") return
+  metaReadyFlag = true
+  try {
+    window.dispatchEvent(new CustomEvent(META_READY_EVENT))
   } catch {
     /* ignore */
   }

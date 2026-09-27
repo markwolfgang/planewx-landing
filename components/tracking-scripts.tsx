@@ -34,6 +34,7 @@ import {
   REDDIT_PIXEL_ID,
   planTrackingTransition,
   signalGtagReady,
+  signalMetaReady,
   type ActiveTrackers,
   type ConsentUpdatePayload,
   type TrackingTransition,
@@ -159,6 +160,8 @@ function loadMetaRedditOnce(): void {
     window.rdt("init", REDDIT_PIXEL_ID)
     window.rdt("track", "PageVisit")
   }
+
+  signalMetaReady()
 }
 
 function gtagScriptPresent(): boolean {
@@ -231,7 +234,12 @@ export async function applyTrackingTransition(
   }
 
   if (transition.type === "noop") {
-    return { active: prev, gtagLoaded: gtagAvailable }
+    // Mid-load deny: the script tag may be in the DOM but gtag('js') never ran.
+    // Keep gtagLoaded false so a later Accept all in this tab still runs js + config.
+    return {
+      active: prev,
+      gtagLoaded: needsJsBootstrap ? false : gtagAvailable,
+    }
   }
 
   if (transition.type === "downgrade_reload") {
@@ -242,10 +250,12 @@ export async function applyTrackingTransition(
     return { active: latest.active, gtagLoaded: gtagAvailable }
   }
 
+  let jsBootstrapped = false
   if (gtagAvailable) {
     if (transition.callGtagJs) {
       ensureGtagStub()
       window.gtag!("js", new Date())
+      jsBootstrapped = true
     }
     pushConsentUpdate(transition.consent)
     if (transition.configGa) configGa(transition.debugMode)
@@ -260,7 +270,11 @@ export async function applyTrackingTransition(
     loadMetaRedditOnce()
   }
 
-  return { active: transition.active, gtagLoaded: gtagAvailable }
+  return {
+    active: transition.active,
+    // Only mark bootstrapped when gtag('js') ran, or when an earlier load already had it.
+    gtagLoaded: gtagAvailable && (jsBootstrapped || !transition.callGtagJs),
+  }
 }
 
 export function TrackingScripts() {

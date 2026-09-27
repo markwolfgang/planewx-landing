@@ -2,7 +2,12 @@
 
 import { useEffect } from "react"
 import { partnerCodeFromPathname } from "@/lib/partner-paths"
-import { GTAG_READY_EVENT } from "@/lib/tracking-runtime"
+import {
+  GTAG_READY_EVENT,
+  META_READY_EVENT,
+  isGtagReady,
+  isMetaReady,
+} from "@/lib/tracking-runtime"
 
 declare global {
   interface Window {
@@ -13,7 +18,8 @@ declare global {
 
 /**
  * Records campaign visits via POST /api/campaign-visit.
- * Fires landing_variant_view once after gtag is ready (queued if gtag loads later).
+ * Fires landing_variant_view once after gtag is ready (after js, consent update, config).
+ * Fires Meta LandingVariantView once after the Meta pixel is loaded with marketing consent.
  */
 export function VariantTracker({
   variant,
@@ -51,20 +57,34 @@ export function VariantTracker({
       }
     }
 
-    let fired = false
-    const fireVariantView = () => {
-      if (fired) return
+    let gaFired = false
+    let metaFired = false
+
+    const fireGaVariantView = () => {
+      if (gaFired) return
+      // Gate on the ready signal (after js, update, config), not on the stub alone.
+      if (!isGtagReady()) return
       if (typeof window.gtag !== "function") return
-      fired = true
+      gaFired = true
       window.gtag("event", "landing_variant_view", { variant })
-      if (typeof window.fbq === "function") {
-        window.fbq("trackCustom", "LandingVariantView", { variant })
-      }
     }
 
-    fireVariantView()
-    window.addEventListener(GTAG_READY_EVENT, fireVariantView)
-    return () => window.removeEventListener(GTAG_READY_EVENT, fireVariantView)
+    const fireMetaVariantView = () => {
+      if (metaFired) return
+      if (!isMetaReady()) return
+      if (typeof window.fbq !== "function") return
+      metaFired = true
+      window.fbq("trackCustom", "LandingVariantView", { variant })
+    }
+
+    fireGaVariantView()
+    fireMetaVariantView()
+    window.addEventListener(GTAG_READY_EVENT, fireGaVariantView)
+    window.addEventListener(META_READY_EVENT, fireMetaVariantView)
+    return () => {
+      window.removeEventListener(GTAG_READY_EVENT, fireGaVariantView)
+      window.removeEventListener(META_READY_EVENT, fireMetaVariantView)
+    }
   }, [variant, defaultCode])
 
   return null

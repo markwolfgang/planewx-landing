@@ -54,7 +54,11 @@ describe("CookieConsent banner and manage dialog", () => {
 
   afterEach(() => {
     cleanup()
-    localStorage.clear()
+    try {
+      localStorage.clear()
+    } catch {
+      /* storage may still be blocked from a prior test */
+    }
     document.documentElement.style.removeProperty(CONSENT_BANNER_H_VAR)
     document.body.style.removeProperty("padding-bottom")
     vi.unstubAllGlobals()
@@ -124,5 +128,57 @@ describe("CookieConsent banner and manage dialog", () => {
     expect(screen.queryByTestId("cookie-consent-banner")).toBeNull()
     expect(document.documentElement.style.getPropertyValue(CONSENT_BANNER_H_VAR)).toBe("")
     expect(document.body.style.paddingBottom).toBe("")
+  })
+
+  it("returns focus with preventScroll so the page does not jump to the footer", async () => {
+    const settings = document.createElement("button")
+    settings.type = "button"
+    settings.setAttribute("data-testid", "cookie-settings-link")
+    settings.textContent = "Cookie settings"
+    document.body.appendChild(settings)
+
+    const focusCalls: FocusOptions[] = []
+    const originalFocus = HTMLElement.prototype.focus
+    HTMLElement.prototype.focus = function focus(this: HTMLElement, options?: FocusOptions) {
+      if (options) focusCalls.push(options)
+      return originalFocus.call(this, options)
+    }
+
+    Object.defineProperty(window, "scrollY", { configurable: true, value: 1500, writable: true })
+    Object.defineProperty(window, "scrollX", { configurable: true, value: 0, writable: true })
+    const scrollTo = vi.fn()
+    vi.stubGlobal("scrollTo", scrollTo)
+
+    render(<CookieConsent />)
+    await screen.findByTestId("cookie-consent-banner")
+    fireEvent.click(screen.getByTestId("cookie-manage-button"))
+    await screen.findByTestId("cookie-manage-panel")
+    fireEvent.click(screen.getByTestId("manage-accept-all"))
+
+    expect(screen.queryByTestId("cookie-manage-panel")).toBeNull()
+    expect(focusCalls.some((opts) => opts.preventScroll === true)).toBe(true)
+    expect(window.scrollY).toBe(1500)
+    expect(scrollTo).not.toHaveBeenCalled()
+
+    HTMLElement.prototype.focus = originalFocus
+    settings.remove()
+  })
+
+  it("dismisses the banner in memory when storage is blocked", async () => {
+    const desc = Object.getOwnPropertyDescriptor(window, "localStorage")
+    Object.defineProperty(window, "localStorage", {
+      configurable: true,
+      get() {
+        throw new Error("blocked")
+      },
+    })
+    try {
+      render(<CookieConsent />)
+      await screen.findByTestId("cookie-consent-banner")
+      fireEvent.click(screen.getByRole("button", { name: "Accept all" }))
+      expect(screen.queryByTestId("cookie-consent-banner")).toBeNull()
+    } finally {
+      if (desc) Object.defineProperty(window, "localStorage", desc)
+    }
   })
 })

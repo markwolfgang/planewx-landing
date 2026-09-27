@@ -7,6 +7,7 @@ import {
   COOKIE_PREFS_CHANGED_EVENT,
   COOKIE_PREFS_OPEN_EVENT,
   COOKIE_PREFS_STORAGE_KEY,
+  COOKIE_PREFS_VERSION,
   effectiveCookieToggleState,
   hasValidCookieChoice,
   notifyCookiePrefsChanged,
@@ -203,7 +204,7 @@ export function CookieConsent() {
 
     const previouslyFocused = document.activeElement as HTMLElement | null
     const nodes = focusable()
-    ;(nodes[0] ?? dialog).focus()
+    ;(nodes[0] ?? dialog).focus({ preventScroll: true })
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -218,10 +219,10 @@ export function CookieConsent() {
       const last = list[list.length - 1]
       if (event.shiftKey && document.activeElement === first) {
         event.preventDefault()
-        last.focus()
+        last.focus({ preventScroll: true })
       } else if (!event.shiftKey && document.activeElement === last) {
         event.preventDefault()
-        first.focus()
+        first.focus({ preventScroll: true })
       }
     }
 
@@ -230,7 +231,7 @@ export function CookieConsent() {
       document.removeEventListener("keydown", onKeyDown)
       const tryFocus = (el: HTMLElement | null | undefined) => {
         if (el && el.isConnected && typeof el.focus === "function") {
-          el.focus()
+          el.focus({ preventScroll: true })
           return true
         }
         return false
@@ -254,7 +255,21 @@ export function CookieConsent() {
       marketing: marketingValue,
     })
     if (!prefs) {
-      console.warn("[cookie-consent] failed to save prefs")
+      // Storage blocked: dismiss for this page load only. Apply the in-memory choice
+      // so tracking can run for this load; it will not persist across reloads.
+      console.warn("[cookie-consent] failed to save prefs; applying in-memory for this page load")
+      const ephemeral: CookiePrefs = {
+        version: COOKIE_PREFS_VERSION,
+        essential: true,
+        analytics: opts.analytics,
+        marketing: marketingValue,
+        updatedAt: new Date().toISOString(),
+      }
+      setAnalytics(ephemeral.analytics)
+      setMarketing(ephemeral.marketing)
+      setShowBanner(false)
+      setShowModal(false)
+      notifyCookiePrefsChanged(ephemeral)
       return
     }
     setAnalytics(prefs.analytics)
