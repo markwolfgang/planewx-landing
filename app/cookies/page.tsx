@@ -31,15 +31,12 @@ export default function CookiesPage() {
         <Section title="What We Use">
           <ul className="list-disc space-y-2 pl-6 text-sm leading-relaxed text-white/70">
             <li>Essential cookies for authentication, session continuity, security, and remembering your cookie choice.</li>
-            <li>Preference cookies to remember settings (theme, recent routes) where applicable.</li>
             <li>
-              Analytics (Google Analytics <code className="text-sky-300">G-FKM0TMPH4M</code> and Vercel Analytics)
-              only after you allow Analytics. This helps us understand usage to improve PlaneWX.
+              Analytics (Google Analytics and Vercel Analytics) only after you allow Analytics. This helps us
+              understand usage to improve PlaneWX.
             </li>
             <li>
-              Marketing measurement only after you allow Marketing: Google Ads (
-              <code className="text-sky-300">AW-18011683791</code>,{" "}
-              <code className="text-sky-300">AW-18016407179</code>), Meta Pixel, and Reddit Pixel.
+              Marketing measurement only after you allow Marketing: Google Ads, Meta Pixel, and Reddit Pixel.
             </li>
             <li>
               Analytics and marketing tags load only on production hostnames{" "}
@@ -48,7 +45,7 @@ export default function CookiesPage() {
               (except a deliberate GA DebugView opt-in with <code className="text-sky-300">?ga_debug=1</code>).
             </li>
             <li>
-              Embedded third-party. YouTube videos use a click-to-load player on youtube-nocookie.com. The video
+              Embedded videos: YouTube videos use a click-to-load player on youtube-nocookie.com. The video
               contacts YouTube only after you press play.
             </li>
           </ul>

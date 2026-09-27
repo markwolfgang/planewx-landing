@@ -130,8 +130,9 @@ export default function PrivacyPolicyPage() {
               <li>Analytics loads Google Analytics and Vercel Analytics only after you allow Analytics.</li>
               <li>Marketing loads Google Ads, Meta Pixel, and Reddit Pixel only after you allow Marketing.</li>
               <li>
-                Global Privacy Control keeps Marketing off. Do not sell or share turns Marketing off and keeps your
-                existing Analytics choice (or leaves Analytics off if you have not chosen yet).
+                When your browser sends Global Privacy Control (GPC), we keep Marketing off. Do not sell or share turns
+                Marketing off and keeps your existing Analytics choice (or leaves Analytics off if you have not chosen
+                yet).
               </li>
               <li>
                 On this marketing site those tags run only on{" "}
@@ -139,7 +140,7 @@ export default function PrivacyPolicyPage() {
                 <code className="text-sky-300">planewx.ai</code>.
               </li>
               <li>
-                <strong className="text-white">Embedded third-party:</strong> YouTube embeds use
+                <strong className="text-white">Embedded videos:</strong> YouTube videos use a click-to-load player on
                 youtube-nocookie.com and load only after you press play.
               </li>
             </ul>
