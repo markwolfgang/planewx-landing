@@ -13,6 +13,7 @@ import { TestimonialsCarousel } from "@/components/shared/testimonials-carousel"
 import { PartnerBadges } from "@/components/shared/partner-badges"
 import { HomepagePartnerLogos } from "@/components/shared/homepage-partner-logos"
 import { PricingSection } from "@/components/shared/pricing-section"
+import { LandingVariantANav } from "@/components/landing-variant-a-nav"
 import { OshHomeCard } from "@/components/osh-home-card"
 import {
   ArrowRight,
@@ -81,55 +82,7 @@ export function LandingPageV3() {
         <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[80px]" />
       </div>
 
-      {/* ── NAV ────────────────────────────────────────────────────────────────── */}
-      <nav className="sticky top-0 z-10 border-b border-white/5 bg-[#0a0f1a]/80 backdrop-blur-md">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <BrandLogo className="h-9 w-auto" priority />
-            <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
-              The Pilot's Decision Support System
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
-              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
-            >
-              How It Works
-            </button>
-            <button
-              onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
-              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Pricing
-            </button>
-            <a href="/about" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
-              About
-            </a>
-            <a href="/news" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
-              News
-            </a>
-            <a href="/research/turbulence-safety" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
-              Research
-            </a>
-            <a href="https://app.planewx.ai" className="text-sm text-white/60 hover:text-white transition-colors">
-              Log In
-            </a>
-            <a
-              href={signUpUrl}
-              className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
-            >
-              Start Free 14-Day Trial
-            </a>
-          </div>
-        </div>
-      </nav>
+      <LandingVariantANav variant="v3" />
 
       <OshHomeCard />
 

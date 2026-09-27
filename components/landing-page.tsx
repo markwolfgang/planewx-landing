@@ -7,6 +7,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { PricingSection } from "@/components/shared/pricing-section"
+import { LandingVariantANav } from "@/components/landing-variant-a-nav"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { 
   Plane, 
@@ -154,51 +155,7 @@ export function LandingPage() {
         <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[80px]" />
       </div>
 
-      {/* Navigation */}
-      <nav className="relative z-10 border-b border-white/5">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <BrandLogo className="h-9 w-auto" priority />
-            <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-2">The Pilot's Decision Support System</span>
-          </div>
-          <div className="flex items-center gap-3 sm:gap-4">
-            <button 
-              onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Features
-            </button>
-            <button 
-              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Pricing
-            </button>
-            <button 
-              onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Testimonials
-            </button>
-            <a href="/about" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
-            <a href="/news" className="text-sm text-white/60 hover:text-white transition-colors">
-              News
-            </a>
-            <a href="/research/turbulence-safety" className="text-sm text-white/60 hover:text-white transition-colors">
-              Research
-            </a>
-            <a href="https://app.planewx.ai" className="text-sm text-white/60 hover:text-white transition-colors">
-              Log In
-            </a>
-            <a 
-              href={signUpUrl}
-              className="hidden sm:inline-flex items-center justify-center rounded-md text-xs font-medium h-9 px-3 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
-            >
-              Get Started Free
-            </a>
-          </div>
-        </div>
-      </nav>
+      <LandingVariantANav variant="v2" />
 
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 px-4">
