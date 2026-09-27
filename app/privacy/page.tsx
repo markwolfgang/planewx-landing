@@ -140,8 +140,8 @@ export default function PrivacyPolicyPage() {
                 <code className="text-sky-300">planewx.ai</code>.
               </li>
               <li>
-                <strong className="text-white">Embedded videos:</strong> YouTube videos use a click-to-load player on
-                youtube-nocookie.com and load only after you press play.
+                <strong className="text-white">Embedded videos:</strong> YouTube videos use youtube-nocookie.com and
+                load only after you press play.
               </li>
             </ul>
           </div>
