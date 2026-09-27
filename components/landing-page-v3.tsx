@@ -709,7 +709,7 @@ export function LandingPageV3() {
         </div>
       </section>
 
-      <PricingSection />
+      <PricingSection variant="v3" />
 
       {/* ── FAQ ────────────────────────────────────────────────────────────────── */}
       <section className="relative py-16 sm:py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">

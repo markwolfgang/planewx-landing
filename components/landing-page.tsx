@@ -976,7 +976,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <PricingSection />
+      <PricingSection variant="v2" />
 
       {/* Get Started CTA Section */}
       <section id="get-started" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
