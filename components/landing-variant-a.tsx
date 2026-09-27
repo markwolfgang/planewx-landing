@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { BrandLogo } from "@/components/shared/brand-logo"
 import {
   ArrowRight,
   Check,
@@ -38,6 +37,7 @@ import {
 } from "./shared"
 import { HomepagePartnerLogos } from "@/components/shared/homepage-partner-logos"
 import { YouTubeFacade } from "./shared/youtube-facade"
+import { LandingVariantANav } from "./landing-variant-a-nav"
 
 const VARIANT = "a"
 
@@ -71,58 +71,7 @@ export function LandingVariantA() {
       />
 
       {/* NAV */}
-      <nav className="relative z-10 border-b border-white/5">
-        <div className="container mx-auto pl-4 pr-5 sm:px-4 py-4 flex items-center justify-between gap-3 sm:gap-4">
-          <div className="flex items-center gap-3 min-w-0">
-            <BrandLogo className="h-5 min-[390px]:h-6 sm:h-9 w-auto max-w-none shrink-0" priority />
-            <span className="hidden xl:inline text-xs text-white/40 font-medium tracking-wide ml-1 whitespace-nowrap">
-              The Pilot&apos;s Decision Support System
-            </span>
-          </div>
-          <div className="flex items-center gap-3 sm:gap-4 min-w-0 shrink">
-            <a
-              href="#how-it-works"
-              className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap"
-            >
-              How It Works
-            </a>
-            <a
-              href="#features"
-              className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap"
-            >
-              Features
-            </a>
-            <a
-              href="#pricing"
-              className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap"
-            >
-              Pricing
-            </a>
-            <a href="/about" className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap">
-              About
-            </a>
-            <a href="/news" className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap">
-              News
-            </a>
-            <a href="/research/turbulence-safety" className="hidden lg:inline text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap">
-              Research
-            </a>
-            <SignUpButton
-              variant={VARIANT}
-              path="/"
-              className="text-sm text-white/60 hover:text-white transition-colors whitespace-nowrap shrink-0"
-            >
-              Log In
-            </SignUpButton>
-            <SignUpButton
-              variant={VARIANT}
-              className="inline-flex items-center justify-center rounded-md text-xs font-semibold px-3 py-1.5 sm:h-9 sm:px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors whitespace-nowrap shrink-0"
-            >
-              Start Free 14-Day Trial
-            </SignUpButton>
-          </div>
-        </div>
-      </nav>
+      <LandingVariantANav variant={VARIANT} />
 
       {/* HERO */}
       <section className="relative pt-24 pb-20 px-4">

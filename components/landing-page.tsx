@@ -6,6 +6,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { BrandLogo } from "@/components/shared/brand-logo"
+import { PricingSection } from "@/components/shared/pricing-section"
+import { LandingVariantANav } from "@/components/landing-variant-a-nav"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { 
   Plane, 
@@ -35,7 +37,6 @@ import {
   RefreshCw,
   ChevronDown,
   Globe,
-  Crown,
   Minus,
   Plus,
   HeartHandshake,
@@ -154,51 +155,7 @@ export function LandingPage() {
         <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[80px]" />
       </div>
 
-      {/* Navigation */}
-      <nav className="relative z-10 border-b border-white/5">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <BrandLogo className="h-9 w-auto" priority />
-            <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-2">Weather Intelligence for Pilots</span>
-          </div>
-          <div className="flex items-center gap-3 sm:gap-4">
-            <button 
-              onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Features
-            </button>
-            <button 
-              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Pricing
-            </button>
-            <button 
-              onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Testimonials
-            </button>
-            <a href="/about" className="text-sm text-white/60 hover:text-white transition-colors">About</a>
-            <a href="/news" className="text-sm text-white/60 hover:text-white transition-colors">
-              News
-            </a>
-            <a href="/research/turbulence-safety" className="text-sm text-white/60 hover:text-white transition-colors">
-              Research
-            </a>
-            <a href="https://app.planewx.ai" className="text-sm text-white/60 hover:text-white transition-colors">
-              Log In
-            </a>
-            <a 
-              href={signUpUrl}
-              className="hidden sm:inline-flex items-center justify-center rounded-md text-xs font-medium h-9 px-3 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
-            >
-              Get Started Free
-            </a>
-          </div>
-        </div>
-      </nav>
+      <LandingVariantANav variant="v2" />
 
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 px-4">
@@ -207,7 +164,7 @@ export function LandingPage() {
             {/* Logo */}
             <div className="flex flex-col items-center gap-2">
               <BrandLogo className="h-14 w-auto md:h-20" priority />
-              <span className="text-sm md:text-base text-white/40 font-medium tracking-widest uppercase">Weather Intelligence for Pilots</span>
+              <span className="text-sm md:text-base text-white/40 font-medium tracking-widest uppercase">The Pilot's Decision Support System</span>
             </div>
             
             {/* Badge */}
@@ -218,16 +175,14 @@ export function LandingPage() {
             
             {/* Main headline */}
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]">
-              <span className="text-white">The confidence to</span>{" "}
-              <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">go</span>
-              <br />
-              <span className="text-white">or the courage to</span>{" "}
-              <span className="bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 bg-clip-text text-transparent">stay</span>
+              <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                Fly like it&apos;s your job.
+              </span>
             </h1>
             
             {/* Subheadline - Safety focused */}
             <p className="text-xl md:text-2xl text-white/60 max-w-3xl mx-auto leading-relaxed">
-              Know if your flight will happen <strong className="text-white/80">days in advance</strong>—before 
+              Know if your flight will happen <strong className="text-white/80">days in advance</strong>, before 
               you're at the airport with bags packed, facing pressure to fly in conditions you shouldn't.
             </p>
             
@@ -235,7 +190,7 @@ export function LandingPage() {
             <div className="max-w-2xl mx-auto p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
               <p className="text-sm text-amber-200">
                 <strong className="text-amber-100">The safest decision is the one made early.</strong> PlaneWX gives you 
-                weather intelligence up to 14 days out, so you never face a last-minute go/no-go under pressure.
+                weather intelligence up to 14 days out, so you never face a last-minute GO / NO-GO under pressure.
               </p>
             </div>
             
@@ -259,7 +214,7 @@ export function LandingPage() {
             </div>
             
             <p className="text-sm text-white/40 pt-4">
-              14-day Pro trial — no credit card required
+              14-day Pro Plus trial. No credit card required
             </p>
           </div>
         </div>
@@ -292,11 +247,11 @@ export function LandingPage() {
               <ul className="space-y-4 text-white/70">
                 <li className="flex items-start gap-3">
                   <span className="text-rose-400 font-bold mt-1">1.</span>
-                  <span>Plans made days or weeks in advance — flights booked, hotels reserved, family waiting</span>
+                  <span>Plans made days or weeks in advance: flights booked, hotels reserved, family waiting</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-rose-400 font-bold mt-1">2.</span>
-                  <span>Weather monitored, but TAFs only go 24 hours — "we'll know the night before"</span>
+                  <span>Weather monitored, but TAFs only go 24 hours: "we'll know the night before"</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-rose-400 font-bold mt-1">3.</span>
@@ -321,23 +276,23 @@ export function LandingPage() {
               <ul className="space-y-4 text-white/70">
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">Know 7+ days out</strong> — See weather trends and WX Score before you commit</span>
+                  <span><strong className="text-white">Know 7+ days out</strong>: See weather trends and WX Score before you commit</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">40+ automatic updates</strong> — Watch conditions evolve, not scramble the night before</span>
+                  <span><strong className="text-white">40+ automatic updates</strong>: Watch conditions evolve, not scramble the night before</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">Alternative departure times</strong> — "Friday looks bad, but Thursday afternoon shows 85%"</span>
+                  <span><strong className="text-white">Alternative departure times</strong>: "Friday looks bad, but Thursday afternoon shows 85%"</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
-                  <span><strong className="text-white">Trip Watchers reduces external pressure</strong> — Stakeholders see the data, so rescheduling is shared</span>
+                  <span><strong className="text-white">Trip Watchers reduces external pressure</strong>: Stakeholders see the data, so rescheduling is shared</span>
                 </li>
               </ul>
               <p className="mt-4 text-sm text-emerald-300/70 italic">
-                The safest pilots aren't the ones who can fly in anything — they're the ones who never put themselves in that position.
+                The safest pilots aren't the ones who can fly in anything. They're the ones who never put themselves in that position.
               </p>
             </div>
           </div>
@@ -346,7 +301,7 @@ export function LandingPage() {
           <div className="p-6 rounded-2xl bg-gradient-to-r from-sky-950/50 to-indigo-950/50 border border-sky-500/20 text-center">
             <p className="text-lg text-white/80">
               <strong className="text-white">PlaneWX doesn't tell you not to fly.</strong> It gives you the information 
-              to make that decision yourself — <span className="text-sky-400">days earlier</span>, when you still have options.
+              to make that decision yourself. <span className="text-sky-400">days earlier</span>, when you still have options.
             </p>
           </div>
         </div>
@@ -366,7 +321,7 @@ export function LandingPage() {
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
               PlaneWX queries three independent weather models at multiple points along your route, 
               builds consensus with confidence scoring, and corroborates with real-world PIREPs and 
-              government advisories — giving you icing and turbulence intelligence no other tool provides.
+              government advisories, giving you icing and turbulence intelligence no other tool provides.
             </p>
           </div>
 
@@ -376,21 +331,21 @@ export function LandingPage() {
               <div className="bg-blue-500/20 rounded-lg px-3 py-1.5 inline-block mb-3">
                 <span className="text-lg font-bold text-blue-400">HRRR</span>
               </div>
-              <p className="text-sm text-white/70 font-medium">3 km • Hourly • 0–18h</p>
+              <p className="text-sm text-white/70 font-medium">3 km • Hourly • 0-18h</p>
               <p className="text-xs text-white/40 mt-1">NOAA high-resolution</p>
             </div>
             <div className="p-5 rounded-2xl bg-purple-500/5 border border-purple-500/20 text-center">
               <div className="bg-purple-500/20 rounded-lg px-3 py-1.5 inline-block mb-3">
                 <span className="text-lg font-bold text-purple-400">GFS</span>
               </div>
-              <p className="text-sm text-white/70 font-medium">~13 km • 4×/day • 0–16 days</p>
+              <p className="text-sm text-white/70 font-medium">~13 km • 4×/day • 0-16 days</p>
               <p className="text-xs text-white/40 mt-1">NOAA global model</p>
             </div>
             <div className="p-5 rounded-2xl bg-amber-500/5 border border-amber-500/20 text-center">
               <div className="bg-amber-500/20 rounded-lg px-3 py-1.5 inline-block mb-3">
                 <span className="text-lg font-bold text-amber-400">ECMWF</span>
               </div>
-              <p className="text-sm text-white/70 font-medium">~9 km • 4×/day • 0–10 days</p>
+              <p className="text-sm text-white/70 font-medium">~9 km • 4×/day • 0-10 days</p>
               <p className="text-xs text-white/40 mt-1">World&rsquo;s most accurate global model</p>
             </div>
           </div>
@@ -398,7 +353,7 @@ export function LandingPage() {
           {/* Stats Row */}
           <div className="grid grid-cols-3 gap-4 mb-8 p-6 rounded-2xl bg-white/5 border border-white/10">
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-sky-400">3–7</p>
+              <p className="text-3xl md:text-4xl font-bold text-sky-400">3-7</p>
               <p className="text-xs text-white/50 mt-1">Sample points along your route</p>
             </div>
             <div className="text-center">
@@ -423,11 +378,11 @@ export function LandingPage() {
               <ul className="space-y-2 text-sm text-white/60">
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
-                  <span>Layer boundaries — exact entry/exit altitudes</span>
+                  <span>Layer boundaries: exact entry/exit altitudes</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
-                  <span>Ice type prediction — clear, rime, or mixed</span>
+                  <span>Ice type prediction: clear, rime, or mixed</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
@@ -435,7 +390,7 @@ export function LandingPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
-                  <span>Total exposure — climb, cruise, descent minutes</span>
+                  <span>Total exposure: climb, cruise, descent minutes</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
@@ -453,7 +408,7 @@ export function LandingPage() {
               <ul className="space-y-2 text-sm text-white/60">
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
-                  <span>Physics-based — vertical wind shear + Richardson number</span>
+                  <span>Physics-based: vertical wind shear + Richardson number</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-amber-400 mt-0.5 shrink-0" />
@@ -511,7 +466,7 @@ export function LandingPage() {
               <ul className="space-y-2 text-sm text-white/50">
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
-                  <span>Per-model columns — see each model&rsquo;s assessment</span>
+                  <span>Per-model columns: see each model&rsquo;s assessment</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
@@ -540,7 +495,7 @@ export function LandingPage() {
             <div className="p-4 rounded-xl bg-orange-500/10 border border-orange-500/20 text-center">
               <p className="text-orange-400 font-bold mb-0.5">LOW</p>
               <p className="text-xs text-orange-400/60">Split</p>
-              <p className="text-xs text-white/40 mt-1">Models disagree — plan conservatively</p>
+              <p className="text-xs text-white/40 mt-1">Models disagree. Plan conservatively</p>
             </div>
           </div>
 
@@ -582,13 +537,13 @@ export function LandingPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-3">Personalized WX Score</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
-                  A clear 0-100% metric calculated against <em>your</em> personal minimums—not generic VFR/IFR categories. 
+                  A clear 0-100% metric calculated against <em>your</em> personal minimums, not generic VFR/IFR categories. 
                   Each aircraft you fly gets its own tailored minimums.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-emerald-400" />
-                    Ceiling, visibility, and crosswind limits — your numbers
+                    Ceiling, visibility, and crosswind limits: your numbers
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-emerald-400" />
@@ -626,14 +581,14 @@ export function LandingPage() {
                       <span className="text-lg">🍔</span>
                       <span>"I Just Want to Fly"</span>
                     </div>
-                    <p className="text-xs text-white/50">Flexible destination and timing—weather picks when and where</p>
+                    <p className="text-xs text-white/50">Flexible destination and timing, you can compare when and where</p>
                   </div>
                   <div className="p-3 rounded-xl bg-white/5 border border-white/10">
                     <div className="flex items-center gap-2 font-medium text-sm mb-1">
                       <span className="text-lg">💼</span>
                       <span>"I Need to Be Somewhere"</span>
                     </div>
-                    <p className="text-xs text-white/50">Fixed obligation—we find the safest departure window</p>
+                    <p className="text-xs text-white/50">Fixed obligation, you can compare departure windows</p>
                   </div>
                 </div>
               </div>
@@ -682,7 +637,7 @@ export function LandingPage() {
                 <h3 className="text-2xl font-bold mb-3">Trip Watchers</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
                   The FAA identifies external pressure as a leading cause of GA accidents. Trip Watchers 
-                  reduces that pressure by keeping stakeholders informed — so rescheduling is a shared decision, not a confrontation.
+                  reduces that pressure by keeping stakeholders informed, so rescheduling is a shared decision, not a confrontation.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-center gap-2">
@@ -691,7 +646,7 @@ export function LandingPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-amber-400" />
-                    Alerts when conditions deteriorate — days in advance
+                    Alerts when conditions deteriorate days in advance
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-amber-400" />
@@ -746,7 +701,7 @@ export function LandingPage() {
                 <h3 className="text-2xl font-bold mb-3">Corridor Watch</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
                   Route-specific weather intelligence along your flight path. See conditions at departure, 
-                  en route waypoints, and arrival — all in one view.
+                  en route waypoints, and arrival, all in one view.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-center gap-2">
@@ -777,8 +732,8 @@ export function LandingPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-3">Ask a Mentor</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
-                  Connect with experienced pilots for go/no-go decision support. Unlike a phone call to a friend, 
-                  your mentor sees your full briefing — WX Score, personal minimums, aircraft profile — so advice is grounded in shared data, not guesswork.
+                  Connect with experienced pilots for GO / NO-GO decision support. Unlike a phone call to a friend,
+                  your mentor sees your full briefing (WX Score, personal minimums, and aircraft profile), so advice is grounded in shared data, not guesswork.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-center gap-2">
@@ -787,7 +742,7 @@ export function LandingPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-teal-400" />
-                    Mentor sees your full briefing — shared context, not verbal descriptions
+                    Mentor sees your full briefing: shared context, not verbal descriptions
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-teal-400" />
@@ -799,7 +754,7 @@ export function LandingPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-teal-400" />
-                    Community-rated mentors — the best rise to the top
+                    Community-rated mentors: the best rise to the top
                   </li>
                 </ul>
               </div>
@@ -817,7 +772,7 @@ export function LandingPage() {
                 </div>
                 <h3 className="text-2xl font-bold mb-3">Become a Mentor</h3>
                 <p className="text-white/60 mb-4 leading-relaxed">
-                  Experienced pilots already help strangers with go/no-go calls — on forums, in hangars, over the phone. 
+                  Experienced pilots already help strangers with GO / NO-GO calls on forums, in hangars, over the phone. 
                   PlaneWX formalizes it with shared briefing context, aircraft-type matching, and community ratings.
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
@@ -831,7 +786,7 @@ export function LandingPage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-indigo-400" />
-                    Conversations happen off-platform — phone, text, WhatsApp
+                    Conversations happen off-platform: phone, text, WhatsApp
                   </li>
                   <li className="flex items-center gap-2">
                     <Check className="h-4 w-4 text-indigo-400" />
@@ -851,8 +806,7 @@ export function LandingPage() {
               <div>
                 <h3 className="text-xl font-semibold mb-2">Your Minimums. Your Aircraft. Your Analysis.</h3>
                 <p className="text-white/60 text-sm mb-4">
-                  PlaneWX doesn&apos;t use generic VFR/IFR thresholds. Every briefing is analyzed against YOUR personal minimums — 
-                  and they can be different for each aircraft you fly.
+                  PlaneWX doesn&apos;t use generic VFR/IFR thresholds. Every briefing is analyzed against YOUR personal minimums, and they can be different for each aircraft you fly.
                 </p>
                 <div className="grid sm:grid-cols-2 gap-3 text-sm">
                   <div className="flex items-center gap-2">
@@ -881,7 +835,7 @@ export function LandingPage() {
                   </div>
                 </div>
                 <p className="text-xs text-violet-300/70 mt-3">
-                  All minimums are set per aircraft — because your limits in a well-equipped SR22T are different from a rental 172.
+                  All minimums are set per aircraft, because your limits in a well-equipped SR22T are different from a rental 172.
                 </p>
               </div>
             </div>
@@ -920,7 +874,7 @@ export function LandingPage() {
           <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
             <YouTubeFacade
               videoId="qu7ppznhcGM"
-              title="Pilots: Meet PlaneWX — The AI Tool That Scores Your Flight Risk"
+              title="Pilots: Meet PlaneWX. The AI Tool That Scores Your Flight Risk"
               className="rounded-2xl shadow-2xl shadow-black/50"
             />
           </div>
@@ -979,168 +933,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="relative py-24 px-4">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Simple, <span className="text-sky-400">Transparent</span> Pricing
-            </h2>
-            <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              Start with a 14-day Pro trial. No credit card required. Cancel anytime.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Free Tier */}
-            <div className="relative p-8 rounded-3xl bg-white/5 border border-white/10">
-              <div className="mb-6">
-                <h3 className="text-xl font-bold mb-1">Free</h3>
-                <p className="text-white/50 text-sm">For students and occasional flyers</p>
-              </div>
-              <div className="mb-6">
-                <span className="text-4xl font-bold">$0</span>
-                <span className="text-white/40 ml-1">/forever</span>
-              </div>
-              <a
-                href={signUpUrl}
-                className="inline-flex items-center justify-center rounded-md w-full py-3 text-sm font-semibold border border-white/20 text-white hover:bg-white/5 transition-colors mb-8"
-              >
-                Get Started
-              </a>
-              <div className="space-y-3 text-sm">
-                <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">What&apos;s included</p>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70">2 monitored / 2 saved flights</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70">1 aircraft profile</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70">Synoptic Intelligence™</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70">Full WX Score breakdown</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70">Per-aircraft personal minimums</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70">PAVE Risk Assessment</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70">14-day planning horizon</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70">Trip Planner</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Need Help Now</strong> — broadcast to volunteer mentors</span>
-                </div>
-                <div className="flex items-center gap-3 pt-2 border-t border-white/5">
-                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
-                  <span className="text-white/30">No auto-refresh</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
-                  <span className="text-white/30">No email alerts</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
-                  <span className="text-white/30">No Trip Watchers</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
-                  <span className="text-white/30">No Corridor Watch</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
-                  <span className="text-white/30">No Multi-City Optimizer</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Minus className="h-4 w-4 text-white/20 shrink-0" />
-                  <span className="text-white/30">No Browse Mentors</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Pro Tier */}
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border-2 border-sky-500/40 shadow-lg shadow-sky-500/10">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-sky-500 text-white text-xs font-semibold">
-                  <Crown className="h-3 w-3" />
-                  Most Popular
-                </div>
-              </div>
-              <div className="mb-6">
-                <h3 className="text-xl font-bold mb-1">Pro</h3>
-                <p className="text-white/50 text-sm">For active GA pilots</p>
-              </div>
-              <div className="mb-2">
-                <span className="text-4xl font-bold">$14.99</span>
-                <span className="text-white/40 ml-1">/month</span>
-              </div>
-              <p className="text-sm text-sky-400 mb-6">
-                or $119/year <span className="text-emerald-400 font-medium">(4 months free)</span>
-              </p>
-              <a
-                href={signUpUrl}
-                className="inline-flex items-center justify-center rounded-md w-full py-3 text-sm font-semibold bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white shadow-lg shadow-sky-500/25 transition-colors mb-8"
-              >
-                Start 14-Day Free Trial
-              </a>
-              <div className="space-y-3 text-sm">
-                <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-4">Everything in Free, plus</p>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
-                  <span className="text-white/70">10 monitored / 100 saved flights</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
-                  <span className="text-white/70">5 aircraft profiles</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Auto-refresh</strong> — briefings update automatically</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Email alerts</strong> — weather changes sent to your inbox</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Trip Watchers</strong> — share live trip status</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Corridor Watch</strong> — route-specific weather monitoring</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Multi-City Optimizer</strong> — up to 6 destinations</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Check className="h-4 w-4 text-sky-400 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Browse Mentors</strong> — find and connect with experienced pilots</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <p className="text-center text-sm text-white/40 mt-8">
-            All plans include Synoptic Intelligence™, PAVE Risk Assessment, Mentor Broadcast, and 14-day planning. No credit card required to start.
-          </p>
-        </div>
-      </section>
+      <PricingSection variant="v2" />
 
       {/* Get Started CTA Section */}
       <section id="get-started" className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">
@@ -1149,7 +942,7 @@ export function LandingPage() {
             Ready to Fly <span className="text-sky-400">Smarter</span>?
           </h2>
           <p className="text-lg text-white/60 mb-8 max-w-xl mx-auto">
-            Create your free account and start your 14-day Pro trial. No credit card required.
+            Create your free account and start your 14-day Pro Plus trial. No credit card required.
           </p>
           <a 
             href={signUpUrl}
@@ -1187,7 +980,7 @@ export function LandingPage() {
               Your Briefing <span className="text-emerald-400">Evolves</span> With the Weather
             </h2>
             <p className="text-lg text-white/60 max-w-3xl mx-auto">
-              Plan a trip 14 days out? We&apos;ll update your briefing <strong className="text-white">40+ times</strong> before departure — 
+              Plan a trip 14 days out? We&apos;ll update your briefing <strong className="text-white">40+ times</strong> before departure,
               automatically, every time new weather products are issued.
             </p>
           </div>
@@ -1308,7 +1101,7 @@ export function LandingPage() {
               <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-900/50 to-emerald-950/50 border border-emerald-500/30 relative">
                 <div className="absolute -top-3 left-4 px-2 py-0.5 rounded bg-emerald-600 text-xs font-medium text-white">Final 6h</div>
                 <div className="text-2xl font-bold text-emerald-400 mb-2">~95%+</div>
-                <div className="text-sm font-medium mb-3 text-white/80">Go/No-Go Ready</div>
+                <div className="text-sm font-medium mb-3 text-white/80">GO / NO-GO Ready</div>
                 <ul className="space-y-1.5 text-xs text-white/50">
                   <li className="flex items-center gap-1.5">
                     <span className="w-1 h-1 rounded-full bg-emerald-400" />
@@ -1378,7 +1171,7 @@ export function LandingPage() {
                 </div>
               </div>
               <p className="text-xs text-white/40 mt-4">
-                Each briefing includes Regional Weather for <strong className="text-white/60">origin</strong>, <strong className="text-white/60">en-route</strong>, and <strong className="text-white/60">destination</strong> — 
+                Each briefing includes Regional Weather for <strong className="text-white/60">origin</strong>, <strong className="text-white/60">en-route</strong>, and <strong className="text-white/60">destination</strong>,
                 synthesized from NWS forecaster narratives via Synoptic Intelligence™.
               </p>
             </div>
@@ -1394,20 +1187,20 @@ export function LandingPage() {
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">WX Score changes</strong> — up or down, you&apos;ll know immediately</span>
+                  <span className="text-white/70"><strong className="text-white">WX Score changes</strong>: up or down, you&apos;ll know immediately</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">New hazards appear</strong> — convection, icing, turbulence alerts</span>
+                  <span className="text-white/70"><strong className="text-white">New hazards appear</strong>: convection, icing, turbulence alerts</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-sky-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Trip milestones</strong> — 7 days, 3 days, 24h, departure reminders</span>
+                  <span className="text-white/70"><strong className="text-white">Trip milestones</strong>: 7 days, 3 days, 24h, departure reminders</span>
                 </div>
               </div>
               <div className="mt-4 p-3 rounded-lg bg-sky-500/10 border border-sky-500/20">
                 <p className="text-xs text-sky-300">
-                  💡 Your Trip Watchers get the same alerts — so the conversation about rescheduling starts early, not at the airport.
+                  💡 Your Trip Watchers get the same alerts, so the conversation about rescheduling starts early, not at the airport.
                 </p>
               </div>
             </div>
@@ -1427,7 +1220,7 @@ export function LandingPage() {
               How PlaneWX Uses <span className="text-indigo-400">AI</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              AI that synthesizes and explains — not AI that decides for you.
+              AI that synthesizes and explains, not AI that decides for you.
             </p>
           </div>
 
@@ -1441,31 +1234,31 @@ export function LandingPage() {
               <ul className="space-y-3 text-sm">
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Ingests & Synthesizes</strong> — METARs, TAFs, NBM, GFS MOS, AFDs, PIREPs, AIRMETs, SIGMETs, and more into unified intelligence</span>
+                  <span className="text-white/70"><strong className="text-white">Ingests & Synthesizes</strong>: METARs, TAFs, NBM, GFS MOS, AFDs, PIREPs, AIRMETs, SIGMETs, and more into unified intelligence</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Extends Your Horizon</strong> — Reliable forecasts from 14 days out to imminent departure</span>
+                  <span className="text-white/70"><strong className="text-white">Extends Your Horizon</strong>: Reliable forecasts from 14 days out to imminent departure</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Auto-Refreshes</strong> — 40+ updates as new products are issued, without you lifting a finger</span>
+                  <span className="text-white/70"><strong className="text-white">Auto-Refreshes</strong>: 40+ updates as new products are issued, without you lifting a finger</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Powers Synoptic Intelligence™</strong> — Synthesizes NWS forecaster narratives into regional summaries</span>
+                  <span className="text-white/70"><strong className="text-white">Powers Synoptic Intelligence™</strong>: Synthesizes NWS forecaster narratives into regional summaries</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Suggests Alternatives</strong> — Better departure times and routing options when conditions are marginal</span>
+                  <span className="text-white/70"><strong className="text-white">Surfaces Alternatives</strong>: Better departure times and routing options when conditions are marginal. You decide.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Knows Your Aircraft</strong> — FIKI, TAS, equipment, service ceiling — all factored in</span>
+                  <span className="text-white/70"><strong className="text-white">Knows Your Aircraft</strong>: FIKI, TAS, equipment, service ceiling, all factored in</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="h-4 w-4 text-indigo-400 mt-0.5 shrink-0" />
-                  <span className="text-white/70"><strong className="text-white">Integrates PAVE</strong> — Risk assessment pre-filled from your trip context</span>
+                  <span className="text-white/70"><strong className="text-white">Integrates PAVE</strong>: Risk assessment pre-filled from your trip context</span>
                 </li>
               </ul>
             </div>
@@ -1478,11 +1271,11 @@ export function LandingPage() {
               </h3>
               <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 mb-4">
                 <p className="text-amber-200 font-medium">
-                  PlaneWX does NOT make the GO/NO-GO decision for you.
+                  PlaneWX does NOT make the GO / NO-GO decision for you.
                 </p>
               </div>
               <p className="text-white/60 text-sm mb-4">
-                You are the pilot in command. Our AI provides intelligence and analysis — you provide the judgment.
+                You are the pilot in command. Our AI provides intelligence and analysis. You provide the judgment.
               </p>
               <ul className="space-y-2 text-sm text-white/50">
                 <li className="flex items-start gap-2">
@@ -1495,7 +1288,7 @@ export function LandingPage() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-amber-400 mt-1">•</span>
-                  <span>We surface <strong className="text-white">risks and gotchas</strong> — you decide what to do about them</span>
+                  <span>We surface <strong className="text-white">risks and gotchas</strong>. You decide what to do about them</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-amber-400 mt-1">•</span>
@@ -1503,7 +1296,7 @@ export function LandingPage() {
                 </li>
               </ul>
               <p className="text-xs text-white/40 mt-4 italic">
-                Weather data sourced from federal regulatory agencies. The pilot in command always makes the final go/no-go decision.
+                Weather data sourced from federal regulatory agencies. The pilot in command always makes the final GO / NO-GO decision.
               </p>
             </div>
           </div>
@@ -1511,11 +1304,11 @@ export function LandingPage() {
           {/* Simple Summary - Safety Focus */}
           <div className="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/50 to-sky-950/50 border border-emerald-500/20 text-center">
             <p className="text-lg text-white/80 mb-3">
-              <strong className="text-white">Bottom line:</strong> PlaneWX gives you the intelligence to decide confidently — 
-              <span className="text-sky-400"> the confidence to GO</span> or <span className="text-amber-400">the courage to stay</span>.
+              <strong className="text-white">Bottom line:</strong> PlaneWX gives you the intelligence to decide confidently.
+              <span className="text-sky-400"> You make the GO / NO-GO call.</span>
             </p>
             <p className="text-sm text-white/60">
-              The safest pilots aren't the ones who can fly in anything — they're the ones who 
+              The safest pilots aren't the ones who can fly in anything. They're the ones who 
               <strong className="text-white"> never put themselves in that position</strong>. 
               PlaneWX helps you make that decision days earlier, when you still have options.
             </p>
@@ -1534,8 +1327,7 @@ export function LandingPage() {
               What is <span className="text-sky-400">Synoptic Intelligence</span>™?
             </h2>
             <p className="text-xl text-white/80 max-w-3xl mx-auto mb-4">
-              "Synoptic Intelligence captures what human forecasters know but models don't —
-              then calibrates it with what models can quantify."
+              "Synoptic Intelligence captures what human forecasters know but models don't, then calibrates it with what models can quantify."
             </p>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               <strong className="text-white">PlaneWX is the first and only AI-powered aviation weather product.</strong> No other
@@ -1555,7 +1347,7 @@ export function LandingPage() {
               <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20">
                 <div className="font-semibold text-amber-300 mb-2">MOS / NBM</div>
                 <p className="text-white/60">Quantitative out to 7+ days</p>
-                <p className="text-amber-400 font-medium mt-2">But pure model — no human reasoning</p>
+                <p className="text-amber-400 font-medium mt-2">But pure model: no human reasoning</p>
               </div>
               <div className="p-4 rounded-xl bg-sky-500/10 border border-sky-500/20">
                 <div className="font-semibold text-sky-300 mb-2">AFDs (Area Forecast Discussions)</div>
@@ -1581,7 +1373,7 @@ export function LandingPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Human Insight Synthesis</h3>
                 <p className="text-white/60 text-sm leading-relaxed">
-                  AI synthesizes expert forecaster narratives from 122 NWS offices — capturing the <em>why</em> behind weather patterns
+                  AI synthesizes expert forecaster narratives from 122 NWS offices, capturing the <em>why</em> behind weather patterns
                   that pure model data misses.
                 </p>
               </div>
@@ -1597,7 +1389,7 @@ export function LandingPage() {
                 <h3 className="text-xl font-semibold mb-2">Route-Aware Analysis</h3>
                 <p className="text-white/60 text-sm leading-relaxed">
                   Samples your flight path every 75nm to identify all weather regions along your
-                  route—not just origin and destination like traditional briefings.
+                  route, not just origin and destination like traditional briefings.
                 </p>
               </div>
             </div>
@@ -1627,7 +1419,7 @@ export function LandingPage() {
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2">
                 <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">Know 7 days out:</strong> <span className="text-white/60">See deteriorating conditions before you're committed — not the night before departure</span></span>
+                <span><strong className="text-white">Know 7 days out:</strong> <span className="text-white/60">See deteriorating conditions before you're committed, not the night before departure</span></span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-emerald-400 font-bold">→</span>
@@ -1635,7 +1427,7 @@ export function LandingPage() {
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-emerald-400 font-bold">→</span>
-                <span><strong className="text-white">Trust the numbers:</strong> <span className="text-white/60">Calibrated with objective model data — 71% accuracy at 72 hours in backtesting</span></span>
+                <span><strong className="text-white">Trust the numbers:</strong> <span className="text-white/60">Calibrated with objective model data. 71% accuracy at 72 hours in backtesting</span></span>
               </div>
               <div className="flex items-start gap-2">
                 <span className="text-emerald-400 font-bold">→</span>
@@ -1737,22 +1529,21 @@ export function LandingPage() {
                     <h3 className="text-lg font-semibold">What is Synoptic Intelligence™?</h3>
                   </div>
                   <p className="text-white/90 text-lg mb-4 italic">
-                    "Synoptic Intelligence captures what human forecasters know but models don't — 
-                    then calibrates it with what models can quantify."
+                    "Synoptic Intelligence captures what human forecasters know but models don't, then calibrates it with what models can quantify."
                   </p>
                   <p className="text-white/70 mb-4">
                     <strong className="text-white">No existing product combines human forecaster insight with quantitative data beyond 24 hours.</strong> TAFs 
-                    give you human insight — but only for 24 hours. MOS and NBM go further, but they're pure model output with no forecaster reasoning. 
+                    give you human insight, but only for 24 hours. MOS and NBM go further, but they're pure model output with no forecaster reasoning. 
                     AFDs contain 7-day human insight, but they're written for meteorologists and scattered across 122 offices.
                   </p>
                   <p className="text-white/70 mb-4">
-                    Synoptic Intelligence uses AI to synthesize AFD narratives — capturing pattern-level reasoning and uncertainty — 
+                    Synoptic Intelligence uses AI to synthesize AFD narratives, capturing pattern-level reasoning and uncertainty,
                     then calibrates with objective NBM/GFS model data to produce quantified VFR probability estimates out to 7 days.
                   </p>
                   <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
                     <p className="text-sm text-emerald-200">
                       <strong className="text-white">Why this matters for safety:</strong> You see weather trends deteriorating 
-                      <strong> days before departure</strong>, not the night before — when you still have options to delay, 
+                      <strong> days before departure</strong>, not the night before, when you still have options to delay, 
                       reschedule, or find better departure windows.
                     </p>
                   </div>
@@ -1775,7 +1566,7 @@ export function LandingPage() {
                 </div>
                   <p className="text-sm text-white/60">
                     Human-written forecaster narratives from NWS Weather Forecast Offices. 
-                    Explains <em className="text-white/80">why</em> weather is happening — fronts, pressure systems, terrain effects. 
+                    Explains <em className="text-white/80">why</em> weather is happening: fronts, pressure systems, terrain effects. 
                     Provides context that models miss.
                   </p>
               </div>
@@ -1785,7 +1576,7 @@ export function LandingPage() {
                     <span className="font-semibold">NBM Models</span>
                 </div>
                   <p className="text-sm text-white/60">
-                    NOAA&apos;s National Blend of Models — probabilistic numerical forecasts with specific percentages 
+                    NOAA&apos;s National Blend of Models: probabilistic numerical forecasts with specific percentages 
                     for IFR ceilings, low visibility, and high winds. Objective, calibrated, 72-hour coverage.
                   </p>
                 </div>
@@ -1807,27 +1598,27 @@ export function LandingPage() {
                   <CheckCircle className="h-5 w-5 text-emerald-400 mt-0.5 shrink-0" />
                   <p className="text-sm">
                     <span className="text-emerald-400 font-semibold">High confidence</span>
-                    <span className="text-white/60"> — Sources agree (within 15%). Whether they agree on good or bad conditions, you can trust this forecast.</span>
+                    <span className="text-white/60">Sources agree (within 15%). Whether they agree on good or bad conditions, you can trust this forecast.</span>
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <AlertTriangle className="h-5 w-5 text-amber-400 mt-0.5 shrink-0" />
                   <p className="text-sm">
                     <span className="text-amber-400 font-semibold">Medium confidence</span>
-                    <span className="text-white/60"> — Minor disagreement (15-30%). Worth monitoring conditions more closely.</span>
+                    <span className="text-white/60">Minor disagreement (15-30%). Worth monitoring conditions more closely.</span>
                   </p>
               </div>
                 <div className="flex items-start gap-3">
                   <XCircle className="h-5 w-5 text-rose-400 mt-0.5 shrink-0" />
                   <p className="text-sm">
                     <span className="text-rose-400 font-semibold">Low confidence</span>
-                    <span className="text-white/60"> — Significant disagreement (30%+). Dig deeper before committing — one source may be seeing something the other isn&apos;t.</span>
+                    <span className="text-white/60">Significant disagreement (30%+). Dig deeper before committing; one source may be seeing something the other isn&apos;t.</span>
                   </p>
                 </div>
               </div>
               <p className="text-xs text-white/40 mt-4 italic">
-                Note: &quot;High confidence&quot; doesn&apos;t mean good weather — it means the sources agree. 
-                A high-confidence forecast of 10% VFR is still a NO-GO.
+                Note: &quot;High confidence&quot; doesn&apos;t mean good weather. It means the sources agree. 
+                A high-confidence forecast of 10% VFR still looks unfavorable. You still make the call.
                   </p>
                 </div>
 
@@ -1838,24 +1629,24 @@ export function LandingPage() {
                 <h3 className="text-lg font-semibold">Powers Every PlaneWX Briefing</h3>
               </div>
               <p className="text-white/60 mb-4">
-                Synoptic Intelligence isn&apos;t just for this map — it&apos;s integrated into every flight briefing:
+                Synoptic Intelligence isn&apos;t just for this map. It&apos;s integrated into every flight briefing:
               </p>
               <div className="grid md:grid-cols-2 gap-3">
                 <div className="flex items-center gap-2 text-sm">
                   <ArrowRight className="h-4 w-4 text-sky-400" />
-                  <span><strong className="text-white">Route-aware</strong> <span className="text-white/60">— samples regions along your flight path</span></span>
+                  <span><strong className="text-white">Route-aware</strong> <span className="text-white/60">: samples regions along your flight path</span></span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <ArrowRight className="h-4 w-4 text-sky-400" />
-                  <span><strong className="text-white">WX Score</strong> <span className="text-white/60">— calibrated against your personal minimums</span></span>
+                  <span><strong className="text-white">WX Score</strong> <span className="text-white/60">: calibrated against your personal minimums</span></span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <ArrowRight className="h-4 w-4 text-sky-400" />
-                  <span><strong className="text-white">Alternate departures</strong> <span className="text-white/60">— uses regional trends for better timing</span></span>
+                  <span><strong className="text-white">Alternate departures</strong> <span className="text-white/60">: uses regional trends for better timing</span></span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <ArrowRight className="h-4 w-4 text-sky-400" />
-                  <span><strong className="text-white">Hazard detection</strong> <span className="text-white/60">— surfaces risks across your entire route</span></span>
+                  <span><strong className="text-white">Hazard detection</strong> <span className="text-white/60">: surfaces risks across your entire route</span></span>
                 </div>
             </div>
           </div>
@@ -1945,7 +1736,7 @@ export function LandingPage() {
               <div className="text-6xl font-bold text-emerald-400 mb-2">71%</div>
               <div className="text-lg font-medium text-white mb-2">Accuracy</div>
               <p className="text-sm text-white/60">
-                Correctly predicts &quot;VFR-legal&quot; vs &quot;IFR required&quot; — the distinction that matters most for flight planning
+                Correctly predicts &quot;VFR-legal&quot; vs &quot;IFR required&quot;: the distinction that matters most for flight planning
               </p>
             </div>
             <div className="flex-1 p-8 rounded-2xl bg-slate-900/80 border border-slate-700 text-center">
@@ -2043,19 +1834,19 @@ export function LandingPage() {
             {[
               {
                 q: "Does PlaneWX meet the requirements of 14 CFR §91.103?",
-                a: "PlaneWX provides weather information from federal regulatory agencies (NOAA, NWS, FAA) to help pilots obtain all available information before a flight. There is no regulatory requirement to obtain a briefing from any specific source — FAA Advisory Circular 91-92 endorses pilot self-briefing. The WX Score and AI analysis are decision-support tools — as pilot in command, you always make the final go/no-go decision."
+                a: "PlaneWX provides weather information from federal regulatory agencies (NOAA, NWS, FAA) to help pilots obtain all available information before a flight. There is no regulatory requirement to obtain a briefing from any specific source. FAA Advisory Circular 91-92 endorses pilot self-briefing. The WX Score and AI analysis are decision-support tools. As pilot in command, you always make the final GO / NO-GO decision."
               },
               {
-                q: "What happens after my 14-day Pro trial?",
-                a: "Your account automatically moves to the Free plan — no charge, no action needed. You keep your trips, aircraft, and settings. You can subscribe to Pro anytime to unlock auto-refresh, email alerts, Trip Watchers, Corridor Watch, and Multi-City Optimizer."
+                q: "What happens after the 14-day free trial?",
+                a: "You keep access on Free, or choose Casual, Pro, or Pro Plus. No card is required to start the trial. Plan details stay in PlaneWX Plans help (https://app.planewx.ai/help/plans)."
               },
               {
                 q: "Do I need a credit card to start?",
-                a: "No. You can create an account and start your 14-day Pro trial without entering any payment information."
+                a: "No. You can create an account and start your 14-day Pro Plus trial without entering any payment information."
               },
               {
                 q: "Can I cancel my subscription anytime?",
-                a: "Yes. You can cancel directly from your profile in the app — no emails, no phone calls. Your Pro access continues until the end of your billing period, then you move to the Free plan."
+                a: "Yes. You can cancel directly from your profile in the app. No emails, no phone calls. Your Pro access continues until the end of your billing period, then you move to the Free plan."
               },
               {
                 q: "What weather data sources does PlaneWX use?",
@@ -2063,11 +1854,11 @@ export function LandingPage() {
               },
               {
                 q: "What's the difference between Free and Pro?",
-                a: "Free gives you full-quality briefings with personal minimums, WX Scores, and PAVE — but you're limited to 2 monitored / 2 saved flights and 1 aircraft. Pro adds auto-refresh, email alerts, Trip Watchers, Corridor Watch, Multi-City Optimizer, and expands to 10 monitored / 100 saved flights and 5 aircraft."
+                a: "Free gives you full-quality briefings with personal minimums, WX Scores, and PAVE, but you're limited to 2 monitored / 2 saved flights and 1 aircraft. Casual, Pro, and Pro Plus raise limits and add automation. See the pricing section for current plan details."
               },
               {
                 q: "Is there a money-back guarantee?",
-                a: "Yes. If you subscribe to Pro and it's not right for you, contact us within 30 days for a full refund — no questions asked."
+                a: "Yes. If you subscribe to Pro and it's not right for you, contact us within 30 days for a full refund. No questions asked."
               },
             ].map((faq, i) => (
               <div
@@ -2174,7 +1965,7 @@ export function LandingPage() {
                 PlaneWX was founded in 2025 by <strong className="text-white">Mark Wolfgang</strong>, an experienced technology entrepreneur and General Aviation pilot.
               </p>
               <p>
-                After selling his Information Security consulting company in December 2022, Mark retired and bought his first airplane—a Diamond DA40 NG. He earned his Private Pilot's license in just six weeks and started flying his wife and dog around the country.
+                After selling his Information Security consulting company in December 2022, Mark retired and bought his first airplane, a Diamond DA40 NG. He earned his Private Pilot's license in just six weeks and started flying his wife and dog around the country.
               </p>
               <p>
                 After completing an accelerated IFR program in five days, Mark discovered the complexities of weather planning for instrument flying. He grew frustrated having to tell his wife, <em className="text-white/80">"Yeah, we should be good. I'll let you know after the TAF comes out tonight."</em>
@@ -2218,7 +2009,7 @@ export function LandingPage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <BrandLogo className="h-7 w-auto" />
-              <span className="text-xs text-white/30 hidden sm:inline">Weather Intelligence for Pilots</span>
+              <span className="text-xs text-white/30 hidden sm:inline">The Pilot's Decision Support System</span>
           </div>
             <p className="text-sm text-white/40">
               © {new Date().getFullYear()} PlaneWX, LLC. All rights reserved. • Patent Pending

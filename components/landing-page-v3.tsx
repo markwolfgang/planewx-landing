@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
-import Link from "next/link"
 import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
@@ -13,6 +12,8 @@ import { FlightChopsEndorsement } from "@/components/shared/flight-chops-endorse
 import { TestimonialsCarousel } from "@/components/shared/testimonials-carousel"
 import { PartnerBadges } from "@/components/shared/partner-badges"
 import { HomepagePartnerLogos } from "@/components/shared/homepage-partner-logos"
+import { PricingSection } from "@/components/shared/pricing-section"
+import { LandingVariantANav } from "@/components/landing-variant-a-nav"
 import { OshHomeCard } from "@/components/osh-home-card"
 import {
   ArrowRight,
@@ -23,16 +24,12 @@ import {
   Users,
   Clock,
   HeartHandshake,
-  Target,
   ChevronDown,
   Plane,
-  Crown,
-  Minus,
   X,
   Snowflake,
   Wind,
   Route,
-  Quote,
   ClipboardCheck,
   RotateCcw,
 } from "lucide-react"
@@ -85,55 +82,7 @@ export function LandingPageV3() {
         <div className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[80px]" />
       </div>
 
-      {/* ── NAV ────────────────────────────────────────────────────────────────── */}
-      <nav className="sticky top-0 z-10 border-b border-white/5 bg-[#0a0f1a]/80 backdrop-blur-md">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <BrandLogo className="h-9 w-auto" priority />
-            <span className="hidden md:inline text-xs text-white/40 font-medium tracking-wide ml-1">
-              The Pilot's Decision Support System
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" })}
-              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
-            >
-              How It Works
-            </button>
-            <button
-              onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
-              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-              className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors"
-            >
-              Pricing
-            </button>
-            <a href="/about" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
-              About
-            </a>
-            <a href="/news" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
-              News
-            </a>
-            <a href="/research/turbulence-safety" className="hidden sm:inline text-sm text-white/60 hover:text-white transition-colors">
-              Research
-            </a>
-            <a href="https://app.planewx.ai" className="text-sm text-white/60 hover:text-white transition-colors">
-              Log In
-            </a>
-            <a
-              href={signUpUrl}
-              className="inline-flex items-center justify-center rounded-md text-xs font-semibold h-9 px-4 bg-sky-500 hover:bg-sky-400 text-white transition-colors"
-            >
-              Start Free 14-Day Trial
-            </a>
-          </div>
-        </div>
-      </nav>
+      <LandingVariantANav variant="v3" />
 
       <OshHomeCard />
 
@@ -153,7 +102,7 @@ export function LandingPageV3() {
           </h1>
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-            Every weather tool shows you data. PlaneWX helps you make the call.
+            Weather tools show you raw data. PlaneWX shows you what matters for your flight and helps you make the call.
           </p>
 
           <p className="text-lg md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
@@ -180,7 +129,7 @@ export function LandingPageV3() {
             </button>
           </div>
 
-          <p className="text-sm text-white/30">No credit card required · Cancel anytime</p>
+          <p className="text-sm text-white/30">Brief a real trip. Run the FRAT. Make the call. Debrief. Add a mentor anytime.</p>
 
           <div className="flex items-center justify-center gap-2 mt-4 text-sm text-emerald-400/80">
             <Shield className="h-4 w-4" />
@@ -713,127 +662,7 @@ export function LandingPageV3() {
         </div>
       </section>
 
-      {/* ── PRICING ────────────────────────────────────────────────────────────── */}
-      <section id="pricing" className="relative py-16 sm:py-24 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Start with full Pro access.{" "}
-              <span className="text-sky-400">Free for 14 days.</span>
-            </h2>
-            <p className="text-white/50">No credit card required. Cancel anytime.</p>
-          </div>
-
-          <div className="max-w-2xl mx-auto text-center mb-10 p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
-            <Shield className="h-8 w-8 text-emerald-400 mx-auto mb-3" />
-            <h3 className="text-xl font-bold text-emerald-300 mb-2">
-              Safety is not a premium feature.
-            </h3>
-            <p className="text-white/60 text-sm leading-relaxed">
-              Every free briefing uses the same AI engine, the same weather models, and the same
-              scoring methodology as a Pro briefing. We limit how much you can use PlaneWX,
-              not how well it works. Paid plans unlock convenience and scale, not the
-              quality of the analysis that keeps you safe.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            {/* Free */}
-            <div className="p-5 sm:p-8 rounded-3xl bg-white/[0.03] border border-white/10">
-              <h3 className="text-xl font-bold mb-1">Free</h3>
-              <p className="text-white/40 text-sm mb-4">For students and occasional flyers</p>
-              <div className="px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 mb-6">
-                <p className="text-xs text-emerald-300 font-medium text-center">
-                  Full safety analysis, same engine as Pro
-                </p>
-              </div>
-              <div className="mb-6">
-                <span className="text-5xl font-bold">$0</span>
-                <span className="text-white/30 ml-2">/forever</span>
-              </div>
-              <a
-                href={signUpUrl}
-                className="block text-center py-3 rounded-xl border border-white/20 text-white hover:bg-white/5 transition-colors mb-8 font-medium"
-              >
-                Get Started
-              </a>
-              <div className="space-y-3 text-sm">
-                {[
-                  "2 monitored / 2 saved flights",
-                  "1 aircraft profile",
-                  "Full WX Score breakdown",
-                  "Per-aircraft personal minimums",
-                  "PAVE Risk Assessment",
-                  "14-day planning horizon",
-                  "Synoptic Intelligence™",
-                  "Need Help Now: mentor broadcast",
-                ].map((f, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <Check className="h-4 w-4 text-emerald-400 shrink-0" />
-                    <span className="text-white/60">{f}</span>
-                  </div>
-                ))}
-                <div className="pt-3 border-t border-white/5 space-y-3">
-                  {["Auto-refresh", "Email alerts", "Trip Watchers", "Corridor Watch", "Browse Mentors"].map((f, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <Minus className="h-4 w-4 text-white/20 shrink-0" />
-                      <span className="text-white/25">{f}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Pro */}
-            <div className="relative p-5 sm:p-8 rounded-3xl bg-gradient-to-br from-sky-950/50 to-indigo-950/50 border-2 border-sky-500/40 shadow-xl shadow-sky-500/10">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-sky-500 text-white text-xs font-semibold">
-                  <Crown className="h-3 w-3" />
-                  Most Popular
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-1">Pro</h3>
-              <p className="text-white/40 text-sm mb-6">For active GA pilots</p>
-              <div className="mb-2">
-                <span className="text-5xl font-bold">$14.99</span>
-                <span className="text-white/30 ml-2">/month</span>
-              </div>
-              <p className="text-sm text-sky-400 mb-6">
-                or $119/year{" "}
-                <span className="text-emerald-400 font-medium">(4 months free)</span>
-              </p>
-              <a
-                href={signUpUrl}
-                className="block text-center py-3 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white font-semibold transition-colors mb-8 shadow-lg shadow-sky-500/25"
-              >
-                Start Free 14-Day Trial
-              </a>
-              <div className="space-y-3 text-sm">
-                <p className="text-xs text-white/30 uppercase tracking-wider font-medium mb-4">Everything in Free, plus</p>
-                {[
-                  ["10 monitored / 100 saved flights", false],
-                  ["5 aircraft profiles", false],
-                  ["Auto-refresh: briefings update automatically", true],
-                  ["Email alerts: weather changes to your inbox", true],
-                  ["Trip Watchers: share live trip status", true],
-                  ["Corridor Watch: route-specific monitoring", true],
-                  ["Multi-City Optimizer: up to 6 destinations", true],
-                  ["Browse Mentors: find and connect directly", true],
-                ].map(([f, bold], i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <Check className="h-4 w-4 text-sky-400 shrink-0" />
-                    <span className={bold ? "text-white" : "text-white/70"}>{f as string}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <p className="text-center text-xs text-white/30 mt-8">
-            All plans include WX Score, PAVE Risk Assessment, Synoptic Intelligence™, mentor broadcast, and 14-day planning.
-          </p>
-        </div>
-      </section>
+      <PricingSection variant="v3" />
 
       {/* ── FAQ ────────────────────────────────────────────────────────────────── */}
       <section className="relative py-16 sm:py-24 px-4 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
