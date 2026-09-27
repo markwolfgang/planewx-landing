@@ -2,6 +2,12 @@
 
 import { useEffect } from "react"
 import { partnerCodeFromPathname } from "@/lib/partner-paths"
+import {
+  GTAG_READY_EVENT,
+  META_READY_EVENT,
+  isGtagReady,
+  isMetaReady,
+} from "@/lib/tracking-runtime"
 
 declare global {
   interface Window {
@@ -12,11 +18,8 @@ declare global {
 
 /**
  * Records campaign visits via POST /api/campaign-visit.
- * - `?ref=` wins when present (stored in localStorage for signup CTAs).
- * - Partner short links (e.g. /runway) map pathname → campaign code when
- *   middleware rewrites to the homepage funnel without changing the browser URL.
- * - Dedicated campaign landings may pass `defaultCode` so bare path visits
- *   (e.g. /ga-customs, /boldface) are still attributed without requiring ?ref=.
+ * Fires landing_variant_view once after gtag is ready (after js, consent update, config).
+ * Fires Meta LandingVariantView once after the Meta pixel is loaded with marketing consent.
  */
 export function VariantTracker({
   variant,
@@ -28,8 +31,6 @@ export function VariantTracker({
   useEffect(() => {
     const refParam = new URLSearchParams(window.location.search).get("ref")
     const pathCode = partnerCodeFromPathname(window.location.pathname)
-    // Trim ref before precedence so whitespace-only ?ref= falls through to
-    // partner path / defaultCode (e.g. /runway?ref=%20 -> RUNWAY).
     const code =
       (refParam?.trim() || pathCode || defaultCode || "").trim().toUpperCase() ||
       null
@@ -37,11 +38,10 @@ export function VariantTracker({
     if (code) {
       try {
         localStorage.setItem("planewx_referral", code)
-      } catch {}
+      } catch {
+        /* ignore */
+      }
 
-      // Fire one anonymous visit event per browser session per campaign code.
-      // sessionStorage resets on tab close, so returning visitors on a new
-      // session are counted again (intentional — each ad click = one visit).
       const sessionKey = `planewx_visit_fired_${code}`
       try {
         if (!sessionStorage.getItem(sessionKey)) {
@@ -52,14 +52,38 @@ export function VariantTracker({
             body: JSON.stringify({ code, lp: variant }),
           }).catch(() => {})
         }
-      } catch {}
+      } catch {
+        /* ignore */
+      }
     }
 
-    if (window.gtag) {
+    let gaFired = false
+    let metaFired = false
+
+    const fireGaVariantView = () => {
+      if (gaFired) return
+      // Gate on the ready signal (after js, update, config), not on the stub alone.
+      if (!isGtagReady()) return
+      if (typeof window.gtag !== "function") return
+      gaFired = true
       window.gtag("event", "landing_variant_view", { variant })
     }
-    if (window.fbq) {
+
+    const fireMetaVariantView = () => {
+      if (metaFired) return
+      if (!isMetaReady()) return
+      if (typeof window.fbq !== "function") return
+      metaFired = true
       window.fbq("trackCustom", "LandingVariantView", { variant })
+    }
+
+    fireGaVariantView()
+    fireMetaVariantView()
+    window.addEventListener(GTAG_READY_EVENT, fireGaVariantView)
+    window.addEventListener(META_READY_EVENT, fireMetaVariantView)
+    return () => {
+      window.removeEventListener(GTAG_READY_EVENT, fireGaVariantView)
+      window.removeEventListener(META_READY_EVENT, fireMetaVariantView)
     }
   }, [variant, defaultCode])
 

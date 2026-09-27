@@ -35,7 +35,7 @@ export function FounderImageModal({ hoverColor = "sky" }: Props) {
 
       {zoomed && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-[80] bg-black/90 flex items-center justify-center p-4"
           onClick={() => setZoomed(false)}
         >
           <button className="absolute top-4 right-4 text-white/60 hover:text-white">

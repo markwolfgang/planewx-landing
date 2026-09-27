@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
+import { CookiePrefsLinks } from "@/components/cookie-prefs-links"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { STATS, FAQS } from "@/components/shared/landing-data"
 import { FaqAnswerBody } from "@/components/shared/faq-answer"
@@ -841,6 +842,8 @@ export function LandingPageV3() {
             <a href="/blog" className="hover:text-white/60 transition-colors">Blog</a>
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
             <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
+            <a href="/cookies" className="hover:text-white/60 transition-colors">Cookies</a>
+            <CookiePrefsLinks className="hover:text-white/60 transition-colors" />
             <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">Contact</a>
             <span>© 2026 PlaneWX, LLC</span>
           </div>
@@ -850,7 +853,7 @@ export function LandingPageV3() {
       {/* ── ZOOM OVERLAY ───────────────────────────────────────────────────────── */}
       {zoomedImage && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-[80] bg-black/90 flex items-center justify-center p-4"
           onClick={() => setZoomedImage(null)}
         >
           <button className="absolute top-4 right-4 text-white/60 hover:text-white">

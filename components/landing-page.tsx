@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { CookiePrefsLinks } from "@/components/cookie-prefs-links"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { PricingSection } from "@/components/shared/pricing-section"
 import { LandingVariantANav } from "@/components/landing-variant-a-nav"
@@ -2018,6 +2019,7 @@ export function LandingPage() {
               <a href="/privacy" className="hover:text-white transition-colors">Privacy</a>
               <a href="/terms" className="hover:text-white transition-colors">Terms</a>
               <a href="/cookies" className="hover:text-white transition-colors">Cookies</a>
+              <CookiePrefsLinks className="hover:text-white transition-colors" />
               <a href="/news" className="hover:text-white transition-colors">News</a>
               <a href="/research/turbulence-safety" className="hover:text-white transition-colors">Research</a>
               <a href="mailto:hello@planewx.ai" className="hover:text-white transition-colors">Contact</a>
@@ -2029,7 +2031,7 @@ export function LandingPage() {
       {/* Image Zoom Modal */}
       {zoomedImage && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm overflow-auto"
+          className="fixed inset-0 z-[80] bg-black/90 backdrop-blur-sm overflow-auto"
           onClick={() => setZoomedImage(null)}
         >
           <button
