@@ -53,7 +53,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     category: "Product",
     title: "The Weekly PIREP: Edition 1",
     excerpt:
-      "What shipped in PlaneWX this week: weather alerts near your route, ground-ops wind that now counts in your WX Score, clearer FRAT Environment ratings, and FRAT that shows a suggested risk level before you rate and add notes. Plus a short tip on how the WX Score works.",
+      "What shipped in PlaneWX this week: weather alerts near your route, ground-ops wind that now counts in your WX Score, clearer FRAT Environment ratings, and FRAT that shows a suggested risk level before you rate and add notes. Plus a tip on checking nearby stations when your destination has no TAF.",
     date: "September 28, 2026",
     isoDate: "2026-09-28",
     location: "St. Petersburg, Florida",
@@ -94,8 +94,8 @@ ${/* PRELIMINARY: data through Fri Sep 25 06:50 CT. Growth recounts Mon Sep 28 0
 <li>Fixes that came from reviews: <strong>1</strong> (a FRAT update that gives more weight to your own assessment of the environment)</li>
 </ul>
 
-<h2>Tip of the Week: what the WX Score actually is</h2>
-<p>The WX Score is not PlaneWX&rsquo;s opinion of what is safe to fly. It is your own <a href="https://app.planewx.ai/help/personal-minimums">personal minimums</a>, applied the same way every time, against the forecast for your route, cruise altitude, and departure time. The score starts at 100% and points come off for each weather factor that approaches or exceeds the limits you set, so two pilots can get different scores for the same flight. A low score does not mean don&rsquo;t fly. It means don&rsquo;t fly without asking why the number is what it is: open the breakdown and make your GO&nbsp;/&nbsp;NO&#8209;GO call as PIC. It is advisory support, not a flight authorization. More in <a href="https://app.planewx.ai/help/wx-score">the WX Score guide</a>.</p>
+<h2>Tip of the Week: no TAF at your destination? Check the neighbors</h2>
+<p>A pilot recently flew a Saturday IFR arrival into an Indiana field with no TAF. The TAF from a nearby proxy station and the field&rsquo;s own METAR both looked fine, but a station 13&nbsp;nm away was already reporting 1/4&nbsp;SM visibility in fog, and the field fogged in. Your PlaneWX briefing is built on the same public weather products every pilot uses, so it inherits their gaps and works best as one source you crosscheck, not your only one. Before you commit, look at the station reports around your destination on your EFB&rsquo;s map or <a href="https://aviationweather.gov">aviationweather.gov</a>, and see <a href="https://app.planewx.ai/help/wx-score">the WX Score guide</a> for when PlaneWX uses a nearby proxy station.</p>
 
 ${/*
   Coming soon: nothing approved yet. Keep this block commented out so future
