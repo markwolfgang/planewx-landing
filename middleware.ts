@@ -136,7 +136,7 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // Partner short links (e.g. /runway -> homepage funnel with ref=RUNWAY).
+  // Partner short links (e.g. /runway leads to homepage funnel with ref=RUNWAY).
   // Allowlist-only. Never steals reserved routes like /apps, /osh, /news.
   const partnerCode = partnerCodeFromPathname(pathname)
   const isHomepageFunnel = pathname === "/" || Boolean(partnerCode)

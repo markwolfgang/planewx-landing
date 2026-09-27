@@ -87,10 +87,10 @@ export type TrackingTransition =
 /**
  * Decide what to do when the active tracker set changes.
  * Sequences covered by tests:
- * - Accept all then Essential only -> downgrade_reload
- * - Analytics then Marketing -> apply with configAds + Meta/Reddit
- * - Marketing then Analytics -> apply with configGa (gtag already present)
- * - Any grant to deny (Do not sell, GPC) -> downgrade_reload
+ * - Accept all then Essential only result: downgrade_reload
+ * - Analytics then Marketing result: apply with configAds + Meta/Reddit
+ * - Marketing then Analytics result: apply with configGa (gtag already present)
+ * - Any grant to deny (Do not sell, GPC) result: downgrade_reload
  */
 export function planTrackingTransition(opts: {
   prev: ActiveTrackers
