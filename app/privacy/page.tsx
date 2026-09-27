@@ -135,9 +135,8 @@ export default function PrivacyPolicyPage() {
               </li>
               <li>
                 On this marketing site those tags run only on{" "}
-                <code className="text-sky-300">www.planewx.ai</code>,{" "}
-                <code className="text-sky-300">planewx.ai</code>, and{" "}
-                <code className="text-sky-300">app.planewx.ai</code>.
+                <code className="text-sky-300">www.planewx.ai</code> and{" "}
+                <code className="text-sky-300">planewx.ai</code>.
               </li>
               <li>
                 <strong className="text-white">Embedded third-party:</strong> YouTube embeds use

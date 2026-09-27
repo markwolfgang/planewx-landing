@@ -43,9 +43,8 @@ export default function CookiesPage() {
             </li>
             <li>
               Analytics and marketing tags load only on production hostnames{" "}
-              <code className="text-sky-300">www.planewx.ai</code>,{" "}
-              <code className="text-sky-300">planewx.ai</code>, and{" "}
-              <code className="text-sky-300">app.planewx.ai</code>. Preview and local hosts do not load them
+              <code className="text-sky-300">www.planewx.ai</code> and{" "}
+              <code className="text-sky-300">planewx.ai</code>. Preview and local hosts do not load them
               (except a deliberate GA DebugView opt-in with <code className="text-sky-300">?ga_debug=1</code>).
             </li>
             <li>

@@ -2031,7 +2031,7 @@ export function LandingPage() {
       {/* Image Zoom Modal */}
       {zoomedImage && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm overflow-auto"
+          className="fixed inset-0 z-[80] bg-black/90 backdrop-blur-sm overflow-auto"
           onClick={() => setZoomedImage(null)}
         >
           <button

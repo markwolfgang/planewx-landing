@@ -1,6 +1,8 @@
 /**
  * Cookie and tracking preference storage (client only).
- * Mirrors the app shape (cookie_prefs_v1) so categories and key stay aligned.
+ * Uses the same localStorage key and category shape as the product app
+ * (cookie_prefs_v1 with essential, analytics, marketing). Landing-only
+ * wording and gates may still differ from the app UI.
  *
  * Shape:
  * {
@@ -29,7 +31,6 @@ export const COOKIE_PREFS_CHANGED_EVENT = "planewx:cookie-prefs-changed"
 export const COOKIE_PREFS_OPEN_EVENT = "planewx:open-cookie-settings"
 /** Fired after Do not sell or share writes prefs so the UI can confirm. */
 export const COOKIE_DNS_CONFIRMED_EVENT = "planewx:do-not-sell-confirmed"
-/** Bump when categories or meaning change so returning visitors are asked again. */
 export const COOKIE_PREFS_VERSION = 1
 
 export type CookiePrefs = {
@@ -38,6 +39,26 @@ export type CookiePrefs = {
   analytics: boolean
   marketing: boolean
   updatedAt: string
+}
+
+/** Accessing localStorage can throw when site data is blocked. */
+export function getLocalStorage(): Storage | null {
+  try {
+    if (typeof window === "undefined") return null
+    return window.localStorage
+  } catch {
+    return null
+  }
+}
+
+/** Accessing sessionStorage can throw when site data is blocked. */
+export function getSessionStorage(): Storage | null {
+  try {
+    if (typeof window === "undefined") return null
+    return window.sessionStorage
+  } catch {
+    return null
+  }
 }
 
 export function isValidCookiePrefs(value: unknown): value is CookiePrefs {
@@ -53,10 +74,6 @@ export function isValidCookiePrefs(value: unknown): value is CookiePrefs {
   )
 }
 
-/**
- * Parse a raw localStorage string. Returns null for missing, malformed,
- * wrong-version, or unknown shapes (including legacy strings like "accepted").
- */
 export function parseCookiePrefs(raw: string | null | undefined): CookiePrefs | null {
   if (raw == null || raw === "") return null
   try {
@@ -69,8 +86,7 @@ export function parseCookiePrefs(raw: string | null | undefined): CookiePrefs | 
 }
 
 export function readCookiePrefs(
-  storage: Pick<Storage, "getItem"> | null | undefined =
-    typeof window === "undefined" ? null : window.localStorage,
+  storage: Pick<Storage, "getItem"> | null | undefined = getLocalStorage(),
 ): CookiePrefs | null {
   if (!storage) return null
   try {
@@ -82,8 +98,7 @@ export function readCookiePrefs(
 
 export function writeCookiePrefs(
   opts: { analytics: boolean; marketing: boolean },
-  storage: Pick<Storage, "setItem"> | null | undefined =
-    typeof window === "undefined" ? null : window.localStorage,
+  storage: Pick<Storage, "setItem"> | null | undefined = getLocalStorage(),
   now: () => string = () => new Date().toISOString(),
 ): CookiePrefs | null {
   if (!storage) return null
@@ -102,17 +117,14 @@ export function writeCookiePrefs(
   }
 }
 
-/** True only when a valid choice exists with analytics enabled. */
 export function hasAnalyticsConsent(prefs: CookiePrefs | null = readCookiePrefs()): boolean {
   return prefs?.analytics === true
 }
 
-/** True only when a valid choice exists with marketing enabled. */
 export function hasMarketingConsent(prefs: CookiePrefs | null = readCookiePrefs()): boolean {
   return prefs?.marketing === true
 }
 
-/** True when the user has made a valid cookie choice (banner may hide). */
 export function hasValidCookieChoice(prefs: CookiePrefs | null = readCookiePrefs()): boolean {
   return prefs !== null
 }
@@ -126,7 +138,6 @@ export function notifyCookiePrefsChanged(prefs: CookiePrefs): void {
   }
 }
 
-/** Ask the banner to reopen (footer Cookie settings link). */
 export function openCookieSettings(): void {
   if (typeof window === "undefined") return
   try {
@@ -136,12 +147,6 @@ export function openCookieSettings(): void {
   }
 }
 
-/**
- * Toggle values the Manage panel should show.
- * Stored prefs win. With no choice, both off (opt-in everywhere).
- * GPC always forces Marketing off in the UI.
- * mode is kept for call-site compatibility; it does not invent on defaults.
- */
 export function effectiveCookieToggleState(opts: {
   mode: ConsentMode
   prefs: Pick<CookiePrefs, "analytics" | "marketing"> | null
@@ -157,10 +162,6 @@ export function effectiveCookieToggleState(opts: {
   return { analytics: false, marketing: false }
 }
 
-/**
- * Analytics value to keep when turning off sale/sharing.
- * Prior choice wins. With no prior choice, Analytics stays off (never turns on).
- */
 export function analyticsAfterDoNotSell(opts: {
   mode: ConsentMode
   prefs: Pick<CookiePrefs, "analytics"> | null
@@ -178,14 +179,8 @@ function notifyDoNotSellConfirmed(prefs: CookiePrefs): void {
   }
 }
 
-/**
- * Do not sell or share: turn Marketing off (Google Ads, Meta Pixel, Reddit Pixel).
- * Keeps Analytics as the visitor already set it. With no prior choice, Analytics stays off.
- * Never turns Analytics on. GPC also keeps Marketing off.
- */
 export function optOutOfSaleOrSharing(
-  storage: Pick<Storage, "getItem" | "setItem"> | null | undefined =
-    typeof window === "undefined" ? null : window.localStorage,
+  storage: Pick<Storage, "getItem" | "setItem"> | null | undefined = getLocalStorage(),
   mode: ConsentMode =
     typeof window === "undefined" ? "strict" : readConsentModeFromDocument(),
   gpc: boolean =

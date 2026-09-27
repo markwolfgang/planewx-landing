@@ -9,13 +9,13 @@ describe("isProductionTrackingHost", () => {
   it("allows exact production hosts", () => {
     expect(isProductionTrackingHost("www.planewx.ai")).toBe(true)
     expect(isProductionTrackingHost("planewx.ai")).toBe(true)
-    expect(isProductionTrackingHost("app.planewx.ai")).toBe(true)
   })
 
-  it("rejects lookalikes, previews, local, and other planewx hosts", () => {
+  it("rejects lookalikes, previews, local, app, and other planewx hosts", () => {
     expect(isProductionTrackingHost("www.planewx.ai.evil.com")).toBe(false)
     expect(isProductionTrackingHost("planewx-landing-git-x-planewx.vercel.app")).toBe(false)
     expect(isProductionTrackingHost("dev2.planewx.ai")).toBe(false)
+    expect(isProductionTrackingHost("app.planewx.ai")).toBe(false)
     expect(isProductionTrackingHost("localhost")).toBe(false)
     expect(isProductionTrackingHost("127.0.0.1")).toBe(false)
     expect(isProductionTrackingHost("planewx.ai.attacker.test")).toBe(false)
@@ -31,12 +31,30 @@ describe("resolveGaDebugOptIn", () => {
       setItem: (k: string, v: string) => {
         store.set(k, v)
       },
+      removeItem: (k: string) => {
+        store.delete(k)
+      },
     }
 
     expect(resolveGaDebugOptIn("?ga_debug=1", session)).toBe(true)
     expect(store.get("planewx_ga_debug")).toBe("1")
     expect(resolveGaDebugOptIn("", session)).toBe(true)
-    expect(resolveGaDebugOptIn("?ga_debug=0", session)).toBe(true)
+  })
+
+  it("clears the session flag when ?ga_debug=0", () => {
+    const store = new Map<string, string>([["planewx_ga_debug", "1"]])
+    const session = {
+      getItem: (k: string) => store.get(k) ?? null,
+      setItem: (k: string, v: string) => {
+        store.set(k, v)
+      },
+      removeItem: (k: string) => {
+        store.delete(k)
+      },
+    }
+    expect(resolveGaDebugOptIn("?ga_debug=0", session)).toBe(false)
+    expect(store.has("planewx_ga_debug")).toBe(false)
+    expect(resolveGaDebugOptIn("", session)).toBe(false)
   })
 
   it("is false when flag is absent and session is empty", () => {
@@ -45,6 +63,9 @@ describe("resolveGaDebugOptIn", () => {
       getItem: (k: string) => store.get(k) ?? null,
       setItem: (k: string, v: string) => {
         store.set(k, v)
+      },
+      removeItem: (k: string) => {
+        store.delete(k)
       },
     }
     expect(resolveGaDebugOptIn("", session)).toBe(false)

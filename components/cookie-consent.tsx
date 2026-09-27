@@ -1,15 +1,17 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useId, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
   COOKIE_DNS_CONFIRMED_EVENT,
   COOKIE_PREFS_CHANGED_EVENT,
   COOKIE_PREFS_OPEN_EVENT,
+  COOKIE_PREFS_STORAGE_KEY,
   effectiveCookieToggleState,
   hasValidCookieChoice,
   notifyCookiePrefsChanged,
   optOutOfSaleOrSharing,
+  parseCookiePrefs,
   readCookiePrefs,
   writeCookiePrefs,
   type CookiePrefs,
@@ -21,11 +23,12 @@ import {
   type ConsentMode,
 } from "@/lib/consent-region"
 
+const BANNER_PAD_PX = 120
+
 /**
  * Cookie and tracking preference banner.
- * Opt-in everywhere: nothing loads until Accept all or a Save that grants categories.
- * Region mode changes wording and whether Do not sell or share is shown.
- * GPC forces Marketing off and disables that toggle.
+ * Opt-in everywhere. Region mode changes wording and Do not sell visibility.
+ * GPC forces Marketing off. Manage dialog traps focus and restores it on close.
  */
 export function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false)
@@ -36,6 +39,9 @@ export function CookieConsent() {
   const [gpcOn, setGpcOn] = useState(false)
   const [dnsConfirm, setDnsConfirm] = useState<string | null>(null)
   const [ready, setReady] = useState(false)
+  const manageButtonRef = useRef<HTMLButtonElement | null>(null)
+  const dialogRef = useRef<HTMLDivElement | null>(null)
+  const titleId = useId()
 
   const syncTogglesFromEffective = (
     consentMode: ConsentMode,
@@ -92,13 +98,31 @@ export function CookieConsent() {
           : "Sale or sharing is off. Marketing is off. Analytics stays off."
       setDnsConfirm(msg)
     }
+    const onStorage = (event: StorageEvent) => {
+      if (event.key !== null && event.key !== COOKIE_PREFS_STORAGE_KEY) return
+      const next = parseCookiePrefs(event.newValue)
+      const gpcNow = hasGlobalPrivacyControl()
+      const modeNow = readConsentModeFromDocument()
+      setGpcOn(gpcNow)
+      setMode(modeNow)
+      if (next && hasValidCookieChoice(next)) {
+        syncTogglesFromEffective(modeNow, gpcNow, next)
+        setShowBanner(false)
+        setShowModal(false)
+      } else {
+        syncTogglesFromEffective(modeNow, gpcNow, null)
+        setShowBanner(true)
+      }
+    }
     window.addEventListener(COOKIE_PREFS_OPEN_EVENT, onOpen)
     window.addEventListener(COOKIE_PREFS_CHANGED_EVENT, onChanged)
     window.addEventListener(COOKIE_DNS_CONFIRMED_EVENT, onDnsConfirmed)
+    window.addEventListener("storage", onStorage)
     return () => {
       window.removeEventListener(COOKIE_PREFS_OPEN_EVENT, onOpen)
       window.removeEventListener(COOKIE_PREFS_CHANGED_EVENT, onChanged)
       window.removeEventListener(COOKIE_DNS_CONFIRMED_EVENT, onDnsConfirmed)
+      window.removeEventListener("storage", onStorage)
     }
   }, [])
 
@@ -107,6 +131,63 @@ export function CookieConsent() {
     const t = window.setTimeout(() => setDnsConfirm(null), 5000)
     return () => window.clearTimeout(t)
   }, [dnsConfirm])
+
+  useEffect(() => {
+    if (!showBanner) {
+      document.body.style.removeProperty("padding-bottom")
+      return
+    }
+    document.body.style.paddingBottom = `calc(${BANNER_PAD_PX}px + env(safe-area-inset-bottom))`
+    return () => {
+      document.body.style.removeProperty("padding-bottom")
+    }
+  }, [showBanner])
+
+  useEffect(() => {
+    if (!showModal) return
+    const dialog = dialogRef.current
+    if (!dialog) return
+
+    const focusable = () =>
+      Array.from(
+        dialog.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => !el.hasAttribute("disabled") && el.tabIndex !== -1)
+
+    const previouslyFocused = document.activeElement as HTMLElement | null
+    const nodes = focusable()
+    ;(nodes[0] ?? dialog).focus()
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault()
+        setShowModal(false)
+        return
+      }
+      if (event.key !== "Tab") return
+      const list = focusable()
+      if (list.length === 0) return
+      const first = list[0]
+      const last = list[list.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener("keydown", onKeyDown)
+    return () => {
+      document.removeEventListener("keydown", onKeyDown)
+      const opener = manageButtonRef.current ?? previouslyFocused
+      if (opener && typeof opener.focus === "function") {
+        opener.focus()
+      }
+    }
+  }, [showModal])
 
   const savePrefs = (opts: { analytics: boolean; marketing: boolean }) => {
     const marketingValue = gpcOn || hasGlobalPrivacyControl() ? false : opts.marketing
@@ -166,9 +247,11 @@ export function CookieConsent() {
 
       {showBanner && (
         <div
+          role="region"
+          aria-label="Cookies and Preferences"
           data-testid="cookie-consent-banner"
           data-consent-mode={mode}
-          className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#0a0f1a]/95 text-white shadow-[0_-8px_24px_rgba(0,0,0,0.35)] pb-[env(safe-area-inset-bottom)] backdrop-blur-md"
+          className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[#0a0f1a]/95 text-white shadow-[0_-8px_24px_rgba(0,0,0,0.35)] pb-[env(safe-area-inset-bottom)] backdrop-blur-md"
         >
           <div className="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="min-w-0 space-y-1 text-sm">
@@ -185,8 +268,12 @@ export function CookieConsent() {
                 </button>
               )}
             </div>
-            <div className="flex flex-wrap items-center gap-2 shrink-0">
+            <div
+              className="flex flex-wrap items-center gap-2 shrink-0"
+              data-testid="cookie-banner-actions"
+            >
               <Button
+                ref={manageButtonRef}
                 type="button"
                 variant="outline"
                 size="sm"
@@ -223,12 +310,13 @@ export function CookieConsent() {
           className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center bg-black/60 p-4"
           role="dialog"
           aria-modal="true"
-          aria-labelledby="cookie-prefs-title"
+          aria-labelledby={titleId}
           data-testid="cookie-manage-panel"
+          ref={dialogRef}
         >
           <div className="w-full max-w-md max-h-[min(90vh,40rem)] overflow-y-auto rounded-xl border border-white/10 bg-[#0a0f1a] text-white shadow-xl">
             <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-              <h2 id="cookie-prefs-title" className="text-lg font-semibold">
+              <h2 id={titleId} className="text-lg font-semibold">
                 Manage preferences
               </h2>
               <Button

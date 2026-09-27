@@ -27,8 +27,16 @@ export function WebVercelMetrics() {
     const onPrefs = (event: Event) => {
       sync((event as CustomEvent<CookiePrefs>).detail ?? null)
     }
+    const onStorage = (event: StorageEvent) => {
+      if (event.key !== null && event.key !== "cookie_prefs_v1") return
+      sync(readCookiePrefs())
+    }
     window.addEventListener(COOKIE_PREFS_CHANGED_EVENT, onPrefs)
-    return () => window.removeEventListener(COOKIE_PREFS_CHANGED_EVENT, onPrefs)
+    window.addEventListener("storage", onStorage)
+    return () => {
+      window.removeEventListener(COOKIE_PREFS_CHANGED_EVENT, onPrefs)
+      window.removeEventListener("storage", onStorage)
+    }
   }, [])
 
   if (!enabled) return null

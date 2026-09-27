@@ -5,17 +5,12 @@
  * Allowed (exact match only):
  *   www.planewx.ai
  *   planewx.ai
- *   app.planewx.ai
  *
- * Excluded examples: any *.vercel.app, localhost, 127.0.0.1, dev2.planewx.ai,
- * and anything not on the list (including lookalike hosts).
+ * Excluded examples: any *.vercel.app, localhost, 127.0.0.1, app.planewx.ai,
+ * dev2.planewx.ai, and anything not on the list (including lookalike hosts).
  */
 
-export const PRODUCTION_TRACKING_HOSTS = [
-  "www.planewx.ai",
-  "planewx.ai",
-  "app.planewx.ai",
-] as const
+export const PRODUCTION_TRACKING_HOSTS = ["www.planewx.ai", "planewx.ai"] as const
 
 export type ProductionTrackingHost = (typeof PRODUCTION_TRACKING_HOSTS)[number]
 
@@ -28,48 +23,59 @@ export function isProductionTrackingHost(hostname: string): boolean {
 
 /**
  * Opt-in for preview verification in GA DebugView.
- * When the URL has ?ga_debug=1, persist for this tab session.
- * Returns true if the flag is active (URL or sessionStorage).
+ * ?ga_debug=1 persists for this tab session.
+ * ?ga_debug=0 clears the session flag.
  */
 export function resolveGaDebugOptIn(
   search: string,
-  session: Pick<Storage, "getItem" | "setItem"> | null | undefined,
+  session:
+    | Pick<Storage, "getItem" | "setItem" | "removeItem">
+    | null
+    | undefined,
 ): boolean {
-  let fromUrl = false
+  let param: string | null = null
   try {
     const params = new URLSearchParams(search.startsWith("?") ? search : `?${search}`)
-    fromUrl = params.get("ga_debug") === "1"
+    param = params.get("ga_debug")
   } catch {
-    fromUrl = false
+    param = null
   }
 
-  if (fromUrl && session) {
-    try {
-      session.setItem(GA_DEBUG_SESSION_KEY, "1")
-    } catch {
-      /* ignore quota / private mode */
+  if (param === "0") {
+    if (session) {
+      try {
+        session.removeItem(GA_DEBUG_SESSION_KEY)
+      } catch {
+        /* ignore */
+      }
+    }
+    return false
+  }
+
+  if (param === "1") {
+    if (session) {
+      try {
+        session.setItem(GA_DEBUG_SESSION_KEY, "1")
+      } catch {
+        /* ignore */
+      }
     }
     return true
   }
 
-  if (!session) return fromUrl
+  if (!session) return false
   try {
     return session.getItem(GA_DEBUG_SESSION_KEY) === "1"
   } catch {
-    return fromUrl
+    return false
   }
 }
 
 export type TrackingLoadPlan = {
-  /** Load gtag and GA4 config (G-FKM0TMPH4M). */
   loadGa: boolean
-  /** Load Google Ads, Meta Pixel, and Reddit Pixel. */
   loadMarketing: boolean
-  /** Pass debug_mode: true on the GA config (preview opt-in only). */
   debugMode: boolean
-  /** Host is on the production allowlist. */
   hostAllowed: boolean
-  /** Preview / local SEO opt-in is active. */
   gaDebug: boolean
 }
 
