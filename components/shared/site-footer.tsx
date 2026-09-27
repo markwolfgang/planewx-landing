@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { FaInstagram, FaFacebook, FaXTwitter, FaTiktok, FaYoutube } from "react-icons/fa6"
-import { CookieSettingsButton } from "@/components/cookie-settings-button"
+import { CookiePrefsLinks } from "@/components/cookie-prefs-links"
 import { BrandLogo } from "@/components/shared/brand-logo"
 
 const SOCIAL_LINKS = [
@@ -14,8 +14,9 @@ const SOCIAL_LINKS = [
 ]
 
 export function SiteFooter({ variant }: { variant: string }) {
+  void variant
   return (
-    <footer className="relative py-10 px-4 border-t border-white/5">
+    <footer className="relative py-10 px-4 border-t border-white/5" data-testid="site-footer">
       <div className="container mx-auto max-w-5xl flex flex-col items-center gap-6 text-sm text-white/30">
         <div className="flex items-center gap-5">
           {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
@@ -31,30 +32,53 @@ export function SiteFooter({ variant }: { variant: string }) {
             </a>
           ))}
         </div>
-        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <Link href="/" className="shrink-0" aria-label="PlaneWX home">
-              {/* Same light-on-dark wordmark as partners / dark DSS nav */}
-              <BrandLogo
-                variant="wordmarkTransparent"
-                alt="PlaneWX"
-                className="h-7 sm:h-8 w-auto"
-              />
-            </Link>
-            <span className="truncate">· The Pilot&apos;s Decision Support System</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a href="/about" className="hover:text-white/60 transition-colors">About</a>
-            <a href="/news" className="hover:text-white/60 transition-colors">News</a>
-            <a href="/partners" className="hover:text-white/60 transition-colors">Partners</a>
-            <a href="/ambassadors" className="hover:text-white/60 transition-colors">Ambassadors</a>
-            <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
-            <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
-            <a href="/cookies" className="hover:text-white/60 transition-colors">Cookies</a>
-            <CookieSettingsButton className="hover:text-white/60 transition-colors" />
-            <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">Contact</a>
-            <span>© 2026 PlaneWX, LLC</span>
-          </div>
+
+        <div className="w-full flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
+          <Link href="/" className="shrink-0" aria-label="PlaneWX home">
+            <BrandLogo
+              variant="wordmarkTransparent"
+              alt="PlaneWX"
+              className="h-7 sm:h-8 w-auto"
+            />
+          </Link>
+          <span className="text-center sm:text-left whitespace-normal">
+            · The Pilot&apos;s Decision Support System
+          </span>
+        </div>
+
+        <div className="w-full flex flex-wrap items-center justify-center sm:justify-start gap-x-5 gap-y-2">
+          <a href="/about" className="hover:text-white/60 transition-colors">
+            About
+          </a>
+          <a href="/news" className="hover:text-white/60 transition-colors">
+            News
+          </a>
+          <a href="/partners" className="hover:text-white/60 transition-colors">
+            Partners
+          </a>
+          <a href="/ambassadors" className="hover:text-white/60 transition-colors" data-testid="footer-ambassadors">
+            Ambassadors
+          </a>
+          <a
+            href="https://app.planewx.ai/help/faqs"
+            className="hover:text-white/60 transition-colors"
+          >
+            FAQ
+          </a>
+          <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">
+            Research
+          </a>
+          <a href="/privacy" className="hover:text-white/60 transition-colors">
+            Privacy
+          </a>
+          <a href="/cookies" className="hover:text-white/60 transition-colors">
+            Cookies
+          </a>
+          <CookiePrefsLinks className="hover:text-white/60 transition-colors" />
+          <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">
+            Contact
+          </a>
+          <span>© 2026 PlaneWX, LLC</span>
         </div>
       </div>
     </footer>

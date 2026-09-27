@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import { CookieConsent } from "@/components/cookie-consent"
 import { OshBanner } from "@/components/osh-banner"
 import { PartnerGreetingBanner } from "@/components/partner-greeting-banner"
 import { TrackingScripts } from "@/components/tracking-scripts"
+import { WebVercelMetrics } from "@/components/web-vercel-metrics"
 import { FAQS, faqAnswerToPlainText } from "@/components/shared/landing-data"
 import "./globals.css"
 
@@ -240,8 +240,7 @@ export default function RootLayout({
         {children}
         <CookieConsent />
         <TrackingScripts />
-        {/* Vercel Analytics left ungated (cookieless product metrics). Not on the pixel allowlist. */}
-        <Analytics />
+        <WebVercelMetrics />
       </body>
     </html>
   )

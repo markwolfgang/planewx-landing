@@ -3,7 +3,9 @@
 /**
  * GA4, Google Ads, Meta Pixel, and Reddit Pixel.
  * Loads only on the production hostname allowlist (or ?ga_debug=1 for GA only),
- * and only after the matching cookie preference is granted.
+ * and only after opt-in cookie prefs (and GPC blocks marketing).
+ * Consent Mode v2 defaults all denied before any Google config.
+ * gtag('js') runs once even when both analytics and marketing are on.
  */
 
 import { useEffect, useState } from "react"
@@ -14,6 +16,12 @@ import {
   readCookiePrefs,
   type CookiePrefs,
 } from "@/lib/cookie-prefs"
+import {
+  allowsAnalytics,
+  allowsMarketing,
+  hasGlobalPrivacyControl,
+  readConsentModeFromDocument,
+} from "@/lib/consent-region"
 import {
   resolveGaDebugOptIn,
   resolveTrackingLoad,
@@ -40,51 +48,60 @@ function emptyPlan(): TrackingLoadPlan {
 
 function planFromPrefs(prefs: CookiePrefs | null): TrackingLoadPlan {
   if (typeof window === "undefined") return emptyPlan()
+  const mode = readConsentModeFromDocument()
+  const gpc = hasGlobalPrivacyControl()
   const gaDebug = resolveGaDebugOptIn(window.location.search, window.sessionStorage)
   return resolveTrackingLoad({
     hostname: window.location.hostname,
     gaDebug,
-    analytics: prefs?.analytics === true,
-    marketing: prefs?.marketing === true,
+    analytics: allowsAnalytics({ mode, prefs }),
+    marketing: allowsMarketing({ mode, prefs, gpc }),
     hasChoice: hasValidCookieChoice(prefs),
   })
 }
 
 /**
  * Google Consent Mode v2 defaults (all denied) plus an update from prefs.
- * Must run before any Google tag config.
+ * Must run before any Google tag config. gtag('js') once only.
  */
-function consentBootstrapScript(prefs: CookiePrefs, debugMode: boolean, loadGa: boolean, loadMarketing: boolean): string {
+function consentBootstrapScript(
+  prefs: CookiePrefs,
+  debugMode: boolean,
+  loadGa: boolean,
+  loadMarketing: boolean,
+): string {
   const analyticsStorage = prefs.analytics ? GRANTED : DENIED
   const adState = prefs.marketing ? GRANTED : DENIED
-  const gaConfig = debugMode
-    ? `gtag('config', '${GA_ID}', { debug_mode: true });`
-    : `gtag('config', '${GA_ID}');`
-  const adsConfig = loadMarketing
-    ? `gtag('config', '${ADS_IDS[0]}');\ngtag('config', '${ADS_IDS[1]}');`
-    : ""
-  const gaBlock = loadGa ? gaConfig : ""
-
-  return `
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      ad_storage: '${DENIED}',
-      ad_user_data: '${DENIED}',
-      ad_personalization: '${DENIED}',
-      analytics_storage: '${DENIED}',
-      wait_for_update: 500
-    });
-    gtag('consent', 'update', {
-      analytics_storage: '${analyticsStorage}',
-      ad_storage: '${adState}',
-      ad_user_data: '${adState}',
-      ad_personalization: '${adState}'
-    });
-    gtag('js', new Date());
-    ${gaBlock}
-    ${adsConfig}
-  `
+  const lines: string[] = [
+    "window.dataLayer = window.dataLayer || [];",
+    "function gtag(){dataLayer.push(arguments);}",
+    `gtag('consent', 'default', {`,
+    `  ad_storage: '${DENIED}',`,
+    `  ad_user_data: '${DENIED}',`,
+    `  ad_personalization: '${DENIED}',`,
+    `  analytics_storage: '${DENIED}',`,
+    `  wait_for_update: 500`,
+    `});`,
+    `gtag('consent', 'update', {`,
+    `  analytics_storage: '${analyticsStorage}',`,
+    `  ad_storage: '${adState}',`,
+    `  ad_user_data: '${adState}',`,
+    `  ad_personalization: '${adState}'`,
+    `});`,
+    `gtag('js', new Date());`,
+  ]
+  if (loadGa) {
+    lines.push(
+      debugMode
+        ? `gtag('config', '${GA_ID}', { debug_mode: true });`
+        : `gtag('config', '${GA_ID}');`,
+    )
+  }
+  if (loadMarketing) {
+    lines.push(`gtag('config', '${ADS_IDS[0]}');`)
+    lines.push(`gtag('config', '${ADS_IDS[1]}');`)
+  }
+  return lines.join("\n")
 }
 
 export function TrackingScripts() {

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { BrandLogo } from "@/components/shared/brand-logo"
-import { CookieSettingsButton } from "@/components/cookie-settings-button"
+import { CookiePrefsLinks } from "@/components/cookie-prefs-links"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { STATS, FAQS } from "@/components/shared/landing-data"
 import { FaqAnswerBody } from "@/components/shared/faq-answer"
@@ -843,7 +843,7 @@ export function LandingPageV3() {
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
             <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
             <a href="/cookies" className="hover:text-white/60 transition-colors">Cookies</a>
-            <CookieSettingsButton className="hover:text-white/60 transition-colors" />
+            <CookiePrefsLinks className="hover:text-white/60 transition-colors" />
             <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">Contact</a>
             <span>© 2026 PlaneWX, LLC</span>
           </div>

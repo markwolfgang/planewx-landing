@@ -14,11 +14,21 @@
  * Only a fully valid object with the current version counts as a choice.
  * Unknown, stale, malformed, or wrong-version values must not hide the banner
  * and must not enable analytics or marketing.
+ *
+ * Opt-in everywhere (Mark 2026-09-27): no stored choice means nothing loads.
  */
+
+import {
+  hasGlobalPrivacyControl,
+  readConsentModeFromDocument,
+  type ConsentMode,
+} from "@/lib/consent-region"
 
 export const COOKIE_PREFS_STORAGE_KEY = "cookie_prefs_v1"
 export const COOKIE_PREFS_CHANGED_EVENT = "planewx:cookie-prefs-changed"
 export const COOKIE_PREFS_OPEN_EVENT = "planewx:open-cookie-settings"
+/** Fired after Do not sell or share writes prefs so the UI can confirm. */
+export const COOKIE_DNS_CONFIRMED_EVENT = "planewx:do-not-sell-confirmed"
 /** Bump when categories or meaning change so returning visitors are asked again. */
 export const COOKIE_PREFS_VERSION = 1
 
@@ -124,4 +134,70 @@ export function openCookieSettings(): void {
   } catch {
     /* ignore */
   }
+}
+
+/**
+ * Toggle values the Manage panel should show.
+ * Stored prefs win. With no choice, both off (opt-in everywhere).
+ * GPC always forces Marketing off in the UI.
+ * mode is kept for call-site compatibility; it does not invent on defaults.
+ */
+export function effectiveCookieToggleState(opts: {
+  mode: ConsentMode
+  prefs: Pick<CookiePrefs, "analytics" | "marketing"> | null
+  gpc: boolean
+}): { analytics: boolean; marketing: boolean } {
+  void opts.mode
+  if (opts.prefs) {
+    return {
+      analytics: opts.prefs.analytics === true,
+      marketing: opts.gpc ? false : opts.prefs.marketing === true,
+    }
+  }
+  return { analytics: false, marketing: false }
+}
+
+/**
+ * Analytics value to keep when turning off sale/sharing.
+ * Prior choice wins. With no prior choice, Analytics stays off (never turns on).
+ */
+export function analyticsAfterDoNotSell(opts: {
+  mode: ConsentMode
+  prefs: Pick<CookiePrefs, "analytics"> | null
+}): boolean {
+  void opts.mode
+  return opts.prefs?.analytics === true
+}
+
+function notifyDoNotSellConfirmed(prefs: CookiePrefs): void {
+  if (typeof window === "undefined") return
+  try {
+    window.dispatchEvent(new CustomEvent(COOKIE_DNS_CONFIRMED_EVENT, { detail: prefs }))
+  } catch {
+    /* ignore */
+  }
+}
+
+/**
+ * Do not sell or share: turn Marketing off (Google Ads, Meta Pixel, Reddit Pixel).
+ * Keeps Analytics as the visitor already set it. With no prior choice, Analytics stays off.
+ * Never turns Analytics on. GPC also keeps Marketing off.
+ */
+export function optOutOfSaleOrSharing(
+  storage: Pick<Storage, "getItem" | "setItem"> | null | undefined =
+    typeof window === "undefined" ? null : window.localStorage,
+  mode: ConsentMode =
+    typeof window === "undefined" ? "strict" : readConsentModeFromDocument(),
+  gpc: boolean =
+    typeof window === "undefined" ? false : hasGlobalPrivacyControl(),
+): CookiePrefs | null {
+  const existing = readCookiePrefs(storage)
+  const analytics = analyticsAfterDoNotSell({ mode, prefs: existing })
+  void gpc
+  const prefs = writeCookiePrefs({ analytics, marketing: false }, storage)
+  if (prefs) {
+    notifyCookiePrefsChanged(prefs)
+    notifyDoNotSellConfirmed(prefs)
+  }
+  return prefs
 }

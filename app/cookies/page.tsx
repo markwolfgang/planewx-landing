@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { CookieSettingsButton } from "@/components/cookie-settings-button"
+import { CookiePrefsLinks } from "@/components/cookie-prefs-links"
 import { ArrowLeft } from "lucide-react"
 
 export const metadata = {
@@ -33,20 +33,24 @@ export default function CookiesPage() {
             <li>Essential cookies for authentication, session continuity, security, and remembering your cookie choice.</li>
             <li>Preference cookies to remember settings (theme, recent routes) where applicable.</li>
             <li>
-              Analytics (Google Analytics <code className="text-sky-300">G-FKM0TMPH4M</code>) when you allow Analytics.
-              This helps us understand usage to improve PlaneWX.
+              Analytics (Google Analytics <code className="text-sky-300">G-FKM0TMPH4M</code> and Vercel Analytics)
+              only after you allow Analytics. This helps us understand usage to improve PlaneWX.
             </li>
             <li>
-              Marketing measurement when you allow Marketing: Google Ads (
+              Marketing measurement only after you allow Marketing: Google Ads (
               <code className="text-sky-300">AW-18011683791</code>,{" "}
               <code className="text-sky-300">AW-18016407179</code>), Meta Pixel, and Reddit Pixel.
             </li>
             <li>
-              These analytics and marketing tags load only on production hostnames{" "}
+              Analytics and marketing tags load only on production hostnames{" "}
               <code className="text-sky-300">www.planewx.ai</code>,{" "}
               <code className="text-sky-300">planewx.ai</code>, and{" "}
               <code className="text-sky-300">app.planewx.ai</code>. Preview and local hosts do not load them
               (except a deliberate GA DebugView opt-in with <code className="text-sky-300">?ga_debug=1</code>).
+            </li>
+            <li>
+              Embedded third-party. YouTube videos use a click-to-load player on youtube-nocookie.com. The video
+              contacts YouTube only after you press play.
             </li>
           </ul>
         </Section>
@@ -56,13 +60,18 @@ export default function CookiesPage() {
             <p>
               A Cookies &amp; Preferences banner lets you Accept all, choose Essential only, or Manage preferences
               for Analytics and Marketing. Your choice is stored in this browser under the key{" "}
-              <code className="text-sky-300">cookie_prefs_v1</code>.
+              <code className="text-sky-300">cookie_prefs_v1</code>. Analytics and marketing do not load until you
+              allow them, in every region including the United States.
             </p>
             <p>
-              Reopen the banner anytime with{" "}
-              <CookieSettingsButton className="text-sky-400 hover:underline" /> in the site footer, or use the
-              button here. You can also manage cookies via your browser settings. If you block essential storage,
-              login and saved trips may not work.
+              Reopen the banner anytime with Cookie settings in the site footer, or use the controls here:{" "}
+              <CookiePrefsLinks className="text-sky-400 hover:underline" showDoNotSell />. You can also manage
+              cookies via your browser settings. If you block essential storage, login and saved trips may not work.
+            </p>
+            <p>
+              Global Privacy Control (GPC), when signaled by your browser or the Sec-GPC header, keeps Marketing off
+              and disables the Marketing toggle. Do not sell or share turns Marketing off and keeps your existing
+              Analytics choice (or leaves Analytics off if you have not chosen yet).
             </p>
           </div>
         </Section>
