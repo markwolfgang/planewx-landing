@@ -112,10 +112,28 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <Section title="6. Cookies and Tracking">
-          <p className="text-sm leading-relaxed text-white/70">
-            We use cookies and similar technologies for authentication, preferences, and analytics. Where required, we will request consent.
-            You can manage cookies through your browser settings, but core functionality may be impacted.
+          <p className="text-sm leading-relaxed text-white/70 mb-3">
+            We use cookies and similar technologies for authentication, preferences, analytics, and advertising
+            measurement. A Cookies &amp; Preferences banner asks you to Accept all, Essential only, or Manage
+            preferences (Essential, Analytics, Marketing). Your choice is stored in this browser as{" "}
+            <code className="text-sky-300">cookie_prefs_v1</code>. You can reopen preferences from Cookie settings
+            in the footer or the{" "}
+            <Link href="/cookies" className="text-sky-400 hover:underline">
+              Cookie Policy
+            </Link>
+            .
           </p>
+          <ul className="list-disc space-y-2 pl-6 text-sm leading-relaxed text-white/70">
+            <li>Essential is always on (login, security, and core functionality).</li>
+            <li>Analytics loads Google Analytics only after you allow Analytics.</li>
+            <li>Marketing loads Google Ads, Meta Pixel, and Reddit Pixel only after you allow Marketing.</li>
+            <li>
+              On this marketing site those tags run only on{" "}
+              <code className="text-sky-300">www.planewx.ai</code>,{" "}
+              <code className="text-sky-300">planewx.ai</code>, and{" "}
+              <code className="text-sky-300">app.planewx.ai</code>.
+            </li>
+          </ul>
         </Section>
 
         <Section title="7. Data Retention">

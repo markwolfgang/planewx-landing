@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { FaInstagram, FaFacebook, FaXTwitter, FaTiktok, FaYoutube } from "react-icons/fa6"
+import { CookieSettingsButton } from "@/components/cookie-settings-button"
 import { BrandLogo } from "@/components/shared/brand-logo"
 
 const SOCIAL_LINKS = [
@@ -49,6 +50,8 @@ export function SiteFooter({ variant }: { variant: string }) {
             <a href="/ambassadors" className="hover:text-white/60 transition-colors">Ambassadors</a>
             <a href="https://app.planewx.ai/help/faqs" className="hover:text-white/60 transition-colors">FAQ</a>
             <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">Research</a>
+            <a href="/cookies" className="hover:text-white/60 transition-colors">Cookies</a>
+            <CookieSettingsButton className="hover:text-white/60 transition-colors" />
             <a href="mailto:hello@planewx.ai" className="hover:text-white/60 transition-colors">Contact</a>
             <span>© 2026 PlaneWX, LLC</span>
           </div>
