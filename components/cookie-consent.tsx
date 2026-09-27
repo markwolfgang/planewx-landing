@@ -23,7 +23,20 @@ import {
   type ConsentMode,
 } from "@/lib/consent-region"
 
-const BANNER_PAD_PX = 120
+const CONSENT_BANNER_H_VAR = "--consent-banner-h"
+
+function clearConsentBannerPad() {
+  if (typeof document === "undefined") return
+  document.documentElement.style.removeProperty(CONSENT_BANNER_H_VAR)
+  document.body.style.removeProperty("padding-bottom")
+}
+
+function applyConsentBannerPad(heightPx: number) {
+  if (typeof document === "undefined") return
+  const h = Math.max(0, Math.round(heightPx))
+  document.documentElement.style.setProperty(CONSENT_BANNER_H_VAR, `${h}px`)
+  document.body.style.paddingBottom = `calc(var(${CONSENT_BANNER_H_VAR}) + env(safe-area-inset-bottom))`
+}
 
 /**
  * Cookie and tracking preference banner.
@@ -41,6 +54,7 @@ export function CookieConsent() {
   const [ready, setReady] = useState(false)
   const manageButtonRef = useRef<HTMLButtonElement | null>(null)
   const dialogRef = useRef<HTMLDivElement | null>(null)
+  const bannerRef = useRef<HTMLDivElement | null>(null)
   const titleId = useId()
 
   const syncTogglesFromEffective = (
@@ -134,12 +148,44 @@ export function CookieConsent() {
 
   useEffect(() => {
     if (!showBanner) {
-      document.body.style.removeProperty("padding-bottom")
+      clearConsentBannerPad()
       return
     }
-    document.body.style.paddingBottom = `calc(${BANNER_PAD_PX}px + env(safe-area-inset-bottom))`
+
+    let cancelled = false
+    let ro: ResizeObserver | null = null
+    let rafId = 0
+
+    const attach = (): boolean => {
+      const el = bannerRef.current
+      if (!el || cancelled) return false
+
+      const updatePad = () => {
+        if (cancelled) return
+        applyConsentBannerPad(el.getBoundingClientRect().height)
+      }
+      updatePad()
+
+      if (typeof ResizeObserver !== "undefined") {
+        ro = new ResizeObserver(() => {
+          updatePad()
+        })
+        ro.observe(el)
+      }
+      return true
+    }
+
+    if (!attach()) {
+      rafId = window.requestAnimationFrame(() => {
+        attach()
+      })
+    }
+
     return () => {
-      document.body.style.removeProperty("padding-bottom")
+      cancelled = true
+      if (rafId) window.cancelAnimationFrame(rafId)
+      ro?.disconnect()
+      clearConsentBannerPad()
     }
   }, [showBanner])
 
@@ -247,6 +293,7 @@ export function CookieConsent() {
 
       {showBanner && (
         <div
+          ref={bannerRef}
           role="region"
           aria-label="Cookies and Preferences"
           data-testid="cookie-consent-banner"

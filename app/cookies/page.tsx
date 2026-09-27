@@ -61,7 +61,12 @@ export default function CookiesPage() {
             </p>
             <p>
               Reopen the banner anytime with Cookie settings in the site footer, or use the controls here:{" "}
-              <CookiePrefsLinks className="text-sky-400 hover:underline" showDoNotSell />. You can also manage
+              <CookiePrefsLinks
+                className="text-sky-400 hover:underline"
+                showDoNotSell
+                joinWith=" or "
+              />
+              . You can also manage
               cookies via your browser settings. If you block essential storage, login and saved trips may not work.
             </p>
             <p>
