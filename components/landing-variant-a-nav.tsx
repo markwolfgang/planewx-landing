@@ -5,7 +5,7 @@ import { BrandLogo } from "@/components/shared/brand-logo"
 import { SignUpButton } from "./shared"
 import { Menu, X } from "lucide-react"
 
-const NAV_LINKS = [
+const BASE_NAV_LINKS = [
   { href: "#how-it-works", label: "How It Works" },
   { href: "#features", label: "Features" },
   { href: "#pricing", label: "Pricing" },
@@ -18,12 +18,22 @@ type Props = {
   variant: string
 }
 
+function navLinksForVariant(variant: string) {
+  const useHomeHowItWorks = variant === "v2" || variant === "v3"
+  return BASE_NAV_LINKS.map((link) =>
+    link.href === "#how-it-works" && useHomeHowItWorks
+      ? { ...link, href: "/#how-it-works" }
+      : { ...link }
+  )
+}
+
 export function LandingVariantANav({ variant }: Props) {
   const [open, setOpen] = useState(false)
   const panelId = useId()
   const buttonRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
   const navRef = useRef<HTMLElement>(null)
+  const navLinks = navLinksForVariant(variant)
 
   const close = useCallback(() => {
     setOpen(false)
@@ -83,7 +93,7 @@ export function LandingVariantANav({ variant }: Props) {
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4 min-w-0 shrink">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -137,7 +147,7 @@ export function LandingVariantANav({ variant }: Props) {
         className="lg:hidden absolute left-0 right-0 top-full z-30 border-b border-white/10 bg-[#0a1628]/95 backdrop-blur-md shadow-lg shadow-black/40"
       >
         <div className="container mx-auto px-4 py-4 flex flex-col gap-1">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
