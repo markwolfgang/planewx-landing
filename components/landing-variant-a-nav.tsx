@@ -19,7 +19,7 @@ type Props = {
 }
 
 function navLinksForVariant(variant: string) {
-  const useHomeHowItWorks = variant === "v2" || variant === "v3"
+  const useHomeHowItWorks = variant === "v2"
   return BASE_NAV_LINKS.map((link) =>
     link.href === "#how-it-works" && useHomeHowItWorks
       ? { ...link, href: "/#how-it-works" }
