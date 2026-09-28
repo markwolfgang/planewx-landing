@@ -70,37 +70,17 @@ export const NEWS_ITEMS: NewsItem[] = [
 <li><strong>Weather alert near your route.</strong> When a National Weather Service watch, warning or advisory on our storm list touches your departure, destination or route during your flight, a banner above the WX Score shows the alert, where and when it applies, and the NWS office that issued it. It is informational only and does not change your WX Score. More in <a href="https://app.planewx.ai/help/understanding-briefings#weather-alerts">the briefing guide</a>.</li>
 <li><strong>Nearby fog, mist or IFR heads-up.</strong> Arriving within about 3 hours at a field with no TAF of its own? Ceilings &amp; Visibility can now list up to 2 airports within about 30&nbsp;nm that are reporting fog, mist or IFR, marked Not scored. You decide what it means for your flight. More in <a href="https://app.planewx.ai/help/weather-proxies">the nearby stations guide</a>.</li>
 <li><strong>More honest briefing confidence.</strong> When no source covers ceiling or visibility at an airport, the weather card now says No data instead of showing a clear category. The briefing also shows a Data Confidence label and percentage based on the sources it actually got. More in <a href="https://app.planewx.ai/help/weather-decisions">the weather decisions guide</a>.</li>
-<!-- HELP LINK CHECK: the Data Confidence score is on /help/weather-decisions; no live help page describes the No data badge yet (checked 2026-09-28). Flagged to CoS. -->
 <li><strong>Crosswind on the best-aligned runway.</strong> Crosswind scoring uses the runway best aligned with the wind at departure and arrival. More in <a href="https://app.planewx.ai/help/wx-score">the WX Score guide</a>.</li>
 <li><strong>IFR AIRMET at a VFR arrival.</strong> On a VFR trip, when your destination&rsquo;s own TAF shows VFR at your arrival time but an IFR AIRMET covers the arrival, the briefing now treats it as a Marginal caution. Read the AIRMET and the TAF together and make your call.</li>
-<!-- HELP LINK NEEDED: no live help page covers the arrival IFR AIRMET caution yet (checked 2026-09-28). Flagged to CoS. -->
 <li><strong>Better wind at fuel stops.</strong> When a fuel stop forecast has no gust data, PlaneWX now fills in the gust from the National Blend of Models when it is stronger than the steady wind, and labels where it came from.</li>
-<!-- HELP LINK NEEDED: no live help page covers fuel stop gust fill yet (checked 2026-09-28). Flagged to CoS. -->
 <li><strong>Mission type on trips.</strong> When you create or edit a trip, you can pick a mission type (Personal, Business, Training or Volunteer). For volunteer flights, you can note what is on board: passengers, animals, both, or an empty positioning leg.</li>
-<!-- HELP LINK NEEDED: no live help page covers structured mission type yet (checked 2026-09-28). Flagged to CoS. -->
 </ul>
 
 <h2>Fixes and improvements</h2>
 <p>We shipped <strong>46</strong> fixes and improvements for customers this week, including <strong>32</strong> bug fixes you could see in the app.</p>
 
-${/*
-  HELD (CoS decision): Briefing reviews block. Not in CoS final inputs for
-  Sep 21 to 27, and the About right / Too low / Too high split may read as an
-  accuracy figure under Mark's Sep 28 no-accuracy-numbers rule. Restore only
-  if CoS and Mark say so, with Growth's recounted numbers.
-  Reply rate (43%, 7 received, 3 replied) is provisional and skipped.
-*/ ""}
-
 <h2>Tip of the Week: no TAF at your destination? Check the neighbors</h2>
 <p>A pilot recently flew an IFR arrival into a field with no TAF of its own. The forecast from a nearby proxy station and the field&rsquo;s own METAR both looked fine, but an airport about a dozen miles away was already reporting 1/4&nbsp;SM visibility in fog, and the field fogged in. When your destination has no TAF, look at the station reports around it before you commit, on your EFB&rsquo;s map or <a href="https://aviationweather.gov">aviationweather.gov</a>. PlaneWX can now show a nearby fog, mist or IFR heads-up in Ceilings &amp; Visibility, but your briefing is built on the same public weather products every pilot uses, so treat it as one source to crosscheck, not your only one. See <a href="https://app.planewx.ai/help/weather-proxies">the nearby stations guide</a> for how PlaneWX picks a proxy station.</p>
-
-${/*
-  Coming soon: nothing approved yet. Keep this block commented out so future
-  features cannot render until Mark approves them for customers. No mentor
-  numbers and no FRAT decline narrative.
-  <h2>Coming soon</h2>
-  <p></p>
-*/ ""}
 
 <p>Open PlaneWX when you are ready to brief the next trip: <a href="https://app.planewx.ai">app.planewx.ai</a>. PlaneWX never recommends GO or NO-GO. The pilot makes the call.</p>
 
