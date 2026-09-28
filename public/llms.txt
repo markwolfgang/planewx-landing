@@ -172,9 +172,11 @@ PlaneWX was created by pilots who have felt the pressure, made the calls, and le
 - Website: https://planewx.ai
 - App: https://app.planewx.ai
 - Help: https://app.planewx.ai/help
-- Support: support@planewx.com
+- Support: planewx@planewx.ai
 
 ## Legal and Disclaimer
+
+© 2026 PlaneWX, LLC. All rights reserved. Patent Pending.
 
 Weather data sourced from federal and other official aviation weather feeds described in Help. Outputs are decision-support tools. The pilot in command is solely responsible for all flight safety decisions.
 
