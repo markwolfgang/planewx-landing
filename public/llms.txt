@@ -1,11 +1,11 @@
 # PlaneWX
 
-> Weather Intelligence for Pilots
-> "The confidence to fly, or the courage to stay."
+> The decision support system for general aviation
+> "Fly like it's your job."
 
 ## Overview
 
-PlaneWX is weather intelligence and decision support for general aviation pilots. It synthesizes publicly available weather sources (TAFs, METARs, GFS, NBM, AFDs, prog charts, and more) into route-specific briefings and a personalized WX Score, starting up to 14 days out. PlaneWX helps pilots make their own go/no-go decision earlier, before pressure sets in. PlaneWX never makes the call, never recommends GO or NO-GO, and the pilot in command decides.
+PlaneWX is the decision support system for general aviation. It synthesizes publicly available weather sources (TAFs, METARs, GFS, NBM, AFDs, prog charts, and more) into route-specific briefings and a personalized WX Score, starting up to 14 days out. PlaneWX helps pilots make their own go/no-go decision earlier, before pressure sets in. PlaneWX never makes the call, never recommends GO or NO-GO, and the pilot in command decides.
 
 Help center (source of truth for product behavior): https://app.planewx.ai/help
 
