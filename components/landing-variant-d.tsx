@@ -80,7 +80,7 @@ export function LandingVariantD() {
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
       <VariantTracker variant={VARIANT} />
 
-      {/* Background — radial-gradient avoids GPU compositing layers caused by filter:blur */}
+      {/* Background: radial-gradient avoids GPU compositing layers caused by filter:blur */}
       <div
         className="fixed inset-0 -z-10"
         style={{
@@ -161,7 +161,7 @@ export function LandingVariantD() {
 
           <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
             PlaneWX will never put safety behind a paywall. Every pilot gets the same AI engine,
-            the same weather models, the same WX Score — whether you pay or not.{" "}
+            the same weather models, the same WX Score, whether you pay or not.{" "}
             <strong className="text-white">We limit how much you can use it, not how well it works.</strong>
           </p>
 
@@ -170,7 +170,7 @@ export function LandingVariantD() {
               variant={VARIANT}
               className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white px-10 py-4 text-lg font-semibold shadow-lg shadow-emerald-500/25 transition-all"
             >
-              Start for Free — No Credit Card
+              Start for Free. No Credit Card
               <ArrowRight className="ml-2 h-5 w-5" />
             </SignUpButton>
             <a
@@ -193,7 +193,7 @@ export function LandingVariantD() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Real pilots. Real decisions.</h2>
-            <p className="text-white/50">From student pilots to {STATS.maxPilotHoursPhrase} ATP captains.</p>
+            <p className="text-white/50">From student pilots to ATP captains.</p>
           </div>
           <TestimonialsCarousel />
         </div>
@@ -388,9 +388,9 @@ export function LandingVariantD() {
               accident. That&apos;s not something we&apos;re willing to do.
             </p>
             <p className="text-white/80">
-              Pro doesn&apos;t make your briefings better — they&apos;re already full quality.{" "}
+              Pro doesn&apos;t make your briefings better. They&apos;re already full quality.{" "}
               <strong className="text-teal-300">Casual</strong> makes PlaneWX{" "}
-              <strong className="text-teal-300">watch the weather for you</strong> — auto-refresh,
+              <strong className="text-teal-300">watch the weather for you</strong>: auto-refresh,
               email alerts, Trip Watchers. <strong className="text-sky-300">Pro</strong>{" "}
               adds <strong className="text-sky-300">route intelligence and maximum scale</strong>:
               Corridor Watch, Multi-City Optimizer, and the mentor directory.
@@ -436,7 +436,7 @@ export function LandingVariantD() {
               <h3 className="text-xl font-bold mb-3">Monthly Flyers</h3>
               <p className="text-white/60 text-sm leading-relaxed">
                 A few cross-country flights per month. You want PlaneWX to watch the weather
-                and alert you to changes — not just brief you when you remember to check.
+                and alert you to changes, not just brief you when you remember to check.
               </p>
             </div>
 
@@ -472,32 +472,17 @@ export function LandingVariantD() {
       </section>
 
 
-      {/* STATS BAR */}
+      {/* TRUST BAR */}
       <section className="relative py-12 px-4 border-y border-white/5 bg-white/[0.02]">
-        <div className="container mx-auto max-w-5xl">
-          <p className="text-center text-xs text-white/30 uppercase tracking-widest mb-8 font-medium">
+        <div className="container mx-auto max-w-5xl text-center space-y-3">
+          <p className="text-xs text-white/30 uppercase tracking-widest font-medium">
             Trusted by serious GA pilots
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-emerald-400 mb-1">{STATS.cumulativeHours}</div>
-              <div className="text-sm text-white/50">cumulative flight hours<br />in our pilot community</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-teal-400 mb-1">{STATS.instrumentRated}</div>
-              <div className="text-sm text-white/50">of our pilots are<br />instrument rated</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-sky-400 mb-1">{STATS.jetAircraft}</div>
-              <div className="text-sm text-white/50">jet aircraft<br />in our fleet</div>
-            </div>
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-1">{STATS.avgHours}</div>
-              <div className="text-sm text-white/50">average flight hours<br />per pilot</div>
-            </div>
-          </div>
-          <p className="text-center text-xs text-white/25 mt-8">
-            From student pilots building hours to ATP captains flying Citations and Gulfstreams.
+          <p className="text-3xl md:text-4xl font-bold text-emerald-400">
+            {STATS.totalPilots} pilots
+          </p>
+          <p className="text-sm text-white/50">
+            From Cessna 172s to Gulfstreams.
           </p>
         </div>
       </section>
@@ -542,8 +527,7 @@ export function LandingVariantD() {
                 </em>
               </p>
               <p>
-                Now flying a TBM 900 and over 1,000 hours total time, including 784 hours of
-                cross-country PIC in under 2 years, Mark built PlaneWX to solve his own problem. What
+                Now flying a TBM 900 with over 1,000 hours total time, Mark built PlaneWX to solve his own problem. What
                 started as personal frustration became a mission to help every pilot answer the question:{" "}
                 <em className="text-emerald-400">&ldquo;Is this flight going to happen?&rdquo;</em>
               </p>

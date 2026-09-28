@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
+import { CookiePrefsLinks } from "@/components/cookie-prefs-links"
 import {
   ArrowLeft,
   ArrowRight,
@@ -330,10 +331,14 @@ export default function GaCustomsPage() {
             <BrandLogo variant="wordmarkTransparent" className="h-5 w-auto opacity-70" />
             <p>© {new Date().getFullYear()} PlaneWX, LLC</p>
           </div>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-5">
             <Link href="/privacy" className="hover:text-white/60 transition-colors">
               Privacy
             </Link>
+            <Link href="/cookies" className="hover:text-white/60 transition-colors">
+              Cookies
+            </Link>
+            <CookiePrefsLinks className="hover:text-white/60 transition-colors" />
             <Link href="/terms" className="hover:text-white/60 transition-colors">
               Terms
             </Link>

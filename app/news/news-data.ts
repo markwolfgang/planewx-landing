@@ -51,7 +51,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     category: "Partnerships",
     title: "PlaneWX Partners with Air Care Alliance to Support Volunteer Mission Pilots",
     excerpt:
-      "Compassion Flight volunteer pilots can unlock PlaneWX Pro Plus with a call sign, start a free trial, and get 30% off the annual plan. The partnership puts decision support behind the pilots who fly for those in need.",
+      "Compassion Flight volunteer pilots can unlock PlaneWX Pro Plus with a call sign, start a free trial, and get 30% off the annual plan for each year they're an active volunteer pilot. The partnership puts decision support behind the pilots who fly for those in need.",
     date: "September 22, 2026",
     isoDate: "2026-09-22",
     location: "St. Petersburg, Florida",
@@ -64,13 +64,13 @@ export const NEWS_ITEMS: NewsItem[] = [
       href: "https://aircarealliance.org",
     },
     body: `
-<p><strong>DRAFT FOR REVIEW &mdash; partner review only; not listed in the public Newsroom.</strong></p>
+<p><strong>DRAFT FOR REVIEW. Partner review only; not listed in the public Newsroom.</strong></p>
 
-<p><strong>St. Petersburg, Florida &mdash; September 22, 2026 &mdash;</strong> PlaneWX today announced a partnership with <a href="https://aircarealliance.org" target="_blank" rel="noopener noreferrer">Air Care Alliance</a> (ACA) to support volunteer mission pilots. Eligible Compassion Flight pilots can access PlaneWX through a dedicated volunteer offer: enter a Compassion Flight call sign, start a two-week Pro Plus trial, and receive 30% off Pro Plus annual when they continue.</p>
+<p><strong>St. Petersburg, Florida, September 22, 2026.</strong> PlaneWX today announced a partnership with <a href="https://aircarealliance.org" target="_blank" rel="noopener noreferrer">Air Care Alliance</a> (ACA) to support volunteer mission pilots. Eligible Compassion Flight pilots can access PlaneWX through a dedicated volunteer offer: enter a Compassion Flight call sign, start a two-week Pro Plus trial, and receive 30% off the annual plan for each year they're an active volunteer pilot.</p>
 
 <p>Air Care Alliance connects and supports organizations that use general aviation to help people in medical and humanitarian need. PlaneWX is the pilot&rsquo;s decision support system for go/no-go weather &mdash; a WX Score against each pilot&rsquo;s specific aircraft and personal minimums, an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework (FRAT), and a peer mentor network so planning can start up to 14 days out, not the night before.</p>
 
-<p>Eligible pilots start at <a href="https://www.planewx.ai/volunteer?ref=ACA">www.planewx.ai/volunteer?ref=ACA</a>. A Compassion Flight call sign unlocks signup. The two-week Pro Plus trial begins from there. When the pilot continues on Pro Plus annual, the 30% discount applies automatically from the stored call sign &mdash; no promo code to type. More on the partnership and other collaborators is at <a href="https://www.planewx.ai/partners">www.planewx.ai/partners</a>.</p>
+<p>Eligible pilots start at <a href="https://www.planewx.ai/volunteer?ref=ACA">www.planewx.ai/volunteer?ref=ACA</a>. A Compassion Flight call sign unlocks signup. The two-week Pro Plus trial begins from there. When the pilot continues on Pro Plus annual, they get 30% off the annual plan for each year they're an active volunteer pilot. There is no promo code to type. More on the partnership and other collaborators is at <a href="https://www.planewx.ai/partners">www.planewx.ai/partners</a>.</p>
 
 <blockquote><p>&ldquo;I built PlaneWX to give myself a safety framework for personal and volunteer flights. Volunteer pilots give their time and money, and share the gift of private flight with people who need it. I am proud to partner with Air Care Alliance and put our Decision Support System in front of their volunteer pilots, to improve the safety of flight and to help more missions get dispatched.&rdquo;</p><cite>&mdash; Mark Wolfgang, founder of PlaneWX, Navy veteran, commercial instrument-rated pilot, and Veterans Airlift Command volunteer pilot</cite></blockquote>
 
@@ -544,7 +544,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 <p>A lot of those routes crossed wildfire smoke. METARs at departure and arrival can still look VFR while the corridor between them is haze. You need to see the ground and the next waypoint. As of July 15, PlaneWX samples smoke along the route so that problem shows up before you are airborne.</p>
 
-<p>When NOAA&rsquo;s Hazard Mapping System detects smoke near the route, a plume draws on the map. Corridor points show estimated visibility where particulate data exists. The briefing names severity, how much of the route is affected, and the lowest estimated visibility. For VFR, that visibility is scored against your personal minimums &mdash; the same soft and hard limits you already use at the airports, applied en-route. Below the hard minimum, the WX Score goes to 0% and the breakdown names en-route smoke. Between soft and hard is a caution on the same curve, not a separate smoke scale. You need a VFR visibility hard minimum on file for smoke to produce a NO-GO. Soft-only profiles still see the overlay.</p>
+<p>When NOAA&rsquo;s Hazard Mapping System detects smoke near the route, a plume draws on the map. Corridor points show estimated visibility where particulate data exists. The briefing names severity, how much of the route is affected, and the lowest estimated visibility. For VFR, that visibility is scored against your personal minimums &mdash; the same soft and hard limits you already use at the airports, applied en-route. Below the hard minimum, the briefing marks a hard-limit exceedance and the breakdown names en-route smoke. Between soft and hard is a caution on the same curve, not a separate smoke scale. You need a VFR visibility hard minimum on file for smoke to produce a NO-GO. Soft-only profiles still see the overlay.</p>
 
 <p>IFR flights still show the smoke. Smoke alone does not change an IFR WX Score. Instrument rules are not visibility-limited the same way.</p>
 

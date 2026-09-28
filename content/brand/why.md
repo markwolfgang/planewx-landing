@@ -64,7 +64,7 @@ problems:
       body: >-
         A weekend pilot with one trip planned can manage the manual process.
         It's tedious, but doable. Now consider a professional pilot who flies
-        5–6 trips per week across multiple aircraft. Monitoring weather across
+        5-6 trips per week across multiple aircraft. Monitoring weather across
         all those trips, all those routes, all those time frames, manually, is
         simply impossible to do well. PlaneWX gives that pilot an at-a-glance
         dashboard with WX Scores across all active trips.
@@ -176,7 +176,7 @@ comparison:
       - Start the rescheduling conversation days earlier with Trip Watchers
     - - Text a friend at 6 AM hoping they're available
       - Mentor sees your exact briefing before the conversation
-    - - Manually check weather across 5–6 trips per week
+    - - Manually check weather across 5-6 trips per week
       - Dashboard with at-a-glance WX Scores for all active trips
 mentoring:
   title: Why Mentoring Exists
@@ -207,7 +207,7 @@ audiences:
     - icon: Sparkles
       title: Professional Jet Pilot
       desc: >-
-        5–6 trips per week across multiple aircraft. Doesn't need help
+        5-6 trips per week across multiple aircraft. Doesn't need help
         understanding weather. Needs help with workload. At-a-glance WX Scores
         across all active trips.
     - icon: Shield

@@ -1,0 +1,31 @@
+PlaneWX x AOPA.org display ads: "Fly like it's your job."
+Built 2026-09-24 from Canva design DAHWI6aFEZo (top ad set; Sara's original DAHWIzxVTcE untouched)
+
+PLACEMENT (per AOPA IO 9/15/26 + banner options 9/9/26, Jeff Rockwood)
+  AOPA.org ROS 300 x 250 Medium Rectangle, "expandable to 600 x 250"
+  Oct, Nov, Dec 2026 | 27,000 imp/mo @ $38 CPM | $1,026/mo
+
+FILES
+  planewx-aopa-300x250-fly-like-its-your-job.jpg          300x250   JPEG  72 dpi  ~25 KB   <- the booked 300x250 unit
+  planewx-aopa-300x250-fly-like-its-your-job@2x.jpg       600x500   JPEG  72 dpi  ~61 KB   retina/2x version (optional)
+  planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job.jpg     600x250   JPEG  72 dpi  ~60 KB   expanded state (5X5 panel)
+  planewx-aopa-600x250-expanded-5x5-fly-like-its-your-job@2x.jpg  1200x500  JPEG  72 dpi  ~145 KB  retina/2x version (optional)
+
+FORMAT
+  JPEG (AOPA accepts Rich Media / HTML5 per Google Ad Manager guidelines, .jpeg or .gif; 72 dpi minimum)
+  sRGB, quality 92, no chroma subsampling. 1px #BFDBFE border on all edges (2px at @2x)
+  to satisfy AOPA's "clearly defined borders" requirement.
+  AOPA states no max file size and no 2x/retina requirement. The @2x files are extras.
+
+CLICK URL
+  https://www.planewx.ai/?variant=a&ref=AOPA-DISPLAY-OCT26&utm_source=aopa&utm_medium=display&utm_campaign=oct2026
+
+NOTES
+  The 600x250 is not a standalone AOPA placement. It matches the expanded size of the
+  expandable 300x250 Medium Rectangle. Expands rightward from a left-anchored 300x250 to
+  600x250. The HTML5 unit uses these approved JPEGs as the collapsed and expanded faces
+  (srcset 1x/2x); no hand-built HTML/CSS text or logos on the faces. The container grows
+  from 300 to 600 wide with overflow hidden so the expanded JPEG is revealed in place.
+  Close X sits in the top-right navy corner of the 5X5 half, clear of lettering.
+  backup.jpg in the HTML5 zip is the collapsed 300x250 JPEG.
+  Send materials to pilot.ads@aopa.org at least 5 business days before launch.

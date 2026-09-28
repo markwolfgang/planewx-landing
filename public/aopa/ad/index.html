@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ad.size" content="width=300,height=250">
+<title>PlaneWX AOPA 300x250 expandable</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+  }
+  * { box-sizing: border-box; }
+
+  /* Left-anchored; expands rightward 300 → 600 */
+  #ad {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+    z-index: 100; /* collapsed: 0-4999 */
+    cursor: pointer;
+    border: 1px solid #BFDBFE;
+    background: #0B1B33;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: width 220ms ease-out;
+  }
+  #ad.is-expanded {
+    width: 600px;
+    z-index: 50000; /* expanded: 5000-1999999 */
+  }
+  #ad.is-ready {
+    /* images preloaded */
+  }
+
+  .faces {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 250px;
+  }
+  .face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border: 0;
+    pointer-events: none;
+  }
+  .face-collapsed {
+    width: 300px;
+    height: 250px;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 120ms linear;
+  }
+  .face-expanded {
+    width: 600px;
+    height: 250px;
+    z-index: 1;
+  }
+  #ad.is-expanded .face-collapsed {
+    opacity: 0;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.4);
+    background: rgba(11, 27, 51, 0.75);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  #ad.is-expanded .close-btn { display: block; }
+  .close-btn:hover { background: rgba(37, 99, 235, 0.9); }
+</style>
+</head>
+<body>
+<div id="ad" role="link" aria-label="PlaneWX: Fly like it's your job. Start planning free." tabindex="0">
+  <button type="button" class="close-btn" id="closeBtn" aria-label="Close expanded ad" title="Close">×</button>
+  <div class="faces">
+    <img
+      class="face face-expanded"
+      id="faceExpanded"
+      src="assets/expanded.jpg"
+      srcset="assets/expanded.jpg 1x, assets/expanded@2x.jpg 2x"
+      width="600"
+      height="250"
+      alt="PlaneWX and 5X5 Aviation Insurance"
+      draggable="false"
+    >
+    <img
+      class="face face-collapsed"
+      id="faceCollapsed"
+      src="assets/collapsed.jpg"
+      srcset="assets/collapsed.jpg 1x, assets/collapsed@2x.jpg 2x"
+      width="300"
+      height="250"
+      alt="PlaneWX: Fly like it's your job."
+      draggable="false"
+    >
+  </div>
+</div>
+
+<script>
+  // GAM / DoubleClick Studio: publishers may rewrite clickTag.
+  var clickTag = "https://www.planewx.ai/?variant=a&ref=AOPA-DISPLAY-OCT26&utm_source=aopa&utm_medium=display&utm_campaign=oct2026";
+
+  var CONFIG = {
+    expandDirection: "right",
+    hoverExpandDelayMs: 120,
+    maxAnimationMs: 15000
+  };
+
+  (function () {
+    var ad = document.getElementById("ad");
+    var closeBtn = document.getElementById("closeBtn");
+    var faceCollapsed = document.getElementById("faceCollapsed");
+    var faceExpanded = document.getElementById("faceExpanded");
+    var expanded = false;
+    var stickyExpand = false;
+    var ready = false;
+    var hoverTimer = null;
+    var params = {};
+    try {
+      params = Object.fromEntries(new URLSearchParams(location.search));
+    } catch (e) {}
+    var demoMode = params.demo === "1" || params.demo === "true";
+
+    function openClick() {
+      window.open(clickTag, "_blank");
+    }
+
+    function setExpanded(on, sticky) {
+      if (!ready && on) return;
+      expanded = !!on;
+      if (typeof sticky === "boolean") stickyExpand = sticky;
+      if (!expanded) stickyExpand = false;
+      if (expanded) ad.classList.add("is-expanded");
+      else ad.classList.remove("is-expanded");
+      try {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: "planewx-aopa-ad", expanded: expanded }, "*");
+        }
+      } catch (e) {}
+    }
+
+    function expand(sticky) { setExpanded(true, sticky === true); }
+    function collapse() { setExpanded(false, false); }
+
+    ad.addEventListener("click", function (e) {
+      if (e.target === closeBtn || closeBtn.contains(e.target)) return;
+      if (demoMode) {
+        if (!expanded) expand(true);
+        else openClick();
+        return;
+      }
+      openClick();
+    });
+
+    ad.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        if (demoMode) {
+          if (!expanded) expand(true);
+          else openClick();
+        } else {
+          openClick();
+        }
+      }
+    });
+
+    closeBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      collapse();
+    });
+
+    ad.addEventListener("mouseenter", function () {
+      if (!ready) return;
+      if (hoverTimer) clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function () { expand(false); }, CONFIG.hoverExpandDelayMs);
+    });
+    ad.addEventListener("mouseleave", function () {
+      if (hoverTimer) clearTimeout(hoverTimer);
+      if (!stickyExpand) collapse();
+    });
+
+    window.addEventListener("message", function (ev) {
+      var data = ev && ev.data;
+      if (!data || data.type !== "planewx-aopa-ad-cmd") return;
+      if (data.action === "expand") expand(true);
+      if (data.action === "collapse") collapse();
+      if (data.action === "toggle") setExpanded(!expanded, true);
+    });
+
+    function preload(src) {
+      return new Promise(function (resolve) {
+        var img = new Image();
+        img.onload = function () { resolve(true); };
+        img.onerror = function () { resolve(false); };
+        img.src = src;
+      });
+    }
+
+    function currentSrc(el) {
+      try {
+        if (el.currentSrc) return el.currentSrc;
+      } catch (e) {}
+      return el.getAttribute("src");
+    }
+
+    // Preload both faces (and their srcset picks) before enabling expand
+    Promise.all([
+      preload(currentSrc(faceCollapsed) || "assets/collapsed.jpg"),
+      preload(currentSrc(faceExpanded) || "assets/expanded.jpg"),
+      preload("assets/collapsed@2x.jpg"),
+      preload("assets/expanded@2x.jpg")
+    ]).then(function () {
+      ready = true;
+      ad.classList.add("is-ready");
+    });
+
+    // Cap any transition work at 15s window (static faces; no looped animation)
+    setTimeout(function () {}, CONFIG.maxAnimationMs);
+
+    window.PlaneWxAopaAd = {
+      expand: expand,
+      collapse: collapse,
+      toggle: function () { setExpanded(!expanded, true); },
+      isExpanded: function () { return expanded; },
+      isReady: function () { return ready; }
+    };
+  })();
+</script>
+</body>
+</html>
