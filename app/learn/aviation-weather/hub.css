@@ -1,0 +1,88 @@
+  /* ---- Hub layout: header, Key Facts sidebar, body (PlaneWX /learn/aviation-weather template) ---- */
+  main.hub-main { max-width: 1120px; }
+  .hub { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 40px; }
+  .hub-head, .keyfacts, .hub-body { min-width: 0; }
+  /* ---- Sub-headings: real h3, semibold, about 1.13x body, clear space above ---- */
+  .hub h3 { font-size: 1.13em; font-weight: 600; line-height: 1.35; margin: 36px 0 10px; }
+  .hub .faq h3 { margin-top: 32px; }
+  .hub .fieldref h3 { margin-top: 4px; }
+  /* ---- Citations stay on the line of the word before them ---- */
+  .cites { white-space: nowrap; }
+  @media (max-width: 599.98px) { .cites-long { white-space: normal; } }
+  /* ---- Key Facts ---- */
+  .kf-box { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--accent);
+    border-radius: 8px; padding: 12px 16px 4px; margin: 0 0 24px; font-size: 0.86rem; line-height: 1.42; }
+  .kf-box summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
+  .kf-box summary::-webkit-details-marker { display: none; }
+  .kf-box summary::after { content: "Show"; font-size: 0.8rem; color: var(--accent); font-weight: 600; }
+  .kf-box[open] summary::after { content: "Hide"; }
+  .kf-box h2 { border: 0; margin: 0; padding: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  .kf-box ol { margin: 8px 0 6px; padding-left: 1.25em; }
+  .kf-box li { margin: 0 0 6px; }
+  .kf-box .cites { white-space: normal; }  /* narrow column: first cite stays glued by the no-break space */
+  .kf-box .kf-foot { color: var(--muted); font-size: 0.78rem; margin: 2px 0 8px; }
+  .kf-fade { display: none; }
+  /* ---- Official field reference box ---- */
+  .fieldref { background: var(--quote); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 14px 18px 6px; margin: 0 0 22px; }
+  .fieldref .status { color: var(--muted); font-size: 0.85rem; }
+  /* ---- Raw code blocks (TAF, METAR, etc.) ---- */
+  .raw-wrap { position: relative; margin: 0 0 8px; }
+  pre.taf-raw { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; overflow-x: auto; margin: 0;
+    font: 0.95rem/1.9 ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    scrollbar-width: thin; scrollbar-color: var(--muted) var(--line); }
+  pre.taf-raw::-webkit-scrollbar { height: 8px; }
+  pre.taf-raw::-webkit-scrollbar-track { background: var(--line); border-radius: 0 0 8px 8px; }
+  pre.taf-raw::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 4px; }
+  pre.taf-raw:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  pre.taf-raw .tk { color: inherit; }
+  .scroll-note { display: none; }
+  .decode-cap { color: var(--muted); font-size: 0.88rem; margin: 0 0 18px; }
+  .table-intro { color: var(--muted); font-size: 0.92rem; margin: 0 0 8px; text-align: left; }
+  /* ---- Tables ---- */
+  table.decode td:first-child { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; overflow-wrap: anywhere; }
+  table.decode tr:target td { background: var(--quote); }
+  table.times td, table.times th { white-space: nowrap; }
+  table.times th { white-space: normal; }
+  .table-wrap { overflow-x: auto; margin: 0 0 20px; }
+  .table-wrap table { margin: 0; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: 0.92em; }
+  /* ---- On-page glossary (no-JS fallback and tooltip anchor targets) ---- */
+  .glossary dl { margin: 0 0 16px; }
+  .glossary dt { font-size: 1rem; font-weight: 600; margin-top: 14px; }
+  .glossary dfn { font-style: normal; }
+  .glossary dt:target, .glossary dt:target + dd { background: var(--quote); }
+  .glossary dd { margin: 2px 0 0; font-size: 0.95rem; }
+  .glossary .src { color: var(--muted); font-size: 0.85rem; }
+  /* ---- Below 600 px: stacked-card tables, scroll hint and fade on raw blocks ---- */
+  @media (max-width: 599.98px) {
+    table.stack, table.stack tbody, table.stack tr, table.stack td, table.stack th[scope="row"] { display: block; width: 100%; }
+    table.stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+    table.stack tr { border: 1px solid var(--line); border-radius: 8px; margin: 0 0 12px; overflow: hidden; }
+    table.stack td, table.stack th[scope="row"] { border: 0; border-top: 1px solid var(--line); padding: 8px 12px; }
+    table.stack tr > :first-child { border-top: 0; }
+    table.stack th[scope="row"], table.decode td:first-child { background: var(--card); font-weight: 600; }
+    table.stack td[data-label]::before { content: attr(data-label); display: block; font: 600 0.74rem/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 2px; }
+    table.decode td:first-child::before { display: none; }
+    .table-wrap:has(table.stack) { overflow: visible; }
+    .scroll-note { display: block; color: var(--muted); font-size: 0.82rem; margin: 0 0 6px; }
+    .raw-wrap::after { content: ""; position: absolute; top: 1px; right: 1px; bottom: 9px; width: 40px; pointer-events: none;
+      border-radius: 0 8px 0 0; background: linear-gradient(to right, rgba(0,0,0,0), var(--card)); transition: opacity .15s; }
+    .raw-wrap.at-end::after { opacity: 0; }
+    table.times { font-size: 0.88rem; }
+    table.times th, table.times td { padding: 8px 7px; }
+  }
+  /* ---- Desktop: two columns, sticky Key Facts (kept last so it overrides the mobile toggle styles) ---- */
+  @media (min-width: 980px) {
+    .hub { grid-template-columns: minmax(0, 760px) 320px; justify-content: center; }
+    .hub-head { grid-column: 1; grid-row: 1; }
+    .hub-body { grid-column: 1; grid-row: 2; }
+    .keyfacts { grid-column: 2; grid-row: 1 / span 2; }
+    /* Capped only when taller than the viewport; a bottom fade shows while more facts are below. */
+    .keyfacts .kf-box { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+    .keyfacts summary { pointer-events: none; }
+    .keyfacts .kf-box summary::after, .keyfacts .kf-box[open] summary::after { content: none; }
+    .kf-box.is-capped .kf-fade { display: block; position: sticky; bottom: -4px; height: 36px; margin: -36px -16px 0; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(0,0,0,0), var(--card)); }
+    .kf-box.is-capped.at-end .kf-fade { opacity: 0; }
+  }

@@ -9,9 +9,9 @@ import {
 import { MAIN_HTML } from "./content"
 import "../aw-hub.css"
 
-const TITLE = "What Is a TAF? How to Read a Terminal Aerodrome Forecast"
-const DESCRIPTION = "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision."
-const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/taf"
+const TITLE = "What Is a PIREP? How to Read and Give a Pilot Weather Report"
+const DESCRIPTION = "A PIREP is a pilot weather report. Learn the UA and UUA format, how to decode each field, the official icing and turbulence intensity scales, and how to give a PIREP that helps."
+const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/pirep"
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -21,14 +21,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: CANONICAL,
-    title: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
-    description: "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision.",
+    title: "What Is a PIREP? How to Read and Give a Pilot Weather Report",
+    description: "A PIREP is a pilot weather report. Learn the UA and UUA format, how to decode each field, the official icing and turbulence intensity scales, and how to give a PIREP that helps.",
     siteName: "PlaneWX",
   },
   twitter: {
     card: "summary",
-    title: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
-    description: "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision.",
+    title: "What Is a PIREP? How to Read and Give a Pilot Weather Report",
+    description: "A PIREP is a pilot weather report. Learn the UA and UUA format, how to decode each field, the official icing and turbulence intensity scales, and how to give a PIREP that helps.",
     creator: "@planewx",
   },
 }

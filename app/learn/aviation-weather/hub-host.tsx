@@ -2,9 +2,8 @@
 
 import { useEffect, useRef } from "react"
 import { GLOSSARY_DATA } from "./glossary-data"
-import { TAF_MAIN_HTML } from "./taf-content"
 
-type GlossaryTerm = {
+type TipTerm = {
   id: string
   term: string
   expansion: string
@@ -14,20 +13,26 @@ type GlossaryTerm = {
 }
 
 /**
- * Ports the staging glossary tooltip script: hover (120ms), focus, tap/click,
- * Esc (focus back to trigger), outside click, aria-expanded / aria-describedby,
- * flip above near viewport bottom, and Key Facts matchMedia open state.
+ * Shared Aviation Weather hub host: glossary tooltips, Key Facts matchMedia /
+ * viewport cap/fade, and raw-wrap scroll fade. Ports hub-source/glossary.js.
  */
-export function TafGlossaryHost() {
+export function HubHost({ html }: { html: string }) {
   const rootRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const root = rootRef.current
     if (!root) return
 
-    const terms: Record<string, GlossaryTerm> = {}
+    const terms: Record<string, TipTerm> = {}
     for (const t of GLOSSARY_DATA) {
-      terms[t.id] = t as GlossaryTerm
+      terms[t.id] = {
+        id: t.id,
+        term: t.term,
+        expansion: t.expansion || "",
+        definition: t.definition,
+        source: t.source_title || t.source_short || "",
+        url: t.url || "",
+      }
     }
 
     const tip = document.createElement("span")
@@ -48,7 +53,7 @@ export function TafGlossaryHost() {
       return n
     }
 
-    function info(a: HTMLAnchorElement) {
+    function info(a: HTMLAnchorElement): TipTerm {
       const id = a.dataset.gl
       if (id && terms[id]) return terms[id]
       return {
@@ -220,7 +225,6 @@ export function TafGlossaryHost() {
       kf.addEventListener("toggle", kfCap)
       window.addEventListener("resize", kfCap)
       window.addEventListener("load", kfCap)
-      // Header-height CSS var can shrink max-height after first paint; re-check cap.
       if (typeof ResizeObserver !== "undefined") {
         kfRo = new ResizeObserver(() => kfCap())
         kfRo.observe(kf)
@@ -267,13 +271,13 @@ export function TafGlossaryHost() {
       if (hideT) clearTimeout(hideT)
       tip.remove()
     }
-  }, [])
+  }, [html])
 
   return (
-    <div className="taf-page" ref={rootRef}>
+    <div className="aw-hub" ref={rootRef}>
       <main
         className="hub-main"
-        dangerouslySetInnerHTML={{ __html: TAF_MAIN_HTML }}
+        dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>
   )

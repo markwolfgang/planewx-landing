@@ -9,9 +9,9 @@ import {
 import { MAIN_HTML } from "./content"
 import "../aw-hub.css"
 
-const TITLE = "What Is a TAF? How to Read a Terminal Aerodrome Forecast"
-const DESCRIPTION = "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision."
-const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/taf"
+const TITLE = "AIRMET, SIGMET, and CWA: In-Flight Weather Advisories Explained"
+const DESCRIPTION = "How to read AIRMETs, G-AIRMETs, SIGMETs, Convective SIGMETs, and Center Weather Advisories: criteria, valid times, decoded Handbook examples, and where advisories fit a disciplined weather decision."
+const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/airmet-sigmet"
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -21,14 +21,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: CANONICAL,
-    title: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
-    description: "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision.",
+    title: "AIRMET, SIGMET, and CWA: In-Flight Weather Advisories Explained",
+    description: "How to read AIRMETs, G-AIRMETs, SIGMETs, Convective SIGMETs, and Center Weather Advisories: criteria, valid times, decoded Handbook examples, and where advisories fit a disciplined weather decision.",
     siteName: "PlaneWX",
   },
   twitter: {
     card: "summary",
-    title: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
-    description: "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision.",
+    title: "AIRMET, SIGMET, and CWA: In-Flight Weather Advisories Explained",
+    description: "How to read AIRMETs, G-AIRMETs, SIGMETs, Convective SIGMETs, and Center Weather Advisories: criteria, valid times, decoded Handbook examples, and where advisories fit a disciplined weather decision.",
     creator: "@planewx",
   },
 }

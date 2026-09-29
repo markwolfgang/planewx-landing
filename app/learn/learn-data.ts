@@ -469,6 +469,53 @@ export const LEARN_DRAFT_BANNER = "DRAFT: facts pending source review"
 export const TIPS_EMPTY_LINE =
   "New tips arrive with each Weekly PIREP."
 
+/**
+ * Live Aviation Weather hub pages on this preview branch (deep routes under
+ * /learn/aviation-weather/). Listed on the Learning Center index; not
+ * [slug] articles. Keep in sync with each aviation-weather page.tsx.
+ */
+export type AviationWeatherHubPage = {
+  href: string
+  title: string
+  summary: string
+  lastReviewed: string
+}
+
+export const AVIATION_WEATHER_HUB_PAGES: readonly AviationWeatherHubPage[] = [
+  {
+    href: "/learn/aviation-weather/taf",
+    title: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
+    summary:
+      "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/metar",
+    title: "What Is a METAR? How to Read an Airport Weather Report",
+    summary:
+      "A METAR is the coded weather observation for an airport. Learn to read every group, what AUTO and AO2 mean, when a SPECI is issued, and where METARs fit a disciplined weather decision.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/airmet-sigmet",
+    title: "AIRMET, SIGMET, and CWA: In-Flight Weather Advisories Explained",
+    summary:
+      "How to read AIRMETs, G-AIRMETs, SIGMETs, Convective SIGMETs, and Center Weather Advisories: criteria, valid times, decoded Handbook examples, and where advisories fit a disciplined weather decision.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/pirep",
+    title: "What Is a PIREP? How to Read and Give a Pilot Weather Report",
+    summary:
+      "A PIREP is a pilot weather report. Learn the UA and UUA format, how to decode each field, the official icing and turbulence intensity scales, and how to give a PIREP that helps.",
+    lastReviewed: "2026-09-29",
+  },
+]
+
+/** Preview-only live deep routes (href + title) for cross-link gates on this branch. */
+export const LIVE_LEARN_ROUTES: readonly { href: string; title: string }[] =
+  AVIATION_WEATHER_HUB_PAGES.map((p) => ({ href: p.href, title: p.title }))
+
 export function getLearnArticle(slug: string): LearnArticle | undefined {
   return LEARN_ARTICLES.find((a) => a.slug === slug)
 }

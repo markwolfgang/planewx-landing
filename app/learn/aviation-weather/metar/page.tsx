@@ -9,9 +9,9 @@ import {
 import { MAIN_HTML } from "./content"
 import "../aw-hub.css"
 
-const TITLE = "What Is a TAF? How to Read a Terminal Aerodrome Forecast"
-const DESCRIPTION = "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision."
-const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/taf"
+const TITLE = "What Is a METAR? How to Read an Airport Weather Report"
+const DESCRIPTION = "A METAR is the coded weather observation for an airport. Learn to read every group, what AUTO and AO2 mean, when a SPECI is issued, and where METARs fit a disciplined weather decision."
+const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/metar"
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -21,14 +21,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: CANONICAL,
-    title: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
-    description: "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision.",
+    title: "What Is a METAR? How to Read an Airport Weather Report",
+    description: "A METAR is the coded weather observation for an airport. Learn to read every group, what AUTO and AO2 mean, when a SPECI is issued, and where METARs fit a disciplined weather decision.",
     siteName: "PlaneWX",
   },
   twitter: {
     card: "summary",
-    title: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
-    description: "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision.",
+    title: "What Is a METAR? How to Read an Airport Weather Report",
+    description: "A METAR is the coded weather observation for an airport. Learn to read every group, what AUTO and AO2 mean, when a SPECI is issued, and where METARs fit a disciplined weather decision.",
     creator: "@planewx",
   },
 }

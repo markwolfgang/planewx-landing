@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import {
+  AVIATION_WEATHER_HUB_PAGES,
   LEARN_PUBLIC,
   LEARN_SECTIONS,
   TIPS_EMPTY_LINE,
@@ -39,8 +40,10 @@ export const metadata: Metadata = {
 
 function SectionArticles({ section }: { section: LearnSection }) {
   const articles = getArticlesBySection(section)
+  const hubPages =
+    section === "Weather Products" ? AVIATION_WEATHER_HUB_PAGES : []
 
-  if (articles.length === 0) {
+  if (articles.length === 0 && hubPages.length === 0) {
     return (
       <div className="rounded-xl border border-dashed border-white/15 bg-white/[0.03] px-6 py-10 text-center">
         <p className="text-sm font-medium text-white/50">Coming soon</p>
@@ -53,6 +56,27 @@ function SectionArticles({ section }: { section: LearnSection }) {
 
   return (
     <ul className="flex flex-col gap-4">
+      {hubPages.map((page) => (
+        <li key={page.href}>
+          <Link
+            href={page.href}
+            className="group flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-5 transition-all hover:border-sky-500/40 hover:bg-white/[0.08]"
+          >
+            <div className="flex flex-wrap items-center gap-2 text-xs">
+              <span className="text-white/40">
+                Reviewed {page.lastReviewed}
+              </span>
+            </div>
+            <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-sky-300">
+              {page.title}
+            </h3>
+            <p className="text-sm text-white/55">{page.summary}</p>
+            <span className="mt-1 inline-flex items-center text-sm font-medium text-sky-400 group-hover:text-sky-300">
+              Read article
+            </span>
+          </Link>
+        </li>
+      ))}
       {articles.map((article) => (
         <li key={article.slug}>
           <Link
