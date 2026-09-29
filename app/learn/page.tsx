@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { NewsNav } from "@/components/news-nav"
 import {
   LEARN_PUBLIC,
   LEARN_SECTIONS,
@@ -130,7 +129,7 @@ function TipsArchive() {
 
 export default function LearnHubPage() {
   return (
-    <div className="min-h-screen bg-[#0a0f1a] text-white">
+    <>
       <div
         className="pointer-events-none fixed inset-0 -z-10"
         style={{
@@ -141,11 +140,6 @@ export default function LearnHubPage() {
           ].join(", "),
         }}
         aria-hidden="true"
-      />
-
-      <NewsNav
-        maxWidthClass="max-w-5xl"
-        back={{ href: "/", label: "Home" }}
       />
 
       <section className="px-6 py-16 text-center">
@@ -213,6 +207,6 @@ export default function LearnHubPage() {
           </a>
         </div>
       </section>
-    </div>
+    </>
   )
 }

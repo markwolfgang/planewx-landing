@@ -1,10 +1,10 @@
 import { Suspense } from "react"
-import { LandingPageV3 } from "@/components/landing-page-v3"
+import { LandingVariantA } from "@/components/landing-variant-a"
 
 export default function Home() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-[#0a0f1a]" />}>
-      <LandingPageV3 />
+      <LandingVariantA />
     </Suspense>
   )
 }
