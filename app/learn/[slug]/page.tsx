@@ -56,6 +56,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
+function renderInlineText(text: string) {
+  // Lightweight [label](/path) links so body copy can cross-link without HTML.
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g)
+  return parts.map((part, i) => {
+    const match = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part)
+    if (!match) return <span key={i}>{part}</span>
+    const [, label, href] = match
+    return (
+      <Link
+        key={i}
+        href={href}
+        className="text-sky-400 hover:text-sky-300 hover:underline"
+      >
+        {label}
+      </Link>
+    )
+  })
+}
+
 function BodyBlocks({ blocks }: { blocks: LearnBodyBlock[] }) {
   return (
     <div className="space-y-5 text-base leading-relaxed text-white/75">
@@ -84,12 +103,12 @@ function BodyBlocks({ blocks }: { blocks: LearnBodyBlock[] }) {
           return (
             <ul key={i} className="list-disc space-y-2 pl-5 text-white/70">
               {block.items.map((item, j) => (
-                <li key={j}>{item}</li>
+                <li key={j}>{renderInlineText(item)}</li>
               ))}
             </ul>
           )
         }
-        return <p key={i}>{block.text}</p>
+        return <p key={i}>{renderInlineText(block.text)}</p>
       })}
     </div>
   )

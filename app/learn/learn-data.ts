@@ -125,10 +125,10 @@ export const LEARN_SECTIONS: {
 export const LEARN_ARTICLES: LearnArticle[] = [
   {
     slug: "mos-vs-nbm-vs-taf",
-    title: "How to Read a TAF, and How It Differs From MOS, LAMP and NBM",
+    title: "TAF vs MOS, LAMP and NBM",
     section: "Weather Products",
     summary:
-      "What a TAF covers, how MOS, LAMP and NBM guidance differ, and why many small airports never get a forecaster-written TAF.",
+      "TAFs are the official NWS terminal forecast. This article compares them with MOS, LAMP and NBM guidance, and explains why many small airports never get a forecaster-written TAF.",
     lastReviewed: "2026-09-25",
     draft: false,
     body: [
@@ -139,6 +139,10 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       {
         type: "paragraph",
         text: "A Terminal Aerodrome Forecast (TAF) is the official NWS terminal forecast for an airport. Weather Forecast Office (WFO) forecasters prepare and monitor TAFs using professional judgment in AvnFPS. An NDFD formatter may build a first-guess TAF that forecasters should edit.",
+      },
+      {
+        type: "paragraph",
+        text: "For a group by group decode of a TAF, see [What Is a TAF? How to Read a Terminal Aerodrome Forecast](/learn/aviation-weather/taf).",
       },
       {
         type: "paragraph",
