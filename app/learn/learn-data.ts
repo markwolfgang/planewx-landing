@@ -85,7 +85,7 @@ export interface LearnArticle {
 
 /**
  * Weekly PIREP tip archive. Same list/prepend pattern as NEWS_ITEMS.
- * Tips start at issue #1. Hub shows a standing empty-state line when none are published.
+ * Tips are listed as archived. Hub shows a standing empty-state line when none are published.
  */
 export interface TipOfTheWeek {
   slug: string
@@ -95,7 +95,7 @@ export interface TipOfTheWeek {
   date: string
   /** ISO date, e.g. "2026-09-25" */
   isoDate: string
-  /** Weekly PIREP issue number (tips start at #1) */
+  /** Weekly PIREP issue number the tip ran in */
   issueNumber: number
   body: LearnBodyBlock[]
   draft?: boolean
@@ -438,7 +438,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
   },
 ]
 
-/** Tips start with Weekly PIREP issue #1. Prepend newest first when adding. */
+/** Tips as archived from each Weekly PIREP. Prepend newest first when adding. */
 export const TIPS_OF_THE_WEEK: TipOfTheWeek[] = [
   {
     slug: "what-the-wx-score-actually-is",
