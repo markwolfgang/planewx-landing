@@ -40,6 +40,7 @@
   .taf-page blockquote p:last-child { margin-bottom: 0; }
   .taf-page blockquote footer { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
   .taf-page .cite { font-size: 0.78em; vertical-align: super; line-height: 0; text-decoration: none; white-space: nowrap; }
+  .taf-page .cite + .cite { margin-left: 0.25em; }
   .taf-page .cite:hover { text-decoration: underline; }
   .taf-page table { width: 100%; border-collapse: collapse; margin: 0 0 20px; font-size: 0.95rem; }
   .taf-page th, .taf-page td { border: 1px solid var(--line); padding: 10px 12px; vertical-align: top; text-align: left; }
