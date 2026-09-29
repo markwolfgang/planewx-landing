@@ -64,11 +64,14 @@
   /* ---- Hub layout: header, Key Facts sidebar, body (PlaneWX /learn/aviation-weather template) ---- */
   .taf-page main.hub-main{ max-width: 1120px; }
   .taf-page .hub{ display: grid; grid-template-columns: minmax(0, 1fr); gap: 0 40px; }
-  .taf-page .hub-head, .taf-page .keyfacts, .taf-page .hub-
-  /* ---- Sub-headings: real h3, .taf-page semibold, .taf-page about 1.13x body, .taf-page clear space above ---- */
-  .hub h3{ font-size: 1.13em; font-weight: 600; line-height: 1.35; margin: 36px 0 10px; }
+  .taf-page .hub-head, .taf-page .keyfacts, .taf-page .hub-body{ min-width: 0; }
+  /* Truncated-port bug used to glue .hub-head/.keyfacts onto this rule (bold + 1.13em). Keep scoped. */
+  .taf-page .hub h3{ font-size: 1.13em; font-weight: 600; line-height: 1.35; margin: 36px 0 10px; }
   .taf-page .hub .faq h3{ margin-top: 32px; }
   .taf-page .hub .fieldref h3{ margin-top: 4px; }
+  /* Source sets no weight on these lists; reset any inherited bold/size from layout/prose. */
+  .taf-page .takeaways li{ font-weight: 400; font-size: 1em; }
+  .taf-page .kf-box li{ font-weight: 400; }
   /* ---- Citations stay on the line of the word before them ---- */
   .taf-page .cites{ white-space: nowrap; }
   @media (max-width: 599.98px) { .taf-page .cites-long{ white-space: normal; } }
@@ -139,10 +142,15 @@
   @media (min-width: 980px) {
     .taf-page .hub{ grid-template-columns: minmax(0, 760px) 320px; justify-content: center; }
     .taf-page .hub-head{ grid-column: 1; grid-row: 1; }
-    .taf-page .hub-
-    .keyfacts{ grid-column: 2; grid-row: 1 / span 2; }
-    /* Capped only when taller than the viewport; a bottom fade shows while more facts are below. */
-    .taf-page .keyfacts .kf-box{ position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+    .taf-page .hub-body{ grid-column: 1; grid-row: 2; }
+    .taf-page .keyfacts{ grid-column: 2; grid-row: 1 / span 2; }
+    /* Offset below measured site header (--learn-header-height set by LearnChrome). */
+    .taf-page .keyfacts .kf-box{
+      position: sticky;
+      top: calc(var(--learn-header-height, 0px) + 16px);
+      max-height: calc(100vh - var(--learn-header-height, 0px) - 32px);
+      overflow-y: auto;
+    }
     .taf-page .keyfacts summary{ pointer-events: none; }
     .taf-page .keyfacts .kf-box summary::after, .taf-page .keyfacts .kf-box[open] summary::after{ content: none; }
     .taf-page .kf-box.is-capped .kf-fade{ display: block; position: sticky; bottom: -4px; height: 36px; margin: -36px -16px 0; pointer-events: none;

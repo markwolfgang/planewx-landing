@@ -64,25 +64,27 @@ export default function TafLearnPage() {
         }}
       />
 
-      {/* Align CTA to the hub article column (760px), not the full page center. */}
-      <section className="px-5 pb-24 pt-4">
-        <div className="mx-auto max-w-[1120px]">
-          <div className="max-w-[760px] space-y-6">
-            <p className="text-center text-sm text-white/40">
-              <Link href="/learn" className="text-sky-400 hover:text-sky-300">
-                Back to Learning Center
-              </Link>
-            </p>
-            <div className="rounded-xl border border-sky-500/20 bg-gradient-to-r from-sky-950/40 to-cyan-950/20 px-6 py-10 text-center">
-              <p className="mb-5 text-base text-white/70">
-                Ready to put a trip on the briefing board?
+      {/* Match hub-main width + horizontal padding so CTA edges align with article text. */}
+      <section className="pb-24 pt-4">
+        <div className="mx-auto max-w-[1120px] px-5">
+          <div className="grid grid-cols-1 justify-center gap-x-10 min-[980px]:grid-cols-[minmax(0,760px)_320px]">
+            <div className="min-w-0 space-y-6">
+              <p className="text-center text-sm text-white/40">
+                <Link href="/learn" className="text-sky-400 hover:text-sky-300">
+                  Back to Learning Center
+                </Link>
               </p>
-              <a
-                href="https://app.planewx.ai"
-                className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:from-sky-400 hover:to-cyan-400 sm:px-8"
-              >
-                Try a PlaneWX briefing
-              </a>
+              <div className="rounded-xl border border-sky-500/20 bg-gradient-to-r from-sky-950/40 to-cyan-950/20 px-6 py-10 text-center">
+                <p className="mb-5 text-base text-white/70">
+                  Ready to put a trip on the briefing board?
+                </p>
+                <a
+                  href="https://app.planewx.ai"
+                  className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:from-sky-400 hover:to-cyan-400 sm:px-8"
+                >
+                  Try a PlaneWX briefing
+                </a>
+              </div>
             </div>
           </div>
         </div>
