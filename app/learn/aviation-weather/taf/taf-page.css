@@ -2,7 +2,7 @@
 
   .taf-page {
     --bg: #ffffff; --fg: #1b1f24; --muted: #57606a; --line: #d0d7de;
-    --card: #f6f8fa; --accent: #0b5cad; --quote: #eef4fb;
+    --card: #f6f8fa; --card-opaque: #f6f8fa; --accent: #0b5cad; --quote: #eef4fb;
     box-sizing: border-box;
     -webkit-text-size-adjust: 100%;
     background: var(--bg); color: var(--fg);
@@ -12,12 +12,12 @@
   html.dark .taf-page,
   .dark .taf-page {
     --bg: #0a0f1a; --fg: #e8eef5; --muted: #9aa4af; --line: rgba(255,255,255,0.12);
-    --card: rgba(255,255,255,0.05); --accent: #38bdf8; --quote: rgba(14,165,233,0.12);
+    --card: rgba(255,255,255,0.05); --card-opaque: #161b25; --accent: #38bdf8; --quote: rgba(14,165,233,0.12);
   }
   @media (prefers-color-scheme: dark) {
     .taf-page {
       --bg: #0a0f1a; --fg: #e8eef5; --muted: #9aa4af; --line: rgba(255,255,255,0.12);
-      --card: rgba(255,255,255,0.05); --accent: #38bdf8; --quote: rgba(14,165,233,0.12);
+      --card: rgba(255,255,255,0.05); --card-opaque: #161b25; --accent: #38bdf8; --quote: rgba(14,165,233,0.12);
     }
   }
 
@@ -155,12 +155,12 @@
     /* Pin KEY FACTS label while the list scrolls under it. */
     .taf-page .keyfacts .kf-box > summary{
       position: sticky;
-      top: 0;
+      top: -12px;
       z-index: 2;
       pointer-events: none;
-      background: var(--card);
+      background: var(--card-opaque);
       margin: -12px -16px 0;
-      padding: 12px 16px 8px;
+      padding: 12px 16px 10px;
     }
     .taf-page .keyfacts .kf-box summary::after, .taf-page .keyfacts .kf-box[open] summary::after{ content: none; }
     .taf-page .kf-box.is-capped .kf-fade{ display: block; position: sticky; bottom: -4px; height: 36px; margin: -36px -16px 0; pointer-events: none;
