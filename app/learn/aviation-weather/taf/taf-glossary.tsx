@@ -198,14 +198,47 @@ export function TafGlossaryHost() {
     const kf = root.querySelector("#key-facts") as HTMLDetailsElement | null
     let mq: MediaQueryList | null = null
     let sync: (() => void) | null = null
+    const kfCap = () => {
+      if (!kf) return
+      const capped = kf.scrollHeight > kf.clientHeight + 2
+      kf.classList.toggle("is-capped", capped)
+      kf.classList.toggle(
+        "at-end",
+        capped && kf.scrollTop + kf.clientHeight >= kf.scrollHeight - 4
+      )
+    }
     if (kf && window.matchMedia) {
       mq = window.matchMedia("(min-width: 980px)")
       sync = () => {
         kf.open = mq!.matches
+        kfCap()
       }
       sync()
       if (mq.addEventListener) mq.addEventListener("change", sync)
+      kf.addEventListener("scroll", kfCap, { passive: true })
+      kf.addEventListener("toggle", kfCap)
+      window.addEventListener("resize", kfCap)
+      window.addEventListener("load", kfCap)
     }
+
+    const rawCleanups: Array<() => void> = []
+    root.querySelectorAll(".raw-wrap").forEach((wrap) => {
+      const pre = wrap.querySelector("pre")
+      if (!pre) return
+      const upd = () => {
+        wrap.classList.toggle(
+          "at-end",
+          pre.scrollLeft + pre.clientWidth >= pre.scrollWidth - 2
+        )
+      }
+      pre.addEventListener("scroll", upd, { passive: true })
+      window.addEventListener("resize", upd)
+      upd()
+      rawCleanups.push(() => {
+        pre.removeEventListener("scroll", upd)
+        window.removeEventListener("resize", upd)
+      })
+    })
 
     return () => {
       root.removeEventListener("mouseover", onMouseOver)
@@ -216,6 +249,13 @@ export function TafGlossaryHost() {
       window.removeEventListener("scroll", onScroll)
       window.removeEventListener("resize", onResize)
       if (mq && sync && mq.removeEventListener) mq.removeEventListener("change", sync)
+      if (kf) {
+        kf.removeEventListener("scroll", kfCap)
+        kf.removeEventListener("toggle", kfCap)
+        window.removeEventListener("resize", kfCap)
+        window.removeEventListener("load", kfCap)
+      }
+      rawCleanups.forEach((fn) => fn())
       if (showT) clearTimeout(showT)
       if (hideT) clearTimeout(hideT)
       tip.remove()

@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { NewsNav } from "@/components/news-nav"
 import { TafGlossaryHost } from "./taf-glossary"
 import {
   ARTICLE_JSON_LD,
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function TafLearnPage() {
   return (
-    <div className="min-h-screen bg-[#0a0f1a] text-white">
+    <>
       <div
         className="pointer-events-none fixed inset-0 -z-10"
         style={{
@@ -46,11 +45,6 @@ export default function TafLearnPage() {
           ].join(", "),
         }}
         aria-hidden="true"
-      />
-
-      <NewsNav
-        maxWidthClass="max-w-[1120px]"
-        back={{ href: "/learn", label: "Learning Center" }}
       />
 
       <TafGlossaryHost />
@@ -70,26 +64,29 @@ export default function TafLearnPage() {
         }}
       />
 
-      <section className="px-6 pb-24 pt-4">
-        <div className="mx-auto max-w-3xl space-y-6">
-          <p className="text-center text-sm text-white/40">
-            <Link href="/learn" className="text-sky-400 hover:text-sky-300">
-              Back to Learning Center
-            </Link>
-          </p>
-          <div className="rounded-xl border border-sky-500/20 bg-gradient-to-r from-sky-950/40 to-cyan-950/20 px-6 py-10 text-center">
-            <p className="mb-5 text-base text-white/70">
-              Ready to put a trip on the briefing board?
+      {/* Align CTA to the hub article column (760px), not the full page center. */}
+      <section className="px-5 pb-24 pt-4">
+        <div className="mx-auto max-w-[1120px]">
+          <div className="max-w-[760px] space-y-6">
+            <p className="text-center text-sm text-white/40">
+              <Link href="/learn" className="text-sky-400 hover:text-sky-300">
+                Back to Learning Center
+              </Link>
             </p>
-            <a
-              href="https://app.planewx.ai"
-              className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:from-sky-400 hover:to-cyan-400 sm:px-8"
-            >
-              Try a PlaneWX briefing
-            </a>
+            <div className="rounded-xl border border-sky-500/20 bg-gradient-to-r from-sky-950/40 to-cyan-950/20 px-6 py-10 text-center">
+              <p className="mb-5 text-base text-white/70">
+                Ready to put a trip on the briefing board?
+              </p>
+              <a
+                href="https://app.planewx.ai"
+                className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:from-sky-400 hover:to-cyan-400 sm:px-8"
+              >
+                Try a PlaneWX briefing
+              </a>
+            </div>
           </div>
         </div>
       </section>
-    </div>
+    </>
   )
 }

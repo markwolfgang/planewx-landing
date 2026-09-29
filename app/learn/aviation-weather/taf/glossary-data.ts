@@ -34,7 +34,7 @@ export const GLOSSARY_DATA = [
   {
     "id": "z",
     "term": "Z",
-    "expansion": "Zulu (UTC)",
+    "expansion": "Zulu, UTC",
     "definition": "Letter added to TAF times to show they are in Coordinated Universal Time, not local time.",
     "source": "NWSI 10-813, Section 4.9",
     "url": "https://www.weather.gov/media/directives/010_pdfs/pd01008013curr.pdf#page=6"
@@ -90,7 +90,7 @@ export const GLOSSARY_DATA = [
   {
     "id": "ceiling",
     "term": "Ceiling",
-    "expansion": "Ceiling",
+    "expansion": "",
     "definition": "The lowest broken or overcast layer, or the vertical visibility into an obscuration. VV008, BKN008, and OVC008 all mean an 800 ft ceiling.",
     "source": "NWSI 10-813, Appendix B2.7.1",
     "url": "https://www.weather.gov/media/directives/010_pdfs/pd01008013curr.pdf#page=21"
@@ -106,7 +106,7 @@ export const GLOSSARY_DATA = [
   {
     "id": "tempo",
     "term": "TEMPO",
-    "expansion": "Temporarily (change group)",
+    "expansion": "Temporarily: change group",
     "definition": "Temporary fluctuations with a better than 50% chance, each lasting one hour or less and covering less than half of the stated period; a TEMPO group never exceeds four hours.",
     "source": "NWSI 10-813, Appendix B2.9.3 and Section 4.12",
     "url": "https://www.weather.gov/media/directives/010_pdfs/pd01008013curr.pdf#page=25"
@@ -114,7 +114,7 @@ export const GLOSSARY_DATA = [
   {
     "id": "mvfr",
     "term": "MVFR",
-    "expansion": "Marginal VFR",
+    "expansion": "Marginal VFR: flight category",
     "definition": "Ceiling 1,000 to 3,000 feet and/or visibility 3 to 5 miles.",
     "source": "AIM, 7-1-7",
     "url": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-7"
@@ -131,14 +131,14 @@ export const GLOSSARY_DATA = [
     "id": "fg",
     "term": "FG",
     "expansion": "Fog",
-    "definition": "Fog that reduces visibility to less than 5/8 statute mile.",
-    "source": "NWSI 10-813, Appendix B2.6.3",
-    "url": "https://www.weather.gov/media/directives/010_pdfs/pd01008013curr.pdf#page=19"
+    "definition": "A visible aggregate of tiny water droplets based at the surface that reduces visibility to less than 5/8 statute mile.",
+    "source": "FAA Aviation Weather Handbook, 18.1.1",
+    "url": "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=222"
   },
   {
     "id": "fm",
     "term": "FM",
-    "expansion": "From (change group)",
+    "expansion": "From: change group",
     "definition": "Marks a rapid change to a new set of prevailing conditions starting at the stated day and time; everything before it is replaced.",
     "source": "NWSI 10-813, Appendix B2.9.2",
     "url": "https://www.weather.gov/media/directives/010_pdfs/pd01008013curr.pdf#page=24"
@@ -187,9 +187,9 @@ export const GLOSSARY_DATA = [
     "id": "ts",
     "term": "TS",
     "expansion": "Thunderstorm",
-    "definition": "Thunderstorm descriptor; it can stand alone or combine with precipitation, as in TSRA.",
-    "source": "NWSI 10-813, Appendix A",
-    "url": "https://www.weather.gov/media/directives/010_pdfs/pd01008013curr.pdf#page=10"
+    "definition": "A local storm produced by a cumulonimbus cloud and always accompanied by lightning and thunder.",
+    "source": "FAA Aviation Weather Handbook, 22.1",
+    "url": "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=256"
   },
   {
     "id": "metar",
@@ -291,22 +291,22 @@ export const GLOSSARY_DATA = [
     "id": "shra",
     "term": "SHRA",
     "expansion": "Rain showers",
-    "definition": "Rain showers; -SHRA is light rain showers.",
-    "source": "NWSI 10-813, Appendix E4",
-    "url": "https://www.weather.gov/media/directives/010_pdfs/pd01008013curr.pdf#page=39"
+    "definition": "Showery rain, coded as the SH (shower) descriptor plus RA (rain); -SHRA is light and +SHRA is heavy.",
+    "source": "FAA Aviation Weather Handbook, 24.4.3.8 (Table 24-3)",
+    "url": "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=296"
   },
   {
     "id": "hz",
     "term": "HZ",
     "expansion": "Haze",
-    "definition": "Haze.",
-    "source": "NWSI 10-813, Appendix A",
-    "url": "https://www.weather.gov/media/directives/010_pdfs/pd01008013curr.pdf#page=9"
+    "definition": "Extremely small particles, invisible to the naked eye, suspended in the air in numbers large enough to give it an opalescent look and reduce visibility.",
+    "source": "FAA Aviation Weather Handbook, 18.1.3",
+    "url": "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=229"
   },
   {
     "id": "ifr",
     "term": "IFR",
-    "expansion": "Instrument flight rules (flight category)",
+    "expansion": "Instrument flight rules: flight category",
     "definition": "Ceiling 500 to less than 1,000 feet and/or visibility 1 to less than 3 miles.",
     "source": "AIM, 7-1-7",
     "url": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-7"
@@ -362,7 +362,7 @@ export const GLOSSARY_DATA = [
   {
     "id": "clr",
     "term": "CLR",
-    "expansion": "Clear (METAR only)",
+    "expansion": "Clear: METAR only",
     "definition": "A METAR code from automated stations meaning no clouds detected below 12,000 feet; it is not used in TAFs.",
     "source": "AIM, 7-1-28",
     "url": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-28"
@@ -386,7 +386,7 @@ export const GLOSSARY_DATA = [
   {
     "id": "nil",
     "term": "NIL TAF",
-    "expansion": "NIL TAF",
+    "expansion": "",
     "definition": "A TAF that is not issued, used only as a last resort when observations have been missing for an extended period and a forecast cannot be built.",
     "source": "NWSI 10-813, Appendix D4.4",
     "url": "https://www.weather.gov/media/directives/010_pdfs/pd01008013curr.pdf#page=36"
@@ -434,7 +434,7 @@ export const GLOSSARY_DATA = [
   {
     "id": "vfr",
     "term": "VFR",
-    "expansion": "Visual flight rules (flight category)",
+    "expansion": "Visual flight rules: flight category",
     "definition": "Ceiling greater than 3,000 feet and visibility greater than 5 miles.",
     "source": "AIM, 7-1-7",
     "url": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-7"
@@ -442,7 +442,7 @@ export const GLOSSARY_DATA = [
   {
     "id": "lifr",
     "term": "LIFR",
-    "expansion": "Low IFR",
+    "expansion": "Low IFR: flight category",
     "definition": "Ceiling below 500 feet and/or visibility below 1 mile.",
     "source": "AIM, 7-1-7",
     "url": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_1.html#7-1-7"
@@ -455,4 +455,4 @@ export const GLOSSARY_DATA = [
     "source": "FAA Risk Management Handbook, Chapter 3, Using a Flight Risk Assessment Tool (FRAT)",
     "url": "https://www.faa.gov/sites/faa.gov/files/2022-06/risk_management_handbook_2A.pdf#page=28"
   }
-] as const
+]

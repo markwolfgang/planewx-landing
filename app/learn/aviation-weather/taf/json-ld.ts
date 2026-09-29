@@ -260,7 +260,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "description": "A METAR code from automated stations meaning no clouds detected below 12,000 feet; it is not used in TAFs.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-clr",
-      "alternateName": "Clear (METAR only)"
+      "alternateName": "Clear"
     },
     {
       "@type": "DefinedTerm",
@@ -293,7 +293,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "@type": "DefinedTerm",
       "@id": "https://www.planewx.ai/learn/aviation-weather/taf#gl-fg",
       "name": "FG",
-      "description": "Fog that reduces visibility to less than 5/8 statute mile.",
+      "description": "A visible aggregate of tiny water droplets based at the surface that reduces visibility to less than 5/8 statute mile.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-fg",
       "alternateName": "Fog"
@@ -305,7 +305,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "description": "Marks a rapid change to a new set of prevailing conditions starting at the stated day and time; everything before it is replaced.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-fm",
-      "alternateName": "From (change group)"
+      "alternateName": "From"
     },
     {
       "@type": "DefinedTerm",
@@ -329,7 +329,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "@type": "DefinedTerm",
       "@id": "https://www.planewx.ai/learn/aviation-weather/taf#gl-hz",
       "name": "HZ",
-      "description": "Haze.",
+      "description": "Extremely small particles, invisible to the naked eye, suspended in the air in numbers large enough to give it an opalescent look and reduce visibility.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-hz",
       "alternateName": "Haze"
@@ -350,7 +350,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "description": "Ceiling 500 to less than 1,000 feet and/or visibility 1 to less than 3 miles.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-ifr",
-      "alternateName": "Instrument flight rules (flight category)"
+      "alternateName": "Instrument flight rules"
     },
     {
       "@type": "DefinedTerm",
@@ -499,7 +499,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "@type": "DefinedTerm",
       "@id": "https://www.planewx.ai/learn/aviation-weather/taf#gl-shra",
       "name": "SHRA",
-      "description": "Rain showers; -SHRA is light rain showers.",
+      "description": "Showery rain, coded as the SH (shower) descriptor plus RA (rain); -SHRA is light and +SHRA is heavy.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-shra",
       "alternateName": "Rain showers"
@@ -547,13 +547,13 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "description": "Temporary fluctuations with a better than 50% chance, each lasting one hour or less and covering less than half of the stated period; a TEMPO group never exceeds four hours.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-tempo",
-      "alternateName": "Temporarily (change group)"
+      "alternateName": "Temporarily"
     },
     {
       "@type": "DefinedTerm",
       "@id": "https://www.planewx.ai/learn/aviation-weather/taf#gl-ts",
       "name": "TS",
-      "description": "Thunderstorm descriptor; it can stand alone or combine with precipitation, as in TSRA.",
+      "description": "A local storm produced by a cumulonimbus cloud and always accompanied by lightning and thunder.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-ts",
       "alternateName": "Thunderstorm"
@@ -592,7 +592,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "description": "Ceiling greater than 3,000 feet and visibility greater than 5 miles.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-vfr",
-      "alternateName": "Visual flight rules (flight category)"
+      "alternateName": "Visual flight rules"
     },
     {
       "@type": "DefinedTerm",
@@ -637,7 +637,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "description": "Letter added to TAF times to show they are in Coordinated Universal Time, not local time.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-z",
-      "alternateName": "Zulu (UTC)"
+      "alternateName": "Zulu, UTC"
     }
   ]
 } as const
