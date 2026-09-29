@@ -198,6 +198,7 @@ export function TafGlossaryHost() {
     const kf = root.querySelector("#key-facts") as HTMLDetailsElement | null
     let mq: MediaQueryList | null = null
     let sync: (() => void) | null = null
+    let kfRo: ResizeObserver | null = null
     const kfCap = () => {
       if (!kf) return
       const capped = kf.scrollHeight > kf.clientHeight + 2
@@ -219,6 +220,11 @@ export function TafGlossaryHost() {
       kf.addEventListener("toggle", kfCap)
       window.addEventListener("resize", kfCap)
       window.addEventListener("load", kfCap)
+      // Header-height CSS var can shrink max-height after first paint; re-check cap.
+      if (typeof ResizeObserver !== "undefined") {
+        kfRo = new ResizeObserver(() => kfCap())
+        kfRo.observe(kf)
+      }
     }
 
     const rawCleanups: Array<() => void> = []
@@ -249,6 +255,7 @@ export function TafGlossaryHost() {
       window.removeEventListener("scroll", onScroll)
       window.removeEventListener("resize", onResize)
       if (mq && sync && mq.removeEventListener) mq.removeEventListener("change", sync)
+      if (kfRo) kfRo.disconnect()
       if (kf) {
         kf.removeEventListener("scroll", kfCap)
         kf.removeEventListener("toggle", kfCap)
