@@ -6,103 +6,155 @@ import {
   buildVolunteerSignupHref,
 } from "@/components/volunteer-campaign-tracker"
 import {
-  normalizeVolunteerCallSign,
-  VOLUNTEER_CALL_SIGN_FORMAT_ERROR,
-  VOLUNTEER_CALL_SIGN_FORMAT_HINT,
-  VOLUNTEER_CALL_SIGN_PLACEHOLDER,
-  VOLUNTEER_CALL_SIGN_STORAGE_KEY,
+  buildVolunteerUnlockedSignupControl,
+  isBareVolunteerGate,
+  normalizeVolunteerCallSignForPage,
+  resolveVolunteerOrg,
   VOLUNTEER_CAMPAIGN_CODE,
   VOLUNTEER_LP,
+  VOLUNTEER_PREVIEW_SIGNUP_NOTICE,
+  type VolunteerOrgCallSignConfig,
 } from "@/lib/volunteer-landing"
+
+const UNLOCKED_SIGNUP_CLASS =
+  "inline-flex items-center justify-center gap-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
 
 /**
  * Call-sign gate for /volunteer.
  * Server/client format validation stays internal. User-facing copy must not
  * reveal the letter prefix, digit pattern, or any working call-sign example.
+ *
+ * Pass orgRef="SKYHOPE" for the SkyHope SYH gate; default is ACA/CMF.
+ * Bare / ACA accepts CMF or SYH; an SYH sign switches the unlocked card and
+ * signup ref to SkyHope.
+ * Pass allowSignup / allowNetworkWrites from the server (VERCEL_ENV === "production").
  */
-export function VolunteerCallSignGate() {
+export function VolunteerCallSignGate({
+  orgRef = VOLUNTEER_CAMPAIGN_CODE,
+  allowSignup = true,
+  allowNetworkWrites = true,
+}: {
+  orgRef?: string
+  /** When false, unlocked Sign up is not a link (preview guard). */
+  allowSignup?: boolean
+  /** When false, skip POST /api/volunteer/call-sign. */
+  allowNetworkWrites?: boolean
+}) {
+  const pageOrg: VolunteerOrgCallSignConfig = resolveVolunteerOrg(orgRef)
+  const bareGate = isBareVolunteerGate(orgRef)
   const [input, setInput] = useState("")
   const [callSign, setCallSign] = useState<string | null>(null)
+  const [activeOrg, setActiveOrg] = useState<VolunteerOrgCallSignConfig>(pageOrg)
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [storedRemotely, setStoredRemotely] = useState(false)
 
   useEffect(() => {
+    setInput("")
+    setCallSign(null)
+    setActiveOrg(pageOrg)
+    setError(null)
+    setStoredRemotely(false)
     try {
-      const saved = localStorage.getItem(VOLUNTEER_CALL_SIGN_STORAGE_KEY)
-      if (saved && normalizeVolunteerCallSign(saved)) {
-        setCallSign(saved)
-        setInput(saved)
+      const keys = bareGate
+        ? [pageOrg.storageKey, resolveVolunteerOrg("SKYHOPE").storageKey]
+        : [pageOrg.storageKey]
+      for (const key of keys) {
+        const saved = localStorage.getItem(key)
+        if (!saved) continue
+        const parsed = normalizeVolunteerCallSignForPage(saved, orgRef)
+        if (parsed) {
+          setCallSign(parsed.callSign)
+          setInput(parsed.callSign)
+          setActiveOrg(parsed.org)
+          break
+        }
       }
     } catch {
       /* ignore */
     }
-  }, [])
+  }, [pageOrg.ref, pageOrg.storageKey, bareGate, orgRef])
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault()
     setError(null)
 
-    const normalized = normalizeVolunteerCallSign(input)
-    if (!normalized) {
-      setError(VOLUNTEER_CALL_SIGN_FORMAT_ERROR)
+    const parsed = normalizeVolunteerCallSignForPage(input, orgRef)
+    if (!parsed) {
+      setError(pageOrg.error)
       setCallSign(null)
+      setActiveOrg(pageOrg)
       return
     }
 
+    const { callSign: normalized, org: effectiveOrg } = parsed
     setSubmitting(true)
     try {
-      localStorage.setItem(VOLUNTEER_CALL_SIGN_STORAGE_KEY, normalized)
+      localStorage.setItem(effectiveOrg.storageKey, normalized)
     } catch {
       /* still continue with in-memory + signup query param */
     }
 
     let remoteOk = false
-    try {
-      const fromUrl = new URLSearchParams(window.location.search).get("ref")?.trim()
-      const storedRef = localStorage.getItem("planewx_referral")
-      const ref =
-        (fromUrl ? fromUrl.toUpperCase() : null) ||
-        storedRef ||
-        VOLUNTEER_CAMPAIGN_CODE
+    if (allowNetworkWrites) {
+      try {
+        const res = await fetch("/api/volunteer/call-sign", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            callSign: normalized,
+            ref: effectiveOrg.ref,
+            lp: VOLUNTEER_LP,
+          }),
+        })
+        const data = (await res.json().catch(() => null)) as
+          | {
+              ok?: boolean
+              callSign?: string
+              ref?: string
+              stored?: boolean
+              error?: string
+            }
+          | null
 
-      const res = await fetch("/api/volunteer/call-sign", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          callSign: normalized,
-          ref,
-          lp: VOLUNTEER_LP,
-        }),
-      })
-      const data = (await res.json().catch(() => null)) as
-        | { ok?: boolean; callSign?: string; stored?: boolean; error?: string }
-        | null
-
-      if (!res.ok || !data?.ok) {
-        console.warn("[volunteer] call-sign API:", data?.error || res.status)
-      } else {
-        remoteOk = Boolean(data.stored)
-        if (data.callSign) {
-          try {
-            localStorage.setItem(VOLUNTEER_CALL_SIGN_STORAGE_KEY, data.callSign)
-          } catch {
-            /* ignore */
+        if (!res.ok || !data?.ok) {
+          console.warn("[volunteer] call-sign API:", data?.error || res.status)
+        } else {
+          remoteOk = Boolean(data.stored)
+          if (data.callSign) {
+            try {
+              localStorage.setItem(effectiveOrg.storageKey, data.callSign)
+            } catch {
+              /* ignore */
+            }
           }
         }
+      } catch (err) {
+        console.warn("[volunteer] call-sign API failed:", err)
       }
-    } catch (err) {
-      console.warn("[volunteer] call-sign API failed:", err)
-    } finally {
-      setSubmitting(false)
     }
 
+    setSubmitting(false)
     setStoredRemotely(remoteOk)
+    setActiveOrg(effectiveOrg)
     setCallSign(normalized)
   }
 
   const unlocked = Boolean(callSign)
-  const signupHref = buildVolunteerSignupHref(callSign)
+  const unlockedControl =
+    unlocked && callSign
+      ? allowSignup
+        ? {
+            kind: "link" as const,
+            href: buildVolunteerSignupHref(callSign, activeOrg.ref),
+          }
+        : buildVolunteerUnlockedSignupControl({
+            isProduction: false,
+            ref: activeOrg.ref,
+            callSign,
+            gateOrg: activeOrg,
+          })
+      : null
 
   return (
     <div className="space-y-6">
@@ -116,10 +168,10 @@ export function VolunteerCallSignGate() {
             htmlFor="volunteer-call-sign"
             className="block text-sm font-semibold text-white"
           >
-            Your Compassion Flight call sign
+            {pageOrg.label}
           </label>
           <p className="text-sm text-white/50 leading-relaxed">
-            {VOLUNTEER_CALL_SIGN_FORMAT_HINT}
+            {pageOrg.hint}
           </p>
         </div>
 
@@ -132,7 +184,7 @@ export function VolunteerCallSignGate() {
             autoCapitalize="characters"
             autoCorrect="off"
             spellCheck={false}
-            placeholder={VOLUNTEER_CALL_SIGN_PLACEHOLDER}
+            placeholder={pageOrg.placeholder}
             value={input}
             onChange={(e) => {
               setInput(e.target.value)
@@ -163,7 +215,7 @@ export function VolunteerCallSignGate() {
         </div>
 
         <p id="volunteer-call-sign-hint" className="sr-only">
-          Enter your Compassion Flight call sign.
+          {pageOrg.srHint}
         </p>
 
         {error ? (
@@ -180,9 +232,7 @@ export function VolunteerCallSignGate() {
           <p className="inline-flex items-start gap-2 text-sm text-emerald-300 leading-relaxed">
             <Check className="h-4 w-4 mt-0.5 shrink-0" aria-hidden />
             <span>
-              Call sign accepted. Sign up below for your 2-week Pro Plus trial. At
-              purchase, PlaneWX applies the volunteer discount from the call sign you
-              entered
+              {activeOrg.acceptedLead}
               {storedRemotely ? "." : " (saved for signup on this device)."}
             </span>
           </p>
@@ -206,10 +256,7 @@ export function VolunteerCallSignGate() {
           ) : (
             <>
               <Lock className="h-4 w-4 text-white/40" aria-hidden />
-              <span className="text-white/45">
-                Enter your Compassion Flight call sign. We&apos;ll validate it, then unlock
-                signup
-              </span>
+              <span className="text-white/45">{pageOrg.lockedHint}</span>
             </>
           )}
         </div>
@@ -218,23 +265,43 @@ export function VolunteerCallSignGate() {
           Sign up for a 2-week Pro Plus trial
         </h3>
         <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-          Full access to Pro Plus, our highest tier. No credit card required to
-          start the trial. When you continue after the trial, PlaneWX applies{" "}
-          30% off the annual plan at purchase from the call sign you entered here.
-          You do not type a separate coupon code.
+          {unlocked ? activeOrg.unlockBody : pageOrg.unlockBody}
         </p>
 
-        {unlocked && callSign ? (
+        {unlockedControl?.kind === "link" ? (
           <a
-            href={signupHref}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            href={unlockedControl.href}
+            className={UNLOCKED_SIGNUP_CLASS}
             onClick={(e) => {
-              e.currentTarget.href = buildVolunteerSignupHref(callSign)
+              e.currentTarget.href = buildVolunteerSignupHref(
+                callSign,
+                activeOrg.ref
+              )
             }}
           >
             Sign up for PlaneWX
             <ArrowRight className="h-4 w-4" />
           </a>
+        ) : unlockedControl?.kind === "preview" ? (
+          <div className="space-y-2">
+            <button
+              type="button"
+              className={`${UNLOCKED_SIGNUP_CLASS} cursor-default hover:bg-sky-500 hover:scale-100 active:scale-100`}
+              aria-disabled="true"
+              onClick={(e) => {
+                e.preventDefault()
+              }}
+            >
+              Sign up for PlaneWX
+              <ArrowRight className="h-4 w-4" />
+            </button>
+            <p
+              id="volunteer-preview-signup-notice"
+              className="text-sm text-amber-200/90 leading-relaxed"
+            >
+              {unlockedControl.notice || VOLUNTEER_PREVIEW_SIGNUP_NOTICE}
+            </p>
+          </div>
         ) : (
           <button
             type="button"

@@ -61,7 +61,7 @@ attributes:
       title: Action-Oriented
       desc: >-
         Every piece of content gives the reader something to do next. Feature
-        descriptions: Name → What it does → Why it matters.
+        descriptions: Name  to  What it does  to  Why it matters.
     - num: 6
       title: Data-Transparent
       desc: >-
@@ -90,7 +90,7 @@ toneByContext:
       - '"Your WX Score dropped from 82% to 61%"'
     - - Safety messaging
       - 'Serious but not preachy, data-backed'
-      - —
+      -  - 
     - - Competitor positioning
       - 'Respectful, complementary'
       - '"We enhance, not replace, existing tools."'
@@ -101,7 +101,7 @@ toneByContext:
       - 'Knowledgeable peer, conversational'
       - 'Fellow pilot sharing something useful, not selling'
     - - Ad copy
-      - Problem → Pain → Solution
+      - Problem  to  Pain  to  Solution
       - Lead with the scenario pilots recognize
     - - In-app UI
       - 'Clear, concise, pilot-natural'
@@ -118,6 +118,7 @@ dosDonts:
     - Use pilot-native scenarios
     - Credit the community
     - Keep go/no-go ownership with the PIC
+    - Use loop step labels Brief, Assess, Decide, Debrief (FRAT under Assess; GO / NO-GO under Decide)
   donts:
     - Use fear-based language
     - 'Use startup buzzwords (disruptive, revolutionary)'

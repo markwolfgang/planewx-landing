@@ -1,14 +1,25 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import Script from "next/script"
+import { CookieConsent } from "@/components/cookie-consent"
 import { OshBanner } from "@/components/osh-banner"
 import { PartnerGreetingBanner } from "@/components/partner-greeting-banner"
+import { TrackingScripts } from "@/components/tracking-scripts"
+import { WebVercelMetrics } from "@/components/web-vercel-metrics"
+import { FAQS, faqAnswerToPlainText } from "@/components/shared/landing-data"
 import "./globals.css"
 
 // aopa native preview redeploy trigger (static /aopa closer CTA text)
 
 const inter = Inter({ subsets: ["latin"] })
+
+const faqPageMainEntity = FAQS.map((faq) => ({
+  "@type": "Question",
+  name: faq.q,
+  acceptedAnswer: {
+    "@type": "Answer",
+    text: faqAnswerToPlainText(faq.a),
+  },
+}))
 
 // Structured Data (JSON-LD) for SEO
 const jsonLd = {
@@ -19,7 +30,7 @@ const jsonLd = {
       "@id": "https://www.planewx.ai/#website",
       "url": "https://www.planewx.ai",
       "name": "PlaneWX",
-      "description": "The Pilot's Decision Support System: weather briefing, FRAT, and a mentor network for general aviation pilots.",
+      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
       "publisher": {
         "@id": "https://www.planewx.ai/#organization"
       },
@@ -53,21 +64,14 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       "@id": "https://www.planewx.ai/#app",
       "name": "PlaneWX",
-      "description": "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, and a mentor network. Every weather tool shows you data. PlaneWX helps you decide.",
+      "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
       "applicationCategory": "WeatherApplication",
       "operatingSystem": "Web",
       "offers": {
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD",
-        "availability": "https://schema.org/ComingSoon"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "42",
-        "bestRating": "5",
-        "worstRating": "1"
+        "availability": "https://schema.org/InStock"
       },
       "featureList": [
         "AI-powered weather briefings",
@@ -75,7 +79,7 @@ const jsonLd = {
         "14-day advance forecasting",
         "Personalized WX Score",
         "Synoptic Intelligence™ technology",
-        "40+ automatic briefing updates",
+        "40+ automatic briefing updates for monitored flights",
         "Personal minimums tracking",
         "Aircraft-specific analysis",
         "PAVE risk assessment",
@@ -85,51 +89,18 @@ const jsonLd = {
     },
     {
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is PlaneWX?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "PlaneWX is the Pilot's Decision Support System for general aviation. It combines weather briefing, FRAT, and a mentor network so pilots can see weather and risk, and connect with a mentor before the pressure locks in."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How far in advance can PlaneWX predict flight weather?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "PlaneWX provides reliable weather intelligence from 14 days out to departure time. The accuracy improves as your flight approaches, with 76% accuracy at 24 hours, 70% at 48 hours, and 61% at 72 hours."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the WX Score?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The WX Score is a personalized 0-100% metric calculated against YOUR personal minimums, not generic VFR/IFR categories. It tells you the probability that weather conditions will meet your specific standards for the flight."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Synoptic Intelligence™?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Synoptic Intelligence™ is PlaneWX's proprietary AI technology that synthesizes NWS forecaster narratives, METARs, TAFs, NBM data, and other weather products into regional summaries and actionable insights."
-          }
-        }
-      ]
+      "mainEntity": faqPageMainEntity
     }
   ]
 }
 
 export const metadata: Metadata = {
   title: {
-    default: "PlaneWX | The Pilot's Decision Support System",
+    default: "PlaneWX | Fly like it's your job.",
     template: "%s | PlaneWX",
   },
   description:
-    "PlaneWX improves GA safety by giving pilots a robust decision support system: weather briefing, FRAT, and a mentor network. The confidence to go, or the courage to stay™.",
+    "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
   keywords: [
     "aviation weather",
     "flight planning",
@@ -163,7 +134,6 @@ export const metadata: Metadata = {
     "Bonanza weather",
     "Diamond DA40 weather",
     "SR22 weather planning",
-    "ForeFlight alternative",
     "aviation weather forecast",
     "pilot briefing app",
     "AIRMET SIGMET",
@@ -194,16 +164,16 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.planewx.ai",
     siteName: "PlaneWX",
-    title: "PlaneWX | The Pilot's Decision Support System",
+    title: "PlaneWX | Fly like it's your job.",
     description:
-      "Every weather tool shows you data. PlaneWX helps you decide. Weather briefing, FRAT, and a mentor network.",
+      "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
     // OG image is auto-generated from app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
-    title: "PlaneWX | The Pilot's Decision Support System",
+    title: "PlaneWX | Fly like it's your job.",
     description:
-      "Every weather tool shows you data. PlaneWX helps you decide. Weather briefing, FRAT, and a mentor network.",
+      "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
     // Twitter image is auto-generated from app/twitter-image.tsx
     creator: "@planewx",
   },
@@ -251,12 +221,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="PlaneWX" />
         
-        {/* Preconnect/prefetch for third-party domains actually contacted at runtime.
-            Note: fonts.googleapis.com is NOT needed — next/font self-hosts Inter at build time. */}
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="dns-prefetch" href="https://connect.facebook.net" />
-        <link rel="dns-prefetch" href="https://www.redditstatic.com" />
+        {/* Prefetch for third-party domains that may load after consent on production hosts.
+            Note: fonts.googleapis.com is not needed. next/font self-hosts Inter at build time. */}
         <link rel="dns-prefetch" href="https://img.youtube.com" />
         
         {/* LLMs.txt for AI discovery */}
@@ -267,58 +233,14 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-FKM0TMPH4M"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-FKM0TMPH4M');
-            gtag('config', 'AW-18011683791');
-            gtag('config', 'AW-18016407179');
-          `}
-        </Script>
-
-        {/* Meta Pixel — lazyOnload fires after page is fully loaded and idle */}
-        <Script id="meta-pixel" strategy="lazyOnload">
-          {`
-            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-            (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1236857811920781');
-            fbq('track', 'PageView');
-          `}
-        </Script>
-        <noscript>
-          <img height="1" width="1" style={{display:"none"}} src="https://www.facebook.com/tr?id=1236857811920781&ev=PageView&noscript=1" alt="" />
-        </noscript>
-
-        {/* Reddit Pixel — lazyOnload fires after page is fully loaded and idle */}
-        <Script id="reddit-pixel" strategy="lazyOnload">
-          {`
-            !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?
-            p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};
-            p.callQueue=[];var t=d.createElement("script");
-            t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_iy53y8iesnik";
-            t.async=!0;var s=d.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(t,s)}}(window,document);
-            rdt('init','a2_iy53y8iesnik');
-            rdt('track', 'PageVisit');
-          `}
-        </Script>
       </head>
       <body className={inter.className}>
         <OshBanner />
         <PartnerGreetingBanner />
         {children}
-        <Analytics />
+        <CookieConsent />
+        <TrackingScripts />
+        <WebVercelMetrics />
       </body>
     </html>
   )

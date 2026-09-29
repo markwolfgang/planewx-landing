@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { X, Plane } from "lucide-react"
+import { getLocalStorage } from "@/lib/cookie-prefs"
 
 const DISMISS_KEY = "snf2026_banner_dismissed"
 const EVENT_END = new Date("2026-04-21T00:00:00-04:00") // hide after Apr 20
@@ -13,15 +14,23 @@ export function SnfBanner() {
   useEffect(() => {
     // Don't show after the event ends
     if (Date.now() > EVENT_END.getTime()) return
-    // Don't show if already dismissed
-    if (localStorage.getItem(DISMISS_KEY)) return
+    const storage = getLocalStorage()
+    try {
+      if (storage?.getItem(DISMISS_KEY)) return
+    } catch {
+      /* show banner when storage is blocked */
+    }
     setVisible(true)
   }, [])
 
   if (!visible) return null
 
   function dismiss() {
-    localStorage.setItem(DISMISS_KEY, "1")
+    try {
+      getLocalStorage()?.setItem(DISMISS_KEY, "1")
+    } catch {
+      /* ignore */
+    }
     setVisible(false)
   }
 

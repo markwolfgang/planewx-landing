@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { getLocalStorage } from "@/lib/cookie-prefs"
 
 const DISMISS_KEY = "osh2026_home_card_dismissed"
 const EVENT_END = new Date("2026-07-23T00:00:00-05:00")
@@ -15,7 +16,12 @@ export function OshHomeCard() {
 
   useEffect(() => {
     if (Date.now() > EVENT_END.getTime()) return
-    if (localStorage.getItem(DISMISS_KEY)) return
+    const storage = getLocalStorage()
+    try {
+      if (storage?.getItem(DISMISS_KEY)) return
+    } catch {
+      /* show card when storage is blocked */
+    }
     setVisible(true)
   }, [])
 
@@ -45,7 +51,11 @@ export function OshHomeCard() {
             type="button"
             aria-label="Dismiss"
             onClick={() => {
-              localStorage.setItem(DISMISS_KEY, "1")
+              try {
+                getLocalStorage()?.setItem(DISMISS_KEY, "1")
+              } catch {
+                /* ignore */
+              }
               setVisible(false)
             }}
             className="shrink-0 text-[#3d5a73]/50 hover:text-[#0c2d4a] text-lg leading-none px-1"
