@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink, Play } from "lucide-react"
 import { PartnerInquiryForm } from "@/components/partners/inquiry-form"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
+import { FIVE_X_FIVE_URL } from "@/lib/five-x-five"
 
 export const metadata: Metadata = {
   title: "Partners",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 const PARTNERS = [
   {
     name: "5X5 Aviation Insurance",
-    href: "https://www.5x5insurance.com",
+    href: FIVE_X_FIVE_URL,
     logo: {
       src: "/partners/5x5-white.png",
       alt: "5X5 Aviation Insurance logo",

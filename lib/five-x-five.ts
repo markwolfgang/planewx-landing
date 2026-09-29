@@ -1,4 +1,11 @@
 /**
+ * Canonical outbound URL for 5X5 Insurance (UTM params supplied by 5X5).
+ * Use for every href to 5x5insurance.com on the public site.
+ */
+export const FIVE_X_FIVE_URL =
+  "https://5x5insurance.com?utm_source=PlaneWX&utm_medium=website&utm_campaign=PlaneWX&utm_id=PlaneWX"
+
+/**
  * Approved joint PlaneWX / 5X5 public statement on data sharing.
  * Use everywhere the public site discloses what 5X5 can see.
  */
