@@ -10,6 +10,7 @@ import {
   getLearnArticle,
   shouldEmitArticleJsonLd,
   shouldIndexLearnArticle,
+  withOptionalTafDecodeLink,
   type LearnBodyBlock,
   type LearnLoopStage,
   type PuttingItIntoPractice,
@@ -227,6 +228,10 @@ export default async function LearnArticlePage({ params }: Props) {
 
   const canonical = `https://www.planewx.ai/learn/${slug}`
   const emitJsonLd = shouldEmitArticleJsonLd(article)
+  const bodyBlocks =
+    article.slug === "mos-vs-nbm-vs-taf"
+      ? withOptionalTafDecodeLink(article.body)
+      : article.body
 
   return (
     <>
@@ -268,7 +273,7 @@ export default async function LearnArticlePage({ params }: Props) {
           </div>
         ) : null}
 
-        <BodyBlocks blocks={article.body} />
+        <BodyBlocks blocks={bodyBlocks} />
 
         <PuttingItIntoPracticeSection
           practice={article.puttingItIntoPractice}

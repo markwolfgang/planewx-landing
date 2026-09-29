@@ -142,10 +142,6 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "For a group by group decode of a TAF, see [What Is a TAF? How to Read a Terminal Aerodrome Forecast](/learn/aviation-weather/taf).",
-      },
-      {
-        type: "paragraph",
         text: "Coverage is the area within 5 statute miles of the center of the runway complex. Vicinity (VC) means 5 to 10 SM. Elements include surface wind, visibility, weather, obstructions to vision, clouds or vertical visibility, non-convective low-level wind shear, and significant changes.",
       },
       {
@@ -472,6 +468,60 @@ export const LEARN_DRAFT_BANNER = "DRAFT: facts pending source review"
 
 export const TIPS_EMPTY_LINE =
   "New tips arrive with each Weekly PIREP."
+
+/**
+ * Deep learn routes that are live in this build (beyond /learn/[slug] articles).
+ * Empty until those pages ship. When the TAF hub is live, register it here with
+ * title + href so MOS/NBM can cross-link without a hardcoded 404.
+ */
+export type LiveLearnRoute = {
+  href: string
+  title: string
+}
+
+/** Lookup key for the TAF decode hub. Not listed in LIVE_LEARN_ROUTES until live. */
+export const LEARN_TAF_DECODE_HREF = "/learn/aviation-weather/taf" as const
+
+export const LIVE_LEARN_ROUTES: readonly LiveLearnRoute[] = []
+
+export function getLiveLearnRoute(
+  href: string,
+  routes: readonly LiveLearnRoute[] = LIVE_LEARN_ROUTES
+): LiveLearnRoute | undefined {
+  return routes.find((r) => r.href === href)
+}
+
+/** Cross-link for MOS/NBM: only when the TAF decode page is registered as live. */
+export function getTafDecodeCrossLink(
+  routes: readonly LiveLearnRoute[] = LIVE_LEARN_ROUTES
+): { href: string; label: string } | null {
+  const route = getLiveLearnRoute(LEARN_TAF_DECODE_HREF, routes)
+  if (!route) return null
+  return { href: route.href, label: route.title }
+}
+
+/**
+ * Inserts the gated TAF decode sentence after the first body paragraph when the
+ * TAF hub is live. No-op when the route is unregistered.
+ */
+export function withOptionalTafDecodeLink(
+  blocks: LearnBodyBlock[],
+  routes: readonly LiveLearnRoute[] = LIVE_LEARN_ROUTES
+): LearnBodyBlock[] {
+  const link = getTafDecodeCrossLink(routes)
+  if (!link) return blocks
+  const decodeBlock: LearnBodyBlock = {
+    type: "paragraph",
+    text: `For a group by group decode of a TAF, see [${link.label}](${link.href}).`,
+  }
+  const insertAt = blocks.findIndex((b) => b.type === "paragraph")
+  if (insertAt === -1) return [...blocks, decodeBlock]
+  return [
+    ...blocks.slice(0, insertAt + 1),
+    decodeBlock,
+    ...blocks.slice(insertAt + 1),
+  ]
+}
 
 export function getLearnArticle(slug: string): LearnArticle | undefined {
   return LEARN_ARTICLES.find((a) => a.slug === slug)
