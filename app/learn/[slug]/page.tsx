@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { NewsNav } from "@/components/news-nav"
 import {
   LEARN_ARTICLES,
   LEARN_DISCLAIMER,
@@ -211,7 +210,7 @@ export default async function LearnArticlePage({ params }: Props) {
   const emitJsonLd = shouldEmitArticleJsonLd(article)
 
   return (
-    <div className="min-h-screen bg-[#0a0f1a] text-white">
+    <>
       <div
         className="pointer-events-none fixed inset-0 -z-10"
         style={{
@@ -221,11 +220,6 @@ export default async function LearnArticlePage({ params }: Props) {
           ].join(", "),
         }}
         aria-hidden="true"
-      />
-
-      <NewsNav
-        maxWidthClass="max-w-3xl"
-        back={{ href: "/learn", label: "Learning Center" }}
       />
 
       <article className="mx-auto max-w-3xl px-6 py-12 pb-16">
@@ -341,6 +335,6 @@ export default async function LearnArticlePage({ params }: Props) {
           </div>
         </div>
       </section>
-    </div>
+    </>
   )
 }
