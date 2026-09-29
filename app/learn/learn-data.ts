@@ -1,6 +1,6 @@
 // PlaneWX Learning Center: weather product explainers, concepts, and ADM.
 // To add an article: prepend a new object to LEARN_ARTICLES (or append within section order).
-// To add a tip: prepend to TIPS_OF_THE_WEEK (newest first), starting at Weekly PIREP issue #1.
+// To add a tip: prepend to TIPS_OF_THE_WEEK (newest first) as each Weekly PIREP is archived.
 //
 // Indexing safety: keep LEARN_PUBLIC false until at least LEARN_PUBLIC_MIN_ARTICLES
 // real, sourced (non-draft) articles exist. Draft articles stay reachable by URL
