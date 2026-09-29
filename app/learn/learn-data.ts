@@ -162,7 +162,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "MOS, LAMP and NBM are forecast guidance that forecasters use as input. The TAF remains the official NWS terminal forecast. PlaneWX complements FAA and Flight Service weather products. It does not replace an official briefing.",
+        text: "MOS, LAMP and NBM are forecast guidance that forecasters use as input. The TAF remains the official NWS terminal forecast. PlaneWX complements FAA and Flight Service weather products. PlaneWX is decision support. It is not a substitute for your full preflight briefing (for example a standard briefing through Flight Service or your EFB).",
       },
       {
         type: "heading",
@@ -403,7 +403,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     ],
     puttingItIntoPractice: {
       whyItMatters:
-        "Without a dispatcher, looking at what airline dispatchers and traffic managers are planning around gives useful context days out. It is context for your own go/\u2060no\u2011go decision, not a verdict. PlaneWX never recommends go or no-go. The pilot makes the call.",
+        "Without a dispatcher, looking at what airline dispatchers and traffic managers are planning around gives useful context days out. It is context for your own go/\u2060no\u2011go decision. PlaneWX never recommends go or no-go. The pilot makes the call.",
       loopStage: ["Weather Briefing", "GO / NO-GO"],
       toolOrHabit:
         "Brief early and re-brief as the flight gets closer, using the PlaneWX Weather Briefing with a WX Score against your personal minimums. That supports the GO\u00A0/\u00A0NO\u2011GO step.",
@@ -462,7 +462,7 @@ export const TIPS_OF_THE_WEEK: TipOfTheWeek[] = [
 ]
 
 export const LEARN_DISCLAIMER =
-  "PlaneWX complements FAA and Flight Service weather products. It does not replace an official briefing."
+  "PlaneWX complements FAA and Flight Service weather products. PlaneWX is decision support. It is not a substitute for your full preflight briefing (for example a standard briefing through Flight Service or your EFB)."
 
 export const LEARN_DRAFT_BANNER = "DRAFT: facts pending source review"
 
