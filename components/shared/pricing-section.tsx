@@ -3,8 +3,9 @@
 import { useEffect, useState, type ReactNode } from "react"
 import { Check, Crown, Plane, Shield } from "lucide-react"
 import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
+import { APP_ORIGIN, buildAppSignupUrlWithLp } from "@/lib/app-signup-url"
 
-const APP_HELP = "https://app.planewx.ai"
+const APP_HELP = APP_ORIGIN
 const TWO_YEAR_OFFER_ENDS_AT_MS = Date.parse("2026-10-02T05:00:00.000Z")
 
 const PLUS_BULLETS: {
@@ -80,7 +81,7 @@ function TrialLink({
 }
 
 export function PricingSection({ variant }: { variant: string }) {
-  const baseUrl = `https://app.planewx.ai?lp=${variant}`
+  const baseUrl = buildAppSignupUrlWithLp(variant)
   const [appUrl, setAppUrl] = useState(baseUrl)
   const [plusPlan, setPlusPlan] = useState<"monthly" | "annual">("annual")
   const twoYearOpen = Date.now() < TWO_YEAR_OFFER_ENDS_AT_MS

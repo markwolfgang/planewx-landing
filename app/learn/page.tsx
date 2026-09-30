@@ -200,7 +200,7 @@ export default function LearnHubPage() {
             Ready to put a trip on the briefing board?
           </p>
           <a
-            href="https://app.planewx.ai"
+            href="https://app.planewx.ai/auth/sign-up"
             className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-sky-500/25 transition-all hover:from-sky-400 hover:to-cyan-400 sm:px-8"
           >
             Try a PlaneWX briefing

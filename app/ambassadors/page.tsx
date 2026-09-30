@@ -343,7 +343,7 @@ export default function AmbassadorsPage() {
           </h2>
           <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:items-center">
             <Link
-              href="https://app.planewx.ai"
+              href="https://app.planewx.ai/auth/sign-up"
               className="inline-flex items-center justify-center rounded-xl bg-[#3B82F6] hover:bg-sky-400 text-white px-6 py-3 text-sm font-semibold shadow-lg shadow-sky-500/25 transition-all"
             >
               Get PlaneWX
