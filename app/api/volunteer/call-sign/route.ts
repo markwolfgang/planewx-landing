@@ -12,6 +12,7 @@ import {
  *
  * Format-only validation per org.
  * - SkyHope (ref=SKYHOPE): SYH + 1-4 digits only.
+ * Angel Flight (ref=ANGELFLIGHT): NGF + 1-4 digits only.
  * - Bare / ACA: CMF or SYH (/^(CMF|SYH)\d{1,4}$/i). An SYH sign attributes to SKYHOPE.
  * No membership list lookup. Stores the normalized call sign with timestamp + ref
  * when Supabase is available. Always returns the normalized sign on success so the

@@ -12,8 +12,10 @@ import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { VolunteerCallSignGate } from "@/components/volunteer-call-sign-gate"
 import { VolunteerCampaignTracker } from "@/components/volunteer-campaign-tracker"
 import {
+  isAngelFlightRef,
   isSkyHopeRef,
   isVolunteerProductionDeploy,
+  ANGEL_FLIGHT_CAMPAIGN_CODE,
   SKYHOPE_CAMPAIGN_CODE,
   VOLUNTEER_CAMPAIGN_CODE,
   VOLUNTEER_FOUNDER_VIDEO_ID,
@@ -74,6 +76,30 @@ export async function generateMetadata({
       },
     }
   }
+  if (isAngelFlightRef(params.ref)) {
+    return {
+      title: "Angel Flight Volunteer Pilots | PlaneWX",
+      description:
+        "Angel Flight volunteer pilots get 30% off the annual plan for each year you're an active volunteer pilot. Start with a 2-week Pro Plus trial. No credit card for the trial. You remain PIC.",
+      robots: { index: false, follow: false },
+      openGraph: {
+        title: "Angel Flight volunteer pilots | PlaneWX",
+        description:
+          "Angel Flight volunteer pilots get 30% off the annual plan for each year you're an active volunteer pilot. 2-week Pro Plus trial. No card for the trial. You remain PIC.",
+        type: "website",
+        url: "https://www.planewx.ai/volunteer?ref=ANGELFLIGHT",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: "Angel Flight volunteer pilots | PlaneWX",
+        description:
+          "Angel Flight volunteer pilots get 30% off the annual plan for each year you're an active volunteer pilot. 2-week Pro Plus trial. No card for the trial. You remain PIC.",
+      },
+      alternates: {
+        canonical: "https://www.planewx.ai/volunteer",
+      },
+    }
+  }
   return ACA_METADATA
 }
 
@@ -94,7 +120,12 @@ function FounderWelcomeVideo() {
 export default async function VolunteerPage({ searchParams }: VolunteerPageProps) {
   const params = await searchParams
   const isSkyHope = isSkyHopeRef(params.ref)
-  const gateOrgRef = isSkyHope ? SKYHOPE_CAMPAIGN_CODE : VOLUNTEER_CAMPAIGN_CODE
+  const isAngelFlight = isAngelFlightRef(params.ref)
+  const gateOrgRef = isSkyHope
+    ? SKYHOPE_CAMPAIGN_CODE
+    : isAngelFlight
+      ? ANGEL_FLIGHT_CAMPAIGN_CODE
+      : VOLUNTEER_CAMPAIGN_CODE
   const isProduction = isVolunteerProductionDeploy()
 
   return (
@@ -104,7 +135,8 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
         Call signs (ACA): migrations/20260922_volunteer_call_signs.sql
         Format only (CMF + 1-4 digits). No ACA membership list lookup.
         SkyHope: ?ref=SKYHOPE, SYH gate (lib/volunteer-landing.ts registry).
-        SKYHOPE seed lives only in the app repo.
+        Angel Flight: ?ref=ANGELFLIGHT, NGF gate (lib/volunteer-landing.ts registry).
+        SKYHOPE and ANGELFLIGHT seeds live only in the app repo.
         Preview (VERCEL_ENV !== production): gate UX only; no signup link or writes.
       */}
       <VolunteerCampaignTracker allowNetworkWrites={isProduction} />
@@ -141,14 +173,22 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
         <header className="space-y-7 text-center sm:text-left max-w-3xl mx-auto sm:mx-0 animate-fade-in-up">
           <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-semibold tracking-wide uppercase">
             <HeartHandshake className="h-3.5 w-3.5" aria-hidden />
-            {isSkyHope ? "For SkyHope volunteer pilots" : "For volunteer pilots"}
+            {isAngelFlight
+              ? "For Angel Flight volunteer pilots"
+              : isSkyHope
+                ? "For SkyHope volunteer pilots"
+                : "For volunteer pilots"}
           </p>
           <div className="space-y-4">
             <p className="text-sm sm:text-base font-semibold tracking-wide text-sky-300/90">
               PlaneWX
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-              {isSkyHope ? "Welcome SkyHope volunteer pilots" : "Welcome volunteer pilots"}
+              {isAngelFlight
+                ? "Welcome Angel Flight volunteer pilots"
+                : isSkyHope
+                  ? "Welcome SkyHope volunteer pilots"
+                  : "Welcome volunteer pilots"}
             </h1>
             <div className="space-y-4 text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
               <p>
@@ -188,7 +228,21 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
           className="rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.06] p-6 sm:p-10 space-y-4 max-w-3xl"
           aria-labelledby="pressure-heading"
         >
-          {isSkyHope ? (
+          {isAngelFlight ? (
+            <>
+              <h2 id="pressure-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
+                The Angel Flight volunteer offer
+              </h2>
+              <p className="text-white/70 leading-relaxed">
+                Angel Flight volunteer pilots get{" "}
+                <strong className="text-white font-semibold">
+                  30% off the annual plan for each year you&apos;re an active volunteer pilot
+                </strong>
+                . Start with a 2-week Pro Plus trial. No credit card is needed for the trial.
+                Enter your Angel Flight call sign below to unlock signup.
+              </p>
+            </>
+          ) : isSkyHope ? (
             <>
               <h2 id="pressure-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
                 The SkyHope volunteer offer
@@ -278,14 +332,18 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
               </span>
               <div className="space-y-2 min-w-0">
                 <h3 className="text-lg font-semibold">
-                  {isSkyHope
-                    ? "Enter your SkyHope call sign"
-                    : "Enter your volunteer call sign"}
+                  {isAngelFlight
+                    ? "Enter your Angel Flight call sign"
+                    : isSkyHope
+                      ? "Enter your SkyHope call sign"
+                      : "Enter your volunteer call sign"}
                 </h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-                  {isSkyHope
-                    ? "Use your SkyHope (SYH) call sign. We validate it before signup unlocks."
-                    : "Use your Compassion Flight (CMF) or SkyHope (SYH) call sign. We validate it before signup unlocks."}
+                  {isAngelFlight
+                    ? "Use your Angel Flight (NGF) call sign. We validate it before signup unlocks."
+                    : isSkyHope
+                      ? "Use your SkyHope (SYH) call sign. We validate it before signup unlocks."
+                      : "Use your Compassion Flight (CMF) or SkyHope (SYH) call sign. We validate it before signup unlocks."}
                 </p>
               </div>
             </li>
@@ -313,7 +371,17 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                   30% off the annual plan for each year you&apos;re an active volunteer pilot
                 </h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-                  {isSkyHope ? (
+                  {isAngelFlight ? (
+                    <>
+                      If you continue after the trial, PlaneWX applies{" "}
+                      <strong className="text-white font-semibold">
+                        30% off the annual plan for each year you&apos;re an active volunteer
+                        pilot
+                      </strong>
+                      , from the Angel Flight call sign you entered on this page. You do not type a separate coupon code at
+                      checkout. You remain PIC.
+                    </>
+                  ) : isSkyHope ? (
                     <>
                       If you continue after the trial, PlaneWX applies{" "}
                       <strong className="text-white font-semibold">

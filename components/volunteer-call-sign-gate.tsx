@@ -24,9 +24,10 @@ const UNLOCKED_SIGNUP_CLASS =
  * Server/client format validation stays internal. User-facing copy must not
  * reveal the letter prefix, digit pattern, or any working call-sign example.
  *
- * Pass orgRef="SKYHOPE" for the SkyHope SYH gate; default is ACA/CMF.
+ * Pass orgRef="SKYHOPE" for the SkyHope SYH gate; orgRef="ANGELFLIGHT" for the
+ * Angel Flight NGF gate; default is ACA/CMF.
  * Bare / ACA accepts CMF or SYH; an SYH sign switches the unlocked card and
- * signup ref to SkyHope.
+ * signup ref to SkyHope. NGF is Angel Flight only.
  * Pass allowSignup / allowNetworkWrites from the server (VERCEL_ENV === "production").
  */
 export function VolunteerCallSignGate({
