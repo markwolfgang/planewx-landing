@@ -1,0 +1,55 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://www.planewx.ai/blog/personal-minimums-weather-planning",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the basic VFR weather minimums?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are in 14 CFR 91.155. In Class C, Class D, and Class E airspace below 10,000 ft MSL, you need 3 statute miles of flight visibility and must stay 500 ft below, 1,000 ft above, and 2,000 ft horizontally from clouds. Class B requires 3 statute miles and clear of clouds. At or above 10,000 ft MSL in Class E, it is 5 statute miles and 1,000 ft below, 1,000 ft above, and 1 statute mile horizontal. Class G by day at or below 1,200 ft AGL requires 1 statute mile and clear of clouds for airplanes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What weather do you need to fly VFR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Legally, the flight visibility and cloud clearance in 91.155 for your airspace, plus a ceiling of at least 1,000 ft and ground visibility of at least 3 statute miles to operate under VFR in a Class B, C, D, or E surface area. Special VFR under 91.157 is the exception, with an ATC clearance. Most pilots set personal minimums well above those numbers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you remember VFR minimums?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Learn the common pattern first: 3 statute miles, and 500 ft below, 1,000 ft above, 2,000 ft horizontal from clouds, which covers Class C, Class D, Class E below 10,000 ft MSL, and Class G at night. Then learn the exceptions: Class B is clear of clouds, at or above 10,000 ft MSL it is 5 miles and 1,000/1,000/1 mile, and low Class G by day is 1 mile and clear of clouds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a personal minimums checklist?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a written set of your own limits, set above the legal minimums, for the pilot, aircraft, environment, and external pressures. The FAA publishes one, the Personal Minimums Checklist (FAA-P-8740-56), which is also Appendix D of the Aviation Instructor’s Handbook. The FAA says to use it at home as you start planning a flight and again just before your final decision to fly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are good IFR personal minimums?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no single right set. The FAA checklist asks you to set ceiling and visibility above published approach minimums, a limit on missed approaches before diverting, and your own takeoff minimums. The FAA Risk Management Handbook’s sample instrument pilot uses 800 ft and 1 mile by day and 999 ft and 3 miles at night."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is marginal VFR a legal minimum?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. MVFR is a weather flight category (ceiling 1,000 to 3,000 ft and/or visibility 3 to 5 statute miles). The FAA says there are no Part 91 MVFR weather minimums; the categories are for situational awareness."
+      }
+    }
+  ]
+}

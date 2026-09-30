@@ -1,0 +1,55 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://www.planewx.ai/blog/pave-risk-assessment-weather",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does PAVE stand for in aviation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PAVE stands for Pilot in command, Aircraft, enVironment, and External pressures. It is the FAA’s checklist for dividing the risks of a flight into four categories so each one gets examined before departure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the IMSAFE checklist?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IMSAFE is the FAA’s personal fitness-to-fly checklist: Illness, Medication, Stress, Alcohol, Fatigue, and Emotion. The PHAK describes it as one of the best ways single pilots can mitigate risk by checking their physical and mental readiness for flying. Some versions use the final E for Eating."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between IMSAFE and PAVE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "IMSAFE checks the pilot only: are you fit to fly today? PAVE checks the whole flight: the pilot, the aircraft, the environment including weather, and external pressures. IMSAFE is best treated as the core of the P in PAVE."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the alcohol rules for pilots?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under 14 CFR 91.17, no one may act as a crewmember within 8 hours after drinking alcohol, while under the influence, or with an alcohol concentration of 0.04 or greater. The FAA’s Risk Management Handbook notes that aftereffects can create a hazard for longer than eight hours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is PAVE only for flight reviews?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Flight reviews and insurance seminars are where many pilots first hear the letters. The useful place to use PAVE is days before a real trip, while hotels, passengers, and work schedules are still movable. If you only open the framework the morning of departure, the External pressures leg has already done most of its damage. Weather risk assessment inside PAVE starts when the pattern is still a trend, not when the TAF finally exists."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a FRAT, and how does it relate to PAVE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A flight risk assessment tool (FRAT) turns the PAVE questions into a scored form. The FAASTeam’s own FRAT follows the PAVE checklist. The FAA stresses that “A FRAT is not meant to make your go/no-go decision for you.”"
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://www.planewx.ai/blog/vfr-weather-go-no-go",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is VFR into IMC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VFR into IMC is continued flight under visual flight rules into instrument meteorological conditions, such as cloud or visibility too low to control the airplane by outside references. The FAA’s analysis of NTSB data from 2014 to 2023 found 180 IMC-related general aviation accidents with a fatality rate exceeding 82%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is inadvertent IMC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Inadvertent IMC is an unplanned entry into instrument conditions by a pilot flying VFR. The Airplane Flying Handbook treats any situation where a VFR pilot can no longer control attitude by reference to the natural horizon as IMC, whatever the reported weather, and says it should be accepted as a genuine emergency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between VFR and marginal VFR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both are weather flight categories. VFR means a ceiling greater than 3,000 feet and visibility greater than 5 statute miles. Marginal VFR means a ceiling from 1,000 to 3,000 feet and/or visibility from 3 to 5 statute miles. The FAA says there are no Part 91 MVFR weather minimums; the categories are for situational awareness."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a private pilot fly in marginal VFR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if the flight meets the basic VFR weather minimums in 14 CFR 91.155 for the airspace. MVFR is not a legal limit. The FAA’s Risk Management Handbook notes that marginal VFR at night can be legal while still carrying higher risk, which is why personal minimums matter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is scud running?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Scud running is flying low under a lowering ceiling to keep visual contact with the ground while instrument conditions exist. AC 61-134 says it often ends in a controlled flight into terrain accident when the pilot hits an obstacle, terrain or water."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should you do if you inadvertently fly into IMC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Treat it as an emergency, fly by the instruments with wings level, and make a gentle 180-degree turn back toward the good weather. FAA guidance says the 180 degree turn is usually the best course of action for a pilot who is not instrument rated. Use an autopilot if you have one, keep the bank shallow, and talk to ATC and declare an emergency. Practice the procedure with an instructor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a graveyard spiral, and can you recover from one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A graveyard spiral starts when a pilot in a prolonged coordinated turn loses the sensation of turning, notices the altitude loss, and pulls back on the controls, which tightens the spiral. Recovery means trusting the attitude indicator: level the wings first, then correct pitch and airspeed."
+      }
+    }
+  ]
+}
