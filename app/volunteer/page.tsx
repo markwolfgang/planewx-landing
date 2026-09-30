@@ -190,10 +190,13 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                   ? "Welcome SkyHope volunteer pilots"
                   : "Welcome volunteer pilots"}
             </h1>
+            <p className="text-2xl sm:text-3xl font-semibold tracking-tight text-sky-300">
+              Fly like it&apos;s your job.
+            </p>
             <div className="space-y-4 text-lg sm:text-xl text-white/65 max-w-2xl leading-relaxed">
               <p>
-                Fly like it&apos;s your job. PlaneWX brings professional-grade tools and habits to
-                volunteer pilots, the same standard paid crews hold, on every mission.
+                PlaneWX brings professional-grade tools and habits to volunteer pilots, the same
+                standard paid crews hold, on every mission.
               </p>
               <p>
                 30% off the annual plan for each year you&apos;re an active volunteer pilot.
@@ -202,6 +205,14 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                 Start with a 2-week Pro Plus trial. No credit card is needed for the trial.
               </p>
             </div>
+            <p className="pt-2">
+              <Link
+                href="/"
+                className="inline-flex items-center rounded-lg border border-white/15 px-4 py-2 text-sm font-medium text-white/75 hover:border-white/30 hover:text-white transition-colors"
+              >
+                See what PlaneWX does
+              </Link>
+            </p>
           </div>
         </header>
 
