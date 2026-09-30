@@ -1,8 +1,8 @@
 /**
  * Shared Learning Center hub HTML port helpers.
  * Extract <article> + <style> from staged hub-source HTML the same way the
- * r5/r6 port does, then rewrite absolute planewx.ai /learn links to site-root
- * paths so preview cross-links resolve.
+ * r5/r6/r7/r8 port does, then rewrite absolute planewx.ai /learn links to
+ * site-root paths so preview cross-links resolve.
  */
 import { readFileSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
@@ -11,26 +11,48 @@ import { execFileSync } from "node:child_process"
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..")
 
+export const HUB_SOURCE_REF = "origin/staging/learn-hub-source-r7"
+
 export const HUB_PAGES = [
   {
     slug: "taf",
     source: "what-is-a-taf.html",
-    expectedMd5: "c17482d6a46de37ed874a7bba9a20cda",
+    expectedMd5: "62d3a06a5e738e4af45b485e94a1091a",
   },
   {
     slug: "metar",
     source: "what-is-a-metar.html",
-    expectedMd5: "8e5db716d029c529b0130f93037ed3fd",
+    expectedMd5: "99622317fcadde01e0cbf1ec57597e1a",
   },
   {
     slug: "airmet-sigmet",
     source: "airmet-sigmet.html",
-    expectedMd5: "fb4816bf0a9b401149ad2ed6b4eb3e71",
+    expectedMd5: "57b8637d96896eb458623681247642a9",
   },
   {
     slug: "pirep",
     source: "what-is-a-pirep.html",
-    expectedMd5: "51f2d43551f0a07dbbf374bb232f0610",
+    expectedMd5: "0b82beb9b60304aa2a56d0ea261a2e07",
+  },
+  {
+    slug: "winds-aloft",
+    source: "winds-aloft.html",
+    expectedMd5: "771d8d78d577eb89361b797949854cd4",
+  },
+  {
+    slug: "icing",
+    source: "icing.html",
+    expectedMd5: "ea33bffaf06348a82cc68401a16698b6",
+  },
+  {
+    slug: "turbulence",
+    source: "turbulence.html",
+    expectedMd5: "419b2a132c57ecdcfd1f27c0b12bdb80",
+  },
+  {
+    slug: "weather-radar",
+    source: "weather-radar.html",
+    expectedMd5: "2109df0538085d608fb2db0a4ef34a60",
   },
 ]
 
@@ -89,7 +111,7 @@ export function contentTsPath(slug) {
   return join(ROOT, "app/learn/aviation-weather", slug, "content.ts")
 }
 
-export function readSourceFromGit(sourceFile, ref = "origin/staging/learn-hub-source-r6") {
+export function readSourceFromGit(sourceFile, ref = HUB_SOURCE_REF) {
   return execFileSync(
     "git",
     ["show", `${ref}:hub-source/${sourceFile}`],
@@ -97,7 +119,7 @@ export function readSourceFromGit(sourceFile, ref = "origin/staging/learn-hub-so
   )
 }
 
-export function portAllFromGit(ref = "origin/staging/learn-hub-source-r6") {
+export function portAllFromGit(ref = HUB_SOURCE_REF) {
   const results = []
   for (const page of HUB_PAGES) {
     const sourceHtml = readSourceFromGit(page.source, ref)
@@ -115,9 +137,14 @@ export function portAllFromGit(ref = "origin/staging/learn-hub-source-r6") {
   return results
 }
 
-if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith("hub-port.mjs")) {
+if (
+  import.meta.url === `file://${process.argv[1]}` ||
+  process.argv[1]?.endsWith("hub-port.mjs")
+) {
   const results = portAllFromGit()
   for (const r of results) {
-    console.log(`ported ${r.slug}: main=${r.mainLen} style=${r.styleLen} -> ${r.out}`)
+    console.log(
+      `ported ${r.slug}: main=${r.mainLen} style=${r.styleLen} -> ${r.out}`,
+    )
   }
 }

@@ -1,22 +1,22 @@
 /**
  * Assert each aviation-weather content.ts MAIN_HTML and INLINE_STYLE match
- * the article + style extracted from staging/learn-hub-source-r6 the same way
+ * the article + style extracted from staging/learn-hub-source-r7 the same way
  * the port does (no hand edits).
  */
 import { createHash } from "node:crypto"
 import {
   HUB_PAGES,
+  HUB_SOURCE_REF,
   contentTsPath,
   extractFromHubSource,
   loadContentModule,
   readSourceFromGit,
 } from "./hub-port.mjs"
 
-const REF = "origin/staging/learn-hub-source-r6"
 let failed = 0
 
 for (const page of HUB_PAGES) {
-  const sourceHtml = readSourceFromGit(page.source, REF)
+  const sourceHtml = readSourceFromGit(page.source, HUB_SOURCE_REF)
   const md5 = createHash("md5").update(sourceHtml).digest("hex")
   const md5Ok = md5 === page.expectedMd5
   const extracted = extractFromHubSource(sourceHtml)
@@ -44,4 +44,4 @@ if (failed) {
   console.error(`hub content check: ${failed} page(s) failed`)
   process.exit(1)
 }
-console.log("hub content check: all four PASS")
+console.log(`hub content check: all ${HUB_PAGES.length} PASS`)

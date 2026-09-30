@@ -120,7 +120,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "description": "An en route advisory for weather that may affect aircraft safety at intensities below SIGMET criteria, such as IFR conditions, mountain obscuration, moderate turbulence or icing, and strong surface winds.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/metar#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/metar#gl-airmet",
-      "alternateName": "Airmen\u2019s Meteorological Information"
+      "alternateName": "Airmen’s Meteorological Information"
     },
     {
       "@type": "DefinedTerm",
@@ -142,7 +142,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "@type": "DefinedTerm",
       "@id": "https://www.planewx.ai/learn/aviation-weather/metar#gl-asos",
       "name": "ASOS",
-      "description": "The automated weather station network that is the nation\u2019s primary source of surface observations.",
+      "description": "The automated weather station network that is the nation’s primary source of surface observations.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/metar#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/metar#gl-asos",
       "alternateName": "Automated Surface Observing System"
@@ -311,7 +311,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "@type": "DefinedTerm",
       "@id": "https://www.planewx.ai/learn/aviation-weather/metar#gl-taf",
       "name": "TAF",
-      "description": "A coded forecast of the weather expected within 5 statute miles of the center of an airport\u2019s runway complex for a set time period.",
+      "description": "A coded forecast of the weather expected within 5 statute miles of the center of an airport’s runway complex for a set time period.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/metar#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/metar#gl-taf",
       "alternateName": "Terminal Aerodrome Forecast"

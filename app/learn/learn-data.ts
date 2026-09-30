@@ -510,6 +510,34 @@ export const AVIATION_WEATHER_HUB_PAGES: readonly AviationWeatherHubPage[] = [
       "A PIREP is a pilot weather report. Learn the UA and UUA format, how to decode each field, the official icing and turbulence intensity scales, and how to give a PIREP that helps.",
     lastReviewed: "2026-09-29",
   },
+  {
+    href: "/learn/aviation-weather/winds-aloft",
+    title: "Winds and Temperatures Aloft: How to Read an FB Forecast",
+    summary:
+      "How to decode the FB winds and temperatures aloft forecast, including winds over 100 knots and missing low levels, with a worked decode of the FAA Handbook sample.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/icing",
+    title: "Icing Forecasts: CIP, FIP, Freezing Level, and Icing Intensity",
+    summary:
+      "What the CIP and FIP icing products show, how to find the freezing level, what trace, light, moderate, heavy, and severe icing mean, and where icing forecasts fall short.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/turbulence",
+    title: "Turbulence Forecasts: GTG, GTG-N, and the Intensity Scale",
+    summary:
+      "How the GTG turbulence forecast and GTG-N nowcast work, what EDR means, the official light to extreme intensity scale, and which turbulence GTG does not forecast.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/weather-radar",
+    title: "Weather Radar for Pilots: NEXRAD, TDWR, Reflectivity, and Datalink Delay",
+    summary:
+      "How to read NEXRAD and TDWR radar, what dBZ and composite reflectivity mean, where radar misses weather, and why cockpit radar mosaics are older than their time stamp.",
+    lastReviewed: "2026-09-29",
+  },
 ]
 
 /**

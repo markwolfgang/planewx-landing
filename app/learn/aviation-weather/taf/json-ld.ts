@@ -177,7 +177,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "@type": "DefinedTerm",
       "@id": "https://www.planewx.ai/learn/aviation-weather/taf#gl-asos",
       "name": "ASOS",
-      "description": "The automated weather station network that is the nation\u2019s primary source of surface observations.",
+      "description": "The automated weather station network that is the nation’s primary source of surface observations.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-asos",
       "alternateName": "Automated Surface Observing System"
@@ -535,7 +535,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "@type": "DefinedTerm",
       "@id": "https://www.planewx.ai/learn/aviation-weather/taf#gl-taf",
       "name": "TAF",
-      "description": "A coded forecast of the weather expected within 5 statute miles of the center of an airport\u2019s runway complex for a set time period.",
+      "description": "A coded forecast of the weather expected within 5 statute miles of the center of an airport’s runway complex for a set time period.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/taf#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/taf#gl-taf",
       "alternateName": "Terminal Aerodrome Forecast"

@@ -212,7 +212,7 @@ export const DEFINED_TERM_SET_JSON_LD = {
       "@type": "DefinedTerm",
       "@id": "https://www.planewx.ai/learn/aviation-weather/pirep#gl-taf",
       "name": "TAF",
-      "description": "A coded forecast of the weather expected within 5 statute miles of the center of an airport\u2019s runway complex for a set time period.",
+      "description": "A coded forecast of the weather expected within 5 statute miles of the center of an airport’s runway complex for a set time period.",
       "inDefinedTermSet": "https://www.planewx.ai/learn/aviation-weather/pirep#glossary",
       "url": "https://www.planewx.ai/learn/aviation-weather/pirep#gl-taf",
       "alternateName": "Terminal Aerodrome Forecast"
