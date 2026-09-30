@@ -30,7 +30,7 @@ export default function TurbulenceSafety() {
             Back to PlaneWX
           </Link>
           <Link
-            href="https://app.planewx.ai"
+            href="https://app.planewx.ai/auth/sign-up"
             className="px-4 py-2 bg-sky-500 hover:bg-sky-400 text-white text-sm font-medium rounded-lg transition-colors"
           >
             Get Started Free
@@ -696,7 +696,7 @@ export default function TurbulenceSafety() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="https://app.planewx.ai"
+              href="https://app.planewx.ai/auth/sign-up"
               className="px-8 py-3 bg-sky-500 hover:bg-sky-400 text-white font-semibold rounded-xl transition-colors text-lg"
             >
               Get Started Free

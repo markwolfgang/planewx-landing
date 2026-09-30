@@ -2,6 +2,11 @@
 
 import { useEffect, useState } from "react"
 import { getLocalStorage } from "@/lib/cookie-prefs"
+import {
+  APP_ORIGIN,
+  APP_SIGN_UP_PATH,
+  buildAppSignupUrlWithLp,
+} from "@/lib/app-signup-url"
 
 type Props = {
   variant: string
@@ -13,17 +18,21 @@ type Props = {
 
 function buildBaseUrl(variant: string, path: string) {
   if (path === "/" || path === "") {
-    return `https://app.planewx.ai?lp=${variant}`
+    // Log In: app root is intentional (307 to /auth/login for logged-out users).
+    return `${APP_ORIGIN}?lp=${variant}`
   }
   const normalized = path.startsWith("/") ? path : `/${path}`
-  return `https://app.planewx.ai${normalized}?lp=${variant}`
+  if (normalized === APP_SIGN_UP_PATH) {
+    return buildAppSignupUrlWithLp(variant)
+  }
+  return `${APP_ORIGIN}${normalized}?lp=${variant}`
 }
 
 export function SignUpButton({
   variant,
   className,
   children,
-  path = "/auth/sign-up",
+  path = APP_SIGN_UP_PATH,
 }: Props) {
   const baseUrl = buildBaseUrl(variant, path)
   const [href, setHref] = useState(baseUrl)

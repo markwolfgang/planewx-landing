@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react"
 import { ArrowRight, Check } from "lucide-react"
 import { STATS } from "@/components/shared/landing-data"
+import { buildAppSignupUrlWithLp } from "@/lib/app-signup-url"
 import { getLocalStorage } from "@/lib/cookie-prefs"
 
 export function FooterCTA({ variant }: { variant: string }) {
-  const baseUrl = `https://app.planewx.ai?lp=${variant}`
+  const baseUrl = buildAppSignupUrlWithLp(variant)
   const [href, setHref] = useState(baseUrl)
 
   useEffect(() => {
