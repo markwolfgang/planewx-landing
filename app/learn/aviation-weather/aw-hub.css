@@ -40,7 +40,7 @@ html.dark .aw-hub,
 .aw-hub blockquote footer { color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
 .aw-hub .cite { font-size: 0.78em; vertical-align: super; line-height: 0; text-decoration: none; white-space: nowrap; }
 .aw-hub .cite:hover { text-decoration: underline; }
-.aw-hub .cite + .cite { margin-left: 0.25em; }
+.aw-hub .cite + .cite { margin-left: 0; }
 .aw-hub table { width: 100%; border-collapse: collapse; margin: 0 0 20px; font-size: 0.95rem; }
 .aw-hub th, .aw-hub td { border: 1px solid var(--line); padding: 10px 12px; vertical-align: top; text-align: left; }
 .aw-hub th { background: var(--card); }
@@ -69,8 +69,10 @@ html.dark .aw-hub,
   .hub .faq h3 { margin-top: 32px; }
   .hub .fieldref h3 { margin-top: 4px; }
   /* ---- Citations stay on the line of the word before them ---- */
+  /* A cite group never breaks inside, at any width (including Key Facts). Groups too long for the narrowest
+     container are split in the source so each cite sits right after its claim. */
   .cites { white-space: nowrap; }
-  @media (max-width: 599.98px) { .cites-long { white-space: normal; } }
+  .cite + .cite { margin-left: 0; }  /* no gap before a cite that follows a cite */
   /* ---- Key Facts ---- */
   .kf-box { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--accent);
     border-radius: 8px; padding: 12px 16px 4px; margin: 0 0 24px; font-size: 0.86rem; line-height: 1.42; }
@@ -81,7 +83,6 @@ html.dark .aw-hub,
   .kf-box h2 { border: 0; margin: 0; padding: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
   .kf-box ol { margin: 8px 0 6px; padding-left: 1.25em; }
   .kf-box li { margin: 0 0 6px; }
-  .kf-box .cites { white-space: normal; }  /* narrow column: first cite stays glued by the no-break space */
   .kf-box .kf-foot { color: var(--muted); font-size: 0.78rem; margin: 2px 0 8px; }
   .kf-fade { display: none; }
   /* ---- Official field reference box ---- */

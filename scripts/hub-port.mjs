@@ -1,7 +1,7 @@
 /**
  * Shared Learning Center hub HTML port helpers.
  * Extract <article> + <style> from staged hub-source HTML the same way the
- * r5/r6/r7/r8 port does, then rewrite absolute planewx.ai /learn links to
+ * r5/r6/r7/r8/r9 port does, then rewrite absolute planewx.ai /learn links to
  * site-root paths so preview cross-links resolve.
  */
 import { readFileSync, writeFileSync } from "node:fs"
@@ -11,48 +11,48 @@ import { execFileSync } from "node:child_process"
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..")
 
-export const HUB_SOURCE_REF = "origin/staging/learn-hub-source-r7"
+export const HUB_SOURCE_REF = "origin/staging/learn-hub-source-r9"
 
 export const HUB_PAGES = [
   {
     slug: "taf",
     source: "what-is-a-taf.html",
-    expectedMd5: "62d3a06a5e738e4af45b485e94a1091a",
+    expectedMd5: "5f1bb16e34aa746e95c32f2f0da20000",
   },
   {
     slug: "metar",
     source: "what-is-a-metar.html",
-    expectedMd5: "99622317fcadde01e0cbf1ec57597e1a",
+    expectedMd5: "7e93330cf6b7e7e48f6bdb6b5f7658d8",
   },
   {
     slug: "airmet-sigmet",
     source: "airmet-sigmet.html",
-    expectedMd5: "57b8637d96896eb458623681247642a9",
+    expectedMd5: "d19a9141e910caacec59a8e13d949653",
   },
   {
     slug: "pirep",
     source: "what-is-a-pirep.html",
-    expectedMd5: "0b82beb9b60304aa2a56d0ea261a2e07",
+    expectedMd5: "4427be9a526b6bcb6de600f8bf51d817",
   },
   {
     slug: "winds-aloft",
     source: "winds-aloft.html",
-    expectedMd5: "771d8d78d577eb89361b797949854cd4",
+    expectedMd5: "3883d307da9e722297448553a21d48c9",
   },
   {
     slug: "icing",
     source: "icing.html",
-    expectedMd5: "ea33bffaf06348a82cc68401a16698b6",
+    expectedMd5: "be02bde62cced7d105eb83ac28e0a431",
   },
   {
     slug: "turbulence",
     source: "turbulence.html",
-    expectedMd5: "419b2a132c57ecdcfd1f27c0b12bdb80",
+    expectedMd5: "002303c676f0d4d4d8583fe1d92aa582",
   },
   {
     slug: "weather-radar",
     source: "weather-radar.html",
-    expectedMd5: "2109df0538085d608fb2db0a4ef34a60",
+    expectedMd5: "f345446dd66c19cec87e81b22243b2b4",
   },
 ]
 

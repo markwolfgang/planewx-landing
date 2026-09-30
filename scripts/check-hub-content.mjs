@@ -1,6 +1,6 @@
 /**
  * Assert each aviation-weather content.ts MAIN_HTML and INLINE_STYLE match
- * the article + style extracted from staging/learn-hub-source-r7 the same way
+ * the article + style extracted from staging/learn-hub-source-r9 the same way
  * the port does (no hand edits).
  */
 import { createHash } from "node:crypto"
