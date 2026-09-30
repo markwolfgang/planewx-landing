@@ -1,17 +1,24 @@
 /**
- * Assert each aviation-weather content.ts MAIN_HTML and INLINE_STYLE match
- * the article + style extracted from staging/learn-hub-source-r9 the same way
- * the port does (no hand edits).
+ * Assert each Learning Center hub content.ts MAIN_HTML and INLINE_STYLE match
+ * the article + style extracted from staging/learn-hub-source-r10 the same way
+ * the port does (no hand edits). Also verify shared glossary/hub CSS assets.
  */
 import { createHash } from "node:crypto"
+import { readFileSync } from "node:fs"
+import { join, dirname } from "node:path"
+import { fileURLToPath } from "node:url"
 import {
   HUB_PAGES,
   HUB_SOURCE_REF,
+  HUB_ASSET_MD5,
   contentTsPath,
   extractFromHubSource,
   loadContentModule,
   readSourceFromGit,
 } from "./hub-port.mjs"
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..")
+const AW = join(ROOT, "app/learn/aviation-weather")
 
 let failed = 0
 
@@ -20,7 +27,7 @@ for (const page of HUB_PAGES) {
   const md5 = createHash("md5").update(sourceHtml).digest("hex")
   const md5Ok = md5 === page.expectedMd5
   const extracted = extractFromHubSource(sourceHtml)
-  const stored = loadContentModule(contentTsPath(page.slug))
+  const stored = loadContentModule(contentTsPath(page))
 
   if (stored.INLINE_STYLE == null) {
     console.log(`${page.slug}: FAIL (INLINE_STYLE missing from content.ts)`)
@@ -40,8 +47,25 @@ for (const page of HUB_PAGES) {
   if (!md5Ok || !mainOk || !styleOk) failed++
 }
 
+const assetPaths = {
+  "glossary.json": join(AW, "glossary.json"),
+  "hub.css": join(AW, "hub.css"),
+  "glossary.css": join(AW, "glossary.css"),
+  "glossary.js": join(AW, "glossary.js"),
+}
+
+for (const [name, expected] of Object.entries(HUB_ASSET_MD5)) {
+  const buf = readFileSync(assetPaths[name])
+  const md5 = createHash("md5").update(buf).digest("hex")
+  const ok = md5 === expected
+  console.log(`asset ${name}: md5=${ok ? "PASS" : "FAIL"}(${md5})`)
+  if (!ok) failed++
+}
+
 if (failed) {
-  console.error(`hub content check: ${failed} page(s) failed`)
+  console.error(`hub content check: ${failed} check(s) failed`)
   process.exit(1)
 }
-console.log(`hub content check: all ${HUB_PAGES.length} PASS`)
+console.log(
+  `hub content check: all ${HUB_PAGES.length} pages + ${Object.keys(HUB_ASSET_MD5).length} assets PASS`,
+)

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import {
   AVIATION_WEATHER_HUB_PAGES,
+  DECISION_MAKING_HUB_PAGES,
   LEARN_PUBLIC,
   LEARN_SECTIONS,
   TIPS_EMPTY_LINE,
@@ -41,7 +42,11 @@ export const metadata: Metadata = {
 function SectionArticles({ section }: { section: LearnSection }) {
   const articles = getArticlesBySection(section)
   const hubPages =
-    section === "Weather Products" ? AVIATION_WEATHER_HUB_PAGES : []
+    section === "Weather Products"
+      ? AVIATION_WEATHER_HUB_PAGES
+      : section === "Decision-Making"
+        ? DECISION_MAKING_HUB_PAGES
+        : []
 
   if (articles.length === 0 && hubPages.length === 0) {
     return (

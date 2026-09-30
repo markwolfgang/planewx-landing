@@ -9,7 +9,8 @@ export type GlossaryTerm = {
   [key: string]: unknown
 }
 
-export const GLOSSARY_DATA: GlossaryTerm[] = [
+export const GLOSSARY_DATA: GlossaryTerm[] = 
+[
   {
     "id": "taf",
     "term": "TAF",
@@ -1804,6 +1805,184 @@ export const GLOSSARY_DATA: GlossaryTerm[] = [
     "section": "3.2.2",
     "url": "https://www.faa.gov/sites/faa.gov/files/FAA-H-8083-28B.pdf#page=25",
     "source_quote": "Latency is the element of data age.",
+    "tier": 1
+  },
+  {
+    "id": "da",
+    "term": "Density altitude",
+    "expansion": "",
+    "qualifier": "",
+    "inline": "density altitude",
+    "definition": "Pressure altitude corrected for nonstandard temperature. An airplane performs as though it were at this altitude, whatever the field elevation.",
+    "category": "concept",
+    "aliases": [
+      "DA"
+    ],
+    "source_key": "phak",
+    "source_title": "FAA-H-8083-25C, Pilot’s Handbook of Aeronautical Knowledge (2023)",
+    "source_short": "FAA Pilot’s Handbook of Aeronautical Knowledge",
+    "section": "Chapter 4, Density Altitude",
+    "url": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/faa-h-8083-25c.pdf#page=91",
+    "source_quote": "Density altitude is pressure altitude corrected for nonstandard temperature.",
+    "tier": 1
+  },
+  {
+    "id": "pa",
+    "term": "Pressure altitude",
+    "expansion": "",
+    "qualifier": "",
+    "inline": "pressure altitude",
+    "definition": "Height above the standard datum plane, where the atmosphere weighs 29.92 inches of mercury. It is what the altimeter reads when set to 29.92.",
+    "category": "concept",
+    "aliases": [
+      "PA"
+    ],
+    "source_key": "phak",
+    "source_title": "FAA-H-8083-25C, Pilot’s Handbook of Aeronautical Knowledge (2023)",
+    "source_short": "FAA Pilot’s Handbook of Aeronautical Knowledge",
+    "section": "Chapter 4, Pressure Altitude",
+    "url": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/faa-h-8083-25c.pdf#page=91",
+    "source_quote": "Pressure altitude is the height above a standard datum plane",
+    "tier": 1
+  },
+  {
+    "id": "isa",
+    "term": "ISA",
+    "expansion": "International Standard Atmosphere",
+    "qualifier": "",
+    "inline": "ISA",
+    "definition": "The reference atmosphere that aircraft performance and instruments are based on: 15 °C and 29.92 inches of mercury at sea level, cooling about 2 °C per 1,000 feet.",
+    "category": "concept",
+    "aliases": [],
+    "source_key": "phak",
+    "source_title": "FAA-H-8083-25C, Pilot’s Handbook of Aeronautical Knowledge (2023)",
+    "source_short": "FAA Pilot’s Handbook of Aeronautical Knowledge",
+    "section": "Chapter 4, Standard Atmosphere",
+    "url": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/faa-h-8083-25c.pdf#page=90",
+    "source_quote": "referred to as International Standard Atmosphere (ISA) or ICAO Standard Atmosphere.",
+    "tier": 1
+  },
+  {
+    "id": "tas",
+    "term": "TAS",
+    "expansion": "True airspeed",
+    "qualifier": "",
+    "inline": "TAS",
+    "definition": "The speed of the aircraft through the air mass it is flying in. In thin air it is higher than indicated airspeed.",
+    "category": "concept",
+    "aliases": [],
+    "source_key": "phak",
+    "source_title": "FAA-H-8083-25C, Pilot’s Handbook of Aeronautical Knowledge (2023)",
+    "source_short": "FAA Pilot’s Handbook of Aeronautical Knowledge",
+    "section": "Chapter 11, Performance Speeds",
+    "url": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/faa-h-8083-25c.pdf#page=274",
+    "source_quote": "the speed of the aircraft in relation to the air mass in which it is flying.",
+    "tier": 1
+  },
+  {
+    "id": "afm",
+    "term": "AFM",
+    "expansion": "Airplane Flight Manual",
+    "qualifier": "",
+    "inline": "AFM",
+    "definition": "The manufacturer’s FAA-approved document for a specific make and model, containing its operating procedures and limitations.",
+    "category": "concept",
+    "aliases": [
+      "POH"
+    ],
+    "source_key": "phak",
+    "source_title": "FAA-H-8083-25C, Pilot’s Handbook of Aeronautical Knowledge (2023)",
+    "source_short": "FAA Pilot’s Handbook of Aeronautical Knowledge",
+    "section": "Glossary",
+    "url": "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/faa-h-8083-25c.pdf#page=478",
+    "source_quote": "by the airplane manufacturer and approved by the Federal Aviation Administration (FAA).",
+    "tier": 1
+  },
+  {
+    "id": "koch",
+    "term": "Koch chart",
+    "expansion": "",
+    "qualifier": "",
+    "inline": "Koch chart",
+    "definition": "An FAA chart that estimates how much to add to takeoff distance and subtract from climb rate for a given temperature and airport pressure altitude, for use when AFM or POH data are not available.",
+    "category": "concept",
+    "aliases": [],
+    "source_key": "dapam",
+    "source_title": "FAA-P-8740-2, Density Altitude (FAA Safety Team pamphlet, 2008)",
+    "source_short": "FAA pamphlet FAA-P-8740-2",
+    "section": "Koch Chart",
+    "url": "https://www.faasafety.gov/files/events/WP/WP09/2023/WP09123760/FAA-P-8740-02-DensityAltitude.pdf#page=4",
+    "source_quote": "If the airplane flight manual (AFM)/POH is not available, use the Koch Chart to calculate the approximate temperature and altitude adjustments for aircraft takeoff distance and rate of climb.",
+    "tier": 1
+  },
+  {
+    "id": "pave",
+    "term": "PAVE",
+    "expansion": "Pilot, Aircraft, enVironment, External pressures",
+    "qualifier": "",
+    "inline": "PAVE",
+    "definition": "The FAA risk checklist that sorts preflight hazards into four groups: the pilot, the aircraft, the environment, and external pressures.",
+    "category": "concept",
+    "aliases": [],
+    "source_key": "rmh",
+    "source_title": "FAA-H-8083-2A, Risk Management Handbook (2022)",
+    "source_short": "FAA Risk Management Handbook",
+    "section": "Chapter 1, The PAVE Checklist",
+    "url": "https://www.faa.gov/sites/faa.gov/files/2022-06/risk_management_handbook_2A.pdf#page=11",
+    "source_quote": "represents hazards that relate to the pilot, the aircraft, the environment, and external pressures.",
+    "tier": 1
+  },
+  {
+    "id": "imsafe",
+    "term": "IMSAFE",
+    "expansion": "Illness, Medication, Stress, Alcohol, Fatigue, Emotion",
+    "qualifier": "",
+    "inline": "IMSAFE",
+    "definition": "A personal fitness checklist that helps a pilot spot aeromedical hazards, the P in PAVE, before a flight.",
+    "category": "concept",
+    "aliases": [],
+    "source_key": "rmh",
+    "source_title": "FAA-H-8083-2A, Risk Management Handbook (2022)",
+    "source_short": "FAA Risk Management Handbook",
+    "section": "Chapter 3, Aeromedical",
+    "url": "https://www.faa.gov/sites/faa.gov/files/2022-06/risk_management_handbook_2A.pdf#page=23",
+    "source_quote": "The IMSAFE checklist, which is an acronym for Illness, Medication, Stress, Alcohol, Fatigue, and Emotion, can help a pilot",
+    "tier": 1
+  },
+  {
+    "id": "team",
+    "term": "TEAM",
+    "expansion": "Transfer, Eliminate, Accept, Mitigate",
+    "qualifier": "",
+    "inline": "TEAM",
+    "definition": "The four ways to handle a risk once it is identified. Some FAA material orders it TEMA.",
+    "category": "concept",
+    "aliases": [
+      "TEMA"
+    ],
+    "source_key": "rmh",
+    "source_title": "FAA-H-8083-2A, Risk Management Handbook (2022)",
+    "source_short": "FAA Risk Management Handbook",
+    "section": "Glossary",
+    "url": "https://www.faa.gov/sites/faa.gov/files/2022-06/risk_management_handbook_2A.pdf#page=76",
+    "source_quote": "An acronym that represents the four risk mitigation process steps: Transfer, Eliminate, Accept, and Mitigate",
+    "tier": 1
+  },
+  {
+    "id": "sms",
+    "term": "SMS",
+    "expansion": "Safety management system",
+    "qualifier": "",
+    "inline": "SMS",
+    "definition": "An organization-wide, preventive approach to safety with a safety policy, a positive safety culture, formal hazard and risk methods, and safety assurance.",
+    "category": "concept",
+    "aliases": [],
+    "source_key": "ac12092d",
+    "source_title": "AC 120-92D, Safety Management Systems for Aviation Service Providers (May 21, 2024)",
+    "source_short": "FAA AC 120-92D",
+    "section": "Chapter 1",
+    "url": "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_120-92D_FAA_Web.pdf#page=1",
+    "source_quote": "An SMS is an organization-wide, comprehensive, and preventive approach to ensuring system safety.",
     "tier": 1
   }
 ]

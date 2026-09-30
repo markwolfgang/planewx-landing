@@ -1,60 +1,91 @@
 /**
  * Shared Learning Center hub HTML port helpers.
  * Extract <article> + <style> from staged hub-source HTML the same way the
- * r5/r6/r7/r8/r9 port does, then rewrite absolute planewx.ai /learn links to
+ * r5/r6/r7/r8/r9/r10 port does, then rewrite absolute planewx.ai /learn links to
  * site-root paths so preview cross-links resolve.
  */
-import { readFileSync, writeFileSync } from "node:fs"
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 import { execFileSync } from "node:child_process"
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..")
 
-export const HUB_SOURCE_REF = "origin/staging/learn-hub-source-r9"
+export const HUB_SOURCE_REF = "origin/staging/learn-hub-source-r10"
 
+/**
+ * All Learning Center hub pages ported from hub-source.
+ * dir is relative to app/learn (aviation-weather/<slug> or top-level slug).
+ */
 export const HUB_PAGES = [
   {
     slug: "taf",
     source: "what-is-a-taf.html",
-    expectedMd5: "5f1bb16e34aa746e95c32f2f0da20000",
+    expectedMd5: "a5db0ad87abced06cfd0a9f4b1962060",
+    dir: "aviation-weather/taf",
   },
   {
     slug: "metar",
     source: "what-is-a-metar.html",
-    expectedMd5: "7e93330cf6b7e7e48f6bdb6b5f7658d8",
+    expectedMd5: "e6153d054ff079f3812245cddb89f051",
+    dir: "aviation-weather/metar",
   },
   {
     slug: "airmet-sigmet",
     source: "airmet-sigmet.html",
-    expectedMd5: "d19a9141e910caacec59a8e13d949653",
+    expectedMd5: "cd52ca07f7d7ba24ed1d386ae44841a3",
+    dir: "aviation-weather/airmet-sigmet",
   },
   {
     slug: "pirep",
     source: "what-is-a-pirep.html",
-    expectedMd5: "4427be9a526b6bcb6de600f8bf51d817",
+    expectedMd5: "8407c8a6e7a12fe4af03fd4ecd60a05f",
+    dir: "aviation-weather/pirep",
   },
   {
     slug: "winds-aloft",
     source: "winds-aloft.html",
-    expectedMd5: "3883d307da9e722297448553a21d48c9",
+    expectedMd5: "870a8ec3d07cb87a86acdd2d2bb8966c",
+    dir: "aviation-weather/winds-aloft",
   },
   {
     slug: "icing",
     source: "icing.html",
-    expectedMd5: "be02bde62cced7d105eb83ac28e0a431",
+    expectedMd5: "82bb1a3c813fac18d3e2d0855a9cebae",
+    dir: "aviation-weather/icing",
   },
   {
     slug: "turbulence",
     source: "turbulence.html",
-    expectedMd5: "002303c676f0d4d4d8583fe1d92aa582",
+    expectedMd5: "3eafa44339db61e170feeb92d760cfdd",
+    dir: "aviation-weather/turbulence",
   },
   {
     slug: "weather-radar",
     source: "weather-radar.html",
-    expectedMd5: "f345446dd66c19cec87e81b22243b2b4",
+    expectedMd5: "061d5d93ae8456c1dea70248ab7b3ef1",
+    dir: "aviation-weather/weather-radar",
+  },
+  {
+    slug: "density-altitude",
+    source: "density-altitude.html",
+    expectedMd5: "b687437f2c0f9128a534f403e4872154",
+    dir: "aviation-weather/density-altitude",
+  },
+  {
+    slug: "flight-risk-assessment-tool",
+    source: "flight-risk-assessment-tool.html",
+    expectedMd5: "09e7955a27fcd119829d50b432c7cb38",
+    dir: "flight-risk-assessment-tool",
   },
 ]
+
+export const HUB_ASSET_MD5 = {
+  "glossary.json": "c0ddbbbecdb9110a2a314b9357dc2dcc",
+  "hub.css": "9b057c4e999b136c17da01265393e834",
+  "glossary.css": "36948050a68231ad3b4e8b2c1ea13eb1",
+  "glossary.js": "2610af0a5436df351d153f6694bb6a19",
+}
 
 const LEARN_ABS = "https://www.planewx.ai/learn/"
 
@@ -107,8 +138,13 @@ export function formatContentTs(mainHtml, inlineStyle) {
   )
 }
 
-export function contentTsPath(slug) {
-  return join(ROOT, "app/learn/aviation-weather", slug, "content.ts")
+export function contentTsPath(pageOrSlug) {
+  const page =
+    typeof pageOrSlug === "string"
+      ? HUB_PAGES.find((p) => p.slug === pageOrSlug)
+      : pageOrSlug
+  if (!page) throw new Error(`Unknown hub page: ${pageOrSlug}`)
+  return join(ROOT, "app/learn", page.dir, "content.ts")
 }
 
 export function readSourceFromGit(sourceFile, ref = HUB_SOURCE_REF) {
@@ -124,7 +160,8 @@ export function portAllFromGit(ref = HUB_SOURCE_REF) {
   for (const page of HUB_PAGES) {
     const sourceHtml = readSourceFromGit(page.source, ref)
     const { mainHtml, inlineStyle } = extractFromHubSource(sourceHtml)
-    const out = contentTsPath(page.slug)
+    const out = contentTsPath(page)
+    mkdirSync(dirname(out), { recursive: true })
     writeFileSync(out, formatContentTs(mainHtml, inlineStyle))
     results.push({
       slug: page.slug,

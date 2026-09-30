@@ -538,6 +538,29 @@ export const AVIATION_WEATHER_HUB_PAGES: readonly AviationWeatherHubPage[] = [
       "How to read NEXRAD and TDWR radar, what dBZ and composite reflectivity mean, where radar misses weather, and why cockpit radar mosaics are older than their time stamp.",
     lastReviewed: "2026-09-29",
   },
+  {
+    href: "/learn/aviation-weather/density-altitude",
+    title:
+      "Density Altitude Calculator and Guide: What It Is and How to Calculate It",
+    summary:
+      "What density altitude is, how to calculate it by hand and with the NWS formula, a worked example, the Koch chart, and why hot, high, and humid days catch pilots out.",
+    lastReviewed: "2026-09-30",
+  },
+]
+
+/**
+ * Live Decision-Making hub pages on this preview branch (Learning Center root,
+ * not under aviation-weather). Listed on the Learning Center index.
+ */
+export const DECISION_MAKING_HUB_PAGES: readonly AviationWeatherHubPage[] = [
+  {
+    href: "/learn/flight-risk-assessment-tool",
+    title:
+      "Flight Risk Assessment Tool (FRAT): What It Is and How to Use One Honestly",
+    summary:
+      "What a flight risk assessment tool is, where the FAA FRAT comes from, how green, yellow, and red scores work, and how to fill one out without fooling yourself.",
+    lastReviewed: "2026-09-30",
+  },
 ]
 
 /**
@@ -554,8 +577,10 @@ export type LiveLearnRoute = {
 export const LEARN_TAF_DECODE_HREF = "/learn/aviation-weather/taf" as const
 
 /** Preview-only live deep routes (href + title) for cross-link gates on this branch. */
-export const LIVE_LEARN_ROUTES: readonly LiveLearnRoute[] =
-  AVIATION_WEATHER_HUB_PAGES.map((p) => ({ href: p.href, title: p.title }))
+export const LIVE_LEARN_ROUTES: readonly LiveLearnRoute[] = [
+  ...AVIATION_WEATHER_HUB_PAGES.map((p) => ({ href: p.href, title: p.title })),
+  ...DECISION_MAKING_HUB_PAGES.map((p) => ({ href: p.href, title: p.title })),
+]
 
 export function getLiveLearnRoute(
   href: string,
