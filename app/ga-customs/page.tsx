@@ -177,7 +177,7 @@ export default function GaCustomsPage() {
             </GaCustomsSignUpLink>
           </div>
           <p className="text-sm text-white/40 max-w-xl leading-relaxed">
-            Free on the App Store for iPhone and iPad — search GA Customs or tap
+            Free on the App Store for iPhone and iPad. Search GA Customs or tap
             Download above.
           </p>
           <p className="text-sm text-white/40 max-w-lg">
@@ -192,7 +192,7 @@ export default function GaCustomsPage() {
               Inside the app
             </h2>
             <p className="text-white/55 leading-relaxed">
-              Map through About — the screens pilots open when planning a crossing.
+              Map through About: the screens pilots open when planning a crossing.
             </p>
           </div>
 
