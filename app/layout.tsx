@@ -6,6 +6,7 @@ import { PartnerGreetingBanner } from "@/components/partner-greeting-banner"
 import { TrackingScripts } from "@/components/tracking-scripts"
 import { WebVercelMetrics } from "@/components/web-vercel-metrics"
 import { FAQS, faqAnswerToPlainText } from "@/components/shared/landing-data"
+import { SiteJsonLd } from "@/components/site-json-ld"
 import "./globals.css"
 
 // aopa native preview redeploy trigger (static /aopa closer CTA text)
@@ -229,10 +230,7 @@ export default function RootLayout({
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context" />
         
         {/* Structured Data (JSON-LD) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <SiteJsonLd graph={jsonLd} />
       </head>
       <body className={inter.className}>
         <OshBanner />

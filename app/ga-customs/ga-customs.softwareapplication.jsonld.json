@@ -1,0 +1,46 @@
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://www.planewx.ai/ga-customs#app",
+  "name": "GA Customs",
+  "alternateName": "GA Customs by PlaneWX",
+  "description": "Free iPhone and iPad app for general aviation pilots planning a U.S. customs arrival: a map of U.S. airports of entry with hours, user fee status and advance notice rules from CBP, a South Arrival filter for the designated airports in 19 CFR 122.24, offline airport information, tap to call the port and pilot reviews. GA Customs does not file eAPIS (pilots file through CBP's official eAPIS site, https://eapis.cbp.dhs.gov) and does not grant permission to land. Always verify with CBP before you fly.",
+  "url": "https://www.planewx.ai/ga-customs",
+  "applicationCategory": "TravelApplication",
+  "applicationSubCategory": "Aviation customs planning",
+  "operatingSystem": "iOS 13.0 or later, iPadOS 13.0 or later",
+  "softwareVersion": "1.1.1",
+  "datePublished": "2026-08-29",
+  "downloadUrl": "https://apps.apple.com/us/app/ga-customs/id6758804419",
+  "installUrl": "https://apps.apple.com/us/app/ga-customs/id6758804419",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "featureList": [
+    "Map of U.S. airports of entry with hours and user fee status",
+    "Distance from your location",
+    "Filters for 24-hour airports, user fee airports and notice requirements",
+    "South Arrival filter showing only designated airports (19 CFR 122.24), off by default",
+    "Airport pages with hours, fees and advance notice rules from CBP",
+    "Tap to call the CBP port from the airport page",
+    "Pilot reviews of how the clearance went",
+    "Offline access to saved airport information and CBP fact sheets where published",
+    "Favorites saved on the device",
+    "No login and no account"
+  ],
+  "screenshot": [
+    "https://www.planewx.ai/ga-customs/01-map-kprs.png",
+    "https://www.planewx.ai/ga-customs/02-kprs-hours.png",
+    "https://www.planewx.ai/ga-customs/03-kprs-process-reviews.png"
+  ],
+  "publisher": {
+    "@id": "https://www.planewx.ai/#organization"
+  },
+  "sameAs": [
+    "https://apps.apple.com/us/app/ga-customs/id6758804419"
+  ]
+}

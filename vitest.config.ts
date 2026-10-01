@@ -14,6 +14,7 @@ export default defineConfig({
       "components/**/*.test.tsx",
       "app/learn/**/*.test.ts",
       "app/learn/**/*.test.tsx",
+      "app/ga-customs/**/*.test.ts",
     ],
   },
   resolve: {

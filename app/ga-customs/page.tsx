@@ -2,21 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { CookiePrefsLinks } from "@/components/cookie-prefs-links"
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  Clock,
-  Map,
-  FileText,
-  HeartHandshake,
-  MessageSquare,
-  Phone,
-  PlaneLanding,
-  ShieldOff,
-  Unlock,
-  UserX,
-} from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import {
   GaCustomsCampaignTracker,
@@ -27,75 +13,33 @@ import {
   GA_CUSTOMS_APP_STORE_URL,
   GA_CUSTOMS_TESTFLIGHT_URL,
 } from "@/lib/planewx-family-apps"
+import { GA_CUSTOMS_BODY_HTML } from "./ga-customs-body"
+import gaCustomsFaqJsonLd from "./ga-customs.faq.jsonld.json"
+import gaCustomsSoftwareApplicationJsonLd from "./ga-customs.softwareapplication.jsonld.json"
 
 export const metadata: Metadata = {
-  title: "GA Customs → PlaneWX | Airport of Entry hours & fees",
+  title: {
+    absolute: "App for U.S. Customs Airports for GA Pilots | GA Customs",
+  },
   description:
-    "GA Customs is a free iOS app for U.S. Airport of Entry hours and fees — brought to you by PlaneWX. Download on the App Store, then open PlaneWX for flight weather intelligence built for GA pilots.",
+    "How GA pilots find a U.S. customs airport: airport types, the south arrival rule, eAPIS timing, permission to land, hours and fees, and the free GA Customs app.",
   openGraph: {
-    title: "GA Customs — brought to you by PlaneWX",
+    title: "App for U.S. Customs Airports for GA Pilots | GA Customs",
     description:
-      "U.S. Airport of Entry hours & fees for GA pilots. Free on the App Store from the PlaneWX family. Get PlaneWX for decision-support weather.",
+      "How GA pilots find a U.S. customs airport: airport types, the south arrival rule, eAPIS timing, permission to land, hours and fees, and the free GA Customs app.",
     type: "website",
     url: "https://www.planewx.ai/ga-customs",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "App for U.S. Customs Airports for GA Pilots | GA Customs",
+    description:
+      "How GA pilots find a U.S. customs airport: airport types, the south arrival rule, eAPIS timing, permission to land, hours and fees, and the free GA Customs app.",
   },
   alternates: {
     canonical: "https://www.planewx.ai/ga-customs",
   },
 }
-
-const BULLETS = [
-  {
-    icon: Map,
-    title: "Map of U.S. Airports of Entry",
-    body: "Find AOEs across the country without digging through scattered CBP pages.",
-  },
-  {
-    icon: Clock,
-    title: "Hours, fees & notice requirements",
-    body: "See operating hours, user fees, and advance-notice rules before you plan the crossing.",
-  },
-  {
-    icon: FileText,
-    title: "Offline fact sheets",
-    body: "Pull airport details even when you are off grid — saved for the flight, not just the lounge Wi-Fi.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Free — brought to you by PlaneWX",
-    body: "GA Customs is free for GA pilots. PlaneWX builds the weather decision support behind your go / no-go.",
-  },
-  {
-    icon: Unlock,
-    title: "No login required",
-    body: "Open it and go — nothing to sign into.",
-  },
-  {
-    icon: UserX,
-    title: "No account setup",
-    body: "Nothing to create before you can use it.",
-  },
-  {
-    icon: ShieldOff,
-    title: "No personal information collected",
-    body: "We don't ask for your name, email, or a profile.",
-  },
-  {
-    icon: Phone,
-    title: "Tap to call the port",
-    body: "From the airport page, ring the port without hunting for the number.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Pilot reviews",
-    body: "How the clearance actually went — from pilots who've done it, not a brochure.",
-  },
-  {
-    icon: PlaneLanding,
-    title: "South Arrival",
-    body: "Coming from the south with no overflight exemption, your first landing has to be a designated airport (19 CFR 122.24).",
-  },
-] as const
 
 const SCREENSHOTS = [
   {
@@ -134,6 +78,19 @@ export default function GaCustomsPage() {
         validates against campaign_codes.active.
       */}
       <GaCustomsCampaignTracker />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(gaCustomsFaqJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(gaCustomsSoftwareApplicationJsonLd),
+        }}
+      />
 
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B1120] via-[#0d1f3c] to-[#0a0f1a]" />
@@ -184,15 +141,18 @@ export default function GaCustomsPage() {
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#3B82F6]">
                 From the PlaneWX family
               </p>
-              <h1 className="leading-none">
+              <div className="leading-none">
                 <Image
                   src="/ga-customs/wordmark.png"
                   alt="GA Customs"
                   width={488}
                   height={70}
-                  className="h-10 sm:h-12 md:h-14 w-auto mx-auto sm:mx-0"
+                  className="h-10 sm:h-12 md:h-14 w-auto max-w-full mx-auto sm:mx-0"
                   priority
                 />
+              </div>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-tight">
+                App for U.S. Customs Airports: How GA Pilots Find One and Clear CBP
               </h1>
               <p className="text-lg sm:text-xl text-white/65 max-w-xl leading-relaxed">
                 GA Customs is a free iPhone and iPad app for general aviation pilots who need U.S. Airport of Entry hours, notice, and fees. No login required. No account setup. No personal information collected. Works offline. Tap to call. Pilot reviews. Free.
@@ -217,7 +177,7 @@ export default function GaCustomsPage() {
             </GaCustomsSignUpLink>
           </div>
           <p className="text-sm text-white/40 max-w-xl leading-relaxed">
-            Free on the App Store for iPhone and iPad — search GA Customs or tap
+            Free on the App Store for iPhone and iPad. Search GA Customs or tap
             Download above.
           </p>
           <p className="text-sm text-white/40 max-w-lg">
@@ -232,7 +192,7 @@ export default function GaCustomsPage() {
               Inside the app
             </h2>
             <p className="text-white/55 leading-relaxed">
-              Map through About — the screens pilots open when planning a crossing.
+              Map through About: the screens pilots open when planning a crossing.
             </p>
           </div>
 
@@ -263,34 +223,10 @@ export default function GaCustomsPage() {
           </div>
         </section>
 
-        {/* What GA Customs gives you */}
-        <section className="space-y-6" aria-labelledby="ga-customs-features">
-          <div className="space-y-2 max-w-2xl">
-            <h2 id="ga-customs-features" className="text-2xl sm:text-3xl font-bold tracking-tight">
-              What pilots get in GA Customs
-            </h2>
-            <p className="text-white/55 leading-relaxed">
-              Coming back from Canada, Mexico, the Caribbean, or anywhere else, it helps you find a customs airport and plan the first landing. South Arrival: if you are coming from the south and you do not have an overflight exemption, the first landing has to be a designated airport. Those airports are the CBP list in 19 CFR 122.24. From Canada or the north, you do not need that permit, and there is no designated list. User-fee airports come from 19 CFR 122.15. Always confirm with the airport. Hours and procedures come from U.S. Customs and Border Protection. Always verify with CBP before you fly.
-            </p>
-          </div>
-
-          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
-            {BULLETS.map(({ icon: Icon, title, body }) => (
-              <li key={title} className="flex gap-3 items-start">
-                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#3B82F6]/15 text-[#3B82F6]">
-                  <Icon className="h-4 w-4" aria-hidden />
-                </span>
-                <div className="space-y-1 min-w-0">
-                  <p className="font-semibold text-white flex items-center gap-2">
-                    <Check className="h-3.5 w-3.5 text-emerald-400 shrink-0 sm:hidden" aria-hidden />
-                    {title}
-                  </p>
-                  <p className="text-sm text-white/55 leading-relaxed">{body}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <article
+          className="prose prose-invert prose-sky max-w-3xl break-words prose-headings:font-bold prose-a:text-sky-400 prose-a:no-underline hover:prose-a:underline"
+          dangerouslySetInnerHTML={{ __html: GA_CUSTOMS_BODY_HTML }}
+        />
 
         {/* CTA */}
         <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-10 space-y-5 text-center">
