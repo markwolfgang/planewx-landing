@@ -626,7 +626,7 @@ export function withOptionalTafDecodeLink(
   if (!link) return blocks
   const decodeBlock: LearnBodyBlock = {
     type: "paragraph",
-    text: `For a group by group decode of a TAF, see [${link.label}](${link.href}).`,
+    text: `For a group-by-group decode of a TAF, see [${link.label}](${link.href}).`,
   }
   const insertAt = blocks.findIndex((b) => b.type === "paragraph")
   if (insertAt === -1) return [...blocks, decodeBlock]

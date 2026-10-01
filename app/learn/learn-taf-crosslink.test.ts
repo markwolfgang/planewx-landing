@@ -44,7 +44,7 @@ describe("withOptionalTafDecodeLink", () => {
     expect(blocks).toEqual(mosBody)
     const serialized = JSON.stringify(blocks)
     expect(serialized).not.toContain("/learn/aviation-weather/taf")
-    expect(serialized).not.toContain("For a group by group decode of a TAF")
+    expect(serialized).not.toContain("For a group-by-group decode of a TAF")
   })
 
   it("inserts the decode line with the registry href and label when live", () => {
@@ -52,11 +52,11 @@ describe("withOptionalTafDecodeLink", () => {
     const decode = blocks.find(
       (b) =>
         b.type === "paragraph" &&
-        b.text.includes("For a group by group decode of a TAF")
+        b.text.includes("For a group-by-group decode of a TAF")
     )
     expect(decode).toEqual({
       type: "paragraph",
-      text: "For a group by group decode of a TAF, see [What Is a TAF? How to Read a Terminal Aerodrome Forecast](/learn/aviation-weather/taf).",
+      text: "For a group-by-group decode of a TAF, see [What Is a TAF? How to Read a Terminal Aerodrome Forecast](/learn/aviation-weather/taf).",
     })
     const firstPara = mosBody.findIndex((b) => b.type === "paragraph")
     expect(blocks[firstPara + 1]).toEqual(decode)

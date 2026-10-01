@@ -271,8 +271,9 @@ export function DensityAltitudeCalculator() {
           </>
         ) : (
           <p className="da-calc-idle">
-            Enter field elevation, altimeter setting, and temperature to
-            estimate density altitude.
+            {result && !result.ok
+              ? "Fix the highlighted field to see density altitude."
+              : "Enter field elevation, altimeter setting, and temperature to estimate density altitude."}
           </p>
         )}
       </div>
