@@ -62,7 +62,7 @@ for (const [name, expected] of Object.entries(HUB_ASSET_MD5)) {
 
 const glossary = JSON.parse(readFileSync(assetPaths["glossary.json"], "utf8"))
 const termCount = Array.isArray(glossary.terms) ? glossary.terms.length : 0
-const termsOk = termCount === 115
+const termsOk = termCount === 162
 console.log(`glossary terms: ${termsOk ? "PASS" : "FAIL"}(${termCount})`)
 if (!termsOk) failed++
 
