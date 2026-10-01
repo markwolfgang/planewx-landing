@@ -6,7 +6,11 @@ export type GlossaryTerm = {
   url: string
   source_title?: string
   source_short?: string
-  [
+  [key: string]: unknown
+}
+
+export const GLOSSARY_DATA: GlossaryTerm[] = 
+[
   {
     "id": "taf",
     "term": "TAF",
