@@ -21,13 +21,15 @@ const UNLOCKED_SIGNUP_CLASS =
 
 /**
  * Call-sign gate for /volunteer.
- * Server/client format validation stays internal. User-facing copy must not
+ * Server/client validation stays internal. User-facing copy must not
  * reveal the letter prefix, digit pattern, or any working call-sign example.
  *
- * Pass orgRef="SKYHOPE" for the SkyHope SYH gate; orgRef="ANGELFLIGHT" for the
- * Angel Flight NGF gate; default is ACA/CMF.
- * Bare / ACA accepts CMF or SYH; an SYH sign switches the unlocked card and
- * signup ref to SkyHope. NGF is Angel Flight only.
+ * Pass orgRef="SKYHOPE" for the SkyHope SYH gate; default is the generic
+ * ACA / ANGELFLIGHT gate (CMF, NGF, or SYH). Pass orgRef="ANGELFLIGHT" to keep
+ * tracking attribution while using the same generic gate.
+ * Bare / ACA / ANGELFLIGHT accept CMF, NGF, or SYH. Visible copy names CMF or
+ * NGF only; SYH routes silently to SKYHOPE. NGF alone does not imply Angel
+ * Flight; that ref is kept only when present on the URL.
  * Pass allowSignup / allowNetworkWrites from the server (VERCEL_ENV === "production").
  */
 export function VolunteerCallSignGate({
@@ -58,7 +60,11 @@ export function VolunteerCallSignGate({
     setStoredRemotely(false)
     try {
       const keys = bareGate
-        ? [pageOrg.storageKey, resolveVolunteerOrg("SKYHOPE").storageKey]
+        ? [
+            resolveVolunteerOrg(VOLUNTEER_CAMPAIGN_CODE).storageKey,
+            resolveVolunteerOrg("ANGELFLIGHT").storageKey,
+            resolveVolunteerOrg("SKYHOPE").storageKey,
+          ]
         : [pageOrg.storageKey]
       for (const key of keys) {
         const saved = localStorage.getItem(key)

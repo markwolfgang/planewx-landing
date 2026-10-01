@@ -10,13 +10,14 @@ import {
 /**
  * POST /api/volunteer/call-sign
  *
- * Format-only validation per org.
+ * Validates the call sign for the active page gate, then stores it when possible.
  * - SkyHope (ref=SKYHOPE): SYH + 1-4 digits only.
- * Angel Flight (ref=ANGELFLIGHT): NGF + 1-4 digits only.
- * - Bare / ACA: CMF or SYH (/^(CMF|SYH)\d{1,4}$/i). An SYH sign attributes to SKYHOPE.
- * No membership list lookup. Stores the normalized call sign with timestamp + ref
- * when Supabase is available. Always returns the normalized sign on success so the
- * client can pass it into signup even if durable storage is temporarily unavailable.
+ * - Bare / ACA / ANGELFLIGHT: CMF, NGF, or SYH (/^(CMF|NGF|SYH)\d{1,4}$/i).
+ *   SYH attributes to SKYHOPE. NGF attributes to ANGELFLIGHT only when that
+ *   ref is on the request; otherwise NGF attributes to ACA. CMF uses cmf=.
+ * Membership for the discount is confirmed in the app after signup.
+ * Always returns the normalized sign on success so the client can pass it into
+ * signup even if durable storage is temporarily unavailable.
  * Never blocks signup when storage fails.
  *
  * Preview / non-production: reject writes (landing preview shares prod Supabase).

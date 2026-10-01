@@ -29,11 +29,11 @@ type VolunteerPageProps = {
 const ACA_METADATA: Metadata = {
   title: "Volunteer Pilots | PlaneWX",
   description:
-    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your Compassion Flight call sign, start a 2-week Pro Plus trial, and get 30% off the annual plan for each year you're an active volunteer pilot.",
+    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your CMF or NGF call sign from your volunteer pilot organization, start a 2-week Pro Plus trial, and get 30% off the annual plan for each year you're an active volunteer pilot.",
   openGraph: {
     title: "Welcome volunteer pilots | PlaneWX",
     description:
-      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your Compassion Flight call sign and start a 2-week Pro Plus trial.",
+      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your CMF or NGF call sign from your volunteer pilot organization and start a 2-week Pro Plus trial.",
     type: "website",
     url: "https://www.planewx.ai/volunteer",
   },
@@ -41,7 +41,7 @@ const ACA_METADATA: Metadata = {
     card: "summary_large_image",
     title: "Welcome volunteer pilots | PlaneWX",
     description:
-      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your Compassion Flight call sign and start a 2-week Pro Plus trial.",
+      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your CMF or NGF call sign from your volunteer pilot organization and start a 2-week Pro Plus trial.",
   },
   alternates: {
     canonical: "https://www.planewx.ai/volunteer",
@@ -78,25 +78,11 @@ export async function generateMetadata({
   }
   if (isAngelFlightRef(params.ref)) {
     return {
-      title: "Angel Flight Volunteer Pilots | PlaneWX",
-      description:
-        "Angel Flight volunteer pilots get 30% off the annual plan for each year you're an active volunteer pilot. Start with a 2-week Pro Plus trial. No credit card for the trial. You remain PIC.",
+      ...ACA_METADATA,
       robots: { index: false, follow: false },
       openGraph: {
-        title: "Angel Flight volunteer pilots | PlaneWX",
-        description:
-          "Angel Flight volunteer pilots get 30% off the annual plan for each year you're an active volunteer pilot. 2-week Pro Plus trial. No card for the trial. You remain PIC.",
-        type: "website",
+        ...ACA_METADATA.openGraph,
         url: "https://www.planewx.ai/volunteer?ref=ANGELFLIGHT",
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: "Angel Flight volunteer pilots | PlaneWX",
-        description:
-          "Angel Flight volunteer pilots get 30% off the annual plan for each year you're an active volunteer pilot. 2-week Pro Plus trial. No card for the trial. You remain PIC.",
-      },
-      alternates: {
-        canonical: "https://www.planewx.ai/volunteer",
       },
     }
   }
@@ -132,10 +118,11 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
     <div className="min-h-screen bg-[#0a0f1a] text-white overflow-hidden">
       {/*
         Default campaign: ACA (migrations/20260922_aca_volunteer_campaign_code.sql).
-        Call signs (ACA): migrations/20260922_volunteer_call_signs.sql
-        Format only (CMF + 1-4 digits). No ACA membership list lookup.
+        Call signs: migrations/20260922_volunteer_call_signs.sql
+        Generic gate accepts CMF, NGF, or SYH. Visible copy names CMF or NGF.
+        SYH routes silently to SKYHOPE. Discount membership is confirmed in the app.
         SkyHope: ?ref=SKYHOPE, SYH gate (lib/volunteer-landing.ts registry).
-        Angel Flight: ?ref=ANGELFLIGHT, NGF gate (lib/volunteer-landing.ts registry).
+        ?ref=ANGELFLIGHT: same generic gate; ref kept for tracking.
         SKYHOPE and ANGELFLIGHT seeds live only in the app repo.
         Preview (VERCEL_ENV !== production): gate UX only; no signup link or writes.
       */}
@@ -173,22 +160,16 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
         <header className="space-y-7 text-center sm:text-left max-w-3xl mx-auto sm:mx-0 animate-fade-in-up">
           <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-semibold tracking-wide uppercase">
             <HeartHandshake className="h-3.5 w-3.5" aria-hidden />
-            {isAngelFlight
-              ? "For Angel Flight volunteer pilots"
-              : isSkyHope
-                ? "For SkyHope volunteer pilots"
-                : "For volunteer pilots"}
+            {isSkyHope ? "For SkyHope volunteer pilots" : "For volunteer pilots"}
           </p>
           <div className="space-y-4">
             <p className="text-sm sm:text-base font-semibold tracking-wide text-sky-300/90">
               PlaneWX
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-              {isAngelFlight
-                ? "Welcome Angel Flight volunteer pilots"
-                : isSkyHope
-                  ? "Welcome SkyHope volunteer pilots"
-                  : "Welcome volunteer pilots"}
+              {isSkyHope
+                ? "Welcome SkyHope volunteer pilots"
+                : "Welcome volunteer pilots"}
             </h1>
             <p className="text-2xl sm:text-3xl font-semibold tracking-tight text-sky-300">
               Fly like it&apos;s your job.
@@ -239,21 +220,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
           className="rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.06] p-6 sm:p-10 space-y-4 max-w-3xl"
           aria-labelledby="pressure-heading"
         >
-          {isAngelFlight ? (
-            <>
-              <h2 id="pressure-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
-                The Angel Flight volunteer offer
-              </h2>
-              <p className="text-white/70 leading-relaxed">
-                Angel Flight volunteer pilots get{" "}
-                <strong className="text-white font-semibold">
-                  30% off the annual plan for each year you&apos;re an active volunteer pilot
-                </strong>
-                . Start with a 2-week Pro Plus trial. No credit card is needed for the trial.
-                Enter your Angel Flight call sign below to unlock signup.
-              </p>
-            </>
-          ) : isSkyHope ? (
+          {isSkyHope ? (
             <>
               <h2 id="pressure-heading" className="text-2xl sm:text-3xl font-bold tracking-tight">
                 The SkyHope volunteer offer
@@ -282,7 +249,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                 <strong className="text-white font-semibold">
                   30% off the annual plan for each year you&apos;re an active volunteer pilot
                 </strong>
-                . Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign below. Safer
+                . Enter your CMF or NGF call sign from your volunteer pilot organization below. Safer
                 decisions on missions like yours are exactly why we built this.
               </p>
             </>
@@ -343,18 +310,14 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
               </span>
               <div className="space-y-2 min-w-0">
                 <h3 className="text-lg font-semibold">
-                  {isAngelFlight
-                    ? "Enter your Angel Flight call sign"
-                    : isSkyHope
-                      ? "Enter your SkyHope call sign"
-                      : "Enter your volunteer call sign"}
+                  {isSkyHope
+                    ? "Enter your SkyHope call sign"
+                    : "Enter your volunteer call sign"}
                 </h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-                  {isAngelFlight
-                    ? "Use your Angel Flight (NGF) call sign. We validate it before signup unlocks."
-                    : isSkyHope
-                      ? "Use your SkyHope (SYH) call sign. We validate it before signup unlocks."
-                      : "Use your Compassion Flight (CMF) or SkyHope (SYH) call sign. We validate it before signup unlocks."}
+                  {isSkyHope
+                    ? "Use your SkyHope (SYH) call sign. We validate it before signup unlocks."
+                    : "Use your CMF or NGF call sign from your volunteer pilot organization. We validate it before signup unlocks."}
                 </p>
               </div>
             </li>
@@ -382,17 +345,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                   30% off the annual plan for each year you&apos;re an active volunteer pilot
                 </h3>
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
-                  {isAngelFlight ? (
-                    <>
-                      If you continue after the trial, PlaneWX applies{" "}
-                      <strong className="text-white font-semibold">
-                        30% off the annual plan for each year you&apos;re an active volunteer
-                        pilot
-                      </strong>
-                      , from the Angel Flight call sign you entered on this page. You do not type a separate coupon code at
-                      checkout. You remain PIC.
-                    </>
-                  ) : isSkyHope ? (
+                  {isSkyHope ? (
                     <>
                       If you continue after the trial, PlaneWX applies{" "}
                       <strong className="text-white font-semibold">

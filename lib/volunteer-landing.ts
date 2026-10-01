@@ -5,14 +5,16 @@
  * Visit recording validates against campaign_codes.active
  * (see migrations/20260922_aca_volunteer_campaign_code.sql).
  *
- * Call signs are format-checked only. We do NOT look up membership lists.
- * Validated signs are stored (API + localStorage) and passed into app signup.
+ * Call signs are validated on this page, then stored (API + localStorage) and
+ * passed into app signup. Membership confirmation for the discount happens in
+ * the app, not from a public membership list on this landing page.
  *
- * SkyHope (ref=SKYHOPE) uses its own SYH call-sign gate, same UX as CMF.
- * Angel Flight (ref=ANGELFLIGHT) uses its own NGF call-sign gate, same UX as SYH.
- * Bare /volunteer and ?ref=ACA accept both CMF and SYH. An SYH sign on the
- * bare page switches attribution to SKYHOPE (ref + callsign=).
- * NGF is not accepted on the bare page; use ?ref=ANGELFLIGHT.
+ * SkyHope (ref=SKYHOPE) uses its own SYH call-sign gate.
+ * Bare /volunteer, ?ref=ACA, and ?ref=ANGELFLIGHT share one generic gate that
+ * accepts CMF, NGF, or SYH. Visible copy names CMF or NGF only; SYH is accepted
+ * silently and still routes to ref=SKYHOPE + callsign= (same as main).
+ * NGF is shared across multiple orgs, so NGF alone never implies Angel Flight.
+ * ref=ANGELFLIGHT still attributes tracking and signup when that ref is present.
  * SKYHOPE and ANGELFLIGHT campaign seeds live only in the app repo
  * (not this landing repo).
  */
@@ -22,7 +24,7 @@ export const VOLUNTEER_CAMPAIGN_CODE = "ACA"
 /** SkyHope campaign code. Gated by SYH call sign; not listed on /partners. */
 export const SKYHOPE_CAMPAIGN_CODE = "SKYHOPE"
 
-/** Angel Flight campaign code. Gated by NGF call sign; not listed on /partners. */
+/** Angel Flight campaign tracking code. Same generic CMF/NGF gate as bare /volunteer. */
 export const ANGEL_FLIGHT_CAMPAIGN_CODE = "ANGELFLIGHT"
 
 /** lp variant; must be <=8 chars (campaign-visit truncates to 8). */
@@ -103,10 +105,25 @@ export type VolunteerOrgCallSignConfig = {
   signupParam: VolunteerCallSignSignupParam
 }
 
+const GENERIC_VOLUNTEER_CALL_SIGN_COPY = {
+  label: "Your volunteer call sign",
+  hint: "Enter your CMF or NGF call sign from your volunteer pilot organization. We'll validate it, then unlock signup.",
+  error:
+    "That doesn't look like a valid volunteer call sign. Use your CMF or NGF call sign from your volunteer pilot organization.",
+  lockedHint:
+    "Enter your CMF or NGF call sign from your volunteer pilot organization. We'll validate it, then unlock signup",
+  srHint:
+    "Enter your CMF or NGF call sign from your volunteer pilot organization.",
+  acceptedLead:
+    "Call sign accepted. Sign up below for your 2-week Pro Plus trial. PlaneWX applies the volunteer discount from the call sign you entered",
+  unlockBody:
+    "Full access to Pro Plus, our highest tier. No credit card required to start the trial. When you continue after the trial, PlaneWX applies 30% off the annual plan for each year you're an active volunteer pilot, from the call sign you entered here. You do not type a separate coupon code.",
+} as const
+
 /**
  * Org call-sign registry. ACA (CMF) is the default for bare /volunteer and ?ref=ACA.
  * SkyHope is activated only via ?ref=SKYHOPE (case-insensitive).
- * Angel Flight is activated only via ?ref=ANGELFLIGHT (case-insensitive).
+ * ?ref=ANGELFLIGHT uses the same generic CMF/NGF gate; the ref is for tracking only.
  */
 export const VOLUNTEER_ORG_CALL_SIGN_REGISTRY: Record<
   string,
@@ -117,18 +134,8 @@ export const VOLUNTEER_ORG_CALL_SIGN_REGISTRY: Record<
     prefix: "CMF",
     /** ONE-LINE EDIT: CMF format. */
     pattern: /^CMF\d{1,4}$/i,
-    label: "Your volunteer call sign",
+    ...GENERIC_VOLUNTEER_CALL_SIGN_COPY,
     placeholder: "WWW",
-    hint: "Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign. We'll validate it, then unlock signup.",
-    error:
-      "That doesn't look like a valid volunteer call sign. Use your Compassion Flight (CMF) or SkyHope (SYH) call sign.",
-    lockedHint:
-      "Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign. We'll validate it, then unlock signup",
-    srHint: "Enter your Compassion Flight (CMF) or SkyHope (SYH) call sign.",
-    acceptedLead:
-      "Call sign accepted. Sign up below for your 2-week Pro Plus trial. PlaneWX applies the volunteer discount from the call sign you entered",
-    unlockBody:
-      "Full access to Pro Plus, our highest tier. No credit card required to start the trial. When you continue after the trial, PlaneWX applies 30% off the annual plan for each year you're an active volunteer pilot, from the call sign you entered here. You do not type a separate coupon code.",
     storageKey: "planewx_cmf_call_sign",
     signupParam: "cmf",
   },
@@ -160,18 +167,8 @@ export const VOLUNTEER_ORG_CALL_SIGN_REGISTRY: Record<
      * Requester described NGFxxxx; tighten to exactly 4 digits here if wanted.
      */
     pattern: /^NGF\d{1,4}$/i,
-    label: "Your Angel Flight call sign",
+    ...GENERIC_VOLUNTEER_CALL_SIGN_COPY,
     placeholder: "WWW",
-    hint: "Enter your Angel Flight call sign. We'll validate it, then unlock signup.",
-    error:
-      "That doesn't look like a valid Angel Flight call sign. Use your Angel Flight call sign, not a Compassion Flight one.",
-    lockedHint:
-      "Enter your Angel Flight call sign. We'll validate it, then unlock signup",
-    srHint: "Enter your Angel Flight call sign.",
-    acceptedLead:
-      "Call sign accepted. Sign up below for your 2-week Pro Plus trial. PlaneWX applies the volunteer discount from the call sign you entered",
-    unlockBody:
-      "Full access to Pro Plus, our highest tier. No credit card required to start the trial. When you continue after the trial, PlaneWX applies 30% off the annual plan for each year you're an active volunteer pilot, from the Angel Flight call sign you entered here. You do not type a separate coupon code. You remain PIC.",
     storageKey: "planewx_ngf_call_sign",
     signupParam: "callsign",
   },
@@ -231,21 +228,22 @@ export function isAngelFlightRef(ref?: string | null): boolean {
 }
 
 /**
- * Bare /volunteer (and ?ref=ACA) accept CMF or SYH, same shape as the app:
- * /^(CMF|SYH)\d{1,4}$/i
- * NGF is Angel Flight only (?ref=ANGELFLIGHT); not accepted on the bare page.
+ * Bare /volunteer, ?ref=ACA, and ?ref=ANGELFLIGHT accept CMF, NGF, or SYH:
+ * /^(CMF|NGF|SYH)\d{1,4}$/i
+ * Visible copy names CMF or NGF only. SYH is accepted silently and routes to
+ * SKYHOPE. NGF does not imply Angel Flight; ref=ANGELFLIGHT only when on the URL.
  */
-export const BARE_VOLUNTEER_CALL_SIGN_PATTERN = /^(CMF|SYH)\d{1,4}$/i
+export const BARE_VOLUNTEER_CALL_SIGN_PATTERN = /^(CMF|NGF|SYH)\d{1,4}$/i
 
 export const BARE_VOLUNTEER_CALL_SIGN_ERROR =
   VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ACA.error
 
-/** True when the page gate should accept both CMF and SYH (bare / ACA). */
+/** True when the page gate should accept CMF, NGF, or SYH (bare / ACA / ANGELFLIGHT). */
 export function isBareVolunteerGate(ref?: string | null): boolean {
-  return !isSkyHopeRef(ref) && !isAngelFlightRef(ref)
+  return !isSkyHopeRef(ref)
 }
 
-/** Resolve org from a normalized call sign prefix. */
+/** Gate config for a normalized call sign prefix (signup param + storage), not attribution. */
 export function resolveVolunteerOrgFromCallSign(
   callSign: string
 ): VolunteerOrgCallSignConfig | null {
@@ -275,8 +273,10 @@ export function normalizeVolunteerCallSignForOrg(
 /**
  * Normalize for the page gate.
  * SkyHope page: SYH only.
- * Angel Flight page: NGF only.
- * Bare / ACA page: CMF or SYH; returns the org that should own attribution.
+ * Generic page (bare / ACA / ANGELFLIGHT): CMF, NGF, or SYH.
+ * SYH always attributes to SKYHOPE (same as main bare dual-org routing).
+ * Attribution ref for NGF is ANGELFLIGHT only when that ref is on the page;
+ * otherwise NGF attributes to ACA. CMF always uses the cmf signup param.
  */
 export function normalizeVolunteerCallSignForPage(
   raw: string,
@@ -291,16 +291,38 @@ export function normalizeVolunteerCallSignForPage(
     return { callSign: cleaned, org }
   }
 
-  if (isAngelFlightRef(pageOrgRef)) {
-    const org = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ANGELFLIGHT
-    if (!org.pattern.test(cleaned)) return null
-    return { callSign: cleaned, org }
+  if (!BARE_VOLUNTEER_CALL_SIGN_PATTERN.test(cleaned)) return null
+
+  if (/^SYH\d{1,4}$/i.test(cleaned)) {
+    return {
+      callSign: cleaned,
+      org: VOLUNTEER_ORG_CALL_SIGN_REGISTRY.SKYHOPE,
+    }
   }
 
-  if (!BARE_VOLUNTEER_CALL_SIGN_PATTERN.test(cleaned)) return null
-  const org = resolveVolunteerOrgFromCallSign(cleaned)
-  if (!org) return null
-  return { callSign: cleaned, org }
+  const trackingRef = isAngelFlightRef(pageOrgRef)
+    ? ANGEL_FLIGHT_CAMPAIGN_CODE
+    : VOLUNTEER_CAMPAIGN_CODE
+
+  if (/^CMF\d{1,4}$/i.test(cleaned)) {
+    const aca = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ACA
+    return {
+      callSign: cleaned,
+      org: trackingRef === ANGEL_FLIGHT_CAMPAIGN_CODE
+        ? { ...aca, ref: trackingRef }
+        : aca,
+    }
+  }
+
+  if (/^NGF\d{1,4}$/i.test(cleaned)) {
+    const ngf = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ANGELFLIGHT
+    return {
+      callSign: cleaned,
+      org: { ...ngf, ref: trackingRef },
+    }
+  }
+
+  return null
 }
 
 /** Normalize raw input to uppercase CMF + digits, or null if format-invalid. */
@@ -313,7 +335,7 @@ export function normalizeVolunteerCallSign(raw: string): string | null {
 
 /**
  * Build the app signup href for a volunteer org.
- * ACA uses ?cmf=; SkyHope and Angel Flight use ?callsign= only (not ?cmf=).
+ * ACA uses ?cmf=; SkyHope and NGF use ?callsign= only (not ?cmf=).
  * Never attaches a call sign that fails the gate org's pattern
  * (prevents stale localStorage from the other org leaking into the link).
  *

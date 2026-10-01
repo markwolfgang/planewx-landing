@@ -5,8 +5,11 @@ Founder welcome video on `/volunteer` defaults to YouTube ID `6QOZJUoMlLA`
 
 ## Call sign flow
 
-Pilots enter a Compassion Flight call sign on the page. Format is validated
-server-side only (not described in UI). No ACA membership list lookup.
+Pilots enter a CMF or NGF call sign from their volunteer pilot organization
+on the page. SYH is also accepted silently on the generic gate and routes to
+SkyHope (`?ref=SKYHOPE` remains the dedicated SkyHope page). The page validates
+the sign before unlock. Discount membership is confirmed in the app after signup.
+`?ref=ANGELFLIGHT` keeps tracking attribution on the same generic gate.
 
 Validated signs are:
 

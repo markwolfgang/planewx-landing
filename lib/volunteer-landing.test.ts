@@ -17,26 +17,36 @@ import {
   VOLUNTEER_ORG_CALL_SIGN_REGISTRY,
 } from "./volunteer-landing"
 
-describe("ACA / CMF and SkyHope / SYH stay unchanged", () => {
+const GENERIC_HINT =
+  "Enter your CMF or NGF call sign from your volunteer pilot organization. We'll validate it, then unlock signup."
+const GENERIC_ERROR =
+  "That doesn't look like a valid volunteer call sign. Use your CMF or NGF call sign from your volunteer pilot organization."
+
+describe("ACA / CMF and SkyHope / SYH", () => {
   const aca = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ACA
   const sky = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.SKYHOPE
 
-  it("keeps campaign codes and bare dual-org pattern", () => {
+  it("keeps campaign codes and generic CMF/NGF/SYH bare pattern", () => {
     expect(VOLUNTEER_CAMPAIGN_CODE).toBe("ACA")
     expect(SKYHOPE_CAMPAIGN_CODE).toBe("SKYHOPE")
     expect(aca.prefix).toBe("CMF")
     expect(aca.signupParam).toBe("cmf")
     expect(aca.storageKey).toBe("planewx_cmf_call_sign")
     expect(aca.pattern.source).toBe("^CMF\\d{1,4}$")
+    expect(aca.hint).toBe(GENERIC_HINT)
+    expect(aca.error).toBe(GENERIC_ERROR)
+    expect(aca.hint.includes("SYH")).toBe(false)
     expect(sky.prefix).toBe("SYH")
     expect(sky.signupParam).toBe("callsign")
     expect(sky.storageKey).toBe("planewx_syh_call_sign")
     expect(sky.pattern.source).toBe("^SYH\\d{1,4}$")
-    expect(BARE_VOLUNTEER_CALL_SIGN_PATTERN.source).toBe("^(CMF|SYH)\\d{1,4}$")
+    expect(BARE_VOLUNTEER_CALL_SIGN_PATTERN.source).toBe(
+      "^(CMF|NGF|SYH)\\d{1,4}$"
+    )
     expect(BARE_VOLUNTEER_CALL_SIGN_ERROR).toBe(aca.error)
   })
 
-  it("keeps bare and SkyHope resolve / normalize behavior", () => {
+  it("keeps SkyHope resolve / normalize and bare SYH to SKYHOPE", () => {
     expect(resolveVolunteerOrg("ACA").ref).toBe("ACA")
     expect(resolveVolunteerOrg("SKYHOPE").ref).toBe("SKYHOPE")
     expect(resolveVolunteerOrg(null).ref).toBe("ACA")
@@ -44,6 +54,7 @@ describe("ACA / CMF and SkyHope / SYH stay unchanged", () => {
     expect(isBareVolunteerGate(null)).toBe(true)
     expect(isBareVolunteerGate("ACA")).toBe(true)
     expect(isBareVolunteerGate("SKYHOPE")).toBe(false)
+    expect(isBareVolunteerGate("ANGELFLIGHT")).toBe(true)
 
     expect(normalizeVolunteerCallSign("cmf42")).toBe("CMF42")
     expect(normalizeVolunteerCallSign("SYH1234")).toBeNull()
@@ -54,13 +65,15 @@ describe("ACA / CMF and SkyHope / SYH stay unchanged", () => {
     expect(bareSyh?.callSign).toBe("SYH123")
     expect(bareSyh?.org.ref).toBe("SKYHOPE")
 
+    const acaSyh = normalizeVolunteerCallSignForPage("syh123", "ACA")
+    expect(acaSyh?.callSign).toBe("SYH123")
+    expect(acaSyh?.org.ref).toBe("SKYHOPE")
+
     const bareCmf = normalizeVolunteerCallSignForPage("cmf42", "ACA")
     expect(bareCmf?.callSign).toBe("CMF42")
     expect(bareCmf?.org.ref).toBe("ACA")
 
     expect(normalizeVolunteerCallSignForPage("CMF123", "SKYHOPE")).toBeNull()
-    expect(normalizeVolunteerCallSignForPage("NGF1234", null)).toBeNull()
-    expect(normalizeVolunteerCallSignForPage("NGF1234", "ACA")).toBeNull()
   })
 
   it("keeps ACA and SkyHope signup hrefs", () => {
@@ -75,10 +88,10 @@ describe("ACA / CMF and SkyHope / SYH stay unchanged", () => {
   })
 })
 
-describe("Angel Flight / NGF mirrors SkyHope", () => {
+describe("Generic CMF/NGF/SYH gate and ANGELFLIGHT tracking", () => {
   const angel = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ANGELFLIGHT
 
-  it("registers ANGELFLIGHT with NGF prefix + 1 to 4 digits", () => {
+  it("registers NGF storage/pattern with generic volunteer copy", () => {
     expect(ANGEL_FLIGHT_CAMPAIGN_CODE).toBe("ANGELFLIGHT")
     expect(angel.ref).toBe("ANGELFLIGHT")
     expect(angel.prefix).toBe("NGF")
@@ -86,7 +99,9 @@ describe("Angel Flight / NGF mirrors SkyHope", () => {
     expect(angel.storageKey).toBe("planewx_ngf_call_sign")
     expect(angel.pattern.source).toBe("^NGF\\d{1,4}$")
     expect(angel.pattern.flags).toBe("i")
-    expect(angel.label).toBe("Your Angel Flight call sign")
+    expect(angel.label).toBe("Your volunteer call sign")
+    expect(angel.hint).toBe(GENERIC_HINT)
+    expect(angel.error).toBe(GENERIC_ERROR)
     expect(angel.pattern.test("NGF1234")).toBe(true)
     expect(angel.pattern.test("ngf1")).toBe(true)
     expect(angel.pattern.test("NGF9999")).toBe(true)
@@ -95,40 +110,162 @@ describe("Angel Flight / NGF mirrors SkyHope", () => {
     expect(angel.pattern.test("CMF123")).toBe(false)
     expect(angel.pattern.test("SYH1234")).toBe(false)
     expect(angel.pattern.test("NGF0A")).toBe(false)
+    expect(angel.label.includes("Angel Flight")).toBe(false)
+    expect(angel.hint.includes("Angel Flight")).toBe(false)
   })
 
-  it("resolves ref=ANGELFLIGHT and rejects foreign signs on that page", () => {
+  it("accepts NGF on bare as ACA, and keeps ref=ANGELFLIGHT tracking", () => {
     expect(resolveVolunteerOrg("ANGELFLIGHT").ref).toBe("ANGELFLIGHT")
     expect(resolveVolunteerOrg("angelflight").ref).toBe("ANGELFLIGHT")
     expect(isAngelFlightRef("angelflight")).toBe(true)
     expect(isAngelFlightRef("SKYHOPE")).toBe(false)
-    expect(isBareVolunteerGate("ANGELFLIGHT")).toBe(false)
 
-    const lower = normalizeVolunteerCallSignForPage("ngf99", "ANGELFLIGHT")
-    expect(lower?.callSign).toBe("NGF99")
-    expect(lower?.org.ref).toBe("ANGELFLIGHT")
+    const bareNgf = normalizeVolunteerCallSignForPage("ngf99", null)
+    expect(bareNgf?.callSign).toBe("NGF99")
+    expect(bareNgf?.org.ref).toBe("ACA")
+    expect(bareNgf?.org.signupParam).toBe("callsign")
 
-    expect(normalizeVolunteerCallSignForPage("CMF123", "ANGELFLIGHT")).toBeNull()
-    expect(normalizeVolunteerCallSignForPage("SYH1234", "ANGELFLIGHT")).toBeNull()
+    const tracked = normalizeVolunteerCallSignForPage("ngf99", "ANGELFLIGHT")
+    expect(tracked?.callSign).toBe("NGF99")
+    expect(tracked?.org.ref).toBe("ANGELFLIGHT")
+
+    const trackedCmf = normalizeVolunteerCallSignForPage("CMF123", "ANGELFLIGHT")
+    expect(trackedCmf?.callSign).toBe("CMF123")
+    expect(trackedCmf?.org.ref).toBe("ANGELFLIGHT")
+    expect(trackedCmf?.org.signupParam).toBe("cmf")
+
+    const afSyh = normalizeVolunteerCallSignForPage("SYH1234", "ANGELFLIGHT")
+    expect(afSyh?.callSign).toBe("SYH1234")
+    expect(afSyh?.org.ref).toBe("SKYHOPE")
+
     expect(normalizeVolunteerCallSignForOrg("NGF1234", angel)).toBe("NGF1234")
     expect(normalizeVolunteerCallSignForOrg(" ngf 12 ", angel)).toBe("NGF12")
-    expect(resolveVolunteerOrgFromCallSign("NGF1234")?.ref).toBe("ANGELFLIGHT")
+    expect(resolveVolunteerOrgFromCallSign("NGF1234")?.prefix).toBe("NGF")
   })
 
-  it("builds signup href with ref=ANGELFLIGHT and callsign=", () => {
+  it("routes SYH on bare to SKYHOPE, CMF to ACA cmf=, NGF to ACA or ANGELFLIGHT", () => {
+    const bareSyh = normalizeVolunteerCallSignForPage("syh123", null)
+    expect(bareSyh?.callSign).toBe("SYH123")
+    expect(bareSyh?.org.ref).toBe("SKYHOPE")
     expect(
       buildVolunteerSignupHrefForOrg({
-        ref: "ANGELFLIGHT",
-        callSign: "NGF1234",
+        ref: bareSyh!.org.ref,
+        callSign: bareSyh!.callSign,
+        gateOrg: bareSyh!.org,
+      })
+    ).toBe(
+      "https://app.planewx.ai/auth/sign-up?lp=vol&ref=SKYHOPE&callsign=SYH123"
+    )
+
+    const bareCmf = normalizeVolunteerCallSignForPage("CMF42", null)
+    expect(bareCmf?.org.ref).toBe("ACA")
+    expect(
+      buildVolunteerSignupHrefForOrg({
+        ref: bareCmf!.org.ref,
+        callSign: bareCmf!.callSign,
+        gateOrg: bareCmf!.org,
+      })
+    ).toBe("https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA&cmf=CMF42")
+
+    const bareNgf = normalizeVolunteerCallSignForPage("NGF1234", null)
+    expect(bareNgf?.org.ref).toBe("ACA")
+    expect(
+      buildVolunteerSignupHrefForOrg({
+        ref: bareNgf!.org.ref,
+        callSign: bareNgf!.callSign,
+        gateOrg: bareNgf!.org,
+      })
+    ).toBe(
+      "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA&callsign=NGF1234"
+    )
+
+    const trackedNgf = normalizeVolunteerCallSignForPage(
+      "NGF1234",
+      "ANGELFLIGHT"
+    )
+    expect(trackedNgf?.org.ref).toBe("ANGELFLIGHT")
+    expect(
+      buildVolunteerSignupHrefForOrg({
+        ref: trackedNgf!.org.ref,
+        callSign: trackedNgf!.callSign,
+        gateOrg: trackedNgf!.org,
       })
     ).toBe(
       "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ANGELFLIGHT&callsign=NGF1234"
     )
-    expect(
-      buildVolunteerSignupHrefForOrg({
+  })
+
+  it("accepts CMF, NGF, and SYH on bare /volunteer and on ?ref=ANGELFLIGHT", () => {
+    const cases: Array<{
+      pageRef: string | null
+      raw: string
+      callSign: string
+      ref: string
+      signupParam: "cmf" | "callsign"
+      href: string
+    }> = [
+      {
+        pageRef: null,
+        raw: "cmf42",
+        callSign: "CMF42",
+        ref: "ACA",
+        signupParam: "cmf",
+        href: "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA&cmf=CMF42",
+      },
+      {
+        pageRef: "ACA",
+        raw: "NGF1234",
+        callSign: "NGF1234",
+        ref: "ACA",
+        signupParam: "callsign",
+        href: "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA&callsign=NGF1234",
+      },
+      {
+        pageRef: null,
+        raw: "syh99",
+        callSign: "SYH99",
+        ref: "SKYHOPE",
+        signupParam: "callsign",
+        href: "https://app.planewx.ai/auth/sign-up?lp=vol&ref=SKYHOPE&callsign=SYH99",
+      },
+      {
+        pageRef: "ANGELFLIGHT",
+        raw: "cmf99",
+        callSign: "CMF99",
         ref: "ANGELFLIGHT",
-        callSign: "CMF1234",
-      })
-    ).toBe("https://app.planewx.ai/auth/sign-up?lp=vol&ref=ANGELFLIGHT")
+        signupParam: "cmf",
+        href: "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ANGELFLIGHT&cmf=CMF99",
+      },
+      {
+        pageRef: "ANGELFLIGHT",
+        raw: "ngf7",
+        callSign: "NGF7",
+        ref: "ANGELFLIGHT",
+        signupParam: "callsign",
+        href: "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ANGELFLIGHT&callsign=NGF7",
+      },
+      {
+        pageRef: "ANGELFLIGHT",
+        raw: "syh1",
+        callSign: "SYH1",
+        ref: "SKYHOPE",
+        signupParam: "callsign",
+        href: "https://app.planewx.ai/auth/sign-up?lp=vol&ref=SKYHOPE&callsign=SYH1",
+      },
+    ]
+
+    for (const c of cases) {
+      const parsed = normalizeVolunteerCallSignForPage(c.raw, c.pageRef)
+      expect(parsed?.callSign).toBe(c.callSign)
+      expect(parsed?.org.ref).toBe(c.ref)
+      expect(parsed?.org.signupParam).toBe(c.signupParam)
+      expect(
+        buildVolunteerSignupHrefForOrg({
+          ref: parsed!.org.ref,
+          callSign: parsed!.callSign,
+          gateOrg: parsed!.org,
+        })
+      ).toBe(c.href)
+    }
   })
 })
