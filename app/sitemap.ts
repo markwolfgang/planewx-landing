@@ -29,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Learning Center: hub index, allowlisted [slug] articles, and shipped hub
   // HTML pages. Non-allowlisted articles and Tips stay out of the sitemap.
+  // Empty when LEARN_PUBLIC is false (rollback noindexes hubs via hubPageRobots).
   const learnEntries: MetadataRoute.Sitemap = []
   if (shouldIndexLearnHub()) {
     learnEntries.push({

@@ -661,29 +661,73 @@ export function isIndexableLearnArticleSlug(slug: string): boolean {
 /**
  * Sitemap + indexing for [slug] articles: public center, not draft, and on the
  * allow list. Excluded articles (tcf-vs-ecfp) stay reachable but noindex.
+ * Pass isPublic to simulate LEARN_PUBLIC false (rollback) in tests.
  */
-export function getIndexableLearnArticles(): LearnArticle[] {
-  if (!LEARN_PUBLIC) return []
+export function getIndexableLearnArticles(
+  isPublic: boolean = LEARN_PUBLIC
+): LearnArticle[] {
+  if (!isPublic) return []
   return LEARN_ARTICLES.filter(
     (a) => !a.draft && isIndexableLearnArticleSlug(a.slug)
   )
 }
 
 /** Hub HTML pages that ship indexable under LEARN_PUBLIC. */
-export function getIndexableLearnHubPages(): AviationWeatherHubPage[] {
-  if (!LEARN_PUBLIC) return []
+export function getIndexableLearnHubPages(
+  isPublic: boolean = LEARN_PUBLIC
+): AviationWeatherHubPage[] {
+  if (!isPublic) return []
   return [...AVIATION_WEATHER_HUB_PAGES, ...DECISION_MAKING_HUB_PAGES]
 }
 
-export function shouldIndexLearnHub(): boolean {
-  return LEARN_PUBLIC
+export function shouldIndexLearnHub(isPublic: boolean = LEARN_PUBLIC): boolean {
+  return isPublic
 }
 
-export function shouldIndexLearnArticle(article: LearnArticle): boolean {
-  return LEARN_PUBLIC && !article.draft && isIndexableLearnArticleSlug(article.slug)
+/**
+ * robots for shipped hub HTML pages. Same gate as /learn index: flipping
+ * LEARN_PUBLIC to false noindexes every hub page.
+ */
+export function hubPageRobots(isPublic: boolean = LEARN_PUBLIC): {
+  index: boolean
+  follow: boolean
+} {
+  return shouldIndexLearnHub(isPublic)
+    ? { index: true, follow: true }
+    : { index: false, follow: false }
+}
+
+/** Hub JSON-LD only while the Learning Center is public. */
+export function shouldEmitHubJsonLd(isPublic: boolean = LEARN_PUBLIC): boolean {
+  return shouldIndexLearnHub(isPublic)
+}
+
+/**
+ * Sitemap learn URLs for the hub index, hub HTML pages, and allowlisted
+ * [slug] articles. Empty when LEARN_PUBLIC is false.
+ */
+export function getLearnSitemapPaths(
+  isPublic: boolean = LEARN_PUBLIC
+): string[] {
+  if (!shouldIndexLearnHub(isPublic)) return []
+  return [
+    "/learn",
+    ...getIndexableLearnHubPages(isPublic).map((p) => p.href),
+    ...getIndexableLearnArticles(isPublic).map((a) => `/learn/${a.slug}`),
+  ]
+}
+
+export function shouldIndexLearnArticle(
+  article: LearnArticle,
+  isPublic: boolean = LEARN_PUBLIC
+): boolean {
+  return isPublic && !article.draft && isIndexableLearnArticleSlug(article.slug)
 }
 
 /** Article JSON-LD only for allowlisted, non-draft articles when public. */
-export function shouldEmitArticleJsonLd(article: LearnArticle): boolean {
-  return shouldIndexLearnArticle(article)
+export function shouldEmitArticleJsonLd(
+  article: LearnArticle,
+  isPublic: boolean = LEARN_PUBLIC
+): boolean {
+  return shouldIndexLearnArticle(article, isPublic)
 }

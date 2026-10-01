@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { hubPageRobots, shouldEmitHubJsonLd } from "../../learn-data"
 import Link from "next/link"
 import { HubHost } from "../hub-host"
 import {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: CANONICAL },
-  robots: { index: true, follow: true },
+  robots: hubPageRobots(),
   openGraph: {
     type: "article",
     url: CANONICAL,
@@ -49,20 +50,24 @@ export default function Page() {
 
       <HubHost html={MAIN_HTML} />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ARTICLE_JSON_LD) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(DEFINED_TERM_SET_JSON_LD),
-        }}
-      />
+      {shouldEmitHubJsonLd() ? (
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(ARTICLE_JSON_LD) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(DEFINED_TERM_SET_JSON_LD),
+            }}
+          />
+        </>
+      ) : null}
 
       <section className="pb-24 pt-4">
         <div className="mx-auto max-w-[1120px] px-5">
