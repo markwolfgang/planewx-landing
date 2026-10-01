@@ -1,0 +1,55 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://www.planewx.ai/blog/ifr-personal-minimums-low-time-instrument-pilots",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What IFR personal minimums should a new instrument pilot use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no single FAA set. Start from the lowest IFR conditions you have recently and regularly flown with comfort, then add margin for night, fatigue, an unfamiliar airport or a long layoff. As one example, the Risk Management Handbook’s sample pilot uses 800 ft and 1 mile by day and 999 ft and 3 miles at night."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is being IFR current the same as being proficient?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Currency under 14 CFR 61.57(c) is six approaches, holding, and intercepting and tracking courses within the 6 calendar months before the month of the flight. The Risk Management Handbook notes that a current pilot may still lack proficiency if those events were months ago, and its example pilot adds 500 ft to her approach minimums for that reason."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use different minimums for an ILS and an RNAV (GPS) approach?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many pilots do. The FAA checklist has separate lines for precision and non-precision approaches, and the Instrument Procedures Handbook classifies approaches with vertical guidance, such as LPV and LNAV/VNAV, as non-precision. Decide which column your vertically guided approaches use and keep it consistent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When can I lower my IFR personal minimums?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only after a significant positive event, and never while planning a specific flight. Change one variable at a time, and get training or talk to a flight instructor before a significant change. Making minimums more restrictive is fine at any time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the legal IFR alternate requirements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under 14 CFR 91.169 you need an alternate unless the destination has an instrument approach and, from 1 hour before to 1 hour after your ETA, the forecast is at least a 2,000 ft ceiling and 3 statute miles. The alternate must forecast its published alternate minimums, or 600 ft and 2 statute miles for a precision approach and 800 ft and 2 statute miles for a non-precision approach."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should a low-time instrument pilot fly in icing or near thunderstorms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not in an airplane without known-icing approval, and not into clouds with embedded thunderstorms without detection equipment. The Instrument Flying Handbook warns that structural icing can only get worse. Write these as yes-or-no rules, not numbers to stretch."
+      }
+    }
+  ]
+}

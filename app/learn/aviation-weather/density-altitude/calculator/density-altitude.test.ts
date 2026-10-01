@@ -190,7 +190,7 @@ describe("density altitude calculator (18 checks from hub-source)", () => {
       tempC: 90,
     })
     expect(temp[0]?.msg).toBe(
-      "Temperature must be between -60 and 60\u00A0C (-76 and 140\u00A0F)."
+      "Temperature must be between -60 and 60\u00A0\u00B0C (-76 and 140\u00A0\u00B0F)."
     )
     const dew = D.validate({
       elevationFt: 1000,
@@ -199,7 +199,7 @@ describe("density altitude calculator (18 checks from hub-source)", () => {
       dewpointC: -70,
     })
     expect(dew[0]?.msg).toBe(
-      "Dewpoint must be -60\u00A0C (-76\u00A0F) or higher."
+      "Dewpoint must be -60\u00A0\u00B0C (-76\u00A0\u00B0F) or higher."
     )
   })
 })

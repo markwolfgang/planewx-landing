@@ -12,8 +12,10 @@ import { execFileSync } from "node:child_process"
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..")
 
 export const HUB_SOURCE_REF = "origin/staging/learn-hub-source-r10"
-/** r11 typography pass for DA + FRAT lives under seo-source-r11/ on this ref. */
+/** r11 typography pass for DA (+ FRAT until r12) lives under seo-source-r11/ on this ref. */
 export const HUB_SOURCE_REF_R11 = "origin/staging/learn-hub-source-r11"
+/** r12 FRAT nit pass lives under seo-source-r12/ on this ref. */
+export const HUB_SOURCE_REF_R12 = "origin/staging/learn-hub-source-r12"
 
 /**
  * All Learning Center hub pages ported from hub-source.
@@ -80,10 +82,10 @@ export const HUB_PAGES = [
   {
     slug: "flight-risk-assessment-tool",
     source: "flight-risk-assessment-tool.html",
-    expectedMd5: "7eded0d53ab8920a2559fd51f0fccf18",
+    expectedMd5: "9aa50782fe209223a142ae79a35b3a64",
     dir: "flight-risk-assessment-tool",
-    sourceRef: HUB_SOURCE_REF_R11,
-    sourceDir: "seo-source-r11",
+    sourceRef: HUB_SOURCE_REF_R12,
+    sourceDir: "seo-source-r12",
   },
 ]
 

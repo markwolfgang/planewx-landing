@@ -105,7 +105,7 @@ export function validate(inp: DensityAltitudeInput): FieldError[] {
   else if (inp.tempC < LIMITS.tempC[0] || inp.tempC > LIMITS.tempC[1])
     errs.push({
       field: "temperature",
-      msg: "Temperature must be between -60 and 60\u00A0C (-76 and 140\u00A0F).",
+      msg: "Temperature must be between -60 and 60\u00A0\u00B0C (-76 and 140\u00A0\u00B0F).",
     })
   if (inp.dewpointC !== null && inp.dewpointC !== undefined) {
     if (!num(inp.dewpointC))
@@ -121,7 +121,7 @@ export function validate(inp: DensityAltitudeInput): FieldError[] {
     else if (inp.dewpointC < LIMITS.tempC[0])
       errs.push({
         field: "dewpoint",
-        msg: "Dewpoint must be -60\u00A0C (-76\u00A0F) or higher.",
+        msg: "Dewpoint must be -60\u00A0\u00B0C (-76\u00A0\u00B0F) or higher.",
       })
   }
   return errs

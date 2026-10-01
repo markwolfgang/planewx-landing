@@ -1,7 +1,8 @@
 /**
  * Assert each Learning Center hub content.ts MAIN_HTML and INLINE_STYLE match
  * the article + style extracted from staging hub-source (r10) / seo-source-r11
- * the same way the port does (no hand edits). Also verify shared glossary/hub CSS assets.
+ * / seo-source-r12 the same way the port does (no hand edits). Also verify shared
+ * glossary/hub CSS assets.
  */
 import { createHash } from "node:crypto"
 import { readFileSync } from "node:fs"

@@ -6,15 +6,23 @@ import {
 } from "./blog-preview"
 
 describe("blog preview allowlist", () => {
-  it("allows only the three r10 expand slugs", () => {
+  it("allows the five r10/r12 preview slugs", () => {
     expect(BLOG_PREVIEW_SLUGS).toEqual([
       "vfr-weather-go-no-go",
       "pave-risk-assessment-weather",
       "personal-minimums-weather-planning",
+      "ifr-personal-minimums-low-time-instrument-pilots",
+      "leave-early-or-wait-out-weather-vfr-cross-country",
     ])
     expect(isBlogPreviewSlug("vfr-weather-go-no-go")).toBe(true)
     expect(isBlogPreviewSlug("pave-risk-assessment-weather")).toBe(true)
     expect(isBlogPreviewSlug("personal-minimums-weather-planning")).toBe(true)
+    expect(
+      isBlogPreviewSlug("ifr-personal-minimums-low-time-instrument-pilots")
+    ).toBe(true)
+    expect(
+      isBlogPreviewSlug("leave-early-or-wait-out-weather-vfr-cross-country")
+    ).toBe(true)
     expect(isBlogPreviewSlug("some-other-post")).toBe(false)
     expect(isBlogPreviewSlug("")).toBe(false)
   })

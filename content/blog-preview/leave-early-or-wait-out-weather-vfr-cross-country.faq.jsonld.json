@@ -1,0 +1,55 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://www.planewx.ai/blog/leave-early-or-wait-out-weather-vfr-cross-country",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is it better to leave early or wait for weather on a VFR cross-country?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the weather type, but waiting is usually the lower-risk choice when the weather lies across your route and its timing is uncertain. FAA handbook examples for both warm and cold fronts advise staying on the ground until the front passes. Leaving early can work for afternoon convection, when you can land before it builds, with daylight, fuel and an alternate to spare."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take for a front to pass?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It varies. The Aviation Weather Handbook gives typical speeds of 25 to 30 mph for cold fronts and 10 to 25 mph for warm fronts. In the PHAK’s warm front example, waiting for the front to pass may take up to two days. A stationary front can influence the local weather for days."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the weather good after a cold front passes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often, but not always. Behind a fast-moving cold front the skies usually clear rapidly, but the front leaves gusty, turbulent winds. If the warm air ahead was stable, overcast skies and rain may continue for some distance behind it. Check winds and crosswind against your minimums."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I leave at dawn to beat the weather?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not if the morning has fog or low stratus. Radiation fog often lasts until after sunrise, and other radiation fog generally clears before noon unless clouds move in. Check the destination and alternates, not just your departure field. A dawn departure makes most sense ahead of afternoon convection, not into morning fog."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does PROB30 or TEMPO in a TAF mean for my timing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TEMPO means temporary changes with a greater than 50 percent probability, each lasting an hour or less. PROB30 means a 30 percent chance of a thunderstorm or precipitation event. If either is below your minimums at your arrival time, plan for it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What counts as an out on a VFR cross-country?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An alternate away from the weather with fuel to reach it, a turnaround point decided on the ground, and a way to finish the trip without flying, such as a rental car at a fuel stop. 14 CFR 91.103 requires you to know the alternatives available if the planned flight cannot be completed."
+      }
+    }
+  ]
+}

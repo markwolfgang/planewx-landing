@@ -16,7 +16,7 @@ interface Props {
 }
 
 export function generateStaticParams() {
-  // Still generate the three preview pages at build time; production runtime
+  // Still generate the preview pages at build time; production runtime
   // returns 404 via isBlogPreviewAllowedEnv.
   return BLOG_PREVIEW_SLUGS.map((slug) => ({ slug }))
 }
