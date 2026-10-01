@@ -1,0 +1,55 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://www.planewx.ai/ga-customs",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is there an app for U.S. customs airports for private pilots?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. GA Customs is a free iPhone and iPad app from PlaneWX that maps U.S. airports of entry with their hours, user fee status and notice requirements, has a South Arrival filter for designated airports, and saves airport information for offline use. GA Customs does not file eAPIS. File it through CBP’s official eAPIS site, eapis.cbp.dhs.gov, or another CBP-approved system. It also does not grant permission to land. CBP’s own General Aviation Airports list and airport fact sheets remain the official sources."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find a U.S. customs airport for general aviation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with CBP’s General Aviation Airports list, which shows where CBP inspection is normally available for GA arrivals, then read the airport’s CBP fact sheet for hours of service and the permission to land procedure. In the FAA Chart Supplement, AOE and LRA in the airport entry mark customs airports. Then call the CBP port to confirm."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I clear customs flying a private plane into the U.S.?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At your first landing, which must be an international airport, a landing rights airport or a user fee airport where CBP has given permission to land. If you are arriving from Mexico or another area south of the United States covered by 19 CFR 122.23 and do not hold an overflight exemption, it must be the nearest designated airport to your border or coastline crossing point."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do I have to file eAPIS for a private flight into the U.S.?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No later than 60 minutes before you depart the foreign airport for the United States. Outbound, the deadline is no later than 60 minutes before you depart the United States. After the arrival manifest, you still have to call the CBP port and get permission to land before departing. GA Customs does not file eAPIS. CBP’s official eAPIS site is eapis.cbp.dhs.gov."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need permission to land at an airport of entry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Chart Supplement legend still says permission is not required at an AOE, but CBP’s current procedure requires pilots to contact the CBP port of arrival directly to secure permission to land for all international arrivals at all airports. Follow CBP."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much is the CBP user fee decal for private aircraft?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CBP lists the Private Aircraft User Fee decal at $38.04, effective October 1, 2026, and says the price typically rises each October 1. It is bought online through DTOPS. User fee airport charges are separate and set by the airport."
+      }
+    }
+  ]
+}

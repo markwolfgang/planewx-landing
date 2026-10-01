@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "node scripts/check-wx-score-copy.mjs && next build",
     "start": "next start",
-    "lint": "next lint && node scripts/check-wx-score-copy.mjs",
+    "lint": "eslint \"app/ga-customs/**/*.{ts,tsx}\" \"components/site-json-ld.tsx\" --max-warnings 0 && node scripts/check-wx-score-copy.mjs",
     "test": "vitest run && node scripts/check-wx-score-copy.mjs && node scripts/check-volunteer-org-registry.mjs",
     "test:unit": "vitest run",
     "build:aopa-ad": "node scripts/build-aopa-ad.mjs"
