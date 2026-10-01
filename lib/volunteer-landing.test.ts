@@ -166,4 +166,62 @@ describe("Generic CMF/NGF gate and ANGELFLIGHT tracking", () => {
       "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ANGELFLIGHT&cmf=CMF1234"
     )
   })
+
+  it("accepts CMF and NGF on bare /volunteer and on ?ref=ANGELFLIGHT", () => {
+    const cases: Array<{
+      pageRef: string | null
+      raw: string
+      callSign: string
+      ref: string
+      signupParam: "cmf" | "callsign"
+      href: string
+    }> = [
+      {
+        pageRef: null,
+        raw: "cmf42",
+        callSign: "CMF42",
+        ref: "ACA",
+        signupParam: "cmf",
+        href: "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA&cmf=CMF42",
+      },
+      {
+        pageRef: "ACA",
+        raw: "NGF1234",
+        callSign: "NGF1234",
+        ref: "ACA",
+        signupParam: "callsign",
+        href: "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA&callsign=NGF1234",
+      },
+      {
+        pageRef: "ANGELFLIGHT",
+        raw: "cmf99",
+        callSign: "CMF99",
+        ref: "ANGELFLIGHT",
+        signupParam: "cmf",
+        href: "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ANGELFLIGHT&cmf=CMF99",
+      },
+      {
+        pageRef: "ANGELFLIGHT",
+        raw: "ngf7",
+        callSign: "NGF7",
+        ref: "ANGELFLIGHT",
+        signupParam: "callsign",
+        href: "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ANGELFLIGHT&callsign=NGF7",
+      },
+    ]
+
+    for (const c of cases) {
+      const parsed = normalizeVolunteerCallSignForPage(c.raw, c.pageRef)
+      expect(parsed?.callSign).toBe(c.callSign)
+      expect(parsed?.org.ref).toBe(c.ref)
+      expect(parsed?.org.signupParam).toBe(c.signupParam)
+      expect(
+        buildVolunteerSignupHrefForOrg({
+          ref: parsed!.org.ref,
+          callSign: parsed!.callSign,
+          gateOrg: parsed!.org,
+        })
+      ).toBe(c.href)
+    }
+  })
 })
