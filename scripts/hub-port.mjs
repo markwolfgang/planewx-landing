@@ -12,10 +12,13 @@ import { execFileSync } from "node:child_process"
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..")
 
 export const HUB_SOURCE_REF = "origin/staging/learn-hub-source-r10"
+/** r11 typography pass for DA + FRAT lives under seo-source-r11/ on this ref. */
+export const HUB_SOURCE_REF_R11 = "origin/staging/learn-hub-source-r11"
 
 /**
  * All Learning Center hub pages ported from hub-source.
  * dir is relative to app/learn (aviation-weather/<slug> or top-level slug).
+ * Optional sourceRef/sourceDir override the default hub-source/ on HUB_SOURCE_REF.
  */
 export const HUB_PAGES = [
   {
@@ -69,14 +72,18 @@ export const HUB_PAGES = [
   {
     slug: "density-altitude",
     source: "density-altitude.html",
-    expectedMd5: "b687437f2c0f9128a534f403e4872154",
+    expectedMd5: "9afaccf09145f88a8ba75c5013533d10",
     dir: "aviation-weather/density-altitude",
+    sourceRef: HUB_SOURCE_REF_R11,
+    sourceDir: "seo-source-r11",
   },
   {
     slug: "flight-risk-assessment-tool",
     source: "flight-risk-assessment-tool.html",
-    expectedMd5: "09e7955a27fcd119829d50b432c7cb38",
+    expectedMd5: "7eded0d53ab8920a2559fd51f0fccf18",
     dir: "flight-risk-assessment-tool",
+    sourceRef: HUB_SOURCE_REF_R11,
+    sourceDir: "seo-source-r11",
   },
 ]
 
@@ -147,18 +154,30 @@ export function contentTsPath(pageOrSlug) {
   return join(ROOT, "app/learn", page.dir, "content.ts")
 }
 
-export function readSourceFromGit(sourceFile, ref = HUB_SOURCE_REF) {
+export function readSourceFromGit(
+  sourceFile,
+  ref = HUB_SOURCE_REF,
+  sourceDir = "hub-source",
+) {
   return execFileSync(
     "git",
-    ["show", `${ref}:hub-source/${sourceFile}`],
+    ["show", `${ref}:${sourceDir}/${sourceFile}`],
     { cwd: ROOT, encoding: "utf8", maxBuffer: 20 * 1024 * 1024 },
   )
+}
+
+export function readPageSource(page) {
+  const ref = page.sourceRef || HUB_SOURCE_REF
+  const dir = page.sourceDir || "hub-source"
+  return readSourceFromGit(page.source, ref, dir)
 }
 
 export function portAllFromGit(ref = HUB_SOURCE_REF) {
   const results = []
   for (const page of HUB_PAGES) {
-    const sourceHtml = readSourceFromGit(page.source, ref)
+    const sourceHtml = page.sourceRef
+      ? readPageSource(page)
+      : readSourceFromGit(page.source, ref)
     const { mainHtml, inlineStyle } = extractFromHubSource(sourceHtml)
     const out = contentTsPath(page)
     mkdirSync(dirname(out), { recursive: true })

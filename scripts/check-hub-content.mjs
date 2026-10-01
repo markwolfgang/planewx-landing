@@ -1,7 +1,7 @@
 /**
  * Assert each Learning Center hub content.ts MAIN_HTML and INLINE_STYLE match
- * the article + style extracted from staging/learn-hub-source-r10 the same way
- * the port does (no hand edits). Also verify shared glossary/hub CSS assets.
+ * the article + style extracted from staging hub-source (r10) / seo-source-r11
+ * the same way the port does (no hand edits). Also verify shared glossary/hub CSS assets.
  */
 import { createHash } from "node:crypto"
 import { readFileSync } from "node:fs"
@@ -9,12 +9,11 @@ import { join, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
 import {
   HUB_PAGES,
-  HUB_SOURCE_REF,
   HUB_ASSET_MD5,
   contentTsPath,
   extractFromHubSource,
   loadContentModule,
-  readSourceFromGit,
+  readPageSource,
 } from "./hub-port.mjs"
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..")
@@ -23,7 +22,7 @@ const AW = join(ROOT, "app/learn/aviation-weather")
 let failed = 0
 
 for (const page of HUB_PAGES) {
-  const sourceHtml = readSourceFromGit(page.source, HUB_SOURCE_REF)
+  const sourceHtml = readPageSource(page)
   const md5 = createHash("md5").update(sourceHtml).digest("hex")
   const md5Ok = md5 === page.expectedMd5
   const extracted = extractFromHubSource(sourceHtml)

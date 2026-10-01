@@ -83,7 +83,9 @@ export function BlogPostArticle({
               fill
               priority
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 768px"
+              /* Cap was 768px which under-fetched on 1280/2x and left a flat
+                 placeholder; size to the article column with headroom. */
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 896px, 1024px"
               itemProp="image"
             />
           </div>

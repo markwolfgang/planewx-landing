@@ -12,8 +12,15 @@ import "./density-altitude-calculator.css"
 const POH_NOTE =
   "This is an estimate of the air, not of your airplane. The takeoff, climb, and landing performance charts in your AFM or POH govern. Check them for your actual pressure altitude, temperature, weight, wind, and runway."
 
+const NBSP = "\u00A0"
+
 function fmtFt(n: number): string {
   return n.toLocaleString("en-US")
+}
+
+/** Join a formatted number to its unit with U+00A0 (spec section 4). */
+function withUnit(n: number | string, unit: string): string {
+  return `${typeof n === "number" ? fmtFt(n) : n}${NBSP}${unit}`
 }
 
 function parseOptionalNumber(raw: string): number | null | undefined {
@@ -205,33 +212,35 @@ export function DensityAltitudeCalculator() {
         {result?.ok ? (
           <>
             <p className="da-calc-primary">
-              Density altitude: about {fmtFt(result.display.densityAltitudeFt)}{" "}
-              ft
+              Density altitude: about{" "}
+              {withUnit(result.display.densityAltitudeFt, "ft")}
             </p>
             <ul className="da-calc-secondary">
               <li>
-                About {fmtFt(Math.abs(result.display.aboveFieldFt))} ft{" "}
+                About {withUnit(Math.abs(result.display.aboveFieldFt), "ft")}{" "}
                 {result.display.aboveFieldFt < 0 ? "below" : "above"} the field
               </li>
               <li>
                 Pressure altitude: about{" "}
-                {fmtFt(result.display.pressureAltitudeFt)} ft
+                {withUnit(result.display.pressureAltitudeFt, "ft")}
               </li>
               <li>
                 Standard temperature at that pressure altitude:{" "}
-                {result.display.isaTempC} °C. You entered{" "}
-                {unit === "F" ? `${temp.trim()} °F` : `${temp.trim()} °C`},{" "}
-                {Math.abs(result.display.tempVsIsaC)} °C{" "}
+                {withUnit(result.display.isaTempC, "°C")}. You entered{" "}
+                {unit === "F"
+                  ? withUnit(temp.trim(), "°F")
+                  : withUnit(temp.trim(), "°C")}
+                , {withUnit(Math.abs(result.display.tempVsIsaC), "°C")}{" "}
                 {result.display.tempVsIsaC < 0 ? "cooler" : "warmer"} than
                 standard.
               </li>
               <li>
-                Rule of thumb (120 ft per °C above standard): about{" "}
-                {fmtFt(result.display.ruleOfThumbFt)} ft
+                Rule of thumb ({withUnit(120, "ft")} per °C above standard):
+                about {withUnit(result.display.ruleOfThumbFt, "ft")}
               </li>
               <li>
                 {result.display.usedDewpoint
-                  ? `Humidity adds about ${fmtFt(result.display.humidityAddedFt ?? 0)} ft.`
+                  ? `Humidity adds about ${withUnit(result.display.humidityAddedFt ?? 0, "ft")}.`
                   : "Dry-air estimate. Add a dewpoint to include humidity, which raises density altitude a little."}
               </li>
             </ul>
@@ -246,15 +255,16 @@ export function DensityAltitudeCalculator() {
               <summary>Show the math</summary>
               <ul>
                 <li>
-                  Station pressure: {result.display.stationPressureInHg} inHg
+                  Station pressure:{" "}
+                  {withUnit(String(result.display.stationPressureInHg), "inHg")}
                 </li>
                 <li>
                   Pressure altitude (raw):{" "}
-                  {result.raw.pressureAltitudeFt.toFixed(1)} ft
+                  {withUnit(result.raw.pressureAltitudeFt.toFixed(1), "ft")}
                 </li>
                 <li>
                   Density altitude (raw):{" "}
-                  {result.raw.densityAltitudeFt.toFixed(1)} ft
+                  {withUnit(result.raw.densityAltitudeFt.toFixed(1), "ft")}
                 </li>
               </ul>
             </details>

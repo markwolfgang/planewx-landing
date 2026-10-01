@@ -85,7 +85,7 @@ export function validate(inp: DensityAltitudeInput): FieldError[] {
   )
     errs.push({
       field: "elevation",
-      msg: "Field elevation must be between -1,500 and 15,000 ft.",
+      msg: "Field elevation must be between -1,500 and 15,000\u00A0ft.",
     })
   if (!num(inp.altimeterInHg))
     errs.push({
@@ -98,14 +98,14 @@ export function validate(inp: DensityAltitudeInput): FieldError[] {
   )
     errs.push({
       field: "altimeter",
-      msg: "Altimeter setting must be between 27.50 and 31.50 inHg.",
+      msg: "Altimeter setting must be between 27.50 and 31.50\u00A0inHg.",
     })
   if (!num(inp.tempC))
     errs.push({ field: "temperature", msg: "Enter the temperature." })
   else if (inp.tempC < LIMITS.tempC[0] || inp.tempC > LIMITS.tempC[1])
     errs.push({
       field: "temperature",
-      msg: "Temperature must be between -60 and 60 C (-76 and 140 F).",
+      msg: "Temperature must be between -60 and 60\u00A0C (-76 and 140\u00A0F).",
     })
   if (inp.dewpointC !== null && inp.dewpointC !== undefined) {
     if (!num(inp.dewpointC))
@@ -121,7 +121,7 @@ export function validate(inp: DensityAltitudeInput): FieldError[] {
     else if (inp.dewpointC < LIMITS.tempC[0])
       errs.push({
         field: "dewpoint",
-        msg: "Dewpoint must be -60 C (-76 F) or higher.",
+        msg: "Dewpoint must be -60\u00A0C (-76\u00A0F) or higher.",
       })
   }
   return errs

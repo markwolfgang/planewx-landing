@@ -166,4 +166,40 @@ describe("density altitude calculator (18 checks from hub-source)", () => {
   it("V8 normalizeAltimeter 29.92 unchanged", () => {
     expect(D.normalizeAltimeter(29.92)).toBe(29.92)
   })
+
+  it("V8 validation messages use NBSP between number and unit", () => {
+    const elev = D.validate({
+      elevationFt: 20000,
+      altimeterInHg: 29.92,
+      tempC: 15,
+    })
+    expect(elev[0]?.msg).toBe(
+      "Field elevation must be between -1,500 and 15,000\u00A0ft."
+    )
+    const alt = D.validate({
+      elevationFt: 1000,
+      altimeterInHg: 26,
+      tempC: 15,
+    })
+    expect(alt[0]?.msg).toBe(
+      "Altimeter setting must be between 27.50 and 31.50\u00A0inHg."
+    )
+    const temp = D.validate({
+      elevationFt: 1000,
+      altimeterInHg: 29.92,
+      tempC: 90,
+    })
+    expect(temp[0]?.msg).toBe(
+      "Temperature must be between -60 and 60\u00A0C (-76 and 140\u00A0F)."
+    )
+    const dew = D.validate({
+      elevationFt: 1000,
+      altimeterInHg: 29.92,
+      tempC: 20,
+      dewpointC: -70,
+    })
+    expect(dew[0]?.msg).toBe(
+      "Dewpoint must be -60\u00A0C (-76\u00A0F) or higher."
+    )
+  })
 })

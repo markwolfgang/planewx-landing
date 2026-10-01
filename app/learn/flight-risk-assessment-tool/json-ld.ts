@@ -37,7 +37,7 @@ export const FAQ_JSON_LD = {
       "name": "What is a FRAT in aviation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A flight risk assessment tool: a form, spreadsheet, or app for recording the hazards of a planned flight and the risk they add up to. \"The form used to record each hazard is known as a Flight Risk Assessment Tool (FRAT).\" It is the pilot's chance to sit down and do an honest assessment, considering all factors in the PAVE framework."
+        "text": "A flight risk assessment tool: a form, spreadsheet, or app for recording the hazards of a planned flight and the risk they add up to. \"The form used to record each hazard is known as a Flight Risk Assessment Tool (FRAT).\" It is the pilot's chance to sit down and do an honest assessment, considering all factors in the PAVE checklist."
       }
     },
     {
