@@ -1,0 +1,96 @@
+/* Scoped density altitude calculator (hub tokens via .aw-hub ancestors). */
+.da-calc {
+  margin: 16px 0 28px;
+  padding: 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.da-calc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px 18px;
+}
+@media (min-width: 600px) {
+  .da-calc-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.da-calc-field label,
+.da-calc-units legend {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--fg);
+}
+.da-calc-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--fg);
+  font: inherit;
+}
+.da-calc-units {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  align-items: center;
+  grid-column: 1 / -1;
+}
+.da-calc-units label {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+.da-calc-help {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.da-calc-err {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: #b42318;
+}
+html.dark .da-calc-err,
+.dark .da-calc-err {
+  color: #f97066;
+}
+.da-calc-result {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.da-calc-primary {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+.da-calc-secondary {
+  margin: 0 0 12px;
+  padding-left: 1.25em;
+}
+.da-calc-secondary li {
+  margin: 0 0 6px;
+}
+.da-calc-poh {
+  margin: 0 0 12px;
+}
+.da-calc-idle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.da-calc-math {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.da-calc-math summary {
+  cursor: pointer;
+  color: var(--accent);
+}

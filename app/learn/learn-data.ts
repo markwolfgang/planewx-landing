@@ -2,14 +2,30 @@
 // To add an article: prepend a new object to LEARN_ARTICLES (or append within section order).
 // To add a tip: prepend to TIPS_OF_THE_WEEK (newest first) as each Weekly PIREP is archived.
 //
-// Indexing safety: keep LEARN_PUBLIC false until at least LEARN_PUBLIC_MIN_ARTICLES
-// real, sourced (non-draft) articles exist. Draft articles stay reachable by URL
-// for review, but robots noindex and stay out of the sitemap.
+// Indexing safety: LEARN_PUBLIC gates the Learning Center hub and allowlisted
+// articles. Draft and non-allowlisted articles stay reachable by URL for review,
+// but robots noindex and stay out of the sitemap / JSON-LD.
 
-export const LEARN_PUBLIC = false
+export const LEARN_PUBLIC = true
 
 /** Flip LEARN_PUBLIC only after this many non-draft, sourced articles ship. */
 export const LEARN_PUBLIC_MIN_ARTICLES = 3
+
+/**
+ * Allow list of /learn/[slug] articles that may index, emit JSON-LD, and appear
+ * in the sitemap when LEARN_PUBLIC is true.
+ *
+ * Default is gated: any article (current or future) whose slug is not on this
+ * list stays noindex, out of the sitemap, and without JSON-LD, even when
+ * LEARN_PUBLIC is true and draft is false. Tips of the Week are never on this
+ * list (hub archive only). Add a slug here deliberately when SEO clears it.
+ *
+ * Shipped now: mos-vs-nbm-vs-taf.
+ * Still gated: tcf-vs-ecfp, tip what-the-wx-score-actually-is, Tips archive.
+ */
+export const INDEXABLE_LEARN_ARTICLE_SLUGS = [
+  "mos-vs-nbm-vs-taf",
+] as const
 
 export type LearnSection =
   | "Weather Products"
@@ -470,19 +486,117 @@ export const TIPS_EMPTY_LINE =
   "New tips arrive with each Weekly PIREP."
 
 /**
+ * Live Aviation Weather hub pages (deep routes under /learn/aviation-weather/).
+ * Listed on the Learning Center index; not [slug] articles. Keep in sync with
+ * each aviation-weather page.tsx.
+ */
+export type AviationWeatherHubPage = {
+  href: string
+  title: string
+  summary: string
+  lastReviewed: string
+}
+
+export const AVIATION_WEATHER_HUB_PAGES: readonly AviationWeatherHubPage[] = [
+  {
+    href: "/learn/aviation-weather/taf",
+    title: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
+    summary:
+      "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/metar",
+    title: "What Is a METAR? How to Read an Airport Weather Report",
+    summary:
+      "A METAR is the coded weather observation for an airport. Learn to read every group, what AUTO and AO2 mean, when a SPECI is issued, and where METARs fit a disciplined weather decision.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/airmet-sigmet",
+    title: "AIRMET, SIGMET, and CWA: In-Flight Weather Advisories Explained",
+    summary:
+      "How to read AIRMETs, G-AIRMETs, SIGMETs, Convective SIGMETs, and Center Weather Advisories: criteria, valid times, decoded Handbook examples, and where advisories fit a disciplined weather decision.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/pirep",
+    title: "What Is a PIREP? How to Read and Give a Pilot Weather Report",
+    summary:
+      "A PIREP is a pilot weather report. Learn the UA and UUA format, how to decode each field, the official icing and turbulence intensity scales, and how to give a PIREP that helps.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/winds-aloft",
+    title: "Winds and Temperatures Aloft: How to Read an FB Forecast",
+    summary:
+      "How to decode the FB winds and temperatures aloft forecast, including winds over 100 knots and missing low levels, with a worked decode of the FAA Handbook sample.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/icing",
+    title: "Icing Forecasts: CIP, FIP, Freezing Level, and Icing Intensity",
+    summary:
+      "What the CIP and FIP icing products show, how to find the freezing level, what trace, light, moderate, heavy, and severe icing mean, and where icing forecasts fall short.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/turbulence",
+    title: "Turbulence Forecasts: GTG, GTG-N, and the Intensity Scale",
+    summary:
+      "How the GTG turbulence forecast and GTG-N nowcast work, what EDR means, the official light to extreme intensity scale, and which turbulence GTG does not forecast.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/weather-radar",
+    title: "Weather Radar for Pilots: NEXRAD, TDWR, Reflectivity, and Datalink Delay",
+    summary:
+      "How to read NEXRAD and TDWR radar, what dBZ and composite reflectivity mean, where radar misses weather, and why cockpit radar mosaics are older than their time stamp.",
+    lastReviewed: "2026-09-29",
+  },
+  {
+    href: "/learn/aviation-weather/density-altitude",
+    title:
+      "Density Altitude Calculator and Guide: What It Is and How to Calculate It",
+    summary:
+      "What density altitude is, how to calculate it by hand and with the NWS formula, a worked example, the Koch chart, and why hot, high, and humid days catch pilots out.",
+    lastReviewed: "2026-09-30",
+  },
+]
+
+/**
+ * Live Decision-Making hub pages (Learning Center root, not under
+ * aviation-weather). Listed on the Learning Center index.
+ */
+export const DECISION_MAKING_HUB_PAGES: readonly AviationWeatherHubPage[] = [
+  {
+    href: "/learn/flight-risk-assessment-tool",
+    title:
+      "Flight Risk Assessment Tool (FRAT): What It Is and How to Use One Honestly",
+    summary:
+      "What a flight risk assessment tool is, where the FAA FRAT comes from, how green, yellow, and red scores work, and how to fill one out without fooling yourself.",
+    lastReviewed: "2026-09-30",
+  },
+]
+
+/**
  * Deep learn routes that are live in this build (beyond /learn/[slug] articles).
- * Empty until those pages ship. When the TAF hub is live, register it here with
- * title + href so MOS/NBM can cross-link without a hardcoded 404.
+ * Hub pages are registered so MOS/NBM can cross-link to the TAF decode page
+ * without a hardcoded 404.
  */
 export type LiveLearnRoute = {
   href: string
   title: string
 }
 
-/** Lookup key for the TAF decode hub. Not listed in LIVE_LEARN_ROUTES until live. */
+/** Lookup key for the TAF decode hub. */
 export const LEARN_TAF_DECODE_HREF = "/learn/aviation-weather/taf" as const
 
-export const LIVE_LEARN_ROUTES: readonly LiveLearnRoute[] = []
+/** Live deep routes (href + title) for cross-link gates. */
+export const LIVE_LEARN_ROUTES: readonly LiveLearnRoute[] = [
+  ...AVIATION_WEATHER_HUB_PAGES.map((p) => ({ href: p.href, title: p.title })),
+  ...DECISION_MAKING_HUB_PAGES.map((p) => ({ href: p.href, title: p.title })),
+]
 
 export function getLiveLearnRoute(
   href: string,
@@ -512,7 +626,7 @@ export function withOptionalTafDecodeLink(
   if (!link) return blocks
   const decodeBlock: LearnBodyBlock = {
     type: "paragraph",
-    text: `For a group by group decode of a TAF, see [${link.label}](${link.href}).`,
+    text: `For a group-by-group decode of a TAF, see [${link.label}](${link.href}).`,
   }
   const insertAt = blocks.findIndex((b) => b.type === "paragraph")
   if (insertAt === -1) return [...blocks, decodeBlock]
@@ -540,21 +654,80 @@ export function getPublishedTips(): TipOfTheWeek[] {
   return TIPS_OF_THE_WEEK.filter((t) => !t.draft)
 }
 
-/** Sitemap + indexing: only when the center is public and the article is not draft. */
-export function getIndexableLearnArticles(): LearnArticle[] {
-  if (!LEARN_PUBLIC) return []
-  return LEARN_ARTICLES.filter((a) => !a.draft)
+export function isIndexableLearnArticleSlug(slug: string): boolean {
+  return (INDEXABLE_LEARN_ARTICLE_SLUGS as readonly string[]).includes(slug)
 }
 
-export function shouldIndexLearnHub(): boolean {
-  return LEARN_PUBLIC
+/**
+ * Sitemap + indexing for [slug] articles: public center, not draft, and on the
+ * allow list. Excluded articles (tcf-vs-ecfp) stay reachable but noindex.
+ * Pass isPublic to simulate LEARN_PUBLIC false (rollback) in tests.
+ */
+export function getIndexableLearnArticles(
+  isPublic: boolean = LEARN_PUBLIC
+): LearnArticle[] {
+  if (!isPublic) return []
+  return LEARN_ARTICLES.filter(
+    (a) => !a.draft && isIndexableLearnArticleSlug(a.slug)
+  )
 }
 
-export function shouldIndexLearnArticle(article: LearnArticle): boolean {
-  return LEARN_PUBLIC && !article.draft
+/** Hub HTML pages that ship indexable under LEARN_PUBLIC. */
+export function getIndexableLearnHubPages(
+  isPublic: boolean = LEARN_PUBLIC
+): AviationWeatherHubPage[] {
+  if (!isPublic) return []
+  return [...AVIATION_WEATHER_HUB_PAGES, ...DECISION_MAKING_HUB_PAGES]
 }
 
-/** Article JSON-LD only when not draft and the center is public. */
-export function shouldEmitArticleJsonLd(article: LearnArticle): boolean {
-  return LEARN_PUBLIC && !article.draft
+export function shouldIndexLearnHub(isPublic: boolean = LEARN_PUBLIC): boolean {
+  return isPublic
+}
+
+/**
+ * robots for shipped hub HTML pages. Same gate as /learn index: flipping
+ * LEARN_PUBLIC to false noindexes every hub page.
+ */
+export function hubPageRobots(isPublic: boolean = LEARN_PUBLIC): {
+  index: boolean
+  follow: boolean
+} {
+  return shouldIndexLearnHub(isPublic)
+    ? { index: true, follow: true }
+    : { index: false, follow: false }
+}
+
+/** Hub JSON-LD only while the Learning Center is public. */
+export function shouldEmitHubJsonLd(isPublic: boolean = LEARN_PUBLIC): boolean {
+  return shouldIndexLearnHub(isPublic)
+}
+
+/**
+ * Sitemap learn URLs for the hub index, hub HTML pages, and allowlisted
+ * [slug] articles. Empty when LEARN_PUBLIC is false.
+ */
+export function getLearnSitemapPaths(
+  isPublic: boolean = LEARN_PUBLIC
+): string[] {
+  if (!shouldIndexLearnHub(isPublic)) return []
+  return [
+    "/learn",
+    ...getIndexableLearnHubPages(isPublic).map((p) => p.href),
+    ...getIndexableLearnArticles(isPublic).map((a) => `/learn/${a.slug}`),
+  ]
+}
+
+export function shouldIndexLearnArticle(
+  article: LearnArticle,
+  isPublic: boolean = LEARN_PUBLIC
+): boolean {
+  return isPublic && !article.draft && isIndexableLearnArticleSlug(article.slug)
+}
+
+/** Article JSON-LD only for allowlisted, non-draft articles when public. */
+export function shouldEmitArticleJsonLd(
+  article: LearnArticle,
+  isPublic: boolean = LEARN_PUBLIC
+): boolean {
+  return shouldIndexLearnArticle(article, isPublic)
 }
