@@ -53,8 +53,8 @@
    "url": "https://www.faasafety.gov/files/events/WP/WP09/2023/WP09123760/FAA-P-8740-02-DensityAltitude.pdf"
   },
   "ac12092d": {
-   "title": "AC 120-92D, Safety Management Systems for Aviation Service Providers (May 21, 2024)",
-   "short": "FAA AC 120-92D",
+   "title": "AC 120‑92D, Safety Management Systems for Aviation Service Providers (May 21, 2024)",
+   "short": "FAA AC 120‑92D",
    "url": "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_120-92D_FAA_Web.pdf"
   },
   "n811": {
@@ -2031,8 +2031,8 @@
    "category": "concept",
    "aliases": [],
    "source_key": "ac12092d",
-   "source_title": "AC 120-92D, Safety Management Systems for Aviation Service Providers (May 21, 2024)",
-   "source_short": "FAA AC 120-92D",
+   "source_title": "AC 120‑92D, Safety Management Systems for Aviation Service Providers (May 21, 2024)",
+   "source_short": "FAA AC 120‑92D",
    "section": "Chapter 1",
    "url": "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_120-92D_FAA_Web.pdf#page=1",
    "source_quote": "An SMS is an organization-wide, comprehensive, and preventive approach to ensuring system safety.",

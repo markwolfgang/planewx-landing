@@ -75,4 +75,20 @@ describe("learn production indexing allow list", () => {
       true
     )
   })
+
+  it("keeps a future [slug] article off index and sitemap unless allowlisted", () => {
+    const futureSlug = "future-learn-article-not-on-allow-list"
+    expect(isIndexableLearnArticleSlug(futureSlug)).toBe(false)
+
+    const futureArticle = {
+      ...getLearnArticle("tcf-vs-ecfp")!,
+      slug: futureSlug,
+      draft: false,
+    }
+    expect(shouldIndexLearnArticle(futureArticle)).toBe(false)
+    expect(shouldEmitArticleJsonLd(futureArticle)).toBe(false)
+    expect(
+      getIndexableLearnArticles().some((a) => a.slug === futureSlug)
+    ).toBe(false)
+  })
 })

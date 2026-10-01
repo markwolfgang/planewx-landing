@@ -12,10 +12,16 @@ export const LEARN_PUBLIC = true
 export const LEARN_PUBLIC_MIN_ARTICLES = 3
 
 /**
- * [slug] articles allowed to index, emit JSON-LD, and appear in the sitemap when
- * LEARN_PUBLIC is true. Other LEARN_ARTICLES (and Tips) stay noindex even though
- * the center is public. Open SEO question: whether to add tcf-vs-ecfp and the
- * Tips archive later.
+ * Allow list of /learn/[slug] articles that may index, emit JSON-LD, and appear
+ * in the sitemap when LEARN_PUBLIC is true.
+ *
+ * Default is gated: any article (current or future) whose slug is not on this
+ * list stays noindex, out of the sitemap, and without JSON-LD, even when
+ * LEARN_PUBLIC is true and draft is false. Tips of the Week are never on this
+ * list (hub archive only). Add a slug here deliberately when SEO clears it.
+ *
+ * Shipped now: mos-vs-nbm-vs-taf.
+ * Still gated: tcf-vs-ecfp, tip what-the-wx-score-actually-is, Tips archive.
  */
 export const INDEXABLE_LEARN_ARTICLE_SLUGS = [
   "mos-vs-nbm-vs-taf",

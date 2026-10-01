@@ -96,14 +96,18 @@ export const HUB_PAGES = [
     slug: "flight-risk-assessment-tool",
     source: "flight-risk-assessment-tool.html",
     sourceMd5: "9aa50782fe209223a142ae79a35b3a64",
-    mainHtmlMd5: "f9a3b98d44a33450437804f5fdd3a993",
+    // Post-delta: visible "14 CFR 91.3" -> "14&nbsp;CFR&nbsp;91.3" only.
+    // Pre-delta MAIN_HTML md5 (byte match to extract of 9aa50782): f9a3b98d44a33450437804f5fdd3a993
+    mainHtmlMd5: "973d36d19cdad0e58a207735ba0acb16",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "flight-risk-assessment-tool",
   },
 ]
 
 export const HUB_ASSET_MD5 = {
-  "glossary.json": "c0ddbbbecdb9110a2a314b9357dc2dcc",
+  // Post-delta: SMS / ac12092d source_title and source_short use U+00A0 and U+2011.
+  // Pre-delta glossary.json md5 (same as #125): c0ddbbbecdb9110a2a314b9357dc2dcc
+  "glossary.json": "1ece906d58bd6108d55129c7927f0ffa",
   "hub.css": "9b057c4e999b136c17da01265393e834",
   "glossary.css": "36948050a68231ad3b4e8b2c1ea13eb1",
   "glossary.js": "2610af0a5436df351d153f6694bb6a19",
