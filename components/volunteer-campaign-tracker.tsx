@@ -48,8 +48,9 @@ function readStoredReferral(): string | null {
 
 /**
  * Resolve signup `ref` for the active gate.
- * URL wins. Stale SKYHOPE or ANGELFLIGHT storage must not take over the ACA/CMF gate
+ * URL wins. Stale SKYHOPE or ANGELFLIGHT storage must not take over the ACA gate
  * (and the reverse), so a wrong-org call sign never rides into the link.
+ * NGF on the generic gate attributes to ACA unless the URL carries ref=ANGELFLIGHT.
  */
 function resolveSignupRef(gateOrgRef?: string): string {
   const urlRef = readUrlRef()
@@ -71,11 +72,13 @@ function resolveSignupRef(gateOrgRef?: string): string {
 
 function resolveCallSignForGate(gateOrgRef?: string): string | null {
   const pageRef = gateOrgRef ?? VOLUNTEER_CAMPAIGN_CODE
-  const org = resolveVolunteerOrg(pageRef)
   try {
     const keys = isBareVolunteerGate(pageRef)
-      ? [org.storageKey, resolveVolunteerOrg(SKYHOPE_CAMPAIGN_CODE).storageKey]
-      : [org.storageKey]
+      ? [
+          resolveVolunteerOrg(VOLUNTEER_CAMPAIGN_CODE).storageKey,
+          resolveVolunteerOrg(ANGEL_FLIGHT_CAMPAIGN_CODE).storageKey,
+        ]
+      : [resolveVolunteerOrg(pageRef).storageKey]
     for (const key of keys) {
       const saved = localStorage.getItem(key)
       if (!saved) continue
@@ -90,8 +93,8 @@ function resolveCallSignForGate(gateOrgRef?: string): string | null {
 
 /**
  * Build app signup URL with ref and the active org's call-sign param.
- * ACA: ?cmf=CALLSIGN. SkyHope / Angel Flight: ?callsign=CALLSIGN (never ?cmf=).
- * On the bare page, an SYH call sign routes to ref=SKYHOPE + callsign=.
+ * ACA CMF: ?cmf=CALLSIGN. NGF and SkyHope: ?callsign=CALLSIGN (never ?cmf=).
+ * On the generic page, NGF keeps ACA attribution unless the URL has ref=ANGELFLIGHT.
  * Pass gateOrgRef from the gate so the active page org wins over stale storage.
  */
 export function buildVolunteerSignupHref(
@@ -108,9 +111,8 @@ export function buildVolunteerSignupHref(
     ? normalizeVolunteerCallSignForPage(raw, pageRef)
     : null
 
-  // Prefer attribution org from the call sign (bare SYH routes to SKYHOPE).
   const gate = parsed?.org ?? resolveVolunteerOrg(pageRef)
-  const ref = parsed?.org.ref ?? resolveSignupRef(gate.ref)
+  const ref = parsed?.org.ref ?? resolveSignupRef(pageRef)
 
   return buildVolunteerSignupHrefForOrg({
     ref,
