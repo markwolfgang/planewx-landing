@@ -7,6 +7,7 @@ import {
   LEARN_TAF_DECODE_HREF,
   getIndexableLearnArticles,
   getIndexableLearnHubPages,
+  getLearnSitemapPaths,
   isIndexableLearnArticleSlug,
   shouldEmitArticleJsonLd,
   shouldIndexLearnArticle,
@@ -54,7 +55,7 @@ describe("learn production indexing allow list", () => {
     )
   })
 
-  it("ships all ten hub pages in the sitemap set", () => {
+  it("ships all seventeen hub pages in the sitemap set", () => {
     const hrefs = getIndexableLearnHubPages().map((p) => p.href)
     expect(hrefs).toEqual([
       "/learn/aviation-weather/taf",
@@ -66,8 +67,24 @@ describe("learn production indexing allow list", () => {
       "/learn/aviation-weather/turbulence",
       "/learn/aviation-weather/weather-radar",
       "/learn/aviation-weather/density-altitude",
+      "/learn/aviation-weather/thunderstorms",
+      "/learn/aviation-weather/ceiling-visibility",
+      "/learn/aviation-weather/fog",
+      "/learn/aviation-weather/wind-shear-microburst",
+      "/learn/aviation-weather/mountain-wave",
+      "/learn/aviation-weather/weather-briefings",
+      "/learn/aviation-weather/weather-risk",
       "/learn/flight-risk-assessment-tool",
     ])
+  })
+
+  it("includes exactly 19 learn URLs in the sitemap path set", () => {
+    const paths = getLearnSitemapPaths()
+    expect(paths).toHaveLength(19)
+    expect(paths[0]).toBe("/learn")
+    expect(paths).toContain("/learn/aviation-weather/thunderstorms")
+    expect(paths).toContain("/learn/aviation-weather/weather-risk")
+    expect(paths).toContain("/learn/mos-vs-nbm-vs-taf")
   })
 
   it("registers the TAF hub in LIVE_LEARN_ROUTES", () => {

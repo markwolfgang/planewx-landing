@@ -562,6 +562,55 @@ export const AVIATION_WEATHER_HUB_PAGES: readonly AviationWeatherHubPage[] = [
       "What density altitude is, how to calculate it by hand and with the NWS formula, a worked example, the Koch chart, and why hot, high, and humid days catch pilots out.",
     lastReviewed: "2026-09-30",
   },
+  {
+    href: "/learn/aviation-weather/thunderstorms",
+    title: "Thunderstorms for Pilots: Hazards, Avoidance, Outlooks, and Watches",
+    summary:
+      "Why the FAA treats every thunderstorm as hazardous, the 20-mile avoidance rule, how lightning is reported, and what convective outlooks, TCF, ECFP, and watches tell you.",
+    lastReviewed: "2026-10-01",
+  },
+  {
+    href: "/learn/aviation-weather/ceiling-visibility",
+    title: "Ceiling, Visibility, and Flight Categories: VFR, MVFR, IFR, and LIFR",
+    summary:
+      "What legally counts as a ceiling, how prevailing visibility is measured, the four flight categories, and why a green VFR dot is not the same as the 14 CFR 91.155 VFR minimums.",
+    lastReviewed: "2026-10-01",
+  },
+  {
+    href: "/learn/aviation-weather/fog",
+    title: "Fog for Pilots: Radiation, Advection, Upslope, and Freezing Fog",
+    summary:
+      "How each type of fog forms and clears, what the temperature-dewpoint spread tells you, how fog is coded in METARs and TAFs, and what the FAA and NTSB say to do about it.",
+    lastReviewed: "2026-10-01",
+  },
+  {
+    href: "/learn/aviation-weather/wind-shear-microburst",
+    title: "Low-Level Wind Shear and Microbursts: Recognition, Reports, and Escape",
+    summary:
+      "What low-level wind shear and microbursts are, the signs to look for, how LLWAS, TDWR, and ATIS alerts reach you, how to report wind shear, and what the FAA says about recovery.",
+    lastReviewed: "2026-10-01",
+  },
+  {
+    href: "/learn/aviation-weather/mountain-wave",
+    title: "Mountain Wave and Mountain Weather: Lee Waves, Rotors, and Downslope Winds",
+    summary:
+      "When mountain waves form, how propagating and trapped lee waves differ, the clouds that mark them, rotor and downslope wind hazards, and how to plan a mountain crossing.",
+    lastReviewed: "2026-10-01",
+  },
+  {
+    href: "/learn/aviation-weather/weather-briefings",
+    title: "Weather Briefing Types: Standard, Abbreviated, Outlook, and Self-Briefing",
+    summary:
+      "The three FAA briefing types and when to get each, what a standard briefing contains and in what order, what “VFR flight not recommended” means, and how self-briefing fits in.",
+    lastReviewed: "2026-10-01",
+  },
+  {
+    href: "/learn/aviation-weather/weather-risk",
+    title: "Weather Risk and Personal Minimums: FAA Definitions and Where to Go Next",
+    summary:
+      "How the FAA defines hazard, risk, personal minimums, and PAVE, the NTSB lessons on compounding weather risk, and links to PlaneWX guides for setting and using your own limits.",
+    lastReviewed: "2026-10-01",
+  },
 ]
 
 /**

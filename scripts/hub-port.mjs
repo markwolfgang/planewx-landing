@@ -93,6 +93,62 @@ export const HUB_PAGES = [
     dir: "aviation-weather/density-altitude",
   },
   {
+    slug: "thunderstorms",
+    source: "thunderstorms.html",
+    sourceMd5: "b221d323eb82eb28a996300516745ad7",
+    mainHtmlMd5: "78b4891dc0a8a2a54e6d5bd3aa45e787",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "aviation-weather/thunderstorms",
+  },
+  {
+    slug: "ceiling-visibility",
+    source: "ceiling-visibility.html",
+    sourceMd5: "21b42ecae58c89bb28f0aee45c88c440",
+    mainHtmlMd5: "c6bfdb00bfc178de3324b51bc07f33f4",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "aviation-weather/ceiling-visibility",
+  },
+  {
+    slug: "fog",
+    source: "fog.html",
+    sourceMd5: "82d271353fefaeca28de3a0a75edb0b2",
+    mainHtmlMd5: "3bb22524858431cebe52eaec3ca27e67",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "aviation-weather/fog",
+  },
+  {
+    slug: "wind-shear-microburst",
+    source: "wind-shear-microburst.html",
+    sourceMd5: "33f5aa704def85004110811382d4d3aa",
+    mainHtmlMd5: "2dc0834937421a2011dcc337f44ece5b",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "aviation-weather/wind-shear-microburst",
+  },
+  {
+    slug: "mountain-wave",
+    source: "mountain-wave.html",
+    sourceMd5: "3d0c6ac331a96492b06f64b691fb6cc6",
+    mainHtmlMd5: "c017a14675f31f33db42b87284399eee",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "aviation-weather/mountain-wave",
+  },
+  {
+    slug: "weather-briefings",
+    source: "weather-briefings.html",
+    sourceMd5: "6ceaace26fc49b4eef4318cbd0c97ab2",
+    mainHtmlMd5: "24918b47f24e033b07e2e4d372f5d2f2",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "aviation-weather/weather-briefings",
+  },
+  {
+    slug: "weather-risk",
+    source: "weather-risk.html",
+    sourceMd5: "668849c529daa7478626bb5e3e48c951",
+    mainHtmlMd5: "4f460669d4a4255174514f488c2d8624",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "aviation-weather/weather-risk",
+  },
+  {
     slug: "flight-risk-assessment-tool",
     source: "flight-risk-assessment-tool.html",
     sourceMd5: "9aa50782fe209223a142ae79a35b3a64",
@@ -111,7 +167,8 @@ export const HUB_PAGES = [
 export const HUB_ASSET_MD5 = {
   // Post-delta: SMS / ac12092d source_title and source_short use U+00A0 and U+2011.
   // Pre-delta glossary.json md5 (same as #125): c0ddbbbecdb9110a2a314b9357dc2dcc
-  "glossary.json": "1ece906d58bd6108d55129c7927f0ffa",
+  // Batch 4: merged 47 glossary additions (115 -> 162 terms).
+  "glossary.json": "268227c49262a7d57a01f9b340e8f0a1",
   "hub.css": "9b057c4e999b136c17da01265393e834",
   "glossary.css": "36948050a68231ad3b4e8b2c1ea13eb1",
   "glossary.js": "2610af0a5436df351d153f6694bb6a19",
