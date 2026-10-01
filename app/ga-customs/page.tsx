@@ -147,7 +147,7 @@ export default function GaCustomsPage() {
                   alt="GA Customs"
                   width={488}
                   height={70}
-                  className="h-10 sm:h-12 md:h-14 w-auto mx-auto sm:mx-0"
+                  className="h-10 sm:h-12 md:h-14 w-auto max-w-full mx-auto sm:mx-0"
                   priority
                 />
               </div>
