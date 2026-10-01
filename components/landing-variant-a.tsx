@@ -37,6 +37,7 @@ import {
 } from "./shared"
 import { HomepagePartnerLogos } from "@/components/shared/homepage-partner-logos"
 import { YouTubeFacade } from "./shared/youtube-facade"
+import { HeroExplainerVideo } from "./shared/hero-explainer-video"
 import { LandingVariantANav } from "./landing-variant-a-nav"
 
 const VARIANT = "a"
@@ -74,55 +75,65 @@ export function LandingVariantA() {
       <LandingVariantANav variant={VARIANT} />
 
       {/* HERO */}
-      <section className="relative pt-24 pb-20 px-4">
-        <div className="container mx-auto max-w-5xl text-center space-y-8">
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#0a1628] border border-sky-400/40 text-sky-400 text-xs sm:text-sm font-medium whitespace-nowrap max-w-full">
-            <BrainPlaneIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
-            <span>Decision support for general aviation</span>
+      {/*
+        Explainer video sits above the fold. Desktop (lg+): copy left, video right.
+        Below lg: the copy wrapper uses display: contents so the headline, first
+        subhead and primary CTA stack first, the video directly under them, and the
+        remaining copy after. All copy is unchanged; only order and spacing differ.
+      */}
+      <section className="relative pt-20 sm:pt-24 pb-16 sm:pb-20 px-4">
+        <div className="container mx-auto max-w-5xl lg:max-w-7xl flex flex-col items-center gap-5 sm:gap-6 text-center lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-10 xl:gap-12 lg:text-left">
+          <div className="contents lg:flex lg:flex-col lg:items-start lg:gap-5">
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-1 sm:px-4 sm:py-1.5 rounded-full bg-[#0a1628] border border-sky-400/40 text-sky-400 text-xs sm:text-sm font-medium whitespace-nowrap max-w-full">
+              <BrainPlaneIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+              <span>Decision support for general aviation</span>
+            </div>
+
+            <h1 className="text-5xl md:text-7xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.05]">
+              <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                Fly like it&apos;s your job.
+              </span>
+            </h1>
+
+            <p className="text-xl md:text-2xl lg:text-lg xl:text-xl text-white/70 max-w-3xl mx-auto lg:mx-0 leading-relaxed text-balance">
+              Weather tools show you raw data. PlaneWX shows you what matters for your
+              flight and helps you{" "}
+              <span className="whitespace-nowrap">make the call.</span>
+            </p>
+
+            <p className="order-2 lg:order-none text-xl md:text-2xl lg:text-base xl:text-lg text-white/70 max-w-3xl mx-auto lg:mx-0 leading-relaxed text-balance">
+              PlaneWX is the decision support system for general aviation. It gives pilots
+              professional-grade tools and instills professional-grade habits that make flying safer.
+            </p>
+            <p className="order-2 lg:order-none text-base md:text-lg lg:text-base text-white/50 max-w-2xl mx-auto lg:mx-0 leading-relaxed text-balance">
+              The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.
+            </p>
+
+            <div className="contents sm:flex sm:flex-row sm:items-center sm:justify-center lg:justify-start lg:flex-wrap sm:gap-4 sm:pt-2">
+              <SignUpButton
+                variant={VARIANT}
+                className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-6 sm:px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all whitespace-nowrap"
+              >
+                Start Free 14-Day Trial
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </SignUpButton>
+              <a
+                href="#how-it-works"
+                className="order-2 sm:order-none inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all whitespace-nowrap"
+              >
+                See How It Works
+              </a>
+            </div>
+
+            <p className="order-2 lg:order-none text-sm text-white/30">Brief a real trip. Run the FRAT. Make the call. Debrief. Add a mentor anytime.</p>
+
+            <div className="order-2 lg:order-none flex items-center justify-center lg:justify-start gap-2 text-sm text-emerald-400/80">
+              <Shield className="h-4 w-4" />
+              <span>Full safety analysis on every plan. <strong className="text-emerald-300">Free forever.</strong></span>
+            </div>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05]">
-            <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              Fly like it&apos;s your job.
-            </span>
-          </h1>
-
-          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed text-balance">
-            Weather tools show you raw data. PlaneWX shows you what matters for your
-            flight and helps you{" "}
-            <span className="whitespace-nowrap">make the call.</span>
-          </p>
-
-          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed text-balance">
-            PlaneWX is the decision support system for general aviation. It gives pilots
-            professional-grade tools and instills professional-grade habits that make flying safer.
-          </p>
-          <p className="text-base md:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed text-balance">
-            The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <SignUpButton
-              variant={VARIANT}
-              className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 hover:from-sky-400 hover:to-cyan-400 text-white px-6 sm:px-10 py-4 text-lg font-semibold shadow-lg shadow-sky-500/25 transition-all whitespace-nowrap"
-            >
-              Start Free 14-Day Trial
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </SignUpButton>
-            <a
-              href="#how-it-works"
-              className="inline-flex items-center justify-center rounded-xl border border-white/20 text-white hover:bg-white/5 px-10 py-4 text-lg transition-all"
-            >
-              See How It Works
-            </a>
-          </div>
-
-          <p className="text-sm text-white/30">Brief a real trip. Run the FRAT. Make the call. Debrief. Add a mentor anytime.</p>
-
-          <div className="flex items-center justify-center gap-2 mt-4 text-sm text-emerald-400/80">
-            <Shield className="h-4 w-4" />
-            <span>Full safety analysis on every plan. <strong className="text-emerald-300">Free forever.</strong></span>
-          </div>
+          <HeroExplainerVideo variant={VARIANT} className="order-1 lg:order-none max-w-3xl lg:max-w-none" />
         </div>
       </section>
 

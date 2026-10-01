@@ -7,22 +7,42 @@ type YouTubeFacadeProps = {
   videoId: string
   title: string
   className?: string
+  /** Accessible name for the play button. Defaults to a generic label built from title. */
+  ariaLabel?: string
+  /** Query string for the nocookie embed (no leading "?"). */
+  embedParams?: string
+  /** Above the fold: load the thumbnail eagerly with a preload hint (LCP). */
+  priority?: boolean
+  /** next/image sizes hint for the thumbnail. */
+  sizes?: string
+  /** Called once when the visitor presses play, before the iframe mounts. */
+  onPlay?: () => void
 }
 
 /**
  * Click-to-load YouTube embed.
- * Thumbnail is first-party next/image (img.youtube.com is image-only).
+ * Thumbnail is first-party next/image (img.youtube.com is image-only and fetched
+ * by the image optimizer, so the browser does not contact YouTube for it).
  * Iframe uses youtube-nocookie.com and loads only after an explicit click,
  * so visitors are not contacted by YouTube until they choose to play.
  */
-export function YouTubeFacade({ videoId, title, className = "" }: YouTubeFacadeProps) {
+export function YouTubeFacade({
+  videoId,
+  title,
+  className = "",
+  ariaLabel,
+  embedParams = "autoplay=1&start=0",
+  priority = false,
+  sizes = "(max-width: 768px) 100vw, 896px",
+  onPlay,
+}: YouTubeFacadeProps) {
   const [playing, setPlaying] = useState(false)
 
   if (playing) {
     return (
       <iframe
         className={`absolute inset-0 w-full h-full ${className}`}
-        src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&start=0`}
+        src={`https://www.youtube-nocookie.com/embed/${videoId}?${embedParams}`}
         title={title}
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -35,17 +55,24 @@ export function YouTubeFacade({ videoId, title, className = "" }: YouTubeFacadeP
   return (
     <button
       type="button"
-      onClick={() => setPlaying(true)}
+      onClick={() => {
+        try {
+          onPlay?.()
+        } catch {
+          /* analytics must never block playback */
+        }
+        setPlaying(true)
+      }}
       className={`absolute inset-0 w-full h-full group cursor-pointer ${className}`}
-      aria-label={`Play video (loads YouTube): ${title}`}
+      aria-label={ariaLabel ?? `Play video (loads YouTube): ${title}`}
     >
       <Image
         src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
         alt={title}
         fill
-        sizes="(max-width: 768px) 100vw, 896px"
+        sizes={sizes}
         className="object-cover"
-        loading="lazy"
+        {...(priority ? { preload: true, fetchPriority: "high" as const } : { loading: "lazy" as const })}
       />
       <span className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
       <span className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-4">
