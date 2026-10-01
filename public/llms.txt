@@ -167,7 +167,6 @@ The hardest part of flying is often not handling the airplane. It is making the 
 
 PlaneWX was created by pilots who have felt the pressure, made the calls, and learned from the scares. Built to be the tool they wish they had.
 
-# Maintained by hand on the landing site. Keep this GA Customs section on future help syncs.
 ## GA Customs (free companion iOS app from PlaneWX)
 
 GA Customs is a free iPhone and iPad app from the PlaneWX family for general aviation pilots planning a U.S. customs arrival. Product page: https://www.planewx.ai/ga-customs. App Store: https://apps.apple.com/us/app/ga-customs/id6758804419 (version 1.1.1, September 2026).
@@ -215,4 +214,5 @@ Weather data sourced from federal and other official aviation weather feeds desc
 
 Last updated: 2026-10-01
 Source of truth for product claims: help pages in the PlaneWX app (https://app.planewx.ai/help), synced from app help at main c6076e2
+The GA Customs section is maintained by hand on the landing site. Keep it on future help syncs.
 Source: https://planewx.ai
