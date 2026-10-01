@@ -25,10 +25,11 @@ const UNLOCKED_SIGNUP_CLASS =
  * reveal the letter prefix, digit pattern, or any working call-sign example.
  *
  * Pass orgRef="SKYHOPE" for the SkyHope SYH gate; default is the generic
- * ACA / ANGELFLIGHT gate (CMF or NGF). Pass orgRef="ANGELFLIGHT" to keep
+ * ACA / ANGELFLIGHT gate (CMF, NGF, or SYH). Pass orgRef="ANGELFLIGHT" to keep
  * tracking attribution while using the same generic gate.
- * Bare / ACA / ANGELFLIGHT accept CMF or NGF. NGF alone does not imply
- * Angel Flight; that ref is kept only when present on the URL.
+ * Bare / ACA / ANGELFLIGHT accept CMF, NGF, or SYH. Visible copy names CMF or
+ * NGF only; SYH routes silently to SKYHOPE. NGF alone does not imply Angel
+ * Flight; that ref is kept only when present on the URL.
  * Pass allowSignup / allowNetworkWrites from the server (VERCEL_ENV === "production").
  */
 export function VolunteerCallSignGate({
@@ -62,6 +63,7 @@ export function VolunteerCallSignGate({
         ? [
             resolveVolunteerOrg(VOLUNTEER_CAMPAIGN_CODE).storageKey,
             resolveVolunteerOrg("ANGELFLIGHT").storageKey,
+            resolveVolunteerOrg("SKYHOPE").storageKey,
           ]
         : [pageOrg.storageKey]
       for (const key of keys) {

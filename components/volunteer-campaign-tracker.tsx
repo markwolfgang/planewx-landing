@@ -77,6 +77,7 @@ function resolveCallSignForGate(gateOrgRef?: string): string | null {
       ? [
           resolveVolunteerOrg(VOLUNTEER_CAMPAIGN_CODE).storageKey,
           resolveVolunteerOrg(ANGEL_FLIGHT_CAMPAIGN_CODE).storageKey,
+          resolveVolunteerOrg(SKYHOPE_CAMPAIGN_CODE).storageKey,
         ]
       : [resolveVolunteerOrg(pageRef).storageKey]
     for (const key of keys) {
@@ -94,7 +95,8 @@ function resolveCallSignForGate(gateOrgRef?: string): string | null {
 /**
  * Build app signup URL with ref and the active org's call-sign param.
  * ACA CMF: ?cmf=CALLSIGN. NGF and SkyHope: ?callsign=CALLSIGN (never ?cmf=).
- * On the generic page, NGF keeps ACA attribution unless the URL has ref=ANGELFLIGHT.
+ * On the generic page, SYH routes to ref=SKYHOPE; NGF keeps ACA attribution
+ * unless the URL has ref=ANGELFLIGHT.
  * Pass gateOrgRef from the gate so the active page org wins over stale storage.
  */
 export function buildVolunteerSignupHref(

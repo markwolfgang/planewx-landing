@@ -8,7 +8,7 @@
  * - preview_unlocked_control_is_not_a_link
  * - isVolunteerProductionDeploy_branches
  * - bare_ngf_accepted_attributes_aca
- * - bare_syh_rejected_on_generic_gate
+ * - bare_syh_lowercase_accepted_routes_skyhope
  * - bare_cmf_accepted
  * - bare_garbage_shows_new_error
  * - ref_skyhope_cmf_rejected
@@ -301,7 +301,7 @@ const leakedAca = buildVolunteerSignupHrefForOrg({
 assert.equal(leakedAca, "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA")
 
 // bare_ngf_accepted_attributes_aca
-assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.source, "^(CMF|NGF)\\d{1,4}$")
+assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.source, "^(CMF|NGF|SYH)\\d{1,4}$")
 assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.flags, "i")
 assert.equal(isBareVolunteerGate(null), true, "bare_ngf_accepted_attributes_aca")
 assert.equal(isBareVolunteerGate("ACA"), true, "bare_ngf_accepted_attributes_aca")
@@ -328,17 +328,34 @@ assert.equal(
   "bare_ngf_accepted_attributes_aca"
 )
 
-// bare_syh_rejected_on_generic_gate
+// bare_syh_lowercase_accepted_routes_skyhope
+const bareSyh = normalizeVolunteerCallSignForPage("syh123", null)
+assert.ok(bareSyh, "bare_syh_lowercase_accepted_routes_skyhope")
+assert.equal(bareSyh.callSign, "SYH123", "bare_syh_lowercase_accepted_routes_skyhope")
+assert.equal(bareSyh.org.ref, "SKYHOPE", "bare_syh_lowercase_accepted_routes_skyhope")
 assert.equal(
-  normalizeVolunteerCallSignForPage("syh123", null),
-  null,
-  "bare_syh_rejected_on_generic_gate"
+  resolveVolunteerOrgFromCallSign("syh123")?.ref,
+  "SKYHOPE",
+  "bare_syh_lowercase_accepted_routes_skyhope"
 )
+const bareSyhHref = buildVolunteerSignupHrefForOrg({
+  ref: bareSyh.org.ref,
+  callSign: bareSyh.callSign,
+  gateOrg: bareSyh.org,
+})
 assert.equal(
-  normalizeVolunteerCallSignForPage("syh123", "ACA"),
-  null,
-  "bare_syh_rejected_on_generic_gate"
+  bareSyhHref,
+  "https://app.planewx.ai/auth/sign-up?lp=vol&ref=SKYHOPE&callsign=SYH123",
+  "bare_syh_lowercase_accepted_routes_skyhope"
 )
+const acaSyh = normalizeVolunteerCallSignForPage("syh99", "ACA")
+assert.ok(acaSyh, "bare_syh_lowercase_accepted_routes_skyhope")
+assert.equal(acaSyh.org.ref, "SKYHOPE", "bare_syh_lowercase_accepted_routes_skyhope")
+const afSyh = normalizeVolunteerCallSignForPage("syh1", "ANGELFLIGHT")
+assert.ok(afSyh, "bare_syh_lowercase_accepted_routes_skyhope")
+assert.equal(afSyh.org.ref, "SKYHOPE", "bare_syh_lowercase_accepted_routes_skyhope")
+assert.equal(aca.hint.includes("SYH"), false, "generic_copy_does_not_name_syh")
+assert.equal(aca.error.includes("SYH"), false, "generic_copy_does_not_name_syh")
 
 // bare_cmf_accepted
 const bareCmf = normalizeVolunteerCallSignForPage("cmf42", "ACA")
@@ -488,9 +505,10 @@ assert.equal(
 
 console.log("Volunteer org registry + link builder checks passed.")
 console.log(
-  "Tests: production_syh_signup_href_carries_callsign, preview_unlocked_control_is_not_a_link, isVolunteerProductionDeploy_branches, bare_ngf_accepted_attributes_aca, bare_syh_rejected_on_generic_gate, bare_cmf_accepted, bare_garbage_shows_new_error, ref_skyhope_cmf_rejected, ref_skyhope_syh_lowercase_accepted, ref_angelflight_ngf_keeps_tracking, how_offer_works_has_no_duplicate_subtitle, bare_aca_label_is_volunteer_call_sign, bare_step1_body_cmf_or_ngf, skyhope_step1_body_no_gate_hint_repeat, bare_pressure_cta_cmf_or_ngf"
+  "Tests: production_syh_signup_href_carries_callsign, preview_unlocked_control_is_not_a_link, isVolunteerProductionDeploy_branches, bare_ngf_accepted_attributes_aca, bare_syh_lowercase_accepted_routes_skyhope, bare_cmf_accepted, bare_garbage_shows_new_error, ref_skyhope_cmf_rejected, ref_skyhope_syh_lowercase_accepted, ref_angelflight_ngf_keeps_tracking, how_offer_works_has_no_duplicate_subtitle, bare_aca_label_is_volunteer_call_sign, bare_step1_body_cmf_or_ngf, skyhope_step1_body_no_gate_hint_repeat, bare_pressure_cta_cmf_or_ngf"
 )
 console.log("ACA Sign up href:", acaHref)
 console.log("SKYHOPE Sign up href:", skyHref)
 console.log("Bare NGF123 Sign up href:", bareNgfHref)
+console.log("Bare SYH123 Sign up href:", bareSyhHref)
 console.log("ANGELFLIGHT NGF99 Sign up href:", trackedHref)

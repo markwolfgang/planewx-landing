@@ -11,7 +11,8 @@
  *
  * SkyHope (ref=SKYHOPE) uses its own SYH call-sign gate.
  * Bare /volunteer, ?ref=ACA, and ?ref=ANGELFLIGHT share one generic gate that
- * accepts CMF or NGF call signs from the pilot's volunteer organization.
+ * accepts CMF, NGF, or SYH. Visible copy names CMF or NGF only; SYH is accepted
+ * silently and still routes to ref=SKYHOPE + callsign= (same as main).
  * NGF is shared across multiple orgs, so NGF alone never implies Angel Flight.
  * ref=ANGELFLIGHT still attributes tracking and signup when that ref is present.
  * SKYHOPE and ANGELFLIGHT campaign seeds live only in the app repo
@@ -227,16 +228,17 @@ export function isAngelFlightRef(ref?: string | null): boolean {
 }
 
 /**
- * Bare /volunteer, ?ref=ACA, and ?ref=ANGELFLIGHT accept CMF or NGF:
- * /^(CMF|NGF)\d{1,4}$/i
- * NGF does not imply Angel Flight; ref=ANGELFLIGHT only when that ref is on the URL.
+ * Bare /volunteer, ?ref=ACA, and ?ref=ANGELFLIGHT accept CMF, NGF, or SYH:
+ * /^(CMF|NGF|SYH)\d{1,4}$/i
+ * Visible copy names CMF or NGF only. SYH is accepted silently and routes to
+ * SKYHOPE. NGF does not imply Angel Flight; ref=ANGELFLIGHT only when on the URL.
  */
-export const BARE_VOLUNTEER_CALL_SIGN_PATTERN = /^(CMF|NGF)\d{1,4}$/i
+export const BARE_VOLUNTEER_CALL_SIGN_PATTERN = /^(CMF|NGF|SYH)\d{1,4}$/i
 
 export const BARE_VOLUNTEER_CALL_SIGN_ERROR =
   VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ACA.error
 
-/** True when the page gate should accept both CMF and NGF (bare / ACA / ANGELFLIGHT). */
+/** True when the page gate should accept CMF, NGF, or SYH (bare / ACA / ANGELFLIGHT). */
 export function isBareVolunteerGate(ref?: string | null): boolean {
   return !isSkyHopeRef(ref)
 }
@@ -271,7 +273,8 @@ export function normalizeVolunteerCallSignForOrg(
 /**
  * Normalize for the page gate.
  * SkyHope page: SYH only.
- * Generic page (bare / ACA / ANGELFLIGHT): CMF or NGF.
+ * Generic page (bare / ACA / ANGELFLIGHT): CMF, NGF, or SYH.
+ * SYH always attributes to SKYHOPE (same as main bare dual-org routing).
  * Attribution ref for NGF is ANGELFLIGHT only when that ref is on the page;
  * otherwise NGF attributes to ACA. CMF always uses the cmf signup param.
  */
@@ -289,6 +292,13 @@ export function normalizeVolunteerCallSignForPage(
   }
 
   if (!BARE_VOLUNTEER_CALL_SIGN_PATTERN.test(cleaned)) return null
+
+  if (/^SYH\d{1,4}$/i.test(cleaned)) {
+    return {
+      callSign: cleaned,
+      org: VOLUNTEER_ORG_CALL_SIGN_REGISTRY.SKYHOPE,
+    }
+  }
 
   const trackingRef = isAngelFlightRef(pageOrgRef)
     ? ANGEL_FLIGHT_CAMPAIGN_CODE

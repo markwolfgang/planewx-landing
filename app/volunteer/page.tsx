@@ -119,10 +119,10 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
       {/*
         Default campaign: ACA (migrations/20260922_aca_volunteer_campaign_code.sql).
         Call signs: migrations/20260922_volunteer_call_signs.sql
-        Generic gate accepts CMF or NGF from the pilot's volunteer organization.
-        Discount membership is confirmed in the app after signup.
+        Generic gate accepts CMF, NGF, or SYH. Visible copy names CMF or NGF.
+        SYH routes silently to SKYHOPE. Discount membership is confirmed in the app.
         SkyHope: ?ref=SKYHOPE, SYH gate (lib/volunteer-landing.ts registry).
-        ?ref=ANGELFLIGHT: same generic CMF/NGF gate; ref kept for tracking.
+        ?ref=ANGELFLIGHT: same generic gate; ref kept for tracking.
         SKYHOPE and ANGELFLIGHT seeds live only in the app repo.
         Preview (VERCEL_ENV !== production): gate UX only; no signup link or writes.
       */}
