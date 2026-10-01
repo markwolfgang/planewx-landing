@@ -3,6 +3,7 @@ import { getSoroArticles } from '@/lib/soro'
 import { getPublishedNewsItems } from '@/app/news/news-data'
 import {
   getIndexableLearnArticles,
+  getIndexableLearnHubPages,
   shouldIndexLearnHub,
 } from '@/app/learn/learn-data'
 
@@ -26,8 +27,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  // Learning Center stays out of the sitemap while LEARN_PUBLIC is false
-  // or while individual articles remain draft (thin-content / placeholder safety).
+  // Learning Center: hub index, allowlisted [slug] articles, and shipped hub
+  // HTML pages. Non-allowlisted articles and Tips stay out of the sitemap.
   const learnEntries: MetadataRoute.Sitemap = []
   if (shouldIndexLearnHub()) {
     learnEntries.push({
@@ -36,6 +37,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly',
       priority: 0.75,
     })
+    for (const hub of getIndexableLearnHubPages()) {
+      learnEntries.push({
+        url: `${baseUrl}${hub.href}`,
+        lastModified: new Date(hub.lastReviewed),
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      })
+    }
     for (const article of getIndexableLearnArticles()) {
       learnEntries.push({
         url: `${baseUrl}/learn/${article.slug}`,

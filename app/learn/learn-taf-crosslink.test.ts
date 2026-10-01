@@ -15,13 +15,21 @@ const LIVE_TAF: LiveLearnRoute = {
 
 describe("getTafDecodeCrossLink", () => {
   it("returns null when the TAF decode route is not live", () => {
-    expect(LIVE_LEARN_ROUTES).toEqual([])
     expect(getTafDecodeCrossLink([])).toBeNull()
-    expect(getTafDecodeCrossLink()).toBeNull()
   })
 
   it("returns href and label when a live TAF entry is injected", () => {
     expect(getTafDecodeCrossLink([LIVE_TAF])).toEqual({
+      href: "/learn/aviation-weather/taf",
+      label: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
+    })
+  })
+
+  it("returns the registry entry from LIVE_LEARN_ROUTES when the TAF hub is live", () => {
+    expect(LIVE_LEARN_ROUTES.some((r) => r.href === LEARN_TAF_DECODE_HREF)).toBe(
+      true
+    )
+    expect(getTafDecodeCrossLink()).toEqual({
       href: "/learn/aviation-weather/taf",
       label: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
     })
