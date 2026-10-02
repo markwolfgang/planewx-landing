@@ -47,6 +47,8 @@ export type LearnBodyBlock =
   | { type: "htmlComment"; text: string }
   /** Click-to-load YouTube embed (nocookie, loads only on play). */
   | { type: "youtube"; videoId: string; title: string; caption?: string }
+  /** Boxed PlaneWX callout (sidebar style). Text supports [label](href) links. */
+  | { type: "callout"; title: string; text: string }
 
 /** Decision-support loop stages. Mentor is an optional layer, not a fifth step. */
 export type LearnLoopStage =
@@ -476,6 +478,11 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         videoId: "QdbR3Jba7A4",
         title: "AOPA Air Safety Institute: Accident Case Study: Risk Stacking",
         caption: "Video: AOPA Air Safety Institute, Accident Case Study: Risk Stacking.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "The PlaneWX FRAT highlights the risks as they stack up. It counts elevated items across Pilot, Aircraft, enVironment and External pressure, and when three or more stack on one flight it shows a Risks are stacking banner that lists them. It does not make the call and does not change the WX Score. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [See how the FRAT works](/learn/flight-risk-assessment-tool)",
       },
       {
         type: "heading",
