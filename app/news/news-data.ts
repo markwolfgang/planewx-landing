@@ -55,7 +55,13 @@ export const NEWS_ITEMS: NewsItem[] = [
     date: "October 2, 2026",
     isoDate: "2026-10-02",
     location: "St. Petersburg, Florida",
-    draft: true,
+    heroImage: {
+      src: "/news/self-debrief-help.png",
+      alt: "The PlaneWX Self Debrief help page, marked Every Plan, listing where the debrief shows up after you land",
+      width: 812,
+      height: 565,
+      caption: "The Self Debrief help guide in PlaneWX.",
+    },
     body: `
 <p><strong>St. Petersburg, Florida. October 2, 2026.</strong> Self Debrief is now on every PlaneWX plan, Free included. It used to be a Pro Plus feature. Not anymore.</p>
 
@@ -64,22 +70,14 @@ export const NEWS_ITEMS: NewsItem[] = [
 <h2>What it is</h2>
 <p>Your briefing supported your GO / NO-GO call. The debrief asks how it actually went, while the flight is still in your head. You work top to bottom: flight purpose, how you navigated, a rating for how you did, mental sharpness, a FRAT look-back, discipline, weather, then the phases of the flight. The stars mean how you flew, not how fun it was. It saves as you go, and it doesn't change your WX Score.</p>
 
-<p><em>[Screenshot TK from App Builder: the debrief form, Free TEST account, dark]</em></p>
-
 <h2>Debrief it once you're on the ground</h2>
 <p>You don't have to go looking for it. After you land, the post-flight review email you already get has a <strong>Debrief This Flight</strong> button. The bell at the top of the app also shows a <strong>To do</strong> item about an hour after your planned arrival. It stays until you start the debrief or mark the flight Didn't fly. Tap either one and you're in the debrief for that flight.</p>
 
 <h2>Where to find it</h2>
 <p>You can also get there yourself. Open the Profile menu and pick <strong>My Flights</strong>. On the My Flights page, choose <strong>My Debriefs</strong>.</p>
 
-<p><em>[Screenshot TK from App Builder: Profile menu with My Flights, Free TEST account, dark]</em></p>
-
-<p><em>[Screenshot TK from App Builder: My Flights page with My Debriefs, Free TEST account, dark]</em></p>
-
 <h2>Yours by default</h2>
 <p>Private notes never leave your account. Mentors, Trip Watchers, groups and your public profile never see them. A mentor or CFI sees the rest of a debrief only if you turn on <strong>Self-debrief access</strong> for that person in My Crew. It's off by default, and they can't edit your answers.</p>
-
-<p><em>[Screenshot TK from App Builder: a saved debrief, Free TEST account, dark]</em></p>
 
 <p>Self Debrief is part of PlaneWX Labs, our early access features, so it's still growing. Tell us what you'd like it to ask. The full guide is at <a href="https://app.planewx.ai/help/self-debrief">app.planewx.ai/help/self-debrief</a>.</p>
 
