@@ -584,6 +584,310 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "fair-weather-flier",
+    title: "Fair Weather Flier: When the Briefer Says VFR Is Not Recommended",
+    section: "Decision-Making",
+    summary:
+      "A noninstrument-rated Bonanza pilot heard \u201cVFR flight not recommended\u201d and left anyway, a day early, to beat worse weather. A case study from the AOPA Air Safety Institute and the NTSB final report on what self-induced pressure looks like from the inside.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Most VFR-into-IMC accidents don't start with a pilot ignoring the weather. They start with a pilot who checked it, heard the warnings, and found a reason the warnings didn't quite apply to this flight. This one is a clear example, because the whole weather briefing is on tape.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates the flight in its video \"Accident Case Study: Fair Weather Flier,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/101696/pdf) (ERA20LA262), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "oZ_Rhy1X6PA",
+        title: "AOPA Air Safety Institute: Accident Case Study: Fair Weather Flier",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Fair Weather Flier.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "Set your personal minimums for ceiling, visibility and storm avoidance while you're calm, before a trip is on the line. PlaneWX scores every briefing against them (Favorable, Marginal or Unfavorable) and flags anything at or past your max limit. Convective Watch shows up in the briefing when thunderstorm activity is detected along your route. The FRAT, which opens 4 hours before departure, asks about external pressure and get\u2011there\u2011itis. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How personal minimums work](https://app.planewx.ai/help/personal-minimums)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On July 28, 2020, a 64-year-old private pilot with about 946 hours and no instrument rating planned to fly his Beech F33A Bonanza home from Gulf Shores, Alabama (JKA) to Muscle Shoals (MSL), about 267 NM. His wife was aboard. Family members told the NTSB the original plan was to fly home on July 29 or 30, depending on weather. He had a business meeting on July 29.",
+      },
+      {
+        type: "paragraph",
+        text: "At 4:15 that afternoon he called flight service. The briefer told him the next day didn't look good: thunderstorms, rain showers, low ceilings and reduced visibility, and VFR flight not recommended. For that afternoon the news wasn't much better. Thunderstorms and rain showers were already in the area, a convective SIGMET was in effect, weather was building along and on both sides of the route, and the briefer again said VFR flight was not recommended.",
+      },
+      {
+        type: "paragraph",
+        text: "The pilot said he'd probably go that afternoon, because tomorrow would be worse, and that his own look at the weather showed \u201ceverything is VFR as we speak.\u201d The briefer agreed the surface reports were VFR but said cloud layers were \u201cgetting pretty close\u201d and that rain showers could drop parts of the route to instrument conditions. The briefer then offered a recent observation from Mobile, about 25 miles west of the route: 1.5 miles in heavy rain and mist. The pilot said he could avoid the precipitation unless he hit a solid line of storms.",
+      },
+      {
+        type: "paragraph",
+        text: "He departed VFR with flight following. About 15 minutes after takeoff, as the rain showers increased, the Bonanza made a decreasing radius 360\u00b0 turn. Over the next two minutes the track became erratic, the altitude dropped from 5,000 feet to about 1,275 feet, and the groundspeed swung between 150 and 34 knots. The airplane struck trees and hit a field near Malbis, Alabama. Both people aboard were killed. An airport 18 miles away was reporting a 1,200-foot overcast and half a mile in heavy rain at the time.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe noninstrument-rated pilot\u2019s decision to depart in deteriorating weather conditions, which led to restricted visibility and the pilot\u2019s loss of airplane control due to spatial disorientation. Contributing to the pilot\u2019s poor decision-making was self-induced pressure.\u201d",
+      },
+      {
+        type: "heading",
+        text: "What self-induced pressure sounds like",
+      },
+      {
+        type: "paragraph",
+        text: "Nobody told this pilot he had to go. The pressure came from his own plan: a meeting the next day and a forecast that would only get worse. Listen to how it shows up in the briefing.",
+      },
+      {
+        type: "list",
+        items: [
+          "\u201cTomorrow is worse, so today is the day.\u201d A worse forecast tomorrow doesn't make today good. It can mean neither day works.",
+          "\u201cEverything is VFR as we speak.\u201d Surface observations describe right now at the airport. The flight happens later, between airports.",
+          "\u201cI can avoid the precipitation unless it's a solid line.\u201d That plan depends on seeing the weather, in the weather.",
+          "\u201cI haven't heard anything to tell me that.\u201d He had. Twice, the briefer said VFR flight was not recommended.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "The airplane had a glass panel with synthetic vision. It didn't help. Equipment can't stand in for an instrument rating once the visibility goes.",
+      },
+      {
+        type: "heading",
+        text: "Decide before the pressure shows up",
+      },
+      {
+        type: "list",
+        items: [
+          "Write your VFR limits down at home, and treat \u201cVFR not recommended\u201d from a briefer as a reason to stop and rethink, not a reason to argue.",
+          "Plan the trip with a spare day built in. If the only way home is today, the meeting is making the call.",
+          "Name the pressure out loud. A meeting, a forecast that's getting worse, or a passenger who wants to get home all count as external pressure.",
+          "If you do go, decide ahead of time what makes you turn around, and make it something you can see before you're in it.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "Without a dispatcher, nobody can tell you no. The limits you set when you're calm are the only check on the reasoning you'll do when a trip is on the line. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "Personal minimums in PlaneWX set a comfort limit and a max limit for ceiling, visibility, storm avoidance and more. The WX Score runs every briefing against them, yours or the defaults until you set your own, and flags anything at or past your max. The FRAT opens 4 hours before departure and asks about external pressure and get\u2011there\u2011itis, so the pressure is written down next to the weather. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Fair Weather Flier (video)",
+        url: "https://www.youtube.com/watch?v=oZ_Rhy1X6PA",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report ERA20LA262 (N3156W)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/101696/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
+  {
+    slug: "trapped-in-ice",
+    title: "Trapped in Ice: The Cost of a 10-Hour-Old Briefing",
+    section: "Decision-Making",
+    summary:
+      "An instrument-rated Cirrus pilot briefed the night before, departed into forecast icing in an airplane not equipped for it, and lost control on a diversion. A case study from the AOPA Air Safety Institute and the NTSB final report on why a briefing has a shelf life.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "A weather briefing is a snapshot. The forecast you read the night before was the best information at the time, but AIRMETs expire, new ones get issued, and icing forecasts update every hour. If you don't look again before you go, you're flying on old news.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: Trapped in Ice,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/97066/pdf) (CEN18FA144), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "7rryvSQhK7k",
+        title: "AOPA Air Safety Institute: Accident Case Study: Trapped in Ice",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Trapped in Ice.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "PlaneWX regenerates your briefing as new weather products publish: automatically for monitored flights on Casual, Pro and Pro Plus, and with the Check Updates button in the final hour on Free. Its icing analysis compares several weather models along your route and altitude and, for US routes within 18 hours of departure, layers in the FAA's Current Icing Product and icing forecast, including SLD potential. Icing is one of the categories you set personal minimums for. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How briefings stay current](https://app.planewx.ai/help/auto-refresh)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On April 19, 2018, a 65-year-old instrument-rated private pilot with about 496 hours, 245 of them in type, departed Lancaster, Pennsylvania (LNS) in a Cirrus SR22 on an IFR flight plan to South Bend, Indiana (SBN). One passenger was aboard. The airplane had no anti-icing or deicing system, so it was not equipped for flight into known icing.",
+      },
+      {
+        type: "paragraph",
+        text: "The pilot got his weather briefing through an app on his mobile device about 10 hours before the flight. It showed cloud cover, snow showers and IFR conditions. The AIRMET in that briefing expired at 0500, before he departed. In the hours between, a new AIRMET was issued for moderate icing, IFR and mountain obscuration, and low-level turbulence, valid until 1100. The NTSB found no record that the pilot got any other weather before or during the flight.",
+      },
+      {
+        type: "paragraph",
+        text: "According to the NTSB, the airplane likely entered the clouds about 500 feet above the ground on climbout and stayed in IMC and icing conditions for the rest of the flight. To get above it, the airplane would have needed to climb above 10,400 feet. Before departure, the icing forecast showed light to moderate icing near the accident site, and the current icing product showed supercooled large droplets (SLD) nearby.",
+      },
+      {
+        type: "paragraph",
+        text: "About 55 minutes after takeoff, at about 5,400 feet, the pilot told Johnstown Approach the airplane was accumulating ice and asked to divert. Johnstown was reporting a 200-foot overcast and Altoona a 500-foot overcast, so he chose the ILS at Altoona. During the descent he flew through the localizer and didn't notice until the controller told him. On the turn back to intercept, the airplane began to descend, the airspeed increased, and the left turn tightened into a spiral. It struck the ground near Williamsburg, Pennsylvania, and both people aboard were killed.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe pilot\u2019s failure to obtain an updated weather briefing before the flight and his subsequent loss of airplane control due to spatial disorientation while maneuvering in instrument meteorological conditions during a diversion to an alternate airport after encountering forecast icing conditions.\u201d",
+      },
+      {
+        type: "heading",
+        text: "Why the update matters",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB said the pilot had enough forecast information available before departure to have known about the icing along the route, but it couldn't determine whether he saw all of it. That gap is the lesson. The night-before briefing showed IFR weather. The morning picture added moderate icing, SLD potential and tops above 10,000 feet, in an airplane with no ice protection. Those are different flights.",
+      },
+      {
+        type: "list",
+        items: [
+          "Check the valid time on every advisory. An AIRMET that expires before you depart tells you nothing about your flight.",
+          "Get a fresh look as close to departure as you can, and again before you take the runway if anything has changed.",
+          "In an airplane without ice protection, \u201cforecast icing along the route with tops above my ceiling\u201d is the question, not \u201cIFR conditions.\u201d",
+          "Know your outs before you need them. Here, both nearby airports were reporting low overcasts by the time the ice showed up.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB also found two impairing medications, diphenhydramine and clonazepam, in toxicology testing, and couldn't determine whether they contributed. It's a reminder to include medications in your personal checklist before any flight.",
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "There's no dispatcher watching the weather for you between the night before and engine start. Whatever you looked at last is what you're flying on. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "PlaneWX keeps a briefing current as new weather publishes: automatic background refreshes for monitored flights on Casual, Pro and Pro Plus, and a Check Updates button in the final hour on Free. The icing analysis shows model agreement, cloud layers and SLD potential along your route and altitude, and the WX Score runs against your icing limits. The FRAT, which opens 4 hours before departure, asks how you feel, which is the place to count medications. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Trapped in Ice (video)",
+        url: "https://www.youtube.com/watch?v=7rryvSQhK7k",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report CEN18FA144 (N451TD)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/97066/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
+  {
+    slug: "blind-over-bakersfield",
+    title: "Blind Over Bakersfield: Forecast IMC and a Party to Get To",
+    section: "Decision-Making",
+    summary:
+      "A low-time, noninstrument-rated pilot launched with his family into forecast storms, climbed to nearly 20,000 feet to stay on top, then accepted an IFR clearance. A case study from the AOPA Air Safety Institute and the NTSB final report on how one decision keeps leading to the next.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Some accidents come down to one bad moment. This one is a chain of decisions, each one made to save the one before it. The pilot had the forecast. He had his family aboard and a surprise party that night. Every time the weather closed a door, he found another one.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates the flight in its video \"Accident Case Study: Blind Over Bakersfield,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/92471/pdf) (WPR16FA041), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "ROCUheRin9U",
+        title: "AOPA Air Safety Institute: Accident Case Study: Blind Over Bakersfield",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Blind Over Bakersfield.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "The PlaneWX FRAT puts the pressure on paper next to the weather. It opens 4 hours before departure, counts elevated items across Pilot, Aircraft, enVironment and External pressure, including get\u2011there\u2011itis, and shows a Risks are stacking banner when three or more stack on one flight. Your WX Score runs the briefing against your own minimums. It does not make the call. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [See how the FRAT works](/learn/flight-risk-assessment-tool)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On December 19, 2015, a 42-year-old private pilot with about 270 hours and no instrument rating departed Reid-Hillview Airport in San Jose, California (RHV) in a Piper PA-32RT-300T Turbo Lance II, bound for Henderson Executive Airport near Las Vegas (HND). His wife and their three children were aboard. They were going on vacation and were due at a surprise party that night.",
+      },
+      {
+        type: "paragraph",
+        text: "He had downloaded official weather briefings to his tablet the night before and again that morning. According to the NTSB, the forecast was not suitable for VFR: a series of storms crossing the route, with IMC, high cloud tops, and the potential for icing and mountain obscuration.",
+      },
+      {
+        type: "paragraph",
+        text: "Shortly after takeoff the flight met the forecast weather. The pilot deviated again and again to stay out of the clouds, and controllers kept reporting bands of precipitation and the potential for airframe icing ahead. The tops kept rising, and he kept climbing to stay above them, until he was near the airplane's 20,000-foot ceiling and close to Class A airspace. The airplane had supplemental oxygen for three people. There were five aboard.",
+      },
+      {
+        type: "paragraph",
+        text: "When the airplane began to descend and likely entered the clouds, a controller offered an IFR clearance, and the pilot accepted. Shortly after, likely while he was setting up the avionics, the flightpath became erratic. He made two mayday calls. The airplane broke up in flight near Bakersfield, and all five people aboard were killed. Because of the deviations, the flight was only about halfway to Henderson, with about 30 minutes left before sunset.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe noninstrument-rated pilot's decision to conduct and continue the flight despite forecast and en route instrument meteorological conditions (IMC), which were not conducive to safe operation under visual flight rules. Also causal to the accident was the pilot's decision to accept an instrument flight rules clearance and fly into IMC during cruise flight, which led to his spatial disorientation and a resultant loss of control and an in-flight breakup. Contributing to the accident was the pilot's self-induced pressure to arrive at the destination for a party that night.\u201d",
+      },
+      {
+        type: "heading",
+        text: "The chain, one link at a time",
+      },
+      {
+        type: "list",
+        items: [
+          "Departing: the forecast already ruled out VFR. The trip was planned around the party, not around the weather.",
+          "Deviating: each turn around a cloud cost time and fuel and pushed the arrival closer to sunset.",
+          "Climbing on top: every thousand feet bought a few more minutes, while the tops kept rising and the oxygen ran short for the family.",
+          "Accepting the clearance: it sounded like help, but it put a noninstrument-rated pilot in the clouds, hand-flying and heads-down on avionics.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB noted that, without an instrument rating or enough oxygen for his family, the pilot may have been reluctant to declare an emergency and climb into Class A airspace, which likely would have put him above the clouds. He accepted an IFR clearance at a lower altitude instead. That's the hidden cost of a chain like this: by the end, every option left has a downside, so it's easy to pick none of them.",
+      },
+      {
+        type: "heading",
+        text: "Break the chain early",
+      },
+      {
+        type: "list",
+        items: [
+          "Decide on the ground. If the forecast doesn't support VFR, the trip doesn't start VFR, party or not.",
+          "Set a turnaround trigger before you go, like \u201cif I have to climb above X to stay clear, I turn back,\u201d and keep it.",
+          "Count deviations as risk. Each one is the weather telling you something.",
+          "Declare an emergency early. ATC can help most when they know what you need.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "With family aboard and an event waiting, the pressure is real and it's yours. Without a dispatcher, the only way to see it clearly is to write it down before you leave. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "The PlaneWX FRAT opens 4 hours before departure and counts the elevated self\u2011rates and named concerns across Pilot, Aircraft, enVironment and External pressure, including external pressure chips and get\u2011there\u2011itis. When three or more stack on one flight, it shows a Risks are stacking banner that lists them. The WX Score runs the briefing against your own minimums. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Blind Over Bakersfield (video)",
+        url: "https://www.youtube.com/watch?v=ROCUheRin9U",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report WPR16FA041 (N36402)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/92471/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
 ]
 
 /** Tips as archived from each Weekly PIREP. Prepend newest first when adding. */
