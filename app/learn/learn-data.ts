@@ -32,7 +32,7 @@ export type LearnSection =
   | "Weather Knowledge"
   | "Decision-Making"
 
-export type LearnPublisher = "FAA" | "NWS" | "AWC" | "MDL" | "AOPA ASI"
+export type LearnPublisher = "FAA" | "NWS" | "AWC" | "MDL" | "NTSB" | "AOPA ASI"
 
 export interface LearnSource {
   label: string
@@ -467,7 +467,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "The AOPA Air Safety Institute (ASI) walks through a clear example in its video \"Accident Case Study: Risk Stacking\": https://www.youtube.com/watch?v=QdbR3Jba7A4. The summary below is ours, drawn from that video. Watch the full case study for ASI's own analysis. ASI noted that the NTSB was still investigating when the video was made, so nothing here is a probable cause.",
+        text: "The AOPA Air Safety Institute (ASI) walks through a clear example in its video \"Accident Case Study: Risk Stacking\": https://www.youtube.com/watch?v=QdbR3Jba7A4. The summary below is ours. ASI made the video before the NTSB finished its investigation. The NTSB final report (WPR22FA151) is now out, and we note where it adds to or differs from the video. Watch the full case study for ASI's own analysis.",
       },
       {
         type: "heading",
@@ -475,19 +475,27 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "On April 13, 2022, a single pilot flew a Cessna 208 Caravan on a cargo run from Salt Lake City (KSLC) to Burley, Idaho, about 133 NM. Burley was forecast VFR. She had diverted on the same run the day before.",
+        text: "On April 13, 2022, a single pilot flew a Cessna 208B Grand Caravan on a Part 135 cargo flight from Salt Lake City (KSLC) to Burley, Idaho (KBYI). The day before, on the same run, she had diverted to Twin Falls because of ground icing conditions at Burley. ASI reports that the trip was about 133 NM and that Burley was forecast VFR.",
       },
       {
         type: "paragraph",
-        text: "En route, the Burley METAR showed 6 SM in light snow with a broken layer at 2,600. By the approach it was 1 SM in mist and light snow with a 2,100 ceiling. She flew the RNAV (GPS) 20, which has an MDA of 4,560 MSL (about 400 feet above the ground) and a steep 3.75 degree vertical descent angle. The chart had no gray stippled visual segment, because the stacks of a potato processing plant stand on the centerline near the threshold.",
+        text: "ASI reports that en route the Burley METAR showed 6 SM in light snow with a broken layer at 2,600, and that by the approach it was 1 SM in mist and light snow with a 2,100 ceiling. The NTSB report lists 1 mile in light snow and mist with a broken ceiling at 2,300 feet around the first approach, improving to 2.5 miles and a broken ceiling at 3,000 feet by the second.",
       },
       {
         type: "paragraph",
-        text: "She went missed on the first approach and came back about 20 knots slower on the second. She broke out about half a mile out. Approaching from downwind of the plant on a cold day, she flew into its steam plume, added power, struck a stack and was killed.",
+        text: "She flew the RNAV (GPS) 20, which has a steep 3.75 degree glide path. ASI reports an MDA of 4,560 MSL (about 400 feet above the ground) and no gray stippled visual segment on the chart, because the stacks of a potato processing plant stand under the approach close to the threshold.",
       },
       {
         type: "paragraph",
-        text: "Two more details from the case study matter for any pilot. A 2017 FAA study found the stacks penetrated the approach surface by up to 61 feet and still issued a no-hazard determination. A notice about the stacks went out only after the crash. ASI's video calls it a NOTAM, and its video notes correct that: it is a Letter to Airmen issued through the FAA NOTAM system, and it may not appear in every app that pulls NOTAMs.",
+        text: "On the first approach she made a low pass over the runway, then went missed and asked for the same approach again. She flew the second approach slower. The NTSB estimates about 85 knots near the end, below the airplane's 95 knot minimum for flaps up in icing conditions. A witness saw the airplane come out of the clouds and go straight into steam from the plant's stacks. The engine got louder and the nose came up, and the airplane struck a vent stack. The pilot was killed.",
+      },
+      {
+        type: "paragraph",
+        text: "ASI reports that a 2017 FAA study found the stacks penetrated the approach surface by up to 61 feet, yet the FAA issued a no-hazard determination. The NTSB report confirms the February 2017 no-hazard determination and says it required the stacks to be painted white and aviation orange and lit. On the day of the accident they had not been painted that way. ASI also reports that a notice about the stacks went out only after the crash. Its video calls it a NOTAM, and its video notes correct that: it is a Letter to Airmen issued through the FAA NOTAM system, and it may not appear in every app that pulls NOTAMs.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB found the probable cause to be the pilot's failure to maintain altitude during the approach, which led to a descent below the approach path and impact with the stack. Also causal was the plant's failure to paint the stacks as the FAA had required. Contributing was the likely distraction, illusion or obscuration from the plant's steam, which at times hid the runway.",
       },
       {
         type: "heading",
@@ -500,10 +508,10 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       {
         type: "list",
         items: [
-          "Pilot: single pilot, flying a second approach to minimums right after a missed approach.",
-          "Aircraft: less margin on the second approach, flown about 20 knots slower. Warm plume air can cost lift the way high density altitude does.",
-          "Environment: a destination forecast VFR that went to 1 SM and a 2,100 ceiling; an MDA about 400 feet above the ground; a steep 3.75 degree descent; no stippled visual segment; stacks on the centerline; a steam plume on a cold day.",
-          "External pressures: a scheduled cargo run, and a divert on the same run the day before.",
+          "Pilot: single pilot, flying a second approach in instrument conditions right after a low pass and missed approach.",
+          "Aircraft: less margin on the second approach, flown at about 85 knots near the end, below the 95 knot flaps-up minimum in icing conditions. ASI points out that warm plume air can also cost lift, the way high density altitude does.",
+          "Environment: low ceilings and visibility in light snow and mist; a steep 3.75 degree glide path; stacks under the approach close to the threshold that were not painted to the FAA standard; steam from the stacks on a cold day. ASI adds a destination forecast VFR, an MDA about 400 feet above the ground and no stippled visual segment.",
+          "External pressures: a cargo run to complete, and a divert on the same run the day before.",
         ],
       },
       {
@@ -516,7 +524,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "The AIM tells pilots to avoid flying near exhaust plumes from smoke stacks and cooling towers (AIM 7-6-16). Plumes can bring turbulence, low visibility, icing, and engine or control problems. Before you fly an approach, read the destination NOTAMs, any Letters to Airmen, and every note on the chart. The absence of something on a chart, like a stippled visual segment, is information too.",
+        text: "The AIM tells pilots to avoid flying near exhaust plumes from smoke stacks and cooling towers (AIM 7-6-16). Plumes can bring turbulence, low visibility, icing, and engine or control problems. The NTSB notes that this stack sat directly under the approach course, so flying over it was expected. Before you fly an approach, read the destination NOTAMs, any Letters to Airmen, and every note on the chart. The absence of something on a chart, like a stippled visual segment, is information too.",
       },
       {
         type: "heading",
@@ -524,7 +532,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "In hindsight, the stack is easy to see. In the moment, each item arrives one at a time, and each one looks small. The habit that helps is a running count. Name each risk as it shows up, sort it into pilot, aircraft, environment or external pressure, and notice when the count reaches three. A common practice is to treat three or more elevated risks as a reason to stop and choose a different plan.",
+        text: "In hindsight, the stack is easy to see. In the moment, each item arrives one at a time, and each one looks small. The habit that helps is a running count. Name each risk as it shows up, sort it into pilot, aircraft, environment or external pressure, and notice when the count reaches three. Many pilots set a personal rule, such as stopping to rethink the plan when three risks are elevated.",
       },
       {
         type: "list",
@@ -552,6 +560,11 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         label: "AIM 7-6-16: Avoid Flight in the Vicinity of Exhaust Plumes (Smoke Stacks and Cooling Towers)",
         url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_6.html",
         publisher: "FAA",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report WPR22FA151 (N928JP)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/104938/pdf",
+        publisher: "NTSB",
       },
     ],
   },
