@@ -163,12 +163,14 @@ const PARTNERS = [
     name: "TBMOPA",
     href: "https://tbmowners.org",
     logo: {
-      src: "/partners/tbmopa-logo.png",
+      src: "/partners/tbmopa-logo-2026.png",
       alt: "TBMOPA (TBM Owners and Pilots Association) logo",
-      width: 1427,
-      height: 425,
-      className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
+      width: 2304,
+      height: 1728,
+      className: "h-24 w-auto max-w-[16rem] object-contain",
     },
+    // Official mark is black and blue on transparent; a light well keeps the wordmark visible.
+    logoWellClassName: "bg-white",
     // Sara Round 2: exact member sentence. No coupon code. Link is tbmowners.org.
     memberBenefit:
       "TBMOPA members receive a discount on their PlaneWX subscription.",
@@ -267,8 +269,14 @@ export default function PartnersPage() {
             {PARTNERS.map((partner) => {
               const featureVideo =
                 "featureVideo" in partner ? partner.featureVideo : undefined
+              const logoWellClassName =
+                "logoWellClassName" in partner
+                  ? partner.logoWellClassName
+                  : "bg-white/[0.04]"
               const logoWell = (
-                <div className="flex min-h-[4.75rem] items-center justify-center rounded-xl bg-white/[0.04] px-4 py-4 mb-4">
+                <div
+                  className={`flex min-h-[4.75rem] items-center justify-center rounded-xl px-4 py-4 mb-4 ${logoWellClassName}`}
+                >
                   <Image
                     src={partner.logo.src}
                     alt={partner.logo.alt}
