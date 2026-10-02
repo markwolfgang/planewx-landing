@@ -32,7 +32,7 @@ export type LearnSection =
   | "Weather Knowledge"
   | "Decision-Making"
 
-export type LearnPublisher = "FAA" | "NWS" | "AWC" | "MDL"
+export type LearnPublisher = "FAA" | "NWS" | "AWC" | "MDL" | "AOPA ASI"
 
 export interface LearnSource {
   label: string
@@ -452,10 +452,133 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "risk-stacking",
+    title: "Risk Stacking: How Small Risks Add Up to a Big One",
+    section: "Decision-Making",
+    summary:
+      "No single item on a flight has to be dangerous for the flight to be dangerous. A case study from the AOPA Air Safety Institute shows how risks stack, and how to see the stack while you can still act on it.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Most pilots can handle one problem at a time: marginal weather, a tired day, an unfamiliar approach or a schedule to keep. Trouble starts when several show up on the same flight. Each one looks manageable on its own, so none of them feels like a reason to stop. Together they can use up all the margin you have. That is risk stacking.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) walks through a clear example in its video \"Accident Case Study: Risk Stacking\": https://www.youtube.com/watch?v=QdbR3Jba7A4. The summary below is ours, drawn from that video. Watch the full case study for ASI's own analysis. ASI noted that the NTSB was still investigating when the video was made, so nothing here is a probable cause.",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On April 13, 2022, a single pilot flew a Cessna 208 Caravan on a cargo run from Salt Lake City (KSLC) to Burley, Idaho, about 133 NM. Burley was forecast VFR. She had diverted on the same run the day before.",
+      },
+      {
+        type: "paragraph",
+        text: "En route, the Burley METAR showed 6 SM in light snow with a broken layer at 2,600. By the approach it was 1 SM in mist and light snow with a 2,100 ceiling. She flew the RNAV (GPS) 20, which has an MDA of 4,560 MSL (about 400 feet above the ground) and a steep 3.75 degree vertical descent angle. The chart had no gray stippled visual segment, because the stacks of a potato processing plant stand on the centerline near the threshold.",
+      },
+      {
+        type: "paragraph",
+        text: "She went missed on the first approach and came back about 20 knots slower on the second. She broke out about half a mile out. Approaching from downwind of the plant on a cold day, she flew into its steam plume, added power, struck a stack and was killed.",
+      },
+      {
+        type: "paragraph",
+        text: "Two more details from the case study matter for any pilot. A 2017 FAA study found the stacks penetrated the approach surface by up to 61 feet and still issued a no-hazard determination. A NOTAM about the stacks was published only after the crash.",
+      },
+      {
+        type: "heading",
+        text: "The stack, by category",
+      },
+      {
+        type: "paragraph",
+        text: "Sorted the way a flight risk assessment sorts them (pilot, aircraft, environment and external pressures), the risks on this flight look like this:",
+      },
+      {
+        type: "list",
+        items: [
+          "Pilot: single pilot, flying a second approach to minimums right after a missed approach.",
+          "Aircraft: less margin on the second approach, flown about 20 knots slower. Warm plume air can cost lift the way high density altitude does.",
+          "Environment: a destination forecast VFR that went to 1 SM and a 2,100 ceiling; an MDA about 400 feet above the ground; a steep 3.75 degree descent; no stippled visual segment; stacks on the centerline; a steam plume on a cold day.",
+          "External pressures: a scheduled cargo run, and a divert on the same run the day before.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "None of these is rare. Pilots fly approaches to minimums, fly single pilot and fly cargo schedules every day. The point of the case study is the combination.",
+      },
+      {
+        type: "heading",
+        text: "Smoke stacks and cooling towers",
+      },
+      {
+        type: "paragraph",
+        text: "The AIM tells pilots to avoid flying near exhaust plumes from smoke stacks and cooling towers (AIM 7-6-16). Plumes can bring turbulence, low visibility, icing, and engine or control problems. Before you fly an approach, read the destination NOTAMs and every note on the chart. The absence of something on a chart, like a stippled visual segment, is information too.",
+      },
+      {
+        type: "heading",
+        text: "See the stack while you can still act on it",
+      },
+      {
+        type: "paragraph",
+        text: "In hindsight, the stack is easy to see. In the moment, each item arrives one at a time, and each one looks small. The habit that helps is a running count. Name each risk as it shows up, sort it into pilot, aircraft, environment or external pressure, and notice when the count reaches three. A common practice is to treat three or more elevated risks as a reason to stop and choose a different plan.",
+      },
+      {
+        type: "list",
+        items: [
+          "Before departure: count what you already know, including pressure you carry over from yesterday's flight.",
+          "En route: when the weather or plan changes, add it to the count instead of replacing an old item.",
+          "Before a second approach: count again. A missed approach is new information, not a reset.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "Without a dispatcher or a second pilot, nobody else is keeping the tally for you. Writing the count down before departure makes the stack visible while you still have options. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "The PlaneWX FRAT highlights risks as they stack up. As you fill it in within 4 hours of departure, it counts the elevated self\u2011rates and named concerns across Pilot, Aircraft, enVironment and External pressure, including external pressure chips and get\u2011there\u2011itis. When three or more stack on the flight, it shows a Risks are stacking banner that lists them. It does not make the call and does not change the WX Score. You record your own GO\u00A0/\u00A0NO\u2011GO decision. The FRAT cannot see a chart note or a NOTAM for you, so read those for the destination too.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Risk Stacking (video)",
+        url: "https://www.youtube.com/watch?v=QdbR3Jba7A4",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "AIM 7-6-16: Avoid Flight in the Vicinity of Exhaust Plumes (Smoke Stacks and Cooling Towers)",
+        url: "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_6.html",
+        publisher: "FAA",
+      },
+    ],
+  },
 ]
 
 /** Tips as archived from each Weekly PIREP. Prepend newest first when adding. */
 export const TIPS_OF_THE_WEEK: TipOfTheWeek[] = [
+  {
+    slug: "count-your-risks-out-loud",
+    title: "Count your risks out loud",
+    issueNumber: 2,
+    date: "October 5, 2026",
+    isoDate: "2026-10-05",
+    draft: true,
+    summary:
+      "No single risk has to be dangerous for the flight to be. Keep a running count across pilot, aircraft, environment and external pressure, and stop to rethink at three.",
+    body: [
+      {
+        type: "paragraph",
+        text: "AOPA's Air Safety Institute just put out a case study on risk stacking: a single-pilot Caravan, a destination forecast VFR that wasn't, a steep approach with an MDA about 400 feet above the ground, smoke stacks on the centerline and a divert on the same run the day before. No single item was the problem. The stack was. So keep a count. Name each risk as it shows up, sort it into pilot, aircraft, environment or external pressure, and when you reach three, stop and pick a different plan if you need one. A missed approach adds to the count. It doesn't reset it. The PlaneWX FRAT highlights the risks as they stack up, and the call stays yours as PIC.",
+      },
+      {
+        type: "paragraph",
+        text: "Watch the ASI case study: https://www.youtube.com/watch?v=QdbR3Jba7A4. Read more in the Learning Center: https://www.planewx.ai/learn/risk-stacking",
+      },
+    ],
+  },
   {
     slug: "what-the-wx-score-actually-is",
     title: "What the WX Score actually is",
