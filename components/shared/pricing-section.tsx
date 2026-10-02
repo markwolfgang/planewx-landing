@@ -59,7 +59,7 @@ const PLUS_BULLETS: {
   {
     name: "PlaneWX Labs",
     detail:
-      "Early access to features still in development. Altitude Profile cross-section, Route Map Forecast models, and Pilot Self Debrief.",
+      "Early access to features still in development. Altitude Profile cross-section and Route Map Forecast models. Self Debrief is on every plan.",
     helpPath: "/help/planewx-labs",
   },
 ]
@@ -293,6 +293,7 @@ export function PricingSection({ variant }: { variant: string }) {
                 "PAVE Risk Assessment",
                 "Flight Window Explorer",
                 "Access to mentors",
+                "Self Debrief",
               ].map((f) => (
                 <li key={f} className="flex items-center gap-2.5">
                   <Check className="h-4 w-4 text-emerald-400 shrink-0" />
@@ -475,8 +476,8 @@ export function PricingSection({ variant }: { variant: string }) {
         </div>
 
         <p className="text-center text-xs text-white/30 mt-8">
-          All plans include WX Score, PAVE Risk Assessment, Synoptic Intelligence™, mentor
-          broadcast, and 14-day planning.
+          All plans include WX Score, PAVE Risk Assessment, Synoptic Intelligence™, Self Debrief,
+          mentor broadcast, and 14-day planning.
         </p>
       </div>
     </section>
