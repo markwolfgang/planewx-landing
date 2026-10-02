@@ -487,7 +487,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "Two more details from the case study matter for any pilot. A 2017 FAA study found the stacks penetrated the approach surface by up to 61 feet and still issued a no-hazard determination. A NOTAM about the stacks was published only after the crash.",
+        text: "Two more details from the case study matter for any pilot. A 2017 FAA study found the stacks penetrated the approach surface by up to 61 feet and still issued a no-hazard determination. A notice about the stacks went out only after the crash. ASI's video calls it a NOTAM, and its video notes correct that: it is a Letter to Airmen issued through the FAA NOTAM system, and it may not appear in every app that pulls NOTAMs.",
       },
       {
         type: "heading",
@@ -516,7 +516,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "The AIM tells pilots to avoid flying near exhaust plumes from smoke stacks and cooling towers (AIM 7-6-16). Plumes can bring turbulence, low visibility, icing, and engine or control problems. Before you fly an approach, read the destination NOTAMs and every note on the chart. The absence of something on a chart, like a stippled visual segment, is information too.",
+        text: "The AIM tells pilots to avoid flying near exhaust plumes from smoke stacks and cooling towers (AIM 7-6-16). Plumes can bring turbulence, low visibility, icing, and engine or control problems. Before you fly an approach, read the destination NOTAMs, any Letters to Airmen, and every note on the chart. The absence of something on a chart, like a stippled visual segment, is information too.",
       },
       {
         type: "heading",
