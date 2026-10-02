@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import {
   ArrowLeft,
@@ -194,6 +195,26 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                 See what PlaneWX does
               </Link>
             </p>
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 pt-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/45">
+                In partnership with
+              </p>
+              <a
+                href="https://www.aircarealliance.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Air Care Alliance (opens aircarealliance.org in a new tab)"
+                className="inline-flex rounded-md opacity-90 hover:opacity-100 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sky-400"
+              >
+                <Image
+                  src="/partners/aca-white.svg"
+                  alt="Air Care Alliance"
+                  width={369}
+                  height={133}
+                  className="h-10 sm:h-11 w-auto"
+                />
+              </a>
+            </div>
           </div>
         </header>
 
