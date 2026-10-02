@@ -467,7 +467,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "The AOPA Air Safety Institute (ASI) walks through a clear example in its video \"Accident Case Study: Risk Stacking\": https://www.youtube.com/watch?v=QdbR3Jba7A4. The summary below is ours. ASI made the video before the NTSB finished its investigation. The NTSB final report (WPR22FA151) is now out, and we note where it adds to or differs from the video. Watch the full case study for ASI's own analysis.",
+        text: "The AOPA Air Safety Institute (ASI) walks through a clear example in its video \"Accident Case Study: Risk Stacking\": https://www.youtube.com/watch?v=QdbR3Jba7A4. The summary below is ours. ASI's video came out before the NTSB final report (WPR22FA151). Where the two differ, we use the NTSB report. For the official probable cause, read the NTSB final report: https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/104938/pdf. Watch the full case study for ASI's own analysis.",
       },
       {
         type: "heading",
@@ -479,7 +479,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "ASI reports that en route the Burley METAR showed 6 SM in light snow with a broken layer at 2,600, and that by the approach it was 1 SM in mist and light snow with a 2,100 ceiling. The NTSB report lists 1 mile in light snow and mist with a broken ceiling at 2,300 feet around the first approach, improving to 2.5 miles and a broken ceiling at 3,000 feet by the second.",
+        text: "ASI reports that en route the Burley METAR showed 6 SM in light snow with a broken layer at 2,600. The NTSB report lists 1 mile in light snow and mist with a broken ceiling at 2,300 feet around the first approach, improving to 2.5 miles and a broken ceiling at 3,000 feet by the second.",
       },
       {
         type: "paragraph",
@@ -495,7 +495,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "The NTSB found the probable cause to be the pilot's failure to maintain altitude during the approach, which led to a descent below the approach path and impact with the stack. Also causal was the plant's failure to paint the stacks as the FAA had required. Contributing was the likely distraction, illusion or obscuration from the plant's steam, which at times hid the runway.",
+        text: "The NTSB determined the probable cause to be: "The pilot’s failure to maintain altitude during an instrument approach, which resulted in a descent below the approach path and impact with a vent stack. Also causal was the failure of the processing plant to correctly paint the vent stacks, which had been determined by the FAA to be a hazard to navigation due to their proximity to the landing approach path. Contributing to the accident was the likely distraction/illusion/obscuration created by steam from the processing plant, which intermittently obscured the runway."",
       },
       {
         type: "heading",
