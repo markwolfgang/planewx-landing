@@ -1336,6 +1336,183 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "time-lapse",
+    title: "Time Lapse: Datalink Radar Is a Picture of the Past",
+    section: "Decision-Making",
+    summary:
+      "An instrument-rated Cherokee Six pilot used in-cockpit NEXRAD to pick his way around Texas thunderstorms at night. The airplane flew into severe weather and broke up near Bryan. A case study from the AOPA Air Safety Institute and the NTSB final report on what datalink weather can and can't tell you.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Datalink radar in the cockpit is one of the best things to happen to general aviation weather. It is also always a little out of date, and a storm moving fast enough can close a gap that still looks open on the screen.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: Time Lapse,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/82539/pdf) (CEN12FA108), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "83uvKWJS2os",
+        title: "AOPA Air Safety Institute: Accident Case Study: Time Lapse",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Time Lapse.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "PlaneWX is a preflight tool, not a display for dodging storms in the air. Its job is the part the NTSB's safety alert on cockpit NEXRAD reminds every pilot about: a thorough briefing before you go. When thunderstorm or convective activity is detected along your route, the briefing shows a Convective Watch, and storm avoidance is one of the categories you set personal minimums for. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How hazardous weather is shown](https://app.planewx.ai/help/hazardous-weather)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On December 19, 2011, a 33-year-old instrument-rated private pilot with about 392 hours was flying a Piper PA-32-260 Cherokee Six with four passengers from Hampton, Georgia to Waco, Texas on an IFR flight plan. After a fuel stop in Jackson, Mississippi, the flight left about 5:50 PM. His GPS unit had a current NEXRAD weather subscription.",
+      },
+      {
+        type: "paragraph",
+        text: "Level at 8,000 feet, he told Houston approach he'd been \u201clooking at my nexrad\u201d and asked about a 250 heading. The controller said that heading would put him in moderate to heavy precipitation. Over the next 20 minutes or so the pilot and the controller talked through the weather: the airplane skirting light to moderate precipitation, a heavy to extreme cell about 8 miles ahead and to his right, and the pilot maneuvering to find a \u201chole\u201d to go through.",
+      },
+      {
+        type: "paragraph",
+        text: "At 9:42 PM the controller said the airplane had just made a left 360 and was headed right into heavy weather, and suggested a turn to 220. The pilot answered, \u201cWe're in some bad weather here. I'm going to try to get out of it.\u201d That was his last transmission. Radar showed a descending turn and lost the airplane two minutes later at 6,800 feet. The left wing had failed in positive overload, and all five people aboard were killed.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe pilot\u2019s inadvertent encounter with severe weather, which resulted in the airplane\u2019s left wing failing in positive overload. Contributing to the accident was the pilot\u2019s reliance on outdated weather information that he received on his in-cockpit Next-Generation Radar (NEXRAD).\u201d",
+      },
+      {
+        type: "heading",
+        text: "Why the age of the picture matters",
+      },
+      {
+        type: "paragraph",
+        text: "The GPS unit's manual said NEXRAD data was for \u201clong-range planning purposes only\u201d and not to \u201cpenetrate hazardous weather,\u201d because it \u201cis not real-time.\u201d After this accident, in June 2012, the NTSB issued a safety alert warning that the age shown on a cockpit NEXRAD display can be misleading, and that the actual radar data can be as much as 20 minutes older than the display suggests. Around fast-moving, fast-building storms, that difference matters.",
+      },
+      {
+        type: "list",
+        items: [
+          "Use datalink radar to stay well clear of weather, not to thread a path between cells.",
+          "Assume the picture is older than the age on the screen says.",
+          "Treat a controller's live radar call as fresher than your own display, and take the turn they suggest.",
+          "Brief convective weather on the ground and plan wide deviations or a stop before you're in it.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "The best time to avoid a line of storms is before you take off, with the whole picture in front of you and no clock running. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "Brief every flight in PlaneWX and look closely when a Convective Watch shows up along your route. Set a storm avoidance personal minimum and let the WX Score check it. Use the FRAT, which opens 4 hours before departure, to be honest about night, a long day and the pressure to get home. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Time Lapse (video)",
+        url: "https://www.youtube.com/watch?v=83uvKWJS2os",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report CEN12FA108 (N3590T)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/82539/pdf",
+        publisher: "NTSB",
+      },
+      {
+        label: "NTSB Safety Alert SA-017: In-Cockpit NEXRAD Mosaic Imagery",
+        url: "https://www.ntsb.gov/advocacy/safety-alerts/Documents/SA-017.pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
+  {
+    slug: "into-thin-air",
+    title: "Into Thin Air: Clear Skies, High Terrain and a Slow Climb",
+    section: "Decision-Making",
+    summary:
+      "On a clear July evening, a 12,000-hour pilot ferrying a Bonanza G36 out of Aspen turned down an IFR departure and flew east VFR, climbing a few hundred feet per minute toward rising terrain. The airplane turned into a bowl ringed by 13,000-foot peaks and hit the mountain. A case study from the AOPA Air Safety Institute and the NTSB final report on performance and terrain.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Clear skies can be the most dangerous weather in the mountains, because nothing about them says stop. The risk on a warm afternoon at a high airport is the airplane itself, and how little climb it has left.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: Into Thin Air,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/103412/pdf) (CEN21FA305), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "8PBUVMCbmFQ",
+        title: "AOPA Air Safety Institute: Accident Case Study: Into Thin Air",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Into Thin Air.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "Weather wasn't the problem here. Aspen was clear with 10 miles visibility. That's the lesson for any briefing tool: good weather tells you nothing about whether the airplane will climb over the terrain on your route. PlaneWX's FRAT is built on the FAA's PAVE checklist, and the E in PAVE, environment, is where terrain and a warm afternoon at a high airport belong. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How the FRAT works](https://app.planewx.ai/help/frat)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On July 3, 2021, a 58-year-old airline transport pilot with an estimated 12,000 hours was ferrying a Beechcraft G36 Bonanza to its owner's home field in New York. The owner, a private pilot who had bought the airplane in April, rode along. They stopped at Aspen (ASE), elevation 7,720 feet, for fuel and lunch. The temperature there was 25\u00B0C.",
+      },
+      {
+        type: "paragraph",
+        text: "The pilot asked for an IFR clearance to Des Moines. The clearance included the LINDZ Nine departure, which required climbing to 16,000 feet. He said he couldn't accept 16,000 feet and would depart VFR instead. Asked whether he'd fly down the valley or go east through the ridge, he said he'd decide \u201conce we see what's going on\u201d after takeoff.",
+      },
+      {
+        type: "paragraph",
+        text: "He circled near the airport to climb, at 340 to 360 feet per minute, and headed east once past 10,000 feet. The terrain rose and the climb rate fell. At 6:36 PM the airplane was at 10,820 feet, about 600 feet above the ground, climbing 150 to 250 feet per minute. Two minutes later, at about 11,300 feet, it turned into a semicircular bowl where the peaks reached about 13,000 feet, turned left and hit trees and rising terrain. Both people aboard were killed. The NTSB found no problem with the airplane or engine. It could not determine how much experience the pilot had in single-engine piston airplanes or flying through the Rockies, or whether he was prepared to fly the mountain pass visually.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe pilot\u2019s failure to navigate through mountainous terrain, which resulted in controlled flight into terrain.\u201d",
+      },
+      {
+        type: "heading",
+        text: "Why performance and terrain matter",
+      },
+      {
+        type: "paragraph",
+        text: "The airplane was doing about what its manual said it could at that altitude. The trouble was a route that asked for more climb than it had. Heading for a pass without a fixed plan left few options once the terrain rose faster than the airplane could climb.",
+      },
+      {
+        type: "list",
+        items: [
+          "Work out climb performance for the actual temperature, elevation and weight before a mountain departure.",
+          "Pick your route out of a mountain airport on the ground, not after takeoff.",
+          "Climb over the airport until you have the altitude to clear the pass with room to spare.",
+          "Approach ridges and passes at an angle so you always have room to turn away toward lower terrain.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "Experience in one kind of flying doesn't carry over to every kind. A departure you haven't flown, in an airplane you don't fly often, deserves a plan as careful as any approach in bad weather. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "Brief the weather in PlaneWX, then use the FRAT, which opens 4 hours before departure, to think through the rest of PAVE: how current you are in this airplane, the terrain and conditions on the route, and any pressure to keep the trip moving. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Into Thin Air (video)",
+        url: "https://www.youtube.com/watch?v=8PBUVMCbmFQ",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report CEN21FA305 (N36JJ)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/103412/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
 ]
 
 /** Tips as archived from each Weekly PIREP. Prepend newest first when adding. */
