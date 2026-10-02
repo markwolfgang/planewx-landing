@@ -495,7 +495,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "The NTSB determined the probable cause to be: "The pilot’s failure to maintain altitude during an instrument approach, which resulted in a descent below the approach path and impact with a vent stack. Also causal was the failure of the processing plant to correctly paint the vent stacks, which had been determined by the FAA to be a hazard to navigation due to their proximity to the landing approach path. Contributing to the accident was the likely distraction/illusion/obscuration created by steam from the processing plant, which intermittently obscured the runway."",
+        text: "The NTSB determined the probable cause to be: “The pilot’s failure to maintain altitude during an instrument approach, which resulted in a descent below the approach path and impact with a vent stack. Also causal was the failure of the processing plant to correctly paint the vent stacks, which had been determined by the FAA to be a hazard to navigation due to their proximity to the landing approach path. Contributing to the accident was the likely distraction/illusion/obscuration created by steam from the processing plant, which intermittently obscured the runway.”",
       },
       {
         type: "heading",
