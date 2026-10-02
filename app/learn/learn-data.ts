@@ -20,11 +20,12 @@ export const LEARN_PUBLIC_MIN_ARTICLES = 3
  * LEARN_PUBLIC is true and draft is false. Tips of the Week are never on this
  * list (hub archive only). Add a slug here deliberately when SEO clears it.
  *
- * Shipped now: mos-vs-nbm-vs-taf.
+ * Shipped now: mos-vs-nbm-vs-taf, risk-stacking.
  * Still gated: tcf-vs-ecfp, tip what-the-wx-score-actually-is, Tips archive.
  */
 export const INDEXABLE_LEARN_ARTICLE_SLUGS = [
   "mos-vs-nbm-vs-taf",
+  "risk-stacking",
 ] as const
 
 export type LearnSection =
