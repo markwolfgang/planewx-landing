@@ -68,6 +68,9 @@ export function SiteFooter({ variant }: { variant: string }) {
           <a href="/research/turbulence-safety" className="hover:text-white/60 transition-colors">
             Research
           </a>
+          <a href="/learn" className="hover:text-white/60 transition-colors" data-testid="footer-learn">
+            Learn
+          </a>
           <a href="/privacy" className="hover:text-white/60 transition-colors">
             Privacy
           </a>
