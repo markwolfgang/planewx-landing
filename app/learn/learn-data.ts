@@ -45,6 +45,8 @@ export type LearnBodyBlock =
   | { type: "heading"; text: string }
   | { type: "list"; items: string[] }
   | { type: "htmlComment"; text: string }
+  /** Click-to-load YouTube embed (nocookie, loads only on play). */
+  | { type: "youtube"; videoId: string; title: string; caption?: string }
 
 /** Decision-support loop stages. Mentor is an optional layer, not a fifth step. */
 export type LearnLoopStage =
@@ -467,7 +469,13 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "The AOPA Air Safety Institute (ASI) walks through a clear example in its video \"Accident Case Study: Risk Stacking\": https://www.youtube.com/watch?v=QdbR3Jba7A4. The summary below is ours. ASI's video came out before the NTSB final report (WPR22FA151). Where the two differ, we use the NTSB report. For the official probable cause, read the NTSB final report: https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/104938/pdf. Watch the full case study for ASI's own analysis.",
+        text: "The AOPA Air Safety Institute (ASI) walks through a clear example in its video \"Accident Case Study: Risk Stacking,\" which you can watch below. The summary that follows is ours. ASI's video came out before the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/104938/pdf) (WPR22FA151). Where the two differ, we use the NTSB report, which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "QdbR3Jba7A4",
+        title: "AOPA Air Safety Institute: Accident Case Study: Risk Stacking",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Risk Stacking.",
       },
       {
         type: "heading",
