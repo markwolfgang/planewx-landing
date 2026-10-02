@@ -1513,6 +1513,264 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "high-aspirations",
+    title: "High Aspirations: A Heavy Airplane on a Hot Day",
+    section: "Decision-Making",
+    summary:
+      "A 108-hour pilot with five hours in his Piper Lance took off near maximum gross weight, with a tailwind, at a density altitude above 7,200 feet. The airplane never climbed more than 120 feet above the ground and stalled into a West Jordan, Utah neighborhood. A case study from the AOPA Air Safety Institute and the NTSB final report on takeoff performance.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Heat, altitude, weight and wind each take a bite out of takeoff performance. One at a time they're manageable. All four at once can leave an airplane that lifts off and then barely climbs at all.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: High Aspirations,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/101669/pdf) (WPR20LA238), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "sTo4GGRExGE",
+        title: "AOPA Air Safety Institute: Accident Case Study: High Aspirations",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: High Aspirations.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "The sky was clear. The danger was the temperature, the wind and the load. A PlaneWX briefing includes the current observations for your departure airport, which give you the temperature and wind you need for a takeoff performance check. The FRAT is built on the FAA's PAVE checklist, and it's a good place to admit when you're new to an airplane. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How the FRAT works](https://app.planewx.ai/help/frat)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On July 25, 2020, a 43-year-old instrument-rated private pilot with about 108 hours, 5 of them in make and model, loaded five passengers into a Piper PA-32R-300 Lance at South Valley Regional Airport (U42) in West Jordan, Utah. He had filed IFR for Page, Arizona. The tanks were filled. His wife said he had computed weight and balance, knew about the high temperature and altitude, and assured her \u201cit's all good.\u201d The NTSB calculated the takeoff weight at about 3,531 pounds against a 3,600 pound maximum.",
+      },
+      {
+        type: "paragraph",
+        text: "It was 32\u00B0C, and the density altitude was above 7,200 feet. The windsock showed wind from the north as the airplane took off on runway 16, a tailwind the NTSB estimated at 7 to 10 knots. The airplane lifted off about 3,700 feet down the 5,862 foot runway. It then made a series of shallow climbs and descents and never got more than about 120 feet above the ground. The NTSB said the airplane should have been able to climb about 500 feet per minute.",
+      },
+      {
+        type: "paragraph",
+        text: "About 1 minute 15 seconds after takeoff, a security camera caught the airplane descending steeply into a neighborhood about 1.5 miles southeast of the airport. It struck a tree and three structures, and a fire followed. The pilot, two passengers and one person on the ground were killed, and three passengers were injured. Engine data showed the engine running normally until the last seconds, when the pilot appeared to be adjusting the mixture.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe pilot's failure to maintain the airplane\u2019s speed during takeoff near the airplane\u2019s maximum gross weight in high-density altitude conditions, which resulted in the exceedance of the airplane's critical angle of attack and led to an aerodynamic stall, loss of control, and subsequent impact with structures and terrain.\u201d",
+      },
+      {
+        type: "heading",
+        text: "Why the numbers matter",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB said the pilot likely responded to the poor climb by pitching down for airspeed and then back up to climb, until the wing exceeded its critical angle of attack. When an airplane won't climb, pulling harder only makes it slower.",
+      },
+      {
+        type: "list",
+        items: [
+          "Run takeoff and climb numbers from the performance charts for the actual temperature, elevation and weight.",
+          "Check the wind before you pick a runway. A tailwind on a hot day eats runway you may not have.",
+          "Set an abort point. If you aren't flying by a certain spot on the runway, stop.",
+          "If the climb is anemic after liftoff, hold the best climb speed and fly the airplane. Don't trade airspeed for altitude near the ground.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "A new airplane, a full load and a hot day at altitude are each worth a pause. Together they deserve a hard look before you taxi. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "Use your PlaneWX briefing for departure temperature and wind, then run the performance numbers yourself. In the FRAT, which opens 4 hours before departure, be honest about your time in type and the conditions. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: High Aspirations (video)",
+        url: "https://www.youtube.com/watch?v=sTo4GGRExGE",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report WPR20LA238 (N7677C)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/101669/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
+  {
+    slug: "deadly-disorientation",
+    title: "Deadly Disorientation: Leaving an Approach Between Cloud Layers",
+    section: "Decision-Making",
+    summary:
+      "An instrument-rated Cessna 340 pilot drifted off the localizer on an ILS with a circle to land, called the runway in sight, and lost the protection of the approach. Between two cloud layers he struggled to hold altitude, then entered a steep descending turn into Santee, California. A case study from the AOPA Air Safety Institute and the NTSB final report on spatial disorientation.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "An instrument approach is a protected path to the ground. Leave it early, below the clouds but not clear of them, and you give up that protection while still needing the instruments to stay upright.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: Deadly Disorientation,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/104080/pdf) (WPR22FA004), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "yYWThUkkmIk",
+        title: "AOPA Air Safety Institute: Accident Case Study: Deadly Disorientation",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Deadly Disorientation.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "PlaneWX can't fly an approach for you. Before you go, it scores destination ceilings against the personal minimums you set, and the FRAT pulls your instrument currency from your pilot profile. That makes it easier to ask, on the ground, whether a low ceiling with a circle to land at the end is an approach you're ready for today. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How personal minimums work](https://app.planewx.ai/help/personal-minimums)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On October 11, 2021, a 64-year-old commercial pilot with an instrument rating and about 1,566 hours was flying a Cessna 340A into Montgomery-Gibbs Executive Airport (MYF) in San Diego. The controller's weather update gave 10 miles visibility, a broken layer at 1,700 feet and an overcast at 2,800 feet. He was cleared for the ILS to runway 28R, circling to land on runway 23. His logbook showed a recent instrument proficiency check but no circle to land in the period it covered. The airplane's avionics had been replaced about 11 months earlier, and the NTSB found no record of training on that equipment.",
+      },
+      {
+        type: "paragraph",
+        text: "About to join the localizer, the airplane drifted right of course. Asked if he was correcting, the pilot said yes, then about 9 seconds later reported \u201cVFR runway 23.\u201d The controller said he wasn't tracking the localizer, canceled the approach clearance and told him to climb to 3,000 feet, then issued a low altitude alert. Over the next 2 minutes the controller told him several times to climb to 4,000 feet. The pilot acknowledged, but the airplane stayed between 2,500 and 3,500 feet, between the two cloud layers and in and out of the clouds. After another low altitude alert and an instruction to expedite a climb to 5,000 feet, the pilot stopped responding.",
+      },
+      {
+        type: "paragraph",
+        text: "The airplane climbed to 3,500 feet, then entered a descending right turn at about 5,000 feet per minute and struck the ground in a Santee neighborhood. The pilot and one person on the ground were killed, and two others on the ground were seriously injured. The NTSB found no problem with the airframe or engines.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cLoss of control due to spatial disorientation.\u201d",
+      },
+      {
+        type: "heading",
+        text: "Why staying on the approach matters",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB noted that continuing the ILS would have let the pilot fly a stabilized approach in protected airspace and get below the clouds before circling. Leaving it put him maneuvering in instrument conditions, which is where spatial disorientation takes hold. The NTSB could not determine whether the avionics were set up wrong for the approach.",
+      },
+      {
+        type: "list",
+        items: [
+          "Fly the whole approach. A glimpse of the runway through a broken layer is not the same as being clear of the clouds.",
+          "Know the new avionics cold before you fly them in instrument conditions. Get training on the exact equipment in your airplane.",
+          "Practice circling approaches. They're low, slow and close to the ground, and they rarely show up in routine training.",
+          "When a controller says climb, climb now, on instruments, and fly the attitude indicator.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "Currency on paper and readiness for today's approach aren't the same thing. The ground is the best place to decide whether this weather, this procedure and this panel are a good match. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "Set ceiling and visibility personal minimums that reflect the approaches you actually fly well, and let the WX Score check every briefing against them. In the FRAT, which opens 4 hours before departure, confirm your instrument currency and be honest about new equipment. After the flight, a Self Debrief is a good place to note anything that surprised you. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Deadly Disorientation (video)",
+        url: "https://www.youtube.com/watch?v=yYWThUkkmIk",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report WPR22FA004 (N7022G)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/104080/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
+  {
+    slug: "faulty-assumptions",
+    title: "Faulty Assumptions: The Fuel You Think You Have",
+    section: "Decision-Making",
+    summary:
+      "A Baron pilot planned an IFR trip on fuel numbers that had been wrong for eight days. Both engines quit on a GPS approach to Kerrville, Texas, and the airplane spun in below its minimum control speed. A case study from the AOPA Air Safety Institute and the NTSB final report on verifying fuel before every flight.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Fuel planning is only as good as the number you start with. If the starting number is wrong, every calculation after it is wrong too, and the airplane will tell you at the worst possible time.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: Faulty Assumptions,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/99291/pdf) (CEN19FA124), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "ydogesjgmzU",
+        title: "AOPA Air Safety Institute: Accident Case Study: Faulty Assumptions",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Faulty Assumptions.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "PlaneWX doesn't measure your fuel. What the briefing does show is the weather that decides how much you need. When the destination forecast calls for an instrument approach, that approach, the missed and the trip to an alternate all have to be in the tanks before you leave. The FRAT is a good moment to stop and check that the fuel you're counting on is really there. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How the FRAT works](https://app.planewx.ai/help/frat)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On April 22, 2019, a 65-year-old airline transport pilot left West Houston Airport (IWS) in a Beech 58 Baron on an IFR flight plan to Kerrville, Texas (ERV) with five passengers. His filed flight plan showed a minimum fuel load of 58 gallons, a figure that didn't account for the instrument approach or an alternate. His own planning log showed only 50 or 54 gallons aboard. The NTSB found the airplane was over its maximum gross weight even with 50 gallons, and said the pilot likely didn't want to add more.",
+      },
+      {
+        type: "paragraph",
+        text: "The real number was lower. Eight days and five flights earlier, the airplane had been fueled at his request but not completely filled. He wasn't there for the fueling and didn't cross-check the receipt against his logs, so the error carried through every flight after it. The NTSB estimated about 38 gallons were aboard at takeoff. Faulty fuel quantity transmitters would have made each wing gauge read about 5 gallons high, which may have seemed to confirm the pilot's numbers.",
+      },
+      {
+        type: "paragraph",
+        text: "On the GPS approach to Kerrville, with a ceiling around 1,200 feet at the airport, both engines lost power within 10 seconds of each other. The left engine came back about 40 seconds later. The pilot didn't feather the right propeller or make sure the flaps were up, as the manufacturer's engine out procedure calls for. Below the clouds at about 500 feet above the ground, the airspeed dropped below the minimum control speed and the airplane entered a right spin. All six people aboard were killed.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe pilot's inadequate preflight fuel planning and fuel management, which resulted in a loss of engine power due to fuel exhaustion. Also causal was the pilot's failure to follow the one-engine inoperative checklist and maintain the airplane's minimum controllable airspeed by properly configuring the airplane, which resulted in a loss of airplane controllability.\u201d",
+      },
+      {
+        type: "heading",
+        text: "Why verifying fuel matters",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB found a chain of small errors on the ground: a fueling that wasn't recorded right, a fuel load that wasn't verified, gauges that read high and a decision to leave on too little fuel in an overweight airplane. Any one of them caught before takeoff would have broken the chain.",
+      },
+      {
+        type: "list",
+        items: [
+          "Verify fuel with your eyes or a dipstick before every flight. Don't carry a number forward from a log.",
+          "Match every fuel receipt to your records, especially when you weren't there for the fueling.",
+          "Plan IFR fuel for the approach, the missed approach and the alternate, plus your reserve.",
+          "In a twin, know the engine out procedure by memory and practice it, because the airplane gives you seconds, not minutes.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "Weight limits and weather can tempt you to skimp on fuel. The answer is fewer people or bags, or a fuel stop, not less reserve. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "Check the destination forecast in your PlaneWX briefing to see whether you'll need an approach and an alternate, and plan fuel for both. Use the FRAT, which opens 4 hours before departure, as your moment to confirm the fuel and the load are what you planned. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Faulty Assumptions (video)",
+        url: "https://www.youtube.com/watch?v=ydogesjgmzU",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report CEN19FA124 (N501CE)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/99291/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
 ]
 
 /** Tips as archived from each Weekly PIREP. Prepend newest first when adding. */
