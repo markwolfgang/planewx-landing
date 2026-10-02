@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import {
   LEARN_ARTICLES,
   LEARN_DISCLAIMER,
@@ -64,6 +65,19 @@ function renderInlineText(text: string) {
     const match = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part)
     if (!match) return <span key={i}>{part}</span>
     const [, label, href] = match
+    if (/^https?:\/\//.test(href)) {
+      return (
+        <a
+          key={i}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sky-400 hover:text-sky-300 hover:underline"
+        >
+          {label}
+        </a>
+      )
+    }
     return (
       <Link
         key={i}
@@ -88,6 +102,38 @@ function BodyBlocks({ blocks }: { blocks: LearnBodyBlock[] }) {
               aria-hidden="true"
               dangerouslySetInnerHTML={{ __html: `<!-- ${block.text} -->` }}
             />
+          )
+        }
+        if (block.type === "callout") {
+          return (
+            <aside
+              key={i}
+              aria-label={block.title}
+              className="rounded-2xl border border-sky-500/30 bg-sky-500/[0.07] p-5 sm:p-6"
+            >
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-sky-300">
+                {block.title}
+              </p>
+              <p className="text-white/80">{renderInlineText(block.text)}</p>
+            </aside>
+          )
+        }
+        if (block.type === "youtube") {
+          return (
+            <figure key={i} className="my-2">
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black">
+                <YouTubeFacade
+                  videoId={block.videoId}
+                  title={block.title}
+                  sizes="(max-width: 768px) 100vw, 720px"
+                />
+              </div>
+              {block.caption ? (
+                <figcaption className="mt-2 text-xs text-white/45">
+                  {block.caption}
+                </figcaption>
+              ) : null}
+            </figure>
           )
         }
         if (block.type === "heading") {
