@@ -888,6 +888,278 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "delayed-reaction",
+    title: "Delayed Reaction: Severe Icing and the Minutes That Matter",
+    section: "Decision-Making",
+    summary:
+      "An instrument-rated TBM 700 pilot climbed into icing he'd been warned about and asked for a higher altitude instead of declaring. About two minutes later the airplane came apart. A case study from the AOPA Air Safety Institute and the NTSB final report on using your command authority early.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Ice protection buys time. It doesn't buy permission to stay. When ice builds faster than the airplane can handle, the only fix is to leave, and the longer you wait for a routine clearance, the less airplane you have left to leave with.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: Delayed Reaction,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/82544/pdf) (ERA12FA115), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "0JkLR_xgayM",
+        title: "AOPA Air Safety Institute: Accident Case Study: Delayed Reaction",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Delayed Reaction.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "No forecast catches every encounter, and the NTSB found this severe icing wasn't forecast. What a briefing can do is show you the icing that is forecast before you commit. PlaneWX's icing analysis compares several weather models along your route and altitude and, for US routes within 18 hours of departure, adds the FAA's Current Icing Product and icing forecast. Icing is one of the categories you set personal minimums for, and the WX Score runs against them. The exit plan is yours to decide on the ground. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How icing analysis works](https://app.planewx.ai/help/icing-analysis)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On December 20, 2011, a 45-year-old instrument-rated private pilot with about 1,400 hours departed Teterboro, New Jersey (TEB) in a Socata TBM 700 on an IFR flight plan to Atlanta (PDK), planning to cruise at FL260. Four passengers were aboard. He had filed his flight plan online at 0700, but the NTSB found no record that he got a weather briefing, and no weather was requested or issued on the ground at Teterboro. An AIRMET for moderate icing from the freezing level to FL200 was issued at 0945. The flight departed about 0950.",
+      },
+      {
+        type: "paragraph",
+        text: "On the climb, the controller warned of moderate rime icing from 15,000 to 17,000 feet, with light rime at 14,000, and asked the pilot to report if it got worse. The pilot said they'd let him know and that if they could go straight through, \u201cit\u2019s no problem for us.\u201d He entered the clouds climbing through about 12,800 feet.",
+      },
+      {
+        type: "paragraph",
+        text: "At 10:02, level near 16,800 feet, the pilot told the controller \u201clight icing has been present for a little while and a higher altitude would be great.\u201d The airplane's groundspeed was about 101 knots. Seventeen seconds later he reported \u201ca little rattle\u201d and asked to climb as soon as possible. The controller coordinated and cleared him to FL200 about 25 seconds later. Just over a minute after that, the airplane peaked at 17,800 feet, turned sharply left and descended. Passing 17,400 feet the pilot transmitted \u201cand N731CA\u2019s declaring\u2026\u201d and nothing more. The outboard right wing separated in flight and struck the tail. The airplane hit Interstate 287 near Morristown, and all five people aboard were killed.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe airplane\u2019s encounter with unforecasted severe icing conditions that were characterized by high ice accretion rates and the pilot's failure to use his command authority to depart the icing conditions in an expeditious manner, which resulted in a loss of airplane control.\u201d",
+      },
+      {
+        type: "heading",
+        text: "Why the delay matters",
+      },
+      {
+        type: "paragraph",
+        text: "Pilots in the area that morning reported icing, and at least three crews called it severe. The airplane's handbook warned that it wasn't certificated for severe icing and told pilots who meet it to request priority handling and change altitude or route immediately. The NTSB said the pilot likely either didn't recognize how bad the icing was or was reluctant to use his command authority to get out right away.",
+      },
+      {
+        type: "list",
+        items: [
+          "Treat a controller's icing report as a reason to plan your exit before you enter the clouds, not after.",
+          "Watch the airspeed. A steady drop at the same power setting is the airplane telling you how much ice it's carrying.",
+          "Declare early. \u201cRequest higher\u201d puts you in line. An emergency puts you first.",
+          "Know your airplane's limits cold. Ice protection certified for known icing is not certified for severe icing.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "As pilot in command, you can take the altitude or heading you need and sort out the paperwork later. That authority only helps if you use it while there's still time. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "Brief every flight, even a short hop out of a busy airport. PlaneWX's icing analysis shows model agreement, cloud layers and SLD potential along your route and altitude, and the WX Score checks it against your own icing limits. Use the FRAT, which opens 4 hours before departure, to write down your plan if the ice is worse than forecast. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Delayed Reaction (video)",
+        url: "https://www.youtube.com/watch?v=0JkLR_xgayM",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report ERA12FA115 (N731CA)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/82544/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
+  {
+    slug: "hazardous-attitudes",
+    title: "Hazardous Attitudes: A 10,000-Hour Pilot Departs VFR Into a Warning",
+    section: "Decision-Making",
+    summary:
+      "A 75-year-old instrument-rated commercial pilot left Fullerton VFR with no briefing on record, after the tower warned of deteriorating weather ahead. Six minutes later his Cessna 414 broke up over Yorba Linda. A case study from the AOPA Air Safety Institute and the NTSB final report on the five hazardous attitudes.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Experience is supposed to protect you. Sometimes it does the opposite: it gives you a long record of getting away with things. The FAA teaches five hazardous attitudes because they show up in pilots of every experience level, and they're hardest to see in yourself.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: Hazardous Attitudes,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/98938/pdf) (WPR19FA079), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "MBL1iy0V9VM",
+        title: "AOPA Air Safety Institute: Accident Case Study: Hazardous Attitudes",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Hazardous Attitudes.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "Every PlaneWX briefing pulls in METARs, TAFs, AIRMETs, SIGMETs and more for your route, and Convective Watch shows up when convective activity is detected along it. The WX Score runs that weather against your own personal minimums, so the comparison happens before an attitude has a chance to talk you out of it. The FRAT, which opens 4 hours before departure, asks you to rate yourself honestly and name any pressure to go. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How personal minimums work](https://app.planewx.ai/help/personal-minimums)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On February 3, 2019, a 75-year-old commercial pilot with an instrument rating and about 10,235 hours departed Fullerton Municipal Airport (FUL) in Southern California in a Cessna 414, headed VFR to Minden, Nevada (MEV). He filed no flight plan, and the NTSB found no evidence that he got a weather briefing. AIRMETs for moderate turbulence below 12,000 feet and mountain obscuration were in effect for the area.",
+      },
+      {
+        type: "paragraph",
+        text: "The weather at Fullerton was VFR. With the takeoff clearance, the tower controller cautioned the pilot about deteriorating weather about 4 miles east of the airport. He departed about 1339 and made a climbing left turn to the east, into an area where conditions had turned to IMC with rain showers and a microburst.",
+      },
+      {
+        type: "paragraph",
+        text: "About 5\u00bd minutes after takeoff, the airplane was about 7,800 feet above the ground when it entered a rapid descending right turn. Data from a portable ADS-B receiver aboard showed that in the last 15 seconds the pitch swung between 45\u00b0 nose down and 75\u00b0 nose up, and the bank between 170\u00b0 left and 150\u00b0 right. Witnesses saw the airplane come out of the clouds and break apart. Pieces of the airplane came down on a street and a house in Yorba Linda, and the house burned. The pilot and four people on the ground were killed, and two more on the ground were seriously injured.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe pilot\u2019s failure to maintain airplane control after entering instrument meteorological conditions (IMC) while climbing due to spatial disorientation, which resulted in the exceedance of the airplane\u2019s design stress limits and subsequent in-flight break-up. Contributing to accident was the pilot's improper decision to conduct the flight under visual flight rules and to continue the flight when conditions deteriorated.\u201d",
+      },
+      {
+        type: "heading",
+        text: "The five hazardous attitudes",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB report doesn't name an attitude, and we won't guess at what this pilot was thinking. ASI's video covers how hazardous attitudes can betray pilots who don't heed warnings. Here are the five the FAA teaches, with the antidote for each, and a question this flight raises.",
+      },
+      {
+        type: "list",
+        items: [
+          "Anti-authority (\u201cDon't tell me.\u201d) Antidote: Follow the rules. They are usually right. Question: when a controller warns you about weather ahead, do you treat it as information or as an opinion?",
+          "Impulsivity (\u201cDo it quickly.\u201d) Antidote: Not so fast. Think first. Question: did you get a briefing for this flight, or just look out the window?",
+          "Invulnerability (\u201cIt won't happen to me.\u201d) Antidote: It could happen to me. Question: would you let a student make this departure?",
+          "Macho (\u201cI can do it.\u201d) Antidote: Taking chances is foolish. Question: why go VFR toward weather when you hold an instrument rating and the airplane is IFR equipped?",
+          "Resignation (\u201cWhat's the use?\u201d) Antidote: I'm not helpless. I can make a difference. Question: once you're in it, do you still believe a turn back or a call to ATC can change the outcome?",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "An instrument rating only protects you when you use it. Flying VFR into weather means flying without a clearance, an altitude assignment or a plan for the clouds, which is exactly when an instrument pilot is easiest to catch off guard.",
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "Hazardous attitudes are hard to spot from the inside, and there's no second pilot to call them out. A short, honest routine before every flight gives you a chance to catch one. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "Brief every flight, short or long. PlaneWX runs the briefing against your own personal minimums, so the weather is measured against the limits you set when you were calm. The FRAT opens 4 hours before departure and asks for honest Pilot, Aircraft, enVironment and External self-rates, including pressure to go. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Hazardous Attitudes (video)",
+        url: "https://www.youtube.com/watch?v=MBL1iy0V9VM",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report WPR19FA079 (N414RS)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/98938/pdf",
+        publisher: "NTSB",
+      },
+      {
+        label: "FAA Pilot's Handbook of Aeronautical Knowledge (FAA-H-8083-25), Chapter 2: Aeronautical Decision-Making",
+        url: "https://www.faa.gov/regulations_policies/handbooks_manuals/aviation/phak",
+        publisher: "FAA",
+      },
+    ],
+  },
+  {
+    slug: "night-falls-on-final",
+    title: "Night Falls on Final: Currency, Avionics and a Dark Approach",
+    section: "Decision-Making",
+    summary:
+      "An experienced pilot, out of instrument and night currency, struggled with his GPS and autopilot after a runway change at Raleigh-Durham, then descended into trees a mile short. A case study from the AOPA Air Safety Institute and the NTSB final report on what recency really protects.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Currency rules can feel like paperwork. Three approaches, three night landings, check the box. But the skills they protect are perishable: programming a change in the box quickly, catching the autopilot when it drops off, and flying a stable path to a runway you can barely see. This accident shows what happens when those skills go stale on the same night.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: Night Falls on Final,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/100457/pdf) (ERA20FA014), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "rItYoEwFZ3I",
+        title: "AOPA Air Safety Institute: Accident Case Study: Night Falls on Final",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Night Falls on Final.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "The PlaneWX FRAT knows when a flight lands after dark. It pre-fills day or night, and it pulls your night and instrument currency from your pilot profile, with an override if your logbook says otherwise. It opens 4 hours before departure, when you can honestly rate how you feel, including after a long day. Your WX Score runs the destination weather against your own minimums. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [See how the FRAT works](/learn/flight-risk-assessment-tool)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On October 20, 2019, a 72-year-old instrument-rated private pilot with about 2,956 hours departed Columbus, Georgia (CSG) at 4:05 p.m. in a Piper PA-32-301 Saratoga on an IFR flight plan to Raleigh-Durham (RDU). One passenger was aboard. According to his logbook, his last instrument experience was three approaches in November 2018, and his last night flight was half an hour that same month. He did not meet the recent instrument or night requirements to carry a passenger at night in IMC.",
+      },
+      {
+        type: "paragraph",
+        text: "Sunset at Raleigh was 6:31 p.m., and civil twilight ended at 6:57. At 6:25 the pilot checked in with approach and asked for the RNAV GPS runway 5R approach. The controller told him to expect runway 32 instead. He said he was set up for 5R but would change.",
+      },
+      {
+        type: "paragraph",
+        text: "Over the next half hour the flight came apart in small pieces. He told the tower his GPS approach \u201cjust shut off\u201d and that he needed to climb, confirmed he was in IMC, and said he was having trouble with his heading. A few minutes later he reported his autopilot had shut off. He drifted off assigned altitudes, asked the controller to spell a fix so he could enter it, and missed it. Controllers vectored him back around.",
+      },
+      {
+        type: "paragraph",
+        text: "At 7:17 he broke out of the clouds about 9 miles from the runway, but had trouble finding the runway lights, so the controller turned up their intensity. He got two low altitude alerts on final. His last transmission said he had the runway in sight. A pilot who had just landed watched the airplane descend into the trees of a dark state park just over a mile short of runway 32, with its landing light off. Both people aboard were killed. The 6:51 weather at RDU was 1,000 feet broken and 10 miles visibility.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe pilot\u2019s failure to maintain a safe glidepath during final approach to the runway, which resulted in a collision with trees and terrain. Contributing was the pilot\u2019s lack of recent instrument flight experience.\u201d",
+      },
+      {
+        type: "heading",
+        text: "What recency really protects",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB said his trouble with the GPS and autopilot was likely due to a lack of recent instrument practice. None of the individual problems was catastrophic. Together, at night, at the end of a long flight, they used up his attention, and he had nothing left for the last mile.",
+      },
+      {
+        type: "list",
+        items: [
+          "Check your own currency before you plan a flight that ends at night or in IMC, and be honest about proficiency, which is a higher bar than currency.",
+          "Expect the runway change. Brief the other likely approaches before you leave, so a switch is a button press, not a rebuild.",
+          "When the automation drops off, fly the airplane first. Ask for a hold or a block of airspace to sort out the box.",
+          "On a dark final over unlit terrain, use the approach guidance all the way down, even after you see the runway.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "Nobody checks your logbook before you start the engine. If you aren't current or proficient for the flight you're planning, you're the only one who can know it in time. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["FRAT", "GO / NO-GO", "Self Debrief"],
+      toolOrHabit:
+        "The PlaneWX FRAT opens 4 hours before departure, pre-fills day or night for the flight, and carries your night and instrument currency from your pilot profile, with an override. After you land, a Self Debrief is a good place to note what took longer than it should have, like reprogramming an approach, so you know what to practice. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Night Falls on Final (video)",
+        url: "https://www.youtube.com/watch?v=rItYoEwFZ3I",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report ERA20FA014 (N534Z)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/100457/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
 ]
 
 /** Tips as archived from each Weekly PIREP. Prepend newest first when adding. */
