@@ -24,8 +24,12 @@ describe("learn production indexing allow list", () => {
     expect(shouldIndexLearnHub()).toBe(true)
   })
 
-  it("allowlists only mos-vs-nbm-vs-taf among [slug] articles", () => {
-    expect([...INDEXABLE_LEARN_ARTICLE_SLUGS]).toEqual(["mos-vs-nbm-vs-taf"])
+  it("allowlists mos-vs-nbm-vs-taf and risk-stacking among [slug] articles", () => {
+    expect([...INDEXABLE_LEARN_ARTICLE_SLUGS]).toEqual([
+      "mos-vs-nbm-vs-taf",
+      "risk-stacking",
+    ])
+    expect(isIndexableLearnArticleSlug("risk-stacking")).toBe(true)
     expect(isIndexableLearnArticleSlug("mos-vs-nbm-vs-taf")).toBe(true)
     expect(isIndexableLearnArticleSlug("tcf-vs-ecfp")).toBe(false)
     expect(isIndexableLearnArticleSlug("what-the-wx-score-actually-is")).toBe(
@@ -35,7 +39,7 @@ describe("learn production indexing allow list", () => {
 
   it("includes only allowlisted articles in the sitemap set", () => {
     const slugs = getIndexableLearnArticles().map((a) => a.slug)
-    expect(slugs).toEqual(["mos-vs-nbm-vs-taf"])
+    expect(slugs).toEqual(["mos-vs-nbm-vs-taf", "risk-stacking"])
   })
 
   it("indexes and emits JSON-LD for MOS only", () => {
@@ -78,13 +82,14 @@ describe("learn production indexing allow list", () => {
     ])
   })
 
-  it("includes exactly 19 learn URLs in the sitemap path set", () => {
+  it("includes exactly 20 learn URLs in the sitemap path set", () => {
     const paths = getLearnSitemapPaths()
-    expect(paths).toHaveLength(19)
+    expect(paths).toHaveLength(20)
     expect(paths[0]).toBe("/learn")
     expect(paths).toContain("/learn/aviation-weather/thunderstorms")
     expect(paths).toContain("/learn/aviation-weather/weather-risk")
     expect(paths).toContain("/learn/mos-vs-nbm-vs-taf")
+    expect(paths).toContain("/learn/risk-stacking")
   })
 
   it("registers the TAF hub in LIVE_LEARN_ROUTES", () => {

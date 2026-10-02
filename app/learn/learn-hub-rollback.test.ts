@@ -63,6 +63,7 @@ describe("learn hub LEARN_PUBLIC rollback gating", () => {
       ...AVIATION_WEATHER_HUB_PAGES.map((p) => p.href),
       ...DECISION_MAKING_HUB_PAGES.map((p) => p.href),
       "/learn/mos-vs-nbm-vs-taf",
+      "/learn/risk-stacking",
     ])
   })
 })
