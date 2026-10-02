@@ -151,6 +151,25 @@ const PARTNERS = [
       "Connecting wounded veterans and their families with free air transportation through volunteer pilots and aircraft owners.",
   },
   {
+    name: "LifeLine Pilots",
+    href: "https://www.lifelinepilots.org",
+    logo: {
+      // Official lockup from Ann Rude, Oct 2 2026. White wordmark on transparent;
+      // navy source type is unreadable on the dark card. Tagline dropped at this size.
+      src: "/partners/lifeline-pilots-white.png",
+      alt: "LifeLine Pilots logo",
+      width: 1600,
+      height: 243,
+      className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
+    },
+    memberBenefit:
+      "LifeLine volunteer pilots receive a discount on their PlaneWX subscription.",
+    // Org site is the card link. Discount line goes to /volunteer, same as VAC and ACA.
+    memberBenefitHref: "/volunteer",
+    blurb:
+      "Volunteer pilots flying medical missions for patients in need.",
+  },
+  {
     name: "FLYTE",
     href: "https://www.planewx.ai/flyte",
     logo: {
@@ -285,17 +304,22 @@ export default function PartnersPage() {
               )
               const memberBenefit =
                 "memberBenefit" in partner ? partner.memberBenefit : undefined
+              const memberBenefitHref =
+                "memberBenefitHref" in partner
+                  ? partner.memberBenefitHref
+                  : undefined
+              const benefit = memberBenefit ? (
+                <p className="text-sm font-semibold text-sky-300 leading-snug">
+                  {memberBenefit}
+                </p>
+              ) : null
               const body = (
                 <div className="flex items-start gap-3">
                   <div className="space-y-2 min-w-0 flex-1">
                     <p className="font-semibold text-white group-hover:text-sky-300 transition-colors">
                       {partner.name}
                     </p>
-                    {memberBenefit ? (
-                      <p className="text-sm font-semibold text-sky-300 leading-snug">
-                        {memberBenefit}
-                      </p>
-                    ) : null}
+                    {benefit}
                     <p className="text-sm text-white/50 leading-relaxed">
                       {partner.blurb}
                     </p>
@@ -337,6 +361,55 @@ export default function PartnersPage() {
                         {featureVideo.label}
                         <span className="sr-only"> (opens in a new tab)</span>
                       </a>
+                    </div>
+                  </li>
+                )
+              }
+
+              // Card goes to the org site. The discount line is its own link to
+              // /volunteer (same destination as VAC and ACA), so it cannot sit
+              // inside the card anchor.
+              if (memberBenefitHref && memberBenefit) {
+                return (
+                  <li key={partner.name} className="h-full">
+                    <div className="group relative flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors">
+                      <a
+                        href={partner.href}
+                        {...(isExternal
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                        className="absolute inset-0 rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                      >
+                        <span className="sr-only">
+                          {partner.name}
+                          {isExternal ? " (opens in a new tab)" : ""}
+                        </span>
+                      </a>
+                      <div className="relative flex flex-1 flex-col pointer-events-none">
+                        {logoWell}
+                        <div className="flex items-start gap-3">
+                          <div className="space-y-2 min-w-0 flex-1">
+                            <p className="font-semibold text-white group-hover:text-sky-300 transition-colors">
+                              {partner.name}
+                            </p>
+                            <a
+                              href={memberBenefitHref}
+                              className="pointer-events-auto relative z-10 block text-sm font-semibold text-sky-300 leading-snug rounded-sm hover:text-sky-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                            >
+                              {memberBenefit}
+                            </a>
+                            <p className="text-sm text-white/50 leading-relaxed">
+                              {partner.blurb}
+                            </p>
+                          </div>
+                          {isExternal ? (
+                            <ExternalLink
+                              className="h-4 w-4 shrink-0 text-white/30 group-hover:text-sky-400 transition-colors mt-1"
+                              aria-hidden
+                            />
+                          ) : null}
+                        </div>
+                      </div>
                     </div>
                   </li>
                 )
