@@ -104,6 +104,20 @@ function BodyBlocks({ blocks }: { blocks: LearnBodyBlock[] }) {
             />
           )
         }
+        if (block.type === "callout") {
+          return (
+            <aside
+              key={i}
+              aria-label={block.title}
+              className="rounded-2xl border border-sky-500/30 bg-sky-500/[0.07] p-5 sm:p-6"
+            >
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-sky-300">
+                {block.title}
+              </p>
+              <p className="text-white/80">{renderInlineText(block.text)}</p>
+            </aside>
+          )
+        }
         if (block.type === "youtube") {
           return (
             <figure key={i} className="my-2">
