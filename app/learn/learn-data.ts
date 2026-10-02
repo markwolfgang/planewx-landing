@@ -1160,6 +1160,182 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
   },
+  {
+    slug: "in-too-deep",
+    title: "In Too Deep: A VFR Pilot Turns Away From a Cleared Runway",
+    section: "Decision-Making",
+    summary:
+      "A 207-hour private pilot without an instrument rating found his destination gone IFR, was cleared to land anyway, and turned away to avoid getting stuck. Minutes later his Cirrus SR20 spiraled into the ground near Crystal Lake, Illinois. A case study from the AOPA Air Safety Institute and the NTSB final report on taking the out you're given.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Weather that was fine when you planned can be gone by the time you arrive. When that happens, the safest runway is usually the one in front of you, even if landing there wrecks the rest of the day.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: In Too Deep,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/82388/pdf) (CEN12FA083), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "W0lWsqAwYwY",
+        title: "AOPA Air Safety Institute: Accident Case Study: In Too Deep",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: In Too Deep.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "The forecast here called for VFR on arrival, and the destination went IFR about an hour before the accident. PlaneWX scores ceiling and visibility against the personal minimums you set, and on paid plans it refreshes monitored flights in the background before departure so the briefing you rely on isn't the one from last night. It doesn't fly the airplane with you, and the decision in the air is still yours. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How personal minimums work](https://app.planewx.ai/help/personal-minimums)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On November 26, 2011, a private pilot with about 207 hours and no instrument rating left Marion, Indiana in a Cirrus SR20 with three passengers, headed for DuPage Airport (DPA) west of Chicago. He flew VFR with no flight plan. Before departure he told the line service representative he was aware of the weather west of Chicago and that conditions were forecast to be VFR when they arrived.",
+      },
+      {
+        type: "paragraph",
+        text: "They weren't. DuPage had been marginal VFR and dropped to IFR about an hour before the accident, with an overcast around 900 feet and visibility falling in light rain and mist. The pilot called the DuPage tower and was told the airport was IFR. About 30 seconds later he said he had flown over the airport by mistake. The controller cleared him to reverse course and land, and he acknowledged.",
+      },
+      {
+        type: "paragraph",
+        text: "Then he lost sight of the airport and asked about another field with better visibility because he didn't \u201cwant to get in there and get stuck all day.\u201d He told the controller he was \u201cin and out of the clouds,\u201d and when asked if he was IFR qualified, he said he was in \u201cIFR training and I've let this get around me.\u201d Chicago approach gave him nearby airports reporting VFR, and he said he'd go to Chicago Executive. About seven minutes later he changed his mind, saying he didn't \u201cwant to mess with the weather\u201d and didn't \u201cwant to get stuck in here.\u201d",
+      },
+      {
+        type: "paragraph",
+        text: "Radar showed a gentle right turn that tightened into a steep spiral. Witnesses heard what sounded like aerobatics in the clouds, then saw the airplane come out steeply nose down before it hit the ground near Crystal Lake. All four people aboard were killed. The examination found nothing wrong with the airplane.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201cThe noninstrument-rated pilot's decision to continue flight in instrument meteorological conditions, which resulted in the pilot\u2019s spatial disorientation and loss of control of the airplane.\u201d",
+      },
+      {
+        type: "heading",
+        text: "Why turning away matters",
+      },
+      {
+        type: "paragraph",
+        text: "This pilot had a runway and a landing clearance, then a VFR airport and a controller helping him get there. Each time, the worry about being stuck on the ground won out over the risk of staying in the clouds. Being weathered in is an inconvenience. Staying in IMC without the training for it is the thing that kills.",
+      },
+      {
+        type: "list",
+        items: [
+          "\u201cIn and out of the clouds\u201d means you are already in instrument conditions. Act on it then.",
+          "Take the out you're given. A cleared runway or a VFR alternate beats a better plan you haven't reached yet.",
+          "Decide before you leave what you'll do if the destination goes IFR, and where you'll go instead.",
+          "Tell ATC plainly that you're a VFR pilot in the clouds and need help. Controllers can only work with what you tell them.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "A forecast is a starting point, not a promise, and arrival weather can change while you're on the way. Planning your alternate on the ground makes it easier to take it in the air. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "Set ceiling and visibility personal minimums that match your rating and experience, and let the WX Score check every briefing against them. Use the FRAT, which opens 4 hours before departure, to name your alternate and to be honest about external pressure to get there. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: In Too Deep (video)",
+        url: "https://www.youtube.com/watch?v=W0lWsqAwYwY",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report CEN12FA083 (N223CD)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/82388/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
+  {
+    slug: "cross-country-crisis",
+    title: "Cross-Country Crisis: No Briefing, Six Aboard and Snow on Arrival",
+    section: "Decision-Making",
+    summary:
+      "A private pilot without an instrument rating set out VFR from the Chicago area to Raleigh in January with no flight plan, no record of a weather briefing and an airplane over its weight and balance limits. Low on fuel in heavy snow, his Seneca crashed near Huntington, West Virginia. A case study from the AOPA Air Safety Institute and the NTSB final report on planning the whole route.",
+    lastReviewed: "2026-10-02",
+    draft: true,
+    body: [
+      {
+        type: "paragraph",
+        text: "Good weather at both ends of a trip says little about the middle. A long cross-country in winter crosses whatever is sitting between you and your destination, and the planning has to cover all of it.",
+      },
+      {
+        type: "paragraph",
+        text: "The AOPA Air Safety Institute (ASI) re-creates this flight in its video \"Accident Case Study: Cross-Country Crisis,\" which you can watch below. The summary that follows is ours and is based on the [NTSB final report](https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/73295/pdf) (ERA09FA145), which also gives the official probable cause. Watch the full case study for ASI's own analysis.",
+      },
+      {
+        type: "youtube",
+        videoId: "_wsa3vhnowk",
+        title: "AOPA Air Safety Institute: Accident Case Study: Cross-Country Crisis",
+        caption: "Video: AOPA Air Safety Institute, Accident Case Study: Cross-Country Crisis.",
+      },
+      {
+        type: "callout",
+        title: "Where PlaneWX fits",
+        text: "Raleigh was forecast VFR. The trouble was snow and instrument conditions along the way. A PlaneWX briefing looks at the whole route, pulling from 15+ weather products including METARs, TAFs, winds aloft, AIRMETs and SIGMETs, and the WX Score checks ceiling, visibility and icing against your personal minimums. The FRAT asks about the pressure to get somewhere. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call. [How the FRAT works](https://app.planewx.ai/help/frat)",
+      },
+      {
+        type: "heading",
+        text: "The flight, in short",
+      },
+      {
+        type: "paragraph",
+        text: "On January 30, 2009, a private pilot with single and multiengine ratings but no instrument rating took off from Lake in the Hills, Illinois in a Piper PA-34-200T Seneca, bound for Raleigh-Durham, North Carolina, about 580 nautical miles away. He had reported 2,200 hours on his last medical application. Five passengers were aboard, one more than planned.",
+      },
+      {
+        type: "paragraph",
+        text: "A friend at the airport noticed the extra passenger and asked about weight and balance. He also urged the pilot to get a weather briefing and file a flight plan. The pilot said he would do both from his cell phone, but no flight plan was filed and the NTSB found no record of a briefing. The NTSB later calculated the airplane weighed about 4,902 pounds at takeoff, over its 4,570 pound maximum, with the center of gravity behind the aft limit. Raleigh was VFR for the expected arrival time, but snow was forecast and instrument conditions were observed along the route before, during and after the flight.",
+      },
+      {
+        type: "paragraph",
+        text: "Hours into the flight, the pilot called Huntington tower with a mayday: \u201cI'm flying v-f-r...low on fuel, and need a place to land.\u201d The airport was IFR in light snow. Asked if he was capable of IFR flight, he said yes, though he wasn't instrument rated. Asked later how much fuel he had, he said \u201cnot much.\u201d For several minutes he reported ground contact and then lost it. Controllers worked him onto a surveillance radar approach to runway 30, but about 3 miles out the airplane turned about 80 degrees off course, then turned back too far, and descended below the minimum altitude he'd been given. Witnesses described the snow as heavy. The airplane struck power lines and terrain about 4 miles from the airport, and all six people aboard were killed.",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB determined the probable cause to be: \u201c(1) The pilot\u2019s failure to perform adequate preflight planning and to use available in flight resources in a timely manner and (2) his decision to continue visual-flight-rules flight in instrument meteorological conditions despite his lack of an instrument rating and proficiency in instrument flying, which resulted in spatial disorientation and impact with terrain.\u201d",
+      },
+      {
+        type: "heading",
+        text: "Why the whole route matters",
+      },
+      {
+        type: "paragraph",
+        text: "The NTSB noted the pilot didn't ask for weather help or ATC help in flight until things had already gone wrong. By then he was low on fuel, in snow, over mountainous terrain and flying an overloaded airplane on instruments he wasn't trained to use. Each of those problems was easier to fix on the ground in Illinois.",
+      },
+      {
+        type: "list",
+        items: [
+          "Brief the route, not just the endpoints. VFR at the destination doesn't mean VFR on the way there.",
+          "Run weight and balance with the people and bags actually getting in the airplane, every time the load changes.",
+          "Ask for help early. Flight Service and ATC can help with weather and options long before an emergency.",
+          "Tell controllers the truth about your rating and fuel. They plan around what you say.",
+        ],
+      },
+    ],
+    puttingItIntoPractice: {
+      whyItMatters:
+        "The pressure to make a trip happen is strongest before you leave and hardest to undo once you're airborne. Writing down the weather, the load and your own limits before departure gives you a clear moment to change the plan. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
+      loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "Brief the full route in PlaneWX and check the WX Score against personal minimums that match your rating. Use the FRAT, which opens 4 hours before departure, to be honest about external pressure and get-there-itis, and if risks are stacking, take that seriously. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
+    },
+    sources: [
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Cross-Country Crisis (video)",
+        url: "https://www.youtube.com/watch?v=_wsa3vhnowk",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "NTSB Aviation Investigation Final Report ERA09FA145 (N8047C)",
+        url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/73295/pdf",
+        publisher: "NTSB",
+      },
+    ],
+  },
 ]
 
 /** Tips as archived from each Weekly PIREP. Prepend newest first when adding. */
