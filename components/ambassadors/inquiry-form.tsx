@@ -12,12 +12,14 @@ const INVOLVEMENT_OPTIONS = [
   "Flight instructor (CFI)",
   "Host a fly-in or event",
   "Share with my flying club or owners group",
+  "Other",
 ] as const
 
 export function AmbassadorInquiryForm() {
   const [handle, setHandle] = useState("")
   const [email, setEmail] = useState("")
   const [involvement, setInvolvement] = useState("")
+  const [otherDetail, setOtherDetail] = useState("")
   const [status, setStatus] = useState<Status>("idle")
   const [message, setMessage] = useState("")
 
@@ -37,6 +39,7 @@ export function AmbassadorInquiryForm() {
           name: handle,
           email,
           note: involvement,
+          ...(involvement === "Other" ? { other: otherDetail } : {}),
         }),
       })
       const data = await res.json()
@@ -50,6 +53,7 @@ export function AmbassadorInquiryForm() {
       setHandle("")
       setEmail("")
       setInvolvement("")
+      setOtherDetail("")
     } catch {
       setStatus("error")
       setMessage("Network error. Please try again.")
@@ -120,6 +124,20 @@ export function AmbassadorInquiryForm() {
             </label>
           ))}
         </div>
+        {involvement === "Other" ? (
+          <label className="block space-y-1.5 pt-1">
+            <span className="text-xs font-medium text-white/55">Tell us more</span>
+            <input
+              name="other"
+              required
+              maxLength={500}
+              value={otherDetail}
+              onChange={(e) => setOtherDetail(e.target.value)}
+              placeholder="Tell us more"
+              className="w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-sky-500/50 focus:ring-1 focus:ring-sky-500/40"
+            />
+          </label>
+        ) : null}
       </fieldset>
       {status === "error" ? (
         <p className="text-sm text-rose-400" role="alert">

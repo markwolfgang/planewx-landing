@@ -108,12 +108,25 @@ export async function POST(request: Request) {
       "Flight instructor (CFI)",
       "Host a fly-in or event",
       "Share with my flying club or owners group",
+      "Other",
     ])
     if (!ALLOWED_INVOLVEMENT.has(noteField.value)) {
       return NextResponse.json(
         { error: "Involvement is invalid" },
         { status: 400 },
       )
+    }
+
+    let otherDetail = ""
+    if (noteField.value === "Other") {
+      const otherField = readField(fields.other, 500)
+      if (!otherField.ok) {
+        return NextResponse.json(
+          { error: fieldError("Tell us more", otherField) },
+          { status: 400 },
+        )
+      }
+      otherDetail = otherField.value
     }
 
     const org = orgField.value
@@ -128,7 +141,7 @@ export async function POST(request: Request) {
         message: "Thanks. We got your note and will reply soon.",
         dryRun: true,
         to,
-        received: { org, name, email, note },
+        received: { org, name, email, note, ...(otherDetail ? { other: otherDetail } : {}) },
       })
     }
 
@@ -171,6 +184,14 @@ export async function POST(request: Request) {
               <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Involvement</td>
               <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${escapeHtml(note)}</td>
             </tr>
+            ${
+              otherDetail
+                ? `<tr>
+              <td style="padding: 8px 12px; border: 1px solid #e2e8f0; font-weight: bold; background: #f8fafc;">Tell us more</td>
+              <td style="padding: 8px 12px; border: 1px solid #e2e8f0;">${escapeHtml(otherDetail)}</td>
+            </tr>`
+                : ""
+            }
           </table>
         </div>
       `,

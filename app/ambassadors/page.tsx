@@ -80,17 +80,6 @@ const AMBASSADORS = [
   },
 ] as const
 
-const PROGRAM = [
-  {
-    title: "Community",
-    body: "Clubs, owners groups, events.",
-  },
-  {
-    title: "Co-marketing",
-    body: "Pilot-to-pilot voice.",
-  },
-] as const
-
 export default function AmbassadorsPage() {
   return (
     <div className="min-h-screen bg-[#0B1120] text-white">
@@ -168,7 +157,7 @@ export default function AmbassadorsPage() {
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
             We work with people who use PlaneWX and can share that experience.
             Ambassadors and content creators. We grow together. Real
-            relationships. Meetups and community when the fit is there.
+            relationships.
           </p>
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-white/60 leading-[1.7]">
             If you&apos;re using PlaneWX and can see yourself working with us,
@@ -182,50 +171,6 @@ export default function AmbassadorsPage() {
               Let&apos;s connect
             </a>
           </div>
-        </section>
-
-        <section
-          aria-labelledby="benefits-heading"
-          className="space-y-3 max-w-2xl"
-        >
-          <h2
-            id="benefits-heading"
-            className="text-2xl sm:text-3xl font-bold tracking-tight"
-          >
-            Why become a PlaneWX ambassador
-          </h2>
-          <p className="text-base sm:text-lg text-white/60 leading-relaxed">
-            We want to be around good people and good pilots. Ambassadors and
-            creators. If it&apos;s a real win-win and we can stand behind the
-            work, let&apos;s talk.
-          </p>
-        </section>
-
-        <section aria-labelledby="program-heading" className="space-y-6">
-          <div className="space-y-2 text-center sm:text-left">
-            <h2
-              id="program-heading"
-              className="text-2xl sm:text-3xl font-bold tracking-tight"
-            >
-              What being a PlaneWX ambassador looks like
-            </h2>
-            <p className="text-sm sm:text-base text-white/45 leading-relaxed max-w-2xl">
-              Community or co-marketing.
-            </p>
-          </div>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {PROGRAM.map((item) => (
-              <li
-                key={item.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 space-y-2"
-              >
-                <h3 className="font-semibold text-sky-300">{item.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">
-                  {item.body}
-                </p>
-              </li>
-            ))}
-          </ul>
         </section>
 
         <section aria-labelledby="roster-heading" className="space-y-5">
@@ -405,7 +350,7 @@ export default function AmbassadorsPage() {
               Come be a part of our community
             </h2>
             <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
-              Send a short note. We&rsquo;ll take it from there.
+              Send a short note.
             </p>
           </div>
           <AmbassadorInquiryForm />
