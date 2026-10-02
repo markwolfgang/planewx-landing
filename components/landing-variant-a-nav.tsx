@@ -12,6 +12,7 @@ const BASE_NAV_LINKS = [
   { href: "/about", label: "About" },
   { href: "/news", label: "News" },
   { href: "/research/turbulence-safety", label: "Research" },
+  { href: "/learn", label: "Learn" },
 ] as const
 
 type Props = {
