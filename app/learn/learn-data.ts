@@ -463,7 +463,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "No single item on a flight has to be dangerous for the flight to be dangerous. A case study from the AOPA Air Safety Institute shows how risks stack, and how to see the stack while you can still act on it.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -593,7 +593,7 @@ export const TIPS_OF_THE_WEEK: TipOfTheWeek[] = [
     issueNumber: 2,
     date: "October 5, 2026",
     isoDate: "2026-10-05",
-    draft: true,
+    draft: false,
     summary:
       "No single risk has to be dangerous for the flight to be. Keep a running count across pilot, aircraft, environment and external pressure, and stop to rethink at three.",
     body: [
