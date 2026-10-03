@@ -24,10 +24,23 @@ describe("learn production indexing allow list", () => {
     expect(shouldIndexLearnHub()).toBe(true)
   })
 
-  it("allowlists mos-vs-nbm-vs-taf and risk-stacking among [slug] articles", () => {
+  it("allowlists mos-vs-nbm-vs-taf, risk-stacking and the ASI case studies among [slug] articles", () => {
     expect([...INDEXABLE_LEARN_ARTICLE_SLUGS]).toEqual([
       "mos-vs-nbm-vs-taf",
       "risk-stacking",
+      "fair-weather-flier",
+      "trapped-in-ice",
+      "blind-over-bakersfield",
+      "delayed-reaction",
+      "hazardous-attitudes",
+      "night-falls-on-final",
+      "in-too-deep",
+      "cross-country-crisis",
+      "time-lapse",
+      "into-thin-air",
+      "high-aspirations",
+      "deadly-disorientation",
+      "faulty-assumptions",
     ])
     expect(isIndexableLearnArticleSlug("risk-stacking")).toBe(true)
     expect(isIndexableLearnArticleSlug("mos-vs-nbm-vs-taf")).toBe(true)
@@ -39,7 +52,23 @@ describe("learn production indexing allow list", () => {
 
   it("includes only allowlisted articles in the sitemap set", () => {
     const slugs = getIndexableLearnArticles().map((a) => a.slug)
-    expect(slugs).toEqual(["mos-vs-nbm-vs-taf", "risk-stacking"])
+    expect(slugs).toEqual([
+      "mos-vs-nbm-vs-taf",
+      "risk-stacking",
+      "fair-weather-flier",
+      "trapped-in-ice",
+      "blind-over-bakersfield",
+      "delayed-reaction",
+      "hazardous-attitudes",
+      "night-falls-on-final",
+      "in-too-deep",
+      "cross-country-crisis",
+      "time-lapse",
+      "into-thin-air",
+      "high-aspirations",
+      "deadly-disorientation",
+      "faulty-assumptions",
+    ])
   })
 
   it("indexes and emits JSON-LD for MOS only", () => {
@@ -82,9 +111,10 @@ describe("learn production indexing allow list", () => {
     ])
   })
 
-  it("includes exactly 20 learn URLs in the sitemap path set", () => {
+  it("includes exactly 33 learn URLs in the sitemap path set", () => {
     const paths = getLearnSitemapPaths()
-    expect(paths).toHaveLength(20)
+    expect(paths).toHaveLength(33)
+    expect(paths).toContain("/learn/trapped-in-ice")
     expect(paths[0]).toBe("/learn")
     expect(paths).toContain("/learn/aviation-weather/thunderstorms")
     expect(paths).toContain("/learn/aviation-weather/weather-risk")
