@@ -25,7 +25,7 @@ describe("learn hub LEARN_PUBLIC rollback gating", () => {
     expect(HUB_PAGE_FILES).toHaveLength(
       AVIATION_WEATHER_HUB_PAGES.length + DECISION_MAKING_HUB_PAGES.length
     )
-    expect(HUB_PAGE_FILES).toHaveLength(17)
+    expect(HUB_PAGE_FILES).toHaveLength(20)
   })
 
   it("each hub page derives robots and JSON-LD from LEARN_PUBLIC helpers", () => {

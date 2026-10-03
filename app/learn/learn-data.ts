@@ -1950,6 +1950,27 @@ export const AVIATION_WEATHER_HUB_PAGES: readonly AviationWeatherHubPage[] = [
     lastReviewed: "2026-10-01",
   },
   {
+    href: "/learn/aviation-weather/fronts-troughs-drylines",
+    title: "Fronts, Troughs, and Drylines for Pilots: Air Masses and the Weather Map",
+    summary:
+      "How air masses form, what to expect before, during, and after a warm or cold front, what troughs and ridges are, how a wave cyclone develops, and why the dryline matters for spring storms.",
+    lastReviewed: "2026-10-03",
+  },
+  {
+    href: "/learn/aviation-weather/atmospheric-stability",
+    title: "Atmospheric Stability for Pilots: Lapse Rates, Inversions, and Convection",
+    summary:
+      "What absolute, conditional, and neutral stability mean, how lapse rates and lifting shape clouds and turbulence, what inversions do, and how LI and CAPE show up in convective planning.",
+    lastReviewed: "2026-10-03",
+  },
+  {
+    href: "/learn/aviation-weather/surface-analysis-prog-charts",
+    title: "Surface Analysis and Prog Charts for Pilots: Reading the Weather Map",
+    summary:
+      "How to read the surface analysis chart and short-range surface prog charts: fronts, highs and lows, troughs, drylines, precip symbols, issuance times, and how they fit a briefing.",
+    lastReviewed: "2026-10-03",
+  },
+  {
     href: "/learn/aviation-weather/weather-briefings",
     title: "Weather Briefing Types: Standard, Abbreviated, Outlook, and Self-Briefing",
     summary:
