@@ -135,21 +135,155 @@ export const NEWS_ITEMS: NewsItem[] = [
     category: "Company",
     title: "Why I built PlaneWX",
     excerpt:
-      "Founder essay on personal mins, late TAFs, FRAT, and mentors, and why PlaneWX is a pilot decision support system.",
+      "I built PlaneWX so I would not kill myself and my wife. The founder essay on external pressure, personal minimums, the WX Score, the FRAT and mentor pilots.",
     date: "September 21, 2026",
     isoDate: "2026-09-21",
     location: "St. Petersburg, Florida",
     body: `
-<p><strong>St. Petersburg, Florida. September 21, 2026.</strong> I published a new essay on Medium: <em>I Built an Aviation Safety App So I Would Not Kill Myself</em>.</p>
+<p><em>By Mark Wolfgang, founder of PlaneWX. Originally published on <a href="https://medium.com/@markxwolfgang/i-built-an-aviation-safety-app-so-i-would-not-kill-myself-fff745833a28" target="_blank" rel="noopener noreferrer">Medium</a> on September 21, 2026. Numbers are as of that date.</em></p>
 
-<p>It is the honest version of why PlaneWX exists. I learned to fly at 49. I am risk averse. The weather that actually drives the go/no-go call gets sharp late, after hotels and family plans are already locked in. That pressure is real, and the FAA calls external pressures a major factor in a majority of GA accidents.</p>
+<p>I built PlaneWX selfishly so I would not kill myself and my wife. I am still building it for that reason.</p>
 
-<p>PlaneWX is my answer: a high-quality briefing with a WX Score against your personal mins and aircraft, a living FRAT so self-assessment is not a paper checklist you skip, and mentors when you want a second mind on a hard call. Same decision support on Free as on paid. Automation is what you pay for. Safety is not.</p>
+<p>I learned to fly at 49. I am risk averse. I aspire to fly as professionally as possible, because being a pilot is a profession. The margins are thin. The impact of risks can be catastrophic.</p>
 
-<p>Read the full piece: <a href="https://medium.com/@markxwolfgang/fff745833a28" target="_blank" rel="noopener noreferrer">medium.com/@markxwolfgang/fff745833a28</a></p>
+<p>I am a founder who started as a pilot with a planning problem.</p>
+
+<p>The core problem was timing. The weather products pilots trust most for the go/no-go call get sharp only about a day before departure, often inside the last 16 hours. By then the hotel is paid, the rental car is booked, and family is waiting. Canceling or moving the trip has already gotten expensive. So the accurate forecast arrives after the decision that mattered.</p>
+
+<p>So the pressure to make the flight happen and to get there is very high. Friends or family on the other end, or passengers traveling with you, can add to the pressure.</p>
+
+<p>The FAA says that these external pressures are a major causal factor in a majority of general aviation accidents.</p>
+
+<h2>Personal Minimums</h2>
+
+<p>Pilots are encouraged to develop personal minimums, personal standards such as:</p>
+
+<ul>
+<li>I will not fly within 20 NM of a thunderstorm.</li>
+<li>I will not attempt to land at an airport if the clouds are lower than 1,000 feet above the ground.</li>
+<li>I will not attempt to take off or land if the crosswind is above 15 knots.</li>
+<li>If there is icing in the forecast on my route, at my altitude, I will not fly into areas of known icing unless my aircraft is certified to do so.</li>
+</ul>
+
+<p>External pressures, the need to get there despite marginal weather, cloud a pilot's judgment and cause pilots to rationalize and make poor decisions. The crosswind is 20 knots. The clouds are at 900 feet. There's some icing, but I think I can steer clear of it.</p>
+
+<p>Ego takes over. I can handle it. It won't happen to me. I've gotten away with it before. I'll be fine.</p>
+
+<p>I felt these external pressures soon after I received my pilot certificate.</p>
+
+<p>My wife and I had a week-long beach vacation booked. The Airbnb cancellation policy was strict. Friends who had flown commercial were waiting on us. We wanted badly to get to the beach to relax.</p>
+
+<p>The weather forecast the night before didn't provide the clarity I wanted. But it was too late to cancel or rearrange the trip at that point anyway. So I had to wait until the morning of for a new forecast to be published.</p>
+
+<p>The morning forecast and live radar showed a large storm system along my planned path of travel. I was feeling the pressure to get there.</p>
+
+<p>We took off, heading to our destination. Departing our local airport presented no threats, but that storm was in our path. I could see it clearly out the window: grey storm clouds where I needed to go. So I made the obvious choice to deviate to the right and head for blue skies.</p>
+
+<p>I knew I needed to turn left, and I was constantly looking out the window and at the radar saying to myself, well, I'm not turning left until it's safe to do so. I knew that as long as I didn't turn left, I'd be safe. We had ample fuel on board and there were plenty of airports I could land at, take a break and wait.</p>
+
+<p>This is when the weight of responsibility really hit me. My wife, our family and friends, and everyone we held dear were all relying on me to make the right decision. To put the external pressures and ego aside, and be smart, in order to live.</p>
+
+<p>It was a very stressful flight, but in the end, I was able to suppress my ego and the external pressures and make smart decisions. Once the sky turned clear in the direction I needed to go, I turned left. We had an uneventful flight, and just made it to the beach before the afternoon thunderstorms arrived.</p>
+
+<p>My realization at the time was: why aren't there longer-range weather products out there that I could rely on to adjust my plans? If I had known two or three days before my intended departure that this line of storms would potentially be there on that Friday morning, but Thursday evening was clear, I could have simply adjusted my plan to leave on Thursday and avoided the stress.</p>
+
+<p>I realized that there actually is an abundance of localized and big-picture weather products available. In fact, it's almost overwhelming how much information is out there.</p>
+
+<p>The problem is, it's all just raw weather products, and the synthesis and analysis is left solely up to the pilot. Weather is a big topic in pilot training, but I am not a meteorologist, and some of the most useful weather products aren't written for pilots. They're written for other meteorologists.</p>
+
+<p>I tried to increase my studies to become smarter in meteorology, but it was pretty overwhelming, and the stakes were high if I got something wrong. The manual workload to read, comprehend, and synthesize all the information was too much, so I turned to AI for help.</p>
+
+<p>Through a lot of experimentation, I learned that I could build software to retrieve the latest weather products as soon as they were published and hand them to an LLM, which could synthesize a big picture along my route of travel, at my altitude.</p>
+
+<p>It could then objectively quantify the weather risk by giving me a score, derived from my personal minimums and aircraft capabilities.</p>
+
+<p>It could refresh my weather briefing each time new weather products came out, give me a new score and show me how my trip was trending, and point me in the right direction while I still had time to reschedule. Perhaps it would be three days before planned departure, so I could have the conversation with my wife: honey, Friday morning is looking bad, we may need to leave on Thursday afternoon instead.</p>
+
+<h2>Objective #1: Build a High-Quality Weather Briefing and WX Score</h2>
+
+<p>The goal was a high-quality weather briefing with a quantifiable weather score, updated as soon as new forecasts or models published, with insight up to 14 days out.</p>
+
+<p>Our weather briefing still isn't perfect. It's a hard thing to get right, but based on feedback from our pilot users, most are very happy with the quality of the weather briefing. Our average score across 1,724 briefing feedback submissions is 8.7 out of 10, and it is continually improving.</p>
+
+<p>The weather briefing is the foundation of PlaneWX, arguably the most important part, but more elements were needed.</p>
+
+<p>The airlines and charter companies are required to use a Safety Management System. Such a system incorporates many tools to objectively evaluate the risks and hazards of a particular flight, and one of the main tools is the FRAT, the Flight Risk Assessment Tool. A FRAT is a self-assessment that evaluates the Pilot, the Aircraft, the environmental factors, and the external pressures. The FAA training I went through for my private pilot certificate was great at teaching this in theory, but it was mostly done on paper, and to this day, most general aviation pilots don't conduct a thorough self-assessment before flying.</p>
+
+<h2>Objective #2: The FRAT</h2>
+
+<p>Build a smart, easy-to-use FRAT that pilots would willingly adopt to hold themselves accountable. The smart FRAT on PlaneWX would be aware of a pilot's flight history. It would present any known maintenance issues with the aircraft. It would point out environmental hazards such as bad weather, or a busy airport in complex airspace. It would identify the stacking of risks. Many accidents happen because multiple risk factors compound, not from any single risk factor.</p>
+
+<p>It would tell a pilot: &ldquo;Hey, this flight has you arriving at night, and the cloud ceiling is right at your personal minimum of 1,000 feet, and by the way, you are landing in the mountains. We know that you live in Kansas. We know that you have not landed at night for 45 days. We know that you have not landed at a high-elevation airport for a while, despite more than 1,500 hours total time. Multiple risks are stacking against you.&rdquo;</p>
+
+<p>Our FRAT uptake still has room to improve, and it varies by the type of aircraft on a pilot's profile.</p>
+
+<p>In total, 1,367 FRATs have been completed by PlaneWX pilots. On confirmed flown flights, about 12% have a FRAT.</p>
+
+<p>Among pilots with that aircraft on their profile, the share who have completed at least one FRAT is:</p>
+
+<ul>
+<li>Piston aircraft (anything from Cessna 172 trainers to high-performance Cirrus SR22s): 24.5%</li>
+<li>Turboprop and turbojet aircraft: 32.5%</li>
+</ul>
+
+<p>FRAT adoption on PlaneWX is higher among pilots with turboprops and jets on their profiles than among piston pilots, and highest among TBM pilots in our turboprop group. We have 78 Daher TBM aircraft on the platform. Among turboprop types, the share of pilots who have completed at least one FRAT is:</p>
+
+<ul>
+<li>TBM pilots: 43%</li>
+<li>Pilatus PC-12 pilots: 35% (smaller sample: 29 pilots)</li>
+<li>Other turboprop aircraft: 27%</li>
+</ul>
+
+<p>On that same measure, Cirrus pilots sit a bit above Cessna pilots:</p>
+
+<ul>
+<li>Cirrus pilots: 27%</li>
+<li>Cessna pilots: 22%</li>
+<li>Other piston aircraft: 25%</li>
+</ul>
+
+<p>My goal is to provide a systematized, repeatable process for pilots to conduct a self-assessment of flight risk, and to normalize and increase the use of a FRAT in preflight planning. We have a ways to go, and I myself am not perfect at conducting a FRAT for every single flight. Sometimes I forget.</p>
+
+<p>Something else I realized early on after getting my pilot certificate was that I would often call a friend for advice before making my go/no-go decision. I needed a second set of eyes: a more experienced pilot to look at the weather, my route, and my aircraft, and give me their opinion.</p>
+
+<p>The problem was, I only had two or three other pilot friends I could call, so I was relying on them being available at 6 AM on a Saturday morning when I was trying to make my decision. Only one of my friends flew the same aircraft I did, so he understood the capabilities and limitations of my plane, but he was not as experienced as my other friend. And that friend didn't know my plane.</p>
+
+<h2>Objective #3: Mentor Pilots</h2>
+
+<p>Build a mentor matchmaking network on PlaneWX so users could be rapidly matched with volunteer mentor pilots who understood their experience level, their concerns, their plane, and the environment they were about to enter, and could give high-quality advice. I am still the pilot in command, and I still make the final call, but I am open to hearing the opinion of a pilot more experienced than me.</p>
+
+<p>So I built a robust mentor matchmaking service on PlaneWX so no pilot ever has to make the decision alone. A pilot looking at a concerning weather briefing can click a button that reads Need Help Now, which broadcasts a request by text message to the mentor pilots who have marked themselves available at that date and time. The mentor pilot can see the exact same weather briefing, review the pilot's FRAT, and then choose whether to mentor the pilot.</p>
+
+<p>I have used this service myself several times, and it works. I also watched a newly minted pilot use it. His WX Score was sitting at 0%, but he wanted to fly his wife to their vacation home several states away, so he clicked the Need Help Now button. I'm a mentor, so I received a text that read something like:</p>
+
+<blockquote><p>Bill has an urgent mentor request for flight KSQL to KSEZ. Here's a link to his briefing. Don't accept this mentor request unless you can talk with him in the next 30 mins.</p></blockquote>
+
+<p>I chose to wait and watch. While I could possibly have mentored this pilot, I don't have the most experience with coastal marine layers, and I wanted to see if another mentor would accept the request. A few minutes went by, and a match was made. They had their discussion, and when I checked FlightAware later that day, I saw that the pilot had made the flight safely. It worked!</p>
+
+<p>For whatever reason, use of the mentor service is very low, less than 1% of all confirmed flights. This is another area I want to see improve. In my view, almost everyone can use a mentor on some of their low-scoring flights. I have likely used the service more than anyone else on the platform, and I don't say this to brag. I am very open and willing to hear others' opinions.</p>
+
+<p>I want to normalize the use of mentors in general aviation.</p>
+
+<h2>A Decision Support System</h2>
+
+<p>These three features, the high-quality quantified weather briefing, the FRAT, and the mentor matchmaking service, became what I call a pilot Decision Support System for general aviation.</p>
+
+<p>I believe pilots who use a decision support system such as PlaneWX are safer pilots. Our aviation insurance partner, 5X5, agrees: PlaneWX Pro Plus members are eligible for up to 10% off their annual aircraft insurance premium, subject to 5X5's underwriting. Our interests align perfectly.</p>
+
+<p>I started building PlaneWX in 2024, went full time in early November 2025, and launched it publicly on March 1, 2026. Today it has 2,200+ pilots in 35 countries around the world.</p>
+
+<p>Yes, we have paid tiers of service, but the basic decision support system is free. I refuse to charge pilots money to use the decision support system. Free users get the same high-quality weather briefing, the FRAT, and the mentor matchmaking service as paid users. They just don't get a lot of the automation and advanced features not related to safety of flight.</p>
+
+<p>My goal with PlaneWX is to make a measurable impact on general aviation safety by equipping non-professional pilots with professional-grade tools, and to normalize the use of the FRAT and mentors when conditions look sub-par.</p>
+
+<h2>About the Author</h2>
+
+<p>Mark Wolfgang is the founder of PlaneWX and a commercial, multi-engine, instrument-rated pilot. He learned to fly at 49 after selling his information security company, progressed from a Diamond DA40 to a Cirrus SR22T and now a TBM 900, and built PlaneWX as a pilot decision support system so he would not kill himself, his wife, or the people who fly with him. He has logged over 1,000 hours of flight time in a little over two years.</p>
+
+<p>He is a U.S. Navy veteran and flies volunteer missions for <a href="https://www.veteransairlift.org/" target="_blank" rel="noopener noreferrer">Veterans Airlift Command</a>. He documents his flying on YouTube at <a href="https://www.youtube.com/@markflieshigh" target="_blank" rel="noopener noreferrer">Mark Flies High</a>. More about Mark and PlaneWX on the <a href="/about">About page</a>.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. 2,200+ pilots in 35 countries use PlaneWX. Fly like it's your job. <a href="https://www.planewx.ai">www.planewx.ai</a></p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
