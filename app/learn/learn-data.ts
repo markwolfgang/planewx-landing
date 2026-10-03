@@ -602,7 +602,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Fair Weather Flier: When the Briefer Says VFR Is Not Recommended",
     section: "Decision-Making",
     summary:
-      "A noninstrument-rated Bonanza pilot heard \u201cVFR flight not recommended\u201d and left anyway, a day early, to beat worse weather. A case study from the AOPA Air Safety Institute and the NTSB final report on what self-induced pressure looks like from the inside.",
+      "A noninstrument-rated Bonanza pilot heard \u201cVFR flight not recommended\u201d and left anyway, a day early, to beat worse weather. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at what self-induced pressure looks like from the inside.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -709,7 +709,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Trapped in Ice: The Cost of a 10-Hour-Old Briefing",
     section: "Decision-Making",
     summary:
-      "An instrument-rated Cirrus pilot briefed the night before, departed into forecast icing in an airplane not equipped for it, and lost control on a diversion. A case study from the AOPA Air Safety Institute and the NTSB final report on why a briefing has a shelf life.",
+      "An instrument-rated Cirrus pilot briefed the night before, departed into forecast icing in an airplane not equipped for it, and lost control on a diversion. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at why a briefing has a shelf life.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -742,7 +742,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "The pilot got his weather briefing through an app on his mobile device about 10 hours before the flight. It showed cloud cover, snow showers and IFR conditions. The AIRMET in that briefing expired at 0500, before he departed. In the hours between, a new AIRMET was issued for moderate icing, IFR and mountain obscuration, and low-level turbulence, valid until 1100. The NTSB found no record that the pilot got any other weather before or during the flight.",
+        text: "The pilot got his weather briefing through an app on his mobile device about 10 hours before the flight. It showed cloud cover, snow showers and IFR conditions. The AIRMET in that briefing expired at 0500, before he departed. In the hours between, a new AIRMET was issued for moderate icing, IFR and mountain obscuration, and low-level turbulence, valid until 1100. An updated AIRMET was recorded under his flight plan identification number less than 2 hours before departure, but the NTSB could not determine whether he checked it, and found no record that he got any other weather before or during the flight.",
       },
       {
         type: "paragraph",
@@ -803,7 +803,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Blind Over Bakersfield: Forecast IMC and a Party to Get To",
     section: "Decision-Making",
     summary:
-      "A low-time, noninstrument-rated pilot launched with his family into forecast storms, climbed to nearly 20,000 feet to stay on top, then accepted an IFR clearance. A case study from the AOPA Air Safety Institute and the NTSB final report on how one decision keeps leading to the next.",
+      "A low-time, noninstrument-rated pilot launched with his family into forecast storms, climbed to nearly 20,000 feet to stay on top, then accepted an IFR clearance. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at how one decision keeps leading to the next.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -906,7 +906,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Delayed Reaction: Severe Icing and the Minutes That Matter",
     section: "Decision-Making",
     summary:
-      "An instrument-rated TBM 700 pilot climbed into icing he'd been warned about and asked for a higher altitude instead of declaring. About two minutes later the airplane came apart. A case study from the AOPA Air Safety Institute and the NTSB final report on using your command authority early.",
+      "An instrument-rated TBM 700 pilot climbed into icing he'd been warned about and asked for a higher altitude instead of declaring. About two minutes later the airplane came apart. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at using your command authority early.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -992,7 +992,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Hazardous Attitudes: A 10,000-Hour Pilot Departs VFR Into a Warning",
     section: "Decision-Making",
     summary:
-      "A 75-year-old instrument-rated commercial pilot left Fullerton VFR with no briefing on record, after the tower warned of deteriorating weather ahead. Six minutes later his Cessna 414 broke up over Yorba Linda. A case study from the AOPA Air Safety Institute and the NTSB final report on the five hazardous attitudes.",
+      "A 75-year-old instrument-rated commercial pilot left Fullerton VFR with no briefing on record, after the tower warned of deteriorating weather ahead. Six minutes later his Cessna 414 broke up over Yorba Linda. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at the five hazardous attitudes.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -1088,13 +1088,13 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Night Falls on Final: Currency, Avionics and a Dark Approach",
     section: "Decision-Making",
     summary:
-      "An experienced pilot, out of instrument and night currency, struggled with his GPS and autopilot after a runway change at Raleigh-Durham, then descended into trees a mile short. A case study from the AOPA Air Safety Institute and the NTSB final report on what recency really protects.",
+      "An experienced pilot, out of instrument and night currency, struggled with his GPS and autopilot after a runway change at Raleigh-Durham, then descended into trees a mile short. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at what recency really protects.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
       {
         type: "paragraph",
-        text: "Currency rules can feel like paperwork. Three approaches, three night landings, check the box. But the skills they protect are perishable: programming a change in the box quickly, catching the autopilot when it drops off, and flying a stable path to a runway you can barely see. This accident shows what happens when those skills go stale on the same night.",
+        text: "Currency rules can feel like paperwork: six instrument approaches with holding and course tracking every six calendar months, and three full-stop night landings every 90 days to carry passengers at night. But the skills they protect are perishable: programming a change in the box quickly, catching the autopilot when it drops off, and flying a stable path to a runway you can barely see. This accident shows what happens when those skills go stale on the same night.",
       },
       {
         type: "paragraph",
@@ -1129,7 +1129,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "At 7:17 he broke out of the clouds about 9 miles from the runway, but had trouble finding the runway lights, so the controller turned up their intensity. He got two low altitude alerts on final. His last transmission said he had the runway in sight. A pilot who had just landed watched the airplane descend into the trees of a dark state park just over a mile short of runway 32, with its landing light off. Both people aboard were killed. The 6:51 weather at RDU was 1,000 feet broken and 10 miles visibility.",
+        text: "At 7:17 he broke out of the clouds about 9 miles from the runway, but had trouble finding the runway lights, so the controller turned up their intensity. He got two low altitude alerts on final. His last transmission said he had the runway in sight. A pilot who had just landed watched the airplane descend into the trees of a dark state park just over a mile short of runway 32. He said its landing light was off, though investigators later found the cockpit switch in the on position. Both people aboard were killed. The 6:51 weather at RDU was 1,000 feet broken and 10 miles visibility.",
       },
       {
         type: "paragraph",
@@ -1178,7 +1178,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "In Too Deep: A VFR Pilot Turns Away From a Cleared Runway",
     section: "Decision-Making",
     summary:
-      "A 207-hour private pilot without an instrument rating found his destination gone IFR, was cleared to land anyway, and turned away to avoid getting stuck. Minutes later his Cirrus SR20 spiraled into the ground near Crystal Lake, Illinois. A case study from the AOPA Air Safety Institute and the NTSB final report on taking the out you're given.",
+      "A 207-hour private pilot without an instrument rating found his destination gone IFR, was cleared to land anyway, and turned away to avoid getting stuck. Minutes later his Cirrus SR20 spiraled into the ground near Crystal Lake, Illinois. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at taking the out you're given.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -1268,7 +1268,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Cross-Country Crisis: No Briefing, Six Aboard and Snow on Arrival",
     section: "Decision-Making",
     summary:
-      "A private pilot without an instrument rating set out VFR from the Chicago area to Raleigh in January with no flight plan, no record of a weather briefing and an airplane over its weight and balance limits. Low on fuel in heavy snow, his Seneca crashed near Huntington, West Virginia. A case study from the AOPA Air Safety Institute and the NTSB final report on planning the whole route.",
+      "A private pilot without an instrument rating set out VFR from the Chicago area to Raleigh in January with no flight plan, no record of a weather briefing and an airplane over its weight and balance limits. Low on fuel in heavy snow, his Seneca crashed near Huntington, West Virginia. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at planning the whole route.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -1354,7 +1354,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Time Lapse: Datalink Radar Is a Picture of the Past",
     section: "Decision-Making",
     summary:
-      "An instrument-rated Cherokee Six pilot used in-cockpit NEXRAD to pick his way around Texas thunderstorms at night. The airplane flew into severe weather and broke up near Bryan. A case study from the AOPA Air Safety Institute and the NTSB final report on what datalink weather can and can't tell you.",
+      "An instrument-rated Cherokee Six pilot used in-cockpit NEXRAD to pick his way around Texas thunderstorms at night. The airplane flew into severe weather and broke up near Bryan. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at what datalink weather can and can't tell you.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -1445,7 +1445,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Into Thin Air: Clear Skies, High Terrain and a Slow Climb",
     section: "Decision-Making",
     summary:
-      "On a clear July evening, a 12,000-hour pilot ferrying a Bonanza G36 out of Aspen turned down an IFR departure and flew east VFR, climbing a few hundred feet per minute toward rising terrain. The airplane turned into a bowl ringed by 13,000-foot peaks and hit the mountain. A case study from the AOPA Air Safety Institute and the NTSB final report on performance and terrain.",
+      "On a clear July evening, a 12,000-hour pilot ferrying a Bonanza G36 out of Aspen turned down an IFR departure and flew east VFR, climbing a few hundred feet per minute toward rising terrain. The airplane turned into a bowl ringed by 13,000-foot peaks and hit the mountain. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at performance and terrain.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -1531,7 +1531,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "High Aspirations: A Heavy Airplane on a Hot Day",
     section: "Decision-Making",
     summary:
-      "A 108-hour pilot with five hours in his Piper Lance took off near maximum gross weight, with a tailwind, at a density altitude above 7,200 feet. The airplane never climbed more than 120 feet above the ground and stalled into a West Jordan, Utah neighborhood. A case study from the AOPA Air Safety Institute and the NTSB final report on takeoff performance.",
+      "A 108-hour pilot with five hours in his Piper Lance took off near maximum gross weight, with a tailwind, at a density altitude above 7,200 feet. The airplane never climbed more than 120 feet above the ground and stalled into a West Jordan, Utah neighborhood. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at takeoff performance.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -1617,7 +1617,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Deadly Disorientation: Leaving an Approach Between Cloud Layers",
     section: "Decision-Making",
     summary:
-      "An instrument-rated Cessna 340 pilot drifted off the localizer on an ILS with a circle to land, called the runway in sight, and lost the protection of the approach. Between two cloud layers he struggled to hold altitude, then entered a steep descending turn into Santee, California. A case study from the AOPA Air Safety Institute and the NTSB final report on spatial disorientation.",
+      "An instrument-rated Cessna 340 pilot drifted off the localizer on an ILS with a circle to land, called the runway in sight, and lost the protection of the approach. Between two cloud layers he struggled to hold altitude, then entered a steep descending turn into Santee, California. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at spatial disorientation.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [
@@ -1703,7 +1703,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     title: "Faulty Assumptions: The Fuel You Think You Have",
     section: "Decision-Making",
     summary:
-      "A Baron pilot planned an IFR trip on fuel numbers that had been wrong for eight days. Both engines quit on a GPS approach to Kerrville, Texas, and the airplane spun in below its minimum control speed. A case study from the AOPA Air Safety Institute and the NTSB final report on verifying fuel before every flight.",
+      "A Baron pilot planned an IFR trip on fuel numbers that had been wrong for eight days. Both engines quit on a GPS approach to Kerrville, Texas, and the airplane spun in below its minimum control speed. Based on the AOPA Air Safety Institute case study and the NTSB final report, a look at verifying fuel before every flight.",
     lastReviewed: "2026-10-02",
     draft: false,
     body: [

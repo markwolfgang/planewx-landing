@@ -37,6 +37,9 @@ export function YouTubeFacade({
   onPlay,
 }: YouTubeFacadeProps) {
   const [playing, setPlaying] = useState(false)
+  // Not every video has a maxresdefault.jpg (YouTube only makes one for HD uploads).
+  // hqdefault.jpg always exists, so fall back to it if the large thumbnail 404s.
+  const [thumb, setThumb] = useState<"maxresdefault" | "hqdefault">("maxresdefault")
 
   if (playing) {
     return (
@@ -67,8 +70,9 @@ export function YouTubeFacade({
       aria-label={ariaLabel ?? `Play video (loads YouTube): ${title}`}
     >
       <Image
-        src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+        src={`https://img.youtube.com/vi/${videoId}/${thumb}.jpg`}
         alt={title}
+        onError={() => setThumb((t) => (t === "maxresdefault" ? "hqdefault" : t))}
         fill
         sizes={sizes}
         className="object-cover"
