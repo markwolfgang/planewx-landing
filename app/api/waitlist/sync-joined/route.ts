@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { readJsonBody, requireAdmin } from "@/lib/admin-auth"
 import { createClient } from "@supabase/supabase-js"
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
@@ -6,23 +7,16 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
 
 export async function POST(request: Request) {
   try {
+    // Admin only. Fails closed when WAITLIST_ADMIN_SECRET is unset.
+    const body = await readJsonBody(request)
+    const denied = requireAdmin(request, body)
+    if (denied) return denied
+
     // Validate environment variables
     if (!supabaseUrl || !supabaseServiceKey) {
       return NextResponse.json(
         { error: "Server configuration error" },
         { status: 500 }
-      )
-    }
-
-    // Check for admin secret
-    const body = await request.json()
-    const adminSecret = body.secret
-    const expectedSecret = process.env.WAITLIST_ADMIN_SECRET
-
-    if (expectedSecret && adminSecret !== expectedSecret) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
       )
     }
 

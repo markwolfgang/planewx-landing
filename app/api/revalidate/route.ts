@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from "next/server"
 import { revalidatePath, revalidateTag } from "next/cache"
 import { SORO_ARTICLE_CONTENT_TAG, SORO_ARTICLES_TAG } from "@/lib/soro"
+import { adminSecretFromRequest, checkAdminSecret, getAdminSecret } from "@/lib/admin-auth"
 
 /**
  * On-demand ISR purge for Soro-backed blog pages.
  *
  * Auth: Authorization: Bearer <REVALIDATE_SECRET>
- *   or  ?secret=<REVALIDATE_SECRET>
+ *   or  X-Admin-Secret header, "secret" in the JSON body, or ?secret=
  * Falls back to WAITLIST_ADMIN_SECRET if REVALIDATE_SECRET is unset.
+ * Fails closed (503) when neither is set. Compare is constant time (lib/admin-auth).
  *
  * Optional body/query:
  *   slug — also revalidate /blog/<slug> specifically
@@ -20,19 +22,9 @@ import { SORO_ARTICLE_CONTENT_TAG, SORO_ARTICLES_TAG } from "@/lib/soro"
  *     -d '{"slug":"flight-weather-briefer"}' \
  *     https://www.planewx.ai/api/revalidate
  */
-function getExpectedSecret(): string | undefined {
-  return process.env.REVALIDATE_SECRET || process.env.WAITLIST_ADMIN_SECRET
-}
-
-function extractSecret(request: NextRequest, body: Record<string, unknown> | null): string | null {
-  const auth = request.headers.get("authorization")
-  if (auth?.toLowerCase().startsWith("bearer ")) {
-    return auth.slice(7).trim() || null
-  }
-  const fromQuery = request.nextUrl.searchParams.get("secret")
-  if (fromQuery) return fromQuery
-  if (body && typeof body.secret === "string") return body.secret
-  return null
+function getExpectedSecret(): string | null {
+  const revalidate = process.env.REVALIDATE_SECRET?.trim()
+  return revalidate || getAdminSecret()
 }
 
 function extractSlug(request: NextRequest, body: Record<string, unknown> | null): string | null {
@@ -47,7 +39,7 @@ async function handle(request: NextRequest) {
   if (!expected) {
     return NextResponse.json(
       { error: "Not configured: set REVALIDATE_SECRET (or WAITLIST_ADMIN_SECRET)" },
-      { status: 500 }
+      { status: 503 }
     )
   }
 
@@ -61,8 +53,8 @@ async function handle(request: NextRequest) {
     }
   }
 
-  const secret = extractSecret(request, body)
-  if (!secret || secret !== expected) {
+  const secret = adminSecretFromRequest(request, body)
+  if (!checkAdminSecret(secret, expected).ok) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 

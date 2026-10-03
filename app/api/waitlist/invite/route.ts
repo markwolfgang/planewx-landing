@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { readJsonBody, requireAdmin } from "@/lib/admin-auth"
 import { createClient } from "@supabase/supabase-js"
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
@@ -150,6 +151,12 @@ function generateInviteToken(): string {
 
 export async function POST(request: Request) {
   try {
+    const body = (await readJsonBody(request)) as unknown as InviteRequest
+
+    // Admin only. Fails closed when WAITLIST_ADMIN_SECRET is unset.
+    const denied = requireAdmin(request, body)
+    if (denied) return denied
+
     // Validate environment variables
     if (!supabaseUrl || !supabaseServiceKey) {
       return NextResponse.json(
@@ -158,17 +165,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const body: InviteRequest = await request.json()
-    const { ids, secret } = body
-
-    // Check admin secret
-    const expectedSecret = process.env.WAITLIST_ADMIN_SECRET
-    if (expectedSecret && secret !== expectedSecret) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      )
-    }
+    const { ids } = body
 
     if (!ids || !Array.isArray(ids) || ids.length === 0) {
       return NextResponse.json(

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { randomInt } from "crypto"
+import { readJsonBody, requireAdmin } from "@/lib/admin-auth"
 import {
-  assertAdminSecret,
   attendanceEligibleForEvent,
   getOshSupabase,
   isRaffleDrawEvent,
@@ -55,14 +55,14 @@ async function fetchEligibleEntryIds(
 
 export async function POST(request: Request) {
   try {
+    // Admin only. Fails closed when WAITLIST_ADMIN_SECRET is unset.
+    const body = await readJsonBody(request)
+    const denied = requireAdmin(request, body)
+    if (denied) return denied
+
     const supabase = getOshSupabase()
     if (!supabase) {
       return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
-    }
-
-    const body = await request.json()
-    if (!assertAdminSecret(body.secret)) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const prize: RafflePrize | null = isRafflePrize(body.prize) ? body.prize : null

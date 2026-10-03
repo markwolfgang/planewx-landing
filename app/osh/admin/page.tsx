@@ -83,7 +83,11 @@ export default function OshAdminPage() {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch(`/api/osh/list?secret=${encodeURIComponent(adminSecret)}`)
+      // Header, not query string, so the secret stays out of URLs and request logs.
+      const res = await fetch("/api/osh/list", {
+        headers: { "X-Admin-Secret": adminSecret.trim() },
+        cache: "no-store",
+      })
       const data = await res.json()
       if (!res.ok) {
         setError(data.error || "Failed to load entries")

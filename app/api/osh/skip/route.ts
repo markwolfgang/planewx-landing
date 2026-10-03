@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
-import { assertAdminSecret, getOshSupabase } from "@/lib/osh-admin"
+import { readJsonBody, requireAdmin } from "@/lib/admin-auth"
+import { getOshSupabase } from "@/lib/osh-admin"
 
 /**
  * Mark a draw as "not present" so that entry becomes eligible again,
@@ -7,14 +8,14 @@ import { assertAdminSecret, getOshSupabase } from "@/lib/osh-admin"
  */
 export async function POST(request: Request) {
   try {
+    // Admin only. Fails closed when WAITLIST_ADMIN_SECRET is unset.
+    const body = await readJsonBody(request)
+    const denied = requireAdmin(request, body)
+    if (denied) return denied
+
     const supabase = getOshSupabase()
     if (!supabase) {
       return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
-    }
-
-    const body = await request.json()
-    if (!assertAdminSecret(body.secret)) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const drawId = typeof body.drawId === "string" ? body.drawId : ""

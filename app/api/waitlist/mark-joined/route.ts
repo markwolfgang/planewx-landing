@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { readJsonBody, requireAdmin } from "@/lib/admin-auth"
 import { createClient } from "@supabase/supabase-js"
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
@@ -8,7 +9,7 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Admin-Secret",
 }
 
 export async function OPTIONS() {
@@ -23,6 +24,12 @@ interface MarkJoinedRequest {
 
 export async function POST(request: Request) {
   try {
+    const body = (await readJsonBody(request)) as unknown as MarkJoinedRequest
+
+    // Admin only. Fails closed when WAITLIST_ADMIN_SECRET is unset.
+    const denied = requireAdmin(request, body, { headers: corsHeaders })
+    if (denied) return denied
+
     // Validate environment variables
     if (!supabaseUrl || !supabaseServiceKey) {
       return NextResponse.json(
@@ -31,17 +38,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const body: MarkJoinedRequest = await request.json()
-    const { token, email, secret } = body
-
-    // Check admin secret (allows main app to call this)
-    const expectedSecret = process.env.WAITLIST_ADMIN_SECRET
-    if (expectedSecret && secret !== expectedSecret) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      )
-    }
+    const { token, email } = body
 
     if (!token && !email) {
       return NextResponse.json(

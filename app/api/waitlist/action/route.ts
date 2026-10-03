@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { readJsonBody, requireAdmin } from "@/lib/admin-auth"
 import { createClient } from "@supabase/supabase-js"
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
@@ -153,18 +154,17 @@ async function sendInviteEmail(email: string, inviteToken: string): Promise<bool
 
 export async function POST(request: Request) {
   try {
+    const body = (await readJsonBody(request)) as unknown as ActionRequest
+
+    // Admin only. Fails closed when WAITLIST_ADMIN_SECRET is unset.
+    const denied = requireAdmin(request, body)
+    if (denied) return denied
+
     if (!supabaseUrl || !supabaseServiceKey) {
       return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
     }
 
-    const body: ActionRequest = await request.json()
-    const { ids, action, secret } = body
-
-    // Check admin secret
-    const expectedSecret = process.env.WAITLIST_ADMIN_SECRET
-    if (expectedSecret && secret !== expectedSecret) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
-    }
+    const { ids, action } = body
 
     if (!ids || !Array.isArray(ids) || ids.length === 0) {
       return NextResponse.json({ error: "No users selected" }, { status: 400 })
