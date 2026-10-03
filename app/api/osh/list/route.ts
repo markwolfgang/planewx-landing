@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
+import { requireAdmin } from "@/lib/admin-auth"
 import {
-  assertAdminSecret,
   attendanceEligibleForEvent,
   getOshSupabase,
   type RaffleDrawEvent,
@@ -340,14 +340,13 @@ function eligibleForEvent(
 
 export async function GET(request: Request) {
   try {
+    // Admin only. Fails closed when WAITLIST_ADMIN_SECRET is unset.
+    const denied = requireAdmin(request)
+    if (denied) return denied
+
     const supabase = getOshSupabase()
     if (!supabase) {
       return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
-    }
-
-    const { searchParams } = new URL(request.url)
-    if (!assertAdminSecret(searchParams.get("secret"))) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? ""

@@ -15,11 +15,8 @@ export function getOshSupabase(): SupabaseClient | null {
   })
 }
 
-export function assertAdminSecret(secret: string | null | undefined): boolean {
-  const expected = process.env.WAITLIST_ADMIN_SECRET
-  if (!expected) return true // allow if unset (local/dev), same as waitlist admin
-  return !!secret && secret === expected
-}
+// Admin auth for the OSH routes lives in lib/admin-auth.ts (server only, fails closed).
+// This file is also imported by the /osh/admin client page, so keep it free of node imports.
 
 export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 

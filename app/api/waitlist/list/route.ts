@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { requireAdmin } from "@/lib/admin-auth"
 import { createClient } from "@supabase/supabase-js"
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
@@ -6,23 +7,15 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.
 
 export async function GET(request: Request) {
   try {
+    // Admin only. Fails closed when WAITLIST_ADMIN_SECRET is unset.
+    const denied = requireAdmin(request)
+    if (denied) return denied
+
     // Validate environment variables
     if (!supabaseUrl || !supabaseServiceKey) {
       return NextResponse.json(
         { error: "Server configuration error" },
         { status: 500 }
-      )
-    }
-
-    // Check for admin secret (simple protection)
-    const { searchParams } = new URL(request.url)
-    const adminSecret = searchParams.get("secret")
-    const expectedSecret = process.env.WAITLIST_ADMIN_SECRET
-
-    if (expectedSecret && adminSecret !== expectedSecret) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
       )
     }
 

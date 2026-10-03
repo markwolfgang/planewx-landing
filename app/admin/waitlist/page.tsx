@@ -62,7 +62,11 @@ export default function WaitlistAdminPage() {
     setLoading(true)
     setError(null)
     try {
-      const response = await fetch(`/api/waitlist/list?secret=${encodeURIComponent(secret)}`)
+      // Header, not query string, so the secret stays out of URLs and request logs.
+      const response = await fetch("/api/waitlist/list", {
+        headers: { "X-Admin-Secret": secret.trim() },
+        cache: "no-store",
+      })
       if (!response.ok) {
         if (response.status === 401) {
           setError("Invalid admin secret")
