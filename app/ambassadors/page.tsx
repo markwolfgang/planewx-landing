@@ -48,7 +48,7 @@ const AMBASSADORS = [
   },
   {
     name: "Flight Chops",
-    href: "https://flightchops.com",
+    href: "https://www.youtube.com/@FlightChops",
     description:
       "Training and storytelling that put real pilot decision-making on camera.",
     tile: {
