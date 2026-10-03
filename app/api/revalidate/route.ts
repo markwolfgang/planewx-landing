@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
 import { revalidatePath, revalidateTag } from "next/cache"
-import { SORO_ARTICLE_CONTENT_TAG, SORO_ARTICLES_TAG } from "@/lib/soro"
+import {
+  getSoroArticleIdBySlugFresh,
+  SORO_ARTICLE_CONTENT_TAG,
+  SORO_ARTICLES_TAG,
+  soroArticleContentTag,
+} from "@/lib/soro"
 
 /**
  * On-demand ISR purge for Soro-backed blog pages.
@@ -10,7 +15,7 @@ import { SORO_ARTICLE_CONTENT_TAG, SORO_ARTICLES_TAG } from "@/lib/soro"
  * Falls back to WAITLIST_ADMIN_SECRET if REVALIDATE_SECRET is unset.
  *
  * Optional body/query:
- *   slug — also revalidate /blog/<slug> specifically
+ *   slug — also revalidate /blog/<slug> and the per-article content tag
  *
  * Examples:
  *   POST /api/revalidate?secret=...
@@ -67,10 +72,22 @@ async function handle(request: NextRequest) {
   }
 
   const slug = extractSlug(request, body)
+  const tags = [SORO_ARTICLES_TAG, SORO_ARTICLE_CONTENT_TAG]
 
   // Immediate expire so the next request blocks on fresh Soro data (webhook-style).
   revalidateTag(SORO_ARTICLES_TAG, { expire: 0 })
   revalidateTag(SORO_ARTICLE_CONTENT_TAG, { expire: 0 })
+
+  // getSoroArticleContent also tags per article id; base-tag purge alone can leave
+  // that entry serving stale HTML after path revalidation. Clear it when we know the slug.
+  if (slug) {
+    const articleId = await getSoroArticleIdBySlugFresh(slug)
+    if (articleId) {
+      const articleTag = soroArticleContentTag(articleId)
+      revalidateTag(articleTag, { expire: 0 })
+      tags.push(articleTag)
+    }
+  }
 
   revalidatePath("/blog")
   // Dynamic segment pattern — clears cached slug pages (including sticky 404s).
@@ -83,7 +100,7 @@ async function handle(request: NextRequest) {
     revalidated: true,
     now: Date.now(),
     paths: ["/blog", "/blog/[slug]", ...(slug ? [`/blog/${slug}`] : [])],
-    tags: [SORO_ARTICLES_TAG, SORO_ARTICLE_CONTENT_TAG],
+    tags,
   })
 }
 
