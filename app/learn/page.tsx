@@ -3,14 +3,20 @@ import Link from "next/link"
 import {
   AVIATION_WEATHER_HUB_PAGES,
   DECISION_MAKING_HUB_PAGES,
+  LEARN_ARTICLES,
   LEARN_PUBLIC,
-  LEARN_SECTIONS,
   TIPS_EMPTY_LINE,
-  getArticlesBySection,
   getPublishedTips,
   shouldIndexLearnHub,
-  type LearnSection,
 } from "./learn-data"
+import {
+  CASE_STUDY_TAGS,
+  CASE_STUDY_TAG_ORDER,
+  DECISION_GROUP,
+  START_HERE_HREFS,
+  WEATHER_GROUPS,
+} from "./learn-hub-layout"
+import { CaseStudyFilter } from "./case-study-filter"
 
 const HUB_TITLE = "Learning Center"
 const HUB_DESCRIPTION =
@@ -39,76 +45,78 @@ export const metadata: Metadata = {
   },
 }
 
-function SectionArticles({ section }: { section: LearnSection }) {
-  const articles = getArticlesBySection(section)
-  const hubPages =
-    section === "Weather Products"
-      ? AVIATION_WEATHER_HUB_PAGES
-      : section === "Decision-Making"
-        ? DECISION_MAKING_HUB_PAGES
-        : []
+type Entry = {
+  href: string
+  title: string
+  summary: string
+  draft?: boolean
+}
 
-  if (articles.length === 0 && hubPages.length === 0) {
-    return (
-      <div className="rounded-xl border border-dashed border-white/15 bg-white/[0.03] px-6 py-10 text-center">
-        <p className="text-sm font-medium text-white/50">Coming soon</p>
-        <p className="mt-2 text-sm text-white/35">
-          Sourced explainers for this section are on the way.
-        </p>
-      </div>
-    )
+/** Short card title: the part before the first colon or question mark. */
+function shortTitle(title: string): string {
+  const colon = title.indexOf(": ")
+  if (colon > 0) return title.slice(0, colon)
+  const q = title.indexOf("? ")
+  if (q > 0) return title.slice(0, q + 1)
+  return title
+}
+
+function buildCatalog(): Map<string, Entry> {
+  const all = new Map<string, Entry>()
+  for (const p of [...AVIATION_WEATHER_HUB_PAGES, ...DECISION_MAKING_HUB_PAGES]) {
+    all.set(p.href, { href: p.href, title: p.title, summary: p.summary })
   }
+  for (const a of LEARN_ARTICLES) {
+    const href = `/learn/${a.slug}`
+    all.set(href, { href, title: a.title, summary: a.summary, draft: a.draft })
+  }
+  return all
+}
 
+function EntryGrid({ entries }: { entries: Entry[] }) {
   return (
-    <ul className="flex flex-col gap-4">
-      {hubPages.map((page) => (
-        <li key={page.href}>
+    <ul className="grid gap-4 sm:grid-cols-2">
+      {entries.map((e) => (
+        <li key={e.href}>
           <Link
-            href={page.href}
-            className="group flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-5 transition-all hover:border-sky-500/40 hover:bg-white/[0.08]"
+            href={e.href}
+            className="group flex h-full flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-5 transition-all hover:border-sky-500/40 hover:bg-white/[0.08]"
           >
-            <div className="flex flex-wrap items-center gap-2 text-xs">
-              <span className="text-white/40">
-                Reviewed {page.lastReviewed}
+            {e.draft ? (
+              <span className="self-start rounded-full bg-amber-500/15 px-2.5 py-1 text-xs font-medium uppercase tracking-wide text-amber-300">
+                Draft
               </span>
-            </div>
-            <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-sky-300">
-              {page.title}
+            ) : null}
+            <h3 className="text-base font-semibold text-white transition-colors group-hover:text-sky-300">
+              {shortTitle(e.title)}
             </h3>
-            <p className="text-sm text-white/55">{page.summary}</p>
-            <span className="mt-1 inline-flex items-center text-sm font-medium text-sky-400 group-hover:text-sky-300">
-              Read article
-            </span>
-          </Link>
-        </li>
-      ))}
-      {articles.map((article) => (
-        <li key={article.slug}>
-          <Link
-            href={`/learn/${article.slug}`}
-            className="group flex flex-col gap-2 rounded-xl border border-white/10 bg-white/5 p-5 transition-all hover:border-sky-500/40 hover:bg-white/[0.08]"
-          >
-            <div className="flex flex-wrap items-center gap-2 text-xs">
-              {article.draft ? (
-                <span className="rounded-full bg-amber-500/15 px-2.5 py-1 font-medium uppercase tracking-wide text-amber-300">
-                  Draft
-                </span>
-              ) : null}
-              <span className="text-white/40">
-                Reviewed {article.lastReviewed}
-              </span>
-            </div>
-            <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-sky-300">
-              {article.title}
-            </h3>
-            <p className="text-sm text-white/55">{article.summary}</p>
-            <span className="mt-1 inline-flex items-center text-sm font-medium text-sky-400 group-hover:text-sky-300">
-              Read article
-            </span>
+            <p className="line-clamp-2 text-sm text-white/55">{e.summary}</p>
           </Link>
         </li>
       ))}
     </ul>
+  )
+}
+
+function Shelf({
+  id,
+  title,
+  description,
+  children,
+}: {
+  id: string
+  title: string
+  description: string
+  children: React.ReactNode
+}) {
+  return (
+    <section aria-labelledby={id} className="scroll-mt-24">
+      <h2 id={id} className="mb-2 text-2xl font-bold tracking-tight text-white">
+        {title}
+      </h2>
+      <p className="mb-6 text-sm leading-relaxed text-white/50">{description}</p>
+      {children}
+    </section>
   )
 }
 
@@ -156,7 +164,40 @@ function TipsArchive() {
   )
 }
 
+const JUMP_LINKS = [
+  { href: "#section-weather", label: "Weather" },
+  { href: "#section-decision-making", label: "Decision making" },
+  { href: "#section-case-studies", label: "Accident case studies" },
+  { href: "#section-tips", label: "Tips of the Week" },
+]
+
 export default function LearnHubPage() {
+  const catalog = buildCatalog()
+  const used = new Set<string>()
+  const take = (hrefs: string[]): Entry[] =>
+    hrefs.flatMap((h) => {
+      const e = catalog.get(h)
+      if (!e) return []
+      used.add(h)
+      return [e]
+    })
+  const startHere = START_HERE_HREFS.flatMap((h) => {
+    const e = catalog.get(h)
+    return e ? [e] : []
+  })
+  const weatherGroups = WEATHER_GROUPS.map((g) => ({ ...g, entries: take(g.hrefs) })).filter(
+    (g) => g.entries.length > 0
+  )
+  const decision = take(DECISION_GROUP.hrefs)
+  const caseStudies = Object.keys(CASE_STUDY_TAGS).flatMap((slug) => {
+    const href = `/learn/${slug}`
+    const e = catalog.get(href)
+    if (!e) return []
+    used.add(href)
+    return [{ href, title: e.title, summary: e.summary, tags: CASE_STUDY_TAGS[slug] }]
+  })
+  const more = [...catalog.values()].filter((e) => !used.has(e.href))
+
   return (
     <>
       <div
@@ -171,7 +212,7 @@ export default function LearnHubPage() {
         aria-hidden="true"
       />
 
-      <section className="px-6 py-16 text-center">
+      <section className="px-6 pb-8 pt-16 text-center">
         <div className="mx-auto max-w-2xl">
           <p className="mb-3 text-xs uppercase tracking-widest text-sky-400">
             PlaneWX
@@ -190,26 +231,75 @@ export default function LearnHubPage() {
         </div>
       </section>
 
-      <main className="mx-auto max-w-3xl space-y-16 px-6 pb-8">
-        {LEARN_SECTIONS.map((section) => {
-          const sectionId = `section-${section.id.toLowerCase().replace(/\s+/g, "-")}`
-          return (
-          <section key={section.id} aria-labelledby={sectionId}>
-            <h2
-              id={sectionId}
-              className="mb-2 text-2xl font-bold tracking-tight text-white"
-            >
-              {section.id}
-            </h2>
-            <p className="mb-6 text-sm leading-relaxed text-white/50">
-              {section.description}
-            </p>
-            <SectionArticles section={section.id} />
-          </section>
-          )
-        })}
+      <nav aria-label="Learning Center sections" className="mx-auto mb-12 max-w-4xl px-6">
+        <ul className="flex flex-wrap justify-center gap-2">
+          {JUMP_LINKS.map((j) => (
+            <li key={j.href}>
+              <a
+                href={j.href}
+                className="inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/70 transition-colors hover:border-sky-500/40 hover:text-sky-300"
+              >
+                {j.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-        <section aria-labelledby="section-tips">
+      <main className="mx-auto max-w-4xl space-y-16 px-6 pb-8">
+        {startHere.length > 0 ? (
+          <Shelf
+            id="section-start-here"
+            title="Start here"
+            description="New to the Learning Center? Begin with these three."
+          >
+            <EntryGrid entries={startHere} />
+          </Shelf>
+        ) : null}
+
+        <Shelf
+          id="section-weather"
+          title="Weather"
+          description="Plain-language guides to weather products and hazards, sourced from the FAA, NWS, and Aviation Weather Center."
+        >
+          <div className="space-y-10">
+            {weatherGroups.map((g) => (
+              <div key={g.id}>
+                <h3 className="mb-1 text-sm font-semibold uppercase tracking-widest text-sky-400">
+                  {g.title}
+                </h3>
+                <p className="mb-4 text-sm text-white/45">{g.description}</p>
+                <EntryGrid entries={g.entries} />
+              </div>
+            ))}
+          </div>
+        </Shelf>
+
+        <Shelf
+          id="section-decision-making"
+          title={DECISION_GROUP.title}
+          description={DECISION_GROUP.description}
+        >
+          <EntryGrid entries={decision} />
+        </Shelf>
+
+        {caseStudies.length > 0 ? (
+          <Shelf
+            id="section-case-studies"
+            title="Accident case studies"
+            description="Real accidents from AOPA Air Safety Institute case studies and NTSB final reports. Filter by what went wrong."
+          >
+            <CaseStudyFilter cards={caseStudies} tags={CASE_STUDY_TAG_ORDER} />
+          </Shelf>
+        ) : null}
+
+        {more.length > 0 ? (
+          <Shelf id="section-more" title="More" description="Other explainers.">
+            <EntryGrid entries={more} />
+          </Shelf>
+        ) : null}
+
+        <section aria-labelledby="section-tips" className="scroll-mt-24">
           <h2
             id="section-tips"
             className="mb-2 text-2xl font-bold tracking-tight text-white"
@@ -224,7 +314,7 @@ export default function LearnHubPage() {
       </main>
 
       <section className="px-6 pb-24 pt-8">
-        <div className="mx-auto max-w-3xl rounded-xl border border-sky-500/20 bg-gradient-to-r from-sky-950/40 to-cyan-950/20 px-6 py-10 text-center">
+        <div className="mx-auto max-w-4xl rounded-xl border border-sky-500/20 bg-gradient-to-r from-sky-950/40 to-cyan-950/20 px-6 py-10 text-center">
           <p className="mb-5 text-base text-white/70">
             Ready to put a trip on the briefing board?
           </p>
