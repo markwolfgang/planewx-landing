@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest"
 import { getSoroArticleBySlug, getSoroArticles } from "@/lib/soro"
 
 const BLOG_SLUG_PAGE = join(process.cwd(), "app/blog/[slug]/page.tsx")
+const SORO_LIB = join(process.cwd(), "lib/soro.ts")
 const NOT_FOUND_PAGE = join(process.cwd(), "app/not-found.tsx")
 
 describe("blog unknown slug returns notFound (no DYNAMIC_SERVER_USAGE)", () => {
@@ -26,6 +27,15 @@ describe("blog unknown slug returns notFound (no DYNAMIC_SERVER_USAGE)", () => {
     const titleIdx = pageFn.indexOf("article.title")
     expect(notFoundIdx).toBeGreaterThanOrEqual(0)
     expect(titleIdx).toBeGreaterThan(notFoundIdx)
+  })
+
+  it("keeps slug lookup ISR-safe (no uncached fetch that forces dynamic)", () => {
+    const src = readFileSync(SORO_LIB, "utf8")
+    // Strip block comments so docs mentioning the anti-pattern do not trip this.
+    const code = src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*$/gm, "")
+    expect(code).not.toMatch(/cache:\s*['"]no-store['"]/)
+    expect(code).toContain("getSoroArticleBySlug")
+    expect(code).toMatch(/revalidate:\s*3600/)
   })
 
   it("ships a global not-found page with robots noindex", () => {
