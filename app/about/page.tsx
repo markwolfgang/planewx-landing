@@ -313,8 +313,7 @@ export default function AboutPage() {
               PlaneWX.
             </p>
             <p className="text-white/65 leading-relaxed">
-              He still flies the product he ships. The homepage Founder&apos;s Story stays a short
-              teaser that links here for the full picture.
+              He still flies the product he ships.
             </p>
             <div className="pt-2 flex flex-col items-center gap-3">
               <a
