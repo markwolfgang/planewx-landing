@@ -78,6 +78,21 @@ const AMBASSADORS = [
       label: "Feature video",
     },
   },
+  {
+    name: "Runway to Oshkosh",
+    href: "https://www.planewx.ai/runway",
+    description:
+      "Campaign and community partner on the road to Oshkosh. Pilots, clubs, and shared events that keep GA connected.",
+    tile: {
+      // Original color logo (moved here from /partners)
+      src: "/partners/runway-to-oshkosh-logo.png",
+      alt: "Runway to Oshkosh logo",
+      width: 512,
+      height: 67,
+      objectFit: "contain" as const,
+      wellClassName: "bg-white/[0.04]",
+    },
+  },
 ] as const
 
 export default function AmbassadorsPage() {
