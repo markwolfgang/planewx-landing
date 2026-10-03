@@ -64,6 +64,19 @@ describe("learn hub LEARN_PUBLIC rollback gating", () => {
       ...DECISION_MAKING_HUB_PAGES.map((p) => p.href),
       "/learn/mos-vs-nbm-vs-taf",
       "/learn/risk-stacking",
+      "/learn/fair-weather-flier",
+      "/learn/trapped-in-ice",
+      "/learn/blind-over-bakersfield",
+      "/learn/delayed-reaction",
+      "/learn/hazardous-attitudes",
+      "/learn/night-falls-on-final",
+      "/learn/in-too-deep",
+      "/learn/cross-country-crisis",
+      "/learn/time-lapse",
+      "/learn/into-thin-air",
+      "/learn/high-aspirations",
+      "/learn/deadly-disorientation",
+      "/learn/faulty-assumptions",
     ])
   })
 })

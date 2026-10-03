@@ -26,6 +26,19 @@ export const LEARN_PUBLIC_MIN_ARTICLES = 3
 export const INDEXABLE_LEARN_ARTICLE_SLUGS = [
   "mos-vs-nbm-vs-taf",
   "risk-stacking",
+  "fair-weather-flier",
+  "trapped-in-ice",
+  "blind-over-bakersfield",
+  "delayed-reaction",
+  "hazardous-attitudes",
+  "night-falls-on-final",
+  "in-too-deep",
+  "cross-country-crisis",
+  "time-lapse",
+  "into-thin-air",
+  "high-aspirations",
+  "deadly-disorientation",
+  "faulty-assumptions",
 ] as const
 
 export type LearnSection =
@@ -591,7 +604,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "A noninstrument-rated Bonanza pilot heard \u201cVFR flight not recommended\u201d and left anyway, a day early, to beat worse weather. A case study from the AOPA Air Safety Institute and the NTSB final report on what self-induced pressure looks like from the inside.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -698,7 +711,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "An instrument-rated Cirrus pilot briefed the night before, departed into forecast icing in an airplane not equipped for it, and lost control on a diversion. A case study from the AOPA Air Safety Institute and the NTSB final report on why a briefing has a shelf life.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -792,7 +805,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "A low-time, noninstrument-rated pilot launched with his family into forecast storms, climbed to nearly 20,000 feet to stay on top, then accepted an IFR clearance. A case study from the AOPA Air Safety Institute and the NTSB final report on how one decision keeps leading to the next.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -895,7 +908,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "An instrument-rated TBM 700 pilot climbed into icing he'd been warned about and asked for a higher altitude instead of declaring. About two minutes later the airplane came apart. A case study from the AOPA Air Safety Institute and the NTSB final report on using your command authority early.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -981,7 +994,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "A 75-year-old instrument-rated commercial pilot left Fullerton VFR with no briefing on record, after the tower warned of deteriorating weather ahead. Six minutes later his Cessna 414 broke up over Yorba Linda. A case study from the AOPA Air Safety Institute and the NTSB final report on the five hazardous attitudes.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -1077,7 +1090,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "An experienced pilot, out of instrument and night currency, struggled with his GPS and autopilot after a runway change at Raleigh-Durham, then descended into trees a mile short. A case study from the AOPA Air Safety Institute and the NTSB final report on what recency really protects.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -1167,7 +1180,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "A 207-hour private pilot without an instrument rating found his destination gone IFR, was cleared to land anyway, and turned away to avoid getting stuck. Minutes later his Cirrus SR20 spiraled into the ground near Crystal Lake, Illinois. A case study from the AOPA Air Safety Institute and the NTSB final report on taking the out you're given.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -1257,7 +1270,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "A private pilot without an instrument rating set out VFR from the Chicago area to Raleigh in January with no flight plan, no record of a weather briefing and an airplane over its weight and balance limits. Low on fuel in heavy snow, his Seneca crashed near Huntington, West Virginia. A case study from the AOPA Air Safety Institute and the NTSB final report on planning the whole route.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -1343,7 +1356,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "An instrument-rated Cherokee Six pilot used in-cockpit NEXRAD to pick his way around Texas thunderstorms at night. The airplane flew into severe weather and broke up near Bryan. A case study from the AOPA Air Safety Institute and the NTSB final report on what datalink weather can and can't tell you.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -1434,7 +1447,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "On a clear July evening, a 12,000-hour pilot ferrying a Bonanza G36 out of Aspen turned down an IFR departure and flew east VFR, climbing a few hundred feet per minute toward rising terrain. The airplane turned into a bowl ringed by 13,000-foot peaks and hit the mountain. A case study from the AOPA Air Safety Institute and the NTSB final report on performance and terrain.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -1520,7 +1533,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "A 108-hour pilot with five hours in his Piper Lance took off near maximum gross weight, with a tailwind, at a density altitude above 7,200 feet. The airplane never climbed more than 120 feet above the ground and stalled into a West Jordan, Utah neighborhood. A case study from the AOPA Air Safety Institute and the NTSB final report on takeoff performance.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -1606,7 +1619,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "An instrument-rated Cessna 340 pilot drifted off the localizer on an ILS with a circle to land, called the runway in sight, and lost the protection of the approach. Between two cloud layers he struggled to hold altitude, then entered a steep descending turn into Santee, California. A case study from the AOPA Air Safety Institute and the NTSB final report on spatial disorientation.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
@@ -1692,7 +1705,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "A Baron pilot planned an IFR trip on fuel numbers that had been wrong for eight days. Both engines quit on a GPS approach to Kerrville, Texas, and the airplane spun in below its minimum control speed. A case study from the AOPA Air Safety Institute and the NTSB final report on verifying fuel before every flight.",
     lastReviewed: "2026-10-02",
-    draft: true,
+    draft: false,
     body: [
       {
         type: "paragraph",
