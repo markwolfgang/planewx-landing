@@ -154,20 +154,6 @@ const PARTNERS = [
     blurb:
       "Flight sunglasses built for the cockpit: thin temples that play nicely with headsets, and lenses that keep instruments readable. A community partner helping pilots fly more comfortably.",
   },
-  {
-    name: "Runway to Oshkosh",
-    href: "https://www.planewx.ai/runway",
-    logo: {
-      // White mark on transparent, cut from the color master at /partners/runway-to-oshkosh-logo.png
-      src: "/partners/runway-to-oshkosh-logo-white.png",
-      alt: "Runway to Oshkosh",
-      width: 512,
-      height: 67,
-      className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
-    },
-    blurb:
-      "Campaign and community partner on the road to Oshkosh. Pilots, clubs, and shared events that keep GA connected.",
-  },
 ] as const
 
 export default function PartnersPage() {
