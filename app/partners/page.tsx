@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, ExternalLink, Play } from "lucide-react"
+import { ArrowLeft, ExternalLink } from "lucide-react"
 import { PartnerInquiryForm } from "@/components/partners/inquiry-form"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
@@ -43,68 +43,18 @@ const PARTNERS = [
       "Aviation insurance partner working with PlaneWX so pilots can keep their decision support and their coverage in the same flight picture.",
   },
   {
-    name: "Air Care Alliance",
-    href: "/volunteer",
+    name: "AOPA",
+    href: "https://www.aopa.org",
     logo: {
-      // Official white wordmark from ACA site (aca_logo_tag_white.svg); color master at /partners/aca.svg
-      src: "/partners/aca-white.svg",
-      alt: "Air Care Alliance logo",
-      width: 369,
-      height: 133,
-      className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
-    },
-    memberBenefit:
-      "ACA volunteer pilots receive a discount on their PlaneWX subscription.",
-    blurb:
-      "Nationwide alliance of volunteer pilot groups flying compassion missions for people and animals in need. Kindred work with the volunteer spirit we support at planewx.ai/volunteer.",
-  },
-  {
-    name: "COPA",
-    href: "https://www.cirruspilots.org",
-    logo: {
-      // Official white footer mark from cirruspilots.org; blue header master at /partners/copa.png
-      src: "/partners/copa-white.png",
-      alt: "COPA (Cirrus Owners and Pilots Association) logo",
-      width: 394,
-      height: 96,
-      className: "h-10 sm:h-11 w-auto max-w-[13rem] object-contain",
-    },
-    memberBenefit:
-      "COPA members receive a discount on their PlaneWX subscription.",
-    blurb:
-      "Cirrus Owners and Pilots Association. Community for Cirrus owners and pilots focused on safety, training, and shared experience.",
-  },
-  {
-    name: "Flight Chops",
-    href: "https://flightchops.com",
-    logo: {
-      src: "/partners/flight-chops.png",
-      alt: "Flight Chops logo",
-      width: 800,
-      height: 766,
-      className: "h-14 sm:h-16 w-auto max-w-[9rem] object-contain",
+      // White SVG for dark navy cards; color master at /partners/aopa.png
+      src: "/partners/aopa-white.svg",
+      alt: "Aircraft Owners and Pilots Association (AOPA) logo",
+      width: 96,
+      height: 51,
+      className: "h-11 sm:h-12 w-auto max-w-[10rem] object-contain",
     },
     blurb:
-      "Training and storytelling that put real pilot decision-making on camera. A PlaneWX partner helping more pilots brief with intent.",
-  },
-  {
-    name: "Kneeboard Pro",
-    href: "https://kneeboardpro.imctvmedia.com/",
-    logo: {
-      // Dark-bg stacked mark (white Kneeboard text); light master at /partners/kneeboard-pro-light.png
-      src: "/partners/kneeboard-pro.png",
-      alt: "Kneeboard Pro logo",
-      width: 1120,
-      height: 840,
-      className: "h-14 sm:h-16 w-auto max-w-[10rem] object-contain",
-    },
-    blurb:
-      "Free browser tool that turns your flight plan into printable kneeboard sheets, one page per leg with frequencies and cockpit note fields. Built by IMC TV Media for VFR and IFR pilots.",
-    // Sara / Discord #bot-hq: feature video on partners listing (not a separate IMC TV card)
-    featureVideo: {
-      href: "https://youtu.be/XqYzuOc3Y4o",
-      label: "Feature video",
-    },
+      "Aircraft Owners and Pilots Association. Advocating for GA pilots and the freedom to fly.",
   },
   {
     name: "EAA",
@@ -121,18 +71,46 @@ const PARTNERS = [
       "Experimental Aircraft Association. Supporting the builders, restorers, and pilots who keep general aviation moving.",
   },
   {
-    name: "AOPA",
-    href: "https://www.aopa.org",
+    name: "TBMOPA",
+    href: "https://tbmowners.org",
     logo: {
-      // White SVG for dark navy cards; color master at /partners/aopa.png
-      src: "/partners/aopa-white.svg",
-      alt: "Aircraft Owners and Pilots Association (AOPA) logo",
-      width: 96,
-      height: 51,
-      className: "h-11 sm:h-12 w-auto max-w-[10rem] object-contain",
+      // All-white mark (same file as the homepage strip); the 2026 master with the blue plane stays at /partners/tbmopa-logo-2026-white.png
+      src: "/partners/tbmopa-white.png",
+      alt: "TBMOPA (TBM Owners and Pilots Association) logo",
+      width: 800,
+      height: 377,
+      className: "h-14 sm:h-16 w-auto max-w-[13rem] object-contain",
     },
     blurb:
-      "Aircraft Owners and Pilots Association. Advocating for GA pilots and the freedom to fly.",
+      "TBM Owners and Pilots Association. Events, education, and a place for TBM operators to learn and connect, including PlaneWX talks.",
+  },
+  {
+    name: "COPA",
+    href: "https://www.cirruspilots.org",
+    logo: {
+      // Official white footer mark from cirruspilots.org; blue header master at /partners/copa.png
+      src: "/partners/copa-white.png",
+      alt: "COPA (Cirrus Owners and Pilots Association) logo",
+      width: 394,
+      height: 96,
+      className: "h-10 sm:h-11 w-auto max-w-[13rem] object-contain",
+    },
+    blurb:
+      "Cirrus Owners and Pilots Association. Community for Cirrus owners and pilots focused on safety, training, and shared experience.",
+  },
+  {
+    name: "Air Care Alliance",
+    href: "/volunteer",
+    logo: {
+      // Official white wordmark from ACA site (aca_logo_tag_white.svg); color master at /partners/aca.svg
+      src: "/partners/aca-white.svg",
+      alt: "Air Care Alliance logo",
+      width: 369,
+      height: 133,
+      className: "h-10 sm:h-11 w-auto max-w-[12rem] object-contain",
+    },
+    blurb:
+      "Nationwide alliance of volunteer pilot groups flying compassion missions for people and animals in need. Kindred work with the volunteer spirit we support at planewx.ai/volunteer.",
   },
   {
     name: "Veterans Airlift Command",
@@ -145,10 +123,23 @@ const PARTNERS = [
       height: 232,
       className: "h-9 sm:h-10 w-auto max-w-[12rem] object-contain",
     },
-    memberBenefit:
-      "VAC volunteer pilots receive a discount on their PlaneWX subscription.",
     blurb:
       "Connecting wounded veterans and their families with free air transportation through volunteer pilots and aircraft owners.",
+  },
+  {
+    name: "LifeLine Pilots",
+    href: "https://www.lifelinepilots.org",
+    logo: {
+      // Official lockup from Ann Rude, Oct 2 2026, as a white mark on transparent
+      // for the dark cards. Tagline dropped at this size.
+      src: "/partners/lifeline-pilots-white.png",
+      alt: "LifeLine Pilots logo",
+      width: 1600,
+      height: 243,
+      className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
+    },
+    blurb:
+      "Volunteer pilots flying medical missions for patients in need.",
   },
   {
     name: "FLYTE",
@@ -164,26 +155,11 @@ const PARTNERS = [
       "Flight sunglasses built for the cockpit: thin temples that play nicely with headsets, and lenses that keep instruments readable. A community partner helping pilots fly more comfortably.",
   },
   {
-    name: "TBMOPA",
-    href: "https://tbmowners.org",
-    logo: {
-      src: "/partners/tbmopa-logo-2026-white.png",
-      alt: "TBMOPA (TBM Owners and Pilots Association) logo",
-      width: 2126,
-      height: 1018,
-      className: "h-14 sm:h-16 w-auto max-w-[13rem] object-contain",
-    },
-    // Sara Round 2: exact member sentence. No coupon code. Link is tbmowners.org.
-    memberBenefit:
-      "TBMOPA members receive a discount on their PlaneWX subscription.",
-    blurb:
-      "TBM Owners and Pilots Association. Events, education, and a place for TBM operators to learn and connect, including PlaneWX talks.",
-  },
-  {
     name: "Runway to Oshkosh",
     href: "https://www.planewx.ai/runway",
     logo: {
-      src: "/partners/runway-to-oshkosh-logo.png",
+      // White mark on transparent, cut from the color master at /partners/runway-to-oshkosh-logo.png
+      src: "/partners/runway-to-oshkosh-logo-white.png",
       alt: "Runway to Oshkosh",
       width: 512,
       height: 67,
@@ -269,79 +245,7 @@ export default function PartnersPage() {
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {PARTNERS.map((partner) => {
-              const featureVideo =
-                "featureVideo" in partner ? partner.featureVideo : undefined
               const isExternal = partner.href.startsWith("http")
-              const logoWell = (
-                <div className="flex min-h-[4.75rem] items-center justify-center rounded-xl bg-white/[0.04] px-4 py-4 mb-4">
-                  <Image
-                    src={partner.logo.src}
-                    alt={partner.logo.alt}
-                    width={partner.logo.width}
-                    height={partner.logo.height}
-                    className={partner.logo.className}
-                  />
-                </div>
-              )
-              const memberBenefit =
-                "memberBenefit" in partner ? partner.memberBenefit : undefined
-              const body = (
-                <div className="flex items-start gap-3">
-                  <div className="space-y-2 min-w-0 flex-1">
-                    <p className="font-semibold text-white group-hover:text-sky-300 transition-colors">
-                      {partner.name}
-                    </p>
-                    {memberBenefit ? (
-                      <p className="text-sm font-semibold text-sky-300 leading-snug">
-                        {memberBenefit}
-                      </p>
-                    ) : null}
-                    <p className="text-sm text-white/50 leading-relaxed">
-                      {partner.blurb}
-                    </p>
-                  </div>
-                  {isExternal ? (
-                    <ExternalLink
-                      className="h-4 w-4 shrink-0 text-white/30 group-hover:text-sky-400 transition-colors mt-1"
-                      aria-hidden
-                    />
-                  ) : null}
-                </div>
-              )
-
-              // Cards with a secondary feature-video link cannot wrap in a single <a>
-              if (featureVideo) {
-                return (
-                  <li key={partner.name} className="h-full">
-                    <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors">
-                      <a
-                        href={partner.href}
-                        {...(isExternal
-                          ? { target: "_blank", rel: "noopener noreferrer" }
-                          : {})}
-                        className="flex flex-1 flex-col rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
-                      >
-                        {logoWell}
-                        {body}
-                        {isExternal ? (
-                          <span className="sr-only"> (opens in a new tab)</span>
-                        ) : null}
-                      </a>
-                      <a
-                        href={featureVideo.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-4 inline-flex items-center gap-1.5 self-start text-sm font-medium text-sky-300/90 hover:text-sky-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
-                      >
-                        <Play className="h-3.5 w-3.5 shrink-0" aria-hidden />
-                        {featureVideo.label}
-                        <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                    </div>
-                  </li>
-                )
-              }
-
               return (
                 <li key={partner.name} className="h-full">
                   <a
@@ -349,10 +253,33 @@ export default function PartnersPage() {
                     {...(isExternal
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
-                    className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 hover:border-sky-500/30 hover:bg-white/[0.05] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                    className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
                   >
-                    {logoWell}
-                    {body}
+                    <div className="flex min-h-[4.75rem] items-center justify-center rounded-xl bg-white/[0.04] px-4 py-4 mb-4">
+                      <Image
+                        src={partner.logo.src}
+                        alt={partner.logo.alt}
+                        width={partner.logo.width}
+                        height={partner.logo.height}
+                        className={partner.logo.className}
+                      />
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="space-y-2 min-w-0 flex-1">
+                        <p className="font-semibold text-white">
+                          {partner.name}
+                        </p>
+                        <p className="text-sm text-white/50 leading-relaxed">
+                          {partner.blurb}
+                        </p>
+                      </div>
+                      {isExternal ? (
+                        <ExternalLink
+                          className="h-4 w-4 shrink-0 text-white/30 mt-1"
+                          aria-hidden
+                        />
+                      ) : null}
+                    </div>
                     {isExternal ? (
                       <span className="sr-only"> (opens in a new tab)</span>
                     ) : null}
