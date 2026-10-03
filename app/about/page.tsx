@@ -37,8 +37,6 @@ const VARIANT = "d"
 const SIGNUP_HREF = "https://app.planewx.ai/auth/sign-up?lp=d"
 const VAC_URL = "https://www.veteransairlift.org/"
 const YOUTUBE_URL = "https://www.youtube.com/@markflieshigh"
-const MEDIUM_ESSAY_URL =
-  "https://medium.com/@markxwolfgang/i-built-an-aviation-safety-app-so-i-would-not-kill-myself-fff745833a28"
 
 const TIMELINE = [
   {
@@ -326,25 +324,12 @@ export default function AboutPage() {
                 Watch Mark&apos;s flying and product story on YouTube
                 <ExternalLink className="h-4 w-4 text-white/40" aria-hidden />
               </a>
-              <a
-                href={MEDIUM_ESSAY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/news/why-i-built-planewx"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.06] px-6 py-3 text-sm font-medium text-white/80 hover:text-white transition-colors"
               >
-                Read why I built PlaneWX on Medium
-                <ExternalLink className="h-4 w-4 text-white/40" aria-hidden />
-              </a>
-              <p className="text-sm text-white/40 pt-1">
-                Also in the newsroom:{" "}
-                <Link
-                  href="/news/why-i-built-planewx"
-                  className="text-sky-400/80 hover:text-sky-300 underline underline-offset-2"
-                >
-                  Why I built PlaneWX
-                </Link>
-                .
-              </p>
+                Read why I built PlaneWX
+              </Link>
             </div>
           </div>
         </section>
