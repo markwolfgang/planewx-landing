@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { shouldEmitHubJsonLd } from "../../learn-data"
+import { hubPageRobots, shouldEmitHubJsonLd } from "../../learn-data"
 import Link from "next/link"
 import { HubHost } from "../hub-host"
 import {
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: CANONICAL },
-  robots: { index: false, follow: false },
+  robots: hubPageRobots(),
   openGraph: {
     type: "article",
     url: CANONICAL,
@@ -47,12 +47,6 @@ export default function Page() {
         }}
         aria-hidden="true"
       />
-
-      <div className="mx-auto max-w-[1120px] px-5 pt-6">
-        <div className="rounded-lg border border-amber-500/40 bg-amber-950/40 px-4 py-3 text-sm text-amber-100">
-          <strong>DRAFT — not published.</strong> Hidden from hub list and sitemap. For Mark review only.
-        </div>
-      </div>
 
       <HubHost html={MAIN_HTML} />
 
