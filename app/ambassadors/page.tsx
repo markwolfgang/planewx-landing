@@ -79,6 +79,24 @@ const AMBASSADORS = [
     },
   },
   {
+    name: "Wayne McClelland",
+    href: "https://www.youtube.com/@GeezerGeekPilot",
+    description: "Geezer Pilot",
+    tile: {
+      // Placeholder until Wayne sends a Geezer Pilot logo; swap src/alt/size.
+      src: "/ambassadors/geezer-pilot-placeholder.svg",
+      alt: "Geezer Pilot",
+      width: 512,
+      height: 512,
+      objectFit: "contain" as const,
+      wellClassName: "bg-white",
+    },
+    extraLink: {
+      href: "https://geezer-geek-pilot-control-panel.netlify.app/",
+      label: "Free apps (web, iOS)",
+    },
+  },
+  {
     name: "Runway to Oshkosh",
     href: "https://www.planewx.ai/runway",
     description:
@@ -204,6 +222,8 @@ export default function AmbassadorsPage() {
                 "featureVideo" in ambassador
                   ? ambassador.featureVideo
                   : undefined
+              const extraLink =
+                "extraLink" in ambassador ? ambassador.extraLink : undefined
               const wellClass =
                 "wellClassName" in ambassador.tile &&
                 ambassador.tile.wellClassName
@@ -280,6 +300,21 @@ export default function AmbassadorsPage() {
                               aria-hidden
                             />
                             {featureVideo.label}
+                            <span className="sr-only"> (opens in a new tab)</span>
+                          </a>
+                        ) : null}
+                        {extraLink ? (
+                          <a
+                            href={extraLink.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 self-start text-sm font-medium text-sky-300/90 hover:text-sky-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                          >
+                            <ExternalLink
+                              className="h-3.5 w-3.5 shrink-0"
+                              aria-hidden
+                            />
+                            {extraLink.label}
                             <span className="sr-only"> (opens in a new tab)</span>
                           </a>
                         ) : null}
