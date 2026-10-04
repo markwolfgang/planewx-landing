@@ -83,9 +83,8 @@ const AMBASSADORS = [
     href: "https://www.youtube.com/@GeezerGeekPilot",
     description: "Geezer Pilot",
     tile: {
-      // Placeholder until Wayne sends a Geezer Pilot logo; swap src/alt/size.
-      src: "/ambassadors/geezer-pilot-placeholder.svg",
-      alt: "Geezer Pilot",
+      src: "/ambassadors/geezer-pilot.webp",
+      alt: "Geezer Pilot logo",
       width: 512,
       height: 512,
       objectFit: "contain" as const,
