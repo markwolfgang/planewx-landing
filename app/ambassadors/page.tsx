@@ -81,10 +81,10 @@ const AMBASSADORS = [
   {
     name: "Wayne McClelland",
     href: "https://www.youtube.com/@GeezerGeekPilot",
-    description: "Geezer Pilot",
+    description: "GeezerGeek Pilot",
     tile: {
       src: "/ambassadors/geezer-pilot.webp",
-      alt: "Geezer Pilot logo",
+      alt: "GeezerGeek Pilot logo",
       width: 512,
       height: 512,
       objectFit: "contain" as const,
