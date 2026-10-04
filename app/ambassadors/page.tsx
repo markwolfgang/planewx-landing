@@ -36,6 +36,7 @@ export const metadata: Metadata = {
 const AMBASSADORS = [
   {
     name: "Don Medine",
+    href: "https://sf50flightsupport.com/",
     description: "SF50 Flight Support",
     tile: {
       src: "/ambassadors/sf50-fs-flight-support-logo.png",
