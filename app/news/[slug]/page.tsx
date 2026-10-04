@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${item.title} — PlaneWX Newsroom`,
     description: item.excerpt,
     alternates: { canonical: `https://www.planewx.ai/news/${slug}` },
+    ...(item.draft ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       type: "article",
       url: `https://www.planewx.ai/news/${slug}`,
