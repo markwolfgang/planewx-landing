@@ -93,7 +93,7 @@ const AMBASSADORS = [
     },
     extraLink: {
       href: "https://geezer-geek-pilot-control-panel.netlify.app/",
-      label: "Free apps",
+      label: "GeezerGeek Pilot Apps",
     },
   },
   {
