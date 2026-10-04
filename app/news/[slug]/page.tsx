@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { NewsNav } from "@/components/news-nav"
 import { NewsShareBar } from "@/components/news-share-bar"
+import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { NEWS_ITEMS, getNewsItem } from "../news-data"
 
 interface Props {
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${item.title} — PlaneWX Newsroom`,
     description: item.excerpt,
     alternates: { canonical: `https://www.planewx.ai/news/${slug}` },
+    ...(item.draft ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       type: "article",
       url: `https://www.planewx.ai/news/${slug}`,
@@ -91,6 +93,24 @@ export default async function NewsArticlePage({ params, searchParams }: Props) {
             />
           </div>
         </header>
+
+        {item.heroVideo && (
+          <figure className="mb-10">
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black">
+              <YouTubeFacade
+                videoId={item.heroVideo.videoId}
+                title={item.heroVideo.title}
+                priority
+                sizes="(max-width: 768px) 100vw, 720px"
+              />
+            </div>
+            {item.heroVideo.caption && (
+              <figcaption className="mt-3 text-center text-sm italic text-white/45">
+                {item.heroVideo.caption}
+              </figcaption>
+            )}
+          </figure>
+        )}
 
         {item.heroImage && (
           <figure className="mb-10">

@@ -36,6 +36,15 @@ export interface NewsItem {
    * Width/height are the asset's intrinsic pixels, for aspect ratio only —
    * display size is set in the component.
    */
+  /**
+   * Optional YouTube video at the top of the article, under the header.
+   * Click-to-load facade (no YouTube contact until the visitor presses play).
+   */
+  heroVideo?: {
+    videoId: string
+    title: string
+    caption?: string
+  }
   coBrand?: {
     name: string
     logo: string
@@ -46,6 +55,56 @@ export interface NewsItem {
 }
 
 export const NEWS_ITEMS: NewsItem[] = [
+  {
+    slug: "7-day-weather-strategy-ken-dustin",
+    category: "Product",
+    title: "A 7-Day Weather Strategy with PlaneWX, Aviation Weather and Your EFB (Featuring Ken Dustin of Kneeboard Pro)",
+    excerpt:
+      "Ken Dustin of Kneeboard Pro and IMC TV Media plans a real trip from a week out using PlaneWX, the prog charts on Aviation Weather and his EFB. Here's what to check at each step, and why.",
+    date: "October 4, 2026",
+    isoDate: "2026-10-04",
+    heroVideo: {
+      videoId: "XqYzuOc3Y4o",
+      title: "7 Day Weather Strategy, IMC TV Media",
+      caption: "Ken Dustin's 7 Day Weather Strategy, from IMC TV Media.",
+    },
+    body: `
+<p>Ken Dustin of <a href="https://kneeboardpro.imctvmedia.com" target="_blank" rel="noopener noreferrer">Kneeboard Pro</a> and <a href="https://www.youtube.com/@imctvmedia" target="_blank" rel="noopener noreferrer">IMC TV Media</a>, flies a full trip planning cycle in the video above: Norwood, Massachusetts (KOWD) to Cleveland and back. He checks the weather at five points on the way to departure, using PlaneWX, the prog charts on Aviation Weather and his EFB. Here's the strategy, step by step.</p>
+
+<h2>Why long-range planning is hard</h2>
+<p>Most weather tools only help you a day to three days out. Before that, you're left guessing whether the weekend trip is even worth planning. PlaneWX watches your trip continuously from a week out and scores it against your own personal minimums, so you can see the forecast take shape instead of meeting it for the first time the night before.</p>
+
+<h2>7 days out: set up the trip</h2>
+<p>Enter the trip in PlaneWX: your route, your altitude, and whether you're flying IFR or VFR. Then set your <a href="https://app.planewx.ai/help/personal-minimums">personal minimums</a>. The <a href="https://app.planewx.ai/help/wx-score">WX Score</a> always runs against minimums, yours or the defaults until you set your own, so take a few minutes to make them yours. Take a first look at the destination summary. A week out, you're reading the big picture, not the details.</p>
+
+<h2>5 days out: test the pattern</h2>
+<p>Add the return leg so PlaneWX watches both directions. Ken uses <strong>Add next leg</strong> and sets his return for Monday. Then, from your briefing, open the <strong>Open In</strong> menu and choose <strong>Aviation Weather</strong>. Your route opens on aviationweather.gov, run by the NWS Aviation Weather Center. From there, scroll the prog charts, which run about seven days out. You're looking for the pattern: where the fronts and lows are, and whether they're headed for your day.</p>
+
+<h2>3 days out: tighten it up</h2>
+<p>Pull a fresh prog chart for departure day. Check MOS, the model output statistics forecast, for your airports in your EFB. As Ken notes, MOS goes out about three and a half days, so this is the first time you get airport-level numbers. Watch the WX Score trend in PlaneWX: is it holding, getting better or getting worse? This is also the time to plan your fuel and a bailout, so you know where you'd go if the weather doesn't cooperate.</p>
+
+<h2>The night before</h2>
+<p>By now the Graphical Forecasts for Aviation (GFA) cover your flight. Check the TAFs and NOTAMs. This is the time to rerun your PlaneWX briefing and, if you're flying IFR, file your flight plan. If you're leaving early, print your sheets tonight so you're not doing it at the airport.</p>
+
+<h2>Day of</h2>
+<p>Get a standard briefing and check the WX Score one more time. Then walk through the PlaneWX risk assessment. When it's time, the briefing shows that a risk assessment is recommended. Ken answers four groups of questions:</p>
+<ul>
+<li><strong>Pilot.</strong> He's a little tired, so that puts him at medium.</li>
+<li><strong>Aircraft.</strong> Maintenance is current, weight and balance is done, and fuel is sufficient.</li>
+<li><strong>Environment.</strong> He's flying into Bravo airspace, so it's complex.</li>
+<li><strong>External pressures.</strong> None.</li>
+</ul>
+<p>His overall assessment comes out favorable. He makes his call, Go, and completes the risk assessment. The <a href="https://app.planewx.ai/help/frat">FRAT</a> opens 4 hours before departure, when you can honestly rate how you feel. PlaneWX never recommends GO or NO-GO. The pilot makes the call.</p>
+<p>Next, Ken opens Aviation Weather once more for the prog charts and the METARs along his route, where he spots a little early fog. Then he uses <strong>Open In</strong> again and chooses <strong>Kneeboard Pro</strong>. His trip opens there already filled in. He adds the airport diagram and the ILS 28 plate, then prints his kneeboard. The <a href="https://app.planewx.ai/help/kneeboard-pro">Kneeboard Pro and Open In</a> help page shows exactly what PlaneWX sends.</p>
+
+<h2>Take the checklist with you</h2>
+<p>Ken turned the whole strategy into a printable checklist: the <a href="https://kneeboardpro.imctvmedia.com/checklists/seven-day-weather-strategy" target="_blank" rel="noopener noreferrer">7-Day Weather Strategy</a>, under <a href="https://kneeboardpro.imctvmedia.com/checklists/" target="_blank" rel="noopener noreferrer">Pilot Resources</a> at IMC TV Media.</p>
+<p>Want to try it on your next trip? <a href="https://app.planewx.ai/auth/sign-up">Start a free 14-day PlaneWX trial</a>, set your minimums, and let PlaneWX watch the week for you.</p>
+
+<h2>About PlaneWX</h2>
+<p>Fly like it's your job. PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The loop is WX Score, FRAT, GO / NO-GO and Self Debrief. PlaneWX never recommends GO or NO-GO. The pilot makes the call.</p>
+`,
+  },
   {
     slug: "self-debrief-every-plan",
     category: "Product",
