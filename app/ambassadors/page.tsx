@@ -36,6 +36,7 @@ export const metadata: Metadata = {
 const AMBASSADORS = [
   {
     name: "Don Medine",
+    href: "https://sf50flightsupport.com/",
     description: "SF50 Flight Support",
     tile: {
       src: "/ambassadors/sf50-fs-flight-support-logo.png",
@@ -76,6 +77,23 @@ const AMBASSADORS = [
     featureVideo: {
       href: "https://youtu.be/XqYzuOc3Y4o",
       label: "Feature video",
+    },
+  },
+  {
+    name: "Wayne McClelland",
+    href: "https://www.youtube.com/@GeezerGeekPilot",
+    description: "GeezerGeek Pilot",
+    tile: {
+      src: "/ambassadors/geezer-pilot.webp",
+      alt: "GeezerGeek Pilot logo",
+      width: 512,
+      height: 512,
+      objectFit: "contain" as const,
+      wellClassName: "bg-white",
+    },
+    extraLink: {
+      href: "https://geezer-geek-pilot-control-panel.netlify.app/",
+      label: "GeezerGeek Pilot Apps",
     },
   },
   {
@@ -204,6 +222,8 @@ export default function AmbassadorsPage() {
                 "featureVideo" in ambassador
                   ? ambassador.featureVideo
                   : undefined
+              const extraLink =
+                "extraLink" in ambassador ? ambassador.extraLink : undefined
               const wellClass =
                 "wellClassName" in ambassador.tile &&
                 ambassador.tile.wellClassName
@@ -280,6 +300,21 @@ export default function AmbassadorsPage() {
                               aria-hidden
                             />
                             {featureVideo.label}
+                            <span className="sr-only"> (opens in a new tab)</span>
+                          </a>
+                        ) : null}
+                        {extraLink ? (
+                          <a
+                            href={extraLink.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 self-start text-sm font-medium text-sky-300/90 hover:text-sky-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
+                          >
+                            <ExternalLink
+                              className="h-3.5 w-3.5 shrink-0"
+                              aria-hidden
+                            />
+                            {extraLink.label}
                             <span className="sr-only"> (opens in a new tab)</span>
                           </a>
                         ) : null}
