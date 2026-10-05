@@ -73,7 +73,7 @@ export const NEWS_ITEMS: NewsItem[] = [
   <li><strong>Default VFR minimums when you haven't set your own.</strong> Until you set personal minimums, the WX Score runs against default VFR minimums: a 3,000 ft ceiling and 5 SM visibility. The <a href="https://app.planewx.ai/help/wx-score">WX Score</a> always runs against minimums, yours or the defaults until you set your own. More in <a href="https://app.planewx.ai/help/personal-minimums">Personal Minimums</a>.</li>
   <li><strong>Open In: Windy.</strong> The briefing's Open In menu now includes a Windy route link, next to the other Open In choices you already use.</li>
   <li><strong>Notification bell: To do, inline actions, and seen vs read.</strong> The bell has a To do tab, inline actions, and a clearer split between seen and read, so you can clear what needs a tap without losing what you already opened.</li>
-  <li><strong>Clearer briefing summary lines.</strong> The briefing summary is clearer on the overall call, hard limits, and freezing drizzle icing.</li>
+  <li><strong>Clearer briefing summary lines.</strong> The briefing summary is clearer on the overall assessment, hard limits, and freezing drizzle icing.</li>
   <li><strong>Icing from NOAA's newer CIP feed.</strong> Icing forecasts now come from NOAA's newer CIP feed, with a backup source if that feed is down.</li>
   <li><strong>Resend the account confirmation email.</strong> If the confirmation email didn't arrive, you can resend it from the account flow instead of waiting or starting over.</li>
 </ul>
