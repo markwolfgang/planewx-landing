@@ -56,6 +56,41 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "weekly-pirep-2026-10-05",
+    category: "Product",
+    title: "The Weekly PIREP: Edition 2",
+    excerpt:
+      "What shipped for pilots last week (Mon Sep 28 through Sun Oct 4), a count of the polish work, and one tip on counting risks before they stack.",
+    date: "October 5, 2026",
+    isoDate: "2026-10-05",
+    draft: true,
+    body: `
+<p>Hello from PlaneWX. This is The Weekly PIREP, our Monday roundup of what shipped for pilots in the last week (Mon Sep 28 through Sun Oct 4).</p>
+<p>We keep it short and plain: what you can see and use in the app, a count of the smaller polish work, and one tip worth a minute of your time.</p>
+
+<h2>What's new</h2>
+<ul>
+  <li><strong>Default VFR minimums when you haven't set your own.</strong> Until you set personal minimums, the WX Score runs against default VFR minimums: a 3,000 ft ceiling and 5 SM visibility. The <a href="https://app.planewx.ai/help/wx-score">WX Score</a> always runs against minimums, yours or the defaults until you set your own. More in <a href="https://app.planewx.ai/help/personal-minimums">Personal Minimums</a>.</li>
+  <li><strong>Open In: Windy.</strong> The briefing's Open In menu now includes a Windy route link, next to the other Open In choices you already use.</li>
+  <li><strong>Notification bell: To do, inline actions, and seen vs read.</strong> The bell has a To do tab, inline actions, and a clearer split between seen and read, so you can clear what needs a tap without losing what you already opened.</li>
+  <li><strong>Clearer briefing summary lines.</strong> The briefing summary is clearer on the overall call, hard limits, and freezing drizzle icing.</li>
+  <li><strong>Icing from NOAA's newer CIP feed.</strong> Icing forecasts now come from NOAA's newer CIP feed, with a backup source if that feed is down.</li>
+  <li><strong>Resend the account confirmation email.</strong> If the confirmation email didn't arrive, you can resend it from the account flow instead of waiting or starting over.</li>
+</ul>
+
+<h2>Fixes and improvements</h2>
+<p>We shipped <strong>125</strong> fixes and improvements this week, including <strong>118</strong> bug fixes.</p>
+
+<h2>Tip of the Week: count your risks out loud</h2>
+<p>No single risk has to be dangerous for the flight to be. Keep a running count across pilot, aircraft, environment and external pressure, and stop to rethink at three. Name each risk as it shows up. A missed approach adds to the count. It doesn't reset it. The PlaneWX <a href="https://app.planewx.ai/help/frat">FRAT</a> highlights risks as they stack, and the call stays yours as PIC. PlaneWX never recommends GO or NO-GO. The pilot makes the call. More in <a href="https://www.planewx.ai/learn/risk-stacking">Risk Stacking for Pilots</a>.</p>
+
+<p>Open PlaneWX when you are ready to brief the next trip: <a href="https://app.planewx.ai">app.planewx.ai</a>.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. Fly like it's your job.</p>
+`,
+  },
+  {
     slug: "7-day-weather-strategy-ken-dustin",
     category: "Product",
     title: "A 7-Day Weather Strategy with PlaneWX, Aviation Weather and Your EFB (Featuring Ken Dustin of Kneeboard Pro)",
