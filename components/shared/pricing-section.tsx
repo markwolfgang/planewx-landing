@@ -80,6 +80,21 @@ function TrialLink({
   )
 }
 
+/** Auto-renew disclosure for paid CTAs (parity with app Card E substance). */
+function autoRenewSentence(priceShown: string): string {
+  return `Subscription renews automatically at the end of each billing period at the price shown (${priceShown}). Cancel anytime in Profile billing (or the Stripe customer portal) to stop the next renewal; you keep access through the period you already paid.`
+}
+
+function AutoRenewNote({
+  priceShown,
+  className = "text-xs text-white/40 leading-relaxed mt-2 mb-6",
+}: {
+  priceShown: string
+  className?: string
+}) {
+  return <p className={className}>{autoRenewSentence(priceShown)}</p>
+}
+
 export function PricingSection({ variant }: { variant: string }) {
   const baseUrl = buildAppSignupUrlWithLp(variant)
   const [appUrl, setAppUrl] = useState(baseUrl)
@@ -256,6 +271,10 @@ export function PricingSection({ variant }: { variant: string }) {
                   Lock 2 years: $498
                 </TrialLink>
               )}
+              <AutoRenewNote
+                priceShown={plusPlan === "annual" ? "$249/yr" : "$29.99/mo"}
+                className="text-xs text-white/40 leading-relaxed mt-2"
+              />
             </div>
           </div>
         </div>
@@ -323,18 +342,19 @@ export function PricingSection({ variant }: { variant: string }) {
             <p className="text-xs text-teal-400 mb-5">$5.00/mo effective</p>
             <TrialLink
               href={appUrl}
-              className={`block text-center py-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white font-semibold transition-colors text-sm${twoYearOpen ? " mb-2" : " mb-6"}`}
+              className={`block text-center py-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white font-semibold transition-colors text-sm${twoYearOpen ? " mb-2" : ""}`}
             >
               Start Free 14-Day Trial
             </TrialLink>
             {twoYearOpen && (
               <TrialLink
                 href={appUrl}
-                className="block text-center py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold transition-colors text-sm mb-6"
+                className="block text-center py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold transition-colors text-sm"
               >
                 Lock 2 years: $120
               </TrialLink>
             )}
+            <AutoRenewNote priceShown="$7.99/mo or $59.99/yr" />
             <ul className="space-y-3 text-sm flex-1">
               {[
                 ["5", " monitored with auto-updates"],
@@ -375,10 +395,11 @@ export function PricingSection({ variant }: { variant: string }) {
             </div>
             <TrialLink
               href={appUrl}
-              className="block text-center py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors mb-6 text-sm"
+              className="block text-center py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors text-sm"
             >
               Start Free 14-Day Trial
             </TrialLink>
+            <AutoRenewNote priceShown="$14.99/mo" />
             <ul className="space-y-3 text-sm flex-1">
               {[
                 ["10", " monitored with auto-updates"],
@@ -426,18 +447,19 @@ export function PricingSection({ variant }: { variant: string }) {
             <p className="text-xs text-white/40 mb-5">$9.92/mo effective</p>
             <TrialLink
               href={appUrl}
-              className={`block text-center py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors text-sm${twoYearOpen ? " mb-3" : " mb-6"}`}
+              className={`block text-center py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors text-sm${twoYearOpen ? " mb-3" : ""}`}
             >
               Start Free 14-Day Trial
             </TrialLink>
             {twoYearOpen && (
               <TrialLink
                 href={appUrl}
-                className="block text-center py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors text-sm mb-6"
+                className="block text-center py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors text-sm"
               >
                 Lock 2 years: $238
               </TrialLink>
             )}
+            <AutoRenewNote priceShown="$119/yr" />
             <ul className="space-y-3 text-sm flex-1">
               <li className="flex items-center gap-2.5">
                 <Check className="h-4 w-4 text-emerald-400 shrink-0" />
