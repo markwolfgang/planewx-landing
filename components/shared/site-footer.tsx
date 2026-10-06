@@ -71,6 +71,12 @@ export function SiteFooter({ variant }: { variant: string }) {
           <a href="/learn" className="hover:text-white/60 transition-colors" data-testid="footer-learn">
             Learn
           </a>
+          <a href="/terms" className="hover:text-white/60 transition-colors" data-testid="footer-terms">
+            Terms
+          </a>
+          <a href="/dmca" className="hover:text-white/60 transition-colors" data-testid="footer-dmca">
+            DMCA
+          </a>
           <a href="/privacy" className="hover:text-white/60 transition-colors">
             Privacy
           </a>
