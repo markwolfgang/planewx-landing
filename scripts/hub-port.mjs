@@ -151,11 +151,11 @@ export const HUB_PAGES = [
   {
     slug: "flight-risk-assessment-tool",
     source: "flight-risk-assessment-tool.html",
-    // SEO QA fix round (Oct 7, 2026): meta 151 chars, GO / NO-GO loop naming,
-    // restore 14&nbsp;CFR&nbsp;91.3 and FAA AC&nbsp;120&#8209;92D.
-    // content.ts file md5 1dcef77ef659019a7e817b1298ce3d0a; MAIN_HTML string md5 below.
+    // SEO QA + CodeRabbit cell fix (Oct 7, 2026): meta 151 chars, GO / NO-GO,
+    // nbsp restores, The record eFRAT cell matches help/frat (no FRAT email).
+    // content.ts file md5 f0b866bae1258e6d04dda3a3b249e2b5; MAIN_HTML string md5 below.
     sourceMd5: "30c4436e6bb40845c17a464236b1df5f",
-    mainHtmlMd5: "19a1b140534c78a45c168c8347d472a6",
+    mainHtmlMd5: "94bce1faaae398c0e6957c86a3cfa1c6",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "flight-risk-assessment-tool",
   },
