@@ -19,6 +19,8 @@ import {
 import { CaseStudyFilter } from "./case-study-filter"
 
 const HUB_TITLE = "Learning Center"
+/** Visible H1 only. Metadata title stays HUB_TITLE. */
+const HUB_H1 = "PlaneWX Learning Center: Aviation Weather and Pilot Decision Guides"
 const HUB_DESCRIPTION =
   "Learn the weather products, concepts, and decision habits professional pilots rely on. Plain-language explainers, sourced from the FAA, NWS, and Aviation Weather Center."
 const CANONICAL = "https://www.planewx.ai/learn"
@@ -218,7 +220,7 @@ export default function LearnHubPage() {
             PlaneWX
           </p>
           <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            {HUB_TITLE}
+            {HUB_H1}
           </h1>
           <p className="text-base leading-relaxed text-white/60 sm:text-lg">
             {HUB_DESCRIPTION}
@@ -250,7 +252,7 @@ export default function LearnHubPage() {
         {startHere.length > 0 ? (
           <Shelf
             id="section-start-here"
-            title="Start here"
+            title="Start here: weather briefings, FRAT, and risk stacking"
             description="New to the Learning Center? Begin with these three."
           >
             <EntryGrid entries={startHere} />
@@ -259,15 +261,18 @@ export default function LearnHubPage() {
 
         <Shelf
           id="section-weather"
-          title="Weather"
+          title="Aviation weather guides for pilots"
           description="Plain-language guides to weather products and hazards, sourced from the FAA, NWS, and Aviation Weather Center."
         >
           <div className="space-y-10">
             {weatherGroups.map((g) => (
               <div key={g.id}>
-                <h3 className="mb-1 text-sm font-semibold uppercase tracking-widest text-sky-400">
+                <h2
+                  id={`group-${g.id}`}
+                  className="mb-1 text-sm font-semibold uppercase tracking-widest text-sky-400"
+                >
                   {g.title}
-                </h3>
+                </h2>
                 <p className="mb-4 text-sm text-white/45">{g.description}</p>
                 <EntryGrid entries={g.entries} />
               </div>
@@ -304,7 +309,7 @@ export default function LearnHubPage() {
             id="section-tips"
             className="mb-2 text-2xl font-bold tracking-tight text-white"
           >
-            Tips of the Week
+            Weekly PIREP tips on aviation weather and ADM
           </h2>
           <p className="mb-6 text-sm leading-relaxed text-white/50">
             Archive of Weekly PIREP weather and ADM tips.

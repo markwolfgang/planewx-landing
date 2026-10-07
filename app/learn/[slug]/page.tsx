@@ -218,7 +218,7 @@ function PuttingItIntoPracticeSection({
         id="practice-heading"
         className="mb-4 text-xl font-semibold tracking-tight text-white"
       >
-        Putting it into practice
+        {practice.heading ?? "Putting it into practice"}
       </h2>
 
       {draft ? (
@@ -233,7 +233,7 @@ function PuttingItIntoPracticeSection({
       <div className="space-y-6 rounded-xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
         <div>
           <h3 className="mb-2 text-xs font-medium uppercase tracking-widest text-white/40">
-            Why it matters
+            {practice.whyItMattersHeading ?? "Why it matters"}
           </h3>
           <p className="text-sm leading-relaxed text-white/70 sm:text-base">
             {practice.whyItMatters}
@@ -244,7 +244,7 @@ function PuttingItIntoPracticeSection({
 
         <div>
           <h3 className="mb-2 text-xs font-medium uppercase tracking-widest text-white/40">
-            Tool or habit
+            {practice.toolOrHabitHeading ?? "Tool or habit"}
           </h3>
           <p className="text-sm leading-relaxed text-white/70 sm:text-base">
             {practice.toolOrHabit}
@@ -334,7 +334,7 @@ export default async function LearnArticlePage({ params }: Props) {
             id="sources-heading"
             className="mb-4 text-lg font-semibold text-white"
           >
-            Sources
+            {article.sourcesHeading ?? "Sources"}
           </h2>
           <ul className="space-y-3">
             {article.sources.map((source, i) => (
