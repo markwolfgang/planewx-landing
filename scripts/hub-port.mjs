@@ -151,11 +151,11 @@ export const HUB_PAGES = [
   {
     slug: "flight-risk-assessment-tool",
     source: "flight-risk-assessment-tool.html",
-    // SEO & AEO Desk FRAT expand draft (Oct 6, 2026): FAA-phrased title,
-    // form/checklist/tool section, FAQ 8 to 13. content.ts file md5
-    // 85c3b24df9376f40019e67b35a84b2d5; MAIN_HTML string md5 below.
+    // SEO QA fix round (Oct 7, 2026): meta 151 chars, GO / NO-GO loop naming,
+    // restore 14&nbsp;CFR&nbsp;91.3 and FAA AC&nbsp;120&#8209;92D.
+    // content.ts file md5 1dcef77ef659019a7e817b1298ce3d0a; MAIN_HTML string md5 below.
     sourceMd5: "30c4436e6bb40845c17a464236b1df5f",
-    mainHtmlMd5: "f4fb2daf1eb37641fb9543293b21204b",
+    mainHtmlMd5: "19a1b140534c78a45c168c8347d472a6",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "flight-risk-assessment-tool",
   },

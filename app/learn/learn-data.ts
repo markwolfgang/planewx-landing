@@ -1996,7 +1996,7 @@ export const DECISION_MAKING_HUB_PAGES: readonly AviationWeatherHubPage[] = [
     title:
       "FAA FRAT: What the Flight Risk Assessment Tool Is and How to Use One",
     summary:
-      "FAA FRAT means Flight Risk Assessment Tool. How the FAA form, checklist, and online tool work, what green, yellow, and red mean, and how an electronic FRAT (eFRAT) with WX Score fits.",
+      "FAA FRAT means Flight Risk Assessment Tool. How the FAA form, checklist, and online tool work, what green, yellow, and red mean, and how an eFRAT fits.",
     lastReviewed: "2026-10-06",
   },
 ]

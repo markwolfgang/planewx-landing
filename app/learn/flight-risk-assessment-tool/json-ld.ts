@@ -2,7 +2,7 @@ export const ARTICLE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "FAA FRAT: What the Flight Risk Assessment Tool Is and How to Use One",
-  "description": "FAA FRAT means Flight Risk Assessment Tool. How the FAA form, checklist, and online tool work, what green, yellow, and red mean, and how an electronic FRAT (eFRAT) with WX Score fits.",
+  "description": "FAA FRAT means Flight Risk Assessment Tool. How the FAA form, checklist, and online tool work, what green, yellow, and red mean, and how an eFRAT fits.",
   "mainEntityOfPage": "https://www.planewx.ai/learn/flight-risk-assessment-tool",
   "dateModified": "2026-10-06",
   "author": {
@@ -102,7 +102,7 @@ export const FAQ_JSON_LD = {
       "name": "How does PlaneWX's electronic FRAT (eFRAT) use the WX Score?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "PlaneWX's eFRAT is built on PAVE like the FAA forms. The WX Score rates the weather against your minimums as Favorable, Marginal, or Unfavorable and appears as a hint in the enVironment section. Your LOW / MEDIUM / HIGH self-rates drive the FRAT; rating weather more optimistically than the hint needs a short note. The eFRAT opens within 4 hours of departure, flags stacked risks, and never recommends GO or NO-GO. You make the Fly or Stay call as PIC."
+        "text": "PlaneWX's eFRAT is built on PAVE like the FAA forms. The WX Score rates the weather against your minimums as Favorable, Marginal, or Unfavorable and appears as a hint in the enVironment section. Your LOW / MEDIUM / HIGH self-rates drive the FRAT; rating weather more optimistically than the hint needs a short note. The eFRAT opens within 4 hours of departure, flags stacked risks, and never recommends GO or NO-GO. You make the GO / NO-GO call as PIC."
       }
     },
     {
