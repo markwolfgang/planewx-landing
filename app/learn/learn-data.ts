@@ -83,6 +83,12 @@ export const LEARN_LOOP_STAGES: readonly LearnLoopStage[] = [
  * into practice without a dispatcher. Not an ad. Soft CTA stays at page bottom.
  */
 export interface PuttingItIntoPractice {
+  /** Optional topic-specific H2. Defaults to "Putting it into practice". */
+  heading?: string
+  /** Optional topic-specific H3 over whyItMatters. Defaults to "Why it matters". */
+  whyItMattersHeading?: string
+  /** Optional topic-specific H3 over toolOrHabit. Defaults to "Tool or habit". */
+  toolOrHabitHeading?: string
   /** Why this matters for pilots flying without a dispatcher. */
   whyItMatters: string
   /**
@@ -110,6 +116,8 @@ export interface LearnArticle {
   /** ISO date, e.g. "2026-09-25" */
   lastReviewed: string
   sources: LearnSource[]
+  /** Optional topic-specific Sources H2. Defaults to "Sources". */
+  sourcesHeading?: string
   /**
    * Draft articles render a visible banner, stay noindex, and stay out of the
    * sitemap. Bodies must not invent weather facts until a reviewed fact pack lands.
@@ -252,7 +260,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "How they compare",
+        text: "TAF vs MOS vs LAMP vs NBM: how they compare",
       },
       {
         type: "paragraph",
@@ -269,12 +277,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Using TAF, MOS, LAMP, and NBM in practice",
+      whyItMattersHeading: "Why TAF vs MOS guidance matters at airports with no TAF",
+      toolOrHabitHeading: "PlaneWX habit: WX Score against your personal minimums",
       whyItMatters:
         "Without a dispatcher, you have to know whether you are reading an official forecaster TAF or automated guidance. That matters most at airports with no TAF, where MOS, LAMP or NBM may be what you have. Knowing which product you are looking at keeps the go/\u2060no\u2011go call grounded in what the product actually is.",
       loopStage: ["Weather Briefing"],
       toolOrHabit:
         "PlaneWX Weather Briefing and WX Score weigh forecast conditions against your own personal minimums. PlaneWX never recommends go or no-go. You make the GO\u00A0/\u00A0NO\u2011GO call.",
     },
+    sourcesHeading: "TAF, MOS, LAMP, and NBM sources: NWS, AWC, and MDL",
     sources: [
       {
         label: "NWS Instruction 10-813, Terminal Aerodrome Forecasts (Oct 30, 2024)",
@@ -500,7 +512,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: Grand Caravan cargo flight to Burley, 2022",
       },
       {
         type: "paragraph",
@@ -528,7 +540,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The stack, by category",
+        text: "The risk stack by category: pilot, aircraft, environment, pressure",
       },
       {
         type: "paragraph",
@@ -549,7 +561,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Smoke stacks and cooling towers",
+        text: "Smoke stack and cooling tower plumes on an instrument approach",
       },
       {
         type: "paragraph",
@@ -557,7 +569,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "See the stack while you can still act on it",
+        text: "How to see risk stacking while you can still act on it",
       },
       {
         type: "paragraph",
@@ -573,12 +585,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Catching risk stacking before and during a flight",
+      whyItMattersHeading: "Why risk stacking matters with no dispatcher or copilot",
+      toolOrHabitHeading: "PlaneWX FRAT: spotting risks as they stack up",
       whyItMatters:
         "Without a dispatcher or a second pilot, nobody else is keeping the tally for you. Writing the count down before departure makes the stack visible while you still have options. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["FRAT", "GO / NO-GO"],
       toolOrHabit:
         "The PlaneWX FRAT highlights risks as they stack up. As you fill it in within 4 hours of departure, it counts the elevated self\u2011rates and named concerns across Pilot, Aircraft, enVironment and External pressure, including external pressure chips and get\u2011there\u2011itis. When three or more stack on the flight, it shows a Risks are stacking banner that lists them. It does not make the call and does not change the WX Score. You record your own GO\u00A0/\u00A0NO\u2011GO decision. The FRAT cannot see a chart note or a NOTAM for you, so read those for the destination too.",
     },
+    sourcesHeading: "Risk Stacking sources: AOPA ASI case study, NTSB report, and AIM",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Risk Stacking (video)",
@@ -627,7 +643,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: Bonanza VFR flight from Gulf Shores, 2020",
       },
       {
         type: "paragraph",
@@ -672,7 +688,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Decide before the pressure shows up",
+        text: "Set VFR limits before self-induced pressure shows up",
       },
       {
         type: "list",
@@ -685,12 +701,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Beating self-induced pressure in practice",
+      whyItMattersHeading: "Why written VFR limits matter with no dispatcher",
+      toolOrHabitHeading: "PlaneWX habit: personal minimums, WX Score, and FRAT",
       whyItMatters:
         "Without a dispatcher, nobody can tell you no. The limits you set when you're calm are the only check on the reasoning you'll do when a trip is on the line. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "Personal minimums in PlaneWX set a comfort limit and a max limit for ceiling, visibility, storm avoidance and more. The WX Score runs every briefing against them, yours or the defaults until you set your own, and flags anything at or past your max. The FRAT opens 4 hours before departure and asks about external pressure and get\u2011there\u2011itis, so the pressure is written down next to the weather. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Fair Weather Flier sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Fair Weather Flier (video)",
@@ -734,7 +754,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: Cirrus SR22 IFR flight into icing, 2018",
       },
       {
         type: "paragraph",
@@ -758,7 +778,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Why the update matters",
+        text: "Why updating a night-before icing briefing matters",
       },
       {
         type: "paragraph",
@@ -779,12 +799,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Keeping an icing briefing current in practice",
+      whyItMattersHeading: "Why a fresh icing briefing matters before engine start",
+      toolOrHabitHeading: "PlaneWX habit: keep the icing briefing current",
       whyItMatters:
         "There's no dispatcher watching the weather for you between the night before and engine start. Whatever you looked at last is what you're flying on. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "PlaneWX keeps a briefing current as new weather publishes: automatic background refreshes for monitored flights on Casual, Pro and Pro Plus, and a Check Updates button in the final hour on Free. The icing analysis shows model agreement, cloud layers and SLD potential along your route and altitude, and the WX Score runs against your icing limits. The FRAT, which opens 4 hours before departure, asks how you feel, which is the place to count medications. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Trapped in Ice sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Trapped in Ice (video)",
@@ -828,7 +852,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: VFR Turbo Lance into forecast IMC, 2015",
       },
       {
         type: "paragraph",
@@ -852,7 +876,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The chain, one link at a time",
+        text: "The VFR into IMC error chain, one link at a time",
       },
       {
         type: "list",
@@ -869,7 +893,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Break the chain early",
+        text: "How to break the VFR into IMC error chain early",
       },
       {
         type: "list",
@@ -882,12 +906,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Avoiding VFR into IMC in practice",
+      whyItMattersHeading: "Why writing down trip pressure matters before you go",
+      toolOrHabitHeading: "PlaneWX FRAT: counting external pressure before departure",
       whyItMatters:
         "With family aboard and an event waiting, the pressure is real and it's yours. Without a dispatcher, the only way to see it clearly is to write it down before you leave. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["FRAT", "GO / NO-GO"],
       toolOrHabit:
         "The PlaneWX FRAT opens 4 hours before departure and counts the elevated self\u2011rates and named concerns across Pilot, Aircraft, enVironment and External pressure, including external pressure chips and get\u2011there\u2011itis. When three or more stack on one flight, it shows a Risks are stacking banner that lists them. The WX Score runs the briefing against your own minimums. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Blind Over Bakersfield sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Blind Over Bakersfield (video)",
@@ -931,7 +959,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: TBM 700 climb into severe icing, 2011",
       },
       {
         type: "paragraph",
@@ -951,7 +979,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Why the delay matters",
+        text: "Why minutes matter after a severe icing encounter",
       },
       {
         type: "paragraph",
@@ -968,12 +996,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Acting early in severe icing in practice",
+      whyItMattersHeading: "Why PIC authority in icing only helps if used early",
+      toolOrHabitHeading: "PlaneWX habit: brief icing on every flight, even short hops",
       whyItMatters:
         "As pilot in command, you can take the altitude or heading you need and sort out the paperwork later. That authority only helps if you use it while there's still time. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "Brief every flight, even a short hop out of a busy airport. PlaneWX's icing analysis shows model agreement, cloud layers and SLD potential along your route and altitude, and the WX Score checks it against your own icing limits. Use the FRAT, which opens 4 hours before departure, to write down your plan if the ice is worse than forecast. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Delayed Reaction sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Delayed Reaction (video)",
@@ -1017,7 +1049,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: Cessna 414 VFR departure from Fullerton, 2019",
       },
       {
         type: "paragraph",
@@ -1059,12 +1091,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Catching hazardous attitudes in practice",
+      whyItMattersHeading: "Why hazardous attitudes are hard to spot with no second pilot",
+      toolOrHabitHeading: "PlaneWX habit: honest FRAT self-rates before every flight",
       whyItMatters:
         "Hazardous attitudes are hard to spot from the inside, and there's no second pilot to call them out. A short, honest routine before every flight gives you a chance to catch one. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "Brief every flight, short or long. PlaneWX runs the briefing against your own personal minimums, so the weather is measured against the limits you set when you were calm. The FRAT opens 4 hours before departure and asks for honest Pilot, Aircraft, enVironment and External self-rates, including pressure to go. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Hazardous Attitudes sources: AOPA ASI, NTSB, and FAA",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Hazardous Attitudes (video)",
@@ -1113,7 +1149,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: Saratoga night IFR arrival at Raleigh, 2019",
       },
       {
         type: "paragraph",
@@ -1137,7 +1173,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "What recency really protects",
+        text: "What night and instrument recency really protect",
       },
       {
         type: "paragraph",
@@ -1154,12 +1190,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Night and instrument currency in practice",
+      whyItMattersHeading: "Why only you can judge your night and IFR currency",
+      toolOrHabitHeading: "PlaneWX FRAT: night and instrument currency check",
       whyItMatters:
         "Nobody checks your logbook before you start the engine. If you aren't current or proficient for the flight you're planning, you're the only one who can know it in time. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["FRAT", "GO / NO-GO", "Self Debrief"],
       toolOrHabit:
         "The PlaneWX FRAT opens 4 hours before departure, pre-fills day or night for the flight, and carries your night and instrument currency from your pilot profile, with an override. After you land, a Self Debrief is a good place to note what took longer than it should have, like reprogramming an approach, so you know what to practice. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Night Falls on Final sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Night Falls on Final (video)",
@@ -1203,7 +1243,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: VFR Cirrus SR20 into IMC near Crystal Lake, 2011",
       },
       {
         type: "paragraph",
@@ -1227,7 +1267,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Why turning away matters",
+        text: "Why turning away from a cleared runway can be deadly",
       },
       {
         type: "paragraph",
@@ -1244,12 +1284,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Planning a weather alternate in practice",
+      whyItMattersHeading: "Why planning a weather alternate on the ground matters",
+      toolOrHabitHeading: "PlaneWX habit: ceiling and visibility minimums plus an alternate",
       whyItMatters:
         "A forecast is a starting point, not a promise, and arrival weather can change while you're on the way. Planning your alternate on the ground makes it easier to take it in the air. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "Set ceiling and visibility personal minimums that match your rating and experience, and let the WX Score check every briefing against them. Use the FRAT, which opens 4 hours before departure, to name your alternate and to be honest about external pressure to get there. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "In Too Deep sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: In Too Deep (video)",
@@ -1293,7 +1337,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: overloaded Seneca VFR into snow, 2009",
       },
       {
         type: "paragraph",
@@ -1313,7 +1357,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Why the whole route matters",
+        text: "Why briefing the whole cross-country route matters",
       },
       {
         type: "paragraph",
@@ -1330,12 +1374,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Briefing the whole cross-country route in practice",
+      whyItMattersHeading: "Why trip pressure is easiest to undo before departure",
+      toolOrHabitHeading: "PlaneWX habit: brief the full route, then run the FRAT",
       whyItMatters:
         "The pressure to make a trip happen is strongest before you leave and hardest to undo once you're airborne. Writing down the weather, the load and your own limits before departure gives you a clear moment to change the plan. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "Brief the full route in PlaneWX and check the WX Score against personal minimums that match your rating. Use the FRAT, which opens 4 hours before departure, to be honest about external pressure and get-there-itis, and if risks are stacking, take that seriously. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Cross-Country Crisis sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Cross-Country Crisis (video)",
@@ -1379,7 +1427,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: Cherokee Six into Texas thunderstorms, 2011",
       },
       {
         type: "paragraph",
@@ -1399,7 +1447,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Why the age of the picture matters",
+        text: "Why datalink NEXRAD age matters around thunderstorms",
       },
       {
         type: "paragraph",
@@ -1416,12 +1464,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Planning around thunderstorms before takeoff, in practice",
+      whyItMattersHeading: "Why thunderstorm avoidance starts before takeoff",
+      toolOrHabitHeading: "PlaneWX habit: storm avoidance minimums and Convective Watches",
       whyItMatters:
         "The best time to avoid a line of storms is before you take off, with the whole picture in front of you and no clock running. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "Brief every flight in PlaneWX and look closely when a Convective Watch shows up along your route. Set a storm avoidance personal minimum and let the WX Score check it. Use the FRAT, which opens 4 hours before departure, to be honest about night, a long day and the pressure to get home. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Time Lapse sources: AOPA ASI case study, NTSB report, and alert",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Time Lapse (video)",
@@ -1470,7 +1522,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: Bonanza G36 VFR departure from Aspen, 2021",
       },
       {
         type: "paragraph",
@@ -1490,7 +1542,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Why performance and terrain matter",
+        text: "Why climb performance and rising terrain matter in the mountains",
       },
       {
         type: "paragraph",
@@ -1507,12 +1559,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Planning a mountain departure in practice",
+      whyItMattersHeading: "Why an unfamiliar mountain departure needs a careful plan",
+      toolOrHabitHeading: "PlaneWX FRAT: running PAVE on a mountain departure",
       whyItMatters:
         "Experience in one kind of flying doesn't carry over to every kind. A departure you haven't flown, in an airplane you don't fly often, deserves a plan as careful as any approach in bad weather. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "Brief the weather in PlaneWX, then use the FRAT, which opens 4 hours before departure, to think through the rest of PAVE: how current you are in this airplane, the terrain and conditions on the route, and any pressure to keep the trip moving. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Into Thin Air sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Into Thin Air (video)",
@@ -1556,7 +1612,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: heavy Lance takeoff at high density altitude, 2020",
       },
       {
         type: "paragraph",
@@ -1576,7 +1632,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Why the numbers matter",
+        text: "Why takeoff and climb performance numbers matter",
       },
       {
         type: "paragraph",
@@ -1593,12 +1649,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Hot, high, and heavy takeoff planning in practice",
+      whyItMattersHeading: "Why a new airplane, full load, and hot day add up",
+      toolOrHabitHeading: "PlaneWX habit: briefing temperature and wind for performance",
       whyItMatters:
         "A new airplane, a full load and a hot day at altitude are each worth a pause. Together they deserve a hard look before you taxi. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "Use your PlaneWX briefing for departure temperature and wind, then run the performance numbers yourself. In the FRAT, which opens 4 hours before departure, be honest about your time in type and the conditions. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "High Aspirations sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: High Aspirations (video)",
@@ -1642,7 +1702,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: Cessna 340 circling approach in San Diego, 2021",
       },
       {
         type: "paragraph",
@@ -1662,7 +1722,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "Why staying on the approach matters",
+        text: "Why staying on the approach helps prevent spatial disorientation",
       },
       {
         type: "paragraph",
@@ -1679,12 +1739,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Matching personal minimums to your approaches, in practice",
+      whyItMattersHeading: "Why IFR currency is not readiness for the approach",
+      toolOrHabitHeading: "PlaneWX habit: approach minimums that match your skills",
       whyItMatters:
         "Currency on paper and readiness for today's approach aren't the same thing. The ground is the best place to decide whether this weather, this procedure and this panel are a good match. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "Set ceiling and visibility personal minimums that reflect the approaches you actually fly well, and let the WX Score check every briefing against them. In the FRAT, which opens 4 hours before departure, confirm your instrument currency and be honest about new equipment. After the flight, a Self Debrief is a good place to note anything that surprised you. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Deadly Disorientation sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Deadly Disorientation (video)",
@@ -1728,7 +1792,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "heading",
-        text: "The flight, in short",
+        text: "Accident summary: Baron loses both engines on approach, 2019",
       },
       {
         type: "paragraph",
@@ -1765,12 +1829,16 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
     ],
     puttingItIntoPractice: {
+      heading: "Verifying fuel and load before departure, in practice",
+      whyItMattersHeading: "Why fuel reserve should never give way to weight limits",
+      toolOrHabitHeading: "PlaneWX FRAT: confirming fuel and load before departure",
       whyItMatters:
         "Weight limits and weather can tempt you to skimp on fuel. The answer is fewer people or bags, or a fuel stop, not less reserve. PlaneWX never recommends GO or NO\u2011GO. The pilot makes the call.",
       loopStage: ["Weather Briefing", "FRAT", "GO / NO-GO"],
       toolOrHabit:
         "Check the destination forecast in your PlaneWX briefing to see whether you'll need an approach and an alternate, and plan fuel for both. Use the FRAT, which opens 4 hours before departure, as your moment to confirm the fuel and the load are what you planned. You record your own GO\u00A0/\u00A0NO\u2011GO decision.",
     },
+    sourcesHeading: "Faulty Assumptions sources: AOPA ASI case study and NTSB report",
     sources: [
       {
         label: "AOPA Air Safety Institute: Accident Case Study: Faulty Assumptions (video)",
@@ -1790,7 +1858,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
 export const TIPS_OF_THE_WEEK: TipOfTheWeek[] = [
   {
     slug: "count-your-risks-out-loud",
-    title: "Count your risks out loud",
+    title: "Risk stacking tip: count your risks out loud",
     issueNumber: 2,
     date: "October 5, 2026",
     isoDate: "2026-10-05",

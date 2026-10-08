@@ -22,7 +22,7 @@ export const START_HERE_HREFS: string[] = [
 export const WEATHER_GROUPS: HubGroup[] = [
   {
     id: "reports-and-forecasts",
-    title: "Reports and forecasts",
+    title: "Aviation weather reports and forecasts: METAR, TAF, PIREP",
     description: "How to read the products you pull before every flight.",
     hrefs: [
       "/learn/aviation-weather/metar",
@@ -37,7 +37,7 @@ export const WEATHER_GROUPS: HubGroup[] = [
   },
   {
     id: "hazards",
-    title: "Weather hazards",
+    title: "Weather hazards for pilots: thunderstorms, icing, turbulence, fog",
     description: "What each hazard does to an airplane, and how it is forecast.",
     hrefs: [
       "/learn/aviation-weather/thunderstorms",
@@ -51,7 +51,7 @@ export const WEATHER_GROUPS: HubGroup[] = [
   },
   {
     id: "big-picture",
-    title: "The big picture",
+    title: "Big-picture weather: fronts, stability, and surface charts",
     description: "Air masses, fronts, stability and the weather map.",
     hrefs: [
       "/learn/aviation-weather/fronts-troughs-drylines",
@@ -61,7 +61,7 @@ export const WEATHER_GROUPS: HubGroup[] = [
   },
   {
     id: "planning-and-performance",
-    title: "Planning and performance",
+    title: "Preflight planning: briefings, weather risk, density altitude",
     description: "Briefing types, weather risk and what heat and altitude do to climb.",
     hrefs: [
       "/learn/aviation-weather/weather-briefings",
@@ -73,7 +73,7 @@ export const WEATHER_GROUPS: HubGroup[] = [
 
 export const DECISION_GROUP: HubGroup = {
   id: "decision-making",
-  title: "Decision making",
+  title: "Aeronautical decision making: FRAT and risk stacking",
   description:
     "ADM habits from FAA risk management material that keep the PIC in command.",
   hrefs: ["/learn/flight-risk-assessment-tool", "/learn/risk-stacking"],
