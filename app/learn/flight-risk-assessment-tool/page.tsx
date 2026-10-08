@@ -11,9 +11,9 @@ import { MAIN_HTML } from "./content"
 import "../aviation-weather/aw-hub.css"
 
 const TITLE =
-  "Flight Risk Assessment Tool (FRAT): What It Is and How to Use One Honestly"
+  "FAA FRAT: What the Flight Risk Assessment Tool Is and How to Use One"
 const DESCRIPTION =
-  "What a flight risk assessment tool is, where the FAA FRAT comes from, how green, yellow, and red scores work, and how to fill one out without fooling yourself."
+  "FAA FRAT means Flight Risk Assessment Tool. How the FAA form, checklist, and online tool work, what green, yellow, and red mean, and how an eFRAT fits."
 const CANONICAL =
   "https://www.planewx.ai/learn/flight-risk-assessment-tool"
 

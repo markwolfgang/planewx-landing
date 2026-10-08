@@ -151,14 +151,11 @@ export const HUB_PAGES = [
   {
     slug: "flight-risk-assessment-tool",
     source: "flight-risk-assessment-tool.html",
-    sourceMd5: "9aa50782fe209223a142ae79a35b3a64",
-    // Intentional deltas on MAIN_HTML after extract of 9aa50782:
-    // 1) "14 CFR 91.3" -> "14&nbsp;CFR&nbsp;91.3"
-    // 2) on-page glossary link text "FAA AC 120-92D, Chapter 1"
-    //    -> "FAA AC&nbsp;120&#8209;92D, Chapter 1"
-    // Pre-extract MAIN_HTML md5: f9a3b98d44a33450437804f5fdd3a993
-    // After delta 1: 973d36d19cdad0e58a207735ba0acb16
-    mainHtmlMd5: "8c294c3ceccd91df39ffd4307ea670c3",
+    // SEO QA + CodeRabbit cell fix (Oct 7, 2026): meta 151 chars, GO / NO-GO,
+    // nbsp restores, The record eFRAT cell matches help/frat (no FRAT email).
+    // content.ts file md5 f0b866bae1258e6d04dda3a3b249e2b5; MAIN_HTML string md5 below.
+    sourceMd5: "30c4436e6bb40845c17a464236b1df5f",
+    mainHtmlMd5: "94bce1faaae398c0e6957c86a3cfa1c6",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "flight-risk-assessment-tool",
   },

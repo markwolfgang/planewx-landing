@@ -1,10 +1,10 @@
 export const ARTICLE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Flight Risk Assessment Tool (FRAT): What It Is and How to Use One Honestly",
-  "description": "What a flight risk assessment tool is, where the FAA FRAT comes from, how green, yellow, and red scores work, and how to fill one out without fooling yourself.",
+  "headline": "FAA FRAT: What the Flight Risk Assessment Tool Is and How to Use One",
+  "description": "FAA FRAT means Flight Risk Assessment Tool. How the FAA form, checklist, and online tool work, what green, yellow, and red mean, and how an eFRAT fits.",
   "mainEntityOfPage": "https://www.planewx.ai/learn/flight-risk-assessment-tool",
-  "dateModified": "2026-09-30",
+  "dateModified": "2026-10-06",
   "author": {
     "@type": "Organization",
     "name": "PlaneWX",
@@ -16,6 +16,7 @@ export const ARTICLE_JSON_LD = {
     "url": "https://www.planewx.ai"
   },
   "about": [
+    "FAA FRAT",
     "Flight risk assessment tool",
     "Aeronautical decision making",
     "Risk management",
@@ -34,6 +35,14 @@ export const FAQ_JSON_LD = {
   "mainEntity": [
     {
       "@type": "Question",
+      "name": "What is an FAA FRAT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "FAA FRAT means Flight Risk Assessment Tool: the FAA's name for a form that records the hazards of a planned flight and the risk they add up to. \"The form used to record each hazard is known as a Flight Risk Assessment Tool (FRAT).\" The FAA publishes FRAT guidance on the FAA Safety Team FRAT page, sample forms in the Risk Management Handbook and InFO 07015, and an online FAASTeam FRAT."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What is a FRAT in aviation?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -45,7 +54,31 @@ export const FAQ_JSON_LD = {
       "name": "What does FRAT stand for?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Flight Risk Assessment Tool."
+        "text": "Flight Risk Assessment Tool. In FAA and GA use, people also search for \"FAA FRAT,\" \"FRAT tool,\" \"FRAT form,\" and \"FRAT checklist\"; those phrases all point at the same idea."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a FRAT form?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The written record of the hazards and risk for one planned flight. The Risk Management Handbook defines the FRAT as that form: \"The form used to record each hazard is known as a Flight Risk Assessment Tool (FRAT).\" It can be a paper sheet, a spreadsheet, or an app. The FAA's original sample form is attached to InFO 07015."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a FRAT checklist?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pilots often say \"FRAT checklist\" when they mean the PAVE checklist that feeds a FRAT. PAVE is how you find hazards (Pilot, Aircraft, enVironment, External pressures). A FRAT is where you record them and assess the risk. The Pilot section usually includes IMSAFE. See the PAVE guide."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a FRAT tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any form, spreadsheet, or app that records flight hazards and risk. The FAA Safety Team publishes guidance and links to an online FAASTeam FRAT. The Risk Management Handbook also shows numerical and narrative sample tools. A FRAT tool assists planning; it does not make the go/no-go decision for you."
       }
     },
     {
@@ -66,10 +99,18 @@ export const FAQ_JSON_LD = {
     },
     {
       "@type": "Question",
+      "name": "How does PlaneWX's electronic FRAT (eFRAT) use the WX Score?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PlaneWX's eFRAT is built on PAVE like the FAA forms. The WX Score rates the weather against your minimums as Favorable, Marginal, or Unfavorable and appears as a hint in the enVironment section. Your LOW / MEDIUM / HIGH self-rates drive the FRAT; rating weather more optimistically than the hint needs a short note. The eFRAT opens within 4 hours of departure, flags stacked risks, and never recommends GO or NO-GO. You make the GO / NO-GO call as PIC."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "How is PlaneWX FRAT different from a paper FRAT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "It is built on PAVE like the FAA forms, but it opens within 4 hours of departure, pre-fills facts it already knows as hints, shows the WX Score breakdown as a weather hint, and flags stacked risks. Your ratings drive the result, and PlaneWX never recommends GO or NO-GO."
+        "text": "It is an eFRAT built on PAVE like the FAA forms, but it opens within 4 hours of departure, pre-fills facts it already knows as hints, shows the WX Score breakdown as a weather hint, and flags stacked risks. Your ratings drive the result, and PlaneWX never recommends GO or NO-GO."
       }
     },
     {
@@ -77,7 +118,7 @@ export const FAQ_JSON_LD = {
       "name": "Where can I get the FAA FRAT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The FAA Safety Team FRAT page links to an online version of the FAASTeam FRAT. The Risk Management Handbook also shows a sample numerical FRAT and a narrative PAVE form."
+        "text": "Start on the FAA Safety Team FRAT page, which links to an online version of the FAASTeam FRAT. The Risk Management Handbook also shows a sample numerical FRAT and a narrative PAVE form. InFO 07015 includes the original sample form for operators."
       }
     },
     {
