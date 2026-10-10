@@ -44,6 +44,8 @@ export interface NewsItem {
     videoId: string
     title: string
     caption?: string
+    /** First-party poster image shown before play, instead of the YouTube thumbnail. */
+    poster?: string
   }
   coBrand?: {
     name: string
@@ -140,6 +142,7 @@ export const NEWS_ITEMS: NewsItem[] = [
       videoId: "XqYzuOc3Y4o",
       title: "7 Day Weather Strategy, IMC TV Media",
       caption: "Ken Dustin's 7 Day Weather Strategy, from IMC TV Media.",
+      poster: "/news/7-day-weather-strategy-poster.jpg",
     },
     body: `
 <p>Ken Dustin of <a href="https://kneeboardpro.imctvmedia.com" target="_blank" rel="noopener noreferrer">Kneeboard Pro</a> and <a href="https://www.youtube.com/@imctvmedia" target="_blank" rel="noopener noreferrer">IMC TV Media</a>, flies a full trip planning cycle in the video above: Norwood, Massachusetts (KOWD) to Cleveland and back. He checks the weather at five points on the way to departure, using PlaneWX, the prog charts on Aviation Weather and his EFB. Here's the strategy, step by step.</p>
@@ -151,7 +154,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Enter the trip in PlaneWX: your route, your altitude, and whether you're flying IFR or VFR. Then set your <a href="https://app.planewx.ai/help/personal-minimums">personal minimums</a>. The <a href="https://app.planewx.ai/help/wx-score">WX Score</a> always runs against minimums, yours or the defaults until you set your own, so take a few minutes to make them yours. Take a first look at the destination summary. A week out, you're reading the big picture, not the details.</p>
 
 <h2>5 days out: test the pattern</h2>
-<p>Add the return leg so PlaneWX watches both directions. Ken uses <strong>Add next leg</strong> and sets his return for Monday. Then, from your briefing, open the <strong>Open In</strong> menu and choose <strong>Aviation Weather</strong>. Your route opens on aviationweather.gov, run by the NWS Aviation Weather Center. From there, scroll the prog charts, which run about seven days out. You're looking for the pattern: where the fronts and lows are, and whether they're headed for your day.</p>
+<p>Add the return leg so PlaneWX watches both directions. Ken uses <strong>Add next leg</strong> and sets his return for Monday. Then, from your briefing, open the <strong>Open In</strong> menu and choose <strong>Aviation Weather</strong>. Your route opens on aviationweather.gov, run by the NWS Aviation Weather Center. From there, scroll the prog charts, which run about seven days out. You're looking for the pattern: where the fronts and lows are, and whether they're headed for your day. Ken also checks a TV or web forecast for his departure.</p>
 
 <h2>3 days out: tighten it up</h2>
 <p>Pull a fresh prog chart for departure day. Check MOS, the model output statistics forecast, for your airports in your EFB. As Ken notes, MOS goes out about three and a half days, so this is the first time you get airport-level numbers. Watch the WX Score trend in PlaneWX: is it holding, getting better or getting worse? This is also the time to plan your fuel and a bailout, so you know where you'd go if the weather doesn't cooperate.</p>
@@ -160,7 +163,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>By now the Graphical Forecasts for Aviation (GFA) cover your flight. Check the TAFs and NOTAMs. This is the time to rerun your PlaneWX briefing and, if you're flying IFR, file your flight plan. If you're leaving early, print your sheets tonight so you're not doing it at the airport.</p>
 
 <h2>Day of</h2>
-<p>Get a standard briefing and check the WX Score one more time. Then walk through the PlaneWX risk assessment. When it's time, the briefing shows that a risk assessment is recommended. Ken answers four groups of questions:</p>
+<p>Get a standard briefing and check the WX Score one more time. Then walk through the PlaneWX risk assessment, the FRAT. It's built around PAVE: pilot, aircraft, environment and external pressures. When it's time, the briefing shows that a risk assessment is recommended. Here's how Ken answers:</p>
 <ul>
 <li><strong>Pilot.</strong> He's a little tired, so that puts him at medium.</li>
 <li><strong>Aircraft.</strong> Maintenance is current, weight and balance is done, and fuel is sufficient.</li>
@@ -171,7 +174,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Next, Ken opens Aviation Weather once more for the prog charts and the METARs along his route, where he spots a little early fog. Then he uses <strong>Open In</strong> again and chooses <strong>Kneeboard Pro</strong>. His trip opens there already filled in. He adds the airport diagram and the ILS 28 plate, then prints his kneeboard. The <a href="https://app.planewx.ai/help/kneeboard-pro">Kneeboard Pro and Open In</a> help page shows exactly what PlaneWX sends.</p>
 
 <h2>Take the checklist with you</h2>
-<p>Ken turned the whole strategy into a printable checklist: the <a href="https://kneeboardpro.imctvmedia.com/checklists/seven-day-weather-strategy" target="_blank" rel="noopener noreferrer">7-Day Weather Strategy</a>, under <a href="https://kneeboardpro.imctvmedia.com/checklists/" target="_blank" rel="noopener noreferrer">Pilot Resources</a> at IMC TV Media.</p>
+<p>Ken turned the whole strategy into a printable checklist: the <a href="https://kneeboardpro.imctvmedia.com/checklists/seven-day-weather-strategy" target="_blank" rel="noopener noreferrer">7-Day Weather Strategy</a>, under <a href="https://kneeboardpro.imctvmedia.com/checklists/" target="_blank" rel="noopener noreferrer">Pilot Resources</a> at IMC TV Media. Along with the steps, it shows when each weather product becomes available, helps you set your minimums, and includes a punch-out sheet.</p>
 <p>Want to try it on your next trip? <a href="https://app.planewx.ai/auth/sign-up">Start a free 14-day PlaneWX trial</a>, set your minimums, and let PlaneWX watch the week for you.</p>
 
 <h2>About PlaneWX</h2>

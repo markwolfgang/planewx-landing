@@ -100,6 +100,7 @@ export default async function NewsArticlePage({ params, searchParams }: Props) {
               <YouTubeFacade
                 videoId={item.heroVideo.videoId}
                 title={item.heroVideo.title}
+                posterSrc={item.heroVideo.poster}
                 priority
                 sizes="(max-width: 768px) 100vw, 720px"
               />
