@@ -56,6 +56,79 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "new-beta-planewx-in-claude-and-grok",
+    category: "Product",
+    title: "New beta: PlaneWX in Claude and Grok",
+    excerpt:
+      "Ask about your trips, briefings, and departure windows in plain English, right inside the AI assistant you already use. Now in beta for Pro Plus.",
+    date: "October 9, 2026",
+    isoDate: "2026-10-09",
+    body: `
+<p>PlaneWX started as a weather briefing. It has grown into a full risk management system built around a simple loop: Brief, Assess, Decide, Debrief. Today we're opening a new way into that loop.</p>
+
+<p>The PlaneWX connector is now in beta for Pro Plus pilots. It links your PlaneWX account to Claude or Grok, so you can ask about your flying in a normal conversation and get answers from your own PlaneWX data. ChatGPT and Gemini are coming soon.</p>
+
+<h2>How I'm using it</h2>
+<p>Here's a real example from my own planning. I wanted to fly to Nashville on Sunday, so I just told Claude:</p>
+<blockquote><p>"I want to fly to Nashville on Sunday. Check a few departure times and give me the WX Score for each."</p></blockquote>
+<p>Claude ran PlaneWX briefings for three different times that day and came back with the WX Score for each one. I looked them over, picked the time that fit my day, and said:</p>
+<blockquote><p>"Save that time as a trip."</p></blockquote>
+<p>It saved the trip in PlaneWX, where it gets its own fresh briefing and shows up with the rest of my trips. Then I asked about getting home:</p>
+<blockquote><p>"Now build a return trip for Monday or Tuesday and find me some good departure windows."</p></blockquote>
+<p>Claude searched both days and laid out the windows with their scores. A few minutes of conversation and I had the outbound trip saved and the return options in front of me. The decision was still mine. It just took a lot less clicking to get there.</p>
+
+<h2>See it in action</h2>
+<p>Two short demos of the PlaneWX connector in Claude:</p>
+<div class="not-prose my-8 grid gap-6 sm:grid-cols-2">
+  <figure class="m-0">
+    <div class="relative mx-auto w-full max-w-[360px] overflow-hidden rounded-xl border border-white/10 bg-black" style="aspect-ratio: 9 / 16;">
+      <iframe class="absolute inset-0 h-full w-full" src="https://www.youtube-nocookie.com/embed/ceqc-hAsQtE" title="Ask Claude &quot;Can I Fly Tomorrow?&quot; - PlaneWX's New MCP" loading="lazy" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <figcaption class="mt-3 text-center text-sm italic text-white/45">Ask Claude "Can I Fly Tomorrow?" - PlaneWX's New MCP</figcaption>
+  </figure>
+  <figure class="m-0">
+    <div class="relative mx-auto w-full max-w-[360px] overflow-hidden rounded-xl border border-white/10 bg-black" style="aspect-ratio: 9 / 16;">
+      <iframe class="absolute inset-0 h-full w-full" src="https://www.youtube-nocookie.com/embed/N2HkQ1ubu0I" title="Claude Cross-Checked My PlaneWX Briefing Against ForeFlight - Here's What It Caught" loading="lazy" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <figcaption class="mt-3 text-center text-sm italic text-white/45">Claude Cross-Checked My PlaneWX Briefing Against ForeFlight - Here's What It Caught</figcaption>
+  </figure>
+</div>
+
+<h2>Cross-check your briefing</h2>
+<p>If you also use the ForeFlight connector in Claude, you can connect both and get a second look at the same flight:</p>
+<blockquote><p>"Compare the ForeFlight briefing with PlaneWX for my trip to KASE and list where they differ."</p></blockquote>
+<p>Claude lays the two side by side and points out where they disagree, with likely reasons like a different station, valid time, or model run. Neither one is treated as the right answer. You see the differences and you judge what they mean.</p>
+
+<h2>What else you can ask</h2>
+<ul>
+<li><strong>Your saved trips.</strong> Route, departure time, stored WX Score, plus Self Debriefs and FRATs for past trips. "What upcoming trips do I have?"</li>
+<li><strong>Your saved briefing.</strong> The same briefing and WX Score you see in the app, with no re-score unless you ask to refresh. "What does my briefing for tomorrow's trip to KASE look like?"</li>
+<li><strong>Departure windows.</strong> Ranked candidate times, honoring limits like arriving before sunset. "Find the best departure window Saturday from KAPA to KSDL."</li>
+<li><strong>Airports and your profile.</strong> Look up an airport or check the minimums your WX Score uses.</li>
+</ul>
+
+<h2>You're still the PIC</h2>
+<p>PlaneWX doesn't tell you to go or not to go, and neither does the connector. The assistant reports the WX Score, the band (Favorable, Marginal, or Unfavorable), and what drives it, and links back to the full PlaneWX briefing. The GO/NO-GO call stays with you.</p>
+
+<h2>What gets shared</h2>
+<p>The connector shares your profile, aircraft, personal minimums, saved trips, Self Debriefs, and FRATs with the assistant you connect. Self Debrief private notes are included in trimmed form; Mentors, Trip Watchers, groups, and Insights still never see them. PlaneWX never sends your password, payment details, medical certificate, logbook entries, or other pilots' data.</p>
+
+<h2>How to connect</h2>
+<ol>
+<li>In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.</li>
+<li>In Claude or Grok, add a custom connector with the PlaneWX MCP URL: <code>https://app.planewx.ai/api/mcp</code></li>
+<li>Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.</li>
+</ol>
+<p>Full steps are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to Claude or Grok</a>.</p>
+<p>It's a Pro Plus Labs feature (Enterprise included), not available on Free, Casual, Pro, or during the free trial.</p>
+
+<h2>Help us shape it</h2>
+<p>This is a beta, so you may run into rough edges. If something looks wrong, or you find a prompt that works great, tell me with the Feedback button in the app. I read every one.</p>
+
+<p>Blue skies,<br/>Mark</p>
+`,
+  },
+  {
     slug: "7-day-weather-strategy-ken-dustin",
     category: "Product",
     title: "A 7-Day Weather Strategy with PlaneWX, Aviation Weather and Your EFB (Featuring Ken Dustin of Kneeboard Pro)",
