@@ -161,6 +161,26 @@ export const HUB_PAGES = [
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "flight-risk-assessment-tool",
   },
+  {
+    slug: "imsafe-checklist",
+    source: "imsafe-checklist.html",
+    // New guide (Oct 11, 2026): SEO brief BRIEF-IMSAFE.md. Source HTML is the
+    // extracted <article>, so sourceMd5 equals mainHtmlMd5.
+    sourceMd5: "6bf14d4f9ee76ef08dc8af81867c230f",
+    mainHtmlMd5: "6bf14d4f9ee76ef08dc8af81867c230f",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "imsafe-checklist",
+  },
+  {
+    slug: "controlled-flight-into-terrain",
+    source: "controlled-flight-into-terrain.html",
+    // New guide (Oct 11, 2026): SEO brief BRIEF-CFIT.md. Source HTML is the
+    // extracted <article>, so sourceMd5 equals mainHtmlMd5.
+    sourceMd5: "857b47f5c3b5ca9b9a547c538a25016b",
+    mainHtmlMd5: "857b47f5c3b5ca9b9a547c538a25016b",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "controlled-flight-into-terrain",
+  },
 ]
 
 export const HUB_ASSET_MD5 = {

@@ -2067,6 +2067,21 @@ export const DECISION_MAKING_HUB_PAGES: readonly AviationWeatherHubPage[] = [
       "FAA FRAT means Flight Risk Assessment Tool. How the FAA form, checklist, and online tool work, what green, yellow, and red mean, and how an eFRAT fits.",
     lastReviewed: "2026-10-06",
   },
+  {
+    href: "/learn/imsafe-checklist",
+    title: "The IMSAFE Checklist: How to Know You Are Fit to Fly Today",
+    summary:
+      "IMSAFE as six questions you can answer before every flight, the FAA medication rules and the new FAA MedGuide, and two NTSB accidents where the pilot was the weak link.",
+    lastReviewed: "2026-10-11",
+  },
+  {
+    href: "/learn/controlled-flight-into-terrain",
+    title:
+      "Controlled Flight Into Terrain: Why Good Airplanes Hit Terrain and How to Prevent It",
+    summary:
+      "What CFIT is, why it happens in general aviation, two NTSB accidents step by step, and the preflight and in flight checks that keep terrain out of the windshield.",
+    lastReviewed: "2026-10-11",
+  },
 ]
 
 /**
