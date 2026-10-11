@@ -55,7 +55,7 @@ export const FAQ_JSON_LD = {
       "name": "What does the IMSAFE checklist include in terms of medicine?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The M asks whether any prescription or over the counter drug could affect your faculties. 14 CFR 91.17 prohibits flying on such a drug. The FAA MedGuide lists allowed medications, usually with a 48 hour wait after starting one, and the FAA Do Not Fly guidance sets waits of 5 maximum half-lives."
+        "text": "The M asks whether any prescription or over the counter drug could affect your faculties. 14 CFR 91.17 prohibits flying on such a drug. The FAA MedGuide lists allowed medications, usually with a 48 hour wait after starting one, and the FAA Do Not Fly guidance sets a wait of 5 maximum half-lives, or 5 maximum dosing intervals only when half-life information is not available."
       }
     },
     {
