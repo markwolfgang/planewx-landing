@@ -73,10 +73,15 @@ export const WEATHER_GROUPS: HubGroup[] = [
 
 export const DECISION_GROUP: HubGroup = {
   id: "decision-making",
-  title: "Aeronautical decision making: FRAT and risk stacking",
+  title: "Aeronautical decision making: FRAT, IMSAFE, risk stacking and CFIT",
   description:
     "ADM habits from FAA risk management material that keep the PIC in command.",
-  hrefs: ["/learn/flight-risk-assessment-tool", "/learn/risk-stacking"],
+  hrefs: [
+    "/learn/flight-risk-assessment-tool",
+    "/learn/imsafe-checklist",
+    "/learn/risk-stacking",
+    "/learn/controlled-flight-into-terrain",
+  ],
 }
 
 export type CaseStudyTag =
