@@ -1,7 +1,7 @@
 export const ARTICLE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Controlled Flight Into Terrain: Why Good Airplanes Hit Terrain and How to Prevent It",
+  "headline": "Controlled Flight Into Terrain: Why It Happens and How to Prevent It",
   "description": "Controlled flight into terrain (CFIT) is when a working airplane is flown into the ground. Why it happens in GA, two NTSB cases and how to prevent it.",
   "mainEntityOfPage": "https://www.planewx.ai/learn/controlled-flight-into-terrain",
   "datePublished": "2026-10-11",

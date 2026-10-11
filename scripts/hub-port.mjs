@@ -166,8 +166,8 @@ export const HUB_PAGES = [
     source: "imsafe-checklist.html",
     // New guide (Oct 11, 2026): SEO brief BRIEF-IMSAFE.md. Source HTML is the
     // extracted <article>, so sourceMd5 equals mainHtmlMd5.
-    sourceMd5: "6bf14d4f9ee76ef08dc8af81867c230f",
-    mainHtmlMd5: "6bf14d4f9ee76ef08dc8af81867c230f",
+    sourceMd5: "74b82681bc3e375ca70274b39fa1c0e5",
+    mainHtmlMd5: "74b82681bc3e375ca70274b39fa1c0e5",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "imsafe-checklist",
   },
@@ -176,8 +176,8 @@ export const HUB_PAGES = [
     source: "controlled-flight-into-terrain.html",
     // New guide (Oct 11, 2026): SEO brief BRIEF-CFIT.md. Source HTML is the
     // extracted <article>, so sourceMd5 equals mainHtmlMd5.
-    sourceMd5: "857b47f5c3b5ca9b9a547c538a25016b",
-    mainHtmlMd5: "857b47f5c3b5ca9b9a547c538a25016b",
+    sourceMd5: "59d8f777456ec2118f5c598eea6afa99",
+    mainHtmlMd5: "59d8f777456ec2118f5c598eea6afa99",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "controlled-flight-into-terrain",
   },

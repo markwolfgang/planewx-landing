@@ -2076,8 +2076,7 @@ export const DECISION_MAKING_HUB_PAGES: readonly AviationWeatherHubPage[] = [
   },
   {
     href: "/learn/controlled-flight-into-terrain",
-    title:
-      "Controlled Flight Into Terrain: Why Good Airplanes Hit Terrain and How to Prevent It",
+    title: "Controlled Flight Into Terrain: Why It Happens and How to Prevent It",
     summary:
       "What CFIT is, why it happens in general aviation, two NTSB accidents step by step, and the preflight and in flight checks that keep terrain out of the windshield.",
     lastReviewed: "2026-10-11",
