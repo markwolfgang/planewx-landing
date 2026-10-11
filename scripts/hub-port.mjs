@@ -166,8 +166,8 @@ export const HUB_PAGES = [
     source: "imsafe-checklist.html",
     // New guide (Oct 11, 2026): SEO brief BRIEF-IMSAFE.md. Source HTML is the
     // extracted <article>, so sourceMd5 equals mainHtmlMd5.
-    sourceMd5: "43bcbb706be96fa30575483cb37f3a4f",
-    mainHtmlMd5: "43bcbb706be96fa30575483cb37f3a4f",
+    sourceMd5: "bc8fd83bff43c567fc92c24c60a14bb8",
+    mainHtmlMd5: "bc8fd83bff43c567fc92c24c60a14bb8",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "imsafe-checklist",
   },
