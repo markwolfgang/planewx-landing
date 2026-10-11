@@ -15,6 +15,11 @@ const PLUS_BULLETS: {
   seesNote?: boolean
 }[] = [
   {
+    name: "AI Connector (Claude, Grok)",
+    detail: "Cross-check your briefing with your AI assistant.",
+    helpPath: "/help/connect-ai-assistant",
+  },
+  {
     name: "Ground Protection",
     detail:
       "We watch the weather at your parked aircraft and text you before hail, wind, or freezing rain arrives.",
@@ -54,11 +59,6 @@ const PLUS_BULLETS: {
       "Eligible for up to 10% off your aircraft insurance premium through our partner 5x5. Terms are set by 5x5.",
     href: "https://www.5x5insurance.com",
     seesNote: true,
-  },
-  {
-    name: "AI Connector (Claude, Grok)",
-    detail: "Cross-check your briefing with your AI assistant.",
-    helpPath: "/help/connect-ai-assistant",
   },
   {
     name: "PlaneWX Labs",

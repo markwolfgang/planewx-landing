@@ -75,7 +75,7 @@ describe("pricing-section Pro Plus AI Connector", () => {
     cleanup()
   })
 
-  it("lists AI Connector (Claude, Grok) only under Pro Plus with help link", () => {
+  it("lists AI Connector (Claude, Grok) first under Pro Plus with help link", () => {
     const src = readFileSync(
       join(process.cwd(), "components/shared/pricing-section.tsx"),
       "utf8",
@@ -89,6 +89,13 @@ describe("pricing-section Pro Plus AI Connector", () => {
     expect(src).not.toContain("Gemini")
     expect(src).not.toMatch(/go or no-go|GO\/NO-GO|go\/no-go/i)
 
+    const plusBulletsStart = src.indexOf("const PLUS_BULLETS")
+    const firstName = src.indexOf('name: "', plusBulletsStart)
+    expect(firstName).toBeGreaterThan(-1)
+    expect(
+      src.startsWith('name: "AI Connector (Claude, Grok)"', firstName),
+    ).toBe(true)
+
     render(<PricingSection variant="default" />)
 
     const connector = screen.getByRole("link", {
@@ -100,5 +107,13 @@ describe("pricing-section Pro Plus AI Connector", () => {
     expect(
       screen.getByText("Cross-check your briefing with your AI assistant."),
     ).toBeTruthy()
+
+    const proPlusHeading = screen.getByRole("heading", { name: "Pro Plus" })
+    const list = proPlusHeading
+      .closest("div")
+      ?.parentElement?.querySelector("ul")
+    expect(list).toBeTruthy()
+    const firstLink = list?.querySelector("a")
+    expect(firstLink?.textContent).toBe("AI Connector (Claude, Grok)")
   })
 })
