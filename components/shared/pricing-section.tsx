@@ -56,6 +56,11 @@ const PLUS_BULLETS: {
     seesNote: true,
   },
   {
+    name: "AI Connector (Claude, Grok)",
+    detail: "Cross-check your briefing with your AI assistant.",
+    helpPath: "/help/connect-ai-assistant",
+  },
+  {
     name: "PlaneWX Labs",
     detail:
       "Early access to features still in development. Altitude Profile cross-section and Route Map Forecast models. Self Debrief is on every plan.",
