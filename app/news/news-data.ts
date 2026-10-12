@@ -121,6 +121,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <li>Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.</li>
 </ol>
 <p>Full steps are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to Claude or Grok</a>.</p>
+<p>For an overview of what the connector can do, see <a href="/mcp">PlaneWX MCP: Aviation Weather for Claude and Grok</a>.</p>
 <p>It's a Pro Plus Labs feature (Enterprise included). It isn't part of Free, Casual, or Pro, but every Pro Plus free trial includes it: the new-signup trial and the 14-day Pro Plus upgrade trial.</p>
 <p><strong>On Casual or Pro?</strong> You can try Pro Plus, connector included, free for 14 days. On the web, go to <a href="https://app.planewx.ai/?view=profile&tab=subscription">Profile, Subscription</a> and choose "Start my Pro Plus trial." You keep your current plan and rate. Pro Plus is added on top at no charge, and you go back to your plan when the 14 days are up. There's nothing to cancel. It's one trial per account, and it isn't available from the iOS app. During any trial, the connector can run up to 12 scored briefings a day.</p>
 
