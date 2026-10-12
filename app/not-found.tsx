@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { NotFoundContent } from "@/components/shared/not-found-content"
 
 export const metadata: Metadata = {
-  title: "Page not found - PlaneWX",
+  title: "Page not found",
   robots: { index: false, follow: false },
 }
 
