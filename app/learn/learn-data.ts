@@ -171,7 +171,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     section: "Weather Products",
     summary:
       "TAFs are the official NWS terminal forecast. This article compares them with MOS, LAMP and NBM guidance, and explains why many small airports never get a forecaster-written TAF.",
-    lastReviewed: "2026-09-25",
+    lastReviewed: "2026-10-12",
     draft: false,
     body: [
       {
