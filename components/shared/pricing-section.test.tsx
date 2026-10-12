@@ -69,3 +69,51 @@ describe("pricing-section two-year offer removal", () => {
     },
   )
 })
+
+describe("pricing-section Pro Plus AI Connector", () => {
+  afterEach(() => {
+    cleanup()
+  })
+
+  it("lists AI Connector (Claude, Grok) first under Pro Plus with help link", () => {
+    const src = readFileSync(
+      join(process.cwd(), "components/shared/pricing-section.tsx"),
+      "utf8",
+    )
+    expect(src).toContain('name: "AI Connector (Claude, Grok)"')
+    expect(src).toContain(
+      'detail: "Cross-check your briefing with your AI assistant."',
+    )
+    expect(src).toContain('helpPath: "/help/connect-ai-assistant"')
+    expect(src).not.toContain("ChatGPT")
+    expect(src).not.toContain("Gemini")
+    expect(src).not.toMatch(/go or no-go|GO\/NO-GO|go\/no-go/i)
+
+    const plusBulletsStart = src.indexOf("const PLUS_BULLETS")
+    const firstName = src.indexOf('name: "', plusBulletsStart)
+    expect(firstName).toBeGreaterThan(-1)
+    expect(
+      src.startsWith('name: "AI Connector (Claude, Grok)"', firstName),
+    ).toBe(true)
+
+    render(<PricingSection variant="default" />)
+
+    const connector = screen.getByRole("link", {
+      name: "AI Connector (Claude, Grok)",
+    })
+    expect(connector.getAttribute("href")).toBe(
+      `${APP_ORIGIN}/help/connect-ai-assistant`,
+    )
+    expect(
+      screen.getByText("Cross-check your briefing with your AI assistant."),
+    ).toBeTruthy()
+
+    const proPlusHeading = screen.getByRole("heading", { name: "Pro Plus" })
+    const list = proPlusHeading
+      .closest("div")
+      ?.parentElement?.querySelector("ul")
+    expect(list).toBeTruthy()
+    const firstLink = list?.querySelector("a")
+    expect(firstLink?.textContent).toBe("AI Connector (Claude, Grok)")
+  })
+})

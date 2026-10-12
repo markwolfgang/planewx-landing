@@ -15,6 +15,11 @@ const PLUS_BULLETS: {
   seesNote?: boolean
 }[] = [
   {
+    name: "AI Connector (Claude, Grok)",
+    detail: "Cross-check your briefing with your AI assistant.",
+    helpPath: "/help/connect-ai-assistant",
+  },
+  {
     name: "Ground Protection",
     detail:
       "We watch the weather at your parked aircraft and text you before hail, wind, or freezing rain arrives.",
