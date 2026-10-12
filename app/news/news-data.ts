@@ -75,7 +75,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <blockquote><p>"Save that time as a trip."</p></blockquote>
 <p>It saved the trip in PlaneWX, where it gets its own fresh briefing and shows up with the rest of my trips. Then I asked about getting home:</p>
 <blockquote><p>"Now build a return trip for Monday or Tuesday and find me some good departure windows."</p></blockquote>
-<p>Claude searched both days and laid out the windows with their scores. A few minutes of conversation and I had the outbound trip saved and the return options in front of me. The decision was still mine. It just took a lot less clicking to get there.</p>
+<p>Claude searched both days, ran multiple PlaneWX scoring runs using my personal minimums and aircraft, and came back with the WX Score and risk factors for each window. A few minutes of conversation and I had the outbound trip saved and the return options in front of me. The decision was still mine. It just took a lot less clicking to get there.</p>
 
 <h2>See it in action</h2>
 <p>Two short demos of the PlaneWX connector in Claude:</p>
