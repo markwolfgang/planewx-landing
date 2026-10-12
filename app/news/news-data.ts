@@ -56,6 +56,48 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "weekly-pirep-2026-10-12",
+    category: "Product",
+    title: "The Weekly PIREP: Edition 3",
+    excerpt:
+      "What shipped for pilots last week (Mon Oct 5 through Sun Oct 11), a count of the polish work, a mission pulse, and one tip on checking yourself before the weather.",
+    date: "October 12, 2026",
+    isoDate: "2026-10-12",
+    draft: true,
+    body: `
+<p>Hello from PlaneWX. This is The Weekly PIREP, our Monday roundup of what shipped for pilots in the last week (Mon Oct 5 through Sun Oct 11).</p>
+<p>We keep it short and plain: what you can see and use in the app, a count of the smaller polish work, and one tip worth a minute of your time.</p>
+
+<h2>What's new</h2>
+<ul>
+  <li><strong>The PlaneWX AI connector reads your stored briefing.</strong> The connector can now pull your stored trip briefing, the same one you see in the app, and scoring runs can include density altitude and runway performance. Available on Pro Plus. Claude and Grok are live.</li>
+  <li><strong>Model guidance when no TAF covers an hour.</strong> When no TAF covers an hour of your flight, live scoring can fill that hour from model guidance (NBM).</li>
+  <li><strong>Named-storm caution.</strong> Briefings show a caution line when a National Hurricane Center named storm is relevant. It states the facts only and does not change the score.</li>
+  <li><strong>In-flight satellite phone texts.</strong> Opt in on the aircraft profile. You get an alert if the destination score drops to 0%. Arrival ATIS texts are on by default and are re-sent when the ATIS letter changes, with METAR as a fallback when there's no D-ATIS.</li>
+  <li><strong>Confirm flown: pick the aircraft you actually flew.</strong> When you confirm a trip as flown, you can choose the aircraft you flew.</li>
+  <li><strong>Self Debrief by voice.</strong> You can now dictate your debrief in the app.</li>
+  <li><strong>ETD and ETA on My Trips.</strong> Trip cards in My Trips now show ETD and ETA.</li>
+</ul>
+
+<h2>Fixes and improvements</h2>
+<p>We shipped <strong>84</strong> fixes and improvements this week.</p>
+
+<h2>Coming soon</h2>
+<p>ChatGPT and Gemini for the PlaneWX AI connector.</p>
+
+<h2>Mission pulse</h2>
+<p>Pilots ran a FRAT on 6.9% of briefed trips (43 FRATs from 34 pilots). Self Debrief was used on 11.5% of Pro Plus briefed trips (47 started, 34 submitted).</p>
+
+<h2>Tip of the Week: check yourself before the weather</h2>
+<p>Run IMSAFE honestly before you look at the weather: illness, medication, stress, alcohol, fatigue, eating. Then work the loop: Brief, Assess, Decide, Debrief. The <a href="https://app.planewx.ai/help/frat">FRAT</a> helps you count what stacks up, and the call stays yours as PIC, weighed with NOTAMs, ATIS, PIREPs and your other sources. PlaneWX never recommends GO or NO-GO. The pilot makes the call. More in <a href="https://www.planewx.ai/learn/imsafe-checklist">The IMSAFE Checklist</a>.</p>
+
+<p>Open PlaneWX when you are ready to brief the next trip: <a href="https://app.planewx.ai">app.planewx.ai</a>.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. Fly like it's your job.</p>
+`,
+  },
+  {
     slug: "new-beta-planewx-in-claude-and-grok",
     category: "Product",
     title: "New beta: PlaneWX in Claude and Grok",
