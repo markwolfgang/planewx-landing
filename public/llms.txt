@@ -163,6 +163,15 @@ The hardest part of flying is often not handling the airplane. It is making the 
 5. Monitor WX Score and Synoptic Intelligence as departure approaches
 6. Complete FRAT when it unlocks, then record your own GO / NO-GO
 
+## PlaneWX MCP (AI assistant connector, beta)
+
+- Overview page: https://www.planewx.ai/mcp
+- Links a PlaneWX account to Claude or Grok so pilots can ask about saved trips, stored briefings, WX Score and departure windows in chat. ChatGPT and Gemini are coming soon.
+- MCP server URL: https://app.planewx.ai/api/mcp
+- Pro Plus, trials included (Enterprise included). Not available on Free, Casual or Pro.
+- The assistant reports the WX Score and what drives it. It never recommends GO or NO-GO; the pilot in command makes the call.
+- Setup: https://app.planewx.ai/help/connect-ai-assistant
+
 ## Built By Pilots, For Pilots
 
 PlaneWX was created by pilots who have felt the pressure, made the calls, and learned from the scares. Built to be the tool they wish they had.

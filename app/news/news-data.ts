@@ -120,6 +120,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <li>Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.</li>
 </ol>
 <p>Full steps are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to Claude or Grok</a>.</p>
+<p>For an overview of what the connector can do, see <a href="/mcp">PlaneWX MCP: Aviation Weather for Claude and Grok</a>.</p>
 <p>It's a Pro Plus Labs feature (Enterprise included), not available on Free, Casual, or Pro. Pro Plus free trials include it too, both the new-signup trial and the 14-day Pro Plus upgrade trial for Pro and Casual subscribers.</p>
 
 <h2>Help us shape it</h2>
