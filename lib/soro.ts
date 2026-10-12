@@ -16,20 +16,11 @@ export interface SoroArticle {
   image: string
 }
 
-type ArticlesCacheMode = 'default' | 'no-store'
-
-function articlesFetchInit(mode: ArticlesCacheMode): RequestInit {
-  if (mode === 'no-store') {
-    return { cache: 'no-store' }
-  }
-  return { next: { revalidate: 3600, tags: [SORO_ARTICLES_TAG] } }
-}
-
-async function fetchSoroArticles(mode: ArticlesCacheMode): Promise<SoroArticle[]> {
+async function fetchSoroArticles(): Promise<SoroArticle[]> {
   try {
     const script = await fetch(
       `${SORO_API_BASE}/api/embed/${SORO_TOKEN}?theme=dark`,
-      articlesFetchInit(mode)
+      { next: { revalidate: 3600, tags: [SORO_ARTICLES_TAG] } }
     ).then((r) => r.text())
 
     const match = script.match(/var SORO_ARTICLES = (\[[\s\S]*?\]);/)
@@ -46,24 +37,22 @@ async function fetchSoroArticles(mode: ArticlesCacheMode): Promise<SoroArticle[]
  * Cached for 1 hour on the CDN (ISR-compatible), tagged for on-demand purge.
  */
 export async function getSoroArticles(): Promise<SoroArticle[]> {
-  return fetchSoroArticles('default')
+  return fetchSoroArticles()
 }
 
 /**
  * Resolve a single article by slug.
  *
  * Soro has no public slug endpoint — only the embed list + UUID content API.
- * If the long-lived list cache is stale and omits a newly published slug, we
- * refetch with cache: 'no-store' before treating it as missing. That stops the
- * index from linking to a slug whose page ISR-cached a 404 for up to 1h.
+ * Uses the same ISR-tagged list fetch as getSoroArticles. Do not opt this
+ * helper into an uncached fetch: on an ISR /blog/[slug] route that forces
+ * "static to dynamic at runtime" and returns HTTP 500 for unknown slugs.
+ * After publishing a new Soro post, hit /api/revalidate (or wait for the
+ * 3600s list revalidate) so the slug is present before the first request.
  */
 export async function getSoroArticleBySlug(slug: string): Promise<SoroArticle | null> {
-  const cached = await fetchSoroArticles('default')
-  const fromCache = cached.find((a) => a.slug === slug)
-  if (fromCache) return fromCache
-
-  const fresh = await fetchSoroArticles('no-store')
-  return fresh.find((a) => a.slug === slug) ?? null
+  const articles = await fetchSoroArticles()
+  return articles.find((a) => a.slug === slug) ?? null
 }
 
 /**

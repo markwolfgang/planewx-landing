@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { connection } from "next/server"
 import {
   getSoroArticles,
   getSoroArticleBySlug,
@@ -25,7 +24,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const article = await getSoroArticleBySlug(slug)
-  if (!article) return {}
+  if (!article) notFound()
 
   return {
     title: article.title,
@@ -45,13 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
   const article = await getSoroArticleBySlug(slug)
-  if (!article) {
-    // Confirmed miss after a no-store list refetch — wait for a real request so
-    // Next does not ISR-cache this 404 for revalidate (3600s). A post published
-    // minutes later would otherwise stay soft-404 until the hour rolled over.
-    await connection()
-    notFound()
-  }
+  if (!article) notFound()
 
   const content = await getSoroArticleContent(article.id)
 
