@@ -190,7 +190,7 @@ export default function AboutPage() {
             </p>
 
             <p className="text-white/45 italic font-light tracking-wide">
-              The confidence to go, or the courage to stay™
+              The confidence to go. The courage to stay.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -497,7 +497,7 @@ export default function AboutPage() {
               </Link>
             </div>
             <p className="text-white/45 italic font-light tracking-wide pt-2">
-              The confidence to go, or the courage to stay™
+              The confidence to go. The courage to stay.
             </p>
             <div className="flex items-start justify-center gap-2 pt-4 text-sm text-white/30 max-w-lg mx-auto">
               <Shield className="h-4 w-4 mt-0.5 shrink-0 text-white/25" aria-hidden />

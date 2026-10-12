@@ -103,7 +103,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               color: "rgba(255,255,255,0.45)",
             }}
           >
-            The confidence to go, or the courage to stay.™
+            The confidence to go. The courage to stay.
           </span>
           <span style={{ fontSize: "18px", color: "rgba(255,255,255,0.4)" }}>planewx.ai/news</span>
         </div>

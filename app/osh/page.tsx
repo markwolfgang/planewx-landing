@@ -274,7 +274,7 @@ export default function OshkoshPage() {
         {/* CTA */}
         <section className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 sm:p-10 text-center space-y-4">
           <h2 className="text-2xl sm:text-3xl font-bold">
-            The confidence to go, or the courage to stay™
+            The confidence to go. The courage to stay.
           </h2>
           <p className="text-white/60 max-w-xl mx-auto">
             PlaneWX is the Pilot&apos;s Decision Support System — personal minimums,
