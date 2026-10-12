@@ -157,10 +157,10 @@ export async function GET() {
             />
             <div style={{ display: "flex", flexDirection: "column" }}>
               <span style={{ fontSize: 16, color: "rgba(255,255,255,0.9)", fontStyle: "italic" }}>
-                "The confidence to GO,
+                "The confidence to go.
               </span>
               <span style={{ fontSize: 16, color: "rgba(255,255,255,0.9)", fontStyle: "italic" }}>
-                or the courage to stay"
+                The courage to stay."
               </span>
             </div>
           </div>

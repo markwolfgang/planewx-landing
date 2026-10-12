@@ -96,7 +96,7 @@ export function LandingVariantA() {
             </h1>
 
             <p className="text-xl md:text-2xl lg:text-lg xl:text-xl text-white/70 max-w-3xl mx-auto lg:mx-0 leading-relaxed text-balance">
-              The confidence to go, or the courage to stay&trade;. Raw weather still leaves
+              The confidence to go. The courage to stay. Raw weather still leaves
               you as the analyst.
             </p>
 
