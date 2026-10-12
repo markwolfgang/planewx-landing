@@ -8,6 +8,7 @@ import {
   getSoroArticleBySlug,
   getSoroArticleContent,
 } from "@/lib/soro"
+import { BLOG_OVERRIDES } from "@/lib/blog-overrides"
 
 export const revalidate = 3600
 /** Allow new Soro slugs that were not in generateStaticParams at build time. */
@@ -53,7 +54,8 @@ export default async function BlogPostPage({ params }: Props) {
     notFound()
   }
 
-  const content = await getSoroArticleContent(article.id)
+  const override = BLOG_OVERRIDES[slug]
+  const content = override?.html ?? (await getSoroArticleContent(article.id))
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white">
@@ -144,6 +146,7 @@ export default async function BlogPostPage({ params }: Props) {
               headline: article.title,
               description: article.excerpt,
               datePublished: article.isoDate,
+              dateModified: override?.dateModified,
               image: article.image || undefined,
               url: `https://www.planewx.ai/blog/${slug}`,
               publisher: {
@@ -154,6 +157,12 @@ export default async function BlogPostPage({ params }: Props) {
             }),
           }}
         />
+        {override?.faqJsonLd ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(override.faqJsonLd) }}
+          />
+        ) : null}
       </article>
     </div>
   )
