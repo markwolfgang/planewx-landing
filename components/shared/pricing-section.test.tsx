@@ -108,6 +108,13 @@ describe("pricing-section Pro Plus AI Connector", () => {
       screen.getByText("Cross-check your briefing with your AI assistant."),
     ).toBeTruthy()
 
+    const askAcross = screen.getByRole("link", {
+      name: "See it combine your ForeFlight logbook and PlaneWX trips",
+    })
+    expect(askAcross.getAttribute("href")).toBe(
+      "/news/new-beta-planewx-in-claude-and-grok",
+    )
+
     const chatgpt = screen.getByRole("link", { name: "Add PlaneWX to ChatGPT" })
     expect(chatgpt.getAttribute("href")).toBe(
       "https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1",

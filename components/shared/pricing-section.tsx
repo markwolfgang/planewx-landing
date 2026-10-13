@@ -201,6 +201,14 @@ export function PricingSection({ variant }: { variant: string }) {
                     {item.seesNote ? (
                       <FiveX5SeesNote className="text-white/40 text-xs mt-1 leading-relaxed" />
                     ) : null}
+                    {item.helpPath === "/help/connect-ai-assistant" ? (
+                      <a
+                        href="/news/new-beta-planewx-in-claude-and-grok"
+                        className="mt-1 inline-block text-indigo-300 underline underline-offset-2 hover:text-indigo-200"
+                      >
+                        See it combine your ForeFlight logbook and PlaneWX trips
+                      </a>
+                    ) : null}
                     {item.extraLink ? (
                       <a
                         href={item.extraLink.href}
@@ -485,3 +493,4 @@ export function PricingSection({ variant }: { variant: string }) {
     </section>
   )
 }
+
