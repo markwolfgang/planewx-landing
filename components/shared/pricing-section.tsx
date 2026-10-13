@@ -196,7 +196,14 @@ export function PricingSection({ variant }: { variant: string }) {
                     {item.seesNote ? (
                       <FiveX5SeesNote className="text-white/40 text-xs mt-1 leading-relaxed" />
                     ) : null}
-                    {item.helpPath === "/help/connect-ai-assistant" ? <AskAcrossTools /> : null}
+                    {item.helpPath === "/help/connect-ai-assistant" ? (
+                      <a
+                        href="/news/new-beta-planewx-in-claude-and-grok"
+                        className="mt-1 inline-block text-indigo-300 underline underline-offset-2 hover:text-indigo-200"
+                      >
+                        See it combine your ForeFlight logbook and PlaneWX trips
+                      </a>
+                    ) : null}
                   </li>
                 ))}
               </ul>
@@ -472,33 +479,3 @@ export function PricingSection({ variant }: { variant: string }) {
   )
 }
 
-const ASK_ACROSS_CAPTION =
-  "Claude totals logged and scheduled October hours using the ForeFlight logbook connector and PlaneWX."
-
-function AskAcrossTools() {
-  return (
-    <div
-      id="ask-across-tools"
-      className="mt-4 rounded-xl border border-indigo-500/30 bg-black/30 p-4"
-    >
-      <h4 className="text-base font-semibold text-white">Ask across your tools</h4>
-      <p className="text-white/60 mt-1 leading-relaxed">
-        With the PlaneWX connector, your AI assistant can combine PlaneWX with your other
-        connected apps in one conversation. Ask Claude for October&apos;s hours using your
-        ForeFlight logbook connector and your PlaneWX trips, and it adds the hours you&apos;ve
-        flown to the hours you have scheduled, using flight times that account for forecast
-        winds. Pro Plus, trials included.
-      </p>
-      <figure className="m-0 mt-3">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/news/claude-october-hours.png"
-          alt={ASK_ACROSS_CAPTION}
-          loading="lazy"
-          className="w-full max-w-xl rounded-lg border border-white/10"
-        />
-        <figcaption className="mt-2 text-xs italic text-white/45">{ASK_ACROSS_CAPTION}</figcaption>
-      </figure>
-    </div>
-  )
-}
