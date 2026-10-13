@@ -86,6 +86,7 @@ describe("pricing-section Pro Plus AI Connector", () => {
     )
     expect(src).toContain('helpPath: "/help/connect-ai-assistant"')
     expect(src).not.toMatch(/coming soon/i)
+    expect(src).toContain("or $59.99/yr (save $36 vs monthly)")
     expect(src).not.toMatch(/go or no-go|GO\/NO-GO|go\/no-go/i)
 
     const plusBulletsStart = src.indexOf("const PLUS_BULLETS")

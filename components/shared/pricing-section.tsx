@@ -334,7 +334,7 @@ export function PricingSection({ variant }: { variant: string }) {
               <span className="text-4xl font-bold">$7.99</span>
               <span className="text-white/30 ml-1">/month</span>
             </div>
-            <p className="text-xs text-white/40 mb-1">or $59.99/yr (4 months free)</p>
+            <p className="text-xs text-white/40 mb-1">or $59.99/yr (save $36 vs monthly)</p>
             <p className="text-xs text-teal-400 mb-5">$5.00/mo effective</p>
             <TrialLink
               href={appUrl}

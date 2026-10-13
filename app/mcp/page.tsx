@@ -6,9 +6,9 @@ import { BrandLogo } from "@/components/shared/brand-logo"
 import { SignUpButton } from "@/components/shared/sign-up-button"
 import { SiteFooter } from "@/components/shared/site-footer"
 
-const TITLE = "PlaneWX MCP: Aviation Weather for Claude, Grok, Gemini and ChatGPT"
+const TITLE = "PlaneWX MCP: Aviation Weather for Claude, Grok, ChatGPT and Gemini"
 const DESCRIPTION =
-  "PlaneWX briefings, WX Score, trips and departure windows in Claude, Grok, Gemini and ChatGPT. Pro Plus, trials included. You still make the GO / NO-GO call."
+  "PlaneWX briefings, WX Score, trips and departure windows in Claude, Grok, ChatGPT and Gemini. Pro Plus, trials included. You still make the GO / NO-GO call."
 const URL = "https://www.planewx.ai/mcp"
 const HELP_URL = "https://app.planewx.ai/help/connect-ai-assistant"
 const MCP_URL = "https://app.planewx.ai/api/mcp"
@@ -46,12 +46,12 @@ const ASK = [
 
 const STEPS = [
   "In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.",
-  `In your AI assistant, add a custom connector with the PlaneWX MCP URL: ${MCP_URL}`,
+  `In Claude, open Customize, then Connectors, then Add custom connector, and enter the PlaneWX MCP URL: ${MCP_URL}`,
   'Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.',
 ] as const
 
 const CLAUDE_DIRECTORY_STEP =
-  "In Claude, open Settings, then Connectors, then the Discover tab. Search for PlaneWX (listed as PlaneWX, Community, by PlaneWX LLC) and connect. Sign in to PlaneWX and approve; tick Also allow building briefings for scored runs."
+  "In Claude, open Customize, then Connectors, then Discover. Search for PlaneWX (listed as PlaneWX, Community, by PlaneWX LLC) and connect. Sign in to PlaneWX and approve; tick Also allow building briefings for scored runs."
 
 const GROK_STEPS = [
   "In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.",
@@ -61,11 +61,14 @@ const GROK_STEPS = [
 
 const GEMINI_STEPS = [
   "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
-  `In the Gemini web app, open gemini.google.com/apps, choose Custom apps and add an app with server URL ${MCP_URL}`,
+  `On your computer, go to gemini.google.com. At the bottom, click Settings, then Connected Apps (if you don't see Connected Apps, click Personal Intelligence first). Under Custom apps, click Add a custom app, enter the URL ${MCP_URL} and click Next.`,
   "Leave Client ID and Client secret blank.",
   'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then press Allow.',
   "Disconnect anytime in PlaneWX account settings or in Gemini.",
 ] as const
+
+const GEMINI_REQUIREMENT =
+  "Needs Gemini custom apps access: 18 or over, in the US, signed in with a personal Google Account, with Keep Activity on."
 
 const CHATGPT_APP_URL =
   "https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1"
@@ -82,10 +85,9 @@ const CHATGPT_STEPS: ReactNode[] = [
     >
       Add PlaneWX to ChatGPT
     </a>
-    , then sign in to PlaneWX with OAuth.
+    .
   </>,
   'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then press Allow.',
-  `Or add it as a custom MCP server: in ChatGPT, open chatgpt.com/plugins, press +, choose Add custom MCP server, and use the URL ${MCP_URL}, then sign in with OAuth.`,
   "Disconnect anytime in PlaneWX account settings or in ChatGPT.",
 ]
 
@@ -100,7 +102,7 @@ const FAQ = [
   },
   {
     q: "Does Garmin Pilot have an AI connector?",
-    a: "Garmin Pilot does not have an AI connector. The PlaneWX connector works in Claude, Grok, Gemini and ChatGPT.",
+    a: "Garmin Pilot does not have an AI connector. The PlaneWX connector works in Claude, Grok, ChatGPT and Gemini.",
   },
   {
     q: "Is there an aviation weather MCP server?",
@@ -181,7 +183,7 @@ export default function McpPage() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08]">
               The Aviation Weather MCP Server for{" "}
               <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-                Claude, Grok, Gemini and ChatGPT
+                Claude, Grok, ChatGPT and Gemini
               </span>
             </h1>
             <p className="text-lg md:text-xl text-white/65 max-w-2xl mx-auto leading-relaxed">
@@ -243,9 +245,9 @@ export default function McpPage() {
 
         <section className="relative py-16 sm:py-20 px-4 border-y border-white/5 bg-white/[0.02]">
           <div className="container mx-auto max-w-3xl space-y-6 text-center">
-            <h2 className={sectionTitle}>Works in Claude, Grok, Gemini and ChatGPT</h2>
+            <h2 className={sectionTitle}>Works in Claude, Grok, ChatGPT and Gemini</h2>
             <p className={body}>
-              The PlaneWX connector works in Claude, Grok, Gemini and ChatGPT.
+              The PlaneWX connector works in Claude, Grok, ChatGPT and Gemini.
             </p>
           </div>
         </section>
@@ -297,6 +299,7 @@ export default function McpPage() {
             </div>
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-white">Gemini</h3>
+              <p className="text-white/70 leading-relaxed break-words">{GEMINI_REQUIREMENT}</p>
               <ol className="space-y-3 list-decimal pl-6 text-white/70 leading-relaxed break-words">
                 {GEMINI_STEPS.map((step) => (
                   <li key={step}>{step}</li>
