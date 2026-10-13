@@ -70,7 +70,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 <h2>What's new</h2>
 <ul>
-  <li><strong>The PlaneWX AI connector reads your stored briefing.</strong> The connector can now pull your stored trip briefing, the same one you see in the app, and scoring runs can include density altitude and runway performance. Available on Pro Plus. Works in Claude, Grok and Gemini.</li>
+  <li><strong>The PlaneWX AI connector reads your stored briefing.</strong> The connector can now pull your stored trip briefing, the same one you see in the app, and scoring runs can include density altitude and runway performance. Available on Pro Plus. Works in Claude, Grok, Gemini and ChatGPT.</li>
   <li><strong>Model guidance when no TAF covers an hour.</strong> When no TAF covers an hour of your flight, live scoring can fill that hour from model guidance (NBM).</li>
   <li><strong>Named-storm caution.</strong> Briefings show a caution line when a National Hurricane Center named storm is relevant. It states the facts only and does not change the score.</li>
   <li><strong>In-flight satellite phone texts.</strong> Opt in on the aircraft profile. You get an alert if the destination score drops to 0%. Arrival ATIS texts are on by default and are re-sent when the ATIS letter changes, with METAR as a fallback when there's no D-ATIS.</li>
