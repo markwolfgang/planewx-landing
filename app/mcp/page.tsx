@@ -5,9 +5,9 @@ import { BrandLogo } from "@/components/shared/brand-logo"
 import { SignUpButton } from "@/components/shared/sign-up-button"
 import { SiteFooter } from "@/components/shared/site-footer"
 
-const TITLE = "PlaneWX MCP: Aviation Weather for Claude and Grok"
+const TITLE = "PlaneWX MCP: Aviation Weather for Claude, Grok, Gemini and ChatGPT"
 const DESCRIPTION =
-  "Bring PlaneWX briefings, WX Score, trips and departure windows into Claude and Grok. Pro Plus, trials included. You still make the GO / NO-GO call."
+  "PlaneWX briefings, WX Score, trips and departure windows in Claude, Grok, Gemini and ChatGPT. Pro Plus, trials included. You still make the GO / NO-GO call."
 const URL = "https://www.planewx.ai/mcp"
 const HELP_URL = "https://app.planewx.ai/help/connect-ai-assistant"
 const MCP_URL = "https://app.planewx.ai/api/mcp"
@@ -45,21 +45,21 @@ const ASK = [
 
 const STEPS = [
   "In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.",
-  `In Claude or Grok, add a custom connector with the PlaneWX MCP URL: ${MCP_URL}`,
+  `In your AI assistant, add a custom connector with the PlaneWX MCP URL: ${MCP_URL}`,
   'Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.',
 ] as const
 
 const GEMINI_STEPS = [
   "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
   `In the Gemini web app, open gemini.google.com/apps, choose Custom apps and add an app with server URL ${MCP_URL}`,
-  "Leave the OAuth Client ID and Client secret blank.",
+  "Enter the PlaneWX OAuth Client ID and Client secret [TK: where pilots get these, confirming].",
   'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then press Allow.',
   "Disconnect anytime in PlaneWX account settings or in Gemini.",
 ] as const
 
 const CHATGPT_STEPS = [
   "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
-  `You need a paid ChatGPT plan. In ChatGPT, open chatgpt.com/plugins, press +, choose Add custom MCP server, and use the URL ${MCP_URL} with OAuth.`,
+  `You need a paid ChatGPT plan. In ChatGPT, open chatgpt.com/plugins, press +, choose Add custom MCP server, and use the URL ${MCP_URL}, then sign in with OAuth.`,
   'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then press Allow.',
   "Disconnect anytime in PlaneWX account settings or in ChatGPT.",
 ] as const
@@ -79,7 +79,7 @@ const FAQ = [
   },
   {
     q: "Is there an aviation weather MCP server?",
-    a: `Yes. PlaneWX runs an MCP server at ${MCP_URL}. Add it as a custom connector in Claude or Grok, then sign in with your PlaneWX account.`,
+    a: `Yes. PlaneWX runs an MCP server at ${MCP_URL}. Add it as a custom connector in your AI assistant, then sign in with your PlaneWX account.`,
   },
   {
     q: "Who can use the PlaneWX MCP?",
@@ -156,7 +156,7 @@ export default function McpPage() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.08]">
               The Aviation Weather MCP Server for{" "}
               <span className="bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-                Claude and Grok
+                Claude, Grok, Gemini and ChatGPT
               </span>
             </h1>
             <p className="text-lg md:text-xl text-white/65 max-w-2xl mx-auto leading-relaxed">
@@ -276,7 +276,7 @@ export default function McpPage() {
                 href={HELP_URL}
                 className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.06] px-6 py-3 text-sm font-medium text-white/80 hover:text-white transition-colors"
               >
-                Full steps in Help: Connect PlaneWX to Claude or Grok
+                Full steps in Help: Connect PlaneWX to your AI assistant
                 <ExternalLink className="h-4 w-4 text-white/40" aria-hidden />
               </a>
             </div>

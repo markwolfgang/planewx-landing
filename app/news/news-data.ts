@@ -58,9 +58,9 @@ export const NEWS_ITEMS: NewsItem[] = [
   {
     slug: "new-beta-planewx-in-claude-and-grok",
     category: "Product",
-    title: "New beta: PlaneWX in Claude and Grok",
+    title: "New beta: PlaneWX in Claude, Grok, Gemini and ChatGPT",
     excerpt:
-      "Ask about your trips, briefings, and departure windows in plain English, right inside the AI assistant you already use. Now in beta for Pro Plus.",
+      "Ask about your trips, briefings, and departure windows in plain English, right inside Claude, Grok, Gemini or ChatGPT. Now in beta for Pro Plus.",
     date: "October 9, 2026",
     isoDate: "2026-10-09",
     body: `
@@ -117,11 +117,11 @@ export const NEWS_ITEMS: NewsItem[] = [
 <ol>
 <li>On Casual or Pro? Start your 14-day Pro Plus trial first (Profile, Subscription).</li>
 <li>In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.</li>
-<li>In Claude or Grok, add a custom connector with the PlaneWX MCP URL: <code>https://app.planewx.ai/api/mcp</code></li>
+<li>In your AI assistant, add a custom connector with the PlaneWX MCP URL: <code>https://app.planewx.ai/api/mcp</code></li>
 <li>Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.</li>
 </ol>
-<p>Full steps are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to Claude or Grok</a>.</p>
-<p>For an overview of what the connector can do, see <a href="/mcp">PlaneWX MCP: Aviation Weather for Claude and Grok</a>.</p>
+<p>Full steps are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to your AI assistant</a>.</p>
+<p>For an overview of what the connector can do, see <a href="/mcp">PlaneWX MCP: Aviation Weather for Claude, Grok, Gemini and ChatGPT</a>.</p>
 <p>It's a Pro Plus Labs feature (Enterprise included). It isn't part of Free, Casual, or Pro, but every Pro Plus free trial includes it: the new-signup trial and the 14-day Pro Plus upgrade trial.</p>
 <p><strong>On Casual or Pro?</strong> You can try Pro Plus, connector included, free for 14 days. On the web, go to <a href="https://app.planewx.ai/?view=profile&tab=subscription">Profile, Subscription</a> and choose "Start my Pro Plus trial." You keep your current plan and rate. Pro Plus is added on top at no charge, and you go back to your plan when the 14 days are up. There's nothing to cancel. It's one trial per account, and it isn't available from the iOS app. During any trial, the connector can run up to 12 scored briefings a day.</p>
 
