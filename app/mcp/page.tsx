@@ -49,8 +49,20 @@ const STEPS = [
   'Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.',
 ] as const
 
-const GEMINI_STEPS =
-  "In the Gemini web app, open gemini.google.com/apps, choose Custom apps and add a new app. Use the server URL https://app.planewx.ai/api/mcp. Enter the OAuth client ID and secret [TK: Senior Coder confirming how pilots get these]. Sign in to PlaneWX and approve."
+const GEMINI_STEPS = [
+  "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
+  `In the Gemini web app, open gemini.google.com/apps, choose Custom apps and add an app with server URL ${MCP_URL}`,
+  "Leave the OAuth Client ID and Client secret blank.",
+  'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then press Allow.',
+  "Disconnect anytime in PlaneWX account settings or in Gemini.",
+] as const
+
+const CHATGPT_STEPS = [
+  "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
+  `You need a paid ChatGPT plan. In ChatGPT, open chatgpt.com/plugins, press +, choose Add custom MCP server, and use the URL ${MCP_URL} with OAuth.`,
+  'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then press Allow.',
+  "Disconnect anytime in PlaneWX account settings or in ChatGPT.",
+] as const
 
 const FAQ = [
   {
@@ -63,7 +75,7 @@ const FAQ = [
   },
   {
     q: "Does Garmin Pilot have an AI connector?",
-    a: "Garmin Pilot does not have an AI connector. The PlaneWX connector works in Claude, Grok and Gemini.",
+    a: "Garmin Pilot does not have an AI connector. The PlaneWX connector works in Claude, Grok, Gemini and ChatGPT.",
   },
   {
     q: "Is there an aviation weather MCP server?",
@@ -206,9 +218,9 @@ export default function McpPage() {
 
         <section className="relative py-16 sm:py-20 px-4 border-y border-white/5 bg-white/[0.02]">
           <div className="container mx-auto max-w-3xl space-y-6 text-center">
-            <h2 className={sectionTitle}>Works in Claude, Grok and Gemini</h2>
+            <h2 className={sectionTitle}>Works in Claude, Grok, Gemini and ChatGPT</h2>
             <p className={body}>
-              The PlaneWX connector works in Claude, Grok and Gemini.
+              The PlaneWX connector works in Claude, Grok, Gemini and ChatGPT.
             </p>
           </div>
         </section>
@@ -243,11 +255,21 @@ export default function McpPage() {
                 <li key={step}>{step}</li>
               ))}
             </ol>
-            <div className="space-y-2">
+            <div className="space-y-3">
               <h3 className="text-lg font-semibold text-white">Gemini</h3>
-              <p className="text-white/70 leading-relaxed break-words">
-                {GEMINI_STEPS}
-              </p>
+              <ol className="space-y-3 list-decimal pl-6 text-white/70 leading-relaxed break-words">
+                {GEMINI_STEPS.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-white">ChatGPT</h3>
+              <ol className="space-y-3 list-decimal pl-6 text-white/70 leading-relaxed break-words">
+                {CHATGPT_STEPS.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
             </div>
             <div className="text-center pt-2">
               <a
