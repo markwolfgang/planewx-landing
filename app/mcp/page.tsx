@@ -61,7 +61,7 @@ const GROK_STEPS = [
 const GEMINI_STEPS = [
   "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
   `In the Gemini web app, open gemini.google.com/apps, choose Custom apps and add an app with server URL ${MCP_URL}`,
-  "Enter the PlaneWX OAuth Client ID and Client secret [TK: where pilots get these, confirming].",
+  "Leave Client ID and Client secret blank.",
   'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then press Allow.',
   "Disconnect anytime in PlaneWX account settings or in Gemini.",
 ] as const
