@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import type { ReactNode } from "react"
 import Link from "next/link"
 import { Check, ExternalLink } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
@@ -66,12 +67,27 @@ const GEMINI_STEPS = [
   "Disconnect anytime in PlaneWX account settings or in Gemini.",
 ] as const
 
-const CHATGPT_STEPS = [
+const CHATGPT_APP_URL =
+  "https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1"
+
+const CHATGPT_STEPS: ReactNode[] = [
   "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
-  `You need a paid ChatGPT plan. In ChatGPT, open chatgpt.com/plugins, press +, choose Add custom MCP server, and use the URL ${MCP_URL}, then sign in with OAuth.`,
+  <>
+    You need a paid ChatGPT plan. Open{" "}
+    <a
+      href={CHATGPT_APP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-sky-300 underline underline-offset-2 hover:text-sky-200"
+    >
+      Add PlaneWX to ChatGPT
+    </a>
+    , then sign in to PlaneWX with OAuth.
+  </>,
   'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then press Allow.',
+  `Or add it as a custom MCP server: in ChatGPT, open chatgpt.com/plugins, press +, choose Add custom MCP server, and use the URL ${MCP_URL}, then sign in with OAuth.`,
   "Disconnect anytime in PlaneWX account settings or in ChatGPT.",
-] as const
+]
 
 const FAQ = [
   {
@@ -290,8 +306,8 @@ export default function McpPage() {
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-white">ChatGPT</h3>
               <ol className="space-y-3 list-decimal pl-6 text-white/70 leading-relaxed break-words">
-                {CHATGPT_STEPS.map((step) => (
-                  <li key={step}>{step}</li>
+                {CHATGPT_STEPS.map((step, i) => (
+                  <li key={i}>{step}</li>
                 ))}
               </ol>
             </div>

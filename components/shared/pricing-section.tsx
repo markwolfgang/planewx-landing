@@ -13,11 +13,16 @@ const PLUS_BULLETS: {
   helpPath?: string
   href?: string
   seesNote?: boolean
+  extraLink?: { href: string; label: string }
 }[] = [
   {
-    name: "AI Connector (Claude, Grok)",
+    name: "AI Connector (Claude, Grok, ChatGPT and Gemini)",
     detail: "Cross-check your briefing with your AI assistant.",
     helpPath: "/help/connect-ai-assistant",
+    extraLink: {
+      href: "https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1",
+      label: "Add PlaneWX to ChatGPT",
+    },
   },
   {
     name: "Ground Protection",
@@ -195,6 +200,16 @@ export function PricingSection({ variant }: { variant: string }) {
                     <p className="text-white/50 mt-0.5">{item.detail}</p>
                     {item.seesNote ? (
                       <FiveX5SeesNote className="text-white/40 text-xs mt-1 leading-relaxed" />
+                    ) : null}
+                    {item.extraLink ? (
+                      <a
+                        href={item.extraLink.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 inline-block text-indigo-300 underline underline-offset-2 hover:text-indigo-200"
+                      >
+                        {item.extraLink.label}
+                      </a>
                     ) : null}
                   </li>
                 ))}
