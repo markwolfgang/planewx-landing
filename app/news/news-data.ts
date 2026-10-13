@@ -94,6 +94,13 @@ export const NEWS_ITEMS: NewsItem[] = [
   </figure>
 </div>
 
+<h2 id="ask-across-tools">Ask across your tools</h2>
+<p>With the PlaneWX connector, your AI assistant can combine PlaneWX with your other connected apps in one conversation. Ask Claude for October's hours using your ForeFlight logbook connector and your PlaneWX trips, and it adds the hours you've flown to the hours you have scheduled, using flight times that account for forecast winds. Pro Plus, trials included.</p>
+<figure class="not-prose my-8">
+  <img src="/news/claude-october-hours.png" alt="Claude totals logged and scheduled October hours using the ForeFlight logbook connector and PlaneWX." loading="lazy" class="mx-auto w-full max-w-2xl rounded-xl border border-white/10" />
+  <figcaption class="mt-3 text-center text-sm italic text-white/45">Claude totals logged and scheduled October hours using the ForeFlight logbook connector and PlaneWX.</figcaption>
+</figure>
+
 <h2>Cross-check your briefing</h2>
 <p>If you also use the ForeFlight connector in Claude, you can connect both and get a second look at the same flight:</p>
 <blockquote><p>"Compare the ForeFlight briefing with PlaneWX for my trip to KASE and list where they differ."</p></blockquote>
