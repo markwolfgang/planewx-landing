@@ -52,6 +52,12 @@ const STEPS = [
 const CLAUDE_DIRECTORY_STEP =
   "In Claude, open Settings, then Connectors, then the Discover tab. Search for PlaneWX (listed as PlaneWX, Community, by PlaneWX LLC) and connect. Sign in to PlaneWX and approve; tick Also allow building briefings for scored runs."
 
+const GROK_STEPS = [
+  "In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.",
+  `Open Grok at grok.com and add a custom connector with the PlaneWX MCP URL: ${MCP_URL}`,
+  'Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.',
+] as const
+
 const GEMINI_STEPS = [
   "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
   `In the Gemini web app, open gemini.google.com/apps, choose Custom apps and add an app with server URL ${MCP_URL}`,
@@ -261,6 +267,14 @@ export default function McpPage() {
               </p>
               <ol className="space-y-4 list-decimal pl-6 text-white/70 leading-relaxed break-words">
                 {STEPS.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-white">Grok</h3>
+              <ol className="space-y-4 list-decimal pl-6 text-white/70 leading-relaxed break-words">
+                {GROK_STEPS.map((step) => (
                   <li key={step}>{step}</li>
                 ))}
               </ol>
