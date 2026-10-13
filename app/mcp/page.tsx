@@ -5,6 +5,12 @@ import { Check, ExternalLink } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SignUpButton } from "@/components/shared/sign-up-button"
 import { SiteFooter } from "@/components/shared/site-footer"
+import {
+  MCP_CHATGPT_DEMO_VIDEO,
+  MCP_CLAUDE_DEMO_VIDEOS,
+  mcpDemoEmbedUrl,
+  type McpDemoVideo,
+} from "@/lib/mcp/demo-videos"
 
 const TITLE = "PlaneWX MCP: Aviation Weather for Claude, Grok, ChatGPT and Gemini"
 const DESCRIPTION =
@@ -91,6 +97,25 @@ const CHATGPT_STEPS: ReactNode[] = [
   "Disconnect anytime in PlaneWX account settings or in ChatGPT.",
 ]
 
+function DemoVideo({ video }: { video: McpDemoVideo }) {
+  return (
+    <div className="w-full overflow-hidden rounded-xl border border-white/10 bg-black">
+      <iframe
+        className="aspect-video w-full"
+        src={mcpDemoEmbedUrl(video.id)}
+        title={video.title}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      />
+    </div>
+  )
+}
+
+const FOREFLIGHT_COMPARE_TIP =
+  "If you also use the ForeFlight MCP, you can ask your assistant to compare the ForeFlight briefing directly with the PlaneWX briefing. Only do this for flights departing within about 2 hours. ForeFlight briefings are built for near-term departures, so a comparison made hours in advance won't be accurate."
+
 const FAQ = [
   {
     q: "Can I use Claude for pilots' weather briefings?",
@@ -111,6 +136,10 @@ const FAQ = [
   {
     q: "Who can use the PlaneWX MCP?",
     a: "Pro Plus pilots, trials included. Enterprise is included too. It is not available on Free, Casual or Pro.",
+  },
+  {
+    q: "Can I compare a ForeFlight briefing with my PlaneWX briefing?",
+    a: FOREFLIGHT_COMPARE_TIP,
   },
 ] as const
 
@@ -288,6 +317,9 @@ export default function McpPage() {
                   <li key={step}>{step}</li>
                 ))}
               </ol>
+              {MCP_CLAUDE_DEMO_VIDEOS.map((video) => (
+                <DemoVideo key={video.id} video={video} />
+              ))}
             </div>
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-white">Grok</h3>
@@ -313,6 +345,7 @@ export default function McpPage() {
                   <li key={i}>{step}</li>
                 ))}
               </ol>
+              <DemoVideo video={MCP_CHATGPT_DEMO_VIDEO} />
             </div>
             <div className="text-center pt-2">
               <a
@@ -329,6 +362,9 @@ export default function McpPage() {
         <section className="relative py-16 sm:py-20 px-4">
           <div className="container mx-auto max-w-3xl space-y-8">
             <h2 className={`${sectionTitle} text-center`}>FAQ</h2>
+            <p className="rounded-xl border border-sky-500/30 bg-sky-500/5 p-4 text-white/70 leading-relaxed">
+              <strong className="text-white">Tip:</strong> {FOREFLIGHT_COMPARE_TIP}
+            </p>
             {FAQ.map((item) => (
               <div key={item.q} className="space-y-2">
                 <h3 className="text-xl font-bold">{item.q}</h3>
