@@ -49,6 +49,9 @@ const STEPS = [
   'Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.',
 ] as const
 
+const GEMINI_STEPS =
+  "In the Gemini web app, open gemini.google.com/apps, choose Custom apps and add a new app. Use the server URL https://app.planewx.ai/api/mcp. Enter the OAuth client ID and secret [TK: Senior Coder confirming how pilots get these]. Sign in to PlaneWX and approve."
+
 const FAQ = [
   {
     q: "Can I use Claude for pilots' weather briefings?",
@@ -60,7 +63,7 @@ const FAQ = [
   },
   {
     q: "Does Garmin Pilot have an AI connector?",
-    a: "Garmin Pilot does not have an AI connector. The PlaneWX connector works in Claude and Grok.",
+    a: "Garmin Pilot does not have an AI connector. The PlaneWX connector works in Claude, Grok and Gemini.",
   },
   {
     q: "Is there an aviation weather MCP server?",
@@ -203,9 +206,9 @@ export default function McpPage() {
 
         <section className="relative py-16 sm:py-20 px-4 border-y border-white/5 bg-white/[0.02]">
           <div className="container mx-auto max-w-3xl space-y-6 text-center">
-            <h2 className={sectionTitle}>Works in Claude and Grok</h2>
+            <h2 className={sectionTitle}>Works in Claude, Grok and Gemini</h2>
             <p className={body}>
-              The PlaneWX connector works in Claude and Grok.
+              The PlaneWX connector works in Claude, Grok and Gemini.
             </p>
           </div>
         </section>
@@ -240,6 +243,12 @@ export default function McpPage() {
                 <li key={step}>{step}</li>
               ))}
             </ol>
+            <div className="space-y-2">
+              <h3 className="text-lg font-semibold text-white">Gemini</h3>
+              <p className="text-white/70 leading-relaxed break-words">
+                {GEMINI_STEPS}
+              </p>
+            </div>
             <div className="text-center pt-2">
               <a
                 href={HELP_URL}
