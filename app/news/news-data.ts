@@ -83,7 +83,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>We shipped <strong>84</strong> fixes and improvements this week.</p>
 
 <h2>Coming soon</h2>
-<p>ChatGPT and Gemini for the PlaneWX AI connector.</p>
+<p>Gemini for the PlaneWX AI connector.</p>
 
 <h2>Mission pulse</h2>
 <p>Pilots ran a FRAT on 6.9% of briefed trips (43 FRATs from 34 pilots). Self Debrief was used on 11.5% of Pro Plus briefed trips (47 started, 34 submitted).</p>
