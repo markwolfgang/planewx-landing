@@ -70,7 +70,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 <h2>What's new</h2>
 <ul>
-  <li><strong>The PlaneWX AI connector reads your stored briefing.</strong> The connector can now pull your stored trip briefing, the same one you see in the app, and scoring runs can include density altitude and runway performance. Available on Pro Plus. Claude and Grok are live.</li>
+  <li><strong>The PlaneWX AI connector reads your stored briefing.</strong> The connector can now pull your stored trip briefing, the same one you see in the app, and scoring runs can include density altitude and runway performance. Available on Pro Plus. Works in Claude, Grok and Gemini.</li>
   <li><strong>Model guidance when no TAF covers an hour.</strong> When no TAF covers an hour of your flight, live scoring can fill that hour from model guidance (NBM).</li>
   <li><strong>Named-storm caution.</strong> Briefings show a caution line when a National Hurricane Center named storm is relevant. It states the facts only and does not change the score.</li>
   <li><strong>In-flight satellite phone texts.</strong> Opt in on the aircraft profile. You get an alert if the destination score drops to 0%. Arrival ATIS texts are on by default and are re-sent when the ATIS letter changes, with METAR as a fallback when there's no D-ATIS.</li>
@@ -81,9 +81,6 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 <h2>Fixes and improvements</h2>
 <p>We shipped <strong>84</strong> fixes and improvements this week.</p>
-
-<h2>Coming soon</h2>
-<p>Gemini for the PlaneWX AI connector.</p>
 
 <h2>Mission pulse</h2>
 <p>Pilots ran a FRAT on 6.9% of briefed trips (43 FRATs from 34 pilots). Self Debrief was used on 11.5% of Pro Plus briefed trips (47 started, 34 submitted).</p>
