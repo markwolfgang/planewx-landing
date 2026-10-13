@@ -75,31 +75,31 @@ describe("pricing-section Pro Plus AI Connector", () => {
     cleanup()
   })
 
-  it("lists AI Connector (Claude, Grok) first under Pro Plus with help link", () => {
+  it("lists AI Connector (Claude, Grok, ChatGPT and Gemini) first under Pro Plus with help link", () => {
     const src = readFileSync(
       join(process.cwd(), "components/shared/pricing-section.tsx"),
       "utf8",
     )
-    expect(src).toContain('name: "AI Connector (Claude, Grok)"')
+    expect(src).toContain('name: "AI Connector (Claude, Grok, ChatGPT and Gemini)"')
     expect(src).toContain(
       'detail: "Cross-check your briefing with your AI assistant."',
     )
     expect(src).toContain('helpPath: "/help/connect-ai-assistant"')
-    expect(src).not.toContain("ChatGPT")
-    expect(src).not.toContain("Gemini")
+    expect(src).not.toMatch(/coming soon/i)
+    expect(src).toContain("or $59.99/yr (save $36 vs monthly)")
     expect(src).not.toMatch(/go or no-go|GO\/NO-GO|go\/no-go/i)
 
     const plusBulletsStart = src.indexOf("const PLUS_BULLETS")
     const firstName = src.indexOf('name: "', plusBulletsStart)
     expect(firstName).toBeGreaterThan(-1)
     expect(
-      src.startsWith('name: "AI Connector (Claude, Grok)"', firstName),
+      src.startsWith('name: "AI Connector (Claude, Grok, ChatGPT and Gemini)"', firstName),
     ).toBe(true)
 
     render(<PricingSection variant="default" />)
 
     const connector = screen.getByRole("link", {
-      name: "AI Connector (Claude, Grok)",
+      name: "AI Connector (Claude, Grok, ChatGPT and Gemini)",
     })
     expect(connector.getAttribute("href")).toBe(
       `${APP_ORIGIN}/help/connect-ai-assistant`,
@@ -108,12 +108,17 @@ describe("pricing-section Pro Plus AI Connector", () => {
       screen.getByText("Cross-check your briefing with your AI assistant."),
     ).toBeTruthy()
 
+    const chatgpt = screen.getByRole("link", { name: "Add PlaneWX to ChatGPT" })
+    expect(chatgpt.getAttribute("href")).toBe(
+      "https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1",
+    )
+
     const proPlusHeading = screen.getByRole("heading", { name: "Pro Plus" })
     const list = proPlusHeading
       .closest("div")
       ?.parentElement?.querySelector("ul")
     expect(list).toBeTruthy()
     const firstLink = list?.querySelector("a")
-    expect(firstLink?.textContent).toBe("AI Connector (Claude, Grok)")
+    expect(firstLink?.textContent).toBe("AI Connector (Claude, Grok, ChatGPT and Gemini)")
   })
 })
