@@ -49,6 +49,9 @@ const STEPS = [
   'Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.',
 ] as const
 
+const CLAUDE_DIRECTORY_STEP =
+  "In Claude, open Settings, then Connectors, then the Discover tab. Search for PlaneWX (listed as PlaneWX, Community, by PlaneWX LLC) and connect. Sign in to PlaneWX and approve; tick Also allow building briefings for scored runs."
+
 const GEMINI_STEPS = [
   "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
   `In the Gemini web app, open gemini.google.com/apps, choose Custom apps and add an app with server URL ${MCP_URL}`,
@@ -250,11 +253,18 @@ export default function McpPage() {
         <section className="relative py-16 sm:py-20 px-4 border-y border-white/5 bg-white/[0.02]">
           <div className="container mx-auto max-w-3xl space-y-6">
             <h2 className={`${sectionTitle} text-center`}>How to connect</h2>
-            <ol className="space-y-4 list-decimal pl-6 text-white/70 leading-relaxed break-words">
-              {STEPS.map((step) => (
-                <li key={step}>{step}</li>
-              ))}
-            </ol>
+            <div className="space-y-3">
+              <h3 className="text-lg font-semibold text-white">Claude</h3>
+              <p className="text-white/70 leading-relaxed break-words">{CLAUDE_DIRECTORY_STEP}</p>
+              <p className="text-white/70 leading-relaxed break-words">
+                Or add it as a custom connector with the URL {MCP_URL}:
+              </p>
+              <ol className="space-y-4 list-decimal pl-6 text-white/70 leading-relaxed break-words">
+                {STEPS.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            </div>
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-white">Gemini</h3>
               <ol className="space-y-3 list-decimal pl-6 text-white/70 leading-relaxed break-words">
