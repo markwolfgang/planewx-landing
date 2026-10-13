@@ -75,31 +75,30 @@ describe("pricing-section Pro Plus AI Connector", () => {
     cleanup()
   })
 
-  it("lists AI Connector (Claude, Grok) first under Pro Plus with help link", () => {
+  it("lists AI Connector (Claude, Grok, Gemini, ChatGPT) first under Pro Plus with help link", () => {
     const src = readFileSync(
       join(process.cwd(), "components/shared/pricing-section.tsx"),
       "utf8",
     )
-    expect(src).toContain('name: "AI Connector (Claude, Grok)"')
+    expect(src).toContain('name: "AI Connector (Claude, Grok, Gemini, ChatGPT)"')
     expect(src).toContain(
       'detail: "Cross-check your briefing with your AI assistant."',
     )
     expect(src).toContain('helpPath: "/help/connect-ai-assistant"')
-    expect(src).not.toContain("ChatGPT")
-    expect(src).not.toContain("Gemini")
+    expect(src).not.toMatch(/coming soon/i)
     expect(src).not.toMatch(/go or no-go|GO\/NO-GO|go\/no-go/i)
 
     const plusBulletsStart = src.indexOf("const PLUS_BULLETS")
     const firstName = src.indexOf('name: "', plusBulletsStart)
     expect(firstName).toBeGreaterThan(-1)
     expect(
-      src.startsWith('name: "AI Connector (Claude, Grok)"', firstName),
+      src.startsWith('name: "AI Connector (Claude, Grok, Gemini, ChatGPT)"', firstName),
     ).toBe(true)
 
     render(<PricingSection variant="default" />)
 
     const connector = screen.getByRole("link", {
-      name: "AI Connector (Claude, Grok)",
+      name: "AI Connector (Claude, Grok, Gemini, ChatGPT)",
     })
     expect(connector.getAttribute("href")).toBe(
       `${APP_ORIGIN}/help/connect-ai-assistant`,
@@ -114,6 +113,6 @@ describe("pricing-section Pro Plus AI Connector", () => {
       ?.parentElement?.querySelector("ul")
     expect(list).toBeTruthy()
     const firstLink = list?.querySelector("a")
-    expect(firstLink?.textContent).toBe("AI Connector (Claude, Grok)")
+    expect(firstLink?.textContent).toBe("AI Connector (Claude, Grok, Gemini, ChatGPT)")
   })
 })

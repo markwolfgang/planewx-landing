@@ -15,7 +15,7 @@ const PLUS_BULLETS: {
   seesNote?: boolean
 }[] = [
   {
-    name: "AI Connector (Claude, Grok)",
+    name: "AI Connector (Claude, Grok, Gemini, ChatGPT)",
     detail: "Cross-check your briefing with your AI assistant.",
     helpPath: "/help/connect-ai-assistant",
   },
