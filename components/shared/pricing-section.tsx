@@ -13,11 +13,16 @@ const PLUS_BULLETS: {
   helpPath?: string
   href?: string
   seesNote?: boolean
+  extraLink?: { href: string; label: string }
 }[] = [
   {
-    name: "AI Connector (Claude, Grok, Gemini, ChatGPT)",
+    name: "AI Connector (Claude, Grok, ChatGPT and Gemini)",
     detail: "Cross-check your briefing with your AI assistant.",
     helpPath: "/help/connect-ai-assistant",
+    extraLink: {
+      href: "https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1",
+      label: "Add PlaneWX to ChatGPT",
+    },
   },
   {
     name: "Ground Protection",
@@ -204,6 +209,16 @@ export function PricingSection({ variant }: { variant: string }) {
                         See it combine your ForeFlight logbook and PlaneWX trips
                       </a>
                     ) : null}
+                    {item.extraLink ? (
+                      <a
+                        href={item.extraLink.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 inline-block text-indigo-300 underline underline-offset-2 hover:text-indigo-200"
+                      >
+                        {item.extraLink.label}
+                      </a>
+                    ) : null}
                   </li>
                 ))}
               </ul>
@@ -327,7 +342,7 @@ export function PricingSection({ variant }: { variant: string }) {
               <span className="text-4xl font-bold">$7.99</span>
               <span className="text-white/30 ml-1">/month</span>
             </div>
-            <p className="text-xs text-white/40 mb-1">or $59.99/yr (4 months free)</p>
+            <p className="text-xs text-white/40 mb-1">or $59.99/yr (save $36 vs monthly)</p>
             <p className="text-xs text-teal-400 mb-5">$5.00/mo effective</p>
             <TrialLink
               href={appUrl}
