@@ -66,7 +66,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     body: `
 <p>PlaneWX started as a weather briefing. It has grown into a full risk management system built around a simple loop: Brief, Assess, Decide, Debrief. Today we're opening a new way into that loop.</p>
 
-<p>The PlaneWX connector is now in beta for Pro Plus pilots. It links your PlaneWX account to Claude or Grok, so you can ask about your flying in a normal conversation and get answers from your own PlaneWX data. ChatGPT and Gemini are coming soon.</p>
+<p>The PlaneWX connector is now in beta for Pro Plus pilots. It links your PlaneWX account to Claude or Grok, so you can ask about your flying in a normal conversation and get answers from your own PlaneWX data.</p>
 
 <h2>How I'm using it</h2>
 <p>Here's a real example from my own planning. I wanted to fly to Nashville on Sunday, so I just told Claude:</p>

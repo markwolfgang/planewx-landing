@@ -166,7 +166,7 @@ The hardest part of flying is often not handling the airplane. It is making the 
 ## PlaneWX MCP (AI assistant connector, beta)
 
 - Overview page: https://www.planewx.ai/mcp
-- Links a PlaneWX account to Claude or Grok so pilots can ask about saved trips, stored briefings, WX Score and departure windows in chat. ChatGPT and Gemini are coming soon.
+- Links a PlaneWX account to Claude or Grok so pilots can ask about saved trips, stored briefings, WX Score and departure windows in chat.
 - MCP server URL: https://app.planewx.ai/api/mcp
 - Pro Plus, trials included (Enterprise included). Not available on Free, Casual or Pro.
 - The assistant reports the WX Score and what drives it. It never recommends GO or NO-GO; the pilot in command makes the call.

@@ -60,7 +60,7 @@ const FAQ = [
   },
   {
     q: "Does Garmin Pilot have an AI connector?",
-    a: "Garmin Pilot does not have an AI connector. The PlaneWX connector works in Claude and Grok today, with ChatGPT and Gemini coming soon.",
+    a: "Garmin Pilot does not have an AI connector. The PlaneWX connector works in Claude and Grok.",
   },
   {
     q: "Is there an aviation weather MCP server?",
@@ -205,8 +205,7 @@ export default function McpPage() {
           <div className="container mx-auto max-w-3xl space-y-6 text-center">
             <h2 className={sectionTitle}>Works in Claude and Grok</h2>
             <p className={body}>
-              The PlaneWX connector works in Claude and Grok today. ChatGPT and Gemini are coming
-              soon.
+              The PlaneWX connector works in Claude and Grok.
             </p>
           </div>
         </section>
