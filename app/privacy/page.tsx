@@ -150,7 +150,8 @@ export default function PrivacyPolicyPage() {
         <Section title="7. Data Retention">
           <p className="text-sm leading-relaxed text-white/70">
             We retain information for as long as needed to provide the Services, comply with legal obligations, resolve disputes, and enforce
-            agreements. We may anonymize or aggregate data for longer-term use.
+            agreements. We may anonymize or aggregate data for longer-term use. When you permanently delete a trip, we also delete its activity
+            history (such as route, score, and change log entries) and any now-empty trip grouping.
           </p>
         </Section>
 

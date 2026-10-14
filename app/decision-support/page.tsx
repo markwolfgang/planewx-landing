@@ -264,7 +264,7 @@ export default function DecisionSupportPage() {
               FRAT. Bring a mentor in when the call is close.
             </p>
             <p className="text-white/45 italic font-light tracking-wide">
-              The confidence to go. Or the courage to stay.&trade;
+              The confidence to go. The courage to stay.
             </p>
             <SignUpButton
               variant={VARIANT}

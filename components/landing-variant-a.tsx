@@ -96,9 +96,8 @@ export function LandingVariantA() {
             </h1>
 
             <p className="text-xl md:text-2xl lg:text-lg xl:text-xl text-white/70 max-w-3xl mx-auto lg:mx-0 leading-relaxed text-balance">
-              Weather tools show you raw data. PlaneWX shows you what matters for your
-              flight and helps you{" "}
-              <span className="whitespace-nowrap">make the call.</span>
+              The confidence to go. The courage to stay. Raw weather still leaves
+              you as the analyst.
             </p>
 
             <p className="order-2 lg:order-none text-xl md:text-2xl lg:text-base xl:text-lg text-white/70 max-w-3xl mx-auto lg:mx-0 leading-relaxed text-balance">
@@ -190,10 +189,6 @@ export function LandingVariantA() {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-medium mb-5">
               The Problem
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-5">
-              Raw weather still leaves{" "}
-              <span className="text-rose-400">you as the analyst.</span>
-            </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               Most bad launches are not mysteries. They are late decisions. Hotels are booked.
               Passengers rearranged work. The airplane is reserved. Then the night before,
@@ -252,8 +247,8 @@ export function LandingVariantA() {
               The risk-management loop
             </div>
             <h2 className="text-3xl md:text-5xl font-bold">
-              Four steps.{" "}
-              <span className="text-sky-400">You make the call.</span>
+              No more &lsquo;we&apos;ll see&rsquo; the night before.{" "}
+              <span className="text-sky-400">Brief, assess, decide on your terms, debrief.</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               WX Score briefing, FRAT, <span className="whitespace-nowrap">GO / NO-GO</span>, Self Debrief. Mentor is optional, alongside the loop.
@@ -434,8 +429,8 @@ export function LandingVariantA() {
                 Core Feature
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-5">
-                The WX Score: weather risk,{" "}
-                <span className="text-emerald-400">finally quantified</span>
+                Stop juggling the forecast and your personal minimums in your head.{" "}
+                <span className="text-emerald-400">See where they collide.</span>
               </h2>
               <p className="text-white/70 leading-relaxed mb-6">
                 Right now, your weather judgment lives entirely in your head. You mentally juggle
@@ -638,8 +633,8 @@ export function LandingVariantA() {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl md:text-5xl font-bold mb-5">
-              Everything the decision{" "}
-              <span className="text-sky-400">requires</span>
+              One less tab to piece together.{" "}
+              <span className="text-sky-400">Check it alongside NOTAMs, ATIS and PIREPs, then you make the call.</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
               Every layer of the decision support system, from Weather Briefing to Self Debrief,
