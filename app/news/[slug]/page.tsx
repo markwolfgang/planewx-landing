@@ -182,7 +182,7 @@ export default async function NewsArticlePage({ params, searchParams }: Props) {
           itemProp="articleBody"
           dangerouslySetInnerHTML={{ __html: item.body }}
         />
-        {item.signature && <FounderSignature />}
+        {item.signature && <FounderSignature link={item.signatureLink} />}
 
         <div className="mt-12 border-t border-white/10 pt-8">
           <NewsShareBar

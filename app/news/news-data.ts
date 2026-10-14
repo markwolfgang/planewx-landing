@@ -48,6 +48,8 @@ export interface NewsItem {
   }
   /** Render the founder handwritten sign-off under the body. */
   signature?: boolean
+  /** Optional link shown under the founder signature. */
+  signatureLink?: { href: string; label: string }
   coBrand?: {
     name: string
     logo: string
@@ -68,6 +70,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     isoDate: "2026-10-12",
     draft: true,
     signature: true,
+    signatureLink: { href: "https://www.youtube.com/@markflieshigh", label: "Watch my flying on YouTube" },
     body: `
 <p>Hi fellow pilots,</p>
 <p>This is The Weekly PIREP, my Monday note on what shipped in PlaneWX last week (Mon Oct 5 through Sun Oct 11). I'll keep it short.</p>
@@ -111,7 +114,7 @@ export const NEWS_ITEMS: NewsItem[] = [
   <li>It uses your last 7 days of flying, lets you edit that currency figure, and skips the night-currency question on daylight flights.</li>
   <li>Your Unfamiliar destination answer now stays with the assessment.</li>
 </ul>
-<p>Learn more in <a href="https://app.planewx.ai/help/frat">FRAT</a>.</p>
+<p>Learn more in <a href="https://app.planewx.ai/help/frat">FRAT</a>. Or watch me use it: <a href="https://youtu.be/z8f-QuP5IAI">I Canceled a Trip to the Canadian Rockies. The Weather Wasn&#39;t the Reason.</a></p>
 
 <h2>By the numbers</h2>
 <p>We merged 118 changes across the app and this site last week, and shipped every single day, Monday through Sunday.</p>
