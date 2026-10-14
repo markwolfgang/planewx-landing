@@ -9,7 +9,7 @@
 - **Airport:** KOSH
 - **Goal:** Landing page views → App sign-ups
 - **Core message:** Weather made simple. Know far in advance — up to 14 days — whether your Oshkosh trip is happening.
-- **Tagline:** "The confidence to go, the courage to stay™"
+- **Tagline:** "The confidence to go. The courage to stay."
 - **CTA destination:** planewx.ai (with UTM parameter `?lp=oshkosh2026`)
 
 ---
@@ -44,7 +44,7 @@ The O1 general concept is the exception — "Free flight weather intelligence. F
 | Price | $0 |
 | Sub-price | No credit card · Never expires · Same AI engine as Pro. |
 | CTA | Start Free → |
-| Tagline | The confidence to go, the courage to stay™ |
+| Tagline | The confidence to go. The courage to stay. |
 | URL | planewx.ai |
 
 ### eHotline 640×115
@@ -78,7 +78,7 @@ The O1 general concept is the exception — "Free flight weather intelligence. F
 | Feature list | ✓ 14-Day Planning Window · ✓ PAVE Risk Assessment · ✓ Synoptic Intelligence™ · ✓ Route Intelligence |
 | Sub-price | $0 · No card required. Same AI engine as Pro. |
 | CTA | Plan My Trip → |
-| Tagline | The confidence to go, the courage to stay™ |
+| Tagline | The confidence to go. The courage to stay. |
 | URL | planewx.ai |
 
 ### eHotline 640×115
@@ -108,5 +108,5 @@ The O1 general concept is the exception — "Free flight weather intelligence. F
 2. **"WX Score" removed as the primary hook** — replaced with benefit-led copy. WX Score can remain in the app but shouldn't be the ad hook for cold audiences who don't know the product yet.
 3. **Corridor Watch** is Pro-only — remove from any free tier feature list.
 4. **UTM links:** Use `?lp=oshkosh2026` on all O2 Oshkosh ads so we can track separately from general traffic.
-5. **Tagline punctuation:** "The confidence to go, the courage to stay™" (no "or" — confirmed final version).
+5. **Tagline punctuation:** "The confidence to go. The courage to stay." (two sentences, no "or", no ™ — confirmed final version).
 
