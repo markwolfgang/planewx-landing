@@ -166,7 +166,7 @@ export const FAQ_JSON_LD = {
       "name": "Can a PlaneWX mentor see or require my FRAT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Mentors are optional volunteer peers, not flight instructors. A mentor can turn on Require FRAT, which means they only see requests where the pilot completed a FRAT. Need Help Now requests within 4 hours of departure also require a completed FRAT, so the mentor sees more than the weather. The final call is always the pilot's."
+        "text": "Mentors are optional volunteer peers, not flight instructors. A mentor can turn on Require FRAT, which means they only see requests where the pilot completed a FRAT. Need Help Now opens 2 hours before departure and requires a completed FRAT, so the mentor sees more than the weather. The final call is always the pilot's."
       }
     },
     {
