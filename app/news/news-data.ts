@@ -85,6 +85,22 @@ export const NEWS_ITEMS: NewsItem[] = [
 <h2>Mission pulse</h2>
 <p>Pilots ran a FRAT on 6.9% of briefed trips (43 FRATs from 34 pilots). Self Debrief was used on 11.5% of Pro Plus briefed trips (47 started, 34 submitted).</p>
 
+<p>If you haven't checked out the FRAT lately, there have been a lot of improvements. It sits right beside the weather briefing as part of every trip.</p>
+<ul>
+  <li><strong>Suggestion first, then your call.</strong> Each step shows the PlaneWX suggestion first, then your own rating, then room for notes.</li>
+  <li><strong>Clearer External drivers.</strong> When External is HIGH, the FRAT names every pressure that contributed.</li>
+  <li><strong>Risks are stacking banner, scoped to where you are.</strong> The banner counts only the steps you have reached.</li>
+  <li><strong>Cancel Trip from the FRAT result.</strong> After a NO-GO decision, you can cancel the trip, including its sibling legs, right from the result view, and restore cancelled legs later.</li>
+  <li><strong>Recent hours and night currency.</strong> The FRAT uses your last 7 days of flying, lets you edit that currency figure, and skips the night-currency question for daylight flights.</li>
+  <li><strong>Unfamiliar destination is saved.</strong> Your Unfamiliar destination answer now stays with the assessment.</li>
+</ul>
+<p>Learn more in <a href="https://app.planewx.ai/help/frat">FRAT</a>.</p>
+
+<h2>Because you told us</h2>
+<ul>
+  <li><strong>ETD and ETA on My Trips.</strong> Every leg on My Trips now shows ETD and ETA, so there's no need to open the briefing to see them. Thanks to Donny. Learn more in <a href="https://app.planewx.ai/help/managing-trips">Managing Trips</a>.</li>
+</ul>
+
 <h2>Tip of the Week: check yourself before the weather</h2>
 <p>Run IMSAFE honestly before you look at the weather: illness, medication, stress, alcohol, fatigue, eating. Then work the loop: Brief, Assess, Decide, Debrief. The <a href="https://app.planewx.ai/help/frat">FRAT</a> helps you count what stacks up, and the call stays yours as PIC, weighed with NOTAMs, ATIS, PIREPs and your other sources. PlaneWX never recommends GO or NO-GO. The pilot makes the call. More in <a href="https://www.planewx.ai/learn/imsafe-checklist">The IMSAFE Checklist</a>.</p>
 
