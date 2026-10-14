@@ -2,6 +2,7 @@
 // To add an item: prepend a new object to NEWS_ITEMS (newest first). Body is HTML.
 
 import { FIVE_X_FIVE_SEES_LINE } from "@/lib/five-x-five"
+import { planBadgeHtml } from "@/components/shared/plan-badge"
 
 export type NewsCategory = "Partnerships" | "Product" | "Press Release" | "Company"
 
@@ -81,10 +82,10 @@ export const NEWS_ITEMS: NewsItem[] = [
 <h2>What's new</h2>
 <p>Here's what you can see and use in the app now.</p>
 <ul>
-  <li><strong>The PlaneWX AI connector reads your stored briefing.</strong> The connector can pull your stored trip briefing, the same one you see in the app, and scoring runs can include density altitude and runway performance. Available on Pro Plus. Works in Claude, Grok, Gemini and ChatGPT. Learn more in <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to Claude, Grok, ChatGPT and Gemini</a>.</li>
+  <li><strong>The PlaneWX AI connector reads your stored briefing.</strong>${planBadgeHtml()} The connector can pull your stored trip briefing, the same one you see in the app, and scoring runs can include density altitude and runway performance. Works in Claude, Grok, Gemini and ChatGPT. Learn more in <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to Claude, Grok, ChatGPT and Gemini</a>.</li>
   <li><strong>Model guidance when no TAF covers an hour.</strong> Live scoring can fill that hour from model guidance (NBM). Learn more in <a href="https://app.planewx.ai/help/wx-score">WX Score</a>.</li>
   <li><strong>Named-storm caution.</strong> Briefings show a caution line when a National Hurricane Center named storm is relevant. It states the facts only and does not change the score. Learn more in <a href="https://app.planewx.ai/help/understanding-briefings">Understanding Your Briefing</a>.</li>
-  <li><strong>In-flight satellite phone texts.</strong> Opt in on the aircraft profile and you get an alert if the destination score drops to 0%. Arrival ATIS texts are on by default and are re-sent when the ATIS letter changes, with METAR as a fallback when there's no D-ATIS. Learn more in <a href="https://app.planewx.ai/help/sat-phone-inflight-texts">Sat-phone in-flight texts</a>.</li>
+  <li><strong>In-flight satellite phone texts.</strong>${planBadgeHtml()} Opt in on the aircraft profile and you get an alert if the destination score drops to 0%. Arrival ATIS texts are on by default and are re-sent when the ATIS letter changes, with METAR as a fallback when there's no D-ATIS. Learn more in <a href="https://app.planewx.ai/help/sat-phone-inflight-texts">Sat-phone in-flight texts</a>.</li>
   <li><strong>Confirm flown: pick the aircraft you actually flew.</strong> When you confirm a trip as flown, you can choose the aircraft.</li>
   <li><strong>Self Debrief by voice.</strong> You can dictate your debrief in the app. Learn more in <a href="https://app.planewx.ai/help/self-debrief">Self Debrief</a>.</li>
   <li><strong>ETD and ETA on My Trips.</strong> Every trip card shows ETD and ETA. Learn more in <a href="https://app.planewx.ai/help/managing-trips">Managing Trips</a>.</li>
