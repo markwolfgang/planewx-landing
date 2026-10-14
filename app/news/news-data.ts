@@ -95,7 +95,6 @@ export const NEWS_ITEMS: NewsItem[] = [
 <ul>
   <li><strong>In-flight satellite phone texts.</strong>${labsBadgeHtml()} I'm testing texts to an Iridium sat phone while you're airborne: an alert if the destination WX Score drops to 0%, and arrival ATIS with a METAR fallback. It's in Labs and not available to pilots yet.</li>
   <li><strong>Readiness quiz.</strong> A quick memory and recall check, opened from a link on the FRAT. Your results are private and don't change your FRAT.</li>
-  <li><strong>TFRs in the briefing.</strong> TFRs along and near your route, shown as facts. They don't affect the WX Score.</li>
   <li><strong>FRAT experience factor.</strong> Time in type and total time would inform the FRAT suggestion. Your own personal minimums stay in charge.</li>
 </ul>
 
