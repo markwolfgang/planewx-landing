@@ -17,3 +17,19 @@ export function PlanBadge({ plan = "Pro Plus" }: { plan?: string }) {
     </span>
   )
 }
+
+/** "Labs" tag for features still being tested. Visually distinct from the plan badge. */
+export const LABS_BADGE_CLASS =
+  "not-prose ml-2 inline-block rounded-full border border-amber-400/40 bg-amber-500/10 px-2 py-0.5 align-middle text-[0.7rem] font-medium uppercase tracking-wide text-amber-300"
+
+export function labsBadgeHtml(label = "Labs"): string {
+  return `<span class="${LABS_BADGE_CLASS}" data-labs-badge>${label}</span>`
+}
+
+export function LabsBadge({ label = "Labs" }: { label?: string }) {
+  return (
+    <span className={LABS_BADGE_CLASS} data-labs-badge>
+      {label}
+    </span>
+  )
+}
