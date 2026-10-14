@@ -167,10 +167,10 @@ export const HUB_PAGES = [
     // New guide (Oct 11, 2026): SEO brief BRIEF-IMSAFE.md. Source HTML is the
     // extracted <article>, so sourceMd5 equals mainHtmlMd5.
     // Gap fill (Oct 14, 2026): FAASTeam + CAP cites, shipped FRAT features,
-    // directive wording softened, 61.53 key facts completed
-    // (CodeRabbit). MAIN_HTML re-pinned.
-    sourceMd5: "a1f97f1454804d4d3bf3f7ed87639ea8",
-    mainHtmlMd5: "a1f97f1454804d4d3bf3f7ed87639ea8",
+    // directive wording softened, 61.53 key facts completed,
+    // card prompts risk-positive (CodeRabbit). MAIN_HTML re-pinned.
+    sourceMd5: "3e849b8c523976a50bfa4176249719ed",
+    mainHtmlMd5: "3e849b8c523976a50bfa4176249719ed",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "imsafe-checklist",
   },
