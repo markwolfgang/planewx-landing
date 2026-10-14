@@ -206,7 +206,7 @@ export function PricingSection({ variant }: { variant: string }) {
                         href="/news/new-beta-planewx-in-claude-and-grok"
                         className="mt-1 inline-block text-indigo-300 underline underline-offset-2 hover:text-indigo-200"
                       >
-                        See it combine your ForeFlight logbook and PlaneWX trips
+                        See your AI assistant combine your ForeFlight logbook and PlaneWX trips
                       </a>
                     ) : null}
                     {item.extraLink ? (
