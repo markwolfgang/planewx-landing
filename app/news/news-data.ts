@@ -45,6 +45,8 @@ export interface NewsItem {
     title: string
     caption?: string
   }
+  /** Render the founder handwritten sign-off under the body. */
+  signature?: boolean
   coBrand?: {
     name: string
     logo: string
@@ -64,50 +66,57 @@ export const NEWS_ITEMS: NewsItem[] = [
     date: "October 12, 2026",
     isoDate: "2026-10-12",
     draft: true,
+    signature: true,
     body: `
-<p>Hello from PlaneWX. This is The Weekly PIREP, our Monday roundup of what shipped for pilots in the last week (Mon Oct 5 through Sun Oct 11).</p>
-<p>We keep it short and plain: what you can see and use in the app, a count of the smaller polish work, and one tip worth a minute of your time.</p>
+<p>Hi fellow pilots,</p>
+<p>This is The Weekly PIREP, my Monday note on what shipped in PlaneWX last week (Mon Oct 5 through Sun Oct 11). I'll keep it short.</p>
+
+<h2>My flying this week</h2>
+<p>On Thursday, Oct 8, I flew the TBM home to Granbury in two legs: Pagosa Springs (KPSO) to Albuquerque (KABQ), then KABQ to KGDJ.</p>
+<p>KPSO to KABQ: the WX Score was 100% early and 95% on the briefing I used, about an hour before departure. I ran a FRAT. Afterward I rated every briefing section accurate: ceilings and visibility, icing, turbulence, winds aloft, convective, AIRMETs and SIGMETs. No weather hold, cruise altitude as planned, route as briefed.</p>
+<p>KABQ to KGDJ: 90% early, 85% at the briefing I used, again with a FRAT, and again every section matched what I flew.</p>
+<p>[MARK: what you noticed or learned on these legs, and what your Self Debrief said, if you did one.]</p>
+<p>[MARK: any other flights Oct 5 to 11 to add.]</p>
 
 <h2>What's new</h2>
+<p>Here's what you can see and use in the app now.</p>
 <ul>
-  <li><strong>The PlaneWX AI connector reads your stored briefing.</strong> The connector can now pull your stored trip briefing, the same one you see in the app, and scoring runs can include density altitude and runway performance. Available on Pro Plus. Works in Claude, Grok, Gemini and ChatGPT. Learn more in <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to Claude, Grok, ChatGPT and Gemini</a>.</li>
-  <li><strong>Model guidance when no TAF covers an hour.</strong> When no TAF covers an hour of your flight, live scoring can fill that hour from model guidance (NBM). Learn more in <a href="https://app.planewx.ai/help/wx-score">WX Score</a>.</li>
+  <li><strong>The PlaneWX AI connector reads your stored briefing.</strong> The connector can pull your stored trip briefing, the same one you see in the app, and scoring runs can include density altitude and runway performance. Available on Pro Plus. Works in Claude, Grok, Gemini and ChatGPT. Learn more in <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to Claude, Grok, ChatGPT and Gemini</a>.</li>
+  <li><strong>Model guidance when no TAF covers an hour.</strong> Live scoring can fill that hour from model guidance (NBM). Learn more in <a href="https://app.planewx.ai/help/wx-score">WX Score</a>.</li>
   <li><strong>Named-storm caution.</strong> Briefings show a caution line when a National Hurricane Center named storm is relevant. It states the facts only and does not change the score. Learn more in <a href="https://app.planewx.ai/help/understanding-briefings">Understanding Your Briefing</a>.</li>
-  <li><strong>In-flight satellite phone texts.</strong> Opt in on the aircraft profile. You get an alert if the destination score drops to 0%. Arrival ATIS texts are on by default and are re-sent when the ATIS letter changes, with METAR as a fallback when there's no D-ATIS. Learn more in <a href="https://app.planewx.ai/help/sat-phone-inflight-texts">Sat-phone in-flight texts</a>.</li>
-  <li><strong>Confirm flown: pick the aircraft you actually flew.</strong> When you confirm a trip as flown, you can choose the aircraft you flew.</li>
-  <li><strong>Self Debrief by voice.</strong> You can now dictate your debrief in the app. Learn more in <a href="https://app.planewx.ai/help/self-debrief">Self Debrief</a>.</li>
-  <li><strong>ETD and ETA on My Trips.</strong> Trip cards in My Trips now show ETD and ETA. Learn more in <a href="https://app.planewx.ai/help/managing-trips">Managing Trips</a>.</li>
+  <li><strong>In-flight satellite phone texts.</strong> Opt in on the aircraft profile and you get an alert if the destination score drops to 0%. Arrival ATIS texts are on by default and are re-sent when the ATIS letter changes, with METAR as a fallback when there's no D-ATIS. Learn more in <a href="https://app.planewx.ai/help/sat-phone-inflight-texts">Sat-phone in-flight texts</a>.</li>
+  <li><strong>Confirm flown: pick the aircraft you actually flew.</strong> When you confirm a trip as flown, you can choose the aircraft.</li>
+  <li><strong>Self Debrief by voice.</strong> You can dictate your debrief in the app. Learn more in <a href="https://app.planewx.ai/help/self-debrief">Self Debrief</a>.</li>
+  <li><strong>ETD and ETA on My Trips.</strong> Every trip card shows ETD and ETA. Learn more in <a href="https://app.planewx.ai/help/managing-trips">Managing Trips</a>.</li>
 </ul>
 
-<h2>Fixes and improvements</h2>
-<p>We shipped <strong>84</strong> fixes and improvements this week.</p>
+<h2>Because you told us</h2>
+<p>Donny emailed me asking for ETA right on My Trips so he wouldn't have to open each briefing. Great idea. It shipped that same Sunday. Thanks, Donny!</p>
 
-<h2>Mission pulse</h2>
-<p>Pilots ran a FRAT on 6.9% of briefed trips (43 FRATs from 34 pilots). Self Debrief was used on 11.5% of Pro Plus briefed trips (47 started, 34 submitted).</p>
-
-<p>If you haven't checked out the FRAT lately, there have been a lot of improvements. It sits right beside the weather briefing as part of every trip.</p>
+<h2>The FRAT</h2>
+<p>I think the FRAT matters as much as the weather briefing. Weather is one part of the picture. You, the airplane and the pressures around the trip are the rest. If you haven't checked out the FRAT lately, there have been a lot of improvements:</p>
 <ul>
-  <li><strong>Suggestion first, then your call.</strong> Each step shows the PlaneWX suggestion first, then your own rating, then room for notes.</li>
-  <li><strong>Clearer External drivers.</strong> When External is HIGH, the FRAT names every pressure that contributed.</li>
-  <li><strong>Risks are stacking banner, scoped to where you are.</strong> The banner counts only the steps you have reached.</li>
-  <li><strong>Cancel Trip from the FRAT result.</strong> After a NO-GO decision, you can cancel the trip, including its sibling legs, right from the result view, and restore cancelled legs later.</li>
-  <li><strong>Recent hours and night currency.</strong> The FRAT uses your last 7 days of flying, lets you edit that currency figure, and skips the night-currency question for daylight flights.</li>
-  <li><strong>Unfamiliar destination is saved.</strong> Your Unfamiliar destination answer now stays with the assessment.</li>
+  <li>Each step shows the PlaneWX suggestion first, then your own rating, then room for notes.</li>
+  <li>When External is HIGH, the FRAT names every pressure that contributed.</li>
+  <li>The Risks are stacking banner counts only the steps you've reached.</li>
+  <li>After a NO-GO decision, you can cancel the trip, including its sibling legs, right from the FRAT result, and restore cancelled legs later.</li>
+  <li>It uses your last 7 days of flying, lets you edit that currency figure, and skips the night-currency question on daylight flights.</li>
+  <li>Your Unfamiliar destination answer now stays with the assessment.</li>
 </ul>
 <p>Learn more in <a href="https://app.planewx.ai/help/frat">FRAT</a>.</p>
 
-<h2>Because you told us</h2>
-<ul>
-  <li><strong>ETD and ETA on My Trips.</strong> Every leg on My Trips now shows ETD and ETA, so there's no need to open the briefing to see them. Thanks to Donny. Learn more in <a href="https://app.planewx.ai/help/managing-trips">Managing Trips</a>.</li>
-</ul>
+<h2>By the numbers</h2>
+<p>We merged 118 changes across the app and this site last week, and shipped every single day, Monday through Sunday.</p>
+<p>Pilots ran a FRAT on 6.9% of briefed trips (43 FRATs from 34 pilots). Self Debrief was used on 11.5% of Pro Plus briefed trips (47 started, 34 submitted). Those numbers are why I keep working on both.</p>
 
-<h2>Tip of the Week: check yourself before the weather</h2>
-<p>Run IMSAFE honestly before you look at the weather: illness, medication, stress, alcohol, fatigue, eating. Then work the loop: Brief, Assess, Decide, Debrief. The <a href="https://app.planewx.ai/help/frat">FRAT</a> helps you count what stacks up, and the call stays yours as PIC, weighed with NOTAMs, ATIS, PIREPs and your other sources. PlaneWX never recommends GO or NO-GO. The pilot makes the call. More in <a href="https://www.planewx.ai/learn/imsafe-checklist">The IMSAFE Checklist</a>.</p>
+<h2>Tip of the week: check yourself before the weather</h2>
+<p>I run IMSAFE before I look at the weather: illness, medication, stress, alcohol, fatigue, eating. Then the loop: Brief, Assess, Decide, Debrief. The <a href="https://app.planewx.ai/help/frat">FRAT</a> helps count what stacks up, and the call stays yours as PIC, weighed with NOTAMs, ATIS, PIREPs and your other sources. PlaneWX never recommends GO or NO-GO. The pilot makes the call. More in <a href="https://www.planewx.ai/learn/imsafe-checklist">The IMSAFE Checklist</a>.</p>
 
-<p>Open PlaneWX when you are ready to brief the next trip: <a href="https://app.planewx.ai">app.planewx.ai</a>.</p>
+<h2>Know a pilot who'd like this?</h2>
+<p>Every account has a personal referral link on your Profile page under Invite Pilots. When a pilot you invite becomes a paying subscriber, you earn about a free month of PlaneWX, with no cap. Learn more in <a href="https://app.planewx.ai/help/referral-program">Referral Program</a>.</p>
 
-<h2>About PlaneWX</h2>
-<p>PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. Fly like it's your job.</p>
+<p>Thanks for flying with us. Reply anytime, I read every email.</p>
+<p>The confidence to go. The courage to stay.</p>
 `,
   },
   {
