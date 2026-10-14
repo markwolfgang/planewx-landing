@@ -1,4 +1,5 @@
 import { Caveat } from "next/font/google"
+import { SOCIAL_LINKS } from "@/components/shared/social-links"
 
 const caveat = Caveat({ subsets: ["latin"], weight: ["600"], display: "swap" })
 
@@ -7,6 +8,7 @@ interface FounderSignatureProps {
   name?: string
   title?: string
   link?: { href: string; label: string }
+  showSocial?: boolean
 }
 
 /** Handwritten-style sign-off for founder letters (dark-theme friendly). */
@@ -15,6 +17,7 @@ export function FounderSignature({
   name = "Mark",
   title = "Mark Wolfgang, Founder, PlaneWX",
   link,
+  showSocial = true,
 }: FounderSignatureProps) {
   return (
     <div className="mt-10" data-testid="founder-signature">
@@ -29,6 +32,23 @@ export function FounderSignature({
             {link.label}
           </a>
         </p>
+      )}
+      {showSocial && (
+        <div className="mt-4 flex items-center gap-4" data-testid="founder-signature-social">
+          <span className="text-xs uppercase tracking-wide text-white/40">Follow PlaneWX</span>
+          {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="text-white/40 transition-colors hover:text-white/80"
+            >
+              <Icon className="h-4 w-4" />
+            </a>
+          ))}
+        </div>
       )}
     </div>
   )
