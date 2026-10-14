@@ -171,7 +171,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     section: "Weather Products",
     summary:
       "TAFs are the official NWS terminal forecast. This article compares them with MOS, LAMP and NBM guidance, and explains why many small airports never get a forecaster-written TAF.",
-    lastReviewed: "2026-09-25",
+    lastReviewed: "2026-10-12",
     draft: false,
     body: [
       {
@@ -223,7 +223,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         items: [
           "MAV (short-range GFS MOS): runs 00, 06, 12 and 18 UTC, 6 to 72 hours, over 1500 stations. Includes ceiling (CIG), visibility (VIS) and obstruction to vision (OBV).",
           "MEX (extended-range GFS MOS): runs 00 and 12 UTC, 24 to 192 hours, over 1600 stations. The MEX card shows no ceiling or visibility elements.",
-          "MET (NAM MOS): runs 00 and 12 UTC, 6 to 72 hours, same element set as MAV including CIG, VIS and OBV. NAM MOS is scheduled to end along with the NAM on November 3, 2026 at 1200 UTC (NWS SCN 26-47).",
+          "MET (NAM MOS): runs 00 and 12 UTC, 6 to 72 hours, same element set as MAV including CIG, VIS and OBV. NAM MOS is scheduled to end along with the NAM on November 3, 2026 at 1200 UTC (NWS SCN 26-47, updated October 2, 2026).",
         ],
       },
       {
