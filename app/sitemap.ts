@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getSoroArticles } from '@/lib/soro'
+import { LOCAL_BLOG_POSTS } from '@/lib/blog-posts'
 import { getPublishedNewsItems } from '@/app/news/news-data'
 import {
   getIndexableLearnArticles,
@@ -19,6 +20,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: 'monthly',
     priority: 0.7,
   }))
+  for (const p of LOCAL_BLOG_POSTS) {
+    blogPosts.unshift({
+      url: `${baseUrl}/blog/${p.slug}`,
+      lastModified: new Date(p.isoDate),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })
+  }
 
   const newsPosts: MetadataRoute.Sitemap = getPublishedNewsItems().map((item) => ({
     url: `${baseUrl}/news/${item.slug}`,

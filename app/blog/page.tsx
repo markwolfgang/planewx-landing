@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { getSoroArticles } from "@/lib/soro"
+import { LOCAL_BLOG_POSTS } from "@/lib/blog-posts"
 
 export const revalidate = 3600 // re-fetch article list every hour
 
@@ -20,7 +21,20 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-  const articles = await getSoroArticles()
+  const soroArticles = await getSoroArticles()
+  const localArticles = LOCAL_BLOG_POSTS.map((p) => ({
+    id: `local-${p.slug}`,
+    slug: p.slug,
+    title: p.h1,
+    excerpt: p.description,
+    date: p.date,
+    isoDate: p.isoDate,
+    image: "",
+  }))
+  const articles = [
+    ...localArticles,
+    ...soroArticles.filter((a) => !LOCAL_BLOG_POSTS.some((p) => p.slug === a.slug)),
+  ]
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white">

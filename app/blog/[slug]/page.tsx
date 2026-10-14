@@ -8,7 +8,7 @@ import {
   getSoroArticleBySlug,
   getSoroArticleContent,
 } from "@/lib/soro"
-import { BLOG_OVERRIDES } from "@/lib/blog-overrides"
+import { BLOG_APPENDS, BLOG_OVERRIDES } from "@/lib/blog-overrides"
 
 export const revalidate = 3600
 /** Allow new Soro slugs that were not in generateStaticParams at build time. */
@@ -55,7 +55,9 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   const override = BLOG_OVERRIDES[slug]
-  const content = override?.html ?? (await getSoroArticleContent(article.id))
+  const baseContent = override?.html ?? (await getSoroArticleContent(article.id))
+  const append = BLOG_APPENDS[slug]
+  const content = baseContent && append ? `${baseContent}\n${append}` : baseContent
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white">
