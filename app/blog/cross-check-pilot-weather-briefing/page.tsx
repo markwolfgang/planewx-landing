@@ -86,10 +86,12 @@ export default function CrossCheckPilotWeatherBriefingPage() {
             }),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(post.faqJsonLd) }}
-        />
+        {post.faqJsonLd ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(post.faqJsonLd) }}
+          />
+        ) : null}
       </article>
     </div>
   )
