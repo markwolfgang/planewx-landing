@@ -6,7 +6,6 @@ import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 import { APP_ORIGIN, buildAppSignupUrlWithLp } from "@/lib/app-signup-url"
 
 const APP_HELP = APP_ORIGIN
-const TWO_YEAR_OFFER_ENDS_AT_MS = Date.parse("2026-10-02T05:00:00.000Z")
 
 const PLUS_BULLETS: {
   name: string
@@ -14,7 +13,17 @@ const PLUS_BULLETS: {
   helpPath?: string
   href?: string
   seesNote?: boolean
+  extraLink?: { href: string; label: string }
 }[] = [
+  {
+    name: "AI Connector (Claude, Grok, ChatGPT and Gemini)",
+    detail: "Cross-check your briefing with your AI assistant.",
+    helpPath: "/help/connect-ai-assistant",
+    extraLink: {
+      href: "https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1",
+      label: "Add PlaneWX to ChatGPT",
+    },
+  },
   {
     name: "Ground Protection",
     detail:
@@ -80,11 +89,25 @@ function TrialLink({
   )
 }
 
+/** Auto-renew disclosure for paid CTAs (parity with app Card E substance). */
+function autoRenewSentence(priceShown: string): string {
+  return `Subscription renews automatically at the end of each billing period at the price shown (${priceShown}). Cancel anytime in Profile billing (or the Stripe customer portal) to stop the next renewal; you keep access through the period you already paid.`
+}
+
+function AutoRenewNote({
+  priceShown,
+  className = "text-xs text-white/40 leading-relaxed mt-2 mb-6",
+}: {
+  priceShown: string
+  className?: string
+}) {
+  return <p className={className}>{autoRenewSentence(priceShown)}</p>
+}
+
 export function PricingSection({ variant }: { variant: string }) {
   const baseUrl = buildAppSignupUrlWithLp(variant)
   const [appUrl, setAppUrl] = useState(baseUrl)
   const [plusPlan, setPlusPlan] = useState<"monthly" | "annual">("annual")
-  const twoYearOpen = Date.now() < TWO_YEAR_OFFER_ENDS_AT_MS
 
   useEffect(() => {
     const refParam = new URLSearchParams(window.location.search).get("ref")
@@ -136,22 +159,8 @@ export function PricingSection({ variant }: { variant: string }) {
           </p>
         </div>
 
-        {twoYearOpen && (
-          <p className="max-w-2xl mx-auto mb-10 px-4 py-3 rounded-xl border border-teal-500/40 bg-teal-500/10 text-sm font-semibold text-white/80 text-center">
-            I priced annual when the app was new. It isn&apos;t anymore. This locks today&apos;s
-            rate for two years. Grateful for your support. It&apos;s why I keep putting my
-            heart, soul, and wallet into PlaneWX.
-            <span className="block mt-2">Mark Wolfgang, founder</span>
-          </p>
-        )}
-
         {/* Pro Plus: featured */}
         <div className="rounded-2xl border-2 border-indigo-500/40 bg-indigo-950/30 p-6 sm:p-8 shadow-lg shadow-indigo-500/10 relative mb-10">
-          {twoYearOpen && (
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-gradient-to-r from-teal-500 to-teal-600 text-white text-xs font-bold whitespace-nowrap">
-              Lock today&apos;s price for 2 years
-            </div>
-          )}
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-2">
@@ -191,6 +200,24 @@ export function PricingSection({ variant }: { variant: string }) {
                     <p className="text-white/50 mt-0.5">{item.detail}</p>
                     {item.seesNote ? (
                       <FiveX5SeesNote className="text-white/40 text-xs mt-1 leading-relaxed" />
+                    ) : null}
+                    {item.helpPath === "/help/connect-ai-assistant" ? (
+                      <a
+                        href="/news/new-beta-planewx-in-claude-and-grok"
+                        className="mt-1 inline-block text-indigo-300 underline underline-offset-2 hover:text-indigo-200"
+                      >
+                        See it combine your ForeFlight logbook and PlaneWX trips
+                      </a>
+                    ) : null}
+                    {item.extraLink ? (
+                      <a
+                        href={item.extraLink.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-1 inline-block text-indigo-300 underline underline-offset-2 hover:text-indigo-200"
+                      >
+                        {item.extraLink.label}
+                      </a>
                     ) : null}
                   </li>
                 ))}
@@ -244,18 +271,14 @@ export function PricingSection({ variant }: { variant: string }) {
               </div>
               <TrialLink
                 href={appUrl}
-                className={`block text-center py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-colors text-sm${twoYearOpen ? " mb-2" : ""}`}
+                className="block text-center py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-colors text-sm"
               >
                 Start Free 14-Day Trial
               </TrialLink>
-              {twoYearOpen && (
-                <TrialLink
-                  href={appUrl}
-                  className="block text-center py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold transition-colors text-sm"
-                >
-                  Lock 2 years: $498
-                </TrialLink>
-              )}
+              <AutoRenewNote
+                priceShown={plusPlan === "annual" ? "$249/yr" : "$29.99/mo"}
+                className="text-xs text-white/40 leading-relaxed mt-2"
+              />
             </div>
           </div>
         </div>
@@ -319,22 +342,15 @@ export function PricingSection({ variant }: { variant: string }) {
               <span className="text-4xl font-bold">$7.99</span>
               <span className="text-white/30 ml-1">/month</span>
             </div>
-            <p className="text-xs text-white/40 mb-1">or $59.99/yr (4 months free)</p>
+            <p className="text-xs text-white/40 mb-1">or $59.99/yr (save $36 vs monthly)</p>
             <p className="text-xs text-teal-400 mb-5">$5.00/mo effective</p>
             <TrialLink
               href={appUrl}
-              className={`block text-center py-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white font-semibold transition-colors text-sm${twoYearOpen ? " mb-2" : " mb-6"}`}
+              className="block text-center py-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white font-semibold transition-colors text-sm"
             >
               Start Free 14-Day Trial
             </TrialLink>
-            {twoYearOpen && (
-              <TrialLink
-                href={appUrl}
-                className="block text-center py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold transition-colors text-sm mb-6"
-              >
-                Lock 2 years: $120
-              </TrialLink>
-            )}
+            <AutoRenewNote priceShown="$7.99/mo or $59.99/yr" />
             <ul className="space-y-3 text-sm flex-1">
               {[
                 ["5", " monitored with auto-updates"],
@@ -375,10 +391,11 @@ export function PricingSection({ variant }: { variant: string }) {
             </div>
             <TrialLink
               href={appUrl}
-              className="block text-center py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors mb-6 text-sm"
+              className="block text-center py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors text-sm"
             >
               Start Free 14-Day Trial
             </TrialLink>
+            <AutoRenewNote priceShown="$14.99/mo" />
             <ul className="space-y-3 text-sm flex-1">
               {[
                 ["10", " monitored with auto-updates"],
@@ -426,18 +443,11 @@ export function PricingSection({ variant }: { variant: string }) {
             <p className="text-xs text-white/40 mb-5">$9.92/mo effective</p>
             <TrialLink
               href={appUrl}
-              className={`block text-center py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors text-sm${twoYearOpen ? " mb-3" : " mb-6"}`}
+              className="block text-center py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors text-sm"
             >
               Start Free 14-Day Trial
             </TrialLink>
-            {twoYearOpen && (
-              <TrialLink
-                href={appUrl}
-                className="block text-center py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-white font-semibold transition-colors text-sm mb-6"
-              >
-                Lock 2 years: $238
-              </TrialLink>
-            )}
+            <AutoRenewNote priceShown="$119/yr" />
             <ul className="space-y-3 text-sm flex-1">
               <li className="flex items-center gap-2.5">
                 <Check className="h-4 w-4 text-emerald-400 shrink-0" />
@@ -483,3 +493,4 @@ export function PricingSection({ variant }: { variant: string }) {
     </section>
   )
 }
+

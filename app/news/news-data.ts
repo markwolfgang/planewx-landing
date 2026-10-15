@@ -56,6 +56,90 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "new-beta-planewx-in-claude-and-grok",
+    category: "Product",
+    title: "New beta: PlaneWX in Claude, Grok, ChatGPT and Gemini",
+    excerpt:
+      "Ask about your trips, briefings, and departure windows in plain English, right inside Claude, Grok, ChatGPT or Gemini. Now in beta for Pro Plus.",
+    date: "October 9, 2026",
+    isoDate: "2026-10-09",
+    body: `
+<p>PlaneWX started as a weather briefing. It has grown into a full risk management system built around a simple loop: Brief, Assess, Decide, Debrief. Today we're opening a new way into that loop.</p>
+
+<p>The PlaneWX connector is now in beta for Pro Plus pilots. It links your PlaneWX account to Claude, Grok, ChatGPT or Gemini, so you can ask about your flying in a normal conversation and get answers from your own PlaneWX data.</p>
+
+<h2>How I'm using it</h2>
+<p>Here's a real example from my own planning. I wanted to fly to Nashville on Sunday, so I just told Claude:</p>
+<blockquote><p>"I want to fly to Nashville on Sunday. Check a few departure times and give me the WX Score for each."</p></blockquote>
+<p>Claude ran PlaneWX briefings for three different times that day and came back with the WX Score for each one. I looked them over, picked the time that fit my day, and said:</p>
+<blockquote><p>"Save that time as a trip."</p></blockquote>
+<p>It saved the trip in PlaneWX, where it gets its own fresh briefing and shows up with the rest of my trips. Then I asked about getting home:</p>
+<blockquote><p>"Now build a return trip for Monday or Tuesday and find me some good departure windows."</p></blockquote>
+<p>Claude searched both days, ran multiple PlaneWX scoring runs using my personal minimums and aircraft, and came back with the WX Score and risk factors for each window. A few minutes of conversation and I had the outbound trip saved and the return options in front of me. The decision was still mine. It just took a lot less clicking to get there.</p>
+
+<h2>See it in action</h2>
+<p>Two short demos of the PlaneWX connector in Claude:</p>
+<div class="not-prose my-8 grid gap-6 sm:grid-cols-2">
+  <figure class="m-0">
+    <div class="relative mx-auto w-full max-w-[360px] overflow-hidden rounded-xl border border-white/10 bg-black" style="aspect-ratio: 9 / 16;">
+      <iframe class="absolute inset-0 h-full w-full" src="https://www.youtube-nocookie.com/embed/ceqc-hAsQtE" title="Ask Claude &quot;Can I Fly Tomorrow?&quot; - PlaneWX's New MCP" loading="lazy" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <figcaption class="mt-3 text-center text-sm italic text-white/45">Ask Claude "Can I Fly Tomorrow?" - PlaneWX's New MCP</figcaption>
+  </figure>
+  <figure class="m-0">
+    <div class="relative mx-auto w-full max-w-[360px] overflow-hidden rounded-xl border border-white/10 bg-black" style="aspect-ratio: 9 / 16;">
+      <iframe class="absolute inset-0 h-full w-full" src="https://www.youtube-nocookie.com/embed/N2HkQ1ubu0I" title="Claude Cross-Checked My PlaneWX Briefing Against ForeFlight - Here's What It Caught" loading="lazy" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <figcaption class="mt-3 text-center text-sm italic text-white/45">Claude Cross-Checked My PlaneWX Briefing Against ForeFlight - Here's What It Caught</figcaption>
+  </figure>
+</div>
+
+<h2 id="ask-across-tools">Ask across your tools</h2>
+<p>With the PlaneWX connector, your AI assistant can combine PlaneWX with your other connected apps in one conversation. Ask Claude for October's hours using your ForeFlight logbook connector and your PlaneWX trips, and it adds the hours you've flown to the hours you have scheduled, using flight times that account for forecast winds. Pro Plus, trials included.</p>
+<figure class="not-prose my-8">
+  <img src="/news/claude-october-hours.png" alt="Claude totals logged and scheduled October hours using the ForeFlight logbook connector and PlaneWX." loading="lazy" class="mx-auto w-full max-w-2xl rounded-xl border border-white/10" />
+  <figcaption class="mt-3 text-center text-sm italic text-white/45">Claude totals logged and scheduled October hours using the ForeFlight logbook connector and PlaneWX.</figcaption>
+</figure>
+
+<h2>Cross-check your briefing</h2>
+<p>If you also use the ForeFlight connector in Claude, you can connect both and get a second look at the same flight:</p>
+<blockquote><p>"Compare the ForeFlight briefing with PlaneWX for my trip to KASE and list where they differ."</p></blockquote>
+<p>Claude lays the two side by side and points out where they disagree, with likely reasons like a different station, valid time, or model run. Neither one is treated as the right answer. You see the differences and you judge what they mean.</p>
+
+<h2>What else you can ask</h2>
+<ul>
+<li><strong>Your saved trips.</strong> Route, departure time, stored WX Score, plus Self Debriefs and FRATs for past trips. "What upcoming trips do I have?"</li>
+<li><strong>Your saved briefing.</strong> The same briefing and WX Score you see in the app, with no re-score unless you ask to refresh. "What does my briefing for tomorrow's trip to KASE look like?"</li>
+<li><strong>Departure windows.</strong> Ranked candidate times, honoring limits like arriving before sunset. "Find the best departure window Saturday from KAPA to KSDL."</li>
+<li><strong>Airports and your profile.</strong> Look up an airport or check the minimums your WX Score uses.</li>
+</ul>
+
+<h2>You're still the PIC</h2>
+<p>PlaneWX doesn't tell you to go or not to go, and neither does the connector. The assistant reports the WX Score, the band (Favorable, Marginal, or Unfavorable), and what drives it, and links back to the full PlaneWX briefing. The GO/NO-GO call stays with you.</p>
+
+<h2>What gets shared</h2>
+<p>The connector shares your profile, aircraft, personal minimums, saved trips, Self Debriefs, and FRATs with the assistant you connect. Self Debrief private notes are included in trimmed form; Mentors, Trip Watchers, groups, and Insights still never see them. PlaneWX never sends your password, payment details, medical certificate, logbook entries, or other pilots' data.</p>
+
+<h2>How to connect</h2>
+<ol>
+<li>On Casual or Pro? Start your 14-day Pro Plus trial first (Profile, Subscription).</li>
+<li>In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.</li>
+<li>In your AI assistant, add a custom connector with the PlaneWX MCP URL: <code>https://app.planewx.ai/api/mcp</code></li>
+<li>Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.</li>
+</ol>
+<p>Using ChatGPT? You need a paid ChatGPT plan. Open <a href="https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1">Add PlaneWX to ChatGPT</a>, then sign in to PlaneWX.</p>
+<p>Full steps are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to your AI assistant</a>.</p>
+<p>For an overview of what the connector can do, see <a href="/mcp">PlaneWX MCP: Aviation Weather for Claude, Grok, ChatGPT and Gemini</a>.</p>
+<p>It's a Pro Plus Labs feature (Enterprise included). It isn't part of Free, Casual, or Pro, but every Pro Plus free trial includes it: the new-signup trial and the 14-day Pro Plus upgrade trial.</p>
+<p><strong>On Casual or Pro?</strong> You can try Pro Plus, connector included, free for 14 days. On the web, go to <a href="https://app.planewx.ai/?view=profile&tab=subscription">Profile, Subscription</a> and choose "Start my Pro Plus trial." You keep your current plan and rate. Pro Plus is added on top at no charge, and you go back to your plan when the 14 days are up. There's nothing to cancel. It's one trial per account, and it isn't available from the iOS app. During any trial, the connector can run up to 12 scored briefings a day.</p>
+
+<h2>Help us shape it</h2>
+<p>This is a beta, so you may run into rough edges. If something looks wrong, or you find a prompt that works great, tell me with the Feedback button in the app. I read every one.</p>
+
+<p>Blue skies,<br/>Mark</p>
+`,
+  },
+  {
     slug: "7-day-weather-strategy-ken-dustin",
     category: "Product",
     title: "A 7-Day Weather Strategy with PlaneWX, Aviation Weather and Your EFB (Featuring Ken Dustin of Kneeboard Pro)",
@@ -180,7 +264,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>PlaneWX is complementary to the electronic flight bag and official weather sources pilots already use. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>About Air Care Alliance</h2>
 <p>Air Care Alliance is a nonprofit that supports and connects organizations and volunteer pilots who provide free air transportation for people in medical and humanitarian need. <a href="https://aircarealliance.org" target="_blank" rel="noopener noreferrer">aircarealliance.org</a></p>
@@ -369,7 +453,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>PlaneWX is complementary to the electronic flight bag and official weather sources. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -394,7 +478,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>PlaneWX is complementary to the electronic flight bag. <a href="https://www.skydemon.aero/" target="_blank" rel="noopener noreferrer">SkyDemon</a> remains the place many pilots build the route. PlaneWX is the decision support on that same route.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -423,7 +507,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Now live for every account.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -452,7 +536,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Both apps are listed at <a href="/apps">/apps</a>. They are brought to you by PlaneWX. PlaneWX remains the pilot&rsquo;s decision support system for go/no-go weather. Complementary to the electronic flight bag and official weather sources. Outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -483,7 +567,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>PlaneWX remains the pilot&rsquo;s decision support system for go/no-go weather &mdash; complementary to the electronic flight bag and official weather sources pilots already use. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -525,7 +609,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Pilots can learn more at <a href="https://www.planewx.ai">www.planewx.ai</a>. Coverage and credits are available through 5X5 at <a href="https://www.5x5insurance.com" target="_blank" rel="noopener noreferrer">www.5x5insurance.com</a>, subject to eligibility and underwriting guidelines. The two companies will also publish joint content on weather and better decision-making, including a video series and a quarterly newsletter.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>About 5X5 Aviation Insurance</h2>
 <p>5X5 Aviation Insurance is an aviation insurance service company headquartered in Minneapolis, Minnesota. With a data-driven, direct-to-consumer model, 5X5 provides coverage to pilots and owners of fixed-wing, high-performance aircraft in 38 states and plans to expand underwriting to all 48 contiguous states. 5X5 writes on AM Best A- (Excellent) rated paper, backed by strong financial reserves and full compliance with all capitalization and regulatory requirements. 5X5 Aviation Insurance is an Invenshure-built company. <a href="https://www.5x5insurance.com" target="_blank" rel="noopener noreferrer">www.5x5insurance.com</a></p>
@@ -569,7 +653,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Pilots can start at <a href="https://www.planewx.ai">www.planewx.ai</a>. PlaneWX is complementary to the electronic flight bag and official weather sources pilots already use. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -596,7 +680,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>PlaneWX is complementary to the electronic flight bag and official weather sources. Its outputs are decision-support tools, not a substitute for pilot-in-command judgment.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -623,7 +707,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>PlaneWX is complementary to the electronic flight bag. ForeFlight remains the place many pilots build the route. PlaneWX is the decision support on that same route &mdash; a WX Score against this airplane and these minimums, early enough that a change of plan is still a change of plan.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -660,7 +744,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>The in-app guide is at <a href="https://app.planewx.ai/help/switch-to-ifr">app.planewx.ai/help/switch-to-ifr</a>.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -691,7 +775,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>The in-app guide is at <a href="https://app.planewx.ai/help/international-airports">app.planewx.ai/help/international-airports</a>. Pilots can start at <a href="https://www.planewx.ai">www.planewx.ai</a>.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -722,7 +806,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>The in-app guide is at <a href="https://app.planewx.ai/help/forecast-office">app.planewx.ai/help/forecast-office</a>.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -751,7 +835,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>The in-app guide is at <a href="https://app.planewx.ai/help/live-radar">app.planewx.ai/help/live-radar</a>.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -792,7 +876,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>The in-app guide is at <a href="https://app.planewx.ai/help/wildfire-smoke">app.planewx.ai/help/wildfire-smoke</a>.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -856,7 +940,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Pro Plus is <a href="/news/pro-plus-launch">$29.99 a month or $249 a year</a>. Pilots can start at <a href="https://www.planewx.ai">www.planewx.ai</a>. The in-app guide is at <a href="https://app.planewx.ai/help/ground-weather">app.planewx.ai/help/ground-weather</a>.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
@@ -874,7 +958,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     body: `
 <p><strong>St. Petersburg, Florida &mdash; July 12, 2026 &mdash;</strong> Mark Wolfgang, founder of PlaneWX, will give a forum talk at EAA AirVenture Oshkosh 2026: <a href="https://events.rdmobile.com/Sessions/Details/3567392" target="_blank" rel="noopener noreferrer">Advanced Aviation Risk Management</a>. Wednesday, July 22, 4:00&ndash;5:15 p.m. CDT, Forum Stage 10, sponsored by Poly Fiber Inc.</p>
 
-<p>The session is about the go/no-go that starts weeks out, not the night before. Automation &mdash; and a little AI &mdash; can pull the weather products together, run them against your personal minimums and the airplane you actually fly, and put a WX Score inside a PAVE risk assessment. That is the job PlaneWX was built for: the confidence to go, or the courage to stay.</p>
+<p>The session is about the go/no-go that starts weeks out, not the night before. Automation &mdash; and a little AI &mdash; can pull the weather products together, run them against your personal minimums and the airplane you actually fly, and put a WX Score inside a PAVE risk assessment. That is the job PlaneWX was built for: The confidence to go. The courage to stay.</p>
 
 <p>Wolfgang is a Navy veteran and commercial instrument-rated pilot. He built PlaneWX because TAFs cover about 24 hours and most trips are planned well before that. The talk walks through how a personalized score, an integrated risk assessment, and a mentor who can see the full briefing change that timeline.</p>
 
@@ -883,7 +967,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>AirVenture runs July 20&ndash;26, 2026, at Wittman Regional Airport. The EAA listing is <a href="https://events.rdmobile.com/Sessions/Details/3567392" target="_blank" rel="noopener noreferrer">events.rdmobile.com/Sessions/Details/3567392</a>.</p>
 
 <h2>About PlaneWX</h2>
-<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go, or the courage to stay&trade;.</p>
+<p>PlaneWX is the pilot&rsquo;s decision support system, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. Its WX Score synthesizes authoritative weather data against each pilot&rsquo;s specific aircraft and personal minimums, feeds an integrated flight risk assessment built on the FAA&rsquo;s PAVE framework, and connects pilots to a peer mentor network &mdash; so go/no-go planning can start up to 14 days out, not the night before. Tagline: The confidence to go. The courage to stay.</p>
 
 <h2>Media contact</h2>
 <p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>

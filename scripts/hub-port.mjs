@@ -24,7 +24,7 @@ export const HUB_PAGES = [
     slug: "taf",
     source: "what-is-a-taf.html",
     sourceMd5: "a5db0ad87abced06cfd0a9f4b1962060",
-    mainHtmlMd5: "acec8a221ea7c31137ebbbb02df0f544",
+    mainHtmlMd5: "1d8ef7951f5e0d622e25567e998a804e",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/taf",
   },
@@ -32,7 +32,7 @@ export const HUB_PAGES = [
     slug: "metar",
     source: "what-is-a-metar.html",
     sourceMd5: "e6153d054ff079f3812245cddb89f051",
-    mainHtmlMd5: "b53d555a51cd8c0bb58160411df3a69b",
+    mainHtmlMd5: "f012c01f275ac602bd32be12566313bd",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/metar",
   },
@@ -40,7 +40,7 @@ export const HUB_PAGES = [
     slug: "airmet-sigmet",
     source: "airmet-sigmet.html",
     sourceMd5: "cd52ca07f7d7ba24ed1d386ae44841a3",
-    mainHtmlMd5: "b49d47ae8796d1b243af7be23d8a617c",
+    mainHtmlMd5: "8fa336c5c9c12124624e0b7dd78be73f",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/airmet-sigmet",
   },
@@ -48,7 +48,7 @@ export const HUB_PAGES = [
     slug: "pirep",
     source: "what-is-a-pirep.html",
     sourceMd5: "8407c8a6e7a12fe4af03fd4ecd60a05f",
-    mainHtmlMd5: "d3a5bc5fbb7846525f8bb20b444c4b29",
+    mainHtmlMd5: "f5e6384366554b09d922515861e3ffd9",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/pirep",
   },
@@ -56,7 +56,7 @@ export const HUB_PAGES = [
     slug: "winds-aloft",
     source: "winds-aloft.html",
     sourceMd5: "870a8ec3d07cb87a86acdd2d2bb8966c",
-    mainHtmlMd5: "4a5c995cd735bdfada7bffd9313ef817",
+    mainHtmlMd5: "f703291c753402ee312205347f7bf11c",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/winds-aloft",
   },
@@ -64,7 +64,7 @@ export const HUB_PAGES = [
     slug: "icing",
     source: "icing.html",
     sourceMd5: "82bb1a3c813fac18d3e2d0855a9cebae",
-    mainHtmlMd5: "76adf40885949a1f87655490060aaec7",
+    mainHtmlMd5: "b87e86b1e38136d9f353d66fcdbc20aa",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/icing",
   },
@@ -72,7 +72,7 @@ export const HUB_PAGES = [
     slug: "turbulence",
     source: "turbulence.html",
     sourceMd5: "3eafa44339db61e170feeb92d760cfdd",
-    mainHtmlMd5: "9b387ce789fb6141fd376c4b7eb6e055",
+    mainHtmlMd5: "c56a2f4dc7c3c1e313ef6dbdd0c07ddf",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/turbulence",
   },
@@ -80,7 +80,7 @@ export const HUB_PAGES = [
     slug: "weather-radar",
     source: "weather-radar.html",
     sourceMd5: "061d5d93ae8456c1dea70248ab7b3ef1",
-    mainHtmlMd5: "fb6fa5dd3af59be81258049de2f26ece",
+    mainHtmlMd5: "a594c3a6a932f541f4798c26d46ead8c",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/weather-radar",
   },
@@ -88,7 +88,7 @@ export const HUB_PAGES = [
     slug: "density-altitude",
     source: "density-altitude.html",
     sourceMd5: "9afaccf09145f88a8ba75c5013533d10",
-    mainHtmlMd5: "68ff68feedf55d501b0b592d30fba9de",
+    mainHtmlMd5: "3f2b29c48da114b13e59ef7a141b84fa",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/density-altitude",
   },
@@ -96,7 +96,7 @@ export const HUB_PAGES = [
     slug: "thunderstorms",
     source: "thunderstorms.html",
     sourceMd5: "b221d323eb82eb28a996300516745ad7",
-    mainHtmlMd5: "78b4891dc0a8a2a54e6d5bd3aa45e787",
+    mainHtmlMd5: "80c1f3797ac0d4a3f5b80afacb323c22",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/thunderstorms",
   },
@@ -104,7 +104,7 @@ export const HUB_PAGES = [
     slug: "ceiling-visibility",
     source: "ceiling-visibility.html",
     sourceMd5: "21b42ecae58c89bb28f0aee45c88c440",
-    mainHtmlMd5: "c6bfdb00bfc178de3324b51bc07f33f4",
+    mainHtmlMd5: "f360df4893eb92562412420f31677530",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/ceiling-visibility",
   },
@@ -112,7 +112,7 @@ export const HUB_PAGES = [
     slug: "fog",
     source: "fog.html",
     sourceMd5: "82d271353fefaeca28de3a0a75edb0b2",
-    mainHtmlMd5: "3bb22524858431cebe52eaec3ca27e67",
+    mainHtmlMd5: "ecafe314fd5998de7d638a9e46f4fa8d",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/fog",
   },
@@ -120,7 +120,7 @@ export const HUB_PAGES = [
     slug: "wind-shear-microburst",
     source: "wind-shear-microburst.html",
     sourceMd5: "33f5aa704def85004110811382d4d3aa",
-    mainHtmlMd5: "2dc0834937421a2011dcc337f44ece5b",
+    mainHtmlMd5: "65ed33bfff6638b296081b25951078cb",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/wind-shear-microburst",
   },
@@ -128,7 +128,7 @@ export const HUB_PAGES = [
     slug: "mountain-wave",
     source: "mountain-wave.html",
     sourceMd5: "3d0c6ac331a96492b06f64b691fb6cc6",
-    mainHtmlMd5: "c017a14675f31f33db42b87284399eee",
+    mainHtmlMd5: "3c5bd5ec4163e2535408a3cd728df367",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/mountain-wave",
   },
@@ -136,7 +136,7 @@ export const HUB_PAGES = [
     slug: "weather-briefings",
     source: "weather-briefings.html",
     sourceMd5: "6ceaace26fc49b4eef4318cbd0c97ab2",
-    mainHtmlMd5: "24918b47f24e033b07e2e4d372f5d2f2",
+    mainHtmlMd5: "39e4e399a137d6c85d96cbc5648b80a7",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/weather-briefings",
   },
@@ -144,23 +144,47 @@ export const HUB_PAGES = [
     slug: "weather-risk",
     source: "weather-risk.html",
     sourceMd5: "668849c529daa7478626bb5e3e48c951",
-    mainHtmlMd5: "4f460669d4a4255174514f488c2d8624",
+    mainHtmlMd5: "62847bdf498c7a542b54f985d9f4ffbe",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/weather-risk",
   },
   {
     slug: "flight-risk-assessment-tool",
     source: "flight-risk-assessment-tool.html",
-    sourceMd5: "9aa50782fe209223a142ae79a35b3a64",
-    // Intentional deltas on MAIN_HTML after extract of 9aa50782:
-    // 1) "14 CFR 91.3" -> "14&nbsp;CFR&nbsp;91.3"
-    // 2) on-page glossary link text "FAA AC 120-92D, Chapter 1"
-    //    -> "FAA AC&nbsp;120&#8209;92D, Chapter 1"
-    // Pre-extract MAIN_HTML md5: f9a3b98d44a33450437804f5fdd3a993
-    // After delta 1: 973d36d19cdad0e58a207735ba0acb16
-    mainHtmlMd5: "8c294c3ceccd91df39ffd4307ea670c3",
+    // SEO QA + CodeRabbit cell fix (Oct 7, 2026): meta 151 chars, GO / NO-GO,
+    // nbsp restores, The record eFRAT cell matches help/frat (no FRAT email).
+    // content.ts file md5 f0b866bae1258e6d04dda3a3b249e2b5; MAIN_HTML string md5 below.
+    // Heading rewrite (#165, Oct 8, 2026): headings only; content.ts file md5
+    // e1c49b5cd3e4fb34515e7b45d5dbab58, MAIN_HTML md5 re-pinned below.
+    // FAQ + feature mentions (Oct 12, 2026): five FAQ entries added; MAIN_HTML re-pinned.
+    // Need Help Now FAQ: opens 2 hours before departure (not within 4 hours); MAIN_HTML re-pinned.
+    sourceMd5: "30c4436e6bb40845c17a464236b1df5f",
+    mainHtmlMd5: "02cd6b44a3912f8b7458ca0abfe43348",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "flight-risk-assessment-tool",
+  },
+  {
+    slug: "imsafe-checklist",
+    source: "imsafe-checklist.html",
+    // New guide (Oct 11, 2026): SEO brief BRIEF-IMSAFE.md. Source HTML is the
+    // extracted <article>, so sourceMd5 equals mainHtmlMd5.
+    // Gap fill (Oct 14, 2026): FAASTeam + CAP cites, shipped FRAT features,
+    // directive wording softened, 61.53 key facts completed,
+    // card prompts risk-positive (CodeRabbit). MAIN_HTML re-pinned.
+    sourceMd5: "3e849b8c523976a50bfa4176249719ed",
+    mainHtmlMd5: "3e849b8c523976a50bfa4176249719ed",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "imsafe-checklist",
+  },
+  {
+    slug: "controlled-flight-into-terrain",
+    source: "controlled-flight-into-terrain.html",
+    // New guide (Oct 11, 2026): SEO brief BRIEF-CFIT.md. Source HTML is the
+    // extracted <article>, so sourceMd5 equals mainHtmlMd5.
+    sourceMd5: "569e848dd07d3d2228144aa3e24172c9",
+    mainHtmlMd5: "569e848dd07d3d2228144aa3e24172c9",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "controlled-flight-into-terrain",
   },
 ]
 

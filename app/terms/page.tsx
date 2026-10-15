@@ -87,6 +87,33 @@ export default function TermsOfServicePage() {
           </ul>
         </Section>
 
+        <Section title="5a. DMCA / Copyright Agent">
+          <div className="space-y-3">
+            <p>
+              PlaneWX, LLC respects intellectual property rights. If you believe material on or through the
+              Services infringes your copyright, send a notice to our designated copyright agent:
+            </p>
+            <p>
+              PlaneWX, LLC, Attn: Copyright Agent, 7901 4th St N, Ste 300, St. Petersburg, FL 33702.
+              Email:{" "}
+              <a href="mailto:dmca@planewx.ai" className="text-sky-400 hover:underline">
+                dmca@planewx.ai
+              </a>
+              .
+            </p>
+            <p>
+              Your notice should identify the copyrighted work, the allegedly infringing material and where to
+              find it, your contact information, a good-faith belief that the use is not authorized, and a
+              statement under penalty of perjury that you are authorized to act for the copyright owner, plus
+              your physical or electronic signature. Full instructions are on our{" "}
+              <Link href="/dmca" className="text-sky-400 hover:underline">
+                DMCA / Copyright
+              </Link>{" "}
+              page.
+            </p>
+          </div>
+        </Section>
+
         <Section title="6. Third-Party Services and Data">
           <ul className="list-disc space-y-2 pl-6">
             <li>We rely on third-party data sources (e.g., NWS/NOAA, FAA) and service providers. We do not control their availability, accuracy, or performance.</li>

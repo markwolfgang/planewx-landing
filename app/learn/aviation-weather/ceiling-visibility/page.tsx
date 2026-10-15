@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Ceiling, Visibility, and Flight Categories: VFR, MVFR, IFR, and LIFR",
     description: "What legally counts as a ceiling, how prevailing visibility is measured, the four flight categories, and why a green VFR dot is not the same as the 14 CFR 91.155 VFR minimums.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

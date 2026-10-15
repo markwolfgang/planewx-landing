@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Icing Forecasts: CIP, FIP, Freezing Level, and Icing Intensity",
     description: "What the CIP and FIP icing products show, how to find the freezing level, what trace, light, moderate, heavy, and severe icing mean, and where icing forecasts fall short.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

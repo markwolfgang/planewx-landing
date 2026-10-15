@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Low-Level Wind Shear and Microbursts: Recognition, Reports, and Escape",
     description: "What low-level wind shear and microbursts are, the signs to look for, how LLWAS, TDWR, and ATIS alerts reach you, how to report wind shear, and what the FAA says about recovery.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 
