@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Turbulence Forecasts: GTG, GTG-N, and the Intensity Scale",
     description: "How the GTG turbulence forecast and GTG-N nowcast work, what EDR means, the official light to extreme intensity scale, and which turbulence GTG does not forecast.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

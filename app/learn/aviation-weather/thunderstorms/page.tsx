@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Thunderstorms for Pilots: Hazards, Avoidance, Outlooks, and Watches",
     description: "Why the FAA treats every thunderstorm as hazardous, the 20-mile avoidance rule, how lightning is reported, and what convective outlooks, TCF, ECFP, and watches tell you.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

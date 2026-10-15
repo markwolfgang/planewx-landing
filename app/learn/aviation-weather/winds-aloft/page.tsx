@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Winds and Temperatures Aloft: How to Read an FB Forecast",
     description: "How to decode the FB winds and temperatures aloft forecast, including winds over 100 knots and missing low levels, with a worked decode of the FAA Handbook sample.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "What Is a TAF? How to Read a Terminal Aerodrome Forecast",
     description: "A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

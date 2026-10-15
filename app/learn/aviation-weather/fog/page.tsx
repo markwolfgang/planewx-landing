@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Fog for Pilots: Radiation, Advection, Upslope, and Freezing Fog",
     description: "How each type of fog forms and clears, what the temperature-dewpoint spread tells you, how fog is coded in METARs and TAFs, and what the FAA and NTSB say to do about it.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

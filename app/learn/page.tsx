@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: `${HUB_TITLE} | PlaneWX`,
     description: HUB_DESCRIPTION,
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

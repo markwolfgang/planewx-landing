@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "What Is a METAR? How to Read an Airport Weather Report",
     description: "A METAR is the coded weather observation for an airport. Learn to read every group, what AUTO and AO2 mean, when a SPECI is issued, and where METARs fit a disciplined weather decision.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 
