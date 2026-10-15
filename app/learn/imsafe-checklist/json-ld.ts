@@ -5,7 +5,7 @@ export const ARTICLE_JSON_LD = {
   "description": "Use the IMSAFE checklist before every flight: illness, medication, stress, alcohol, fatigue, emotion. FAA rules, NTSB lessons and a printable card.",
   "mainEntityOfPage": "https://www.planewx.ai/learn/imsafe-checklist",
   "datePublished": "2026-10-11",
-  "dateModified": "2026-10-11",
+  "dateModified": "2026-10-14",
   "author": {
     "@type": "Organization",
     "name": "PlaneWX",
