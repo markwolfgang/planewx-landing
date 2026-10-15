@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Weather Briefing Types: Standard, Abbreviated, Outlook, and Self-Briefing",
     description: "The three FAA briefing types and when to get each, what a standard briefing contains and in what order, what “VFR flight not recommended” means, and how self-briefing fits in.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

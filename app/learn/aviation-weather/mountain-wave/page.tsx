@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Mountain Wave and Mountain Weather: Lee Waves, Rotors, and Downslope Winds",
     description: "When mountain waves form, how propagating and trapped lee waves differ, the clouds that mark them, rotor and downslope wind hazards, and how to plan a mountain crossing.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

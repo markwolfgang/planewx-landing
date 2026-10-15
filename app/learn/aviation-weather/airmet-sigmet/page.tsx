@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "AIRMET, SIGMET, and CWA: In-Flight Weather Advisories Explained",
     description: "How to read AIRMETs, G-AIRMETs, SIGMETs, Convective SIGMETs, and Center Weather Advisories: criteria, valid times, decoded Handbook examples, and where advisories fit a disciplined weather decision.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

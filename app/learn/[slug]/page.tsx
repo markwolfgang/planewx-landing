@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary",
       title: article.title,
       description,
-      creator: "@planewx",
+      creator: "@planewxai",
     },
   }
 }

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "What Is a PIREP? How to Read and Give a Pilot Weather Report",
     description: "A PIREP is a pilot weather report. Learn the UA and UUA format, how to decode each field, the official icing and turbulence intensity scales, and how to give a PIREP that helps.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

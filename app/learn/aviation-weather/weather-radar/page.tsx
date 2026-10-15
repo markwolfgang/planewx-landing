@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Weather Radar for Pilots: NEXRAD, TDWR, Reflectivity, and Datalink Delay",
     description: "How to read NEXRAD and TDWR radar, what dBZ and composite reflectivity mean, where radar misses weather, and why cockpit radar mosaics are older than their time stamp.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 

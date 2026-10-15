@@ -53,7 +53,7 @@ const jsonLd = {
         "height": 512
       },
       "sameAs": [
-        "https://twitter.com/planewx"
+        "https://x.com/planewxai"
       ],
       "contactPoint": {
         "@type": "ContactPoint",
@@ -176,7 +176,7 @@ export const metadata: Metadata = {
     description:
       "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
     // Twitter image is auto-generated from app/twitter-image.tsx
-    creator: "@planewx",
+    creator: "@planewxai",
   },
   robots: {
     index: true,

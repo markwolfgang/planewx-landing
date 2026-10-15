@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Weather Risk and Personal Minimums: FAA Definitions and Where to Go Next",
     description: "How the FAA defines hazard, risk, personal minimums, and PAVE, the NTSB lessons on compounding weather risk, and links to PlaneWX guides for setting and using your own limits.",
-    creator: "@planewx",
+    creator: "@planewxai",
   },
 }
 
