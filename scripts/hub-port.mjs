@@ -156,8 +156,10 @@ export const HUB_PAGES = [
     // content.ts file md5 f0b866bae1258e6d04dda3a3b249e2b5; MAIN_HTML string md5 below.
     // Heading rewrite (#165, Oct 8, 2026): headings only; content.ts file md5
     // e1c49b5cd3e4fb34515e7b45d5dbab58, MAIN_HTML md5 re-pinned below.
+    // FAQ + feature mentions (Oct 12, 2026): five FAQ entries added; MAIN_HTML re-pinned.
+    // Need Help Now FAQ: opens 2 hours before departure (not within 4 hours); MAIN_HTML re-pinned.
     sourceMd5: "30c4436e6bb40845c17a464236b1df5f",
-    mainHtmlMd5: "1d0d44e6ff210b761be1ebf8560cf7bc",
+    mainHtmlMd5: "02cd6b44a3912f8b7458ca0abfe43348",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "flight-risk-assessment-tool",
   },

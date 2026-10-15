@@ -136,6 +136,46 @@ export const FAQ_JSON_LD = {
         "@type": "Answer",
         "text": "Realistically. The FAA's original FRAT guidance warns that \"If every flight is within the acceptable range under any condition, it is likely that the thresholds have not been set correctly.\""
       }
+    },
+    {
+      "@type": "Question",
+      "name": "What risk levels does the PlaneWX FRAT use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each PAVE category gets LOW, MEDIUM, or HIGH. LOW means no significant concerns in that category, MEDIUM means some concerns, and HIGH means significant concerns, with one or more factors past limits in that FRAT. PlaneWX shows a suggested level and what is driving it; your own rating overrides the suggestion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Risks are stacking banner?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When three or more elevated factors stack on one flight (self-rates and named concerns on the FRAT card), PlaneWX shows a Risks are stacking banner. It is a reminder of a common practice, not a decision. It does not change the WX Score, and the GO / NO-GO call stays with the pilot."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does TEAM appear in the PlaneWX FRAT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When overall risk is MEDIUM or HIGH, PlaneWX shows the FAA TEAM choices: Transfer, Eliminate, Accept with a reason, or Mitigate. The pilot picks what applies, and the answers are saved with the assessment. You then record GO, NO-GO, Postpone, or Modify. PlaneWX never recommends GO or NO-GO."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a PlaneWX mentor see or require my FRAT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mentors are optional volunteer peers, not flight instructors. A mentor can turn on Require FRAT, which means they only see requests where the pilot completed a FRAT. Need Help Now opens 2 hours before departure and requires a completed FRAT, so the mentor sees more than the weather. The final call is always the pilot's."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after the flight?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PlaneWX lays out a loop: Weather Briefing, FRAT, GO / NO-GO, then Self Debrief. Self Debrief asks how the flight actually went while it is still fresh, including how the FRAT picture compared with what you felt in the airplane. It does not change the WX Score, and a debrief does not feed the next FRAT."
+      }
     }
   ]
 } as const
