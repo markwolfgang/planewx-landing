@@ -1,6 +1,10 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import * as post from "@/lib/blog-posts/cross-check-pilot-weather-briefing"
+
+const PROSE =
+  "prose prose-invert prose-sky max-w-none prose-headings:font-bold prose-a:text-sky-400 prose-a:no-underline hover:prose-a:underline"
 
 const URL = `https://www.planewx.ai/blog/${post.slug}`
 
@@ -65,11 +69,29 @@ export default function CrossCheckPilotWeatherBriefingPage() {
           </time>
         </header>
 
-        <div
-          className="prose prose-invert prose-sky max-w-none prose-headings:font-bold prose-a:text-sky-400 prose-a:no-underline hover:prose-a:underline"
-          itemProp="articleBody"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
+        <div itemProp="articleBody">
+          <div
+            className={PROSE}
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+          <figure className="my-8">
+            <div className="relative aspect-video w-full overflow-hidden rounded-xl border border-white/10 bg-black">
+              <YouTubeFacade
+                videoId={post.video.id}
+                title={post.video.title}
+                embedParams="autoplay=1&rel=0"
+                sizes="(max-width: 768px) 100vw, 720px"
+              />
+            </div>
+            <figcaption className="mt-2 text-xs text-white/45">
+              Watch: Claude cross-checks a PlaneWX briefing against ForeFlight.
+            </figcaption>
+          </figure>
+          <div
+            className={PROSE}
+            dangerouslySetInnerHTML={{ __html: post.htmlAfterVideo }}
+          />
+        </div>
 
         <script
           type="application/ld+json"
