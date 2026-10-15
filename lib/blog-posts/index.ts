@@ -8,6 +8,8 @@ export interface LocalBlogPost {
   isoDate: string
   date: string
   html: string
+  htmlAfterVideo?: string
+  video?: { id: string; title: string }
   faqJsonLd?: unknown
 }
 
