@@ -23,6 +23,15 @@ describe("TBMOPA Phoenix convention news draft", () => {
     expect(item?.body).toContain("https://www.youtube-nocookie.com/embed/mar3nK6daag")
   })
 
+  it("uses Mark's approved quote and the convention dates", () => {
+    expect(item?.body).toContain(
+      "As a TBM pilot, I'm excited to meet other TBM owners in Phoenix and keep learning about this airplane. I'm looking forward to sharing the risk management process I use before every flight and hearing how other TBM pilots approach theirs.",
+    )
+    expect(item?.body).not.toContain("DRAFT QUOTE")
+    expect(item?.excerpt).toContain("October 28 to 31")
+    expect(item?.body).toContain("October 28 to 31")
+  })
+
   it("follows copy rules", () => {
     const text = `${item?.title} ${item?.excerpt} ${item?.body}`
     expect(text).not.toMatch(/\u2014|\u2013|&mdash;|&ndash;/)

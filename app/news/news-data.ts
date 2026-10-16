@@ -82,7 +82,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <h2>Friday lunch talk</h2>
 <p>Mark gives the lunch talk on <strong>Friday, October 30, 12:30 to 1:00 PM MST</strong>, during Lunch with Vendors: <strong>Beyond the Weather Briefing: Using a Decision Support System for Safer Flights</strong>. It's about why a weather briefing alone isn't enough, and how a briefing scored to your minimums, an honest self-assessment and an objective second opinion help before the pressure locks in.</p>
 
-<blockquote><p>&ldquo;[DRAFT QUOTE FOR MARK'S EDIT] Can't wait to see everyone in Phoenix! Bring a trip you're working on and stop by the booth. I'll show you how it scores against your own mins.&rdquo;</p><cite>Mark Wolfgang, founder of PlaneWX</cite></blockquote>
+<blockquote><p>&ldquo;As a TBM pilot, I'm excited to meet other TBM owners in Phoenix and keep learning about this airplane. I'm looking forward to sharing the risk management process I use before every flight and hearing how other TBM pilots approach theirs.&rdquo;</p><cite>Mark Wolfgang, founder of PlaneWX</cite></blockquote>
 
 <h2>Join the TBMOPA Phoenix group</h2>
 <p>We set up a group in PlaneWX for the convention. In the app it's called <strong>TBMOPA Annual Convention - PHX</strong> (KPHX, October 27 to November 1). Join it to see the group's flight map and member routes, read and post on the group message board, and say hi before the show.</p>
