@@ -11,6 +11,7 @@ const BASE_NAV_LINKS = [
   { href: "#pricing", label: "Pricing" },
   { href: "/about", label: "About" },
   { href: "/news", label: "News" },
+  { href: "/events", label: "Events" },
   { href: "/research/turbulence-safety", label: "Research" },
   { href: "/learn", label: "Learn" },
 ] as const
