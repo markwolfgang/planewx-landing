@@ -38,10 +38,10 @@ type InputProps = {
  * 504, 413, timeout) is HTML, not JSON; treat that as an empty object so the
  * caller can report the HTTP status instead of a network error.
  */
-async function readJsonBody(res: Response): Promise<{ error?: unknown; message?: unknown }> {
+async function readJsonBody(res: Response): Promise<{ success?: unknown; error?: unknown; message?: unknown }> {
   try {
     const data: unknown = await res.json()
-    return data && typeof data === "object" ? (data as { error?: unknown; message?: unknown }) : {}
+    return data && typeof data === "object" ? (data as { success?: unknown; error?: unknown; message?: unknown }) : {}
   } catch {
     return {}
   }
@@ -94,6 +94,13 @@ export function SpeakingInquiryForm() {
         return
       }
       const data = await readJsonBody(res)
+      // Only confirm when the API itself says so. A 2xx HTML page or malformed
+      // body does not prove the request was accepted, so keep the values.
+      if (data.success !== true) {
+        setStatus("error")
+        setMessage(`We could not confirm your request was received (HTTP ${res.status}). Please try again.`)
+        return
+      }
       setStatus("success")
       setMessage(
         typeof data.message === "string" && data.message

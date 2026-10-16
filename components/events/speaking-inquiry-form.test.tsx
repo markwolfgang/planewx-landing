@@ -117,4 +117,42 @@ describe("SpeakingInquiryForm", () => {
     fireEvent.submit(screen.getByTestId("speaking-inquiry-form"))
     await vi.waitFor(() => expect(screen.getByRole("alert").textContent).toBe("Network error. Please try again."))
   })
+
+  it("does not confirm or clear the form when a 2xx body is not a success response", async () => {
+    const bodies = [
+      vi.fn(async () => {
+        throw new SyntaxError("Unexpected token < in JSON")
+      }),
+      vi.fn(async () => ({})),
+      vi.fn(async () => ({ success: false })),
+    ]
+    for (const json of bodies) {
+      vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true, status: 200, json }))
+      render(<SpeakingInquiryForm />)
+      fillValid()
+      fireEvent.submit(screen.getByTestId("speaking-inquiry-form"))
+      await vi.waitFor(() =>
+        expect(screen.getByRole("alert").textContent).toBe(
+          "We could not confirm your request was received (HTTP 200). Please try again.",
+        ),
+      )
+      expect(screen.queryByText("Request sent")).toBeNull()
+      expect((screen.getByTestId("speaking-name") as HTMLInputElement).value).toBe("Pat Pilot")
+      expect((screen.getByTestId("speaking-message") as HTMLTextAreaElement).value).toBe("Hello")
+      cleanup()
+      vi.unstubAllGlobals()
+    }
+  })
+
+  it("confirms the request when the API answers success true", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true, message: "Thanks." }) }),
+    )
+    render(<SpeakingInquiryForm />)
+    fillValid()
+    fireEvent.submit(screen.getByTestId("speaking-inquiry-form"))
+    await vi.waitFor(() => expect(screen.getByText("Request sent")).toBeTruthy())
+    expect(screen.getByText("Thanks.")).toBeTruthy()
+  })
 })
