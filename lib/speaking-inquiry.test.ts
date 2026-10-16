@@ -1,0 +1,93 @@
+import { describe, expect, it } from "vitest"
+import {
+  buildSpeakingInquiryEmail,
+  validateSpeakingInquiry,
+  type SpeakingInquiry,
+} from "./speaking-inquiry"
+
+const VALID: SpeakingInquiry = {
+  name: "Pat Pilot",
+  email: "Pat@Example.com",
+  org: "Example Pilots Association",
+  eventName: "Example Safety Day",
+  eventDates: "Mar 12-14, 2027",
+  location: "Lakeland, FL",
+  audienceSize: "",
+  message: "We would like a 30 minute talk on go/no-go decisions.",
+}
+
+describe("validateSpeakingInquiry", () => {
+  it("accepts a complete request and lowercases email", () => {
+    const r = validateSpeakingInquiry({ ...VALID, name: "  Pat Pilot  " })
+    expect(r.ok).toBe(true)
+    if (r.ok) {
+      expect(r.data.email).toBe("pat@example.com")
+      expect(r.data.name).toBe("Pat Pilot")
+      expect(r.data.audienceSize).toBe("")
+    }
+  })
+
+  it("treats audience size as optional", () => {
+    const { audienceSize: _omit, ...rest } = VALID
+    void _omit
+    expect(validateSpeakingInquiry(rest).ok).toBe(true)
+    expect(validateSpeakingInquiry({ ...VALID, audienceSize: "150" }).ok).toBe(true)
+  })
+
+  it.each(["name", "email", "org", "eventName", "eventDates", "location", "message"] as const)(
+    "requires %s",
+    (field) => {
+      const r = validateSpeakingInquiry({ ...VALID, [field]: "   " })
+      expect(r.ok).toBe(false)
+      if (!r.ok) expect(r.errors[field]).toMatch(/is required$/)
+    }
+  )
+
+  it("reports every missing required field for an empty form", () => {
+    const r = validateSpeakingInquiry({})
+    expect(r.ok).toBe(false)
+    if (!r.ok) {
+      expect(Object.keys(r.errors).sort()).toEqual(
+        ["email", "eventDates", "eventName", "location", "message", "name", "org"].sort()
+      )
+      expect(r.error).toBe("Name is required")
+    }
+  })
+
+  it("rejects a bad email format", () => {
+    const r = validateSpeakingInquiry({ ...VALID, email: "not-an-email" })
+    expect(r.ok).toBe(false)
+    if (!r.ok) expect(r.errors.email).toBe("Invalid email format")
+  })
+
+  it("enforces max lengths", () => {
+    const r = validateSpeakingInquiry({ ...VALID, message: "x".repeat(4001), audienceSize: "9".repeat(51) })
+    expect(r.ok).toBe(false)
+    if (!r.ok) {
+      expect(r.errors.message).toBe("Message is too long")
+      expect(r.errors.audienceSize).toBe("Audience size is too long")
+    }
+  })
+
+  it("rejects non-string values and non-object bodies", () => {
+    const r = validateSpeakingInquiry({ ...VALID, org: 42 })
+    expect(r.ok).toBe(false)
+    if (!r.ok) expect(r.errors.org).toBe("Organization is invalid")
+    expect(validateSpeakingInquiry(null).ok).toBe(false)
+    expect(validateSpeakingInquiry([VALID]).ok).toBe(false)
+  })
+})
+
+describe("buildSpeakingInquiryEmail", () => {
+  it("uses a speaking request subject and escapes HTML", () => {
+    const r = validateSpeakingInquiry({ ...VALID, eventName: "Safety <Day>\r\nBcc: x@y.z" })
+    expect(r.ok).toBe(true)
+    if (!r.ok) return
+    const { subject, html } = buildSpeakingInquiryEmail(r.data)
+    expect(subject).toBe("Speaking request: Safety <Day> Bcc: x@y.z (Example Pilots Association)")
+    expect(subject).not.toMatch(/[\r\n]/)
+    expect(html).toContain("Safety &lt;Day&gt;")
+    expect(html).not.toContain("<Day>")
+    expect(html).toContain("Not provided")
+  })
+})

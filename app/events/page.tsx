@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ArrowLeft, CalendarDays, ExternalLink, MapPin } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
+import { SpeakingInquiryForm } from "@/components/events/speaking-inquiry-form"
 import { eventDateText, getUpcomingEvents } from "@/lib/events"
 
 // Re-render daily so events drop off the list after their last day.
@@ -147,6 +148,22 @@ export default function EventsPage() {
           {events.length === 0 ? (
             <p className="text-white/50">No upcoming events right now. Check back soon.</p>
           ) : null}
+        </section>
+
+        <section
+          id="speaking"
+          aria-labelledby="speaking-heading"
+          className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 space-y-5"
+        >
+          <div className="space-y-2">
+            <h2 id="speaking-heading" className="text-xl sm:text-2xl font-bold tracking-tight">
+              Interested in Mark coming to speak at your conference? Get in touch
+            </h2>
+            <p className="text-sm sm:text-base text-white/50 leading-relaxed max-w-2xl">
+              Tell us about your event. Audience size is optional; every other field is required.
+            </p>
+          </div>
+          <SpeakingInquiryForm />
         </section>
       </main>
 
