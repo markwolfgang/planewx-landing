@@ -4,13 +4,12 @@ import { ArrowLeft, CalendarDays, ExternalLink, MapPin } from "lucide-react"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
 import { SpeakingInquiryForm } from "@/components/events/speaking-inquiry-form"
-import { eventDateText, getUpcomingEvents } from "@/lib/events"
+import { EVENTS_PAGE_DESCRIPTION, eventDateText, getUpcomingEvents } from "@/lib/events"
 
-// Re-render daily so events drop off the list after their last day.
-export const revalidate = 86400
+// Re-render hourly so events drop off the list soon after their last day.
+export const revalidate = 3600
 
-const DESCRIPTION =
-  "Upcoming aviation events with PlaneWX: conventions, chapter meetings, and safety summits."
+const DESCRIPTION = EVENTS_PAGE_DESCRIPTION
 
 export const metadata: Metadata = {
   title: "Events",
@@ -92,62 +91,66 @@ export default function EventsPage() {
           <h2 id="events-list-heading" className="sr-only">
             Upcoming events
           </h2>
-          <ul className="space-y-4" data-testid="events-list">
-            {events.map((event) => (
-              <li
-                key={event.id}
-                data-testid={`event-${event.id}`}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                  <div className="space-y-3 min-w-0">
-                    <h3 className="text-lg sm:text-xl font-semibold text-white">{event.name}</h3>
-                    <div className="space-y-1.5 text-sm text-white/60">
-                      <p className="flex items-start gap-2">
-                        <CalendarDays className="h-4 w-4 mt-0.5 shrink-0 text-sky-400" aria-hidden />
-                        <span>{eventDateText(event)}</span>
-                      </p>
-                      {event.location ? (
+          {events.length > 0 ? (
+            <ul className="space-y-4" data-testid="events-list">
+              {events.map((event) => (
+                <li
+                  key={event.id}
+                  data-testid={`event-${event.id}`}
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                    <div className="space-y-3 min-w-0">
+                      <h3 className="text-lg sm:text-xl font-semibold text-white">{event.name}</h3>
+                      <div className="space-y-1.5 text-sm text-white/60">
                         <p className="flex items-start gap-2">
-                          <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-sky-400" aria-hidden />
-                          <span>{event.location}</span>
+                          <CalendarDays
+                            className="h-4 w-4 mt-0.5 shrink-0 text-sky-400"
+                            aria-hidden
+                          />
+                          <span>{eventDateText(event)}</span>
                         </p>
+                        {event.location ? (
+                          <p className="flex items-start gap-2">
+                            <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-sky-400" aria-hidden />
+                            <span>{event.location}</span>
+                          </p>
+                        ) : null}
+                      </div>
+                      {event.planewx.length > 0 ? (
+                        <ul className="space-y-1.5 text-sm text-white/80">
+                          {event.planewx.map((line) => (
+                            <li key={line} className="border-l-2 border-sky-500/60 pl-3">
+                              {line}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                      {event.details?.length ? (
+                        <ul className="space-y-1 text-sm text-white/50">
+                          {event.details.map((line) => (
+                            <li key={line}>{line}</li>
+                          ))}
+                        </ul>
                       ) : null}
                     </div>
-                    {event.planewx.length > 0 ? (
-                      <ul className="space-y-1.5 text-sm text-white/80">
-                        {event.planewx.map((line) => (
-                          <li key={line} className="border-l-2 border-sky-500/60 pl-3">
-                            {line}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : null}
-                    {event.details?.length ? (
-                      <ul className="space-y-1 text-sm text-white/50">
-                        {event.details.map((line) => (
-                          <li key={line}>{line}</li>
-                        ))}
-                      </ul>
-                    ) : null}
+                    <a
+                      href={event.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 shrink-0 rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.06] hover:border-sky-500/30 text-white/80 hover:text-white px-4 py-2 text-sm font-semibold transition-colors"
+                    >
+                      {event.link.label}
+                      <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
                   </div>
-                  <a
-                    href={event.link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 shrink-0 rounded-xl border border-white/15 bg-white/[0.03] hover:bg-white/[0.06] hover:border-sky-500/30 text-white/80 hover:text-white px-4 py-2 text-sm font-semibold transition-colors"
-                  >
-                    {event.link.label}
-                    <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-                    <span className="sr-only"> (opens in a new tab)</span>
-                  </a>
-                </div>
-              </li>
-            ))}
-          </ul>
-          {events.length === 0 ? (
+                </li>
+              ))}
+            </ul>
+          ) : (
             <p className="text-white/50">No upcoming events right now. Check back soon.</p>
-          ) : null}
+          )}
         </section>
 
         <section

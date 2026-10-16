@@ -2,7 +2,7 @@
 // Rules (Mark, Oct 16 2026): dates and venues only from official sources or
 // confirmed PlaneWX correspondence. Unknown dates stay null and render as
 // "Date coming soon". Do not add a PlaneWX role (booth, talk) unless confirmed.
-// Sources for every field: /workspace/reports/landing-events/SOURCES.md (PR body).
+// Sources for every field are listed in the PR that added this page.
 
 export type PlaneWxEvent = {
   id: string
@@ -23,13 +23,17 @@ export type PlaneWxEvent = {
 
 export const DATE_COMING_SOON = "Date coming soon"
 
+/** Meta/OG description for /events. Must not imply PlaneWX is at every event. */
+export const EVENTS_PAGE_DESCRIPTION =
+  "Upcoming aviation events, and where to find PlaneWX at a booth or a talk."
+
 export const EVENTS: PlaneWxEvent[] = [
   {
     id: "tbmopa-2026",
     name: "TBMOPA Convention",
-    startDate: "2026-10-29",
-    endDate: "2026-10-31",
-    dateLabel: "Oct 29-31, 2026",
+    startDate: "2026-10-28",
+    endDate: "2026-11-01",
+    dateLabel: "Oct 28-Nov 1, 2026",
     location: "Sheraton Phoenix Downtown, Phoenix, AZ",
     planewx: [
       "Visit the PlaneWX booth in the exhibit hall, Oct 29-31.",
