@@ -7,6 +7,21 @@ afterEach(() => {
   vi.unstubAllGlobals()
 })
 
+function fillValid() {
+  const fill: Record<string, string> = {
+    name: "Pat Pilot",
+    email: "pat@example.com",
+    org: "Example Pilots Association",
+    eventName: "Example Safety Day",
+    eventDates: "Mar 12-14, 2027",
+    location: "Lakeland, FL",
+    message: "Hello",
+  }
+  for (const [k, v] of Object.entries(fill)) {
+    fireEvent.change(screen.getByTestId(`speaking-${k}`), { target: { value: v } })
+  }
+}
+
 describe("SpeakingInquiryForm", () => {
   it("shows client-side errors and never calls fetch when required fields are empty", () => {
     const fetchSpy = vi.fn()
@@ -64,5 +79,42 @@ describe("SpeakingInquiryForm", () => {
     fireEvent.submit(screen.getByTestId("speaking-inquiry-form"))
     await vi.waitFor(() => expect(fetchSpy).toHaveBeenCalledTimes(1))
     expect(JSON.parse(fetchSpy.mock.calls[0][1].body).website).toBe("bot")
+  })
+
+  it("reports the HTTP status, not a network error, when an error response is not JSON", async () => {
+    const json = vi.fn(async () => {
+      throw new SyntaxError("Unexpected token < in JSON")
+    })
+    const fetchSpy = vi.fn().mockResolvedValue({ ok: false, status: 502, json })
+    vi.stubGlobal("fetch", fetchSpy)
+    render(<SpeakingInquiryForm />)
+    fillValid()
+    fireEvent.submit(screen.getByTestId("speaking-inquiry-form"))
+    await vi.waitFor(() => expect(screen.getByRole("alert").textContent).toContain("502"))
+    expect(screen.getByRole("alert").textContent).toBe("Something went wrong (HTTP 502). Please try again.")
+    expect(screen.queryByText("Network error. Please try again.")).toBeNull()
+  })
+
+  it("shows the server's error text for a JSON error response", async () => {
+    const fetchSpy = vi.fn().mockResolvedValue({
+      ok: false,
+      status: 429,
+      json: async () => ({ error: "Too many requests. Please wait a minute." }),
+    })
+    vi.stubGlobal("fetch", fetchSpy)
+    render(<SpeakingInquiryForm />)
+    fillValid()
+    fireEvent.submit(screen.getByTestId("speaking-inquiry-form"))
+    await vi.waitFor(() =>
+      expect(screen.getByRole("alert").textContent).toBe("Too many requests. Please wait a minute."),
+    )
+  })
+
+  it("still shows a network error when the request itself fails", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new TypeError("Failed to fetch")))
+    render(<SpeakingInquiryForm />)
+    fillValid()
+    fireEvent.submit(screen.getByTestId("speaking-inquiry-form"))
+    await vi.waitFor(() => expect(screen.getByRole("alert").textContent).toBe("Network error. Please try again."))
   })
 })

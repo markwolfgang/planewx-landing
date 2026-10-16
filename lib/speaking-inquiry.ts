@@ -110,12 +110,22 @@ function escapeHtml(value: string): string {
 }
 
 /**
- * Replace every control character (C0, DEL, NEL, and the Unicode line and
- * paragraph separators) with a space so user text stays on one header line.
+ * Keep user text on one clean header line:
+ * - C0 controls, DEL, C1 controls (U+0080-U+009F, including NEL) and the
+ *   Unicode line and paragraph separators become a space.
+ * - Invisible format characters are removed: bidi marks, embeddings,
+ *   overrides and isolates (U+061C, U+200E, U+200F, U+202A-U+202E,
+ *   U+2066-U+2069), zero-width characters (U+180E, U+200B-U+200D,
+ *   U+2060-U+2064) and the BOM (U+FEFF). This stops an RLO or similar from
+ *   visually reordering the subject in an inbox.
  */
+const SUBJECT_BREAK_CHARS = /[\u0000-\u001f\u007f-\u009f\u2028\u2029]+/g
+const SUBJECT_INVISIBLE_CHARS = /[\u061c\u180e\u200b-\u200f\u202a-\u202e\u2060-\u2064\u2066-\u2069\ufeff]/g
+
 function oneLine(value: string): string {
   return value
-    .replace(/[\u0000-\u001f\u007f\u0085\u2028\u2029]+/g, " ")
+    .replace(SUBJECT_INVISIBLE_CHARS, "")
+    .replace(SUBJECT_BREAK_CHARS, " ")
     .replace(/ {2,}/g, " ")
     .trim()
 }

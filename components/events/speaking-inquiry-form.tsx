@@ -33,6 +33,20 @@ type InputProps = {
   placeholder?: string
 }
 
+/**
+ * Parse a JSON response body without throwing. A platform error page (502,
+ * 504, 413, timeout) is HTML, not JSON; treat that as an empty object so the
+ * caller can report the HTTP status instead of a network error.
+ */
+async function readJsonBody(res: Response): Promise<{ error?: unknown; message?: unknown }> {
+  try {
+    const data: unknown = await res.json()
+    return data && typeof data === "object" ? (data as { error?: unknown; message?: unknown }) : {}
+  } catch {
+    return {}
+  }
+}
+
 export function SpeakingInquiryForm() {
   const [values, setValues] = useState<SpeakingInquiry>(EMPTY)
   const [errors, setErrors] = useState<Partial<Record<SpeakingInquiryField, string>>>({})
@@ -69,14 +83,23 @@ export function SpeakingInquiryForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...check.data, [SPEAKING_INQUIRY_HONEYPOT]: website }),
       })
-      const data = await res.json()
       if (!res.ok) {
+        const data = await readJsonBody(res)
         setStatus("error")
-        setMessage(data.error || "Something went wrong. Please try again.")
+        setMessage(
+          typeof data.error === "string" && data.error
+            ? data.error
+            : `Something went wrong (HTTP ${res.status}). Please try again.`,
+        )
         return
       }
+      const data = await readJsonBody(res)
       setStatus("success")
-      setMessage(data.message || "Thanks. We got your request and will reply soon.")
+      setMessage(
+        typeof data.message === "string" && data.message
+          ? data.message
+          : "Thanks. We got your request and will reply soon.",
+      )
       setValues(EMPTY)
       setWebsite("")
     } catch {

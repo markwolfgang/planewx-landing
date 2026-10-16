@@ -100,6 +100,21 @@ describe("speaking inquiry hardening", () => {
     expect(subject).toBe("Speaking request: A B C D E F G H I J (OrgA B C D E F G H I J)")
   })
 
+  it("strips C1 controls from the subject", () => {
+    const c1 = "A\u0080B\u008dC\u009bD\u009fE"
+    const { subject } = buildSpeakingInquiryEmail({ ...VALID, eventName: c1, org: "Org" })
+    expect(subject).not.toMatch(/[\u0080-\u009f]/)
+    expect(subject).toBe("Speaking request: A B C D E (Org)")
+  })
+
+  it("removes bidi, zero-width and BOM characters from the subject", () => {
+    const hidden =
+      "Safe\u202eyaD\u202c \u200bSum\u200cm\u200dit\u200e\u200f \u2066x\u2067y\u2068z\u2069 \u202a\u202b\u202d\ufeff\u2060\u061c\u180e2027"
+    const { subject } = buildSpeakingInquiryEmail({ ...VALID, eventName: hidden, org: "Org\u202e\ufeff" })
+    expect(subject).not.toMatch(/[\u061c\u180e\u200b-\u200f\u202a-\u202e\u2060-\u2064\u2066-\u2069\ufeff]/)
+    expect(subject).toBe("Speaking request: SafeyaD Summit xyz 2027 (Org)")
+  })
+
   it("accepts plain email addresses", () => {
     for (const email of ["pat@example.com", "first.last+tag@sub.example.co.uk", "o'neil@example.org"]) {
       expect(validateSpeakingInquiry({ ...VALID, email }).ok).toBe(true)
