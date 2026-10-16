@@ -53,6 +53,9 @@ export function SiteFooter({ variant }: { variant: string }) {
           <a href="/news" className="hover:text-white/60 transition-colors">
             News
           </a>
+          <a href="/events" className="hover:text-white/60 transition-colors" data-testid="footer-events">
+            Events
+          </a>
           <a href="/partners" className="hover:text-white/60 transition-colors">
             Partners
           </a>
