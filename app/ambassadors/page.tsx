@@ -97,6 +97,20 @@ const AMBASSADORS = [
     },
   },
   {
+    name: "Dan Gryder",
+    href: "https://www.youtube.com/@ProbableCause-DanGryder",
+    description: "Probable Cause",
+    tile: {
+      // Channel avatar from the official YouTube channel (og:image), 512px
+      src: "/ambassadors/probable-cause-dan-gryder.webp",
+      alt: "Probable Cause: Dan Gryder channel logo",
+      width: 512,
+      height: 512,
+      objectFit: "contain" as const,
+      wellClassName: "bg-white",
+    },
+  },
+  {
     name: "Runway to Oshkosh",
     href: "https://www.planewx.ai/runway",
     description:

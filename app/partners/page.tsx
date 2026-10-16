@@ -142,6 +142,21 @@ const PARTNERS = [
       "Volunteer pilots flying medical missions for patients in need.",
   },
   {
+    name: "The DTSB",
+    href: "https://thedtsb.org/",
+    logo: {
+      // Official logo from thedtsb.org (theDTSBlogo2_236x50.png), converted to a
+      // white mark on transparent for the dark cards.
+      src: "/partners/dtsb-white.png",
+      alt: "The DTSB (theDTSB.org) logo",
+      width: 236,
+      height: 50,
+      className: "h-9 sm:h-10 w-auto max-w-[12rem] object-contain",
+    },
+    blurb:
+      "US based IRS 501(c)(3) nonprofit operated and managed by volunteers around the world, with the goal of reducing the US General Aviation fatal accident rate.",
+  },
+  {
     name: "FLYTE",
     href: "https://www.planewx.ai/flyte",
     logo: {
