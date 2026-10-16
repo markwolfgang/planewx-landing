@@ -32,8 +32,8 @@ export const EVENTS: PlaneWxEvent[] = [
     id: "tbmopa-2026",
     name: "TBMOPA Convention",
     startDate: "2026-10-28",
-    endDate: "2026-10-31",
-    dateLabel: "Oct 28-31, 2026",
+    endDate: "2026-11-01",
+    dateLabel: "Oct 28-Nov 1, 2026",
     location: "Sheraton Phoenix Downtown, Phoenix, AZ",
     planewx: [
       "Visit the PlaneWX booth in the exhibit hall, Oct 29-31.",

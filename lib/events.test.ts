@@ -38,11 +38,12 @@ describe("events data", () => {
     )
   })
 
-  it("uses the TBMOPA convention dates Mark set (Oct 28-31) and keeps the booth and talk lines", () => {
+  it("uses the official TBMOPA convention dates (Oct 28-Nov 1) and keeps the booth and talk lines", () => {
+    // Source: https://tbmowners.swoogo.com/con26 ("October 28 to November 1, 2026").
     const tbm = EVENTS.find((e) => e.id === "tbmopa-2026")!
     expect(tbm.startDate).toBe("2026-10-28")
-    expect(tbm.endDate).toBe("2026-10-31")
-    expect(eventDateText(tbm)).toBe("Oct 28-31, 2026")
+    expect(tbm.endDate).toBe("2026-11-01")
+    expect(eventDateText(tbm)).toBe("Oct 28-Nov 1, 2026")
     expect(tbm.planewx[0]).toBe("Visit the PlaneWX booth in the exhibit hall, Oct 29-31.")
     expect(tbm.planewx[1]).toContain("Fri Oct 30, 12:30-1:00 PM MST")
   })
@@ -77,14 +78,15 @@ describe("getUpcomingEvents", () => {
   it("hides events after their last day and keeps multi-day events through the end", () => {
     expect(getUpcomingEvents(EVENTS, "2026-10-28").map((e) => e.id)[0]).toBe("tbmopa-2026")
     expect(getUpcomingEvents(EVENTS, "2026-10-31").map((e) => e.id)[0]).toBe("tbmopa-2026")
-    expect(getUpcomingEvents(EVENTS, "2026-11-01").map((e) => e.id)[0]).toBe("eaa-282-2026-11")
+    expect(getUpcomingEvents(EVENTS, "2026-11-01").map((e) => e.id)[0]).toBe("tbmopa-2026")
+    expect(getUpcomingEvents(EVENTS, "2026-11-02").map((e) => e.id)[0]).toBe("eaa-282-2026-11")
   })
 
-  it("keeps TBMOPA up through 11:59 PM Chicago time on Oct 31", () => {
-    // Still CDT at midnight Oct 31/Nov 1 (DST ends 2 AM Nov 1): 11:59 PM CDT Oct 31 = 04:59Z Nov 1.
+  it("keeps TBMOPA up through 11:59 PM Chicago time on Nov 1", () => {
+    // DST ends 2 AM Nov 1, so midnight Nov 1/Nov 2 is CST: 11:59 PM CST Nov 1 = 05:59Z Nov 2.
     const ids = (iso: string) => getUpcomingEvents(EVENTS, todayIso(new Date(iso))).map((e) => e.id)
-    expect(ids("2026-11-01T04:59:00Z")).toContain("tbmopa-2026")
-    expect(ids("2026-11-01T05:00:00Z")).not.toContain("tbmopa-2026")
+    expect(ids("2026-11-02T05:59:00Z")).toContain("tbmopa-2026")
+    expect(ids("2026-11-02T06:00:00Z")).not.toContain("tbmopa-2026")
   })
 
   it("returns an empty list once every dated event has ended", () => {
