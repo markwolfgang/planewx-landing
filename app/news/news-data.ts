@@ -55,6 +55,48 @@ export interface NewsItem {
 }
 
 export const NEWS_ITEMS: NewsItem[] = [
+  // The Weekly PIREP: Edition 1 (draft). Publish Monday by flipping draft off
+  // only after CoS validation and Mark's OK. Do not list internal PR titles or
+  // individual bug fixes in the body. Counts: CoS final inputs, Mon Sep 28.
+  {
+    slug: "weekly-pirep-2026-09-28",
+    category: "Product",
+    title: "The Weekly PIREP: Edition 1",
+    excerpt:
+      "What shipped in PlaneWX this week: max ground ops wind in Personal Minimums, clearer FRAT Environment ratings, a weather alert banner, a nearby fog and IFR heads-up, more honest briefing confidence, and 46 fixes and improvements. Plus a tip on checking nearby stations when your destination has no TAF.",
+    date: "September 28, 2026",
+    isoDate: "2026-09-28",
+    location: "St. Petersburg, Florida",
+    draft: true,
+    body: `
+<p>Hello from PlaneWX. This is The Weekly PIREP, our Monday roundup of what shipped for pilots in the last week (Mon Sep 21 through Sun Sep 27).</p>
+<p>We keep it short and plain: what you can see and use in the app, a count of the smaller fixes, and one tip worth a minute of your time.</p>
+
+<h2>What&rsquo;s new</h2>
+<ul>
+<li><strong>Max ground ops wind, in Personal Minimums.</strong> Set the most total surface wind, steady or gusting, that you want at departure and arrival, whatever the direction. It sits in the Wind section of Personal Minimums (and in Aircraft preferences under Wind Limits), on every plan. Leave it blank and PlaneWX uses a suggested value for your aircraft category, from 20&nbsp;kt for light-sport and light trainers up to 30&nbsp;kt for high-performance singles, twins, turboprops and jets. Those are PlaneWX suggestions, not aircraft manual or FAA limits, so set your own. More in <a href="https://app.planewx.ai/help/personal-minimums">the personal minimums guide</a>.</li>
+<li><strong>Clearer FRAT Environment ratings.</strong> You rate each Environment item and the overall Environment yourself, and short captions show what is driving each reading. PlaneWX shows a suggested risk level, then you make the call. Your rating overrides the suggestion. More in <a href="https://app.planewx.ai/help/frat">the FRAT guide</a>.</li>
+<li><strong>Weather alert near your route.</strong> When a National Weather Service watch, warning or advisory on our storm list touches your departure, destination or route during your flight, a banner above the WX Score shows the alert, where and when it applies, and the NWS office that issued it. It is informational only and does not change your WX Score. More in <a href="https://app.planewx.ai/help/understanding-briefings#weather-alerts">the briefing guide</a>.</li>
+<li><strong>Nearby fog, mist or IFR heads-up.</strong> Arriving within about 3 hours at a field with no TAF of its own? Ceilings &amp; Visibility can now list up to 2 airports within about 30&nbsp;nm that are reporting fog, mist or IFR, marked Not scored. You decide what it means for your flight. More in <a href="https://app.planewx.ai/help/weather-proxies">the nearby stations guide</a>.</li>
+<li><strong>More honest briefing confidence.</strong> When no source covers ceiling or visibility at an airport, the weather card now says No data instead of showing a clear category. The briefing also shows a Data Confidence label and percentage based on the sources it actually got. More in <a href="https://app.planewx.ai/help/weather-decisions">the weather decisions guide</a>.</li>
+<li><strong>Crosswind on the best-aligned runway.</strong> Crosswind scoring uses the runway best aligned with the wind at departure and arrival. More in <a href="https://app.planewx.ai/help/wx-score">the WX Score guide</a>.</li>
+<li><strong>IFR AIRMET at a VFR arrival.</strong> On a VFR trip, when your destination&rsquo;s own TAF shows VFR at your arrival time but an IFR AIRMET covers the arrival, the briefing now treats it as a Marginal caution. Read the AIRMET and the TAF together and make your call.</li>
+<li><strong>Better wind at fuel stops.</strong> When a fuel stop forecast has no gust data, PlaneWX now fills in the gust from the National Blend of Models when it is stronger than the steady wind, and labels where it came from.</li>
+<li><strong>Mission type on trips.</strong> When you create or edit a trip, you can pick a mission type (Personal, Business, Training or Volunteer). For volunteer flights, you can note what is on board: passengers, animals, both, or an empty positioning leg.</li>
+</ul>
+
+<h2>Fixes and improvements</h2>
+<p>We shipped <strong>46</strong> fixes and improvements for customers this week, including <strong>32</strong> bug fixes you could see in the app.</p>
+
+<h2>Tip of the Week: no TAF at your destination? Check the neighbors</h2>
+<p>A pilot recently flew an IFR arrival into a field with no TAF of its own. The forecast from a nearby proxy station and the field&rsquo;s own METAR both looked fine, but an airport about a dozen miles away was already reporting 1/4&nbsp;SM visibility in fog, and the field fogged in. When your destination has no TAF, look at the station reports around it before you commit, on your EFB&rsquo;s map or <a href="https://aviationweather.gov">aviationweather.gov</a>. PlaneWX can now show a nearby fog, mist or IFR heads-up in Ceilings &amp; Visibility, but your briefing is built on the same public weather products every pilot uses, so treat it as one source to crosscheck, not your only one. See <a href="https://app.planewx.ai/help/weather-proxies">the nearby stations guide</a> for how PlaneWX picks a proxy station.</p>
+
+<p>Open PlaneWX when you are ready to brief the next trip: <a href="https://app.planewx.ai">app.planewx.ai</a>. PlaneWX never recommends GO or NO-GO. The pilot makes the call.</p>
+
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. Fly like it&rsquo;s your job.</p>
+`,
+  },
   {
     slug: "new-beta-planewx-in-claude-and-grok",
     category: "Product",
