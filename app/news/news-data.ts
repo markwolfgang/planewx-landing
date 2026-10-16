@@ -56,6 +56,59 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "tbmopa-annual-convention-phoenix-2026",
+    category: "Company",
+    title: "PlaneWX Is Heading to Phoenix for the 2026 TBMOPA Annual Convention",
+    excerpt:
+      "PlaneWX is a Captain Level sponsor of the 2026 TBMOPA Annual Convention in Phoenix, October 28 to 31. Find us at the booth, catch Mark's Friday lunch talk, and join the TBMOPA Phoenix group in PlaneWX to see who's flying in.",
+    date: "October 16, 2026",
+    isoDate: "2026-10-16",
+    location: "St. Petersburg, Florida",
+    draft: true,
+    body: `
+<p><strong>DRAFT FOR MARK'S REVIEW. Not listed in the public Newsroom.</strong></p>
+
+<p><strong>St. Petersburg, Florida. October 16, 2026.</strong> PlaneWX is heading to Phoenix for the 2026 TBMOPA Annual Convention at the Sheraton Phoenix Downtown, October 28 to 31. We're attending as a Captain Level sponsor, we'll have a booth in the exhibit hall, and we're looking forward to meeting you.</p>
+
+<h2>Come find us at the booth</h2>
+<p>The PlaneWX booth is in the exhibit hall, Phoenix Ballroom ABC. Exhibit hall hours, Phoenix local time (MST):</p>
+<ul>
+<li><strong>Thursday, October 29:</strong> 7:00 AM to 4:00 PM</li>
+<li><strong>Friday, October 30:</strong> 7:00 AM to 4:00 PM</li>
+<li><strong>Saturday, October 31:</strong> 7:00 AM to 12:30 PM</li>
+</ul>
+<p>Bring a trip you're actually planning. We'll pull it up together and look at the WX Score against your own personal minimums, and how the FRAT and Self Debrief fit around it. The call on any flight stays yours.</p>
+
+<h2>Friday lunch talk</h2>
+<p>Mark gives the lunch talk on <strong>Friday, October 30, 12:30 to 1:00 PM MST</strong>, during Lunch with Vendors: <strong>Beyond the Weather Briefing: Using a Decision Support System for Safer Flights</strong>. It's about why a weather briefing alone isn't enough, and how a briefing scored to your minimums, an honest self-assessment and an objective second opinion help before the pressure locks in.</p>
+
+<blockquote><p>&ldquo;[DRAFT QUOTE FOR MARK'S EDIT] Can't wait to see everyone in Phoenix! Bring a trip you're working on and stop by the booth. I'll show you how it scores against your own mins.&rdquo;</p><cite>Mark Wolfgang, founder of PlaneWX</cite></blockquote>
+
+<h2>Join the TBMOPA Phoenix group</h2>
+<p>We set up a group in PlaneWX for the convention. In the app it's called <strong>TBMOPA Annual Convention - PHX</strong> (KPHX, October 27 to November 1). Join it to see the group's flight map and member routes, read and post on the group message board, and say hi before the show.</p>
+<p class="not-prose my-6"><a href="https://app.planewx.ai/group/tbmopa-annual-convention-phx" target="_top" class="inline-flex items-center rounded-full bg-sky-500 px-5 py-2.5 text-sm font-semibold text-white no-underline hover:bg-sky-400">Join the TBMOPA Phoenix group</a></p>
+<p>Not signed in? PlaneWX asks you to sign in first, then takes you straight to the group.</p>
+
+<h2>How to join, in one minute</h2>
+<div class="not-prose my-8">
+  <figure class="m-0">
+    <div class="relative mx-auto w-full max-w-[360px] overflow-hidden rounded-xl border border-white/10 bg-black" style="aspect-ratio: 9 / 16;">
+      <iframe class="absolute inset-0 h-full w-full" src="https://www.youtube-nocookie.com/embed/mar3nK6daag" title="Flying into Phoenix for TBMOPA? Join the PlaneWX group" loading="lazy" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <figcaption class="mt-3 text-center text-sm italic text-white/45">Flying into Phoenix for TBMOPA? Join the PlaneWX group. <a href="https://www.youtube.com/shorts/mar3nK6daag" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></figcaption>
+  </figure>
+</div>
+
+<p>See you in Phoenix!</p>
+
+<h2>About PlaneWX</h2>
+<p>Fly like it's your job. PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and builds professional-grade habits that make flying safer. The loop is WX Score, FRAT, GO / NO-GO and Self Debrief. PlaneWX never recommends GO or NO-GO. The pilot makes the call. The confidence to go. The courage to stay.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
     slug: "new-beta-planewx-in-claude-and-grok",
     category: "Product",
     title: "New beta: PlaneWX in Claude, Grok, ChatGPT and Gemini",
