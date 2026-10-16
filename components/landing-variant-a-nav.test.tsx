@@ -44,7 +44,7 @@ describe("/events is findable from the header and footer", () => {
 
   it("keeps the Events link in the site footer", () => {
     render(<SiteFooter variant="a" />)
-    const link = screen.getByTestId("footer-events")
+    const link = screen.getByRole("link", { name: "Events" })
     expect(link.getAttribute("href")).toBe("/events")
     expect(link.textContent).toBe("Events")
   })
