@@ -28,8 +28,10 @@ describe("TBMOPA Phoenix convention news draft", () => {
       "As a TBM pilot, I'm excited to meet other TBM owners in Phoenix and keep learning about this airplane. I'm looking forward to sharing the risk management process I use before every flight and hearing how other TBM pilots approach theirs.",
     )
     expect(item?.body).not.toContain("DRAFT QUOTE")
-    expect(item?.excerpt).toContain("October 28 to 31")
-    expect(item?.body).toContain("October 28 to 31")
+    // Official dates: https://tbmowners.swoogo.com/con26 ("October 28 to November 1, 2026").
+    expect(item?.excerpt).toContain("October 28 to November 1")
+    expect(item?.body).toContain("October 28 to November 1")
+    expect(`${item?.excerpt} ${item?.body}`).not.toContain("October 28 to 31")
   })
 
   it("follows copy rules", () => {

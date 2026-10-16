@@ -60,7 +60,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     category: "Company",
     title: "PlaneWX Is Heading to Phoenix for the 2026 TBMOPA Annual Convention",
     excerpt:
-      "PlaneWX is a Captain Level sponsor of the 2026 TBMOPA Annual Convention in Phoenix, October 28 to 31. Find us at the booth, catch Mark's Friday lunch talk, and join the TBMOPA Phoenix group in PlaneWX to see who's flying in.",
+      "PlaneWX is a Captain Level sponsor of the 2026 TBMOPA Annual Convention in Phoenix, October 28 to November 1. Find us at the booth, catch Mark's Friday lunch talk, and join the TBMOPA Phoenix group in PlaneWX to see who's flying in.",
     date: "October 16, 2026",
     isoDate: "2026-10-16",
     location: "St. Petersburg, Florida",
@@ -68,7 +68,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     body: `
 <p><strong>DRAFT FOR MARK'S REVIEW. Not listed in the public Newsroom.</strong></p>
 
-<p><strong>St. Petersburg, Florida. October 16, 2026.</strong> PlaneWX is heading to Phoenix for the 2026 TBMOPA Annual Convention at the Sheraton Phoenix Downtown, October 28 to 31. We're attending as a Captain Level sponsor, we'll have a booth in the exhibit hall, and we're looking forward to meeting you.</p>
+<p><strong>St. Petersburg, Florida. October 16, 2026.</strong> PlaneWX is heading to Phoenix for the 2026 TBMOPA Annual Convention at the Sheraton Phoenix Downtown, October 28 to November 1. We're attending as a Captain Level sponsor, we'll have a booth in the exhibit hall, and we're looking forward to meeting you.</p>
 
 <h2>Come find us at the booth</h2>
 <p>The PlaneWX booth is in the exhibit hall, Phoenix Ballroom ABC. Exhibit hall hours, Phoenix local time (MST):</p>
