@@ -17,6 +17,8 @@ type YouTubeFacadeProps = {
   sizes?: string
   /** Called once when the visitor presses play, before the iframe mounts. */
   onPlay?: () => void
+  /** Optional first-party poster image (e.g. /news/foo.jpg) instead of the YouTube thumbnail. */
+  posterSrc?: string
 }
 
 /**
@@ -35,6 +37,7 @@ export function YouTubeFacade({
   priority = false,
   sizes = "(max-width: 768px) 100vw, 896px",
   onPlay,
+  posterSrc,
 }: YouTubeFacadeProps) {
   const [playing, setPlaying] = useState(false)
   // Not every video has a maxresdefault.jpg (YouTube only makes one for HD uploads).
@@ -70,9 +73,11 @@ export function YouTubeFacade({
       aria-label={ariaLabel ?? `Play video (loads YouTube): ${title}`}
     >
       <Image
-        src={`https://img.youtube.com/vi/${videoId}/${thumb}.jpg`}
+        src={posterSrc ?? `https://img.youtube.com/vi/${videoId}/${thumb}.jpg`}
         alt={title}
-        onError={() => setThumb((t) => (t === "maxresdefault" ? "hqdefault" : t))}
+        onError={() => {
+          if (!posterSrc) setThumb((t) => (t === "maxresdefault" ? "hqdefault" : t))
+        }}
         fill
         sizes={sizes}
         className="object-cover"
