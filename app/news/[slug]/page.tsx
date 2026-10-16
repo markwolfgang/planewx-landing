@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { NewsNav } from "@/components/news-nav"
 import { NewsShareBar } from "@/components/news-share-bar"
+import { FounderSignature } from "@/components/shared/founder-signature"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import { NEWS_ITEMS, getNewsItem } from "../news-data"
 
@@ -181,6 +182,7 @@ export default async function NewsArticlePage({ params, searchParams }: Props) {
           itemProp="articleBody"
           dangerouslySetInnerHTML={{ __html: item.body }}
         />
+        {item.signature && <FounderSignature link={item.signatureLink} />}
 
         <div className="mt-12 border-t border-white/10 pt-8">
           <NewsShareBar
