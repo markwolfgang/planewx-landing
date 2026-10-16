@@ -50,7 +50,17 @@ export type SpeakingInquiryValidation =
       errors: Partial<Record<SpeakingInquiryField, string>>
     }
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+/**
+ * One plain addr-spec only (it becomes the Reply-To). No display names, no
+ * lists: rejects < > , ; " ( ) : and whitespace.
+ */
+const EMAIL_REGEX = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$/
+
+/**
+ * Honeypot field name. The form renders it hidden from people and assistive
+ * tech; a filled value means a bot, and the route drops the request silently.
+ */
+export const SPEAKING_INQUIRY_HONEYPOT = "website"
 
 export function validateSpeakingInquiry(input: unknown): SpeakingInquiryValidation {
   if (input === null || typeof input !== "object" || Array.isArray(input)) {
@@ -99,9 +109,15 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#39;")
 }
 
-/** Strip CR/LF so user text cannot break the subject header. */
+/**
+ * Replace every control character (C0, DEL, NEL, and the Unicode line and
+ * paragraph separators) with a space so user text stays on one header line.
+ */
 function oneLine(value: string): string {
-  return value.replace(/[\r\n]+/g, " ").trim()
+  return value
+    .replace(/[\u0000-\u001f\u007f\u0085\u2028\u2029]+/g, " ")
+    .replace(/ {2,}/g, " ")
+    .trim()
 }
 
 export function buildSpeakingInquiryEmail(data: SpeakingInquiry): {

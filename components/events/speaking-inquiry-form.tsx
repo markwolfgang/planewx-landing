@@ -4,6 +4,7 @@ import { useState } from "react"
 import { CheckCircle2, Loader2 } from "lucide-react"
 import {
   SPEAKING_INQUIRY_FIELDS,
+  SPEAKING_INQUIRY_HONEYPOT,
   validateSpeakingInquiry,
   type SpeakingInquiry,
   type SpeakingInquiryField,
@@ -37,6 +38,9 @@ export function SpeakingInquiryForm() {
   const [errors, setErrors] = useState<Partial<Record<SpeakingInquiryField, string>>>({})
   const [status, setStatus] = useState<Status>("idle")
   const [message, setMessage] = useState("")
+  // Honeypot: hidden from people and assistive tech. Bots that fill it are
+  // dropped silently by the API.
+  const [website, setWebsite] = useState("")
 
   function update(field: SpeakingInquiryField, value: string) {
     setValues((prev) => ({ ...prev, [field]: value }))
@@ -63,7 +67,7 @@ export function SpeakingInquiryForm() {
       const res = await fetch("/api/events/speaking-inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(check.data),
+        body: JSON.stringify({ ...check.data, [SPEAKING_INQUIRY_HONEYPOT]: website }),
       })
       const data = await res.json()
       if (!res.ok) {
@@ -74,6 +78,7 @@ export function SpeakingInquiryForm() {
       setStatus("success")
       setMessage(data.message || "Thanks. We got your request and will reply soon.")
       setValues(EMPTY)
+      setWebsite("")
     } catch {
       setStatus("error")
       setMessage("Network error. Please try again.")
@@ -134,7 +139,7 @@ export function SpeakingInquiryForm() {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="space-y-4 text-left"
+      className="relative space-y-4 text-left"
       data-testid="speaking-inquiry-form"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -145,6 +150,23 @@ export function SpeakingInquiryForm() {
         {Input({ field: "eventDates", placeholder: "For example, Mar 12-14, 2027" })}
         {Input({ field: "location", placeholder: "City, state or venue" })}
         {Input({ field: "audienceSize", placeholder: "Approximate number" })}
+      </div>
+      <div
+        aria-hidden="true"
+        className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden"
+      >
+        <label>
+          Website
+          <input
+            type="text"
+            name={SPEAKING_INQUIRY_HONEYPOT}
+            tabIndex={-1}
+            autoComplete="off"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            data-testid="speaking-website"
+          />
+        </label>
       </div>
       <label className="block space-y-1.5">
         <span className="text-xs font-medium text-white/55">{labelText("message")}</span>

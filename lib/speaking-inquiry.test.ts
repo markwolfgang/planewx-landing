@@ -91,3 +91,34 @@ describe("buildSpeakingInquiryEmail", () => {
     expect(html).toContain("Not provided")
   })
 })
+
+describe("speaking inquiry hardening", () => {
+  it("strips every control character from the subject, not just CR/LF", () => {
+    const nasty = "A\tB\u0000C\u000bD\u000cE\u007fF\u0085G\u2028H\u2029I\r\nJ"
+    const { subject } = buildSpeakingInquiryEmail({ ...VALID, eventName: nasty, org: `Org${nasty}` })
+    expect(subject).not.toMatch(/[\u0000-\u001f\u007f\u0085\u2028\u2029]/)
+    expect(subject).toBe("Speaking request: A B C D E F G H I J (OrgA B C D E F G H I J)")
+  })
+
+  it("accepts plain email addresses", () => {
+    for (const email of ["pat@example.com", "first.last+tag@sub.example.co.uk", "o'neil@example.org"]) {
+      expect(validateSpeakingInquiry({ ...VALID, email }).ok).toBe(true)
+    }
+  })
+
+  it("rejects reply-to values that are not one plain address", () => {
+    for (const email of [
+      "x<attacker@evil.test>",
+      "pat@example.com>",
+      "a,b@c.de",
+      "a@b.de,c@d.de",
+      "a;b@c.de",
+      "a@b.de;c@d.de",
+      "\"pat\"@example.com",
+    ]) {
+      const r = validateSpeakingInquiry({ ...VALID, email })
+      expect(r.ok, email).toBe(false)
+      if (!r.ok) expect(r.errors.email).toBe("Invalid email format")
+    }
+  })
+})

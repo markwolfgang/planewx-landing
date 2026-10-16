@@ -32,6 +32,7 @@ function req(body: unknown) {
 
 const ENV_KEYS = [
   "INQUIRY_EMAIL_DRY_RUN",
+  "VERCEL_ENV",
   "RESEND_API_KEY",
   "PARTNERSHIP_INQUIRY_EMAIL",
   "ADMIN_NOTIFICATION_EMAIL",
@@ -56,25 +57,87 @@ afterEach(() => {
 })
 
 describe("POST /api/events/speaking-inquiry", () => {
-  it("dry run returns hello@ and sara@ and the mapped fields without calling the mailer", async () => {
+  it("dry run (forced) answers success without calling the mailer or echoing recipients", async () => {
     process.env.INQUIRY_EMAIL_DRY_RUN = "1"
+    process.env.VERCEL_ENV = "production"
+    process.env.RESEND_API_KEY = "test-key-not-real"
     const res = await POST(req(BODY))
     expect(res.status).toBe(200)
     const json = await res.json()
     expect(json.dryRun).toBe(true)
-    expect(json.to).toEqual(["hello@planewx.ai", "sara@planewx.ai"])
-    expect(json.received).toEqual({ ...BODY, email: "pat@example.com" })
+    expect(json.to).toBeUndefined()
+    expect(JSON.stringify(json)).not.toContain("@planewx.ai")
     expect(send).not.toHaveBeenCalled()
   })
 
+  it("is dry run by default outside production, even with a mail key set", async () => {
+    process.env.RESEND_API_KEY = "test-key-not-real"
+    const log = vi.spyOn(console, "log").mockImplementation(() => {})
+    const info = vi.spyOn(console, "info").mockImplementation(() => {})
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {})
+    const err = vi.spyOn(console, "error").mockImplementation(() => {})
+    try {
+      for (const env of [undefined, "preview", "development"]) {
+        if (env === undefined) delete process.env.VERCEL_ENV
+        else process.env.VERCEL_ENV = env
+        const res = await POST(req(BODY))
+        expect(res.status).toBe(200)
+        const json = await res.json()
+        expect(json.dryRun).toBe(true)
+        expect(JSON.stringify(json)).not.toContain("@planewx.ai")
+      }
+      expect(send).not.toHaveBeenCalled()
+      const logged = [log, info, warn, err].flatMap((s) => s.mock.calls).map((c) => c.join(" "))
+      expect(logged.join("\n")).not.toContain("@planewx.ai")
+    } finally {
+      log.mockRestore()
+      info.mockRestore()
+      warn.mockRestore()
+      err.mockRestore()
+    }
+  })
+
+  it("INQUIRY_EMAIL_DRY_RUN=0 allows a real (mocked) send outside production", async () => {
+    process.env.INQUIRY_EMAIL_DRY_RUN = "0"
+    process.env.VERCEL_ENV = "preview"
+    process.env.RESEND_API_KEY = "test-key-not-real"
+    const res = await POST(req(BODY))
+    expect(res.status).toBe(200)
+    expect(send).toHaveBeenCalledTimes(1)
+  })
+
+  it("silently accepts and drops a filled honeypot", async () => {
+    process.env.VERCEL_ENV = "production"
+    process.env.RESEND_API_KEY = "test-key-not-real"
+    for (const body of [
+      { ...BODY, website: "https://spam.example" },
+      { website: "x" },
+    ]) {
+      const res = await POST(req(body))
+      expect(res.status).toBe(200)
+      const json = await res.json()
+      expect(json).toEqual({ success: true, message: "Thanks. We got your request and will reply soon." })
+    }
+    expect(send).not.toHaveBeenCalled()
+  })
+
+  it("an empty honeypot does not block a real request", async () => {
+    process.env.VERCEL_ENV = "production"
+    process.env.RESEND_API_KEY = "test-key-not-real"
+    const res = await POST(req({ ...BODY, website: "" }))
+    expect(res.status).toBe(200)
+    expect(send).toHaveBeenCalledTimes(1)
+  })
+
   it("sends one email to hello@ and sara@ with a speaking request subject and every field (mocked mailer)", async () => {
+    process.env.VERCEL_ENV = "production"
     process.env.RESEND_API_KEY = "test-key-not-real"
     const res = await POST(req(BODY))
     expect(res.status).toBe(200)
     expect(send).toHaveBeenCalledTimes(1)
     const arg = send.mock.calls[0][0]
     expect(arg.to).toEqual(["hello@planewx.ai", "sara@planewx.ai"])
-    expect(arg.replyTo).toBe("pat@example.com")
+    expect(arg.replyTo).toEqual(["pat@example.com"])
     expect(arg.from).toBe("PlaneWX <hello@planewx.ai>")
     expect(arg.subject).toBe("Speaking request: Example Safety Day (Example Pilots Association)")
     for (const [label, value] of [
@@ -120,6 +183,7 @@ describe("POST /api/events/speaking-inquiry", () => {
   })
 
   it("returns 500 when the mail key is missing outside dry run", async () => {
+    process.env.VERCEL_ENV = "production"
     const res = await POST(req(BODY))
     expect(res.status).toBe(500)
     expect(send).not.toHaveBeenCalled()

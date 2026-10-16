@@ -6,6 +6,7 @@ import {
 } from "@/lib/inquiry-rate-limit"
 import { resolveInquiryRecipients } from "@/lib/inquiry-recipients"
 import {
+  SPEAKING_INQUIRY_HONEYPOT,
   buildSpeakingInquiryEmail,
   validateSpeakingInquiry,
 } from "@/lib/speaking-inquiry"
@@ -14,6 +15,23 @@ export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
 const SUCCESS_MESSAGE = "Thanks. We got your request and will reply soon."
+
+/**
+ * Dry run (no email) unless this is the production deployment.
+ * INQUIRY_EMAIL_DRY_RUN=1 forces dry run anywhere; =0 allows a real send
+ * outside production (manual preview check only).
+ */
+function isDryRun(env: NodeJS.ProcessEnv = process.env): boolean {
+  if (env.INQUIRY_EMAIL_DRY_RUN === "1") return true
+  if (env.INQUIRY_EMAIL_DRY_RUN === "0") return false
+  return env.VERCEL_ENV !== "production"
+}
+
+function honeypotFilled(body: unknown): boolean {
+  if (body === null || typeof body !== "object" || Array.isArray(body)) return false
+  const value = (body as Record<string, unknown>)[SPEAKING_INQUIRY_HONEYPOT]
+  return typeof value === "string" ? value.trim() !== "" : value != null
+}
 
 export async function POST(request: Request) {
   try {
@@ -37,23 +55,23 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid request body" }, { status: 400 })
     }
 
+    // Honeypot: answer like a normal success so bots learn nothing; send nothing.
+    if (honeypotFilled(body)) {
+      return NextResponse.json({ success: true, message: SUCCESS_MESSAGE })
+    }
+
     const result = validateSpeakingInquiry(body)
     if (!result.ok) {
       return NextResponse.json({ error: result.error }, { status: 400 })
     }
     const data = result.data
-    const to = resolveInquiryRecipients()
 
-    // Local/CI verify only. Never set in production; skips Resend entirely.
-    if (process.env.INQUIRY_EMAIL_DRY_RUN === "1") {
-      return NextResponse.json({
-        success: true,
-        message: SUCCESS_MESSAGE,
-        dryRun: true,
-        to,
-        received: data,
-      })
+    // Skips Resend entirely. Never echoes recipients or the submitted data.
+    if (isDryRun()) {
+      console.info("[Speaking Inquiry] dry run: valid request, email not sent")
+      return NextResponse.json({ success: true, message: SUCCESS_MESSAGE, dryRun: true })
     }
+    const to = resolveInquiryRecipients()
 
     const resendApiKey = process.env.RESEND_API_KEY
     if (!resendApiKey) {
@@ -72,7 +90,7 @@ export async function POST(request: Request) {
     const { error } = await resend.emails.send({
       from,
       to,
-      replyTo: data.email,
+      replyTo: [data.email],
       subject,
       html,
     })
