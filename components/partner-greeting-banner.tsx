@@ -33,12 +33,18 @@ export function PartnerGreetingBanner() {
     setCode(resolved)
 
     // Check sessionStorage cache to avoid a network round-trip on every navigation.
+    // Only a real, non-empty greeting is a hit. A legacy "" sentinel is treated as a
+    // miss so a later load can fetch again after a code is added.
     const sessionKey = `${SESSION_KEY_PREFIX}${resolved}`
     try {
       const cached = sessionStorage.getItem(sessionKey)
       if (cached !== null) {
-        setGreeting(cached || null) // empty string == "no greeting" sentinel
-        return
+        if (cached === "") {
+          sessionStorage.removeItem(sessionKey)
+        } else {
+          setGreeting(cached)
+          return
+        }
       }
     } catch {}
 
@@ -47,8 +53,9 @@ export function PartnerGreetingBanner() {
       .then(({ greeting: g }: { greeting: string | null }) => {
         setGreeting(g ?? null)
         try {
-          // Cache the result (including null → "") so subsequent navigations are instant.
-          sessionStorage.setItem(sessionKey, g ?? "")
+          if (g) {
+            sessionStorage.setItem(sessionKey, g)
+          }
         } catch {}
       })
       .catch(() => {})
