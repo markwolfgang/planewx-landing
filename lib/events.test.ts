@@ -12,8 +12,9 @@ import {
 } from "./events"
 
 describe("events data", () => {
-  it("lists exactly the five approved events", () => {
+  it("lists exactly the six approved events", () => {
     expect(EVENTS.map((e) => e.id)).toEqual([
+      "wurst-fly-in-2026",
       "tbmopa-2026",
       "eaa-282-2026-11",
       "dtsb-summit-2027",
@@ -56,6 +57,25 @@ describe("events data", () => {
   it("has no booth numbers or promo codes", () => {
     const text = JSON.stringify(EVENTS).toLowerCase()
     expect(text).not.toMatch(/booth\s*#|booth\s+\d|promo|discount|coupon/)
+  })
+
+  it("lists the Wurst Fly-In (Oct 17, 11:00 AM-2:00 PM CT) before TBMOPA", () => {
+    const wurst = EVENTS.find((e) => e.id === "wurst-fly-in-2026")!
+    expect(wurst.startDate).toBe("2026-10-17")
+    expect(eventDateText(wurst)).toBe("Sat, Oct 17, 2026, 11:00 AM-2:00 PM CT")
+    expect(wurst.location).toContain("(KBTA), Hangar J")
+    const ids = getUpcomingEvents(EVENTS, "2026-10-16").map((e) => e.id)
+    expect(ids.indexOf("wurst-fly-in-2026")).toBe(ids.indexOf("tbmopa-2026") - 1)
+  })
+
+  it("keeps the Wurst Fly-In upcoming through its 2:00 PM CT end (dates compared in Chicago time)", () => {
+    const ids = (iso: string) => getUpcomingEvents(EVENTS, todayIso(new Date(iso))).map((e) => e.id)
+    // CDT (UTC-5) on Oct 17: 11:00 AM = 16:00Z, 1:59 PM = 18:59Z, 2:00 PM = 19:00Z.
+    expect(ids("2026-10-17T16:00:00Z")).toContain("wurst-fly-in-2026")
+    expect(ids("2026-10-17T18:59:00Z")).toContain("wurst-fly-in-2026")
+    expect(ids("2026-10-17T19:00:00Z")).toContain("wurst-fly-in-2026")
+    // Drops off after the day ends in Chicago (midnight CDT = 05:00Z Oct 18).
+    expect(ids("2026-10-18T05:00:00Z")).not.toContain("wurst-fly-in-2026")
   })
 })
 
