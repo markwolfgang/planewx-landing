@@ -15,6 +15,7 @@ export default defineConfig({
       "app/learn/**/*.test.ts",
       "app/learn/**/*.test.tsx",
       "app/ga-customs/**/*.test.ts",
+      "app/boldface/**/*.test.tsx",
     ],
   },
   resolve: {

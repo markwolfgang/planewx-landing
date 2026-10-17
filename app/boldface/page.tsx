@@ -16,7 +16,10 @@ import {
   BoldfaceCampaignTracker,
   BoldfacePlaneWxLink,
 } from "@/components/boldface-campaign-tracker"
-import { TestFlightBetaCta } from "@/components/testflight-beta-cta"
+import {
+  BETA_SUPPORTING_LINE,
+  TestFlightBetaCta,
+} from "@/components/testflight-beta-cta"
 import {
   BOLDFACE_APP_STORE_URL,
   BOLDFACE_TESTFLIGHT_URL,
@@ -139,20 +142,25 @@ export default function BoldfacePage() {
       </nav>
 
       <main className="container mx-auto max-w-5xl px-4 py-12 sm:py-16 space-y-14 sm:space-y-20">
-        {/* Hero — product app icon + locked BOLD FACE wordmark */}
-        <header className="relative space-y-8 text-center sm:text-left">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
-            <div className="mx-auto sm:mx-0 shrink-0">
-              <Image
-                src="/boldface/tbm-boldface-icon.png"
-                alt="TBM Boldface"
-                width={128}
-                height={128}
-                className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32"
-                priority
-              />
-            </div>
-            <div className="space-y-4 min-w-0 flex-1">
+        {/*
+          Hero: two-column grid on sm+ (app icon | content). Everything in the
+          content column (eyebrow, wordmark, copy, CTA row, captions) shares
+          one left edge. On mobile it is a single left-aligned column.
+        */}
+        <header className="relative grid grid-cols-1 gap-6 sm:grid-cols-[7rem_minmax(0,1fr)] md:grid-cols-[8rem_minmax(0,1fr)] sm:gap-x-8">
+          <div className="shrink-0">
+            <Image
+              src="/boldface/tbm-boldface-icon.png"
+              alt="TBM Boldface"
+              width={128}
+              height={128}
+              className="h-20 w-20 sm:h-28 sm:w-28 md:h-32 md:w-32"
+              priority
+            />
+          </div>
+
+          <div className="min-w-0 space-y-8">
+            <div className="space-y-4">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#3b82f6]">
                 From the PlaneWX family
               </p>
@@ -165,40 +173,58 @@ export default function BoldfacePage() {
                   alt="Bold Face"
                   width={560}
                   height={182}
-                  className="h-12 sm:h-14 md:h-16 w-auto mx-auto sm:mx-0"
+                  className="h-12 sm:h-14 md:h-16 w-auto"
                   priority
                 />
               </h1>
-              <p className="text-lg sm:text-xl text-white/65 max-w-xl leading-relaxed">
-                Free iPhone/iPad app for TBM memory items — study, test, and chair-fly
+              <p
+                className="text-lg sm:text-xl text-white/65 max-w-xl leading-relaxed"
+                data-testid="boldface-hero-copy"
+              >
+                Free iPhone/iPad app for TBM memory items. Study, test, and chair-fly
                 before the airplane asks.
               </p>
             </div>
-          </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-4">
-            <a
-              href={BOLDFACE_APP_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#3b82f6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
-            >
-              Download on the App Store
-              <ArrowRight className="h-4 w-4" />
-            </a>
-            <TestFlightBetaCta href={BOLDFACE_TESTFLIGHT_URL} />
-            <BoldfacePlaneWxLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
-              Get PlaneWX
-              <ArrowRight className="h-4 w-4" />
-            </BoldfacePlaneWxLink>
+            <div className="space-y-3">
+              <div
+                className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3"
+                data-testid="boldface-hero-ctas"
+              >
+                <a
+                  href={BOLDFACE_APP_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-transparent bg-[#3b82f6] hover:bg-sky-400 text-white px-8 py-3.5 font-semibold shadow-lg shadow-sky-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Download on the App Store
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+                <TestFlightBetaCta
+                  href={BOLDFACE_TESTFLIGHT_URL}
+                  showSupportingLine={false}
+                />
+                <BoldfacePlaneWxLink className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-white px-8 py-3.5 font-semibold transition-all">
+                  Get PlaneWX
+                  <ArrowRight className="h-4 w-4" />
+                </BoldfacePlaneWxLink>
+              </div>
+              <p
+                className="text-xs text-white/40 leading-relaxed max-w-xl"
+                data-testid="boldface-hero-beta-line"
+              >
+                Test the beta: {BETA_SUPPORTING_LINE}
+              </p>
+            </div>
+
+            <div className="space-y-1.5 text-sm text-white/40 leading-relaxed max-w-xl">
+              <p>
+                Free on the App Store for iPhone and iPad. Search TBM Boldface or tap
+                Download above.
+              </p>
+              <p>Brought to you by PlaneWX. Weather decision support lives on planewx.ai.</p>
+            </div>
           </div>
-          <p className="text-sm text-white/40 max-w-xl leading-relaxed">
-            Free on the App Store for iPhone and iPad — search TBM Boldface or tap
-            Download above.
-          </p>
-          <p className="text-sm text-white/40 max-w-lg">
-            Brought to you by PlaneWX. Weather decision support lives on planewx.ai.
-          </p>
         </header>
 
         {/* Screenshots */}
@@ -208,7 +234,7 @@ export default function BoldfacePage() {
               Inside the app
             </h2>
             <p className="text-white/55 leading-relaxed">
-              Home through Settings — the same screens you&apos;ll open in the app.
+              Home through Settings, the same screens you&apos;ll open in the app.
             </p>
           </div>
 

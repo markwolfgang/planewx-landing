@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react"
 
-const BETA_SUPPORTING_LINE =
+export const BETA_SUPPORTING_LINE =
   "for people who want the next version before it hits the App Store." as const
 
 const BUTTON_BASE =
@@ -12,6 +12,12 @@ type TestFlightBetaCtaProps = {
   size?: "default" | "compact"
   align?: "start" | "center" | "stretch"
   className?: string
+  /**
+   * Render the supporting line under the button. Pass false when the page
+   * shows the line itself (for example below a row of CTAs) so the button
+   * lines up with its siblings.
+   */
+  showSupportingLine?: boolean
 }
 
 export function TestFlightBetaCta({
@@ -19,6 +25,7 @@ export function TestFlightBetaCta({
   size = "default",
   align = "start",
   className,
+  showSupportingLine = true,
 }: TestFlightBetaCtaProps) {
   const padding =
     size === "compact" ? "px-6 py-3.5 w-full sm:w-auto" : "px-8 py-3.5"
@@ -40,9 +47,11 @@ export function TestFlightBetaCta({
         Test the beta
         <ArrowRight className="h-4 w-4" />
       </a>
-      <p className="text-xs text-white/40 leading-relaxed max-w-xs">
-        {BETA_SUPPORTING_LINE}
-      </p>
+      {showSupportingLine ? (
+        <p className="text-xs text-white/40 leading-relaxed max-w-xs">
+          {BETA_SUPPORTING_LINE}
+        </p>
+      ) : null}
     </div>
   )
 }
