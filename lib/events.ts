@@ -29,6 +29,23 @@ export const EVENTS_PAGE_DESCRIPTION =
 
 export const EVENTS: PlaneWxEvent[] = [
   {
+    id: "wurst-fly-in-2026",
+    name: "Wurst Fly-In Ever",
+    startDate: "2026-10-17",
+    dateLabel: "Sat, Oct 17, 2026, 11:00 AM-2:00 PM CT",
+    location: "Blair Executive Airport (KBTA), Hangar J, 2785 NE-133, Blair, NE 68008",
+    planewx: [
+      "Come meet the Founder of PlaneWX and discuss all things weather, risk management, airplanes.",
+    ],
+    details: [
+      "A day of aviation, community, and good food.",
+      "Free will donations. Proceeds support UNO's Women in Aviation.",
+      "Hot dogs, football, and good times.",
+      "Hosted by Omaha Aircraft and SkyWerx Aviation.",
+    ],
+    link: { href: "https://www.skywerxaviation.com", label: "SkyWerx Aviation" },
+  },
+  {
     id: "tbmopa-2026",
     name: "TBMOPA Convention",
     startDate: "2026-10-28",
