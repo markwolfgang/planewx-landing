@@ -13,6 +13,7 @@ import {
   shouldIndexLearnArticle,
   withOptionalTafDecodeLink,
   type LearnBodyBlock,
+  type LearnFaqItem,
   type LearnLoopStage,
   type PuttingItIntoPractice,
 } from "../learn-data"
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getLearnArticle(slug)
   if (!article) return {}
 
-  const title = `${article.title} · Learning Center`
+  const title = article.seoTitle ?? `${article.title} · Learning Center`
   const description = article.summary
   const canonical = `https://www.planewx.ai/learn/${slug}`
   const indexable = shouldIndexLearnArticle(article)
@@ -202,6 +203,39 @@ function LoopStageIndicator({ active }: { active: LearnLoopStage[] }) {
   )
 }
 
+function FaqSection({ faq }: { faq: LearnFaqItem[] }) {
+  return (
+    <section
+      aria-labelledby="faq-heading"
+      className="mt-12 border-t border-white/10 pt-8"
+    >
+      <h2
+        id="faq-heading"
+        className="mb-4 text-xl font-semibold tracking-tight text-white"
+      >
+        FAQ
+      </h2>
+      <div className="space-y-5">
+        {faq.map((item, i) => (
+          <div key={i}>
+            <h3 className="mb-1 text-base font-semibold text-white">
+              {item.question}
+            </h3>
+            <p className="text-base leading-relaxed text-white/75">
+              {renderInlineText(item.answer)}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/** Plain-text FAQ answer for JSON-LD: [label](href) becomes label. */
+function faqAnswerPlainText(text: string): string {
+  return text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1")
+}
+
 function PuttingItIntoPracticeSection({
   practice,
   draft,
@@ -326,6 +360,10 @@ export default async function LearnArticlePage({ params }: Props) {
           draft={article.draft}
         />
 
+        {article.faq && article.faq.length > 0 ? (
+          <FaqSection faq={article.faq} />
+        ) : null}
+
         <section
           aria-labelledby="sources-heading"
           className="mt-12 border-t border-white/10 pt-8"
@@ -379,6 +417,25 @@ export default async function LearnArticlePage({ params }: Props) {
                   name: "PlaneWX",
                   url: "https://www.planewx.ai",
                 },
+              }),
+            }}
+          />
+        ) : null}
+        {emitJsonLd && article.faq && article.faq.length > 0 ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: article.faq.map((item) => ({
+                  "@type": "Question",
+                  name: item.question,
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: faqAnswerPlainText(item.answer),
+                  },
+                })),
               }),
             }}
           />

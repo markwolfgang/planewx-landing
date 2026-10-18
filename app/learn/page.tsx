@@ -3,9 +3,9 @@ import Link from "next/link"
 import {
   AVIATION_WEATHER_HUB_PAGES,
   DECISION_MAKING_HUB_PAGES,
-  LEARN_ARTICLES,
   LEARN_PUBLIC,
   TIPS_EMPTY_LINE,
+  getLearnArticlesForHub,
   getPublishedTips,
   shouldIndexLearnHub,
 } from "./learn-data"
@@ -68,7 +68,7 @@ function buildCatalog(): Map<string, Entry> {
   for (const p of [...AVIATION_WEATHER_HUB_PAGES, ...DECISION_MAKING_HUB_PAGES]) {
     all.set(p.href, { href: p.href, title: p.title, summary: p.summary })
   }
-  for (const a of LEARN_ARTICLES) {
+  for (const a of getLearnArticlesForHub()) {
     const href = `/learn/${a.slug}`
     all.set(href, { href, title: a.title, summary: a.summary, draft: a.draft })
   }

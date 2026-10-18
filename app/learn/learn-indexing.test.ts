@@ -13,6 +13,7 @@ import {
   shouldIndexLearnArticle,
   shouldIndexLearnHub,
   getLearnArticle,
+  getLearnArticlesForHub,
 } from "./learn-data"
 
 describe("learn production indexing allow list", () => {
@@ -147,5 +148,35 @@ describe("learn production indexing allow list", () => {
     expect(
       getIndexableLearnArticles().some((a) => a.slug === futureSlug)
     ).toBe(false)
+  })
+
+  it("keeps the swiss cheese three strikes draft hidden: noindex, no sitemap, no hub, no JSON-LD", () => {
+    const slug = "swiss-cheese-model-three-strikes-rule"
+    const article = getLearnArticle(slug)!
+    expect(article).toBeDefined()
+    expect(article.draft).toBe(true)
+    expect(article.hiddenFromHub).toBe(true)
+    expect(isIndexableLearnArticleSlug(slug)).toBe(false)
+    expect(shouldIndexLearnArticle(article)).toBe(false)
+    expect(shouldEmitArticleJsonLd(article)).toBe(false)
+    expect(getIndexableLearnArticles().some((a) => a.slug === slug)).toBe(false)
+    expect(getLearnSitemapPaths()).not.toContain(`/learn/${slug}`)
+    expect(getLearnArticlesForHub().some((a) => a.slug === slug)).toBe(false)
+    expect(getLearnArticlesForHub().some((a) => a.slug === "risk-stacking")).toBe(true)
+  })
+
+  it("ships the swiss cheese draft with its title tag, FAQ and no em or en dashes", () => {
+    const article = getLearnArticle("swiss-cheese-model-three-strikes-rule")!
+    expect(article.title).toBe(
+      "The Three Strikes Rule: Risk Stacking and the Swiss Cheese Model"
+    )
+    expect(article.seoTitle).toBe(
+      "Swiss Cheese Model in Aviation and the Three Strikes Rule"
+    )
+    expect(article.summary.length).toBeLessThan(155)
+    expect(article.faq?.length).toBe(9)
+    const text = JSON.stringify(article)
+    expect(text).not.toMatch(/[\u2013\u2014]/)
+    expect(text).not.toMatch(/FAA approved/i)
   })
 })
