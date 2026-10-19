@@ -25,7 +25,7 @@ describe("learn production indexing allow list", () => {
     expect(shouldIndexLearnHub()).toBe(true)
   })
 
-  it("allowlists mos-vs-nbm-vs-taf, risk-stacking and the ASI case studies among [slug] articles", () => {
+  it("allowlists mos-vs-nbm-vs-taf, risk-stacking, the ASI case studies and the swiss cheese article among [slug] articles", () => {
     expect([...INDEXABLE_LEARN_ARTICLE_SLUGS]).toEqual([
       "mos-vs-nbm-vs-taf",
       "risk-stacking",
@@ -42,8 +42,12 @@ describe("learn production indexing allow list", () => {
       "high-aspirations",
       "deadly-disorientation",
       "faulty-assumptions",
+      "swiss-cheese-model-three-strikes-rule",
     ])
     expect(isIndexableLearnArticleSlug("risk-stacking")).toBe(true)
+    expect(
+      isIndexableLearnArticleSlug("swiss-cheese-model-three-strikes-rule")
+    ).toBe(true)
     expect(isIndexableLearnArticleSlug("mos-vs-nbm-vs-taf")).toBe(true)
     expect(isIndexableLearnArticleSlug("tcf-vs-ecfp")).toBe(false)
     expect(isIndexableLearnArticleSlug("what-the-wx-score-actually-is")).toBe(
@@ -56,6 +60,7 @@ describe("learn production indexing allow list", () => {
     expect(slugs).toEqual([
       "mos-vs-nbm-vs-taf",
       "risk-stacking",
+      "swiss-cheese-model-three-strikes-rule",
       "fair-weather-flier",
       "trapped-in-ice",
       "blind-over-bakersfield",
@@ -117,15 +122,16 @@ describe("learn production indexing allow list", () => {
     ])
   })
 
-  it("includes exactly 38 learn URLs in the sitemap path set", () => {
+  it("includes exactly 39 learn URLs in the sitemap path set", () => {
     const paths = getLearnSitemapPaths()
-    expect(paths).toHaveLength(38)
+    expect(paths).toHaveLength(39)
     expect(paths).toContain("/learn/trapped-in-ice")
     expect(paths[0]).toBe("/learn")
     expect(paths).toContain("/learn/aviation-weather/thunderstorms")
     expect(paths).toContain("/learn/aviation-weather/weather-risk")
     expect(paths).toContain("/learn/mos-vs-nbm-vs-taf")
     expect(paths).toContain("/learn/risk-stacking")
+    expect(paths).toContain("/learn/swiss-cheese-model-three-strikes-rule")
   })
 
   it("registers the TAF hub in LIVE_LEARN_ROUTES", () => {
@@ -150,22 +156,30 @@ describe("learn production indexing allow list", () => {
     ).toBe(false)
   })
 
-  it("keeps the swiss cheese three strikes draft hidden: noindex, no sitemap, no hub, no JSON-LD", () => {
+  it("publishes the swiss cheese three strikes article: indexed, in sitemap, on hub, JSON-LD", () => {
     const slug = "swiss-cheese-model-three-strikes-rule"
     const article = getLearnArticle(slug)!
     expect(article).toBeDefined()
-    expect(article.draft).toBe(true)
-    expect(article.hiddenFromHub).toBe(true)
-    expect(isIndexableLearnArticleSlug(slug)).toBe(false)
-    expect(shouldIndexLearnArticle(article)).toBe(false)
-    expect(shouldEmitArticleJsonLd(article)).toBe(false)
-    expect(getIndexableLearnArticles().some((a) => a.slug === slug)).toBe(false)
-    expect(getLearnSitemapPaths()).not.toContain(`/learn/${slug}`)
-    expect(getLearnArticlesForHub().some((a) => a.slug === slug)).toBe(false)
+    expect(article.draft).toBe(false)
+    expect(article.hiddenFromHub).toBeUndefined()
+    expect(isIndexableLearnArticleSlug(slug)).toBe(true)
+    expect(shouldIndexLearnArticle(article)).toBe(true)
+    expect(shouldEmitArticleJsonLd(article)).toBe(true)
+    expect(getIndexableLearnArticles().some((a) => a.slug === slug)).toBe(true)
+    expect(getLearnSitemapPaths()).toContain(`/learn/${slug}`)
+    expect(getLearnArticlesForHub().some((a) => a.slug === slug)).toBe(true)
     expect(getLearnArticlesForHub().some((a) => a.slug === "risk-stacking")).toBe(true)
+    expect(JSON.stringify(article)).not.toMatch(/\[VERIFY/i)
   })
 
-  it("ships the swiss cheese draft with its title tag, FAQ and no em or en dashes", () => {
+  it("links risk-stacking to the swiss cheese three strikes article", () => {
+    const rs = getLearnArticle("risk-stacking")!
+    expect(JSON.stringify(rs.body)).toContain(
+      "(/learn/swiss-cheese-model-three-strikes-rule)"
+    )
+  })
+
+  it("ships the swiss cheese article with its title tag, FAQ and no em or en dashes", () => {
     const article = getLearnArticle("swiss-cheese-model-three-strikes-rule")!
     expect(article.title).toBe(
       "The Three Strikes Rule: Risk Stacking and the Swiss Cheese Model"

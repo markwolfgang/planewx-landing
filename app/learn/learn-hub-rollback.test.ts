@@ -66,6 +66,7 @@ describe("learn hub LEARN_PUBLIC rollback gating", () => {
       ...DECISION_MAKING_HUB_PAGES.map((p) => p.href),
       "/learn/mos-vs-nbm-vs-taf",
       "/learn/risk-stacking",
+      "/learn/swiss-cheese-model-three-strikes-rule",
       "/learn/fair-weather-flier",
       "/learn/trapped-in-ice",
       "/learn/blind-over-bakersfield",

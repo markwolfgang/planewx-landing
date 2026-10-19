@@ -20,7 +20,8 @@ export const LEARN_PUBLIC_MIN_ARTICLES = 3
  * LEARN_PUBLIC is true and draft is false. Tips of the Week are never on this
  * list (hub archive only). Add a slug here deliberately when SEO clears it.
  *
- * Shipped now: mos-vs-nbm-vs-taf, risk-stacking.
+ * Shipped now: mos-vs-nbm-vs-taf, risk-stacking, the ASI case studies,
+ * swiss-cheese-model-three-strikes-rule.
  * Still gated: tcf-vs-ecfp, tip what-the-wx-score-actually-is, Tips archive.
  */
 export const INDEXABLE_LEARN_ARTICLE_SLUGS = [
@@ -39,6 +40,7 @@ export const INDEXABLE_LEARN_ARTICLE_SLUGS = [
   "high-aspirations",
   "deadly-disorientation",
   "faulty-assumptions",
+  "swiss-cheese-model-three-strikes-rule",
 ] as const
 
 export type LearnSection =
@@ -607,7 +609,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "In hindsight, the stack is easy to see. In the moment, each item arrives one at a time, and each one looks small. The habit that helps is a running count. Name each risk as it shows up, sort it into pilot, aircraft, environment or external pressure, and notice when the count reaches three. Many pilots set a personal rule, such as stopping to rethink the plan when three risks are elevated.",
+        text: "In hindsight, the stack is easy to see. In the moment, each item arrives one at a time, and each one looks small. The habit that helps is a running count. Name each risk as it shows up, sort it into pilot, aircraft, environment or external pressure, and notice when the count reaches three. Many pilots set a personal rule, such as stopping to rethink the plan when three risks are elevated. That habit is often called the [three strikes rule](/learn/swiss-cheese-model-three-strikes-rule), and the Swiss cheese model explains why it works.",
       },
       {
         type: "list",
@@ -655,10 +657,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     summary:
       "The Swiss cheese model explains how small risks line up into an accident. See how the three strikes rule and a FRAT help pilots spot stacked risks.",
     lastReviewed: "2026-10-17",
-    // Hidden draft preview: direct URL only. Noindex, out of the sitemap and
-    // off the /learn hub until Mark approves. Not on the indexing allow list.
-    draft: true,
-    hiddenFromHub: true,
+    draft: false,
     body: [
       { type: "paragraph", text: "Ask experienced pilots how they make the fly or stay call and you'll hear some version of this rule. Night is a strike. IMC is a strike. Mountains are a strike. All three, and the airplane stays in the hangar. The rule works because of an idea accident investigators have used for decades: the Swiss cheese model." },
       { type: "heading", text: "What is the Swiss cheese model in aviation?" },
