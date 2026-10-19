@@ -20,7 +20,8 @@ export const LEARN_PUBLIC_MIN_ARTICLES = 3
  * LEARN_PUBLIC is true and draft is false. Tips of the Week are never on this
  * list (hub archive only). Add a slug here deliberately when SEO clears it.
  *
- * Shipped now: mos-vs-nbm-vs-taf, risk-stacking.
+ * Shipped now: mos-vs-nbm-vs-taf, risk-stacking, the ASI case studies,
+ * swiss-cheese-model-three-strikes-rule.
  * Still gated: tcf-vs-ecfp, tip what-the-wx-score-actually-is, Tips archive.
  */
 export const INDEXABLE_LEARN_ARTICLE_SLUGS = [
@@ -39,6 +40,7 @@ export const INDEXABLE_LEARN_ARTICLE_SLUGS = [
   "high-aspirations",
   "deadly-disorientation",
   "faulty-assumptions",
+  "swiss-cheese-model-three-strikes-rule",
 ] as const
 
 export type LearnSection =
@@ -46,7 +48,18 @@ export type LearnSection =
   | "Weather Knowledge"
   | "Decision-Making"
 
-export type LearnPublisher = "FAA" | "NWS" | "AWC" | "MDL" | "NTSB" | "AOPA ASI"
+export type LearnPublisher =
+  | "FAA"
+  | "NWS"
+  | "AWC"
+  | "MDL"
+  | "NTSB"
+  | "AOPA ASI"
+  | "AOPA"
+  | "BMJ"
+  | "SKYbrary"
+  | "HFACS"
+  | "eCFR"
 
 export interface LearnSource {
   label: string
@@ -105,9 +118,20 @@ export interface PuttingItIntoPractice {
   }
 }
 
+/** One FAQ entry. Answer text supports [label](href) links. */
+export interface LearnFaqItem {
+  question: string
+  answer: string
+}
+
 export interface LearnArticle {
   slug: string
   title: string
+  /**
+   * Optional title tag override (the H1 stays `title`). Defaults to the
+   * standard Learning Center title. The root layout appends " | PlaneWX".
+   */
+  seoTitle?: string
   section: LearnSection
   summary: string
   body: LearnBodyBlock[]
@@ -123,6 +147,18 @@ export interface LearnArticle {
    * sitemap. Bodies must not invent weather facts until a reviewed fact pack lands.
    */
   draft: boolean
+  /**
+   * Hidden draft preview: keep the article off the /learn hub (direct URL
+   * only). Pair with draft: true so it also stays noindex and out of the
+   * sitemap. Remove when the article ships.
+   */
+  hiddenFromHub?: boolean
+  /**
+   * Optional FAQ rendered after "Putting it into practice". FAQPage JSON-LD
+   * is emitted only when shouldEmitArticleJsonLd is true (same gate as the
+   * Article JSON-LD), so drafts and non-allowlisted articles emit none.
+   */
+  faq?: LearnFaqItem[]
 }
 
 /**
@@ -573,7 +609,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       },
       {
         type: "paragraph",
-        text: "In hindsight, the stack is easy to see. In the moment, each item arrives one at a time, and each one looks small. The habit that helps is a running count. Name each risk as it shows up, sort it into pilot, aircraft, environment or external pressure, and notice when the count reaches three. Many pilots set a personal rule, such as stopping to rethink the plan when three risks are elevated.",
+        text: "In hindsight, the stack is easy to see. In the moment, each item arrives one at a time, and each one looks small. The habit that helps is a running count. Name each risk as it shows up, sort it into pilot, aircraft, environment or external pressure, and notice when the count reaches three. Many pilots set a personal rule, such as stopping to rethink the plan when three risks are elevated. That habit is often called the [three strikes rule](/learn/swiss-cheese-model-three-strikes-rule), and the Swiss cheese model explains why it works.",
       },
       {
         type: "list",
@@ -610,6 +646,190 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         label: "NTSB Aviation Investigation Final Report WPR22FA151 (N928JP)",
         url: "https://data.ntsb.gov/carol-repgen/api/Aviation/ReportMain/GenerateNewestReport/104938/pdf",
         publisher: "NTSB",
+      },
+    ],
+  },
+  {
+    slug: "swiss-cheese-model-three-strikes-rule",
+    title: "The Three Strikes Rule: Risk Stacking and the Swiss Cheese Model",
+    seoTitle: "Swiss Cheese Model in Aviation and the Three Strikes Rule",
+    section: "Decision-Making",
+    summary:
+      "The Swiss cheese model explains how small risks line up into an accident. See how the three strikes rule and a FRAT help pilots spot stacked risks.",
+    lastReviewed: "2026-10-17",
+    draft: false,
+    body: [
+      { type: "paragraph", text: "Ask experienced pilots how they make the fly or stay call and you'll hear some version of this rule. Night is a strike. IMC is a strike. Mountains are a strike. All three, and the airplane stays in the hangar. The rule works because of an idea accident investigators have used for decades: the Swiss cheese model." },
+      { type: "heading", text: "What is the Swiss cheese model in aviation?" },
+      { type: "paragraph", text: "The Swiss cheese model says accidents rarely have one cause. Every flight has layers of defense, each with weaknesses, and an accident happens when weaknesses in several layers line up at once." },
+      { type: "paragraph", text: "Psychologist James Reason pictured these defenses as slices of Swiss cheese whose holes keep opening, shutting and shifting. Trouble comes \"when the holes in many layers momentarily line up to permit a trajectory of accident opportunity\" ([Reason, BMJ, 2000](https://pmc.ncbi.nlm.nih.gov/articles/PMC1117770/)). The FAA uses the same picture in its Risk Management Handbook, where each slice is a defense against threats, errors and undesired aircraft states ([FAA-H-8083-2A, p. 6-5, Figure 6-1](https://www.faa.gov/sites/faa.gov/files/2022-06/risk_management_handbook_2A.pdf))." },
+      { type: "heading", text: "What do the holes represent in the Swiss cheese model?" },
+      { type: "paragraph", text: "The holes are weaknesses in a defense. Reason sorted them into two kinds: active failures and latent conditions." },
+      { type: "paragraph", text: "Active failures are unsafe acts by the people at the controls, such as slips, lapses and mistakes. Latent conditions sit in the system until they combine with an active failure. Reason wrote that nearly all adverse events involve both ([Reason, BMJ, 2000](https://pmc.ncbi.nlm.nih.gov/articles/PMC1117770/))." },
+      { type: "heading", text: "What are the four layers of the Swiss cheese model?" },
+      { type: "paragraph", text: "The four layers usually named are organizational influences, unsafe supervision, preconditions for unsafe acts and unsafe acts. SKYbrary describes these as the four levels of failure in Reason's model ([SKYbrary](https://skybrary.aero/articles/james-reason-hf-model))." },
+      { type: "paragraph", text: "The Human Factors Analysis and Classification System (HFACS), developed by Scott Shappell and Doug Wiegmann, uses the same four levels ([HFACS](https://www.hfacs.com/hfacs-framework.html)). Preconditions include weather, terrain and the pilot's own state, such as stress, fatigue or illness ([SKYbrary, HFACS](https://skybrary.aero/articles/human-factors-analysis-and-classification-system-hfacs))." },
+      { type: "heading", text: "What is the three strikes rule for pilots?" },
+      { type: "paragraph", text: "The three strikes rule is a personal practice some pilots use: if three risk factors show up on the same flight, they cancel or change the plan." },
+      { type: "paragraph", text: "A strike eats into your margin without breaking a hard limit. Below your written minimums isn't a strike, it's a stop." },
+      { type: "heading", text: "How does risk stacking line up the holes?" },
+      { type: "paragraph", text: "Risk stacking is several manageable risks adding up on one flight. Each strike is a hole, so three strikes means three holes lined up before engine start. AOPA uses the Swiss cheese model to explain it ([AOPA](https://www.aopa.org/news-and-media/all-news/2023/june/pilot/asi-safety-tip-swiss-cheese))." },
+      {
+        type: "list",
+        items: [
+          "Night. In AOPA ASI's 2017 to 2021 night accident review, 26 percent of night VMC accidents were fatal, versus more than 67 percent in night IMC ([AOPA ASI](https://www.aopa.org/training-and-safety/air-safety-institute/accident-analysis/night-flying-accident-report/flight-conditions)).",
+          "IMC. The FAA found 180 IMC-related GA accidents in NTSB data from 2014 to 2023, with a fatality rate above 82 percent ([FAA Safety Briefing](https://www.faa.gov/blog/clearedfortakeoff/silver-linings-silver-bullets-and-other-fictions-avoiding-vfr-flight)).",
+          "Mountainous terrain. The Risk Management Handbook lists night and mountainous terrain among common contributors to controlled flight into terrain ([FAA-H-8083-2A, p. 3-4](https://www.faa.gov/sites/faa.gov/files/2022-06/risk_management_handbook_2A.pdf)).",
+        ],
+      },
+      { type: "paragraph", text: "In a 2001 Beech A36 accident near Jackson Hole, a non-instrument-rated pilot continued VFR into instrument conditions over mountains he told ATC he didn't know. ASI's summary: \"This pilot had numerous factors stacked against him\" ([AOPA ASI](https://www.aopa.org/training-and-safety/air-safety-institute/accident-analysis/featured-accidents/epilot-asf-accident-reports-three-strikes-and-youre-out)). For a full case study, see our [risk stacking](/learn/risk-stacking) article on ASI's Burley Caravan accident ([AOPA ASI video](https://www.aopa.org/training-and-safety/online-learning/accident-case-studies/risk-stacking))." },
+      { type: "heading", text: "Is the three strikes rule an FAA rule?" },
+      { type: "paragraph", text: "No. It's a personal practice, not an FAA regulation. The FAA's risk guidance for pilots is the Risk Management Handbook, which teaches the [PAVE checklist](/blog/pave-risk-assessment-weather) and written [personal minimums](/learn/aviation-weather/weather-risk)." },
+      { type: "paragraph", text: "PAVE sorts hazards into Pilot, Aircraft, enVironment and External pressures, and the Pilot's Handbook of Aeronautical Knowledge pairs it with IMSAFE. It also warns that several less critical decisions, \"when added together can create a critical outcome\" ([PHAK, Chapter 2](https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf)). The Risk Management Handbook gives personal minimums a full chapter ([FAA-H-8083-2A](https://www.faa.gov/regulationspolicies/handbooksmanuals/risk-management-handbook-faa-h-8083-2a))." },
+      { type: "heading", text: "Where does a simple risk count fall short?" },
+      { type: "paragraph", text: "Counting has three blind spots: it misses what you don't notice, treats every strike as equal, and is easy to fudge." },
+      { type: "paragraph", text: "It only counts what you notice. Night and mountains are easy to see. Fatigue, an unfamiliar airport or a dinner reservation at the destination are easy to miss. The FAA Safety Team agrees: \"The mind has a tendency to isolate individual risks, which can lead to an underestimation of their collective impact\" ([FAASTeam FRAT](https://www.faa.gov/general/flight-risk-assessment-tool-frat-faa-safety-team))." },
+      { type: "paragraph", text: "It counts but doesn't weigh. A gusty wind and a night IMC layer over high terrain are each one strike, but not the same size. The FAA advises picking the more conservative rating when you're unsure ([FAA-H-8083-2A, p. 4-2](https://www.faa.gov/sites/faa.gov/files/2022-06/risk_management_handbook_2A.pdf))." },
+      { type: "paragraph", text: "It's easy to fudge. The same page warns that pilots sometimes skew inputs toward a lower risk level \"due to the desire to complete a flight.\"" },
+      { type: "heading", text: "How does a FRAT show stacked risk factors?" },
+      { type: "paragraph", text: "A [flight risk assessment tool](/learn/flight-risk-assessment-tool) (FRAT) is the strikes rule written down. The FAA calls FRATs a way to \"detect building risk before it becomes apparent in any one factor\" ([FAA Safety Briefing](https://www.faa.gov/blog/clearedfortakeoff/silver-linings-silver-bullets-and-other-fictions-avoiding-vfr-flight))." },
+      { type: "paragraph", text: "The PlaneWX FRAT is built on PAVE, with IMSAFE in the Pilot step. It opens within 4 hours of departure and pre-fills hints it already knows: day or night, the WX Score breakdown, airport complexity, night currency and whether you've flown into that destination before. Your own LOW, MEDIUM or HIGH ratings override every suggestion." },
+      { type: "paragraph", text: "When three or more elevated factors stack on one flight, the FRAT shows a Risks are stacking banner with the count and the factors behind it. Take the classic three: night, weather rated MEDIUM and terrain rated MEDIUM. Add the hidden ones. You're fatigued, the destination is new to you, friends are waiting and you answered yes to get-there-itis. The banner reads seven, not three." },
+      { type: "paragraph", text: "The banner doesn't change the WX Score or your FRAT levels, and it doesn't make the call. At MEDIUM or HIGH overall risk, the FRAT offers the FAA TEAM options (Transfer, Eliminate, Accept, Mitigate). Then you record GO, NO-GO, Postpone or Modify. PlaneWX never recommends GO or NO-GO. The pilot always decides." },
+      { type: "paragraph", text: "It fits the PlaneWX loop: Brief, Assess, Decide, Debrief, starting with the WX Score briefing. On an obviously low-risk flight the FRAT is optional. When the score comes in low, the FRAT is where you name risks and mitigations, and a mentor can review it with you if concerns remain. The FRAT is on the free plan with no restrictions." },
+      { type: "heading", text: "What else should a pilot weigh besides a risk count?" },
+      { type: "paragraph", text: "A risk count is one input, not the decision. Also read the NOTAMs, listen to the ATIS, check PIREPs, get a complete official weather briefing, and use your own judgment." },
+      { type: "paragraph", text: "Federal rules require the PIC to \"become familiar with all available information concerning that flight\" before it begins ([14 CFR 91.103](https://www.ecfr.gov/current/title-14/section-91.103)). PlaneWX is not a substitute for a complete, independent preflight briefing, and no app or AI makes the fly or stay call for you." },
+      { type: "heading", text: "How do you build your own strikes list?" },
+      {
+        type: "list",
+        items: [
+          "Write your hard limits first. Ceiling, visibility, crosswind and night rules go in [personal minimums](/blog/personal-minimums-weather-planning). They're stops, not strikes.",
+          "List your strikes by PAVE. Pilot: [IMSAFE](/learn/imsafe-checklist) and recency. Aircraft: squawks, fuel, runway fit. Environment: night, IMC, terrain, unfamiliar airports. External: passengers, deadlines, get-there-itis.",
+          "Weigh the big ones. Decide in advance which items count double for you.",
+          "Recount when things change. A new forecast or a missed approach adds to the count. It doesn't reset it.",
+          "Debrief the count. Did the strikes you counted match what you felt?",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What is the three strikes rule in aviation?",
+        answer: "A personal rule: if three risk factors such as night, IMC and mountains stack on one flight, the pilot cancels or changes the plan.",
+      },
+      {
+        question: "Is the three strikes rule the same as personal minimums?",
+        answer: "No. Personal minimums are hard limits. Strikes are factors inside your limits that add up.",
+      },
+      {
+        question: "Who coined the Swiss cheese model?",
+        answer: "British psychologist James Reason, in his work on human error from 1990. He summarized it in the BMJ in 2000.",
+      },
+      {
+        question: "What does the Swiss cheese model have to do with flying?",
+        answer: "Defenses are slices with holes. Accidents happen when the holes line up. Each strike is a hole.",
+      },
+      {
+        question: "What does the dirty dozen mean in aviation?",
+        answer: "The FAA defines the Dirty Dozen as the twelve most common maintenance-related causes of errors: lack of communication, complacency, lack of knowledge, distraction, lack of teamwork, fatigue, lack of resources, pressure, lack of assertiveness, stress, lack of awareness and norms ([FAA](https://www.faa.gov/about/initiatives/maintenance_hf)). Several apply in the cockpit too.",
+      },
+      {
+        question: "What does FRAT mean in aviation?",
+        answer: "Flight Risk Assessment Tool: a form or app for rating hazards before a flight. The FAA Safety Team says a FRAT \"is not designed to make the go/no-go decision for you.\"",
+      },
+      {
+        question: "What is a good risk assessment tool for aviation?",
+        answer: "One you'll use every flight: the FAA Safety Team's online FRAT, the Risk Management Handbook's PAVE forms, or an app-based FRAT like PlaneWX's.",
+      },
+      {
+        question: "Does the PlaneWX FRAT tell me whether to fly?",
+        answer: "No. It surfaces the factors and flags three or more. You make the call as PIC.",
+      },
+      {
+        question: "What hidden risks does a FRAT catch that a mental count misses?",
+        answer: "Fatigue, an unfamiliar destination, airport complexity, open squawks and get-there-itis.",
+      },
+    ],
+    puttingItIntoPractice: {
+      heading: "Putting the strikes rule into practice",
+      whyItMattersHeading: "Why a written count matters when you fly single pilot",
+      toolOrHabitHeading: "PlaneWX FRAT: seeing the whole stack",
+      whyItMatters:
+        "Without a dispatcher or a second pilot, nobody else keeps the tally. Writing the count down before departure makes the stack visible while you still have options. The pilot makes the fly or stay call.",
+      loopStage: ["FRAT", "GO / NO-GO"],
+      toolOrHabit:
+        "The PlaneWX FRAT counts elevated self-rates and named concerns across Pilot, Aircraft, enVironment and External pressure, and shows a Risks are stacking banner at three or more. It does not make the call and does not change the WX Score. You record your own decision.",
+    },
+    sources: [
+      {
+        label: "Reason, J. Human error: models and management. BMJ 2000;320:768-770",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1117770/",
+        publisher: "BMJ",
+      },
+      {
+        label: "SKYbrary: James Reason HF Model",
+        url: "https://skybrary.aero/articles/james-reason-hf-model",
+        publisher: "SKYbrary",
+      },
+      {
+        label: "SKYbrary: Human Factors Analysis and Classification System (HFACS)",
+        url: "https://skybrary.aero/articles/human-factors-analysis-and-classification-system-hfacs",
+        publisher: "SKYbrary",
+      },
+      {
+        label: "HFACS, Inc: The HFACS Framework",
+        url: "https://www.hfacs.com/hfacs-framework.html",
+        publisher: "HFACS",
+      },
+      {
+        label: "AOPA: Swiss cheese, using risk stacking to mitigate accidents (ASI safety tip, 2023)",
+        url: "https://www.aopa.org/news-and-media/all-news/2023/june/pilot/asi-safety-tip-swiss-cheese",
+        publisher: "AOPA",
+      },
+      {
+        label: "AOPA Air Safety Institute: Accident Case Study: Risk Stacking (video)",
+        url: "https://www.aopa.org/training-and-safety/online-learning/accident-case-studies/risk-stacking",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "AOPA Air Safety Institute: Night Flying 2017 to 2021, Flight Conditions",
+        url: "https://www.aopa.org/training-and-safety/air-safety-institute/accident-analysis/night-flying-accident-report/flight-conditions",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "AOPA Air Safety Institute: Three Strikes and You're Out (NTSB DEN01FA070)",
+        url: "https://www.aopa.org/training-and-safety/air-safety-institute/accident-analysis/featured-accidents/epilot-asf-accident-reports-three-strikes-and-youre-out",
+        publisher: "AOPA ASI",
+      },
+      {
+        label: "FAA Risk Management Handbook (FAA-H-8083-2A): Chapter 2, pp. 3-4, 4-2, 6-5 and Figure 6-1",
+        url: "https://www.faa.gov/sites/faa.gov/files/2022-06/risk_management_handbook_2A.pdf",
+        publisher: "FAA",
+      },
+      {
+        label: "FAA Pilot's Handbook of Aeronautical Knowledge, Chapter 2: Aeronautical Decision-Making",
+        url: "https://www.faa.gov/sites/faa.gov/files/04_phak_ch2.pdf",
+        publisher: "FAA",
+      },
+      {
+        label: "FAA Safety Team: Flight Risk Assessment Tool (FRAT)",
+        url: "https://www.faa.gov/general/flight-risk-assessment-tool-frat-faa-safety-team",
+        publisher: "FAA",
+      },
+      {
+        label: "FAA Safety Briefing: Silver Linings, Silver Bullets, and Other Fictions: Avoiding VFR Flight Into Instrument Weather",
+        url: "https://www.faa.gov/blog/clearedfortakeoff/silver-linings-silver-bullets-and-other-fictions-avoiding-vfr-flight",
+        publisher: "FAA",
+      },
+      {
+        label: "FAA: Human Factors in Aviation Maintenance (Dirty Dozen)",
+        url: "https://www.faa.gov/about/initiatives/maintenance_hf",
+        publisher: "FAA",
+      },
+      {
+        label: "14 CFR 91.103, Preflight action",
+        url: "https://www.ecfr.gov/current/title-14/section-91.103",
+        publisher: "eCFR",
       },
     ],
   },
@@ -2145,9 +2365,12 @@ export function getLearnArticle(slug: string): LearnArticle | undefined {
   return LEARN_ARTICLES.find((a) => a.slug === slug)
 }
 
-/** Hub list: drafts stay visible so editorial review can walk the slots. */
+/**
+ * Hub list: drafts stay visible so editorial review can walk the slots.
+ * Hidden draft previews (hiddenFromHub) are direct URL only.
+ */
 export function getLearnArticlesForHub(): LearnArticle[] {
-  return LEARN_ARTICLES
+  return LEARN_ARTICLES.filter((a) => !a.hiddenFromHub)
 }
 
 export function getArticlesBySection(section: LearnSection): LearnArticle[] {

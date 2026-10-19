@@ -80,6 +80,7 @@ export const DECISION_GROUP: HubGroup = {
     "/learn/flight-risk-assessment-tool",
     "/learn/imsafe-checklist",
     "/learn/risk-stacking",
+    "/learn/swiss-cheese-model-three-strikes-rule",
     "/learn/controlled-flight-into-terrain",
   ],
 }
