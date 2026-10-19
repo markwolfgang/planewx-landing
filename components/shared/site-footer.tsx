@@ -1,17 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { FaInstagram, FaFacebook, FaXTwitter, FaTiktok, FaYoutube } from "react-icons/fa6"
 import { CookiePrefsLinks } from "@/components/cookie-prefs-links"
 import { BrandLogo } from "@/components/shared/brand-logo"
+import { SOCIAL_LINKS } from "@/components/shared/social-links"
 
-const SOCIAL_LINKS = [
-  { icon: FaInstagram, href: "https://instagram.com/plane_wx", label: "Instagram" },
-  { icon: FaFacebook, href: "https://facebook.com/planewxai", label: "Facebook" },
-  { icon: FaXTwitter, href: "https://x.com/planewxai", label: "X" },
-  { icon: FaTiktok, href: "https://tiktok.com/@planewx", label: "TikTok" },
-  { icon: FaYoutube, href: "https://youtube.com/@planewx", label: "YouTube" },
-]
 
 export function SiteFooter({ variant }: { variant: string }) {
   void variant

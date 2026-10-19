@@ -2,6 +2,7 @@
 // To add an item: prepend a new object to NEWS_ITEMS (newest first). Body is HTML.
 
 import { FIVE_X_FIVE_SEES_LINE } from "@/lib/five-x-five"
+import { labsBadgeHtml, planBadgeHtml } from "@/components/shared/plan-badge"
 
 export type NewsCategory = "Partnerships" | "Product" | "Press Release" | "Company"
 
@@ -45,6 +46,10 @@ export interface NewsItem {
     title: string
     caption?: string
   }
+  /** Render the founder handwritten sign-off under the body. */
+  signature?: boolean
+  /** Optional link shown under the founder signature. */
+  signatureLink?: { href: string; label: string }
   coBrand?: {
     name: string
     logo: string
@@ -55,6 +60,76 @@ export interface NewsItem {
 }
 
 export const NEWS_ITEMS: NewsItem[] = [
+  {
+    slug: "weekly-pirep-2026-10-12",
+    category: "Product",
+    title: "The Weekly PIREP: Edition 3",
+    excerpt:
+      "What shipped for pilots last week (Mon Oct 5 through Sun Oct 11), a count of the polish work, a mission pulse, and one tip on checking yourself before the weather.",
+    date: "October 12, 2026",
+    isoDate: "2026-10-12",
+    draft: true,
+    signature: true,
+    signatureLink: { href: "https://www.youtube.com/@markflieshigh", label: "Watch my flying on YouTube" },
+    body: `
+<p>Hi fellow pilots,</p>
+<p>This is The Weekly PIREP, my Monday note on what shipped in PlaneWX last week (Mon Oct 5 through Sun Oct 11). I'll keep it short.</p>
+
+<h2>My flying this week</h2>
+<p>On Thursday, Oct 8, I flew the TBM home to Granbury in two legs: Pagosa Springs (KPSO) to Albuquerque (KABQ), then KABQ to KGDJ.</p>
+<p>KPSO to KABQ: the WX Score was 100% early and 95% on the briefing I used, about an hour before departure. I ran a FRAT. Afterward I rated every briefing section accurate: ceilings and visibility, icing, turbulence, winds aloft, convective, AIRMETs and SIGMETs. No weather hold, cruise altitude as planned, route as briefed.</p>
+<p>KABQ to KGDJ: 90% early, 85% at the briefing I used, again with a FRAT, and again every section matched what I flew.</p>
+<p>[MARK: what you noticed or learned on these legs, and what your Self Debrief said, if you did one.]</p>
+<p>[MARK: any other flights Oct 5 to 11 to add.]</p>
+
+<h2>What's new</h2>
+<p>Here's what you can see and use in the app now.</p>
+<ul>
+  <li>${planBadgeHtml()}<br /><strong>The PlaneWX AI connector reads your stored briefing.</strong> The connector can pull your stored trip briefing, the same one you see in the app, and scoring runs can include density altitude and runway performance. Works in Claude, Grok, ChatGPT and Gemini. Learn more in <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to your AI assistant</a>.</li>
+  <li><strong>Model guidance when no TAF covers an hour.</strong> Live scoring can fill that hour from model guidance (NBM). Learn more in <a href="https://app.planewx.ai/help/wx-score">WX Score</a>.</li>
+  <li><strong>Named-storm caution.</strong> Briefings show a caution line when a National Hurricane Center named storm is relevant. It states the facts only and does not change the score. Learn more in <a href="https://app.planewx.ai/help/understanding-briefings">Understanding Your Briefing</a>.</li>
+  <li><strong>Confirm flown: pick the aircraft you actually flew.</strong> When you confirm a trip as flown, you can choose the aircraft.</li>
+  <li><strong>Self Debrief by voice.</strong> You can dictate your debrief in the app. Learn more in <a href="https://app.planewx.ai/help/self-debrief">Self Debrief</a>.</li>
+  <li><strong>ETD and ETA on My Trips.</strong> Every trip card shows ETD and ETA. Learn more in <a href="https://app.planewx.ai/help/managing-trips">Managing Trips</a>.</li>
+</ul>
+
+<h2>Features we're working on</h2>
+<p>These are still being built and tested. None of them are available to pilots yet.</p>
+<ul>
+  <li><strong>In-flight satellite phone texts.</strong>${labsBadgeHtml()} I'm testing texts to an Iridium sat phone while you're airborne: an alert if the destination WX Score drops to 0%, and arrival ATIS with a METAR fallback. It's in Labs and not available to pilots yet.</li>
+  <li><strong>Readiness quiz.</strong> A quick memory and recall check, opened from a link on the FRAT. Your results are private and don't change your FRAT.</li>
+  <li><strong>FRAT experience factor.</strong> Time in type and total time would inform the FRAT suggestion. Your own personal minimums stay in charge.</li>
+</ul>
+
+<h2>Because you told us</h2>
+<p>Donny emailed me asking for ETA right on My Trips so he wouldn't have to open each briefing. Great idea. It shipped that same Sunday. Thanks, Donny!</p>
+
+<h2>The FRAT</h2>
+<p>I think the FRAT matters as much as the weather briefing. Weather is one part of the picture. You, the airplane and the pressures around the trip are the rest. If you haven't checked out the FRAT lately, there have been a lot of improvements:</p>
+<ul>
+  <li>Each step shows the PlaneWX suggestion first, then your own rating, then room for notes.</li>
+  <li>When External is HIGH, the FRAT names every pressure that contributed.</li>
+  <li>The Risks are stacking banner counts only the steps you've reached.</li>
+  <li>After a NO-GO decision, you can cancel the trip, including its sibling legs, right from the FRAT result, and restore cancelled legs later.</li>
+  <li>It uses your last 7 days of flying, lets you edit that currency figure, and skips the night-currency question on daylight flights.</li>
+  <li>Your Unfamiliar destination answer now stays with the assessment.</li>
+</ul>
+<p>Learn more in <a href="https://app.planewx.ai/help/frat">FRAT</a>. Or watch me use it: <a href="https://youtu.be/z8f-QuP5IAI">I Canceled a Trip to the Canadian Rockies. The Weather Wasn&#39;t the Reason.</a></p>
+
+<h2>By the numbers</h2>
+<p>We merged 118 changes across the app and this site last week, and shipped every single day, Monday through Sunday.</p>
+<p>Pilots ran a FRAT on 6.9% of briefed trips (43 FRATs from 34 pilots). Self Debrief was used on 11.5% of Pro Plus briefed trips (47 started, 34 submitted). Those numbers are why I keep working on both.</p>
+
+<h2>Tip of the week: check yourself before the weather</h2>
+<p>I run IMSAFE before I look at the weather: illness, medication, stress, alcohol, fatigue, eating. Then the loop: Brief, Assess, Decide, Debrief. The <a href="https://app.planewx.ai/help/frat">FRAT</a> helps count what stacks up, and the call stays yours as PIC, weighed with NOTAMs, ATIS, PIREPs and your other sources. PlaneWX never recommends GO or NO-GO. The pilot makes the call. More in <a href="https://www.planewx.ai/learn/imsafe-checklist">The IMSAFE Checklist</a>.</p>
+
+<h2>Know a pilot who'd like this?</h2>
+<p>Every account has a personal referral link on your Profile page under Invite Pilots. When a pilot you invite becomes a paying subscriber, you earn about a free month of PlaneWX, with no cap. Learn more in <a href="https://app.planewx.ai/help/referral-program">Referral Program</a>.</p>
+
+<p>Thanks for flying with us. Reply anytime, I read every email.</p>
+<p>The confidence to go. The courage to stay.</p>
+`,
+  },
   {
     slug: "new-beta-planewx-in-claude-and-grok",
     category: "Product",
