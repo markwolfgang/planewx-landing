@@ -8,7 +8,7 @@ import {
   getSoroArticleBySlug,
   getSoroArticleContent,
 } from "@/lib/soro"
-import { BLOG_APPENDS, BLOG_OVERRIDES } from "@/lib/blog-overrides"
+import { BLOG_APPENDS, BLOG_META_OVERRIDES, BLOG_OVERRIDES } from "@/lib/blog-overrides"
 
 export const revalidate = 3600
 /** Allow new Soro slugs that were not in generateStaticParams at build time. */
@@ -28,15 +28,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await getSoroArticleBySlug(slug)
   if (!article) return {}
 
+  const metaOverride = BLOG_META_OVERRIDES[slug]
+  const description = metaOverride?.description ?? article.excerpt
+
   return {
-    title: article.title,
-    description: article.excerpt,
+    title: metaOverride ? { absolute: metaOverride.title } : article.title,
+    description,
     alternates: { canonical: `https://www.planewx.ai/blog/${slug}` },
     openGraph: {
       type: "article",
       url: `https://www.planewx.ai/blog/${slug}`,
-      title: article.title,
-      description: article.excerpt,
+      title: metaOverride?.title ?? article.title,
+      description,
       publishedTime: article.isoDate,
       images: article.image ? [{ url: article.image }] : [],
     },
