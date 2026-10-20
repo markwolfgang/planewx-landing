@@ -4,6 +4,8 @@
 // "Date coming soon". Do not add a PlaneWX role (booth, talk) unless confirmed.
 // Sources for every field are listed in the PR that added this page.
 
+export type EventLink = { href: string; label: string }
+
 export type PlaneWxEvent = {
   id: string
   name: string
@@ -18,7 +20,29 @@ export type PlaneWxEvent = {
   planewx: string[]
   /** Extra plain-text details (exhibit hours, talk slot). */
   details?: string[]
-  link: { href: string; label: string }
+  /**
+   * Public attend link (tickets, registration, or event info).
+   * Omit for private / invitation-only events.
+   */
+  link?: EventLink
+  /**
+   * Optional webinar registration or watch link. There are no upcoming
+   * webinars right now. When you add one, set label to "Register / Watch".
+   */
+  watchLink?: EventLink
+  /** Invitation-only. The card shows a private badge, and no attend or calendar link. */
+  invitationOnly?: boolean
+  /**
+   * Local start HH:mm. Set with endTime and timeZone for a timed calendar
+   * entry. Omit on multi-day events so the calendar entry is an all-day span.
+   */
+  startTime?: string
+  /** Local end HH:mm. Required together with startTime and timeZone. */
+  endTime?: string
+  /** IANA time zone for startTime/endTime, such as America/New_York. */
+  timeZone?: string
+  /** Shows "Want to help at our booth? Let us know." linking to the speaking form. */
+  boothVolunteer?: boolean
 }
 
 export const DATE_COMING_SOON = "Date coming soon"
@@ -26,6 +50,9 @@ export const DATE_COMING_SOON = "Date coming soon"
 /** Meta/OG description for /events. Must not imply PlaneWX is at every event. */
 export const EVENTS_PAGE_DESCRIPTION =
   "Upcoming aviation events, and where to find PlaneWX at a booth or a talk."
+
+/** In-page jump to the existing speaking request form. */
+export const SPEAKING_FORM_HREF = "/events#speaking"
 
 export const EVENTS: PlaneWxEvent[] = [
   {
@@ -43,7 +70,10 @@ export const EVENTS: PlaneWxEvent[] = [
       "Hot dogs, football, and good times.",
       "Hosted by Omaha Aircraft and SkyWerx Aviation.",
     ],
-    link: { href: "https://www.skywerxaviation.com", label: "SkyWerx Aviation" },
+    link: { href: "https://www.skywerxaviation.com", label: "Event info" },
+    startTime: "11:00",
+    endTime: "14:00",
+    timeZone: "America/Chicago",
   },
   {
     id: "tbmopa-2026",
@@ -56,18 +86,33 @@ export const EVENTS: PlaneWxEvent[] = [
       "Visit the PlaneWX booth in the exhibit hall, Oct 29-31.",
       "Speaking: Mark Wolfgang, PlaneWX founder. \"Beyond the Weather Briefing: Using a Decision Support System for Safer Flights\", Fri Oct 30, 12:30-1:00 PM MST (Arizona time), during Lunch with Vendors.",
     ],
-    link: { href: "https://tbmowners.org", label: "TBMOPA" },
+    link: { href: "https://tbmowners.org", label: "Event info" },
   },
   {
     id: "eaa-282-2026-11",
     name: "EAA Chapter 282 meeting",
     startDate: "2026-11-02",
-    dateLabel: "Mon, Nov 2, 2026",
+    dateLabel: "Mon, Nov 2, 2026. Gather at 6:00 PM, meeting starts 7:00 PM Eastern.",
     location: "EAA 282 Hangar, north side of Clearwater Air Park (KCLW), Clearwater, FL",
     planewx: [
       "Speaking: Mark Wolfgang, PlaneWX founder. Topic: how he makes go/no-go decisions (a 15-20 minute talk).",
     ],
-    link: { href: "https://eaachapter282.org", label: "EAA Chapter 282" },
+    link: { href: "https://eaachapter282.org", label: "Event info" },
+    // No later end time was confirmed. The calendar block runs from gather
+    // (6:00 PM Eastern) through the meeting start (7:00 PM Eastern).
+    startTime: "18:00",
+    endTime: "19:00",
+    timeZone: "America/New_York",
+  },
+  {
+    id: "vac-gala-2026",
+    name: "Veterans Airlift Command (VAC) Gala",
+    startDate: "2026-11-06",
+    endDate: "2026-11-08",
+    dateLabel: "Nov 6-8, 2026",
+    location: "Savannah, GA",
+    planewx: ["PlaneWX and Mark Wolfgang will be attending."],
+    invitationOnly: true,
   },
   {
     id: "dtsb-summit-2027",
@@ -79,7 +124,7 @@ export const EVENTS: PlaneWxEvent[] = [
     planewx: ["Speaking: Mark Wolfgang, PlaneWX founder"],
     link: {
       href: "https://www.zeffy.com/en-US/ticketing/dtsb-2027-general-aviation-safety-summit",
-      label: "Tickets",
+      label: "Get tickets",
     },
   },
   {
@@ -89,8 +134,9 @@ export const EVENTS: PlaneWxEvent[] = [
     endDate: "2027-04-11",
     dateLabel: "Apr 6-11, 2027",
     location: "Lakeland Linder International Airport, Lakeland, FL",
-    planewx: [],
-    link: { href: "https://www.sun-n-fun.org", label: "sun-n-fun.org" },
+    planewx: ["Find us in Hangar C, booth C-095."],
+    link: { href: "https://www.sun-n-fun.org", label: "Event info" },
+    boothVolunteer: true,
   },
   {
     id: "airventure-2027",
@@ -100,7 +146,8 @@ export const EVENTS: PlaneWxEvent[] = [
     dateLabel: "Jul 26-Aug 1, 2027",
     location: "Oshkosh, WI",
     planewx: [],
-    link: { href: "https://www.eaa.org/airventure", label: "eaa.org/airventure" },
+    link: { href: "https://www.eaa.org/airventure", label: "Event info" },
+    boothVolunteer: true,
   },
 ]
 
@@ -134,4 +181,13 @@ export function getUpcomingEvents(
 export function eventDateText(event: PlaneWxEvent): string {
   if (!event.startDate) return DATE_COMING_SOON
   return event.dateLabel ?? event.startDate
+}
+
+/** Attend actions for a public event. Private events get none. */
+export function eventAttendLinks(event: PlaneWxEvent): EventLink[] {
+  if (event.invitationOnly) return []
+  const links: EventLink[] = []
+  if (event.link) links.push(event.link)
+  if (event.watchLink && event.watchLink.href !== event.link?.href) links.push(event.watchLink)
+  return links
 }

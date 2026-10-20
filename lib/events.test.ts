@@ -1,10 +1,12 @@
 import { readFileSync } from "node:fs"
 import path from "node:path"
 import { describe, expect, it } from "vitest"
+import { eventCalendarLinks } from "./event-calendar"
 import {
   DATE_COMING_SOON,
   EVENTS,
   EVENTS_PAGE_DESCRIPTION,
+  eventAttendLinks,
   eventDateText,
   getUpcomingEvents,
   todayIso,
@@ -12,11 +14,12 @@ import {
 } from "./events"
 
 describe("events data", () => {
-  it("lists exactly the six approved events", () => {
+  it("lists exactly the approved events", () => {
     expect(EVENTS.map((e) => e.id)).toEqual([
       "wurst-fly-in-2026",
       "tbmopa-2026",
       "eaa-282-2026-11",
+      "vac-gala-2026",
       "dtsb-summit-2027",
       "sun-n-fun-2027",
       "airventure-2027",
@@ -27,10 +30,16 @@ describe("events data", () => {
     expect(JSON.stringify(EVENTS)).toMatch(/^[\x20-\x7E]*$/)
   })
 
-  it("claims no PlaneWX role at SUN 'n FUN or AirVenture", () => {
-    for (const id of ["sun-n-fun-2027", "airventure-2027"]) {
-      expect(EVENTS.find((e) => e.id === id)!.planewx).toEqual([])
-    }
+  it("claims no confirmed booth location at AirVenture", () => {
+    expect(EVENTS.find((e) => e.id === "airventure-2027")!.planewx).toEqual([])
+  })
+
+  it("states the confirmed SUN 'n FUN booth", () => {
+    const snf = EVENTS.find((e) => e.id === "sun-n-fun-2027")!
+    expect(snf.planewx).toEqual(["Find us in Hangar C, booth C-095."])
+    const text = JSON.stringify(EVENTS)
+    expect(text).toContain("booth C-095")
+    expect(text).not.toMatch(/booth\s*#|booth\s+\d/i)
   })
 
   it("links the DTSB ticket page", () => {
@@ -54,9 +63,86 @@ describe("events data", () => {
     expect(src).not.toMatch(/\/workspace\/|\/home\//)
   })
 
-  it("has no booth numbers or promo codes", () => {
+  it("has no promo codes", () => {
     const text = JSON.stringify(EVENTS).toLowerCase()
-    expect(text).not.toMatch(/booth\s*#|booth\s+\d|promo|discount|coupon/)
+    expect(text).not.toMatch(/promo|discount|coupon/)
+  })
+
+  it("lists the EAA 282 gather and meeting start, and keeps Mark's talk", () => {
+    const eaa = EVENTS.find((e) => e.id === "eaa-282-2026-11")!
+    expect(eaa.startDate).toBe("2026-11-02")
+    expect(eventDateText(eaa)).toBe(
+      "Mon, Nov 2, 2026. Gather at 6:00 PM, meeting starts 7:00 PM Eastern."
+    )
+    expect(eaa.timeZone).toBe("America/New_York")
+    expect(eaa.startTime).toBe("18:00")
+    expect(eaa.endTime).toBe("19:00")
+    expect(eaa.planewx[0]).toContain("go/no-go decisions")
+  })
+
+  it("lists the private VAC Gala between EAA 282 and DTSB, with no attend link", () => {
+    const vac = EVENTS.find((e) => e.id === "vac-gala-2026")!
+    expect(vac.name).toBe("Veterans Airlift Command (VAC) Gala")
+    expect(vac.startDate).toBe("2026-11-06")
+    expect(vac.endDate).toBe("2026-11-08")
+    expect(eventDateText(vac)).toBe("Nov 6-8, 2026")
+    expect(vac.location).toBe("Savannah, GA")
+    expect(vac.invitationOnly).toBe(true)
+    expect(vac.link).toBeUndefined()
+    expect(vac.watchLink).toBeUndefined()
+    expect(eventAttendLinks(vac)).toEqual([])
+    expect(eventCalendarLinks(vac)).toBeNull()
+    expect(vac.planewx).toEqual(["PlaneWX and Mark Wolfgang will be attending."])
+    const ids = EVENTS.map((e) => e.id)
+    expect(ids.indexOf("vac-gala-2026")).toBe(ids.indexOf("eaa-282-2026-11") + 1)
+    expect(ids.indexOf("dtsb-summit-2027")).toBe(ids.indexOf("vac-gala-2026") + 1)
+  })
+
+  it("uses action labels on the existing official attend links", () => {
+    expect(EVENTS.find((e) => e.id === "tbmopa-2026")!.link).toEqual({
+      href: "https://tbmowners.org",
+      label: "Event info",
+    })
+    expect(EVENTS.find((e) => e.id === "eaa-282-2026-11")!.link).toEqual({
+      href: "https://eaachapter282.org",
+      label: "Event info",
+    })
+    expect(EVENTS.find((e) => e.id === "dtsb-summit-2027")!.link).toEqual({
+      href: "https://www.zeffy.com/en-US/ticketing/dtsb-2027-general-aviation-safety-summit",
+      label: "Get tickets",
+    })
+    expect(EVENTS.find((e) => e.id === "sun-n-fun-2027")!.link).toEqual({
+      href: "https://www.sun-n-fun.org",
+      label: "Event info",
+    })
+    expect(EVENTS.find((e) => e.id === "airventure-2027")!.link).toEqual({
+      href: "https://www.eaa.org/airventure",
+      label: "Event info",
+    })
+    expect(EVENTS.find((e) => e.id === "wurst-fly-in-2026")!.link).toEqual({
+      href: "https://www.skywerxaviation.com",
+      label: "Event info",
+    })
+  })
+
+  it("asks for booth help only at SUN 'n FUN and AirVenture", () => {
+    const ids = EVENTS.filter((e) => e.boothVolunteer).map((e) => e.id)
+    expect(ids).toEqual(["sun-n-fun-2027", "airventure-2027"])
+  })
+
+  it("can attach a Register / Watch link without listing a webinar today", () => {
+    const webinar: PlaneWxEvent = {
+      id: "example-webinar",
+      name: "Example webinar",
+      startDate: "2026-12-01",
+      location: null,
+      planewx: [],
+      watchLink: { href: "https://example.com/webinar", label: "Register / Watch" },
+    }
+    expect(EVENTS.some((e) => e.watchLink)).toBe(false)
+    expect(eventAttendLinks(webinar)).toEqual([
+      { href: "https://example.com/webinar", label: "Register / Watch" },
+    ])
   })
 
   it("lists the Wurst Fly-In (Oct 17, 11:00 AM-2:00 PM CT) before TBMOPA", () => {
@@ -100,6 +186,9 @@ describe("getUpcomingEvents", () => {
     expect(getUpcomingEvents(EVENTS, "2026-10-31").map((e) => e.id)[0]).toBe("tbmopa-2026")
     expect(getUpcomingEvents(EVENTS, "2026-11-01").map((e) => e.id)[0]).toBe("tbmopa-2026")
     expect(getUpcomingEvents(EVENTS, "2026-11-02").map((e) => e.id)[0]).toBe("eaa-282-2026-11")
+    expect(getUpcomingEvents(EVENTS, "2026-11-03").map((e) => e.id)[0]).toBe("vac-gala-2026")
+    expect(getUpcomingEvents(EVENTS, "2026-11-08").map((e) => e.id)[0]).toBe("vac-gala-2026")
+    expect(getUpcomingEvents(EVENTS, "2026-11-09").map((e) => e.id)[0]).toBe("dtsb-summit-2027")
   })
 
   it("keeps TBMOPA up through 11:59 PM Chicago time on Nov 1", () => {
@@ -143,5 +232,30 @@ describe("/events page", () => {
 
   it("renders the events list only when there are events", () => {
     expect(page).toMatch(/\{events\.length > 0 \? \(\s*<ul className="space-y-4" data-testid="events-list">/)
+  })
+
+  it("keeps the speaking form and adds four links that scroll to it", () => {
+    expect(page).toContain("Want PlaneWX at your chapter, fly-in, or event?")
+    for (const label of [
+      "Invite Mark to speak",
+      "Tell us about your fly-in",
+      "Host an event with us",
+      "Help at our booth",
+    ]) {
+      expect(page).toContain(label)
+    }
+    expect(page).toContain('href: SPEAKING_FORM_HREF')
+    expect(page).toContain("Want to help at our booth? Let us know.")
+    expect(page).toContain("Interested in Mark coming to speak at your conference? Get in touch")
+    expect(page).toContain("<SpeakingInquiryForm />")
+    expect(page).not.toMatch(/\u2014|\u2013/)
+  })
+
+  it("shows add to calendar on cards and hides attend links for private events", () => {
+    expect(page).toContain("Add to calendar")
+    expect(page).toContain("Google Calendar")
+    expect(page).toContain("Download .ics")
+    expect(page).toContain("eventAttendLinks(event)")
+    expect(page).toContain("Private event, invitation only")
   })
 })

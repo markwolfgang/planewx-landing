@@ -1,8 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { CheckCircle2, Loader2 } from "lucide-react"
 import {
+  BOOTH_VOLUNTEER_INTENT,
+  BOOTH_VOLUNTEER_PREFILL,
   SPEAKING_INQUIRY_FIELDS,
   SPEAKING_INQUIRY_HONEYPOT,
   validateSpeakingInquiry,
@@ -55,6 +57,18 @@ export function SpeakingInquiryForm() {
   // Honeypot: hidden from people and assistive tech. Bots that fill it are
   // dropped silently by the API.
   const [website, setWebsite] = useState("")
+
+  // Booth-help links land on /events?intent=booth-volunteer#speaking. Fill
+  // Message only when it is still empty so a typed note is left alone.
+  // This does not add a field or change where the form submits.
+  useEffect(() => {
+    const intent = new URLSearchParams(window.location.search).get("intent")
+    if (intent !== BOOTH_VOLUNTEER_INTENT) return
+    setValues((prev) => {
+      if (prev.message.trim()) return prev
+      return { ...prev, message: BOOTH_VOLUNTEER_PREFILL }
+    })
+  }, [])
 
   function update(field: SpeakingInquiryField, value: string) {
     setValues((prev) => ({ ...prev, [field]: value }))

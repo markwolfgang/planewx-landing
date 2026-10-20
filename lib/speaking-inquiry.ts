@@ -62,6 +62,15 @@ const EMAIL_REGEX = /^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(\.[A-Za-z0-
  */
 export const SPEAKING_INQUIRY_HONEYPOT = "website"
 
+/**
+ * Client-only hint on /events. The booth buttons set ?intent= this value;
+ * the form prefills Message and still posts to the same API.
+ */
+export const BOOTH_VOLUNTEER_INTENT = "booth-volunteer"
+
+/** Message text filled in when someone opens the booth-volunteer link. */
+export const BOOTH_VOLUNTEER_PREFILL = "Booth volunteer"
+
 export function validateSpeakingInquiry(input: unknown): SpeakingInquiryValidation {
   if (input === null || typeof input !== "object" || Array.isArray(input)) {
     return { ok: false, error: "Invalid request body", errors: {} }
