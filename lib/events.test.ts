@@ -82,7 +82,7 @@ describe("events data", () => {
 
   it("lists the private VAC Gala between EAA 282 and DTSB, with no attend link", () => {
     const vac = EVENTS.find((e) => e.id === "vac-gala-2026")!
-    expect(vac.name).toBe("Vintage Aircraft Club (VAC) Gala")
+    expect(vac.name).toBe("Veterans Airlift Command (VAC) Gala")
     expect(vac.startDate).toBe("2026-11-06")
     expect(vac.endDate).toBe("2026-11-08")
     expect(eventDateText(vac)).toBe("Nov 6-8, 2026")

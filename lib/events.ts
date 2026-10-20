@@ -106,7 +106,7 @@ export const EVENTS: PlaneWxEvent[] = [
   },
   {
     id: "vac-gala-2026",
-    name: "Vintage Aircraft Club (VAC) Gala",
+    name: "Veterans Airlift Command (VAC) Gala",
     startDate: "2026-11-06",
     endDate: "2026-11-08",
     dateLabel: "Nov 6-8, 2026",
