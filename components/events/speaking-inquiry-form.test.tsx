@@ -5,6 +5,7 @@ import { SpeakingInquiryForm } from "./speaking-inquiry-form"
 afterEach(() => {
   cleanup()
   vi.unstubAllGlobals()
+  window.history.replaceState({}, "", "/")
 })
 
 function fillValid() {
@@ -142,6 +143,39 @@ describe("SpeakingInquiryForm", () => {
       cleanup()
       vi.unstubAllGlobals()
     }
+  })
+
+  it("prefills Message for a booth volunteer visit and still posts to the speaking API", async () => {
+    window.history.pushState({}, "", "/events?intent=booth-volunteer#speaking")
+    const fetchSpy = vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({ success: true, message: "Thanks." }),
+    })
+    vi.stubGlobal("fetch", fetchSpy)
+    render(<SpeakingInquiryForm />)
+    await vi.waitFor(() =>
+      expect((screen.getByTestId("speaking-message") as HTMLTextAreaElement).value).toBe(
+        "Booth volunteer",
+      ),
+    )
+    fireEvent.change(screen.getByTestId("speaking-name"), { target: { value: "Pat Pilot" } })
+    fireEvent.change(screen.getByTestId("speaking-email"), { target: { value: "pat@example.com" } })
+    fireEvent.change(screen.getByTestId("speaking-org"), { target: { value: "Example Pilots Association" } })
+    fireEvent.change(screen.getByTestId("speaking-eventName"), { target: { value: "SUN 'n FUN" } })
+    fireEvent.change(screen.getByTestId("speaking-eventDates"), { target: { value: "Apr 6-11, 2027" } })
+    fireEvent.change(screen.getByTestId("speaking-location"), { target: { value: "Lakeland, FL" } })
+    fireEvent.submit(screen.getByTestId("speaking-inquiry-form"))
+    await vi.waitFor(() => expect(fetchSpy).toHaveBeenCalledTimes(1))
+    expect(fetchSpy.mock.calls[0][0]).toBe("/api/events/speaking-inquiry")
+    expect(fetchSpy.mock.calls[0][1].method).toBe("POST")
+    expect(JSON.parse(fetchSpy.mock.calls[0][1].body).message).toBe("Booth volunteer")
+  })
+
+  it("leaves Message empty when the visit is not a booth volunteer link", () => {
+    window.history.pushState({}, "", "/events#speaking")
+    render(<SpeakingInquiryForm />)
+    expect((screen.getByTestId("speaking-message") as HTMLTextAreaElement).value).toBe("")
   })
 
   it("confirms the request when the API answers success true", async () => {
