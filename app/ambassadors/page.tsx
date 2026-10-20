@@ -139,6 +139,24 @@ const AMBASSADORS = [
       wellClassName: "bg-white/[0.04]",
     },
   },
+  {
+    name: "Flight Follower",
+    href: "https://www.youtube.com/@FlightFollower",
+    description:
+      "Real aviation incidents, told through the actual ATC audio.",
+    tile: {
+      src: "/ambassadors/flight-follower.jpg",
+      alt: "Flight Follower logo",
+      width: 512,
+      height: 512,
+      objectFit: "contain" as const,
+      wellClassName: "bg-[#001532]",
+    },
+    extraLink: {
+      href: "https://flightfollower.net",
+      label: "flightfollower.net",
+    },
+  },
 ] as const
 
 export default function AmbassadorsPage() {
