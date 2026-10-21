@@ -2107,7 +2107,7 @@ export const TIPS_OF_THE_WEEK: TipOfTheWeek[] = [
     body: [
       {
         type: "paragraph",
-        text: "The WX Score is not PlaneWX's opinion of what is safe to fly. It is your own personal minimums, applied the same way every time, against the forecast for your route, cruise altitude, and departure time. The score starts at 100% and points come off for each weather factor that approaches or exceeds the limits you set, so two pilots can get different scores for the same flight. A low score does not mean don't fly. It means don't fly without asking why the number is what it is: open the breakdown and make your GO\u00A0/\u00A0NO\u2011GO call as PIC. It is advisory support, not a flight authorization.",
+        text: "The WX Score is not PlaneWX's opinion of what is safe to fly. It is your own personal minimums, applied the same way every time, against the forecast for your route, cruise altitude, and departure time. The score starts at 100% and points come off for each weather factor that approaches or exceeds the limits you set, so two pilots can get different scores for the same flight. A low score is not a NO\u2011GO. It shows that something on the route is worth a closer look, and the score breakdown shows what. The GO\u00A0/\u00A0NO\u2011GO call stays with the pilot. It is advisory support, not a flight authorization.",
       },
       {
         type: "paragraph",
