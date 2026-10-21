@@ -90,7 +90,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 
 <h2>Who can use it</h2>
 <p>The AI assistant connector is a Pro Plus Labs feature (Enterprise included), and Pro Plus trials include it. Turn it on first under Profile, Preferences, PlaneWX Labs (the switch is labeled AI assistant connector).</p>
-<p>Help for Claude, Grok, ChatGPT and Gemini is at <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to Claude, Grok, ChatGPT and Gemini</a>. Perplexity steps are above.</p>
+<p>Full steps for every assistant, including Perplexity, are in Help: <a href="https://planewx.ai/help/connect-ai-assistant#perplexity">Connect PlaneWX to Claude, Grok, ChatGPT, Gemini and Perplexity</a>.</p>
 
 <h2>Which AI should we build for next?</h2>
 <p>Want us to connect your favorite AI? Tell us and we'll build the MCP. Tap the Feedback button in the app (on a phone it's the speech bubble icon), choose Feature, and tell us which assistant you use. If you've hidden the floating button, Send Feedback is also in the Profile menu. I read every one.</p>
