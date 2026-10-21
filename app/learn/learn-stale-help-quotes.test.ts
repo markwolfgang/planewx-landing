@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from "node:fs"
-import { join } from "node:path"
+import { basename, join } from "node:path"
 import { describe, expect, it } from "vitest"
 
 // Risk Loop and WX Score help copy as of app PR #3161
@@ -23,7 +23,7 @@ const LEARN_DIR = join(process.cwd(), "app/learn")
 
 function learnSources(): { file: string; text: string }[] {
   const files = (readdirSync(LEARN_DIR, { recursive: true }) as string[])
-    .filter((f) => f.endsWith("/content.ts") || f === "content.ts")
+    .filter((f) => basename(f) === "content.ts")
     .map((f) => join(LEARN_DIR, f))
   files.push(join(LEARN_DIR, "learn-data.ts"))
   return files.map((file) => {
