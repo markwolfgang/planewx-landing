@@ -56,6 +56,49 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "planewx-connects-to-perplexity",
+    category: "Product",
+    title: "PlaneWX now connects to Perplexity. Which AI should we build for next?",
+    excerpt:
+      "Perplexity joins Claude, Grok, ChatGPT and Gemini. Want us to connect your favorite AI? Tell us and we'll build the MCP.",
+    date: "October 20, 2026",
+    isoDate: "2026-10-20",
+    draft: true,
+    body: `
+<p>Want us to connect your favorite AI? Tell us and we'll build the MCP.</p>
+
+<h2>Now in Perplexity</h2>
+<p>PlaneWX now connects to Perplexity. It joins Claude, Grok, ChatGPT and Gemini as an assistant you can link to your PlaneWX account, so you can ask about your flying in a normal conversation and get answers from your own PlaneWX data.</p>
+<p>In Perplexity, add PlaneWX as a custom connector with the PlaneWX MCP URL: <code>https://app.planewx.ai/api/mcp</code>. Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" if you want scored runs.</p>
+
+<h2>What you can ask</h2>
+<p>Whichever assistant you use, it works from the same PlaneWX tools:</p>
+<ul>
+<li><strong>Your saved trips.</strong> Route, departure time, and stored WX Score, without scoring again. "What upcoming trips do I have?"</li>
+<li><strong>Your saved briefing.</strong> The same briefing and WX Score you see in the app. It only scores again when you ask it to refresh.</li>
+<li><strong>A WX Score for a route and time.</strong> Ask about a flight you are thinking about, using your personal minimums and aircraft.</li>
+<li><strong>Departure windows.</strong> Ranked candidate times for a route and day. "Find the best departure window Saturday from KAPA to KSDL."</li>
+<li><strong>Save a time as a trip.</strong> Pick a candidate and say "Save that time as a trip." It shows up in PlaneWX with its own briefing.</li>
+<li><strong>Past trips, Self Debriefs and FRATs.</strong> "Show my FRATs where I chose no-go this year."</li>
+<li><strong>Your profile and airports.</strong> Look up an airport or check the minimums your WX Score uses.</li>
+<li><strong>Your limits.</strong> "What are my limits?" shows your real usage and what is left for today.</li>
+<li><strong>Something looks off.</strong> Ask the assistant to send a note to PlaneWX for review.</li>
+</ul>
+
+<h2>You're still the PIC</h2>
+<p>PlaneWX doesn't tell you to go or not to go, and neither does the connector. The assistant reports the WX Score and what drives it. The GO/NO-GO call stays with you.</p>
+
+<h2>Who can use it</h2>
+<p>The AI assistant connector is a Pro Plus Labs feature (Enterprise included), and Pro Plus trials include it. Turn it on first under Profile, Preferences, PlaneWX Labs (the switch is labeled AI assistant connector).</p>
+<p>Full steps are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to your AI assistant</a>.</p>
+
+<h2>Which AI should we build for next?</h2>
+<p>Want us to connect your favorite AI? Tell us and we'll build the MCP. Tap the Feedback button in the app, choose Feature, and tell us which assistant you use. If you've hidden the floating button, Send Feedback is also in the Profile menu. I read every one.</p>
+
+<p>Blue skies,<br/>Mark</p>
+`,
+  },
+  {
     slug: "new-beta-planewx-in-claude-and-grok",
     category: "Product",
     title: "New beta: PlaneWX in Claude, Grok, ChatGPT and Gemini",
