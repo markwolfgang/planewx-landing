@@ -4,7 +4,7 @@ export const ARTICLE_JSON_LD = {
   "headline": "FAA FRAT: What the Flight Risk Assessment Tool Is and How to Use One",
   "description": "FAA FRAT means Flight Risk Assessment Tool. How the FAA form, checklist, and online tool work, what green, yellow, and red mean, and how an eFRAT fits.",
   "mainEntityOfPage": "https://www.planewx.ai/learn/flight-risk-assessment-tool",
-  "dateModified": "2026-10-06",
+  "dateModified": "2026-10-21",
   "author": {
     "@type": "Organization",
     "name": "PlaneWX",
@@ -62,7 +62,7 @@ export const FAQ_JSON_LD = {
       "name": "What is a FRAT form?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The written record of the hazards and risk for one planned flight. The Risk Management Handbook defines the FRAT as that form: \"The form used to record each hazard is known as a Flight Risk Assessment Tool (FRAT).\" It can be a paper sheet, a spreadsheet, or an app. The FAA's original sample form is attached to InFO 07015."
+        "text": "The written record of the hazards and risk for one planned flight. The Risk Management Handbook defines the FRAT as that form: \"The form used to record each hazard is known as a Flight Risk Assessment Tool (FRAT).\" It can be a paper sheet, a spreadsheet, or an app. The FAA's original sample form is attached to InFO 07015. The FAA Safety Team's FAAST FRAT form is a spreadsheet for Windows or Apple Numbers in the FAASafety.gov FRAT library."
       }
     },
     {
@@ -78,7 +78,7 @@ export const FAQ_JSON_LD = {
       "name": "What is a FRAT tool?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Any form, spreadsheet, or app that records flight hazards and risk. The FAA Safety Team publishes guidance and links to an online FAASTeam FRAT. The Risk Management Handbook also shows numerical and narrative sample tools. A FRAT tool assists planning; it does not make the go/no-go decision for you."
+        "text": "Any form, spreadsheet, or app that records flight hazards and risk. The FAA Safety Team publishes guidance and links to an online FAASTeam FRAT. The Risk Management Handbook also shows numerical and narrative sample tools. A FRAT tool assists planning; it does not make the decision, and the GO / NO-GO call stays with the pilot."
       }
     },
     {
@@ -118,7 +118,7 @@ export const FAQ_JSON_LD = {
       "name": "Where can I get the FAA FRAT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Start on the FAA Safety Team FRAT page, which links to an online version of the FAASTeam FRAT. The Risk Management Handbook also shows a sample numerical FRAT and a narrative PAVE form. InFO 07015 includes the original sample form for operators."
+        "text": "The starting point is the FAA Safety Team FRAT page, which links to an online version of the FAASTeam FRAT. The Risk Management Handbook also shows a sample numerical FRAT and a narrative PAVE form. InFO 07015 includes the original sample form for operators."
       }
     },
     {
@@ -175,6 +175,38 @@ export const FAQ_JSON_LD = {
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "PlaneWX lays out a loop: Weather Briefing, FRAT, GO / NO-GO, then Self Debrief. Self Debrief asks how the flight actually went while it is still fresh, including how the FRAT picture compared with what you felt in the airplane. It does not change the WX Score, and a debrief does not feed the next FRAT."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a free FRAT tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The FAA Safety Team links to its online FAASTeam FRAT from the FAA Safety Team FRAT page, and posts FAAST FRAT spreadsheets in the FAASafety.gov FRAT library. PlaneWX FRAT is included on every PlaneWX plan, and the Free plan is completely free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the PlaneWX FRAT change the WX Score?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The WX Score rates the weather against your minimums. The FRAT records your own LOW / MEDIUM / HIGH self-rates across PAVE. Airport complexity chips, unfamiliar destination evidence, and the Risks are stacking banner feed the FRAT picture and do not change the WX Score."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does night start in the PlaneWX FRAT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At the end of evening civil twilight, not at sunset. The PlaneWX FRAT treats night as running from the end of evening civil twilight to the start of morning civil twilight at each airport, the same rule the briefing uses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a FRAT, or PlaneWX, enough on its own?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A FRAT is one planning aid, and PlaneWX is decision support, not a substitute for a complete, independent preflight weather briefing. Pilots also weigh NOTAMs, ATIS, PIREPs, an official weather briefing, and their own judgment. The GO / NO-GO call stays with the pilot in command."
       }
     }
   ]
