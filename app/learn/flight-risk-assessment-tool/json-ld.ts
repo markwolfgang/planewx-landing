@@ -118,7 +118,7 @@ export const FAQ_JSON_LD = {
       "name": "Where can I get the FAA FRAT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Start on the FAA Safety Team FRAT page, which links to an online version of the FAASTeam FRAT. The Risk Management Handbook also shows a sample numerical FRAT and a narrative PAVE form. InFO 07015 includes the original sample form for operators."
+        "text": "The starting point is the FAA Safety Team FRAT page, which links to an online version of the FAASTeam FRAT. The Risk Management Handbook also shows a sample numerical FRAT and a narrative PAVE form. InFO 07015 includes the original sample form for operators."
       }
     },
     {

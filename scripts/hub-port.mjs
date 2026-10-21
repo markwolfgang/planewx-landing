@@ -160,8 +160,9 @@ export const HUB_PAGES = [
     // Need Help Now FAQ: opens 2 hours before departure (not within 4 hours); MAIN_HTML re-pinned.
     // SEO expand (Oct 21, 2026): FAASafety.gov FAAST FRAT library cite [8], civil twilight
     // night rule, four FAQ entries, Self Debrief on every plan, GO / NO-GO casing. MAIN_HTML re-pinned.
+    // Review round 1 (Oct 21, 2026): imperatives rewritten descriptively, bare "go" to GO. MAIN_HTML re-pinned.
     sourceMd5: "30c4436e6bb40845c17a464236b1df5f",
-    mainHtmlMd5: "7d73ee732793967b543f1b26f6ec079d",
+    mainHtmlMd5: "2c3114e402b6a1631e47de620f6deb19",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "flight-risk-assessment-tool",
   },

@@ -51,8 +51,21 @@ const COPY = `${TEXT} ${JSON.stringify(FAQ_JSON_LD)} ${JSON.stringify(ARTICLE_JS
 
 const sentences = TEXT.split(/(?<=[.!?])\s+/)
 
-function withoutQuotes(text: string): string {
-  return text.replace(/"[^"]*"/g, '""')
+// Only these verbatim FAA Safety Team quotes may use lowercase "go/no-go" (ref [2]).
+// Every other quoted span stays visible to the copy checks.
+const FAA_QUOTE_ALLOWLIST = [
+  '"The Flight Risk Assessment Tool (FRAT) is not designed to make the go/no-go decision for you; it serves as a tool to assist in planning your flight and considering a broader spectrum of hazards and risks."',
+  '"The Flight Risk Assessment Tool (FRAT) is not designed to make the go/no-go decision for you"',
+] as const
+
+// Non-decision uses of the word "Go" (titles of other guides).
+const NON_DECISION_GO = ["Where to Go Next"] as const
+
+function withoutAllowedQuotes(text: string): string {
+  let out = text
+  for (const quote of FAA_QUOTE_ALLOWLIST) out = out.split(quote).join('""')
+  for (const phrase of NON_DECISION_GO) out = out.split(phrase).join("")
+  return out
 }
 
 describe("FRAT learn page copy rules", () => {
@@ -85,10 +98,36 @@ describe("FRAT learn page copy rules", () => {
     }
   })
 
-  it("writes GO / NO-GO only in uppercase outside direct FAA quotes", () => {
-    const unquoted = withoutQuotes(`${TEXT} ${FAQ_JSON_LD.mainEntity.map((q) => q.acceptedAnswer.text).join(" ")}`)
-    expect(unquoted).not.toMatch(/\bgo\s*\/\s*no-go\b|\bno-go\b/)
-    expect(unquoted).not.toMatch(/\bGo\s*\/\s*No-Go\b|\bNo-Go\b/)
+  it("writes GO / NO-GO only in uppercase outside the allowlisted FAA quotes", () => {
+    const all = `${TEXT} ${FAQ_JSON_LD.mainEntity.map((q) => q.acceptedAnswer.text).join(" ")}`
+    for (const quote of FAA_QUOTE_ALLOWLIST) {
+      expect(all).toContain(quote)
+    }
+    const checked = withoutAllowedQuotes(all)
+    expect(checked).not.toMatch(/\b[Gg]o\s*\/\s*[Nn]o-[Gg]o\b|\b[Nn]o-[Gg]o\b/)
+    // A standalone "go" or "Go" (not GO, not go-around) is the decision word written in the wrong case.
+    expect(checked).not.toMatch(/\b[Gg]o\b(?!-)/)
+  })
+
+  it("does not tell the pilot what to do", () => {
+    const checked = withoutAllowedQuotes(TEXT)
+    for (const phrase of [
+      "don't fly",
+      "Pick a form",
+      "Get the weather first",
+      "Go letter by letter",
+      "Mitigate the top items",
+      "Decide, and keep the record",
+      "Set thresholds that can say no",
+      "Ask someone",
+      "Pick whichever form",
+      "Run your next FRAT",
+      "check the scale",
+      "redo the FRAT",
+      "Start on the",
+    ]) {
+      expect(checked).not.toContain(phrase)
+    }
   })
 
   it("names the other sources a pilot weighs and keeps the call with the pilot", () => {
