@@ -174,6 +174,8 @@ export const config = {
     "/",
     "/brand/:path*",
     "/runway",
+    "/flightchops",
+    "/flightfollower",
     "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|map|woff2?|ttf|otf|html)$).*)",
   ],
 }
