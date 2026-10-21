@@ -101,12 +101,30 @@ describe("FRAT learn page copy rules", () => {
   it("writes GO / NO-GO only in uppercase outside the allowlisted FAA quotes", () => {
     const all = `${TEXT} ${FAQ_JSON_LD.mainEntity.map((q) => q.acceptedAnswer.text).join(" ")}`
     for (const quote of FAA_QUOTE_ALLOWLIST) {
-      expect(all).toContain(quote)
+      // Each entry must stand on its own: not contained in another entry, and still
+      // present after every other entry has been removed from the copy.
+      const others = FAA_QUOTE_ALLOWLIST.filter((q) => q !== quote)
+      for (const other of others) {
+        expect(other.includes(quote)).toBe(false)
+      }
+      const rest = others.reduce((text, other) => text.split(other).join(""), all)
+      expect(rest).toContain(quote)
     }
     const checked = withoutAllowedQuotes(all)
     expect(checked).not.toMatch(/\b[Gg]o\s*\/\s*[Nn]o-[Gg]o\b|\b[Nn]o-[Gg]o\b/)
     // A standalone "go" or "Go" (not GO, not go-around) is the decision word written in the wrong case.
     expect(checked).not.toMatch(/\b[Gg]o\b(?!-)/)
+  })
+
+  it("quotes PlaneWX help word for word as of app PR #3161 (45b2d17f)", () => {
+    expect(MAIN_HTML).toContain(
+      '"PlaneWX is not a substitute for a complete, independent pre-flight weather briefing. Complete briefings are available from official sources such as 1800wxbrief.com." (<a href="https://app.planewx.ai/help/risk-loop">The Risk Loop</a>)',
+    )
+    expect(MAIN_HTML).toContain(
+      '"A low score is not a NO-GO. The GO / NO-GO call stays with you as PIC. The score shows that something on this route is worth a closer look, and the score breakdown shows what." (<a href="https://app.planewx.ai/help/wx-score">WX Score</a>)',
+    )
+    expect(TEXT).not.toContain("Pull one from a source you already trust before you fly.")
+    expect(TEXT).not.toContain("A low score is a prompt to look at why")
   })
 
   it("does not tell the pilot what to do", () => {

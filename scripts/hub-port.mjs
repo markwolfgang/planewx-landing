@@ -161,8 +161,9 @@ export const HUB_PAGES = [
     // SEO expand (Oct 21, 2026): FAASafety.gov FAAST FRAT library cite [8], civil twilight
     // night rule, four FAQ entries, Self Debrief on every plan, GO / NO-GO casing. MAIN_HTML re-pinned.
     // Review round 1 (Oct 21, 2026): imperatives rewritten descriptively, bare "go" to GO. MAIN_HTML re-pinned.
+    // Requote (Oct 21, 2026): Risk Loop and WX Score help quotes from app PR #3161 (45b2d17f). MAIN_HTML re-pinned.
     sourceMd5: "30c4436e6bb40845c17a464236b1df5f",
-    mainHtmlMd5: "2c3114e402b6a1631e47de620f6deb19",
+    mainHtmlMd5: "982718735a95c7b8acc99307210eeb69",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "flight-risk-assessment-tool",
   },
