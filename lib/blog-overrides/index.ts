@@ -1,5 +1,6 @@
 import * as forecastsStabilize from "./when-do-aviation-forecasts-stabilize"
 import * as paveRiskAssessmentWeather from "./pave-risk-assessment-weather"
+import * as bestPilotWeatherApps from "./best-pilot-weather-apps"
 
 export interface BlogOverride {
   html: string
@@ -11,6 +12,7 @@ export interface BlogOverride {
 export const BLOG_OVERRIDES: Record<string, BlogOverride> = {
   "when-do-aviation-forecasts-stabilize": forecastsStabilize,
   "pave-risk-assessment-weather": paveRiskAssessmentWeather,
+  "best-pilot-weather-apps": bestPilotWeatherApps,
 }
 
 /**
