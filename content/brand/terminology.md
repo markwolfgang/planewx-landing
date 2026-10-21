@@ -63,7 +63,7 @@ avoid:
       sayInstead: WX Score
       why: Deprecated terminology
     - dontSay: Official weather briefing
-      sayInstead: Weather intelligence / Weather analysis
+      sayInstead: Weather analysis
       why: Regulatory concern. Removed Feb 2026
     - dontSay: 'Replacement for [competitor] / your EFB'
       sayInstead: Complementary to / Enhances
@@ -78,13 +78,13 @@ avoid:
       sayInstead: High confidence / Transparent about uncertainty
       why: Sets wrong expectations
     - dontSay: Certain weather
-      sayInstead: Early visibility / Weather intelligence
+      sayInstead: Early visibility
       why: Too absolute
     - dontSay: Revolutionary / Disrupting
       sayInstead: A new approach / Purpose-built
       why: Not the brand's style
     - dontSay: AI-powered (as primary descriptor)
-      sayInstead: Decision support system / Weather intelligence
+      sayInstead: Decision support system
       why: 'AI is the how, not the what'
     - dontSay: PlaneWX decides go/no-go for you
       sayInstead: PIC owns the go/no-go; PlaneWX informs

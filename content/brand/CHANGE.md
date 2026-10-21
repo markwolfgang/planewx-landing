@@ -1,5 +1,20 @@
 # Brand content CHANGE log
 
+## 2026-10-21 - Brand portal audit fixes (sourced items only)
+
+Copy-only edits in `content/brand/*.md` from the Oct 21 2026 brand portal audit. Mark-only items (aircraft type count, July 2026 stats, risk stacking, WX Score without minimums, decision-support scope, Richardson number and SLD, safety-impact figures beyond the banned phrase, 174 ATPs, Steamboat facts, the SR22 origin quote, the Free plan name, Perplexity) were left unchanged.
+
+- D1, D24: removed the free-trial and no-card lines.
+- D2: Pro annual save line is now "(save $60.88)".
+- D3: Pro Plus leads with AI Connector (beta) for Claude, Grok, ChatGPT, and Gemini. No Perplexity. No run counts.
+- D4: added Briefed Fuel Stops (NOTAM-screened).
+- D6, D7: founder bio says over 1,000 hours and no longer shows N916CM.
+- D9, D22, D31: removed the three banned tagline variants. Safety-impact numbers were kept.
+- D12, D13: partner offer no longer says a promo code is coming soon, and the partner section no longer says "try".
+- D16: closing CTA is the approved two-line closer. "Stop being your own meteorologist." moved to sound bites.
+- D23: score colors are Favorable, Marginal, and Unfavorable. Hex values unchanged.
+- D30, D35, D38: dropped "weather intelligence". The Why page section is The Loop.
+
 ## 2026-09-25 - Loop step labels: Brief, Assess, Decide, Debrief
 
 - Locked loop step titles on `/brand` and the partner one-pager: **Brief**, **Assess**, **Decide**, **Debrief**.

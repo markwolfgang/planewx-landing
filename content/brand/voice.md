@@ -96,7 +96,7 @@ toneByContext:
       - '"We enhance, not replace, existing tools."'
     - - Pricing / CTAs
       - 'Confident, no-pressure'
-      - '"No credit card required. Cancel anytime."'
+      - '"Join a community of pilots who take safety seriously. Fly like it''s your job."'
     - - Social media / forums
       - 'Knowledgeable peer, conversational'
       - 'Fellow pilot sharing something useful, not selling'

@@ -133,33 +133,34 @@ philosophy:
         decides.
       context: On PIC authority (14 CFR §91.3)
 pillars:
-  title: Three Pillars of Safer Flying
+  title: The Loop
   subtitle: >-
-    Every feature supports one of three safety pillars. Together, they give
-    pilots the tools to make sound, confident decisions.
+    Four steps: Brief, Assess, Decide, Debrief. Mentor is optional, alongside
+    all four.
   items:
     - icon: Cloud
       accent: sky
-      title: Weather Intelligence
+      title: Brief (WX Score)
       body: >-
         Continuously monitored briefings from federal weather sources,
         personalized to your aircraft and minimums. Synoptic Intelligence™
         synthesizes every available source starting up to 14 days out.
     - icon: ClipboardCheck
       accent: emerald
-      title: PAVE Self-Assessment
+      title: Assess (FRAT)
       body: >-
-        Weather is only one part of flight safety. The FAA's PAVE framework
-        (Pilot, Aircraft, enVironment, External pressures), structured, timed to
-        departure, and integrated into the briefing.
-    - icon: GraduationCap
+        Pilot, Aircraft, enVironment, External pressures. The FAA's PAVE
+        framework, structured, timed to departure, and integrated into the
+        briefing.
+    - icon: Shield
+      accent: amber
+      title: Decide (GO / NO-GO)
+      body: >-
+        PlaneWX never recommends go or no-go. The pilot makes the call.
+    - icon: Layers
       accent: violet
-      title: Peer Mentoring
-      body: >-
-        No pilot should face a critical go/no-go call alone. Matches you with
-        experienced volunteers who see your exact briefing: same WX Score, same
-        weather analysis, same personal minimums. The conversation starts with
-        real data.
+      title: Debrief
+      body: Looks back at the flight and the FRAT you ran for that trip.
 comparison:
   title: Without PlaneWX vs. With PlaneWX
   subtitle: The tangible difference in a pilot's workflow.

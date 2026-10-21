@@ -103,7 +103,7 @@ pricing:
   safetyNote: '**Safety is not a premium feature.** Every briefing, Free, Casual, Pro, or Pro Plus, uses
     the same AI engine, the same weather models, and the same scoring methodology. We limit how much you
     can use PlaneWX, not how well it works.'
-  footer: All plans include a 14-day free Pro Plus trial. No credit card required to start.
+  footer: Subscriptions renew automatically. Cancel anytime in Profile billing; you keep access through the period you paid for.
   tiers:
   - id: free
     name: Free
@@ -144,7 +144,7 @@ pricing:
     price: $14.99
     period: /month
     annual: or $119/year
-    annualSave: (4 months free)
+    annualSave: (save $60.88)
     badge: Full Toolkit
     badgeIcon: Crown
     style: pro
@@ -167,12 +167,14 @@ pricing:
     style: proPlus
     everythingIn: Everything in Pro, plus
     included:
+    - 'AI Connector (beta): cross-check your briefing in Claude, Grok, ChatGPT or Gemini'
     - 500 saved flights
     - 25 monitored flights
     - Ground Protection
     - Auto-Brief on file
     - Pre-Flight Text
     - On-Demand Refresh
+    - Briefed Fuel Stops (NOTAM-screened)
     - Contract Fuel Pricing
     - PlaneWX Labs
     - 5x5 Insurance credit
@@ -272,7 +274,7 @@ founder:
   subtitle: Built by a pilot, for pilots.
   name: Mark Wolfgang
   paragraphs:
-  - Commercial Instrument pilot (CMEL | IR), nearly 1,000 hours, TBM 900 (N916CM), U.S. Navy veteran,
+  - Commercial Instrument pilot (CMEL | IR), over 1,000 hours, TBM 900, U.S. Navy veteran,
     VAC volunteer pilot. Sold his InfoSec company in 2022, earned his Private in 6 weeks, then an accelerated
     IFR program, and found nobody was solving weather synthesis for pilots.
   - 'Planning long trips meant reading multiple NWS Area Forecast Discussions (separate WFOs along the
@@ -303,8 +305,8 @@ audienceHooks:
   items:
   - icon: Plane
     title: Real-world flying
-    body: The courage to stay. Pilots who share mistakes and lessons. Pair with the Chris testimonial
-      and the public proof points above.
+    body: Staying is a legitimate outcome, not a failure. Pilots who share mistakes and lessons. Pair
+      with the Chris testimonial and the public proof points above.
   - icon: GraduationCap
     title: IFR training
     body: Structured weather decision-making that complements the FAA PAVE framework. Natural for instrument
@@ -321,7 +323,7 @@ messaging:
     note: Primary hero headline
   - line: Fly like it's your job.
     note: Brand tagline
-  - line: Stop being your own meteorologist.
+  - line: Join a community of pilots who take safety seriously. Fly like it's your job.
     note: Closing CTA
   - line: Know if your trip is possible before you're locked into a decision.
     note: Planning value
@@ -329,6 +331,8 @@ messaging:
     note: Safety framing
   soundBitesIntro: Sound bites. Feel free to use any of these on-air or in copy.
   soundBites:
+  - line: Stop being your own meteorologist.
+    note: Sound bite
   - line: TAFs end at 24 hours. Your trip doesn't.
     note: Planning horizon
   - line: Built by a pilot, for pilots, and flown every day in his own plane.
@@ -343,15 +347,15 @@ partners:
   title: For Partners & Creators
   subtitle: Working with aviation creators who care about decision-making and safety, not gear porn.
   body: PlaneWX is built by a working instrument-rated pilot and shaped by one of GA's most demanding
-    communities. We love partners who try the product on real trips and share an honest take with their
+    communities. We love partners who use PlaneWX on real trips and share an honest take with their
     audience.
-  offer: 'Partner offer: Promo code coming soon. Email mark@planewx.ai for an early partner code.'
+  offer: 'Partner offer: each partner gets its own code and tracking link. Email mark@planewx.ai to set yours up.'
   founderEmailLabel: Direct line to the founder
   founderEmail: mark@planewx.ai
   generalEmailLabel: 'General inquiries:'
   generalEmail: hello@planewx.ai
   bullets:
-  - Try PlaneWX on a real upcoming trip
+  - Brief a real upcoming trip in PlaneWX
   - Share an honest take with your audience
   - Tell us what's missing. Feature ideas often ship same day
 socialHandles:

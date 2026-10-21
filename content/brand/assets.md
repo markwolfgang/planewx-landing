@@ -33,15 +33,17 @@ colors:
       borderOnly: true
 scoring:
   title: Scoring Colors
-  subtitle: Critical. Used in the product for WX Score and decision states.
+  subtitle: >-
+    Rating colors for WX Score bands. PlaneWX never recommends go or no-go. The
+    pilot makes the call.
   items:
-    - name: GO / Favorable
+    - name: Favorable
       hex: '#22c55e (green-500)'
       swatch: '#22c55e'
-    - name: CAUTION / Marginal
+    - name: Marginal
       hex: '#f59e0b (amber-500)'
       swatch: '#f59e0b'
-    - name: NO-GO / Unfavorable
+    - name: Unfavorable
       hex: '#ef4444 (red-500)'
       swatch: '#ef4444'
 typography:
@@ -151,7 +153,7 @@ brandFormat:
     - label: Full
       text: PlaneWX. The Pilot's Decision Support System
     - label: With tagline
-      text: 'The confidence to go. The courage to stay.'
+      text: Fly like it's your job.
     - label: Contact
       text: hello@planewx.ai
       href: 'mailto:hello@planewx.ai'

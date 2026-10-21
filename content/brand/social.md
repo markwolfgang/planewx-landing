@@ -104,9 +104,9 @@ responses:
         than basic personal minimums. We complement, never replace.
     - q: Is this an official briefing?
       a: >-
-        PlaneWX provides weather intelligence from multiple authoritative
-        sources to help pilots meet their planning requirements. The
-        pilot-in-command always makes the final call per 14 CFR §91.3.
+        No. PlaneWX is not an official or certified weather briefing. It sits
+        beside your EFB and official sources and does not replace them. The
+        pilot in command always makes the final call (14 CFR 91.3).
     - q: What about accuracy?
       a: >-
         Weather forecasts become more reliable closer to departure. PlaneWX
@@ -149,8 +149,8 @@ socialProof:
   safetyStats:
     - value: 90 pilots
       desc: >-
-        said PlaneWX gave them the courage to stay, or call a no-go. 80 of those
-        were weather-related
+        reported deciding to stay or change plans after using PlaneWX. 80 of
+        those were weather-related
     - value: 78%
       desc: of pilots said the WX Score was accurate or conservative
     - value: 4.6 days
