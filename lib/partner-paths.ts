@@ -5,13 +5,19 @@
  * the path to the A/B homepage variants with `?ref=CODE`. Only allowlisted slugs
  * are rewritten — reserved app routes are never hijacked.
  *
+ * Matching is case-insensitive and ignores a trailing slash (/FlightChops/ works).
+ * Query strings (utm_*) are kept; an explicit ?ref= in the URL wins over the path.
+ *
  * When adding a slug: (1) add it here, (2) add `/{slug}` to middleware `config.matcher`
- * (Next.js requires a static matcher array), (3) seed campaign_codes.
+ * (Next.js requires a static matcher array), (3) make sure the campaign_codes row exists
+ * and is active (its greeting drives the banner; the app resolves the code at signup).
  */
 
 /** Lowercase path slug → uppercase campaign_codes.code */
 export const PARTNER_PATH_CODES: Record<string, string> = {
   runway: "RUNWAY",
+  flightchops: "FLIGHTCHOPS",
+  flightfollower: "FLIGHTFOLLOWER",
 }
 
 /**
