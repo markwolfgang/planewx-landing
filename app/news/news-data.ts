@@ -63,7 +63,7 @@ export const NEWS_ITEMS: NewsItem[] = [
       "Perplexity joins Claude, Grok, ChatGPT and Gemini. Want us to connect your favorite AI? Tell us and we'll build the MCP.",
     date: "October 20, 2026",
     isoDate: "2026-10-20",
-    draft: true,
+    draft: false,
     body: `
 <h2>Now in Perplexity</h2>
 <p>PlaneWX now connects to Perplexity. It joins Claude, Grok, ChatGPT and Gemini as an assistant you can link to your PlaneWX account, so you can ask about your flying in a normal conversation and get answers from your own PlaneWX data.</p>
@@ -93,7 +93,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Full steps for every assistant, including Perplexity, are in Help: <a href="https://planewx.ai/help/connect-ai-assistant#perplexity">Connect PlaneWX to Claude, Grok, ChatGPT, Gemini and Perplexity</a>.</p>
 
 <h2>Which AI should we build for next?</h2>
-<p>Want us to connect your favorite AI? Tell us and we'll build the MCP. Tap the Feedback button in the app (on a phone it's the speech bubble icon), choose Feature, and tell us which assistant you use. If you've hidden the floating button, Send Feedback is also in the Profile menu. I read every one.</p>
+<p>Want us to connect your favorite AI? Tell us and we'll build the MCP. Tap the Feedback button in the app (on a phone it's the speech bubble icon), choose Feature, and tell us which assistant you use. If you've hidden the floating button, Send Feedback is also in the Profile menu. We read every one.</p>
 
 <p>Blue skies,<br/>Mark</p>
 `,
