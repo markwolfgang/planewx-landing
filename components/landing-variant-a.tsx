@@ -248,10 +248,15 @@ export function LandingVariantA() {
             </div>
             <h2 className="text-3xl md:text-5xl font-bold">
               No more &lsquo;we&apos;ll see&rsquo; the night before.{" "}
-              <span className="text-sky-400">Brief, assess, decide on your terms, debrief.</span>
+              <span className="text-sky-400">Brief, Assess, Decide, Debrief.</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              WX Score briefing, FRAT, <span className="whitespace-nowrap">GO / NO-GO</span>, Self Debrief. Mentor is optional, alongside the loop.
+              Brief is the WX Score. Assess is the FRAT. Decide is your own{" "}
+              <span className="whitespace-nowrap">GO / NO-GO</span> call. Debrief is Self Debrief. Mentor is
+              optional, alongside the loop.{" "}
+              <a href="/learn/risk-management-loop" className="text-sky-400 hover:text-sky-300 underline underline-offset-4">
+                What Brief, Assess, Decide, Debrief means
+              </a>
             </p>
           </div>
 
@@ -261,7 +266,7 @@ export function LandingVariantA() {
               <div className="w-11 h-11 rounded-xl bg-sky-500/20 flex items-center justify-center mb-4">
                 <CloudSun className="h-5 w-5 text-sky-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Weather Briefing</h3>
+              <h3 className="text-2xl font-bold mb-2">Brief</h3>
               <p className="text-sky-400/90 text-xs font-medium mb-2">WX Score</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 A briefing scored against your aircraft and personal minimums. Personal minimums are
@@ -275,8 +280,8 @@ export function LandingVariantA() {
               <div className="w-11 h-11 rounded-xl bg-violet-500/20 flex items-center justify-center mb-4">
                 <ClipboardCheck className="h-5 w-5 text-violet-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-2">FRAT</h3>
-              <p className="text-violet-400/90 text-xs font-medium mb-2">PAVE risk assessment</p>
+              <h3 className="text-2xl font-bold mb-2">Assess</h3>
+              <p className="text-violet-400/90 text-xs font-medium mb-2">FRAT on the FAA PAVE framework</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 A living flight risk assessment on the FAA PAVE framework, pre-filled from your
                 briefing and trip context so you are not inventing the environment under pressure.
@@ -288,10 +293,10 @@ export function LandingVariantA() {
               <div className="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
                 <Plane className="h-5 w-5 text-emerald-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-2"><span className="whitespace-nowrap">GO / NO-GO</span></h3>
-              <p className="text-emerald-400/90 text-xs font-medium mb-2">PIC decision</p>
+              <h3 className="text-2xl font-bold mb-2">Decide</h3>
+              <p className="text-emerald-400/90 text-xs font-medium mb-2"><span className="whitespace-nowrap">GO / NO-GO</span>, the PIC decision</p>
               <p className="text-white/60 text-sm leading-relaxed">
-                PlaneWX never recommends go or no-go. The pilot makes the call. Staying is a
+                PlaneWX never recommends GO or NO-GO. The pilot makes the call. Staying is a
                 legitimate outcome, not a failure.
               </p>
             </div>
@@ -301,8 +306,8 @@ export function LandingVariantA() {
               <div className="w-11 h-11 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
                 <RotateCcw className="h-5 w-5 text-amber-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Self Debrief</h3>
-              <p className="text-amber-400/90 text-xs font-medium mb-2">Close the loop</p>
+              <h3 className="text-2xl font-bold mb-2">Debrief</h3>
+              <p className="text-amber-400/90 text-xs font-medium mb-2">Self Debrief, on every plan</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 After the flight, or the flight you skipped, your Self Debrief looks back at the FRAT you ran for that trip.
               </p>

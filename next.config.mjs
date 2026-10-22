@@ -26,6 +26,12 @@ const nextConfig = {
       { source: "/talk", destination: "/talks/osh", permanent: false },
       { source: "/talk/", destination: "/talks/osh/", permanent: false },
       { source: "/talk/remote.html", destination: "/talks/remote.html", permanent: false },
+      // Exact-phrase slug for the loop's canonical definition page
+      {
+        source: "/learn/brief-assess-decide-debrief",
+        destination: "/learn/risk-management-loop",
+        permanent: true,
+      },
     ]
   },
   async rewrites() {

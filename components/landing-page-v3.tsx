@@ -266,7 +266,7 @@ export function LandingPageV3() {
               <span className="text-sky-400">loop</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              WX Score briefing, FRAT, <span className="whitespace-nowrap">GO / NO-GO</span>, Self Debrief. Mentor is optional, alongside the loop,
+              Brief, Assess, Decide, Debrief: the WX Score, the FRAT, your own <span className="whitespace-nowrap">GO / NO-GO</span> call, and Self Debrief. Mentor is optional, alongside the loop,
               not a fifth step. Personal minimums are structural: the WX Score cannot generate without them.
             </p>
           </div>

@@ -174,7 +174,7 @@ export const FAQ_JSON_LD = {
       "name": "What happens after the flight?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "PlaneWX lays out a loop: Weather Briefing, FRAT, GO / NO-GO, then Self Debrief. Self Debrief asks how the flight actually went while it is still fresh, including how the FRAT picture compared with what you felt in the airplane. It does not change the WX Score, and a debrief does not feed the next FRAT."
+        "text": "PlaneWX lays out a loop: Brief, Assess, Decide, Debrief. Self Debrief asks how the flight actually went while it is still fresh, including how the FRAT picture compared with what you felt in the airplane. It does not change the WX Score, and a debrief does not feed the next FRAT."
       }
     },
     {
