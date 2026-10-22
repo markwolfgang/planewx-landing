@@ -42,8 +42,9 @@ export function FooterCTA({ variant }: { variant: string }) {
           </span>
         </h2>
         <p className="text-lg text-white/60 mb-10 max-w-lg mx-auto">
-          Join {STATS.totalPilots} pilots in {STATS.countries} countries, from students to ATP captains,
-          who use PlaneWX to Brief, Assess, Decide, and Debrief: WX Score, FRAT, GO / NO‑GO, and Self Debrief.
+          Join {STATS.totalPilots} pilots in {STATS.countries} countries, from students to ATP captains.
+          PlaneWX supports each step of Brief, Assess, Decide, Debrief with the WX Score, the FRAT, and
+          Self Debrief, and the GO / NO‑GO call stays with the pilot.
         </p>
         <a
           href={href}

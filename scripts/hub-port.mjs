@@ -201,8 +201,9 @@ export const HUB_PAGES = [
     // New guide (Oct 21, 2026): SEO/AEO brief 2026-10-21-risk-management-loop.md.
     // Canonical definition of Brief, Assess, Decide, Debrief. Source HTML is the
     // extracted <article>, so sourceMd5 equals mainHtmlMd5.
-    sourceMd5: "7442c08dfbed07a918c1fc844ae7c2c6",
-    mainHtmlMd5: "7442c08dfbed07a918c1fc844ae7c2c6",
+    // CR round 1 (Oct 21, 2026): data-label on all 28 stacked-table cells. MAIN_HTML re-pinned.
+    sourceMd5: "a2b7cd8e1550837a4ad6b31ef032d162",
+    mainHtmlMd5: "a2b7cd8e1550837a4ad6b31ef032d162",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "risk-management-loop",
   },

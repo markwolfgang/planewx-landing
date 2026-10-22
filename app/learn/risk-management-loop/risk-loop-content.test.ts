@@ -10,6 +10,10 @@ const read = (path: string) => readFileSync(join(process.cwd(), path), "utf8")
 const PAGE_TSX = read("app/learn/risk-management-loop/page.tsx")
 const NEXT_CONFIG = read("next.config.mjs")
 const LLMS_TXT = read("public/llms.txt")
+const normalize = (text: string) => text.replace(/\u00a0/g, " ").replace(/\u2011/g, "-").replace(/\s+/g, " ")
+const HOMEPAGE = normalize(read("components/landing-variant-a.tsx"))
+const V3 = normalize(read("components/landing-page-v3.tsx"))
+const FOOTER = normalize(read("components/shared/footer-cta.tsx"))
 
 const DEFINITION =
   "Brief, Assess, Decide, Debrief is a four-step risk management loop for general aviation pilots: the pilot briefs the flight, assesses the risk with PAVE and a FRAT, makes their own GO / NO-GO call, then debriefs what actually happened so the next flight starts with better information."
@@ -205,6 +209,46 @@ describe("risk management loop learn page", () => {
       expect(read(path)).toContain('href=\\"/learn/risk-management-loop\\"')
     }
     expect(read("app/learn/aviation-weather/weather-risk/content.ts")).not.toContain("PlaneWX Labs feature for Pro Plus")
+  })
+
+  it("labels every cell of the stacked tables for screens below 600px", () => {
+    const tables = MAIN_HTML.match(/<table class="stack"[\s\S]*?<\/table>/g) ?? []
+    expect(tables.length).toBe(2)
+    let cells = 0
+    for (const table of tables) {
+      const headers = [...(table.match(/<thead>[\s\S]*?<\/thead>/)?.[0] ?? "").matchAll(/<th scope="col">([\s\S]*?)<\/th>/g)].map(
+        (m) => decode(m[1]),
+      )
+      expect(table).not.toMatch(/<td(?![^>]*\bdata-label="[^"]+")[^>]*>/)
+      const rows = [...table.matchAll(/<tr><th scope="row">[\s\S]*?<\/tr>/g)].map((m) => m[0])
+      expect(rows.length).toBeGreaterThan(0)
+      for (const row of rows) {
+        const labels = [...row.matchAll(/<td data-label="([^"]+)">/g)].map((m) => m[1])
+        expect(labels).toEqual(headers.slice(1))
+        cells += labels.length
+      }
+    }
+    expect(cells).toBe(28)
+  })
+
+  it("uses the loop name on the homepage, /v3, and the footer without saying PlaneWX makes the call", () => {
+    expect(HOMEPAGE).toContain('<span className="text-sky-400">Brief, Assess, Decide, Debrief.</span>')
+    expect(HOMEPAGE).toContain('href="/learn/risk-management-loop"')
+    for (const step of ["Brief", "Assess", "Decide", "Debrief"]) {
+      expect(HOMEPAGE).toContain(`<h3 className="text-2xl font-bold mb-2">${step}</h3>`)
+    }
+    expect(HOMEPAGE).toContain("PlaneWX never recommends GO or NO-GO")
+    expect(V3).toContain("Brief, Assess, Decide, Debrief: the WX Score, the FRAT, your own")
+    for (const step of ["Brief", "Assess", "Decide", "Debrief"]) {
+      expect(V3).toContain(`<h3 className="text-2xl font-bold mb-2">${step}</h3>`)
+    }
+    expect(FOOTER).toContain(
+      "PlaneWX supports each step of Brief, Assess, Decide, Debrief with the WX Score, the FRAT, and Self Debrief, and the GO / NO-GO call stays with the pilot.",
+    )
+    for (const source of [HOMEPAGE, V3, FOOTER]) {
+      expect(source).not.toMatch(/decide on your terms|WX Score briefing|never recommends go or no-go|use PlaneWX to (Brief|Decide)/)
+      expect(source).not.toMatch(/>(Weather Briefing|Self Debrief|FRAT)<\/h3>/)
+    }
   })
 
   it("is listed in llms.txt with the same definition", () => {
