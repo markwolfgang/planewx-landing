@@ -231,6 +231,28 @@ describe("risk management loop learn page", () => {
     expect(cells).toBe(28)
   })
 
+  it("keeps stacked-table captions full width below 600px", () => {
+    const css = read("app/learn/aviation-weather/aw-hub.css")
+    const start = css.indexOf("@media (max-width: 599.98px) {")
+    expect(start).toBeGreaterThan(-1)
+    let depth = 0
+    let end = start
+    for (let i = css.indexOf("{", start); i < css.length; i++) {
+      if (css[i] === "{") depth++
+      if (css[i] === "}" && --depth === 0) {
+        end = i
+        break
+      }
+    }
+    const mobile = css.slice(start, end)
+    const rule = mobile.match(/table\.stack caption\s*\{([^}]*)\}/)?.[1] ?? ""
+    expect(rule).toMatch(/display:\s*block/)
+    expect(rule).toMatch(/width:\s*100%/)
+    expect(rule).toMatch(/text-align:\s*center/)
+    const tables = MAIN_HTML.match(/<table class="stack"[\s\S]*?<\/table>/g) ?? []
+    for (const table of tables) expect(table).toMatch(/<table class="stack"[^>]*>\s*<caption>/)
+  })
+
   it("uses the loop name on the homepage, /v3, and the footer without saying PlaneWX makes the call", () => {
     expect(HOMEPAGE).toContain('<span className="text-sky-400">Brief, Assess, Decide, Debrief.</span>')
     expect(HOMEPAGE).toContain('href="/learn/risk-management-loop"')
