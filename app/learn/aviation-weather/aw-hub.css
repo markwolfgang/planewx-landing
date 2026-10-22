@@ -120,6 +120,9 @@ html.dark .aw-hub,
   @media (max-width: 599.98px) {
     table.stack, table.stack tbody, table.stack tr, table.stack td, table.stack th[scope="row"] { display: block; width: 100%; }
     table.stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+    /* A caption keeps display: table-caption once its table is display: block, which shrinks it to
+       one word per line. Make it a full-width block, centered as captions are above 600 px. */
+    table.stack caption { display: block; width: 100%; text-align: center; }
     table.stack tr { border: 1px solid var(--line); border-radius: 8px; margin: 0 0 12px; overflow: hidden; }
     table.stack td, table.stack th[scope="row"] { border: 0; border-top: 1px solid var(--line); padding: 8px 12px; }
     table.stack tr > :first-child { border-top: 0; }

@@ -143,8 +143,10 @@ export const HUB_PAGES = [
   {
     slug: "weather-risk",
     source: "weather-risk.html",
+    // Loop name (Oct 21, 2026): Assess / Decide labels, Self Debrief on every plan,
+    // link to /learn/risk-management-loop. MAIN_HTML re-pinned.
     sourceMd5: "668849c529daa7478626bb5e3e48c951",
-    mainHtmlMd5: "e8720a4360540e8e5e6e37d9760f2dd0",
+    mainHtmlMd5: "4a81646de50995d1b7f42ea80778c2e3",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/weather-risk",
   },
@@ -162,8 +164,10 @@ export const HUB_PAGES = [
     // night rule, four FAQ entries, Self Debrief on every plan, GO / NO-GO casing. MAIN_HTML re-pinned.
     // Review round 1 (Oct 21, 2026): imperatives rewritten descriptively, bare "go" to GO. MAIN_HTML re-pinned.
     // Requote (Oct 21, 2026): Risk Loop and WX Score help quotes from app PR #3161 (45b2d17f). MAIN_HTML re-pinned.
+    // Loop name (Oct 21, 2026): Brief, Assess, Decide, Debrief step labels, links to
+    // /learn/risk-management-loop. MAIN_HTML re-pinned.
     sourceMd5: "30c4436e6bb40845c17a464236b1df5f",
-    mainHtmlMd5: "982718735a95c7b8acc99307210eeb69",
+    mainHtmlMd5: "c79db403362642a9206b02462f6ec597",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "flight-risk-assessment-tool",
   },
@@ -175,8 +179,9 @@ export const HUB_PAGES = [
     // Gap fill (Oct 14, 2026): FAASTeam + CAP cites, shipped FRAT features,
     // directive wording softened, 61.53 key facts completed,
     // card prompts risk-positive (CodeRabbit). MAIN_HTML re-pinned.
-    sourceMd5: "3e849b8c523976a50bfa4176249719ed",
-    mainHtmlMd5: "3e849b8c523976a50bfa4176249719ed",
+    // Loop link (Oct 21, 2026): links to /learn/risk-management-loop. MAIN_HTML re-pinned.
+    sourceMd5: "6de0739ef95d4273d799b969d57991af",
+    mainHtmlMd5: "6de0739ef95d4273d799b969d57991af",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "imsafe-checklist",
   },
@@ -189,6 +194,18 @@ export const HUB_PAGES = [
     mainHtmlMd5: "569e848dd07d3d2228144aa3e24172c9",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "controlled-flight-into-terrain",
+  },
+  {
+    slug: "risk-management-loop",
+    source: "risk-management-loop.html",
+    // New guide (Oct 21, 2026): SEO/AEO brief 2026-10-21-risk-management-loop.md.
+    // Canonical definition of Brief, Assess, Decide, Debrief. Source HTML is the
+    // extracted <article>, so sourceMd5 equals mainHtmlMd5.
+    // CR round 1 (Oct 21, 2026): data-label on all 28 stacked-table cells. MAIN_HTML re-pinned.
+    sourceMd5: "a2b7cd8e1550837a4ad6b31ef032d162",
+    mainHtmlMd5: "a2b7cd8e1550837a4ad6b31ef032d162",
+    inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
+    dir: "risk-management-loop",
   },
 ]
 

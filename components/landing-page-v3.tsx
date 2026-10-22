@@ -266,7 +266,7 @@ export function LandingPageV3() {
               <span className="text-sky-400">loop</span>
             </h2>
             <p className="text-lg text-white/60 max-w-2xl mx-auto">
-              WX Score briefing, FRAT, <span className="whitespace-nowrap">GO / NO-GO</span>, Self Debrief. Mentor is optional, alongside the loop,
+              Brief, Assess, Decide, Debrief: the WX Score, the FRAT, your own <span className="whitespace-nowrap">GO / NO-GO</span> call, and Self Debrief. Mentor is optional, alongside the loop,
               not a fifth step. Personal minimums are structural: the WX Score cannot generate without them.
             </p>
           </div>
@@ -277,7 +277,7 @@ export function LandingPageV3() {
               <div className="w-11 h-11 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4">
                 <Brain className="h-5 w-5 text-blue-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Weather Briefing</h3>
+              <h3 className="text-2xl font-bold mb-2">Brief</h3>
               <p className="text-sky-400/90 text-xs font-medium mb-2">WX Score</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 A briefing scored against your aircraft and personal minimums. Personal minimums are structural:
@@ -290,8 +290,8 @@ export function LandingPageV3() {
               <div className="w-11 h-11 rounded-xl bg-violet-500/20 flex items-center justify-center mb-4">
                 <ClipboardCheck className="h-5 w-5 text-violet-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-2">FRAT</h3>
-              <p className="text-violet-400/90 text-xs font-medium mb-2">PAVE risk assessment</p>
+              <h3 className="text-2xl font-bold mb-2">Assess</h3>
+              <p className="text-violet-400/90 text-xs font-medium mb-2">FRAT on the FAA PAVE framework</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 A living flight risk assessment on the FAA PAVE framework, pre-filled from your briefing
                 and trip context so you are not inventing the environment under pressure.
@@ -303,8 +303,8 @@ export function LandingPageV3() {
               <div className="w-11 h-11 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-4">
                 <Plane className="h-5 w-5 text-emerald-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-2"><span className="whitespace-nowrap">GO / NO-GO</span></h3>
-              <p className="text-emerald-400/90 text-xs font-medium mb-2">You make the call</p>
+              <h3 className="text-2xl font-bold mb-2">Decide</h3>
+              <p className="text-emerald-400/90 text-xs font-medium mb-2"><span className="whitespace-nowrap">GO / NO-GO</span>, your call</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 The pilot makes the call. PlaneWX informs. It never decides. Staying is a legitimate
                 outcome, not a failure.
@@ -316,8 +316,8 @@ export function LandingPageV3() {
               <div className="w-11 h-11 rounded-xl bg-amber-500/20 flex items-center justify-center mb-4">
                 <RotateCcw className="h-5 w-5 text-amber-400" />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Self Debrief</h3>
-              <p className="text-amber-400/90 text-xs font-medium mb-2">Close the loop</p>
+              <h3 className="text-2xl font-bold mb-2">Debrief</h3>
+              <p className="text-amber-400/90 text-xs font-medium mb-2">Self Debrief, on every plan</p>
               <p className="text-white/60 text-sm leading-relaxed">
                 After the flight, or the flight you skipped, your Self Debrief looks back at the FRAT you ran for that trip.
               </p>

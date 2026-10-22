@@ -2280,6 +2280,13 @@ export const AVIATION_WEATHER_HUB_PAGES: readonly AviationWeatherHubPage[] = [
  */
 export const DECISION_MAKING_HUB_PAGES: readonly AviationWeatherHubPage[] = [
   {
+    href: "/learn/risk-management-loop",
+    title: "Brief, Assess, Decide, Debrief: A Risk Management Loop for General Aviation",
+    summary:
+      "The four-step risk management loop for general aviation pilots, step by step in FAA terms: PAVE, IMSAFE, the FRAT, 3P, DECIDE, and the post-flight debrief.",
+    lastReviewed: "2026-10-21",
+  },
+  {
     href: "/learn/flight-risk-assessment-tool",
     title:
       "FAA FRAT: What the Flight Risk Assessment Tool Is and How to Use One",

@@ -20,6 +20,7 @@ const HUB_PAGE_FILES = [
   join("app/learn/flight-risk-assessment-tool/page.tsx"),
   join("app/learn/imsafe-checklist/page.tsx"),
   join("app/learn/controlled-flight-into-terrain/page.tsx"),
+  join("app/learn/risk-management-loop/page.tsx"),
 ]
 
 describe("learn hub LEARN_PUBLIC rollback gating", () => {
@@ -27,7 +28,7 @@ describe("learn hub LEARN_PUBLIC rollback gating", () => {
     expect(HUB_PAGE_FILES).toHaveLength(
       AVIATION_WEATHER_HUB_PAGES.length + DECISION_MAKING_HUB_PAGES.length
     )
-    expect(HUB_PAGE_FILES).toHaveLength(22)
+    expect(HUB_PAGE_FILES).toHaveLength(23)
   })
 
   it("each hub page derives robots and JSON-LD from LEARN_PUBLIC helpers", () => {
