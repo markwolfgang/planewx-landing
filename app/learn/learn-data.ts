@@ -659,7 +659,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     lastReviewed: "2026-10-17",
     draft: false,
     body: [
-      { type: "paragraph", text: "Ask experienced pilots how they make the fly or stay call and you'll hear some version of this rule. Night is a strike. IMC is a strike. Mountains are a strike. All three, and the airplane stays in the hangar. The rule works because of an idea accident investigators have used for decades: the Swiss cheese model." },
+      { type: "paragraph", text: "Many experienced pilots describe their GO / NO-GO call with some version of this rule. Night is a strike. IMC is a strike. Mountains are a strike. All three, and the airplane stays in the hangar. The rule works because of an idea accident investigators have used for decades: the Swiss cheese model." },
       { type: "heading", text: "What is the Swiss cheese model in aviation?" },
       { type: "paragraph", text: "The Swiss cheese model says accidents rarely have one cause. Every flight has layers of defense, each with weaknesses, and an accident happens when weaknesses in several layers line up at once." },
       { type: "paragraph", text: "Psychologist James Reason pictured these defenses as slices of Swiss cheese whose holes keep opening, shutting and shifting. Trouble comes \"when the holes in many layers momentarily line up to permit a trajectory of accident opportunity\" ([Reason, BMJ, 2000](https://pmc.ncbi.nlm.nih.gov/articles/PMC1117770/)). The FAA uses the same picture in its Risk Management Handbook, where each slice is a defense against threats, errors and undesired aircraft states ([FAA-H-8083-2A, p. 6-5, Figure 6-1](https://www.faa.gov/sites/faa.gov/files/2022-06/risk_management_handbook_2A.pdf))." },
@@ -696,10 +696,10 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       { type: "paragraph", text: "The PlaneWX FRAT is built on PAVE, with IMSAFE in the Pilot step. It opens within 4 hours of departure and pre-fills hints it already knows: day or night, the WX Score breakdown, airport complexity, night currency and whether you've flown into that destination before. Your own LOW, MEDIUM or HIGH ratings override every suggestion." },
       { type: "paragraph", text: "When three or more elevated factors stack on one flight, the FRAT shows a Risks are stacking banner with the count and the factors behind it. Take the classic three: night, weather rated MEDIUM and terrain rated MEDIUM. Add the hidden ones. You're fatigued, the destination is new to you, friends are waiting and you answered yes to get-there-itis. The banner reads seven, not three." },
       { type: "paragraph", text: "The banner doesn't change the WX Score or your FRAT levels, and it doesn't make the call. At MEDIUM or HIGH overall risk, the FRAT offers the FAA TEAM options (Transfer, Eliminate, Accept, Mitigate). Then you record GO, NO-GO, Postpone or Modify. PlaneWX never recommends GO or NO-GO. The pilot always decides." },
-      { type: "paragraph", text: "It fits the PlaneWX loop: Brief, Assess, Decide, Debrief, starting with the WX Score briefing. On an obviously low-risk flight the FRAT is optional. When the score comes in low, the FRAT is where you name risks and mitigations, and a mentor can review it with you if concerns remain. The FRAT is on the free plan with no restrictions." },
+      { type: "paragraph", text: "It fits the PlaneWX loop: [Brief, Assess, Decide, Debrief](/learn/risk-management-loop), starting with the WX Score briefing. On an obviously low-risk flight the FRAT is optional. When the score comes in low, the FRAT is where you name risks and mitigations, and a mentor can review it with you if concerns remain. The FRAT is on the free plan with no restrictions." },
       { type: "heading", text: "What else should a pilot weigh besides a risk count?" },
       { type: "paragraph", text: "A risk count is one input, not the decision. Also read the NOTAMs, listen to the ATIS, check PIREPs, get a complete official weather briefing, and use your own judgment." },
-      { type: "paragraph", text: "Federal rules require the PIC to \"become familiar with all available information concerning that flight\" before it begins ([14 CFR 91.103](https://www.ecfr.gov/current/title-14/section-91.103)). PlaneWX is not a substitute for a complete, independent preflight briefing, and no app or AI makes the fly or stay call for you." },
+      { type: "paragraph", text: "Federal rules require the PIC to \"become familiar with all available information concerning that flight\" before it begins ([14 CFR 91.103](https://www.ecfr.gov/current/title-14/section-91.103)). PlaneWX is not a substitute for a complete, independent preflight briefing, and no app or AI makes the GO / NO-GO call for you." },
       { type: "heading", text: "How do you build your own strikes list?" },
       {
         type: "list",
@@ -755,7 +755,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
       whyItMattersHeading: "Why a written count matters when you fly single pilot",
       toolOrHabitHeading: "PlaneWX FRAT: seeing the whole stack",
       whyItMatters:
-        "Without a dispatcher or a second pilot, nobody else keeps the tally. Writing the count down before departure makes the stack visible while you still have options. The pilot makes the fly or stay call.",
+        "Without a dispatcher or a second pilot, nobody else keeps the tally. Writing the count down before departure makes the stack visible while you still have options. The pilot makes the GO / NO-GO call.",
       loopStage: ["FRAT", "GO / NO-GO"],
       toolOrHabit:
         "The PlaneWX FRAT counts elevated self-rates and named concerns across Pilot, Aircraft, enVironment and External pressure, and shows a Risks are stacking banner at three or more. It does not make the call and does not change the WX Score. You record your own decision.",

@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs"
+import { readdirSync, readFileSync } from "node:fs"
 import { join } from "node:path"
 import { describe, expect, it } from "vitest"
 import { DECISION_MAKING_HUB_PAGES } from "../learn-data"
@@ -277,5 +277,79 @@ describe("risk management loop learn page", () => {
     expect(LLMS_TXT).toContain(URL)
     expect(LLMS_TXT).toContain(DEFINITION)
     expect(LLMS_TXT).not.toContain("Risk loop structure: Weather Briefing")
+  })
+})
+
+// SF4 follow-up to #205: the old loop names must not come back anywhere in /learn content.
+const SF4_PAGES = [
+  "airmet-sigmet",
+  "atmospheric-stability",
+  "ceiling-visibility",
+  "density-altitude",
+  "fog",
+  "fronts-troughs-drylines",
+  "icing",
+  "metar",
+  "mountain-wave",
+  "pirep",
+  "surface-analysis-prog-charts",
+  "taf",
+  "thunderstorms",
+  "turbulence",
+  "weather-briefings",
+  "weather-radar",
+  "wind-shear-microburst",
+  "winds-aloft",
+] as const
+
+function learnContentSources(): { file: string; text: string }[] {
+  const files = (readdirSync(join(process.cwd(), "app/learn"), { recursive: true }) as string[])
+    .filter((f) => /\.(ts|tsx|json|md|mdx)$/.test(f) && !/\.test\.tsx?$/.test(f))
+    .map((f) => join("app/learn", f))
+  for (const dir of ["lib/blog-posts", "lib/blog-overrides"]) {
+    for (const f of readdirSync(join(process.cwd(), dir))) {
+      if (/\.(ts|tsx|md|mdx)$/.test(f) && !/\.test\.tsx?$/.test(f)) files.push(join(dir, f))
+    }
+  }
+  files.push("public/llms.txt")
+  return files.map((file) => ({
+    file,
+    text: normalize(read(file).replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => String.fromCharCode(parseInt(h, 16)))),
+  }))
+}
+
+describe("old loop wording stays out of /learn content", () => {
+  const sources = learnContentSources()
+
+  it("scans every learn source file plus the blog posts and llms.txt", () => {
+    expect(sources.length).toBeGreaterThan(60)
+    expect(sources.map((s) => s.file)).toContain("app/learn/learn-data.ts")
+  })
+
+  it("never uses the retired Fly or Stay loop step or the old chained loop names", () => {
+    const hits: string[] = []
+    for (const { file, text } of sources) {
+      for (const stale of [/fly or stay/i, /then FRAT, then/i, /WX Score, then FRAT/i]) {
+        const m = text.match(stale)
+        if (m) hits.push(`${file}: ${m[0]}`)
+      }
+    }
+    expect(hits).toEqual([])
+  })
+
+  it("names the loop Brief, Assess, Decide, Debrief on the renamed aviation-weather pages", () => {
+    for (const slug of SF4_PAGES) {
+      const html = JSON.parse(
+        read(`app/learn/aviation-weather/${slug}/content.ts`).match(/export const MAIN_HTML = ("(?:\\.|[^"\\])*")/)![1],
+      ) as string
+      expect(html, slug).toContain(
+        '<a href="/learn/risk-management-loop"><span class="loop">Brief, Assess, Decide, Debrief</span></a>, with a Mentor optional, alongside it.',
+      )
+      for (const step of ["Assess", "Decide", "Debrief"]) expect(html, slug).toContain(`<li><strong>${step}.</strong> `)
+      expect(html, slug).toMatch(/GO \/ NO-GO is the pilot['\u2019]s call\./)
+      expect(html, slug).toMatch(/Self Debrief is on every plan, Free included\./)
+      expect(html, slug).not.toMatch(/Self Debrief is a PlaneWX Labs feature|It is a PlaneWX Labs feature for Pro Plus/)
+      expect(html, slug).not.toMatch(/Treat the (weather decision|performance question)/)
+    }
   })
 })
