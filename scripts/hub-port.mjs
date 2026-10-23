@@ -76,7 +76,7 @@ export const HUB_PAGES = [
     // SF4 loop rename (Oct 23, 2026): Brief, Assess, Decide, Debrief; Assess / Decide labels,
     // Self Debrief on every plan, link to /learn/risk-management-loop. MAIN_HTML re-pinned.
     sourceMd5: "82bb1a3c813fac18d3e2d0855a9cebae",
-    mainHtmlMd5: "be80f0441491e9e7eeafe4fbd1b8baf6",
+    mainHtmlMd5: "58fdfd4c01004fbb77a5929c47dcb1fb",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/icing",
   },
@@ -86,7 +86,7 @@ export const HUB_PAGES = [
     // SF4 loop rename (Oct 23, 2026): Brief, Assess, Decide, Debrief; Assess / Decide labels,
     // Self Debrief on every plan, link to /learn/risk-management-loop. MAIN_HTML re-pinned.
     sourceMd5: "3eafa44339db61e170feeb92d760cfdd",
-    mainHtmlMd5: "eacf34db43d5caaf80b3cc10ddc73d49",
+    mainHtmlMd5: "afbde32f5e315b2d7773a1a7f40f68ec",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/turbulence",
   },
@@ -146,7 +146,7 @@ export const HUB_PAGES = [
     // SF4 loop rename (Oct 23, 2026): Brief, Assess, Decide, Debrief; Assess / Decide labels,
     // Self Debrief on every plan, link to /learn/risk-management-loop. MAIN_HTML re-pinned.
     sourceMd5: "33f5aa704def85004110811382d4d3aa",
-    mainHtmlMd5: "f15826952ef70484325c2c94e35b5333",
+    mainHtmlMd5: "6c50e755609b51f1cbd6a5e47a2fd9cd",
     inlineStyleMd5: "259b147a9ac6e882449c0c000f983c3e",
     dir: "aviation-weather/wind-shear-microburst",
   },
