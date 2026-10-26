@@ -57,7 +57,7 @@ const STEPS = [
 ] as const
 
 const TROUBLESHOOTING =
-  "If a feature does not seem to work, disconnect and reconnect to the PlaneWX connector. In PlaneWX, open your Profile, then the Account tab, then Connected apps, and choose Disconnect next to the assistant. Then connect again."
+  "If a feature does not seem to work, disconnect and reconnect to the PlaneWX connector. In PlaneWX, open your Profile, then the Account tab, then Connected apps, and choose Disconnect next to the assistant. You can also revoke the PlaneWX connection in your AI assistant's app or connector settings. Then follow the steps for your assistant above to connect again."
 
 const CLAUDE_DIRECTORY_STEP =
   "In Claude, open Customize, then Connectors, then Discover. Search for PlaneWX (listed as PlaneWX, Community, by PlaneWX LLC) and connect. Sign in to PlaneWX and choose Allow; tick Also allow building briefings for scored runs."

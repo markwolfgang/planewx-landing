@@ -62,11 +62,16 @@ describe("/mcp connector copy", () => {
     expect(src).toContain("Sign in to PlaneWX and choose Allow; tick Also allow")
   })
 
-  it("tells pilots to disconnect and reconnect if a feature does not work", () => {
-    expect(src).toContain(
-      "If a feature does not seem to work, disconnect and reconnect to the PlaneWX connector.",
+  it("tells pilots to disconnect and reconnect if a feature does not work, and renders it", () => {
+    const m = src.match(/const TROUBLESHOOTING =\s*"([^"]*)"/)
+    expect(m).toBeTruthy()
+    expect(m![1]).toBe(
+      "If a feature does not seem to work, disconnect and reconnect to the PlaneWX connector. In PlaneWX, open your Profile, then the Account tab, then Connected apps, and choose Disconnect next to the assistant. You can also revoke the PlaneWX connection in your AI assistant's app or connector settings. Then follow the steps for your assistant above to connect again.",
     )
-    expect(src).toContain("open your Profile, then the Account tab, then Connected apps, and choose Disconnect")
+    // The const must be rendered in the JSX, after the assistant steps it points to.
+    expect(src).toMatch(/\{TROUBLESHOOTING\}/)
+    expect(src.indexOf("{TROUBLESHOOTING}")).toBeGreaterThan(src.indexOf("<DemoVideo video={MCP_CHATGPT_DEMO_VIDEO} />"))
+    expect(src.indexOf("{TROUBLESHOOTING}")).toBeGreaterThan(src.indexOf("{GROK_STEPS.map"))
   })
 
   it("connector news posts have no PlaneWX Enterprise plan text and no approve step", () => {
@@ -76,6 +81,8 @@ describe("/mcp connector copy", () => {
     expect(claudeGrok).toContain("choose Allow on the consent screen")
     const perplexity = newsItem("planewx-connects-to-perplexity")
     expect(perplexity).not.toContain("Enterprise included")
+    const access = perplexity.slice(perplexity.indexOf("<h2>Who can use it</h2>"))
+    expect(access.slice(0, access.indexOf("</p>"))).not.toMatch(/enterprise/i)
     expect(perplexity).toContain("is a Pro Plus Labs feature, and Pro Plus trials include it.")
     // Perplexity vendor plan note stays.
     expect(perplexity).toContain("Pro, Max or Enterprise")
