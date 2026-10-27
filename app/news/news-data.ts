@@ -116,7 +116,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <ol>
 <li>In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.</li>
 <li>In your assistant, add PlaneWX from its connector directory, or add a custom connector with the PlaneWX MCP URL: <code>https://app.planewx.ai/api/mcp</code></li>
-<li>Sign in to PlaneWX. On the consent screen, choose Allow. Tick Also allow building briefings for scored runs. Editing a trip needs that box, because most edits build a new briefing.</li>
+<li>Sign in to PlaneWX. On the consent screen, tick Also allow building briefings for scored runs, then choose Allow. Editing a trip needs that box, because most edits build a new briefing.</li>
 </ol>
 <p>Full steps for each assistant are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to your AI assistant</a>.</p>
 
@@ -144,7 +144,7 @@ export const NEWS_ITEMS: NewsItem[] = [
     body: `
 <h2>Now in Perplexity</h2>
 <p>PlaneWX now connects to Perplexity. It joins Claude, Grok, ChatGPT and Gemini as an assistant you can link to your PlaneWX account, so you can ask about your flying in a normal conversation and get answers from your own PlaneWX data.</p>
-<p>You need a paid Perplexity plan (Pro, Max or Enterprise). On Enterprise, your admin has to allow custom connectors. In Perplexity, open Plugins in the sidebar (or Customize, Connectors), then Add custom, Connector, Add MCP connector. Choose Remote. Name it PlaneWX, enter the PlaneWX MCP URL <code>https://app.planewx.ai/api/mcp</code>, set Authentication to OAuth and leave Client ID and Client secret blank. Tick the acknowledgement box, click Add, then click the PlaneWX card to connect. Sign in to PlaneWX and press Allow. Tick Also allow building briefings if you want scored runs.</p>
+<p>You need a paid Perplexity plan (Pro, Max or Enterprise). On Enterprise, your admin has to allow custom connectors. In Perplexity, open Plugins in the sidebar (or Customize, Connectors), then Add custom, Connector, Add MCP connector. Choose Remote. Name it PlaneWX, enter the PlaneWX MCP URL <code>https://app.planewx.ai/api/mcp</code>, set Authentication to OAuth and leave Client ID and Client secret blank. Tick the acknowledgement box, click Add, then click the PlaneWX card to connect. Sign in to PlaneWX. Tick Also allow building briefings if you want scored runs, then press Allow.</p>
 <p>When you connect, the assistant can read your profile, aircraft, personal minimums, saved trips, Self Debriefs (including private notes, in trimmed form) and FRATs. Only connect assistants you trust. You can disconnect anytime in PlaneWX account settings.</p>
 
 <h2>What you can ask</h2>
@@ -245,7 +245,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <li>On Casual or Pro? Start your 14-day Pro Plus trial first (Profile, Subscription).</li>
 <li>In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.</li>
 <li>In your AI assistant, add a custom connector with the PlaneWX MCP URL: <code>https://app.planewx.ai/api/mcp</code></li>
-<li>Sign in to PlaneWX and choose Allow on the consent screen. Tick "Also allow building briefings" for scored runs.</li>
+<li>Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then choose Allow on the consent screen.</li>
 </ol>
 <p>Using ChatGPT? You need a paid ChatGPT plan. Open <a href="https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1">Add PlaneWX to ChatGPT</a>, then sign in to PlaneWX.</p>
 <p>Full steps are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to your AI assistant</a>.</p>

@@ -56,10 +56,18 @@ describe("/mcp connector copy", () => {
     expect(llms).toContain("Pro Plus, trials included. Not available on Free, Casual or Pro without a Pro Plus trial.")
   })
 
-  it("tells pilots to choose Allow on the consent screen, not approve", () => {
+  it("tells pilots to tick Also allow building briefings first, then choose Allow, not approve", () => {
     expect(src).not.toMatch(/approve/i)
-    expect(src).toContain("Sign in to PlaneWX and choose Allow on the consent screen.")
-    expect(src).toContain("Sign in to PlaneWX and choose Allow; tick Also allow")
+    // The consent screen has the box above the Allow button, so the box comes first.
+    expect(src).toContain(
+      'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then choose Allow on the consent screen.',
+    )
+    expect(src).toContain(
+      "Sign in to PlaneWX. Tick Also allow building briefings for scored runs, then choose Allow.",
+    )
+    // Old order (Allow first, tick after) is rejected.
+    expect(src).not.toContain("choose Allow on the consent screen. Tick")
+    expect(src).not.toContain("choose Allow; tick")
   })
 
   it("tells pilots to disconnect and reconnect if a feature does not work, and renders it", () => {
@@ -78,7 +86,10 @@ describe("/mcp connector copy", () => {
     const claudeGrok = newsItem("new-beta-planewx-in-claude-and-grok")
     expect(claudeGrok).not.toMatch(/enterprise/i)
     expect(claudeGrok).not.toMatch(/approve/i)
-    expect(claudeGrok).toContain("choose Allow on the consent screen")
+    expect(claudeGrok).toContain(
+      'Tick "Also allow building briefings" for scored runs, then choose Allow on the consent screen.',
+    )
+    expect(claudeGrok).not.toContain("choose Allow on the consent screen. Tick")
     const perplexity = newsItem("planewx-connects-to-perplexity")
     expect(perplexity).not.toContain("Enterprise included")
     const access = perplexity.slice(perplexity.indexOf("<h2>Who can use it</h2>"))
@@ -86,5 +97,10 @@ describe("/mcp connector copy", () => {
     expect(perplexity).toContain("is a Pro Plus Labs feature, and Pro Plus trials include it.")
     // Perplexity vendor plan note stays.
     expect(perplexity).toContain("Pro, Max or Enterprise")
+    // Box first, then Allow.
+    expect(perplexity).toContain(
+      "Tick Also allow building briefings if you want scored runs, then press Allow.",
+    )
+    expect(perplexity).not.toContain("press Allow. Tick")
   })
 })

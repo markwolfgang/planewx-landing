@@ -53,19 +53,19 @@ const ASK = [
 const STEPS = [
   "In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.",
   `In Claude, open Customize, then Connectors, then Add custom connector, and enter the PlaneWX MCP URL: ${MCP_URL}`,
-  'Sign in to PlaneWX and choose Allow on the consent screen. Tick "Also allow building briefings" for scored runs.',
+  'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then choose Allow on the consent screen.',
 ] as const
 
 const TROUBLESHOOTING =
   "If a feature does not seem to work, disconnect and reconnect to the PlaneWX connector. In PlaneWX, open your Profile, then the Account tab, then Connected apps, and choose Disconnect next to the assistant. You can also revoke the PlaneWX connection in your AI assistant's app or connector settings. Then follow the steps for your assistant above to connect again."
 
 const CLAUDE_DIRECTORY_STEP =
-  "In Claude, open Customize, then Connectors, then Discover. Search for PlaneWX (listed as PlaneWX, Community, by PlaneWX LLC) and connect. Sign in to PlaneWX and choose Allow; tick Also allow building briefings for scored runs."
+  "In Claude, open Customize, then Connectors, then Discover. Search for PlaneWX (listed as PlaneWX, Community, by PlaneWX LLC) and connect. Sign in to PlaneWX. Tick Also allow building briefings for scored runs, then choose Allow."
 
 const GROK_STEPS = [
   "In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.",
   `Open Grok at grok.com and add a custom connector with the PlaneWX MCP URL: ${MCP_URL}`,
-  'Sign in to PlaneWX and choose Allow on the consent screen. Tick "Also allow building briefings" for scored runs.',
+  'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then choose Allow on the consent screen.',
 ] as const
 
 const GEMINI_STEPS = [

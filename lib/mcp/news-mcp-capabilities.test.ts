@@ -46,6 +46,17 @@ describe("news: MCP connector capabilities post", () => {
     expect(allText()).not.toMatch(/approv/i)
   })
 
+  it("puts the briefings box before Allow, as on the real consent screen", () => {
+    expect(post!.body).toContain(
+      "On the consent screen, tick Also allow building briefings for scored runs, then choose Allow.",
+    )
+    // Old order, Allow first and tick after, is rejected.
+    expect(post!.body).not.toContain("choose Allow. Tick")
+    expect(post!.body.indexOf("tick Also allow building briefings")).toBeLessThan(
+      post!.body.indexOf("then choose Allow"),
+    )
+  })
+
   it("includes the exact reconnect tip from the /mcp page", () => {
     expect(troubleshootMatch).toBeTruthy()
     expect(RECONNECT_TIP.length).toBeGreaterThan(50)
