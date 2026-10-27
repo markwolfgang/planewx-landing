@@ -56,6 +56,82 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "planewx-connector-edit-trips-from-chat",
+    category: "Product",
+    title: "Change a trip's route or time from your AI assistant, with a preview first",
+    excerpt:
+      "The PlaneWX connector can now preview and confirm a change to a saved trip's route, departure time or altitude in Claude, Grok, ChatGPT, Gemini and Perplexity. Here is what it does and where the limits are.",
+    date: "October 27, 2026",
+    isoDate: "2026-10-27",
+    draft: true,
+    body: `
+<p>The PlaneWX connector works in Claude, Grok, ChatGPT, Gemini and Perplexity. Until now you could read your saved trips and stored briefings, score a route and time, and save a candidate as a trip. This update adds editing. You can change a saved trip from chat, and you see what will change before anything is saved.</p>
+
+<h2>Change a saved trip by asking</h2>
+<p>Ask your assistant to change the route, the departure time or the cruise altitude of one saved trip. It works in two steps:</p>
+<ol>
+<li><strong>Preview.</strong> The assistant sends the change without confirming it. PlaneWX returns the saved values, the new values, the resolved waypoints and a preview token. The preview saves nothing and uses no scoring run.</li>
+<li><strong>Confirm.</strong> The assistant sends the same change with the token. The token is valid for 10 minutes. PlaneWX runs one new score and saves the change and the new briefing together. If the new briefing cannot be built, nothing is saved and the scoring run is returned.</li>
+</ol>
+<p>A few rules to know:</p>
+<ul>
+<li>A route change, an altitude change, a new date, or a departure time move of more than 30 minutes builds a new briefing and uses 1 scoring run.</li>
+<li>A departure time move of 30 minutes or less on the same date is saved without a new briefing and uses 0 scoring runs.</li>
+<li>Send the route as text. Send DCT to reset it to direct.</li>
+<li>The departure time needs a time zone, such as Z or an offset. A past time is refused.</li>
+<li>A trip that departs in under 10 minutes, or has already departed, cannot be changed.</li>
+<li>ETA and fuel are not accepted.</li>
+</ul>
+
+<h2>Score a route you type</h2>
+<p>You can also give a route when you ask for a WX Score. Write it as a space-separated list of waypoints, for example KGDJ WINDU KAUS. Unknown fixes are refused, and PlaneWX scores the resolved waypoint path. Scoring a route does not save a trip. If you like the result, ask the assistant to save it as a trip, and the new trip gets its own fresh briefing.</p>
+
+<h2>Everything the assistant can do for you</h2>
+<ul>
+<li><strong>Find an airport.</strong> Name, city, ICAO or FAA id. If more than one airport could be meant, it asks you which one. (resolve_airport)</li>
+<li><strong>Read your profile.</strong> Plan, home airport, aircraft, the minimums your WX Score uses, and today's connector usage. It does not score anything. (get_pilot_profile)</li>
+<li><strong>Check your limits.</strong> Daily scoring runs used and left, and when they reset. Asking does not spend a run. (get_my_limits)</li>
+<li><strong>List your trips.</strong> Route, departure time and stored WX Score, without scoring again. (list_trips)</li>
+<li><strong>Read a stored briefing.</strong> The same briefing and WX Score you see in the app. It never re-scores and never fetches new weather. (get_trip_briefing)</li>
+<li><strong>Score a route and time.</strong> One full briefing, with an optional route, without saving a trip. It uses 1 scoring run. (score_trip)</li>
+<li><strong>Find departure windows.</strong> A few candidate times for a route and day, ranked best first, each with its WX Score. Each scored window uses 1 scoring run. (find_departure_windows)</li>
+<li><strong>Reopen earlier results.</strong> Read the stored results of a departure windows search without starting new briefings. (get_window_results)</li>
+<li><strong>Save a candidate as a trip.</strong> It copies the route, departure time, aircraft, cruise altitude and flight rules, not the score. Saving the same candidate again returns the same trip, and your plan's saved trip limits apply. (save_candidate_as_trip)</li>
+<li><strong>Edit a saved trip.</strong> The preview and confirm steps above. (update_trip)</li>
+<li><strong>Flag something that looks wrong.</strong> Send PlaneWX a note, up to 500 characters, for review. It does not change scores or limits. (report_discrepancy)</li>
+</ul>
+
+<h2>Far-out trips are not new</h2>
+<p>This update does not change how far ahead PlaneWX can look. A new briefing reaches 14 days ahead, the same as the forecast reach for a WX Score. For a departure more than 14 days away, a change that needs a new briefing is not saved and uses no scoring run. Editing a trip also refuses a departure time more than 400 days out.</p>
+
+<h2>Your private Self Debrief notes</h2>
+<p>When you connect an assistant, it can read the private notes in your Self Debriefs, up to 300 characters, or up to 400 characters when you ask for full details. Only you, and an AI assistant you connect, can see those notes. Mentors, Trip Watchers, your public profile, groups and Insights still never see them. Only connect assistants you trust.</p>
+
+<h2>Who can use it, and the daily limits</h2>
+<p>The AI assistant connector is a Pro Plus Labs feature, and Pro Plus trial pilots have it too. Turn it on first under Profile, Preferences, PlaneWX Labs (the switch is labeled AI assistant connector). It is not available on Free, Casual or Pro without a Pro Plus trial.</p>
+<p>Scored runs count toward a daily limit: Pro Plus gets 60 scoring runs a day and Pro Plus trials get 12, resetting at local midnight in your home time zone. Ask "What are my limits?" to see what is left today.</p>
+
+<h2>How to connect</h2>
+<ol>
+<li>In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.</li>
+<li>In your assistant, add PlaneWX from its connector directory, or add a custom connector with the PlaneWX MCP URL: <code>https://app.planewx.ai/api/mcp</code></li>
+<li>Sign in to PlaneWX. On the consent screen, choose Allow. Tick Also allow building briefings for scored runs. Editing a trip needs that box, because it builds a new briefing.</li>
+</ol>
+<p>Full steps for each assistant are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to your AI assistant</a>.</p>
+
+<h2>If a feature does not seem to work</h2>
+<p>If a feature does not seem to work, disconnect and reconnect to the PlaneWX connector. In PlaneWX, open your Profile, then the Account tab, then Connected apps, and choose Disconnect next to the assistant. You can also revoke the PlaneWX connection in your AI assistant's app or connector settings. Then follow the steps for your assistant above to connect again.</p>
+
+<h2>You're still the PIC</h2>
+<p>Weather decision support only. The assistant reports the WX Score (briefing) and what drives it. PlaneWX never tells you to go or not to go, and neither does the connector. The assistant can get things wrong, so open the full briefing in PlaneWX. The go or no-go call stays with you as pilot in command.</p>
+
+<h2>Help us shape it</h2>
+<p>This is a beta, so you may run into rough edges. If something looks wrong, or you find a prompt that works well, tell us with the Feedback button in the app. We read every one.</p>
+
+<p>Blue skies,<br/>Mark</p>
+`,
+  },
+  {
     slug: "planewx-connects-to-perplexity",
     category: "Product",
     title: "PlaneWX now connects to Perplexity. Which AI should we build for next?",
