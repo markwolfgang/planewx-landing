@@ -89,7 +89,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>Weather decision support only. You are pilot in command. PlaneWX never tells you to go or not to go, and neither does the connector. The assistant relays the WX Score and what drives it, and it can get things wrong, so check the full briefing in PlaneWX before you fly. The go or no-go call stays with you.</p>
 
 <h2>Who can use it</h2>
-<p>The AI assistant connector is a Pro Plus Labs feature (Enterprise included), and Pro Plus trials include it. Turn it on first under Profile, Preferences, PlaneWX Labs (the switch is labeled AI assistant connector).</p>
+<p>The AI assistant connector is a Pro Plus Labs feature, and Pro Plus trials include it. Turn it on first under Profile, Preferences, PlaneWX Labs (the switch is labeled AI assistant connector).</p>
 <p>Full steps for every assistant, including Perplexity, are in Help: <a href="https://planewx.ai/help/connect-ai-assistant#perplexity">Connect PlaneWX to Claude, Grok, ChatGPT, Gemini and Perplexity</a>.</p>
 
 <h2>Which AI should we build for next?</h2>
@@ -168,12 +168,12 @@ export const NEWS_ITEMS: NewsItem[] = [
 <li>On Casual or Pro? Start your 14-day Pro Plus trial first (Profile, Subscription).</li>
 <li>In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.</li>
 <li>In your AI assistant, add a custom connector with the PlaneWX MCP URL: <code>https://app.planewx.ai/api/mcp</code></li>
-<li>Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.</li>
+<li>Sign in to PlaneWX and choose Allow on the consent screen. Tick "Also allow building briefings" for scored runs.</li>
 </ol>
 <p>Using ChatGPT? You need a paid ChatGPT plan. Open <a href="https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1">Add PlaneWX to ChatGPT</a>, then sign in to PlaneWX.</p>
 <p>Full steps are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to your AI assistant</a>.</p>
 <p>For an overview of what the connector can do, see <a href="/mcp">PlaneWX MCP: Aviation Weather for Claude, Grok, ChatGPT and Gemini</a>.</p>
-<p>It's a Pro Plus Labs feature (Enterprise included). It isn't part of Free, Casual, or Pro, but every Pro Plus free trial includes it: the new-signup trial and the 14-day Pro Plus upgrade trial.</p>
+<p>It's a Pro Plus Labs feature. It isn't part of Free, Casual, or Pro, but every Pro Plus free trial includes it: the new-signup trial and the 14-day Pro Plus upgrade trial.</p>
 <p><strong>On Casual or Pro?</strong> You can try Pro Plus, connector included, free for 14 days. On the web, go to <a href="https://app.planewx.ai/?view=profile&tab=subscription">Profile, Subscription</a> and choose "Start my Pro Plus trial." You keep your current plan and rate. Pro Plus is added on top at no charge, and you go back to your plan when the 14 days are up. There's nothing to cancel. It's one trial per account, and it isn't available from the iOS app. During any trial, the connector can run up to 12 scored briefings a day.</p>
 
 <h2>Help us shape it</h2>
