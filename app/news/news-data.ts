@@ -68,7 +68,8 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>The PlaneWX connector works in Claude, Grok, ChatGPT, Gemini and Perplexity. Until now you could read your saved trips and stored briefings, score a route and time, and save a candidate as a trip. This update adds editing. You can change a saved trip from chat, and you see what will change before anything is saved.</p>
 
 <h2>Change a saved trip by asking</h2>
-<p>Ask your assistant to change the route, the departure time or the cruise altitude of one saved trip. It works in two steps:</p>
+<p>Ask your assistant to change the route, the departure time or the cruise altitude of one saved trip. For example: "Move my Friday KGDJ to KAUS trip to depart at 9:30 AM Central."</p>
+<p>It works in two steps:</p>
 <ol>
 <li><strong>Preview.</strong> The assistant sends the change without confirming it. PlaneWX returns the saved values, the new values, the resolved waypoints and a preview token. The preview saves nothing and uses no scoring run.</li>
 <li><strong>Confirm.</strong> The assistant sends the same change with the token. The token is valid for 10 minutes. PlaneWX runs one new score and saves the change and the new briefing together. If the new briefing cannot be built, nothing is saved and the scoring run is returned.</li>
@@ -101,7 +102,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <li><strong>Flag something that looks wrong.</strong> Send PlaneWX a note, up to 500 characters, for review. It does not change scores or limits. (report_discrepancy)</li>
 </ul>
 
-<h2>Far-out trips are not new</h2>
+<h2>How far ahead it can look</h2>
 <p>This update does not change how far ahead PlaneWX can look. A new briefing reaches 14 days ahead, the same as the forecast reach for a WX Score. For a departure more than 14 days away, a change that needs a new briefing is not saved and uses no scoring run. Editing a trip also refuses a departure time more than 400 days out.</p>
 
 <h2>Your private Self Debrief notes</h2>
@@ -123,7 +124,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>If a feature does not seem to work, disconnect and reconnect to the PlaneWX connector. In PlaneWX, open your Profile, then the Account tab, then Connected apps, and choose Disconnect next to the assistant. You can also revoke the PlaneWX connection in your AI assistant's app or connector settings. Then follow the steps for your assistant above to connect again.</p>
 
 <h2>You're still the PIC</h2>
-<p>Weather decision support only. The assistant reports the WX Score (briefing) and what drives it. PlaneWX never tells you to go or not to go, and neither does the connector. The assistant can get things wrong, so open the full briefing in PlaneWX. The go or no-go call stays with you as pilot in command.</p>
+<p>Weather decision support only. The assistant reports the WX Score and what drives it. PlaneWX never tells you to go or not to go, and neither does the connector. The assistant can get things wrong, so open the full briefing in PlaneWX. The go or no-go call stays with you as pilot in command.</p>
 
 <h2>Help us shape it</h2>
 <p>This is a beta, so you may run into rough edges. If something looks wrong, or you find a prompt that works well, tell us with the Feedback button in the app. We read every one.</p>
