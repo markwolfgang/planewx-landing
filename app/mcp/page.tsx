@@ -53,20 +53,23 @@ const ASK = [
 const STEPS = [
   "In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.",
   `In Claude, open Customize, then Connectors, then Add custom connector, and enter the PlaneWX MCP URL: ${MCP_URL}`,
-  'Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.',
+  'Sign in to PlaneWX and choose Allow on the consent screen. Tick "Also allow building briefings" for scored runs.',
 ] as const
 
+const TROUBLESHOOTING =
+  "If a feature does not seem to work, disconnect and reconnect to the PlaneWX connector. In PlaneWX, open your Profile, then the Account tab, then Connected apps, and choose Disconnect next to the assistant. You can also revoke the PlaneWX connection in your AI assistant's app or connector settings. Then follow the steps for your assistant above to connect again."
+
 const CLAUDE_DIRECTORY_STEP =
-  "In Claude, open Customize, then Connectors, then Discover. Search for PlaneWX (listed as PlaneWX, Community, by PlaneWX LLC) and connect. Sign in to PlaneWX and approve; tick Also allow building briefings for scored runs."
+  "In Claude, open Customize, then Connectors, then Discover. Search for PlaneWX (listed as PlaneWX, Community, by PlaneWX LLC) and connect. Sign in to PlaneWX and choose Allow; tick Also allow building briefings for scored runs."
 
 const GROK_STEPS = [
   "In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.",
   `Open Grok at grok.com and add a custom connector with the PlaneWX MCP URL: ${MCP_URL}`,
-  'Sign in to PlaneWX and approve on the consent screen. Tick "Also allow building briefings" for scored runs.',
+  'Sign in to PlaneWX and choose Allow on the consent screen. Tick "Also allow building briefings" for scored runs.',
 ] as const
 
 const GEMINI_STEPS = [
-  "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
+  "You need Pro Plus or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
   `On your computer, go to gemini.google.com. At the bottom, click Settings, then Connected Apps (if you don't see Connected Apps, click Personal Intelligence first). Under Custom apps, click Add a custom app, enter the URL ${MCP_URL} and click Next.`,
   "Leave Client ID and Client secret blank.",
   'Sign in to PlaneWX. Tick "Also allow building briefings" for scored runs, then press Allow.',
@@ -80,7 +83,7 @@ const CHATGPT_APP_URL =
   "https://chatgpt.com/plugins/plugin_asdk_app_6ace72ff9874819192f7ceb03d1a17d1"
 
 const CHATGPT_STEPS: ReactNode[] = [
-  "You need Pro Plus, Enterprise or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
+  "You need Pro Plus or a Pro Plus trial. Turn on the AI assistant connector in Profile, Preferences, PlaneWX Labs.",
   <>
     You need a paid ChatGPT plan. Open{" "}
     <a
@@ -135,7 +138,7 @@ const FAQ = [
   },
   {
     q: "Who can use the PlaneWX MCP?",
-    a: "Pro Plus pilots, trials included. Enterprise is included too. It is not available on Free, Casual or Pro.",
+    a: "Pro Plus pilots, trials included. It is not available on Free, Casual or Pro without a Pro Plus trial.",
   },
   {
     q: "Can I compare a ForeFlight briefing with my PlaneWX briefing?",
@@ -287,8 +290,7 @@ export default function McpPage() {
             <ul className="space-y-4">
               {[
                 "Pro Plus, trials included.",
-                "Enterprise is included.",
-                "Not available on Free, Casual or Pro.",
+                "Not available on Free, Casual or Pro without a Pro Plus trial.",
               ].map((point) => (
                 <li key={point} className="flex items-start gap-3 text-white/70 leading-relaxed">
                   <Check className="h-5 w-5 text-sky-400 mt-0.5 shrink-0" aria-hidden />
@@ -347,6 +349,7 @@ export default function McpPage() {
               </ol>
               <DemoVideo video={MCP_CHATGPT_DEMO_VIDEO} />
             </div>
+            <p className="text-white/70 leading-relaxed break-words">{TROUBLESHOOTING}</p>
             <div className="text-center pt-2">
               <a
                 href={HELP_URL}
