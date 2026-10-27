@@ -72,7 +72,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <p>It works in two steps:</p>
 <ol>
 <li><strong>Preview.</strong> The assistant sends the change without confirming it. PlaneWX returns the saved values, the new values, the resolved waypoints and a preview token. The preview saves nothing and uses no scoring run.</li>
-<li><strong>Confirm.</strong> The assistant sends the same change with the token. The token is valid for 10 minutes. PlaneWX runs one new score and saves the change and the new briefing together. If the new briefing cannot be built, nothing is saved and the scoring run is returned.</li>
+<li><strong>Confirm.</strong> The assistant sends the same change with the token. The token is valid for 10 minutes. For most changes PlaneWX runs one new score and saves the change and the new briefing together. A departure time move of 30 minutes or less on the same date is saved without a new score. If the new briefing cannot be built, nothing is saved and the scoring run is returned.</li>
 </ol>
 <p>A few rules to know:</p>
 <ul>
@@ -116,7 +116,7 @@ export const NEWS_ITEMS: NewsItem[] = [
 <ol>
 <li>In PlaneWX, go to Profile, Preferences, PlaneWX Labs and turn on the AI assistant connector switch.</li>
 <li>In your assistant, add PlaneWX from its connector directory, or add a custom connector with the PlaneWX MCP URL: <code>https://app.planewx.ai/api/mcp</code></li>
-<li>Sign in to PlaneWX. On the consent screen, choose Allow. Tick Also allow building briefings for scored runs. Editing a trip needs that box, because it builds a new briefing.</li>
+<li>Sign in to PlaneWX. On the consent screen, choose Allow. Tick Also allow building briefings for scored runs. Editing a trip needs that box, because most edits build a new briefing.</li>
 </ol>
 <p>Full steps for each assistant are in Help: <a href="https://app.planewx.ai/help/connect-ai-assistant">Connect PlaneWX to your AI assistant</a>.</p>
 

@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs"
+import { join } from "node:path"
 import { describe, expect, it, vi } from "vitest"
 import { NEWS_ITEMS, getPublishedNewsItems } from "@/app/news/news-data"
 import { generateMetadata } from "@/app/news/[slug]/page"
@@ -10,9 +12,11 @@ vi.mock("@/lib/soro", () => ({ getSoroArticles: async () => [] }))
 const SLUG = "planewx-connector-edit-trips-from-chat"
 const post = NEWS_ITEMS.find((n) => n.slug === SLUG)
 
-// Exact sentence from the TROUBLESHOOTING constant in app/mcp/page.tsx (landing #207, merged).
-const RECONNECT_TIP =
-  "If a feature does not seem to work, disconnect and reconnect to the PlaneWX connector. In PlaneWX, open your Profile, then the Account tab, then Connected apps, and choose Disconnect next to the assistant. You can also revoke the PlaneWX connection in your AI assistant's app or connector settings. Then follow the steps for your assistant above to connect again."
+// Source of truth: the TROUBLESHOOTING constant in app/mcp/page.tsx, read the
+// same way lib/mcp/mcp-page-copy.test.ts reads it.
+const mcpPageSrc = readFileSync(join(process.cwd(), "app/mcp/page.tsx"), "utf8")
+const troubleshootMatch = mcpPageSrc.match(/const TROUBLESHOOTING =\s*"([^"]*)"/)
+const RECONNECT_TIP = troubleshootMatch ? troubleshootMatch[1] : ""
 
 function allText(): string {
   return [post!.title, post!.excerpt, post!.date, post!.body].join("\n")
@@ -26,10 +30,6 @@ describe("news: MCP connector capabilities post", () => {
     expect(post!.isoDate).toMatch(/^\d{4}-\d{2}-\d{2}$/)
     expect(post!.title.length).toBeGreaterThan(0)
     expect(post!.excerpt.length).toBeGreaterThan(0)
-  })
-
-  it("stays a draft until the author flips it at publish time", () => {
-    expect(post!.draft).toBe(true)
   })
 
   it("names the five assistants", () => {
@@ -46,7 +46,9 @@ describe("news: MCP connector capabilities post", () => {
     expect(allText()).not.toMatch(/approv/i)
   })
 
-  it("includes the exact reconnect tip", () => {
+  it("includes the exact reconnect tip from the /mcp page", () => {
+    expect(troubleshootMatch).toBeTruthy()
+    expect(RECONNECT_TIP.length).toBeGreaterThan(50)
     expect(post!.body).toContain(RECONNECT_TIP)
   })
 
@@ -108,6 +110,18 @@ describe("news: MCP connector capabilities post", () => {
     expect(new Set(slugs).size).toBe(slugs.length)
   })
 
+  it("describes confirm without over-claiming a new briefing every time", () => {
+    const b = post!.body
+    expect(b).toContain(
+      "For most changes PlaneWX runs one new score and saves the change and the new briefing together. A departure time move of 30 minutes or less on the same date is saved without a new score.",
+    )
+    expect(b).toContain("because most edits build a new briefing.")
+    // Old wording, written so it does not match the new sentences.
+    expect(b).not.toContain("valid for 10 minutes. PlaneWX runs one new score")
+    expect(b).not.toContain("because it builds a new briefing")
+    expect(b).not.toMatch(/always (builds|uses|runs)/i)
+  })
+
   it("pins the exact edit rules and the example prompt", () => {
     const b = post!.body
     expect(b).toContain("uses 1 scoring run")
@@ -147,9 +161,16 @@ describe("news: MCP connector capabilities post", () => {
     expect(post!.body).toContain("The assistant reports the WX Score and what drives it.")
     expect(post!.body).not.toContain("WX Score (briefing)")
   })
+})
+
+// The publish PR flips `draft` in news-data.ts. Only this block changes then:
+// delete it (or invert it). The content checks above do not depend on `draft`.
+describe("news: MCP connector capabilities post, while draft", () => {
+  it("is marked draft", () => {
+    expect(post!.draft).toBe(true)
+  })
 
   it("stays out of the published list and the sitemap while draft is true", async () => {
-    expect(post!.draft).toBe(true)
     expect(getPublishedNewsItems().some((n) => n.slug === SLUG)).toBe(false)
     const entries = await sitemap()
     expect(entries.some((e) => e.url.includes(SLUG))).toBe(false)
