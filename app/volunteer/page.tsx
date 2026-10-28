@@ -373,7 +373,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                         30% off the annual plan for each year you&apos;re an active volunteer
                         pilot
                       </strong>
-                      , from the SkyHope call sign you entered on this page. You do not type a separate coupon code at
+                      , from the SkyHope call sign saved on your account. You do not type a separate coupon code at
                       checkout. You remain PIC.
                     </>
                   ) : (
@@ -383,14 +383,22 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                         30% off the annual plan for each year you&apos;re an active volunteer
                         pilot
                       </strong>
-                      , from the call sign you entered on this page. You do not type a separate coupon code at checkout.
+                      , from the call sign saved on your account. You do not type a separate coupon code at checkout.
                     </>
                   )}
                 </p>
                 <ul className="space-y-2 text-sm text-white/50">
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" aria-hidden />
-                    Call sign is saved with this visit and passed into signup
+                    A new account gets the call sign saved at signup
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" aria-hidden />
+                    A signed-in pilot who opens the sign-up link has it saved on first use when the account has none
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" aria-hidden />
+                    A pilot who has an account but is signed out needs to be signed in first: signing in and opening the link again, or adding the call sign from Profile in the app, saves it
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" aria-hidden />
