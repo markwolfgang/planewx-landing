@@ -12,7 +12,7 @@ describe("volunteer page copy matches where the saved call sign comes from", () 
       "A signed-in pilot who opens the sign-up link has it saved on first use when the account has none",
     )
     expect(collapsed).toContain(
-      "A pilot who has an account but is signed out needs to be signed in first: signing in and opening the link again, or adding the call sign from Profile in the app, saves it",
+      "A pilot who already has an account adds the call sign in the app: Profile, Subscription tab, Volunteer call sign",
     )
   })
 
@@ -24,17 +24,18 @@ describe("volunteer page copy matches where the saved call sign comes from", () 
   it("no longer says the call sign entered on this page drives checkout", () => {
     expect(collapsed).not.toContain("call sign you entered on this page. You do not type")
     expect(collapsed).not.toContain("saved with this visit and passed into signup")
+    expect(collapsed).not.toContain("is signed out needs to be signed in first")
   })
 
   it("has no em dashes, en dashes, or exclamation marks in the changed lines", () => {
     for (const line of [
       "A new account gets the call sign saved at signup",
       "A signed-in pilot who opens the sign-up link",
-      "A pilot who has an account but is signed out",
+      "A pilot who already has an account adds the call sign in the app",
       "call sign saved on your account.",
     ]) {
       expect(line).not.toMatch(/[\u2014\u2013!]/)
     }
-    expect(src).not.toMatch(/A (new account|signed-in pilot|pilot who has an account)[^<\n]*[\u2014\u2013!]/)
+    expect(src).not.toMatch(/A (new account|signed-in pilot|pilot who already has an account)[^<\n]*[\u2014\u2013!]/)
   })
 })
