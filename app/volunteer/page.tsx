@@ -398,7 +398,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" aria-hidden />
-                    A pilot who already has an account adds the call sign in the app: Profile, Subscription tab, Volunteer call sign
+                    A pilot who already has an account adds the call sign on the web: Profile, Subscription tab, Volunteer call sign
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" aria-hidden />

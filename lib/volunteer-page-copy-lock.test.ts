@@ -12,7 +12,7 @@ describe("volunteer page copy matches where the saved call sign comes from", () 
       "A signed-in pilot who opens the sign-up link has it saved on first use when the account has none",
     )
     expect(collapsed).toContain(
-      "A pilot who already has an account adds the call sign in the app: Profile, Subscription tab, Volunteer call sign",
+      "A pilot who already has an account adds the call sign on the web: Profile, Subscription tab, Volunteer call sign",
     )
   })
 
@@ -31,7 +31,7 @@ describe("volunteer page copy matches where the saved call sign comes from", () 
     for (const line of [
       "A new account gets the call sign saved at signup",
       "A signed-in pilot who opens the sign-up link",
-      "A pilot who already has an account adds the call sign in the app",
+      "A pilot who already has an account adds the call sign on the web",
       "call sign saved on your account.",
     ]) {
       expect(line).not.toMatch(/[\u2014\u2013!]/)
