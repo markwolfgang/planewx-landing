@@ -26,6 +26,13 @@ const nextConfig = {
       { source: "/talk", destination: "/talks/osh", permanent: false },
       { source: "/talk/", destination: "/talks/osh/", permanent: false },
       { source: "/talk/remote.html", destination: "/talks/remote.html", permanent: false },
+      // TBMOPA booth waitlist lives in the app. Temporary (307) so browsers do not cache it.
+      // Query strings (UTMs) carry over. Lowercase target; common case variants covered.
+      ...["/tbm", "/tbm/", "/TBM", "/TBM/", "/Tbm", "/Tbm/"].map((source) => ({
+        source,
+        destination: "https://app.planewx.ai/tbm",
+        permanent: false,
+      })),
       // Exact-phrase slug for the loop's canonical definition page
       {
         source: "/learn/brief-assess-decide-debrief",
