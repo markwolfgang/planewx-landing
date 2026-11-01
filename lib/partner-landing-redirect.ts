@@ -9,14 +9,23 @@
  * on the final page, deduped per session by VariantTracker.
  *
  * Precedence (documented in the PR):
- * 1. Visitor UTMs win as a set. If the incoming URL has any non-blank utm_*
- *    key, every incoming utm_* is kept as is and no partner UTM is added
- *    (no mixing of two campaigns in one URL).
+ * 1. Visitor UTMs win as a set. If the incoming URL has any non-blank key out
+ *    of the 6 standard ones (utm_source, utm_medium, utm_campaign, utm_content,
+ *    utm_term, utm_id), every incoming utm_* is kept as is and no partner UTM is
+ *    added (no mixing of two campaigns in one URL). A nonstandard key such as
+ *    utm_foo is kept but does not count, so it never blocks the partner tags.
  * 2. Otherwise utm_source, utm_medium, utm_campaign come from PARTNER_PATHS
  *    (mirror of campaign_codes).
  * 3. An explicit non-blank ?ref= wins over the vanity path code. On /ref/CODE
  *    the path code is the ref.
  * 4. All other params (fbclid, gclid, variant) are kept.
+ * 5. /ref/CODE matches "ref" in any case (/REF/, /Ref/). The code is uppercased.
+ *
+ * Trailing slash: when the request reaches middleware, /flightfollower/ goes
+ * straight to the tagged URL in one hop. On Vercel the built in Next.js
+ * trailing slash 308 runs before middleware, so a typed /flightfollower/ still
+ * sees that 308 first. Removing it needs skipTrailingSlashRedirect site wide,
+ * which is out of scope for this PR (see PR body).
  *
  * 307 (temporary) on purpose: campaign values can change without cached hops.
  * Pure so it can run in middleware and in jsdom tests.
@@ -26,15 +35,16 @@ import {
   partnerSlugFromCode,
   partnerSlugFromPathname,
 } from "@/lib/partner-paths"
+import { isStandardUtmKey } from "@/lib/utm-keys"
 
 export const PARTNER_REDIRECT_STATUS = 307
 
 const UTM_DEFAULT_KEYS = ["utm_source", "utm_medium", "utm_campaign"] as const
-const REF_PATH = /^\/ref\/([A-Za-z0-9_-]{2,32})\/*$/
+const REF_PATH = /^\/ref\/([A-Za-z0-9_-]{2,32})\/*$/i
 
 function hasVisitorUtm(params: URLSearchParams): boolean {
   for (const [key, value] of params) {
-    if (key.toLowerCase().startsWith("utm_") && value.trim()) return true
+    if (isStandardUtmKey(key) && value.trim()) return true
   }
   return false
 }

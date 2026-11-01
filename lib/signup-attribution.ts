@@ -14,6 +14,8 @@
  * Order on the link: base params, then utm_* in landing order, then ref, then ref_logged.
  */
 
+import { STANDARD_UTM_KEYS } from "@/lib/utm-keys"
+
 export const REFERRAL_STORAGE_KEY = "planewx_referral"
 export const UTM_SESSION_KEY = "planewx_utm"
 /** Same prefix VariantTracker uses for its once per session visit key. */
@@ -23,7 +25,7 @@ export const REF_LOGGED_PARAM = "ref_logged"
 /** Window event VariantTracker fires right after it logs a visit. */
 export const CAMPAIGN_VISIT_LOGGED_EVENT = "planewx:campaign-visit-logged"
 
-const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id"]
+const UTM_KEYS: readonly string[] = STANDARD_UTM_KEYS
 
 export type SignupAttribution = {
   ref: string | null

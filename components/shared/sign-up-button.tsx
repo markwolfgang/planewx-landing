@@ -27,6 +27,10 @@ function buildBaseUrl(variant: string, path: string) {
   return `${APP_ORIGIN}${normalized}?lp=${variant}`
 }
 
+function isLogInPath(path: string) {
+  return path === "/" || path === ""
+}
+
 export function SignUpButton({
   variant,
   className,
@@ -34,7 +38,11 @@ export function SignUpButton({
   path = APP_SIGN_UP_PATH,
 }: Props) {
   const baseUrl = buildBaseUrl(variant, path)
-  const href = useSignupHref(baseUrl)
+  const attributed = useSignupHref(baseUrl)
+  // Log In carries no utm or ref: a returning user is not partner acquisition,
+  // and tagging the app session would credit the partner in GA4 and could log
+  // an extra lp=app campaign visit.
+  const href = isLogInPath(path) ? baseUrl : attributed
 
 
   return (
