@@ -1,7 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { getLocalStorage } from "@/lib/cookie-prefs"
+import { useSignupHref } from "@/lib/use-signup-href"
 import {
   APP_ORIGIN,
   APP_SIGN_UP_PATH,
@@ -28,6 +27,10 @@ function buildBaseUrl(variant: string, path: string) {
   return `${APP_ORIGIN}${normalized}?lp=${variant}`
 }
 
+function isLogInPath(path: string) {
+  return path === "/" || path === ""
+}
+
 export function SignUpButton({
   variant,
   className,
@@ -35,29 +38,12 @@ export function SignUpButton({
   path = APP_SIGN_UP_PATH,
 }: Props) {
   const baseUrl = buildBaseUrl(variant, path)
-  const [href, setHref] = useState(baseUrl)
+  const attributed = useSignupHref(baseUrl)
+  // Log In carries no utm or ref: a returning user is not partner acquisition,
+  // and tagging the app session would credit the partner in GA4 and could log
+  // an extra lp=app campaign visit.
+  const href = isLogInPath(path) ? baseUrl : attributed
 
-  useEffect(() => {
-    const storage = getLocalStorage()
-    const refParam = new URLSearchParams(window.location.search).get("ref")
-    if (refParam) {
-      const code = refParam.toUpperCase()
-      try {
-        storage?.setItem("planewx_referral", code)
-      } catch {
-        /* ignore blocked storage */
-      }
-      setHref(`${baseUrl}&ref=${code}`)
-    } else {
-      let stored: string | null = null
-      try {
-        stored = storage?.getItem("planewx_referral") ?? null
-      } catch {
-        stored = null
-      }
-      if (stored) setHref(`${baseUrl}&ref=${stored}`)
-    }
-  }, [baseUrl])
 
   return (
     <a href={href} className={className}>

@@ -9,6 +9,18 @@ function run(url: string, headers: Record<string, string> = {}) {
   return { res, rewrite: rewrite ? new URL(rewrite) : null }
 }
 
+/** Follow the partner 307 (UTMs and ref into the browser URL) like a browser, then return the rewrite. */
+function serve(url: string, headers: Record<string, string> = {}) {
+  let current = url
+  for (let i = 0; i < 3; i++) {
+    const out = run(current, headers)
+    const location = out.res.headers.get("location")
+    if (!location) return out
+    current = new URL(location, current).toString()
+  }
+  throw new Error(`redirect loop from ${url}`)
+}
+
 describe("partner short links in middleware", () => {
   it.each([
     ["https://www.planewx.ai/flightchops", "FLIGHTCHOPS"],
@@ -17,13 +29,13 @@ describe("partner short links in middleware", () => {
     ["https://www.planewx.ai/flightfollower", "FLIGHTFOLLOWER"],
     ["https://www.planewx.ai/FlightFollower", "FLIGHTFOLLOWER"],
   ])("serves %s as the homepage funnel with ref=%s", (url, code) => {
-    const { rewrite } = run(url, { cookie: "planewx-variant=a" })
+    const { rewrite } = serve(url, { cookie: "planewx-variant=a" })
     expect(rewrite?.pathname).toBe("/variants/a")
     expect(rewrite?.searchParams.get("ref")).toBe(code)
   })
 
   it("keeps utm and other query params", () => {
-    const { rewrite } = run(
+    const { rewrite } = serve(
       "https://www.planewx.ai/FlightChops?utm_source=youtube&utm_medium=video&utm_campaign=oct26",
       { cookie: "planewx-variant=a" },
     )
@@ -34,7 +46,7 @@ describe("partner short links in middleware", () => {
   })
 
   it("lets an explicit ?ref= win over the path code", () => {
-    const { rewrite } = run("https://www.planewx.ai/flightchops?ref=OTHER", {
+    const { rewrite } = serve("https://www.planewx.ai/flightchops?ref=OTHER", {
       cookie: "planewx-variant=a",
     })
     expect(rewrite?.searchParams.get("ref")).toBe("OTHER")
