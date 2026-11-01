@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useState, type ReactNode } from "react"
+import { useState, type ReactNode } from "react"
 import { Check, Crown, Plane, Shield } from "lucide-react"
 import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 import { APP_ORIGIN, buildAppSignupUrlWithLp } from "@/lib/app-signup-url"
-import { signupHrefForCurrentPage } from "@/lib/signup-attribution"
+import { useSignupHref } from "@/lib/use-signup-href"
 
 const APP_HELP = APP_ORIGIN
 
@@ -107,12 +107,9 @@ function AutoRenewNote({
 
 export function PricingSection({ variant }: { variant: string }) {
   const baseUrl = buildAppSignupUrlWithLp(variant)
-  const [appUrl, setAppUrl] = useState(baseUrl)
+  const appUrl = useSignupHref(baseUrl)
   const [plusPlan, setPlusPlan] = useState<"monthly" | "annual">("annual")
 
-  useEffect(() => {
-    setAppUrl(signupHrefForCurrentPage(baseUrl))
-  }, [baseUrl])
 
   return (
     <section id="pricing" className="relative py-24 px-4">

@@ -1,18 +1,14 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { ArrowRight, Check } from "lucide-react"
 import { STATS } from "@/components/shared/landing-data"
 import { buildAppSignupUrlWithLp } from "@/lib/app-signup-url"
-import { signupHrefForCurrentPage } from "@/lib/signup-attribution"
+import { useSignupHref } from "@/lib/use-signup-href"
 
 export function FooterCTA({ variant }: { variant: string }) {
   const baseUrl = buildAppSignupUrlWithLp(variant)
-  const [href, setHref] = useState(baseUrl)
+  const href = useSignupHref(baseUrl)
 
-  useEffect(() => {
-    setHref(signupHrefForCurrentPage(baseUrl))
-  }, [baseUrl])
 
   return (
     <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">

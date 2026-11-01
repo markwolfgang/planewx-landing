@@ -1,7 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { signupHrefForCurrentPage } from "@/lib/signup-attribution"
+import { useSignupHref } from "@/lib/use-signup-href"
 import {
   APP_ORIGIN,
   APP_SIGN_UP_PATH,
@@ -35,11 +34,8 @@ export function SignUpButton({
   path = APP_SIGN_UP_PATH,
 }: Props) {
   const baseUrl = buildBaseUrl(variant, path)
-  const [href, setHref] = useState(baseUrl)
+  const href = useSignupHref(baseUrl)
 
-  useEffect(() => {
-    setHref(signupHrefForCurrentPage(baseUrl))
-  }, [baseUrl])
 
   return (
     <a href={href} className={className}>
