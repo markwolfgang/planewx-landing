@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { getLocalStorage } from "@/lib/cookie-prefs"
+import { signupHrefForCurrentPage } from "@/lib/signup-attribution"
 import {
   APP_ORIGIN,
   APP_SIGN_UP_PATH,
@@ -38,25 +38,7 @@ export function SignUpButton({
   const [href, setHref] = useState(baseUrl)
 
   useEffect(() => {
-    const storage = getLocalStorage()
-    const refParam = new URLSearchParams(window.location.search).get("ref")
-    if (refParam) {
-      const code = refParam.toUpperCase()
-      try {
-        storage?.setItem("planewx_referral", code)
-      } catch {
-        /* ignore blocked storage */
-      }
-      setHref(`${baseUrl}&ref=${code}`)
-    } else {
-      let stored: string | null = null
-      try {
-        stored = storage?.getItem("planewx_referral") ?? null
-      } catch {
-        stored = null
-      }
-      if (stored) setHref(`${baseUrl}&ref=${stored}`)
-    }
+    setHref(signupHrefForCurrentPage(baseUrl))
   }, [baseUrl])
 
   return (

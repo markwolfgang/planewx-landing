@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
 import { partnerCodeFromPathname } from "@/lib/partner-paths"
 import {
+  PARTNER_REDIRECT_STATUS,
+  partnerLandingRedirectTarget,
+} from "@/lib/partner-landing-redirect"
+import {
   CONSENT_GPC_COOKIE,
   CONSENT_REGION_COOKIE,
   consentModeFromCountry,
@@ -136,6 +140,22 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  const ua = request.headers.get("user-agent") ?? ""
+  const isBot = BOT_UA_PATTERN.test(ua)
+
+  // Partner vanity links and /ref/CODE: 307 to the same page with utm_* and ref in the
+  // browser URL so GA4 records them (see lib/partner-landing-redirect.ts for precedence).
+  const vanityTarget = partnerLandingRedirectTarget(new URL(request.url), {
+    method: request.method,
+    isBot,
+  })
+  if (vanityTarget) {
+    return applyConsentCookies(
+      request,
+      NextResponse.redirect(vanityTarget, PARTNER_REDIRECT_STATUS),
+    )
+  }
+
   // Partner short links (e.g. /runway leads to homepage funnel with ref=RUNWAY).
   // Allowlist-only. Never steals reserved routes like /apps, /osh, /news.
   const partnerCode = partnerCodeFromPathname(pathname)
@@ -146,14 +166,13 @@ export function middleware(request: NextRequest) {
   }
 
   const { searchParams } = request.nextUrl
-  const ua = request.headers.get("user-agent") ?? ""
 
   const forced = searchParams.get("variant")
   if (forced && forced in VARIANT_WEIGHTS) {
     return rewriteToVariant(request, forced, partnerCode, true)
   }
 
-  if (BOT_UA_PATTERN.test(ua)) {
+  if (isBot) {
     return rewriteToVariant(request, "a", partnerCode, false)
   }
 
@@ -176,6 +195,7 @@ export const config = {
     "/runway",
     "/flightchops",
     "/flightfollower",
+    "/ref/:path*",
     "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|map|woff2?|ttf|otf|html)$).*)",
   ],
 }

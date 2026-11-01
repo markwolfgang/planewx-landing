@@ -4,6 +4,7 @@ import { useEffect, useState, type ReactNode } from "react"
 import { Check, Crown, Plane, Shield } from "lucide-react"
 import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 import { APP_ORIGIN, buildAppSignupUrlWithLp } from "@/lib/app-signup-url"
+import { signupHrefForCurrentPage } from "@/lib/signup-attribution"
 
 const APP_HELP = APP_ORIGIN
 
@@ -110,23 +111,7 @@ export function PricingSection({ variant }: { variant: string }) {
   const [plusPlan, setPlusPlan] = useState<"monthly" | "annual">("annual")
 
   useEffect(() => {
-    const refParam = new URLSearchParams(window.location.search).get("ref")
-    if (refParam) {
-      const code = refParam.toUpperCase()
-      try {
-        localStorage.setItem("planewx_referral", code)
-      } catch {
-        // Fail silently if localStorage is blocked or full
-      }
-      setAppUrl(`${baseUrl}&ref=${code}`)
-    } else {
-      try {
-        const stored = localStorage.getItem("planewx_referral")
-        if (stored) setAppUrl(`${baseUrl}&ref=${stored}`)
-      } catch {
-        // Fail silently if localStorage is blocked
-      }
-    }
+    setAppUrl(signupHrefForCurrentPage(baseUrl))
   }, [baseUrl])
 
   return (
