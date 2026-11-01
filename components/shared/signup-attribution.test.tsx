@@ -120,4 +120,14 @@ describe("signup attribution helpers", () => {
       utm: [["utm_source", "yt"]],
     })
   })
+
+  it("Log In links carry no utm or ref, so returning users are not counted as partner traffic", () => {
+    go(TAGGED)
+    render(
+      <SignUpButton variant="a" path="/">
+        Log In
+      </SignUpButton>,
+    )
+    expect(screen.getByText("Log In").getAttribute("href")).toBe("https://app.planewx.ai?lp=a")
+  })
 })

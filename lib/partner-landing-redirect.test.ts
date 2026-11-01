@@ -36,22 +36,26 @@ function follow(url: string, headers: Record<string, string> = HUMAN) {
   throw new Error(`redirect loop from ${url}: ${hops.join(" then ")}`)
 }
 
-// Snapshot of prod campaign_codes (utm_source, utm_medium, utm_campaign), read 2026-11-01.
-// If a row changes in Supabase, change PARTNER_PATHS and this snapshot together.
-const CAMPAIGN_CODES_SNAPSHOT: Record<string, [string, string, string]> = {
-  RUNWAY: ["runway", "partner", "runway-to-oshkosh-2026"],
-  FLIGHTCHOPS: ["flightchops", "partner", "flightchops-2026"],
-  FLIGHTFOLLOWER: ["flightfollower", "partner", "flightfollower-2026"],
+// Frozen literal of prod campaign_codes (code, utm_source, utm_medium, utm_campaign),
+// read-only query 2026-11-01. Not derived from PARTNER_PATHS, so a code edit that drifts
+// from Supabase fails here. If a row changes in Supabase, change both on purpose.
+const CAMPAIGN_CODES_PROD = Object.freeze({
+  runway: Object.freeze({ code: "RUNWAY", utm_source: "runway", utm_medium: "partner", utm_campaign: "runway-to-oshkosh-2026" }),
+  flightchops: Object.freeze({ code: "FLIGHTCHOPS", utm_source: "flightchops", utm_medium: "partner", utm_campaign: "flightchops-2026" }),
+  flightfollower: Object.freeze({ code: "FLIGHTFOLLOWER", utm_source: "flightfollower", utm_medium: "partner", utm_campaign: "flightfollower-2026" }),
+})
+const EXPECTED_TAGGED: Record<string, string> = {
+  runway: `${WWW}/runway?utm_source=runway&utm_medium=partner&utm_campaign=runway-to-oshkosh-2026&ref=RUNWAY`,
+  flightchops: `${WWW}/flightchops?utm_source=flightchops&utm_medium=partner&utm_campaign=flightchops-2026&ref=FLIGHTCHOPS`,
+  flightfollower: `${WWW}/flightfollower?utm_source=flightfollower&utm_medium=partner&utm_campaign=flightfollower-2026&ref=FLIGHTFOLLOWER`,
 }
 
 describe("partner vanity paths put UTMs and ref in the browser URL", () => {
-  it("every partner slug has UTM config that matches campaign_codes", () => {
-    const codes = Object.values(PARTNER_PATHS).map((p) => p.code).sort()
-    expect(codes).toEqual(Object.keys(CAMPAIGN_CODES_SNAPSHOT).sort())
-    for (const { code, utm } of Object.values(PARTNER_PATHS)) {
-      expect([utm.utm_source, utm.utm_medium, utm.utm_campaign]).toEqual(
-        CAMPAIGN_CODES_SNAPSHOT[code],
-      )
+  it("PARTNER_PATHS matches the frozen prod campaign_codes literal", () => {
+    expect(Object.keys(PARTNER_PATHS).sort()).toEqual(Object.keys(CAMPAIGN_CODES_PROD).sort())
+    for (const [slug, p] of Object.entries(PARTNER_PATHS)) {
+      const prod = CAMPAIGN_CODES_PROD[slug as keyof typeof CAMPAIGN_CODES_PROD]
+      expect({ code: p.code, ...p.utm }).toEqual({ ...prod })
     }
   })
 
@@ -64,14 +68,40 @@ describe("partner vanity paths put UTMs and ref in the browser URL", () => {
     )
   })
 
-  it.each(Object.entries(PARTNER_PATHS))("redirects /%s with its own UTMs and ref", (slug, p) => {
+  it.each(Object.keys(EXPECTED_TAGGED))("redirects /%s to its exact tagged URL", (slug) => {
     const r = run(`${WWW}/${slug}`)
     expect(r.status).toBe(307)
-    expect(r.location?.pathname).toBe(`/${slug}`)
-    expect(r.location?.searchParams.get("utm_source")).toBe(p.utm.utm_source)
-    expect(r.location?.searchParams.get("utm_medium")).toBe(p.utm.utm_medium)
-    expect(r.location?.searchParams.get("utm_campaign")).toBe(p.utm.utm_campaign)
-    expect(r.location?.searchParams.get("ref")).toBe(p.code)
+    expect(r.location?.toString()).toBe(EXPECTED_TAGGED[slug])
+  })
+
+  it("answers HEAD with the same 307 and Location as GET", () => {
+    const head = run(`${WWW}/flightchops`, HUMAN, "HEAD")
+    expect(head.status).toBe(307)
+    expect(head.location?.toString()).toBe(EXPECTED_TAGGED.flightchops)
+  })
+
+  it("treats a blank utm_source= as no visitor UTM and adds the partner tags", () => {
+    const r = run(`${WWW}/runway?utm_source=`)
+    expect(r.status).toBe(307)
+    expect(r.location?.toString()).toBe(EXPECTED_TAGGED.runway)
+  })
+
+  it("counts only the 6 standard utm keys as visitor UTMs, so utm_foo alone does not block partner tags", () => {
+    const r = run(`${WWW}/flightfollower?utm_foo=1`)
+    expect(r.status).toBe(307)
+    expect(r.location?.toString()).toBe(
+      `${WWW}/flightfollower?utm_foo=1&utm_source=flightfollower&utm_medium=partner&utm_campaign=flightfollower-2026&ref=FLIGHTFOLLOWER`,
+    )
+  })
+
+  it.each(["utm_content", "utm_term", "utm_id"])("treats %s as a visitor UTM", (key) => {
+    const r = run(`${WWW}/flightfollower?${key}=x`)
+    expect(r.location?.toString()).toBe(`${WWW}/flightfollower?${key}=x&ref=FLIGHTFOLLOWER`)
+  })
+
+  it("a trailing slash reaching middleware goes to the tagged URL in a single hop", () => {
+    const { hops } = follow(`${WWW}/flightfollower/`)
+    expect(hops).toEqual([EXPECTED_TAGGED.flightfollower])
   })
 
   it("normalizes case to the lowercase slug", () => {
@@ -161,6 +191,26 @@ describe("/ref/<CODE> on www", () => {
     const r = run(`${WWW}/ref/FLIGHTFOLLOWER20`)
     expect(r.status).toBe(307)
     expect(r.location?.toString()).toBe(`${WWW}/?ref=FLIGHTFOLLOWER20`)
+  })
+
+  it("accepts /REF/ and /Ref/ in any case", () => {
+    expect(run(`${WWW}/REF/FLIGHTFOLLOWER`).location?.toString()).toBe(EXPECTED_TAGGED.flightfollower)
+    expect(run(`${WWW}/Ref/flightfollower`).location?.toString()).toBe(EXPECTED_TAGGED.flightfollower)
+    expect(run(`${WWW}/REF/OTHERCODE`).location?.toString()).toBe(`${WWW}/?ref=OTHERCODE`)
+  })
+
+  it("answers HEAD on /ref/CODE with the same 307", () => {
+    const r = run(`${WWW}/ref/RUNWAY`, HUMAN, "HEAD")
+    expect(r.status).toBe(307)
+    expect(r.location?.toString()).toBe(EXPECTED_TAGGED.runway)
+  })
+
+  it("/ref/OTHER keeps every incoming param and sets only ref", () => {
+    const r = run(`${WWW}/ref/OTHERCODE?utm_source=newsletter&utm_medium=email&fbclid=abc&variant=b`)
+    expect(r.status).toBe(307)
+    expect(r.location?.toString()).toBe(
+      `${WWW}/?utm_source=newsletter&utm_medium=email&fbclid=abc&variant=b&ref=OTHERCODE`,
+    )
   })
 
   it("ignores malformed codes", () => {
