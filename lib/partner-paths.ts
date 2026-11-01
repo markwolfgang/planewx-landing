@@ -77,3 +77,15 @@ export function partnerCodeFromPathname(pathname: string): string | null {
   if (slug.includes(".")) return null // static files
   return PARTNER_PATH_CODES[slug] ?? null
 }
+
+// MF-1 SCRATCH STUB (never merge): empty utm so tests fail on assertions, not imports.
+export type PartnerPath = {
+  code: string
+  utm: { utm_source: string; utm_medium: string; utm_campaign: string }
+}
+export const PARTNER_PATHS: Record<string, PartnerPath> = Object.fromEntries(
+  Object.entries(PARTNER_PATH_CODES).map(([slug, code]) => [
+    slug,
+    { code, utm: { utm_source: "", utm_medium: "", utm_campaign: "" } },
+  ]),
+)
