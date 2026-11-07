@@ -23,7 +23,7 @@ partnerBlurb: "Corporate Aircraft Association (CAA) is PlaneWX's first fuel prov
 
 <p>CAA is a member-focused, not-for-profit association dedicated to strengthening Part 91 business aviation through savings, service, and trusted industry relationships. Through its Preferred FBO network, CAA negotiates Jet-A fuel prices for Part 91 operators.</p>
 
-<p>Until now, Fuel Stop Advisor could show where CAA Preferred FBOs sit along a route. Verified CAA members now also see their CAA Jet-A member price on those stops. Prices come from CAA's MemberPrices feed, refresh about every 12 hours, and appear with a CAA tag on airports and route legs. No CSV upload is required. Jet-A only.</p>
+<p>Verified CAA members now also see their CAA Jet-A member price on those stops. Prices come from CAA's MemberPrices feed, refresh about every 12 hours, and appear with a CAA tag on airports and route legs. No CSV upload is required. Jet-A only.</p>
 
 <blockquote><p>&ldquo;CAA is our first fuel provider partner for a reason. Their members already work hard to buy Jet-A well. Putting those prices next to the fuel stop plan, in the same trip picture pilots use for weather, makes the decision clearer.&rdquo;</p><cite>&mdash; Mark Wolfgang, Founder, PlaneWX</cite></blockquote>
 

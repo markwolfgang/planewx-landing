@@ -109,6 +109,12 @@ describe("CAA unpublished news fail-closed", () => {
     expect(source).not.toMatch(/CAA quote — pending/i)
     expect(source).not.toMatch(/CAA spokesperson/i)
     expect(source).not.toMatch(/DRAFT ONLY — not published, sent, shared/)
+    expect(source).not.toContain(
+      "Until now, Fuel Stop Advisor could show where CAA Preferred FBOs sit along a route.",
+    )
+    expect(source).toContain(
+      "Verified CAA members now also see their CAA Jet-A member price on those stops.",
+    )
     expect(source).not.toMatch(/\blinked\b/i)
     expect(source).not.toMatch(/\bLinked\b/)
     expect(source).not.toMatch(/\badmin\b/i)
