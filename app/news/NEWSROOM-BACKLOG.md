@@ -43,3 +43,10 @@ Text are already in the Pro Plus story.
 - Frost advisory spec: `v0-planewx-v0-1/docs/ground-frost-advisory-spec.md`
 - GP location: briefing destination + scheduled arrival, **not** ADS-B.
   Last-landing correction is a future product choice.
+
+## Unpublished sources (not in NEWS_ITEMS)
+
+- CAA first fuel provider partner release: `content/unpublished/caa-fuel-provider-partner.md`
+  Source-only. Not imported, not routed, not in sitemap/feeds/static params.
+  Keep `[LAUNCH DATE]` and both quote-approval placeholders. Do not publish
+  via `draft: true` (direct `/news/[slug]` is still public).
