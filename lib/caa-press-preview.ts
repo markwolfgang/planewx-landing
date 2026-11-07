@@ -1,11 +1,4 @@
-import fs from "fs"
-import path from "path"
-import matter from "gray-matter"
-
-const SOURCE_PATH = path.join(
-  process.cwd(),
-  "content/unpublished/caa-fuel-provider-partner.md",
-)
+import { getNewsItem } from "@/app/news/news-data"
 
 export type CaaPressPreview = {
   title: string
@@ -13,13 +6,13 @@ export type CaaPressPreview = {
   date: string
   isoDate: string
   location: string
-  partnerBlurb: string
   bodyHtml: string
 }
 
 /**
- * Preview is for Vercel Preview deployments (SSO-protected) and local review.
- * Production always fail-closes.
+ * Brand-portal review render of the published CAA news article.
+ * Available on Vercel Preview (SSO) and local review only.
+ * Production always fail-closes this brand path; public news lives at /news.
  */
 export function isCaaPressPreviewAllowed(): boolean {
   if (process.env.VERCEL_ENV === "production") return false
@@ -27,20 +20,17 @@ export function isCaaPressPreviewAllowed(): boolean {
 }
 
 export function loadCaaPressPreview(): CaaPressPreview {
-  const raw = fs.readFileSync(SOURCE_PATH, "utf8")
-  const { data, content } = matter(raw)
-  const bodyHtml = content
-    // Drop HTML comments (internal notes) from the rendered article.
-    .replace(/<!--[\s\S]*?-->/g, "")
-    .trim()
+  const item = getNewsItem("caa-fuel-provider-partner")
+  if (!item) {
+    throw new Error("CAA press release missing from NEWS_ITEMS")
+  }
 
   return {
-    title: String(data.title ?? ""),
-    subhead: String(data.subhead ?? ""),
-    date: String(data.date ?? ""),
-    isoDate: String(data.isoDate ?? ""),
-    location: String(data.location ?? ""),
-    partnerBlurb: String(data.partnerBlurb ?? ""),
-    bodyHtml,
+    title: item.title,
+    subhead: item.excerpt,
+    date: item.date,
+    isoDate: item.isoDate,
+    location: item.location ?? "",
+    bodyHtml: item.body.trim(),
   }
 }

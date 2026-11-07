@@ -5,22 +5,20 @@ import {
   loadCaaPressPreview,
 } from "@/lib/caa-press-preview"
 
-// Request-time gate so production never serves baked HTML for this draft.
+// Request-time gate so production never serves this brand path.
 export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
-  title: "CAA press release (draft review) | PlaneWX Brand Portal",
+  title: "CAA press release (brand review) | PlaneWX Brand Portal",
   description:
-    "Private draft review of the CAA fuel provider partner press release. Not published.",
+    "Brand-portal review of the CAA fuel provider partner press release. Public article is at /news/caa-fuel-provider-partner.",
   robots: { index: false, follow: false },
 }
 
 /**
- * Draft review render for the CAA press release.
- * - Not in NEWS_ITEMS / /news routes / sitemap / feeds.
- * - Production (VERCEL_ENV=production) → 404.
- * - Preview deployments are behind Vercel Deployment Protection (SSO).
- * - Path is under /brand, which also uses the brand-portal password when set.
+ * Brand-portal review render of the CAA press release (same copy as NEWS_ITEMS).
+ * - Public Newsroom: /news/caa-fuel-provider-partner
+ * - This path: Vercel Preview (SSO) + brand password when set; production 404.
  */
 export default function CaaPressPreviewPage() {
   if (!isCaaPressPreviewAllowed()) notFound()
@@ -29,14 +27,14 @@ export default function CaaPressPreviewPage() {
 
   return (
     <article className="max-w-3xl space-y-8">
-      <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
-        <p className="font-semibold tracking-wide uppercase text-amber-200 text-xs mb-1">
-          Draft review only
+      <div className="rounded-xl border border-sky-500/30 bg-sky-500/10 px-4 py-3 text-sm text-sky-100">
+        <p className="font-semibold tracking-wide uppercase text-sky-200 text-xs mb-1">
+          Brand review
         </p>
-        <p className="text-amber-100/80 leading-relaxed">
-          Private preview of an unpublished press release. Not listed in the
-          public Newsroom. Production returns 404 for this path. Do not treat
-          this as a published announcement.
+        <p className="text-sky-100/80 leading-relaxed">
+          Same copy as the public Newsroom article at{" "}
+          <code className="text-sky-200">/news/caa-fuel-provider-partner</code>.
+          This brand path is preview-only (production returns 404).
         </p>
       </div>
 

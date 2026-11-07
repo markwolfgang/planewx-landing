@@ -1,10 +1,11 @@
-# Unpublished content (fail-closed)
+# Unpublished content
 
-Markdown (and related assets) in this directory are **source of truth for drafts that must not appear on public surfaces**.
+Markdown here is for drafts that are **not yet** in `NEWS_ITEMS`.
 
-Rules:
+Once Mark authorizes publication, prepend the article to `app/news/news-data.ts`
+(`NEWS_ITEMS`, newest first) using the existing news template — that is the
+canonical public Newsroom / sitemap / embed path (`/news`, `/news?embed=1`).
 
-1. Do **not** import these files into `lib/news-data.ts` / `NEWS_ITEMS`, sitemap builders, RSS/JSON feeds, search indexes, or structured data until an explicit publish decision.
-2. Do **not** add matching `/news/[slug]` entries, home-page news cards, or partner-press links that would make the draft discoverable.
-3. Prefer keeping copy here (or in the Google Doc) until Mark authorizes publication. Draft GitHub PRs are not publication.
-4. The CAA press draft may render under `/brand/reviews/caa-fuel-provider-partner` for **Vercel Preview** review only (`VERCEL_ENV !== "production"`). Production must 404 that path. Preview deployments stay behind Vercel Deployment Protection (SSO); the path is also under `/brand` password middleware when `BRAND_PORTAL_PASSWORD` is set.
+The CAA fuel-provider partner release is published in `NEWS_ITEMS` as
+`caa-fuel-provider-partner`. The matching file in this folder is a provenance
+mirror only.
