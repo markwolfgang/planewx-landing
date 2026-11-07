@@ -112,8 +112,11 @@ describe("CAA unpublished news fail-closed", () => {
     expect(source).not.toContain(
       "Until now, Fuel Stop Advisor could show where CAA Preferred FBOs sit along a route.",
     )
-    expect(source).toContain(
+    expect(source).not.toContain(
       "Verified CAA members now also see their CAA Jet-A member price on those stops.",
+    )
+    expect(source).toContain(
+      "Verified CAA members can see negotiated Jet-A member prices at CAA Preferred FBOs in Fuel Stop Advisor.",
     )
     expect(source).not.toMatch(/\blinked\b/i)
     expect(source).not.toMatch(/\bLinked\b/)
