@@ -17,13 +17,13 @@ const caaSourcePath = join(
 const caaLogoPath = join(root, "public/partners/caa-logo-rgb-gradient.svg")
 
 const PARTNER_BLURB =
-  "Corporate Aircraft Association (CAA) is PlaneWX's first fuel provider partner. Linked CAA members see negotiated Jet-A member prices at CAA Preferred FBOs inside Fuel Stop Advisor."
+  "Corporate Aircraft Association (CAA) is PlaneWX's first fuel provider partner. CAA members see negotiated Jet-A member prices at CAA Preferred FBOs inside Fuel Stop Advisor."
 
 /** News-release-only strings that must not enter public news loaders. */
 const NEWS_ONLY_MARKERS = [
   "DRAFT QUOTE FOR MARK'S APPROVAL",
   "[CAA QUOTE, needs CAA approval]",
-  "CAA member Jet-A prices now appear in Fuel Stop Advisor for linked CAA members",
+  "CAA member Jet-A prices now appear in Fuel Stop Advisor for CAA members",
   "MemberPrices feed",
   "Open Profile, edit an aircraft, expand Fuel Programs",
 ] as const
@@ -51,6 +51,7 @@ function walkFiles(dir: string): string[] {
 describe("CAA partner listing", () => {
   it("keeps the exact partner-page blurb and logo path from the source", () => {
     expect(partnersSrc).toContain(PARTNER_BLURB)
+    expect(partnersSrc).not.toMatch(/Linked CAA members see/)
     expect(partnersSrc).toContain('src: "/partners/caa-logo-rgb-gradient.svg"')
     expect(partnersSrc).toContain(
       'alt: "Corporate Aircraft Association (CAA) logo"',
@@ -71,14 +72,23 @@ describe("CAA partner listing", () => {
 })
 
 describe("CAA unpublished news fail-closed", () => {
-  it("keeps the unpublished source on disk with placeholders and linked wording", () => {
+  it("keeps the unpublished source with approved date and quote markers", () => {
     expect(existsSync(caaSourcePath)).toBe(true)
     const source = readFileSync(caaSourcePath, "utf8")
-    expect(source).toContain("[LAUNCH DATE]")
+    expect(source).not.toContain("[LAUNCH DATE]")
+    expect(source).toContain("ST. PETERSBURG, Fla. — November 7, 2026 —")
+    expect(source).toContain(
+      "can link membership starting November 7, 2026.",
+    )
     expect(source).toContain("DRAFT QUOTE FOR MARK'S APPROVAL")
     expect(source).toContain("[CAA QUOTE, needs CAA approval]")
-    expect(source).toContain("for linked CAA members")
-    expect(source).toContain("Linked CAA members can now see")
+    expect(source).toContain(
+      "CAA member Jet-A prices now appear in Fuel Stop Advisor for CAA members",
+    )
+    expect(source).toContain("CAA members can now see negotiated CAA Jet-A")
+    expect(source).not.toMatch(/for linked CAA members/)
+    expect(source).not.toMatch(/Linked CAA members can now see/)
+    expect(source).not.toMatch(/Linked CAA members see/)
     expect(source).toContain(
       "Tagline: The confidence to go. The courage to stay.",
     )

@@ -48,5 +48,6 @@ Text are already in the Pro Plus story.
 
 - CAA first fuel provider partner release: `content/unpublished/caa-fuel-provider-partner.md`
   Source-only. Not imported, not routed, not in sitemap/feeds/static params.
-  Keep `[LAUNCH DATE]` and both quote-approval placeholders. Do not publish
-  via `draft: true` (direct `/news/[slug]` is still public).
+  Dateline/CTA date set to November 7, 2026; keep both quote-approval
+  placeholders. Do not publish via `draft: true` (direct `/news/[slug]` is
+  still public).
