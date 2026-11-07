@@ -6,26 +6,34 @@ import {
   getNewsItem,
   getPublishedNewsItems,
 } from "@/app/news/news-data"
+import {
+  isCaaPressPreviewAllowed,
+  loadCaaPressPreview,
+} from "@/lib/caa-press-preview"
 
 const root = process.cwd()
 const partnersSrc = readFileSync(join(root, "app/partners/page.tsx"), "utf8")
 const unpublishedDir = join(root, "content/unpublished")
-const caaSourcePath = join(
-  unpublishedDir,
-  "caa-fuel-provider-partner.md",
-)
+const caaSourcePath = join(unpublishedDir, "caa-fuel-provider-partner.md")
 const caaLogoPath = join(root, "public/partners/caa-logo-rgb-gradient.svg")
+const previewPagePath = join(
+  root,
+  "app/brand/reviews/caa-fuel-provider-partner/page.tsx",
+)
+const newsroomBacklogPath = join(root, "app/news/NEWSROOM-BACKLOG.md")
 
 const PARTNER_BLURB =
-  "Corporate Aircraft Association (CAA) is PlaneWX's first fuel provider partner. CAA members see negotiated Jet-A member prices at CAA Preferred FBOs inside Fuel Stop Advisor."
+  "Corporate Aircraft Association (CAA) is PlaneWX's first fuel provider partner. CAA members on PlaneWX plans that include Fuel Advisor see negotiated Jet-A member prices at CAA Preferred FBOs inside Fuel Stop Advisor."
 
-/** News-release-only strings that must not enter public news loaders. */
+const MARK_QUOTE =
+  "CAA is our first fuel provider partner for a reason. Their members already work hard to buy Jet-A well. Putting those prices next to the fuel stop plan, in the same trip picture pilots use for weather, makes the decision clearer."
+
+/** Release-only strings that must not enter public news loaders/routes. */
 const NEWS_ONLY_MARKERS = [
-  "DRAFT QUOTE FOR MARK'S APPROVAL",
-  "[CAA QUOTE, needs CAA approval]",
-  "CAA member Jet-A prices now appear in Fuel Stop Advisor for CAA members",
   "MemberPrices feed",
   "Open Profile, edit an aircraft, expand Fuel Programs",
+  MARK_QUOTE,
+  "CAA member Jet-A prices now appear in Fuel Stop Advisor",
 ] as const
 
 const GUESSED_SLUGS = [
@@ -49,9 +57,10 @@ function walkFiles(dir: string): string[] {
 }
 
 describe("CAA partner listing", () => {
-  it("keeps the exact partner-page blurb and logo path from the source", () => {
+  it("keeps the quote-clean partner-page blurb and logo path from the source", () => {
     expect(partnersSrc).toContain(PARTNER_BLURB)
     expect(partnersSrc).not.toMatch(/Linked CAA members see/)
+    expect(partnersSrc).not.toMatch(/\blinked\b/i)
     expect(partnersSrc).toContain('src: "/partners/caa-logo-rgb-gradient.svg"')
     expect(partnersSrc).toContain(
       'alt: "Corporate Aircraft Association (CAA) logo"',
@@ -72,27 +81,86 @@ describe("CAA partner listing", () => {
 })
 
 describe("CAA unpublished news fail-closed", () => {
-  it("keeps the unpublished source with approved date and quote markers", () => {
+  it("stores quote-clean unpublished source (no Doc tab/footer/quote labels)", () => {
     expect(existsSync(caaSourcePath)).toBe(true)
     const source = readFileSync(caaSourcePath, "utf8")
+
     expect(source).not.toContain("[LAUNCH DATE]")
-    expect(source).toContain("ST. PETERSBURG, Fla. — November 7, 2026 —")
+    expect(source).toContain("November 7, 2026")
     expect(source).toContain(
-      "can link membership starting November 7, 2026.",
+      "can verify their membership starting November 7, 2026.",
     )
-    expect(source).toContain("DRAFT QUOTE FOR MARK'S APPROVAL")
-    expect(source).toContain("[CAA QUOTE, needs CAA approval]")
+    expect(source).toContain(MARK_QUOTE)
+    expect(source).toContain("Mark Wolfgang, Founder, PlaneWX")
     expect(source).toContain(
-      "CAA member Jet-A prices now appear in Fuel Stop Advisor for CAA members",
+      "CAA member Jet-A prices now appear in Fuel Stop Advisor",
     )
-    expect(source).toContain("CAA members can now see negotiated CAA Jet-A")
-    expect(source).not.toMatch(/for linked CAA members/)
-    expect(source).not.toMatch(/Linked CAA members can now see/)
-    expect(source).not.toMatch(/Linked CAA members see/)
+    expect(source).toContain(PARTNER_BLURB)
     expect(source).toContain(
       "Tagline: The confidence to go. The courage to stay.",
     )
-    expect(source).toContain(PARTNER_BLURB)
+
+    // Exact deletions from quote-clean candidate.
+    expect(source).not.toMatch(/Doc tab:/i)
+    expect(source).not.toMatch(/TAB:\s*Tab 1/i)
+    expect(source).not.toMatch(/DRAFT QUOTE FOR MARK'S APPROVAL/i)
+    expect(source).not.toMatch(/\[QUOTE APPROVED/i)
+    expect(source).not.toMatch(/\[CAA QUOTE/i)
+    expect(source).not.toMatch(/CAA quote — pending/i)
+    expect(source).not.toMatch(/CAA spokesperson/i)
+    expect(source).not.toMatch(/DRAFT ONLY — not published, sent, shared/)
+    expect(source).not.toMatch(/\blinked\b/i)
+    expect(source).not.toMatch(/\bLinked\b/)
+    expect(source).not.toMatch(/\badmin\b/i)
+    expect(source).not.toMatch(/\bbeta\b/i)
+
+    // Internal note stays outside article copy (HTML comment only).
+    expect(source).toMatch(/<!--[\s\S]*UNPUBLISHED[\s\S]*-->/)
+  })
+
+  it("loads preview HTML with internal comments stripped", () => {
+    const preview = loadCaaPressPreview()
+    expect(preview.title).toBe(
+      "PlaneWX names Corporate Aircraft Association its first fuel provider partner",
+    )
+    expect(preview.date).toBe("November 7, 2026")
+    expect(preview.isoDate).toBe("2026-11-07")
+    expect(preview.partnerBlurb).toBe(PARTNER_BLURB)
+    expect(preview.bodyHtml).toContain(MARK_QUOTE)
+    expect(preview.bodyHtml).not.toMatch(/UNPUBLISHED review source/)
+    expect(preview.bodyHtml).not.toMatch(/DRAFT ONLY/)
+    expect(preview.bodyHtml).not.toMatch(/Doc tab:/i)
+    expect(preview.bodyHtml).not.toMatch(/\blinked\b/i)
+    expect(preview.bodyHtml).not.toMatch(/\badmin\b/i)
+    expect(preview.bodyHtml).not.toMatch(/\bbeta\b/i)
+  })
+
+  it("fail-closes press preview on Vercel production env", () => {
+    const prev = process.env.VERCEL_ENV
+    process.env.VERCEL_ENV = "production"
+    expect(isCaaPressPreviewAllowed()).toBe(false)
+    process.env.VERCEL_ENV = "preview"
+    expect(isCaaPressPreviewAllowed()).toBe(true)
+    delete process.env.VERCEL_ENV
+    expect(isCaaPressPreviewAllowed()).toBe(true)
+    if (prev === undefined) delete process.env.VERCEL_ENV
+    else process.env.VERCEL_ENV = prev
+  })
+
+  it("keeps a brand-portal draft review page (not a public news route)", () => {
+    expect(existsSync(previewPagePath)).toBe(true)
+    const page = readFileSync(previewPagePath, "utf8")
+    expect(page).toMatch(/isCaaPressPreviewAllowed/)
+    expect(page).toMatch(/Draft review only/)
+    expect(page).toMatch(/robots:\s*\{\s*index:\s*false/)
+    expect(page).toMatch(/force-dynamic/)
+  })
+
+  it("documents unpublished status in NEWSROOM-BACKLOG", () => {
+    const backlog = readFileSync(newsroomBacklogPath, "utf8")
+    expect(backlog).toMatch(/CAA first fuel provider partner/)
+    expect(backlog).toMatch(/content\/unpublished\/caa-fuel-provider-partner\.md/)
+    expect(backlog).toMatch(/not live on \/news/i)
   })
 
   it("does not register CAA in NEWS_ITEMS or public news helpers", () => {

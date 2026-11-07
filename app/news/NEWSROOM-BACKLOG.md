@@ -47,7 +47,9 @@ Text are already in the Pro Plus story.
 ## Unpublished sources (not in NEWS_ITEMS)
 
 - CAA first fuel provider partner release: `content/unpublished/caa-fuel-provider-partner.md`
-  Source-only. Not imported, not routed, not in sitemap/feeds/static params.
-  Dateline/CTA date set to November 7, 2026; keep both quote-approval
-  placeholders. Do not publish via `draft: true` (direct `/news/[slug]` is
-  still public).
+  Quote-clean candidate (Nov 7, 2026). Not in NEWS_ITEMS / /news / sitemap /
+  feeds. Do not publish via `draft: true` (direct `/news/[slug]` is still
+  public). Private draft review only at
+  `/brand/reviews/caa-fuel-provider-partner` on Vercel Preview (SSO + brand
+  password when set); production `VERCEL_ENV=production` returns 404.
+  Not live on /news.

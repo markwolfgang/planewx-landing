@@ -55,7 +55,7 @@ const PARTNERS = [
       className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
     },
     blurb:
-      "Corporate Aircraft Association (CAA) is PlaneWX's first fuel provider partner. CAA members see negotiated Jet-A member prices at CAA Preferred FBOs inside Fuel Stop Advisor.",
+      "Corporate Aircraft Association (CAA) is PlaneWX's first fuel provider partner. CAA members on PlaneWX plans that include Fuel Advisor see negotiated Jet-A member prices at CAA Preferred FBOs inside Fuel Stop Advisor.",
   },
   {
     name: "AOPA",

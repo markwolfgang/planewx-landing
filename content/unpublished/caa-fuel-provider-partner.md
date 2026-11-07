@@ -1,66 +1,48 @@
+---
+title: "PlaneWX names Corporate Aircraft Association its first fuel provider partner"
+subhead: "CAA member Jet-A prices now appear in Fuel Stop Advisor"
+date: "November 7, 2026"
+isoDate: "2026-11-07"
+location: "ST. PETERSBURG, Fla."
+partnerBlurb: "Corporate Aircraft Association (CAA) is PlaneWX's first fuel provider partner. CAA members on PlaneWX plans that include Fuel Advisor see negotiated Jet-A member prices at CAA Preferred FBOs inside Fuel Stop Advisor."
+---
+
 <!--
-  UNPUBLISHED — not listed, not routed, not imported by news-data.ts.
-  Source: Google Doc export fileId 1ObQz7h3iXgaRzXIL0E-t9iT44_e7lZOneGEbyl-I1Og
-  (DRAFT - PlaneWX x CAA news release), retrieved 2026-11-07; corrected
-  per Mark 3:23 PM ET CoS widget approval (delete linked/Linked in three
-  places; set date to November 7, 2026). Quote-approval markers retained.
-  Brand note: source tagline is "The confidence to go. The courage to stay."
-  (periods). Do not silently rewrite to the March brand-guideline
-  "or"/"™" form.
+  INTERNAL — not part of the article copy.
+  UNPUBLISHED review source. Rendered only at
+  /brand/reviews/caa-fuel-provider-partner on Vercel Preview (SSO).
+  Production (VERCEL_ENV=production) returns 404. Not in NEWS_ITEMS,
+  sitemap, feeds, or public news indexes.
+  Quote-clean candidate (Mark Nov 7). DRAFT REVIEW ONLY — not published.
+  Using CAA's logo publicly may need CAA's OK.
 -->
 
-# PlaneWX names Corporate Aircraft Association its first fuel provider partner
+<p><strong>ST. PETERSBURG, Fla. &mdash; November 7, 2026 &mdash;</strong></p>
 
-## Subhead
+<p>PlaneWX, the pilot's decision support system, today named the Corporate Aircraft Association (CAA) its first fuel provider partner. CAA members on a PlaneWX plan that includes Fuel Advisor (Casual, Pro or Pro Plus) can now see negotiated CAA Jet-A member prices in Fuel Stop Advisor, and those prices feed the trip fuel-cost estimate.</p>
 
-CAA member Jet-A prices now appear in Fuel Stop Advisor for CAA members
+<p>CAA is a member-focused, not-for-profit association dedicated to strengthening Part 91 business aviation through savings, service, and trusted industry relationships. Through its Preferred FBO network, CAA negotiates Jet-A fuel prices for Part 91 operators.</p>
 
-## Release
+<p>Until now, Fuel Stop Advisor could show where CAA Preferred FBOs sit along a route. Verified CAA members now also see their CAA Jet-A member price on those stops. Prices come from CAA's MemberPrices feed, refresh about every 12 hours, and appear with a CAA tag on airports and route legs. No CSV upload is required. Jet-A only.</p>
 
-ST. PETERSBURG, Fla. — November 7, 2026 —
+<blockquote><p>&ldquo;CAA is our first fuel provider partner for a reason. Their members already work hard to buy Jet-A well. Putting those prices next to the fuel stop plan, in the same trip picture pilots use for weather, makes the decision clearer.&rdquo;</p><cite>&mdash; Mark Wolfgang, Founder, PlaneWX</cite></blockquote>
 
-PlaneWX, the pilot's decision support system, today named the Corporate Aircraft Association (CAA) its first fuel provider partner. CAA members can now see negotiated CAA Jet-A member prices in Fuel Stop Advisor, and those prices feed the trip fuel-cost estimate.
+<p>Fuel Stop Advisor is a planning tool. Pilots still confirm price and availability with the FBO before uplift. PlaneWX does not replace an EFB, and the pilot in command remains responsible for the flight.</p>
 
-CAA is a member-focused, not-for-profit association dedicated to strengthening Part 91 business aviation through savings, service, and trusted industry relationships. Through its Preferred FBO network, CAA negotiates Jet-A fuel prices for Part 91 operators.
+<p>CAA members on a PlaneWX plan that includes Fuel Advisor can verify their membership starting November 7, 2026. Learn more at <a href="https://www.planewx.ai">www.planewx.ai</a> and <a href="https://www.caa.org" target="_blank" rel="noopener noreferrer">www.caa.org</a>.</p>
 
-Until now, Fuel Stop Advisor could show where CAA Preferred FBOs sit along a route. Verified CAA members now also see their CAA Jet-A member price on those stops. Prices come from CAA's MemberPrices feed, refresh about every 12 hours, and appear with a CAA tag on airports and route legs. No CSV upload is required. Jet-A only.
+<h2>How it works</h2>
+<ol>
+<li>Open Profile, edit an aircraft, expand Fuel Programs, and open CAA Membership (Jet-A).</li>
+<li>Enter the email on your CAA account and confirm the 6-digit verification code.</li>
+<li>Run Fuel Stop Advisor on a Jet-A trip. CAA member prices appear on CAA Preferred FBO stops, with a CAA tag, and feed the trip fuel-cost estimate.</li>
+</ol>
 
-DRAFT QUOTE FOR MARK'S APPROVAL: "CAA is our first fuel provider partner for a reason. Their members already work hard to buy Jet-A well. Putting those prices next to the fuel stop plan, in the same trip picture pilots use for weather, makes the decision clearer."
+<h2>About PlaneWX</h2>
+<p>PlaneWX is the pilot's decision support system for general aviation, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. It scores weather against each pilot's aircraft and personal minimums, supports FAA PAVE risk assessment, and includes planning tools such as Fuel Stop Advisor. Tagline: The confidence to go. The courage to stay. <a href="https://www.planewx.ai">www.planewx.ai</a></p>
 
-— Mark Wolfgang, Founder, PlaneWX
+<h2>About Corporate Aircraft Association (CAA)</h2>
+<p>Corporate Aircraft Association (CAA) is a member-focused, not-for-profit association dedicated to strengthening Part 91 business aviation through savings, service, and trusted industry relationships. <a href="https://www.caa.org" target="_blank" rel="noopener noreferrer">www.caa.org</a></p>
 
-[CAA QUOTE, needs CAA approval]
-
-Fuel Stop Advisor is a planning tool. Pilots still confirm price and availability with the FBO before uplift. PlaneWX does not replace an EFB, and the pilot in command remains responsible for the flight.
-
-CAA members on a PlaneWX plan that includes Fuel Advisor can link membership starting November 7, 2026. Learn more at www.planewx.ai and www.caa.org.
-
-## How it works
-
-1. Open Profile, edit an aircraft, expand Fuel Programs, and open CAA Membership (Jet-A).
-2. Enter the email on your CAA account and confirm the 6-digit verification code.
-3. Run Fuel Stop Advisor on a Jet-A trip. CAA member prices appear on CAA Preferred FBO stops, with a CAA tag, and feed the trip fuel-cost estimate.
-
-## About PlaneWX
-
-PlaneWX is the pilot's decision support system for general aviation, founded in 2025 by Mark Wolfgang, a Navy veteran and commercial instrument-rated pilot. It scores weather against each pilot's aircraft and personal minimums, supports FAA PAVE risk assessment, and includes planning tools such as Fuel Stop Advisor. Tagline: The confidence to go. The courage to stay. www.planewx.ai
-
-## About Corporate Aircraft Association (CAA)
-
-Corporate Aircraft Association (CAA) is a member-focused, not-for-profit association dedicated to strengthening Part 91 business aviation through savings, service, and trusted industry relationships. www.caa.org
-
-## Media contact
-
-Mark Wolfgang, Founder, PlaneWX
-mark@planewx.ai
-www.planewx.ai
-
----
-
-Partner-page blurb (for planewx.ai/partners):
-
-Corporate Aircraft Association (CAA) is PlaneWX's first fuel provider partner. CAA members see negotiated Jet-A member prices at CAA Preferred FBOs inside Fuel Stop Advisor.
-
----
-
-DRAFT ONLY — not published, sent, shared, or posted. Placeholders: November 7, 2026; DRAFT QUOTE FOR MARK'S APPROVAL; [CAA QUOTE, needs CAA approval]. Using CAA's logo publicly may need CAA's OK.
+<h2>Media contact</h2>
+<p>Mark Wolfgang, Founder, PlaneWX<br/><a href="mailto:mark@planewx.ai">mark@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
