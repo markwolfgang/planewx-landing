@@ -11,12 +11,18 @@ export type CaaPressPreview = {
 
 /**
  * Brand-portal review render of the published CAA news article.
- * Available on Vercel Preview (SSO) and local review only.
- * Production always fail-closes this brand path; public news lives at /news.
+ * Fail closed: allow only when VERCEL_ENV === "preview", or when
+ * NODE_ENV === "development" and VERCEL_ENV is unset. Deny production,
+ * unknown VERCEL_ENV values, and unset VERCEL_ENV outside development.
+ * Public news lives at /news.
  */
 export function isCaaPressPreviewAllowed(): boolean {
-  if (process.env.VERCEL_ENV === "production") return false
-  return true
+  const vercelEnv = process.env.VERCEL_ENV
+  if (vercelEnv === "preview") return true
+  if (vercelEnv === undefined && process.env.NODE_ENV === "development") {
+    return true
+  }
+  return false
 }
 
 export function loadCaaPressPreview(): CaaPressPreview {

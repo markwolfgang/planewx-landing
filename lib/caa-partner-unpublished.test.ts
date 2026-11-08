@@ -159,18 +159,36 @@ describe("CAA press release published in NEWS_ITEMS", () => {
     expect(backlog).toMatch(/NEWS_ITEMS/)
   })
 
-  it("keeps brand review page gated to non-production", () => {
+  it("keeps brand review page gated fail-closed to preview (or local development)", () => {
     expect(existsSync(previewPagePath)).toBe(true)
     const page = readFileSync(previewPagePath, "utf8")
     expect(page).toMatch(/isCaaPressPreviewAllowed/)
     expect(page).toMatch(/force-dynamic/)
-    const prev = process.env.VERCEL_ENV
-    process.env.VERCEL_ENV = "production"
-    expect(isCaaPressPreviewAllowed()).toBe(false)
-    process.env.VERCEL_ENV = "preview"
-    expect(isCaaPressPreviewAllowed()).toBe(true)
-    if (prev === undefined) delete process.env.VERCEL_ENV
-    else process.env.VERCEL_ENV = prev
+
+    const prevVercel = process.env.VERCEL_ENV
+    const prevNode = process.env.NODE_ENV
+    try {
+      process.env.VERCEL_ENV = "preview"
+      expect(isCaaPressPreviewAllowed()).toBe(true)
+
+      process.env.VERCEL_ENV = "production"
+      expect(isCaaPressPreviewAllowed()).toBe(false)
+
+      delete process.env.VERCEL_ENV
+      process.env.NODE_ENV = "test"
+      expect(isCaaPressPreviewAllowed()).toBe(false)
+
+      process.env.VERCEL_ENV = "staging"
+      expect(isCaaPressPreviewAllowed()).toBe(false)
+
+      delete process.env.VERCEL_ENV
+      process.env.NODE_ENV = "development"
+      expect(isCaaPressPreviewAllowed()).toBe(true)
+    } finally {
+      if (prevVercel === undefined) delete process.env.VERCEL_ENV
+      else process.env.VERCEL_ENV = prevVercel
+      process.env.NODE_ENV = prevNode
+    }
 
     const preview = loadCaaPressPreview()
     expect(preview.bodyHtml).toContain(VERIFIED_SENTENCE)
