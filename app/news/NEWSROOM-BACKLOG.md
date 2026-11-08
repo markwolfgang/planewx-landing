@@ -7,6 +7,8 @@ Do not invent numbers. Re-verify every stat at write time.
 
 | Slug | Date | Notes |
 |---|---|---|
+| `caa-fuel-provider-partner` | Nov 7, 2026 | CAA first fuel provider partner press release. Quote-clean + Mark 5:06/5:07 sentence edits. Newest on `/news` and `/news?embed=1` (in-app News drawer). |
+| `planewx-connects-to-perplexity` | Oct 20, 2026 | On `main` / prior newest. |
 | `new-beta-planewx-in-claude-and-grok` | Oct 9, 2026 | MCP connector beta (Claude, Grok), Pro Plus Labs. Two Shorts as 9:16 nocookie iframes. Help `/help/connect-ai-assistant` is admin-only until launch; merge with launch. Mismatch-report tool omitted (admin-only). |
 | `why-i-built-planewx` | Sep 21, 2026 | Founder Medium essay pointer. Title: Why I built PlaneWX. Full essay: *I Built an Aviation Safety App So I Would Not Kill Myself*. No Help link. |
 | `frat` | Sep 16, 2026 | FRAT product name; PAVE underneath. Dynamic briefing + airport complexity chips; pilot self-rates. Help `/help/frat`. |
@@ -43,3 +45,7 @@ Text are already in the Pro Plus story.
 - Frost advisory spec: `v0-planewx-v0-1/docs/ground-frost-advisory-spec.md`
 - GP location: briefing destination + scheduled arrival, **not** ADS-B.
   Last-landing correction is a future product choice.
+
+## Unpublished sources (not in NEWS_ITEMS)
+
+- (none currently — CAA release moved into `NEWS_ITEMS`)

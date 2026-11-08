@@ -43,6 +43,21 @@ const PARTNERS = [
       "Aviation insurance partner working with PlaneWX so pilots can keep their decision support and their coverage in the same flight picture.",
   },
   {
+    name: "Corporate Aircraft Association",
+    href: "https://www.caa.org",
+    logo: {
+      // Supplied RGB-gradient SVG (viewBox 612×288). Color mark reads on the
+      // dark DSS cards; aspect locked via width/height + object-contain.
+      src: "/partners/caa-logo-rgb-gradient.svg",
+      alt: "Corporate Aircraft Association (CAA) logo",
+      width: 612,
+      height: 288,
+      className: "h-16 sm:h-20 w-auto max-w-[14rem] object-contain",
+    },
+    blurb:
+      "Corporate Aircraft Association (CAA) is PlaneWX's first fuel provider partner. CAA members on PlaneWX plans that include Fuel Advisor see negotiated Jet-A member prices at CAA Preferred FBOs inside Fuel Stop Advisor.",
+  },
+  {
     name: "AOPA",
     href: "https://www.aopa.org",
     logo: {
