@@ -52,7 +52,7 @@ const PARTNERS = [
       alt: "Corporate Aircraft Association (CAA) logo",
       width: 612,
       height: 288,
-      className: "h-10 sm:h-11 w-auto max-w-[14rem] object-contain",
+      className: "h-16 sm:h-20 w-auto max-w-[14rem] object-contain",
     },
     blurb:
       "Corporate Aircraft Association (CAA) is PlaneWX's first fuel provider partner. CAA members on PlaneWX plans that include Fuel Advisor see negotiated Jet-A member prices at CAA Preferred FBOs inside Fuel Stop Advisor.",

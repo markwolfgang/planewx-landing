@@ -155,7 +155,7 @@ export default async function NewsArticlePage({ params, searchParams }: Props) {
                   alt={item.coBrand.name}
                   width={item.coBrand.logoWidth}
                   height={item.coBrand.logoHeight}
-                  className="h-8 w-auto sm:h-9"
+                  className={item.coBrand.logoClassName ?? "h-8 w-auto sm:h-9"}
                 />
               </a>
             ) : (
@@ -164,7 +164,7 @@ export default async function NewsArticlePage({ params, searchParams }: Props) {
                 alt={item.coBrand.name}
                 width={item.coBrand.logoWidth}
                 height={item.coBrand.logoHeight}
-                className="h-8 w-auto sm:h-9"
+                className={item.coBrand.logoClassName ?? "h-8 w-auto sm:h-9"}
               />
             )}
           </div>

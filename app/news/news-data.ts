@@ -51,6 +51,8 @@ export interface NewsItem {
     logoWidth: number
     logoHeight: number
     href?: string
+    /** Optional partner-mark height classes; default is h-8 / sm:h-9. */
+    logoClassName?: string
   }
 }
 
@@ -70,9 +72,10 @@ export const NEWS_ITEMS: NewsItem[] = [
       logoWidth: 612,
       logoHeight: 288,
       href: "https://www.caa.org",
+      logoClassName: "h-12 sm:h-14 w-auto",
     },
     body: `
-<p><strong>ST. PETERSBURG, Fla. &mdash; November 7, 2026 &mdash;</strong></p>
+<p><strong>ST. PETERSBURG, Fla. &mdash; November 7, 2026</strong></p>
 
 <p>PlaneWX, the pilot's decision support system, today named the Corporate Aircraft Association (CAA) its first fuel provider partner. CAA members on a PlaneWX plan that includes Fuel Advisor (Casual, Pro or Pro Plus) can now see negotiated CAA Jet-A member prices in Fuel Stop Advisor, and those prices feed the trip fuel-cost estimate.</p>
 

@@ -58,6 +58,7 @@ describe("CAA partner listing", () => {
     expect(partnersSrc).toContain("width: 612")
     expect(partnersSrc).toContain("height: 288")
     expect(partnersSrc).toContain("object-contain")
+    expect(partnersSrc).toContain("h-16 sm:h-20")
     expect(partnersSrc).toContain('href: "https://www.caa.org"')
     expect(existsSync(caaLogoPath)).toBe(true)
   })
@@ -84,8 +85,11 @@ describe("CAA press release published in NEWS_ITEMS", () => {
     expect(item!.excerpt).toBe(
       "CAA member Jet-A prices now appear in Fuel Stop Advisor",
     )
+    expect(item!.coBrand?.logoClassName).toBe("h-12 sm:h-14 w-auto")
     expect(item!.body).toContain(MARK_QUOTE)
     expect(item!.body).toContain(VERIFIED_SENTENCE)
+    expect(item!.body).toContain("November 7, 2026</strong>")
+    expect(item!.body).not.toMatch(/2026 &mdash;<\/strong>/)
     expect(item!.body).not.toContain(
       "Until now, Fuel Stop Advisor could show where CAA Preferred FBOs sit along a route.",
     )
@@ -102,6 +106,25 @@ describe("CAA press release published in NEWS_ITEMS", () => {
     expect(published[0]?.slug).toBe(SLUG)
     expect(published.some((n) => n.slug === SLUG)).toBe(true)
     expect(NEWS_ITEMS[0]?.slug).toBe(SLUG)
+  })
+
+  it("scopes coBrand logoClassName to CAA only; article page keeps default fallback", () => {
+    for (const item of NEWS_ITEMS) {
+      if (!item.coBrand) continue
+      if (item.slug === SLUG) {
+        expect(item.coBrand.logoClassName).toBe("h-12 sm:h-14 w-auto")
+      } else {
+        expect(item.coBrand.logoClassName).toBeUndefined()
+      }
+    }
+    const articlePage = readFileSync(
+      join(root, "app/news/[slug]/page.tsx"),
+      "utf8",
+    )
+    expect(articlePage).toContain('"h-8 w-auto sm:h-9"')
+    expect(articlePage).toContain(
+      "item.coBrand.logoClassName ?? \"h-8 w-auto sm:h-9\"",
+    )
   })
 
   it("keeps Perplexity and other published news discoverable after CAA", () => {
