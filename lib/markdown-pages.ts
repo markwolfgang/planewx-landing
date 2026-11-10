@@ -387,8 +387,8 @@ function buildGaCustoms(): string {
 
 /** Look up markdown for a public path such as "about" or "learn/risk-management-loop". */
 export function getMarkdownForSlug(slugPath: string): string | null {
+  if (!Object.hasOwn(BUILDERS, slugPath)) return null
   const builder = BUILDERS[slugPath]
-  if (!builder) return null
   return builder()
 }
 

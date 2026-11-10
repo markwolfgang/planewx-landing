@@ -79,15 +79,15 @@ function attr(tag: string, name: string): string | undefined {
 
 function convertInline(html: string): string {
   let out = html
-  // Linked citations like <a class="cite" href="#ref-1">[1]</a> already have
-  // bracket text; keep the href.
+  // In-page fragments (#ref-1, #gl-sigmet) have no matching anchors in
+  // markdown, so keep the label only. Real hrefs stay as markdown links.
   out = out.replace(
     /<a\b([^>]*)>([\s\S]*?)<\/a>/gi,
     (full, rawAttrs: string, inner: string) => {
       const href = attr(`<a ${rawAttrs}>`, "href") ?? ""
       const label = convertInline(inner).replace(/\s+/g, " ").trim()
       if (!label) return ""
-      if (!href || href.startsWith("javascript:")) return label
+      if (!href || href.startsWith("#") || href.startsWith("javascript:")) return label
       return `[${label}](${href})`
     },
   )
@@ -230,7 +230,11 @@ export function htmlToMarkdown(html: string): string {
       continue
     }
     if (tag === "pre") {
-      const code = textContent(inner.replace(/<\/?code\b[^>]*>/gi, ""))
+      // Strip tags without inserting spaces so adjacent tokens stay joined,
+      // and keep the source newlines and spacing (do not run textContent).
+      const code = foldTypography(
+        decodeHtmlEntities(inner.replace(/<[^>]+>/g, "")),
+      ).trim()
       blocks.push("```\n" + code + "\n```")
       continue
     }
