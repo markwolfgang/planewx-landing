@@ -56,10 +56,6 @@ export function FooterCTA({ variant }: { variant: string }) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8 text-sm text-white/40">
           <div className="flex items-center gap-2">
             <Check className="h-4 w-4 text-emerald-400" />
-            No credit card required
-          </div>
-          <div className="flex items-center gap-2">
-            <Check className="h-4 w-4 text-emerald-400" />
             Full Pro Plus access for 14 days
           </div>
           <div className="flex items-center gap-2">

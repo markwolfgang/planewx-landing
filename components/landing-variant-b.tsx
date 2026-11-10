@@ -138,7 +138,7 @@ export function LandingVariantB() {
           </div>
 
           <p className="text-sm text-white/30">
-            No credit card required · Full safety analysis on every plan
+            Full safety analysis on every plan
           </p>
         </div>
       </section>

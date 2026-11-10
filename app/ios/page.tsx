@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.planewx.ai/ios",
+    types: { "text/markdown": "https://www.planewx.ai/ios.md" },
   },
 }
 

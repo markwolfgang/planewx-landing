@@ -28,7 +28,10 @@ const CANONICAL = "https://www.planewx.ai/learn"
 export const metadata: Metadata = {
   title: HUB_TITLE,
   description: HUB_DESCRIPTION,
-  alternates: { canonical: CANONICAL },
+  alternates: {
+    canonical: CANONICAL,
+    types: { "text/markdown": "https://www.planewx.ai/learn.md" },
+  },
   robots: shouldIndexLearnHub()
     ? { index: true, follow: true }
     : { index: false, follow: false },

@@ -273,7 +273,7 @@ export default function DecisionSupportPage() {
               Start free and brief a trip
               <ArrowRight className="ml-2 h-5 w-5" />
             </SignUpButton>
-            <p className="text-sm text-white/30">No credit card required. Cancel anytime.</p>
+            <p className="text-sm text-white/30">Cancel anytime.</p>
           </div>
         </section>
       </main>

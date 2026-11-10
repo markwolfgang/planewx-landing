@@ -215,7 +215,7 @@ export function LandingPage() {
             </div>
             
             <p className="text-sm text-white/40 pt-4">
-              14-day Pro Plus trial. No credit card required
+              14-day Pro Plus trial.
             </p>
           </div>
         </div>
@@ -943,7 +943,7 @@ export function LandingPage() {
             Ready to Fly <span className="text-sky-400">Smarter</span>?
           </h2>
           <p className="text-lg text-white/60 mb-8 max-w-xl mx-auto">
-            Create your free account and start your 14-day Pro Plus trial. No credit card required.
+            Create your free account and start your 14-day Pro Plus trial.
           </p>
           <a 
             href={signUpUrl}

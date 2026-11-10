@@ -180,7 +180,7 @@ export const FAQS: {
     q: "Is there a free plan?",
     a: [
       [
-        "Yes. Free forever includes full-quality briefings. We limit how much you can use PlaneWX, not how good the analysis is. Details on plans and what each tier includes are in ",
+        "Yes. The Free Plan, No End Date, includes full-quality briefings for 2 flights at a time. We limit how much you can use PlaneWX, not how good the analysis is. Details on plans and what each tier includes are in ",
         {
           href: "https://app.planewx.ai/help/plans",
           label: "PlaneWX Plans help",

@@ -138,7 +138,7 @@ export function PricingSection({ variant }: { variant: string }) {
             <span className="text-sky-400">Free for 14 days.</span>
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto">
-            No credit card required. Every pilot gets full-quality briefings. After your trial,
+            Every pilot gets full-quality briefings. After your trial,
             choose the plan that fits how you fly. Pro Plus adds automation while you&apos;re on
             the ground and when you file.
           </p>
@@ -297,7 +297,7 @@ export function PricingSection({ variant }: { variant: string }) {
             </div>
             <div className="mb-6">
               <span className="text-4xl font-bold">$0</span>
-              <span className="text-white/30 ml-1">/forever</span>
+              <span className="text-white/30 ml-1">Free Plan, No End Date</span>
             </div>
             <TrialLink
               href={appUrl}

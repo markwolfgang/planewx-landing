@@ -134,7 +134,7 @@ export function LandingPageV3() {
 
           <div className="flex items-center justify-center gap-2 mt-4 text-sm text-emerald-400/80">
             <Shield className="h-4 w-4" />
-            <span>Full safety analysis on every plan. <strong className="text-emerald-300">Free forever.</strong></span>
+            <span>Full safety analysis on every plan. <strong className="text-emerald-300">Free Plan, No End Date.</strong></span>
           </div>
         </div>
       </section>
@@ -813,10 +813,6 @@ export function LandingPageV3() {
             <ArrowRight className="ml-3 h-6 w-6" />
           </a>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8 text-sm text-white/40">
-            <div className="flex items-center gap-2">
-              <Check className="h-4 w-4 text-emerald-400" />
-              No credit card required
-            </div>
             <div className="flex items-center gap-2">
               <Check className="h-4 w-4 text-emerald-400" />
               Full Pro access for 14 days

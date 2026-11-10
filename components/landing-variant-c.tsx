@@ -127,7 +127,7 @@ export function LandingVariantC() {
             </SignUpButton>
           </div>
 
-          <p className="text-sm text-white/30">No credit card required · Cancel anytime</p>
+          <p className="text-sm text-white/30">Cancel anytime</p>
         </div>
       </section>
 

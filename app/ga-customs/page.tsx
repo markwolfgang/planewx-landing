@@ -38,6 +38,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://www.planewx.ai/ga-customs",
+    types: { "text/markdown": "https://www.planewx.ai/ga-customs.md" },
   },
 }
 

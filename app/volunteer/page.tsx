@@ -352,7 +352,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
                   After we validate your call sign, signup unlocks. You get full access to{" "}
                   <strong className="text-white font-semibold">Pro Plus</strong>, our highest
-                  tier, for two weeks. No credit card required to start the trial.
+                  tier, for two weeks.
                 </p>
               </div>
             </li>

@@ -17,6 +17,7 @@ Sitemap: https://www.planewx.ai/sitemap.xml
 
 # LLM context for AI assistants
 # https://www.planewx.ai/llms.txt
+# Full context: https://www.planewx.ai/llms-full.txt
 
 # Crawl-delay (optional, some bots respect this)
 Crawl-delay: 1

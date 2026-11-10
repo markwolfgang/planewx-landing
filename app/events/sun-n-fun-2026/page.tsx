@@ -271,10 +271,6 @@ export default async function SunNFun2026() {
                 <CheckCircle className="h-4 w-4 text-emerald-400" />
                 Full Pro access, free for 14 days
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-emerald-400" />
-                No credit card required
-              </div>
             </div>
           </div>
         </section>
