@@ -19,7 +19,10 @@ const CANONICAL = "https://www.planewx.ai/learn/risk-management-loop"
 export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
-  alternates: { canonical: CANONICAL },
+  alternates: {
+    canonical: CANONICAL,
+    types: { "text/markdown": "https://www.planewx.ai/learn/risk-management-loop.md" },
+  },
   robots: hubPageRobots(),
   openGraph: {
     type: "article",

@@ -117,7 +117,7 @@ const GENERIC_VOLUNTEER_CALL_SIGN_COPY = {
   acceptedLead:
     "Call sign accepted. Sign up below for your 2-week Pro Plus trial. PlaneWX applies the volunteer discount from the call sign you entered",
   unlockBody:
-    "Full access to Pro Plus, our highest tier. No credit card required to start the trial. When you continue after the trial, PlaneWX applies 30% off the annual plan for each year you're an active volunteer pilot, from the call sign you entered here. You do not type a separate coupon code.",
+    "Full access to Pro Plus, our highest tier. When you continue after the trial, PlaneWX applies 30% off the annual plan for each year you're an active volunteer pilot, from the call sign you entered here. You do not type a separate coupon code.",
 } as const
 
 /**
@@ -155,7 +155,7 @@ export const VOLUNTEER_ORG_CALL_SIGN_REGISTRY: Record<
     acceptedLead:
       "Call sign accepted. Sign up below for your 2-week Pro Plus trial. PlaneWX applies the volunteer discount from the call sign you entered",
     unlockBody:
-      "Full access to Pro Plus, our highest tier. No credit card required to start the trial. When you continue after the trial, PlaneWX applies 30% off the annual plan for each year you're an active volunteer pilot, from the SkyHope call sign you entered here. You do not type a separate coupon code. You remain PIC.",
+      "Full access to Pro Plus, our highest tier. When you continue after the trial, PlaneWX applies 30% off the annual plan for each year you're an active volunteer pilot, from the SkyHope call sign you entered here. You do not type a separate coupon code. You remain PIC.",
     storageKey: "planewx_syh_call_sign",
     signupParam: "callsign",
   },

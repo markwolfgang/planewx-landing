@@ -20,16 +20,17 @@ import {
 export const metadata: Metadata = {
   title: "About PlaneWX | Aviation Decision Support for General Aviation",
   description:
-    "PlaneWX is the first aviation decision support system focused on general aviation. Free briefing quality forever. Founded by Navy veteran and GA pilot Mark Wolfgang.",
+    "PlaneWX is the first aviation decision support system focused on general aviation. Free Plan, No End Date. Founded by Navy veteran and GA pilot Mark Wolfgang.",
   openGraph: {
     title: "About PlaneWX | Aviation Decision Support for General Aviation",
     description:
-      "PlaneWX is the first aviation decision support system focused on general aviation. Free briefing quality forever. Founded by Navy veteran and GA pilot Mark Wolfgang.",
+      "PlaneWX is the first aviation decision support system focused on general aviation. Free Plan, No End Date. Founded by Navy veteran and GA pilot Mark Wolfgang.",
     type: "website",
     url: "https://www.planewx.ai/about",
   },
   alternates: {
     canonical: "https://www.planewx.ai/about",
+    types: { "text/markdown": "https://www.planewx.ai/about.md" },
   },
 }
 
@@ -401,8 +402,8 @@ export default function AboutPage() {
             </h2>
             <p className="text-lg text-white/70 leading-relaxed">Safety is not a premium feature.</p>
             <p className="text-white/65 leading-relaxed text-left sm:text-center">
-              Briefing quality, Synoptic Intelligence™, WX Score, FRAT, and mentors stay free-quality
-              forever. We limit how much you can use PlaneWX on free and lower tiers, not how well
+              Briefing quality, Synoptic Intelligence™, WX Score, FRAT, and mentors stay the same quality
+              on the Free Plan, No End Date. We limit how much you can use PlaneWX on free and lower tiers, not how well
               the decision support works.
             </p>
             <p className="text-white/65 leading-relaxed text-left sm:text-center">

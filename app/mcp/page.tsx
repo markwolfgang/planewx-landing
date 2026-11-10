@@ -24,7 +24,10 @@ export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
   openGraph: { title: TITLE, description: DESCRIPTION, type: "website", url: URL },
-  alternates: { canonical: URL },
+  alternates: {
+    canonical: URL,
+    types: { "text/markdown": "https://www.planewx.ai/mcp.md" },
+  },
 }
 
 const ASK = [

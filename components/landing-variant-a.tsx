@@ -128,7 +128,7 @@ export function LandingVariantA() {
 
             <div className="order-2 lg:order-none flex items-center justify-center lg:justify-start gap-2 text-sm text-emerald-400/80">
               <Shield className="h-4 w-4" />
-              <span>Full safety analysis on every plan. <strong className="text-emerald-300">Free forever.</strong></span>
+              <span>Full safety analysis on every plan. <strong className="text-emerald-300">Free Plan, No End Date.</strong></span>
             </div>
           </div>
 

@@ -17,7 +17,10 @@ const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/airmet-sigmet"
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: CANONICAL },
+  alternates: {
+    canonical: CANONICAL,
+    types: { "text/markdown": "https://www.planewx.ai/learn/aviation-weather/airmet-sigmet.md" },
+  },
   robots: hubPageRobots(),
   openGraph: {
     type: "article",

@@ -17,6 +17,7 @@ import {
   type LearnLoopStage,
   type PuttingItIntoPractice,
 } from "../learn-data"
+import { MARKDOWN_PAGES, withMarkdownAlternate } from "@/lib/markdown-pages"
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -36,10 +37,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `https://www.planewx.ai/learn/${slug}`
   const indexable = shouldIndexLearnArticle(article)
 
+  const markdownPage = MARKDOWN_PAGES.find((page) => page.htmlPath === `/learn/${slug}`)
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates: markdownPage
+      ? withMarkdownAlternate({ canonical }, markdownPage.mdPath)
+      : { canonical },
     robots: indexable
       ? { index: true, follow: true }
       : { index: false, follow: false },

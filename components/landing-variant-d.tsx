@@ -155,7 +155,7 @@ export function LandingVariantD() {
             Full weather intelligence.
             <br />
             <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
-              Free forever.
+              Free Plan, No End Date.
             </span>
           </h1>
 
@@ -181,7 +181,7 @@ export function LandingVariantD() {
             </a>
           </div>
 
-          <p className="text-sm text-white/30">Same analysis as Pro · No credit card · Never expires</p>
+          <p className="text-sm text-white/30">Same analysis as Pro · No credit card · Free Plan, No End Date</p>
         </div>
       </section>
 

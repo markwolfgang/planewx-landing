@@ -421,8 +421,7 @@ export function LandingVariantF() {
           {/* Trust signals */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8 text-sm text-[#8a8f98]">
             {[
-              "No credit card required",
-              "Full access. Free plan forever.",
+              "Free Plan, No End Date.",
               "Cancel anytime",
             ].map(line => (
               <div key={line} className="flex items-center gap-1.5">
