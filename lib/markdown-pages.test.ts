@@ -115,6 +115,29 @@ describe("markdown page registry", () => {
     expect(loop).toContain("## FAQ")
     expect(loop.length).toBeGreaterThan(2000)
   })
+
+  it("returns null for inherited Object keys instead of calling them", () => {
+    for (const key of ["constructor", "toString", "hasOwnProperty", "__proto__", "valueOf"]) {
+      expect(getMarkdownForSlug(key), key).toBeNull()
+    }
+    expect(getMarkdownForSlug("about")).toMatch(/^# /m)
+  })
+
+  it("keeps the AIRMET/SIGMET sample advisory text byte-exact", () => {
+    const md = getMarkdownForSlug("learn/aviation-weather/airmet-sigmet") ?? ""
+    expect(md).toContain(
+      [
+        "```",
+        "SFOR UWS 100130",
+        "SIGMET ROMEO 1 VALID UNTIL 100530",
+        "OR WA",
+        "FROM SEA TO PDT TO EUG TO SEA",
+        "SEV TURB BTN FL280 AND FL350. CONDS CONTG BYD 0530Z.",
+        "```",
+      ].join("\n"),
+    )
+  })
+
 })
 
 describe("llms.txt and llms-full.txt", () => {
@@ -132,7 +155,7 @@ describe("llms.txt and llms-full.txt", () => {
       expect(llms).toContain(markdownUrl(page.mdPath))
     }
     expect(llms).toContain("# Full context: https://www.planewx.ai/llms-full.txt")
-    expect(llms).toContain("Last updated: 2026-11-09")
+    expect(llms).toMatch(/^Last updated: \d{4}-\d{2}-\d{2}$/m)
     expect(llms).not.toContain("c6076e2")
     expect(llms).toContain(
       "Pro Plus, trials included. Not available on Free, Casual or Pro without a Pro Plus trial.",
