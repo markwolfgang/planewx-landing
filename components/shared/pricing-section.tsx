@@ -295,9 +295,9 @@ export function PricingSection({ variant }: { variant: string }) {
               </div>
               <p className="text-sm text-white/40">Full-quality briefings for occasional flyers</p>
             </div>
-            <div className="mb-6">
+            <div className="mb-6 flex flex-wrap items-baseline gap-x-1">
               <span className="text-4xl font-bold">$0</span>
-              <span className="text-white/30 ml-1 whitespace-nowrap">Free Plan, No End Date</span>
+              <span className="text-white/30 whitespace-nowrap">Free Plan, No End Date</span>
             </div>
             <TrialLink
               href={appUrl}
