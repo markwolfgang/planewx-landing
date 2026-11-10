@@ -181,7 +181,7 @@ export function LandingVariantD() {
             </a>
           </div>
 
-          <p className="text-sm text-white/30">Same analysis as Pro · No credit card · Never expires</p>
+          <p className="text-sm text-white/30">Same analysis as Pro · No credit card · Free Plan, No End Date</p>
         </div>
       </section>
 

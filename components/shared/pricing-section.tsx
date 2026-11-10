@@ -297,7 +297,7 @@ export function PricingSection({ variant }: { variant: string }) {
             </div>
             <div className="mb-6">
               <span className="text-4xl font-bold">$0</span>
-              <span className="text-white/30 ml-1">Free Plan, No End Date</span>
+              <span className="text-white/30 ml-1 whitespace-nowrap">Free Plan, No End Date</span>
             </div>
             <TrialLink
               href={appUrl}
