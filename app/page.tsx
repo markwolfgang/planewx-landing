@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
 import { LandingVariantA } from "@/components/landing-variant-a"
-import { withMarkdownAlternate } from "@/lib/markdown-pages"
+import { HOME_MARKDOWN_ALTERNATES } from "@/lib/markdown-pages"
 
 export const metadata: Metadata = {
-  alternates: withMarkdownAlternate({ canonical: "/" }, "/index.md"),
+  alternates: HOME_MARKDOWN_ALTERNATES,
 }
 
 export default function Home() {

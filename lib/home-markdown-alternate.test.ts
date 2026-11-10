@@ -33,7 +33,7 @@ function markdownType(metadata: Metadata | undefined): unknown {
   return (alternates.types as Record<string, unknown> | undefined)?.["text/markdown"]
 }
 
-const PAGE_MODULES: Record<string, () => Promise<{ metadata?: Metadata }>> = {
+const PAGE_MODULES: Record<string, () => Promise<object>> = {
   "/variants/a": () => import("@/app/variants/a/page"),
   "/variants/b": () => import("@/app/variants/b/page"),
   "/variants/c": () => import("@/app/variants/c/page"),
@@ -46,7 +46,7 @@ const PAGE_MODULES: Record<string, () => Promise<{ metadata?: Metadata }>> = {
 async function variantMetadata(path: string): Promise<Metadata | undefined> {
   const load = PAGE_MODULES[path]
   if (!load) throw new Error(`no page module mapped for ${path}`)
-  return (await load()).metadata
+  return ((await load()) as { metadata?: Metadata }).metadata
 }
 
 function servedPathFor(ua: string): string | null {

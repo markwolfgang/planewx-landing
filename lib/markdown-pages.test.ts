@@ -180,7 +180,7 @@ describe("rel=alternate metadata", () => {
 
   it("is present on the homepage metadata export only as an alternate", () => {
     const home = read("app/page.tsx")
-    expect(home).toContain('withMarkdownAlternate({ canonical: "/" }, "/index.md")')
+    expect(home).toContain("alternates: HOME_MARKDOWN_ALTERNATES")
     expect(home).not.toContain("Fly like it's your job.")
     const layout = read("app/layout.tsx")
     expect(layout).toContain("PlaneWX | Fly like it's your job.")

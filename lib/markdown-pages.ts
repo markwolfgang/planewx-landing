@@ -98,6 +98,13 @@ export function withMarkdownAlternate(
   }
 }
 
+/**
+ * Homepage alternates. Middleware rewrites "/" to /variants/a, so this must sit
+ * on that page (the HTML actually served at "/"), not only on app/page.tsx.
+ * Do not put it in the root layout: child pages would inherit /index.md.
+ */
+export const HOME_MARKDOWN_ALTERNATES = withMarkdownAlternate({ canonical: "/" }, "/index.md")
+
 type FaqItem = { question: string; answer: string }
 
 function faqSection(items: FaqItem[]): string {
