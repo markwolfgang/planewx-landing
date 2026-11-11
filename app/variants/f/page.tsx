@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: "PlaneWX — From Chaos to Clarity",
   description:
     "Six tabs. Four apps. One decision. PlaneWX synthesizes your weather against your aircraft, minimums, and route — and delivers a single WX Score, days before you need to decide.",
+  // A/B variant: canonicalize to the homepage, not /variants/f.
+  alternates: { canonical: "/" },
   openGraph: {
     title: "PlaneWX — From Chaos to Clarity",
     description:

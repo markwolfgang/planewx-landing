@@ -6,6 +6,7 @@ import { FIVE_X_FIVE_SEES_LINE } from "@/lib/five-x-five"
 export const metadata = {
   title: "Privacy Policy | PlaneWX",
   description: "Privacy Policy for PlaneWX.",
+  alternates: { canonical: "https://www.planewx.ai/privacy" },
 }
 
 const EFFECTIVE_DATE = "August 31, 2026"

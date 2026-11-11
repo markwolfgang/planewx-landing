@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   title: "Flying into Sun 'n Fun 2026? | PlaneWX",
   description:
     "Live weather outlook for pilots flying into KLAL Apr 14–20, 2026. Best morning departure windows, Florida convection patterns, and AI-powered briefings for your specific route — free for 14 days.",
+  alternates: { canonical: "https://www.planewx.ai/events/sun-n-fun-2026" },
   openGraph: {
     title: "Flying to Sun 'n Fun? PlaneWX has been watching the weather.",
     description:

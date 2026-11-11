@@ -173,7 +173,8 @@ const PARTNERS = [
   },
   {
     name: "FLYTE",
-    href: "https://www.planewx.ai/flyte",
+    // External partner site (same destination used on /osh). Do not invent /flyte.
+    href: "https://flyte.aero",
     logo: {
       src: "/partners/flyte-logo-white.png",
       alt: "FLYTE logo",

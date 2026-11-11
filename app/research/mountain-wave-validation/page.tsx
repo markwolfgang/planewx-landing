@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Adversarial AI Validation of Mountain Wave Detection | PlaneWX Research",
   description:
     "How PlaneWX used a structured multi-AI debate to validate and improve mountain wave and rotor turbulence detection for general aviation pilots — producing six algorithmic improvements backed by published meteorological literature.",
+  alternates: { canonical: "https://www.planewx.ai/research/mountain-wave-validation" },
   openGraph: {
     title: "Adversarial AI Validation of Mountain Wave Detection",
     description:

@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Iterative AI Validation of Turbulence Detection | PlaneWX Research",
   description:
     "How PlaneWX ran 8 adversarial AI debates across 3 days to validate and refine its shear guard and rotor detection systems — producing altitude-banded thresholds, KHI boost logic, and GA-specific PIREP normalization backed by Monte Carlo testing.",
+  alternates: { canonical: "https://www.planewx.ai/research/turbulence-safety" },
   openGraph: {
     title: "8 Debates, 3 Days, 1 Safety-Critical Decision",
     description:
