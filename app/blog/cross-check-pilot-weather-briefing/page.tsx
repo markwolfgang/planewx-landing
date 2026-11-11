@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import { RelatedWeatherGuides } from "@/components/related-weather-guides"
 import { YouTubeFacade } from "@/components/shared/youtube-facade"
 import * as post from "@/lib/blog-posts/cross-check-pilot-weather-briefing"
 
@@ -92,6 +93,12 @@ export default function CrossCheckPilotWeatherBriefingPage() {
             dangerouslySetInnerHTML={{ __html: post.htmlAfterVideo }}
           />
         </div>
+
+        <RelatedWeatherGuides
+          slug={post.slug}
+          title={post.h1}
+          excerpt={post.description}
+        />
 
         <script
           type="application/ld+json"

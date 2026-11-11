@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { connection } from "next/server"
+import { RelatedWeatherGuides } from "@/components/related-weather-guides"
 import {
   getSoroArticles,
   getSoroArticleBySlug,
@@ -140,6 +141,12 @@ export default async function BlogPostPage({ params }: Props) {
         ) : (
           <p className="text-white/50">Content could not be loaded. Please try again later.</p>
         )}
+
+        <RelatedWeatherGuides
+          slug={slug}
+          title={article.title}
+          excerpt={article.excerpt}
+        />
 
         {/* JSON-LD */}
         <script

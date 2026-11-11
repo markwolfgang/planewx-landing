@@ -232,6 +232,37 @@ Answer page with the regulatory steps (airport types, eAPIS timing, permission t
 - ForeFlight or Garmin Pilot alternative for weather? PlaneWX is a complement, not a replacement: earlier planning, personal-minimums scoring and multi-model icing and turbulence. Routes paste in from ForeFlight and Garmin Pilot.
 - AI weather briefing for pilots? PlaneWX uses AI for Synoptic Intelligence. Deterministic scoring code stays the authority for limit exceedances.
 
+## Learning Center weather hubs
+
+Plain-language aviation weather and decision guides on www.planewx.ai. Canonical URLs (no trailing slash):
+
+- https://www.planewx.ai/learn/aviation-weather/taf: A TAF is a coded airport forecast. Learn to read wind, visibility, clouds, FM, TEMPO, and PROB30, and where the TAF fits in a disciplined weather decision.
+- https://www.planewx.ai/learn/aviation-weather/metar: A METAR is the coded weather observation for an airport. Learn to read every group, what AUTO and AO2 mean, when a SPECI is issued, and where METARs fit a disciplined weather decision.
+- https://www.planewx.ai/learn/aviation-weather/airmet-sigmet: How to read AIRMETs, G-AIRMETs, SIGMETs, Convective SIGMETs, and Center Weather Advisories: criteria, valid times, decoded Handbook examples, and where advisories fit a disciplined weather decision.
+- https://www.planewx.ai/learn/aviation-weather/pirep: A PIREP is a pilot weather report. Learn the UA and UUA format, how to decode each field, the official icing and turbulence intensity scales, and how to give a PIREP that helps.
+- https://www.planewx.ai/learn/aviation-weather/winds-aloft: How to decode the FB winds and temperatures aloft forecast, including winds over 100 knots and missing low levels, with a worked decode of the FAA Handbook sample.
+- https://www.planewx.ai/learn/aviation-weather/icing: What the CIP and FIP icing products show, how to find the freezing level, what trace, light, moderate, heavy, and severe icing mean, and where icing forecasts fall short.
+- https://www.planewx.ai/learn/aviation-weather/turbulence: How the GTG turbulence forecast and GTG-N nowcast work, what EDR means, the official light to extreme intensity scale, and which turbulence GTG does not forecast.
+- https://www.planewx.ai/learn/aviation-weather/weather-radar: How to read NEXRAD and TDWR radar, what dBZ and composite reflectivity mean, where radar misses weather, and why cockpit radar mosaics are older than their time stamp.
+- https://www.planewx.ai/learn/aviation-weather/density-altitude: What density altitude is, how to calculate it by hand and with the NWS formula, a worked example, the Koch chart, and why hot, high, and humid days catch pilots out.
+- https://www.planewx.ai/learn/aviation-weather/thunderstorms: Why the FAA treats every thunderstorm as hazardous, the 20-mile avoidance rule, how lightning is reported, and what convective outlooks, TCF, ECFP, and watches tell you.
+- https://www.planewx.ai/learn/aviation-weather/ceiling-visibility: What legally counts as a ceiling, how prevailing visibility is measured, the four flight categories, and why a green VFR dot is not the same as the 14 CFR 91.155 VFR minimums.
+- https://www.planewx.ai/learn/aviation-weather/fog: How each type of fog forms and clears, what the temperature-dewpoint spread tells you, how fog is coded in METARs and TAFs, and what the FAA and NTSB say to do about it.
+- https://www.planewx.ai/learn/aviation-weather/wind-shear-microburst: What low-level wind shear and microbursts are, the signs to look for, how LLWAS, TDWR, and ATIS alerts reach you, how to report wind shear, and what the FAA says about recovery.
+- https://www.planewx.ai/learn/aviation-weather/mountain-wave: When mountain waves form, how propagating and trapped lee waves differ, the clouds that mark them, rotor and downslope wind hazards, and how to plan a mountain crossing.
+- https://www.planewx.ai/learn/aviation-weather/fronts-troughs-drylines: How air masses form, what to expect before, during, and after a warm or cold front, what troughs and ridges are, how a wave cyclone develops, and why the dryline matters for spring storms.
+- https://www.planewx.ai/learn/aviation-weather/atmospheric-stability: What absolute, conditional, and neutral stability mean, how lapse rates and lifting shape clouds and turbulence, what inversions do, and how LI and CAPE show up in convective planning.
+- https://www.planewx.ai/learn/aviation-weather/surface-analysis-prog-charts: How to read the surface analysis chart and short-range surface prog charts: fronts, highs and lows, troughs, drylines, precip symbols, issuance times, and how they fit a briefing.
+- https://www.planewx.ai/learn/aviation-weather/weather-briefings: The three FAA briefing types and when to get each, what a standard briefing contains and in what order, what "VFR flight not recommended" means, and how self-briefing fits in.
+- https://www.planewx.ai/learn/aviation-weather/weather-risk: How the FAA defines hazard, risk, personal minimums, and PAVE, the NTSB lessons on compounding weather risk, and links to PlaneWX guides for setting and using your own limits.
+- https://www.planewx.ai/learn/mos-vs-nbm-vs-taf: TAFs are the official NWS terminal forecast. This article compares them with MOS, LAMP and NBM guidance, and explains why many small airports never get a forecaster-written TAF.
+- https://www.planewx.ai/learn/risk-management-loop: The four-step risk management loop for general aviation pilots, step by step in FAA terms: PAVE, IMSAFE, the FRAT, 3P, DECIDE, and the post-flight debrief.
+- https://www.planewx.ai/learn/flight-risk-assessment-tool: FAA FRAT means Flight Risk Assessment Tool. How the FAA form, checklist, and online tool work, what green, yellow, and red mean, and how an eFRAT fits.
+- https://www.planewx.ai/learn/imsafe-checklist: IMSAFE as six questions you can answer before every flight, the FAA medication rules and the new FAA MedGuide, and two NTSB accidents where the pilot was the weak link.
+- https://www.planewx.ai/learn/controlled-flight-into-terrain: What CFIT is, why it happens in general aviation, two NTSB accidents step by step, and the preflight and in flight checks that keep terrain out of the windshield.
+
+Learning Center index: https://www.planewx.ai/learn
+
 ## Markdown versions
 - https://www.planewx.ai/index.md
 - https://www.planewx.ai/about.md
@@ -260,7 +291,7 @@ Weather data sourced from federal and other official aviation weather feeds desc
 
 ---
 
-Last updated: 2026-11-09
+Last updated: 2026-11-11
 Source of truth for product claims: help pages in the PlaneWX app (https://app.planewx.ai/help)
 The GA Customs section is maintained by hand on the landing site. Keep it on future help syncs.
 Source: https://planewx.ai
