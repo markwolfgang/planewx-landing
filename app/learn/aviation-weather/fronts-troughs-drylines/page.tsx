@@ -10,12 +10,13 @@ import {
 import { MAIN_HTML } from "./content"
 import "../aw-hub.css"
 
-const TITLE = "Fronts, Troughs, and Drylines for Pilots: Air Masses and the Weather Map"
-const DESCRIPTION = "How air masses form, what to expect before, during, and after a warm or cold front, what troughs and ridges are, how a wave cyclone develops, and why the dryline matters for spring storms."
+const TITLE = "Fronts, Troughs and Drylines: What Pilots Need to Know"
+const DESCRIPTION =
+  "Learn how troughs, ridges, fronts and drylines show up on the weather map, what each means in flight weather, and how air masses shape the hazards you brief."
 const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/fronts-troughs-drylines"
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: CANONICAL },
   robots: hubPageRobots(),

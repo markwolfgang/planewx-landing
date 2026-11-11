@@ -27,7 +27,7 @@ export const BLOG_APPENDS: Record<string, string> = {
 export interface BlogMetaOverride {
   /** Full <title>, rendered as-is (no " | PlaneWX" template suffix). Max 60 chars. */
   title: string
-  /** Meta description. Max 155 chars. */
+  /** Meta description. Target 150 to 160 chars. */
   description: string
 }
 
@@ -44,5 +44,31 @@ export const BLOG_META_OVERRIDES: Record<string, BlogMetaOverride> = {
     title: "PlaneWX Review: Flight Decision Support for GA Pilots",
     description:
       "See how PlaneWX scores GA trips days before TAFs exist: a personalized WX Score from route AFDs and NBM. Works alongside your EFB. Completely free plan.",
+  },
+  // GSC Oct 13 to Nov 9, 2026: title/meta CTR pass (pos ≤12, ≥100 imp, CTR <2%).
+  "wx-score-planning-tool-review": {
+    title: "PlaneWX WX Score: Flight Planning Tool Review",
+    description:
+      "See how the PlaneWX WX Score rates a trip up to 14 days out against your personal minimums, what drives the number, and how pilots use it before TAFs exist.",
+  },
+  "flight-weather-editor": {
+    title: "Flight Weather Editor: Score Trip Windows Early",
+    description:
+      "A flight weather editor lets you revise route and timing while options remain. Score candidate windows to your aircraft and personal minimums, then you decide.",
+  },
+  "eapis-general-aviation-how-to": {
+    title: "eAPIS for General Aviation: How to File",
+    description:
+      "What eAPIS is for private aircraft, what to prep before you file a border crossing, and how GA pilots avoid common delays. Verify with CBP; not legal advice.",
+  },
+  "best-weather-resources-for-private-pilots": {
+    title: "Best Weather Resources for Private Pilots",
+    description:
+      "METARs, TAFs, AFDs and models each answer a different question. Build a private-pilot weather stack that works days out and hours out, then decide for yourself.",
+  },
+  "aviation-forecast-models-comparison": {
+    title: "Aviation Forecast Models Compared for GA Pilots",
+    description:
+      "Compare HRRR, NBM and forecast discussions for GA planning: where each model helps, where they disagree, and where pilot judgment still owns the call.",
   },
 }

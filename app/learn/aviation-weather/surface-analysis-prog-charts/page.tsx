@@ -10,12 +10,13 @@ import {
 import { MAIN_HTML } from "./content"
 import "../aw-hub.css"
 
-const TITLE = "Surface Analysis and Prog Charts for Pilots: Reading the Weather Map"
-const DESCRIPTION = "How to read the surface analysis chart and short-range surface prog charts: fronts, highs and lows, troughs, drylines, precip symbols, issuance times, and how they fit a briefing."
+const TITLE = "Surface Analysis and Prog Charts for Pilots"
+const DESCRIPTION =
+  "How to read surface analysis and short-range prog charts: fronts, highs, lows, troughs, drylines, precip symbols, issuance times, and where they fit a briefing."
 const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/surface-analysis-prog-charts"
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: CANONICAL },
   robots: hubPageRobots(),

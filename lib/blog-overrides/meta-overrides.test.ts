@@ -7,8 +7,9 @@ describe("BLOG_META_OVERRIDES", () => {
       it("keeps the title within 60 characters", () => {
         expect(meta.title.length).toBeLessThanOrEqual(60)
       })
-      it("keeps the description within 155 characters", () => {
-        expect(meta.description.length).toBeLessThanOrEqual(155)
+      it("keeps the description between 150 and 160 characters", () => {
+        expect(meta.description.length).toBeGreaterThanOrEqual(150)
+        expect(meta.description.length).toBeLessThanOrEqual(160)
       })
       it("uses no em dashes, en dashes, or arrows", () => {
         const text = `${meta.title} ${meta.description}`
