@@ -53,6 +53,10 @@ describe("technical SEO guards", () => {
     expect(read("public/talks/tbmopa/index.html")).toContain(
       'href="https://www.planewx.ai/talks/tbmopa"',
     )
+    // Live TBMOPA webinar deck (prior deck remains /talks/tbmopa).
+    expect(read("public/talks/tbmopa/v2/index.html")).toContain(
+      'href="https://www.planewx.ai/talks/tbmopa/v2"',
+    )
   })
 
   it("keeps sitemap free of llms.txt, fake lastmod, and blog duplicates", () => {
@@ -62,8 +66,18 @@ describe("technical SEO guards", () => {
     expect(sitemap).toContain("if (seenBlogSlugs.has(a.slug)) continue")
     expect(sitemap).toContain("seenBlogSlugs.add(a.slug)")
     expect(sitemap).toContain("STATIC_LASTMOD")
+    expect(sitemap).toContain("staticEntry('/dmca'")
+    expect(sitemap).not.toContain("/events/sun-n-fun-2026")
+    expect(sitemap).not.toContain("/invite")
     // Partner funnel rewrite, not a distinct indexable page.
     expect(sitemap).not.toMatch(/url:.*\/runway/)
+  })
+
+  it("noindexes past event and invite funnel pages", () => {
+    const snf = read("app/events/sun-n-fun-2026/page.tsx")
+    expect(snf).toMatch(/robots:\s*\{\s*index:\s*false,\s*follow:\s*true\s*\}/)
+    const invite = read("app/invite/layout.tsx")
+    expect(invite).toMatch(/robots:\s*\{\s*index:\s*false,\s*follow:\s*true\s*\}/)
   })
 
   it("points the FLYTE partners card at the existing flyte.aero site", () => {

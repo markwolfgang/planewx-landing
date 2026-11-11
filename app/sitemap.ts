@@ -44,6 +44,7 @@ const STATIC_LASTMOD: Record<string, string> = {
   '/privacy': '2026-08-31',
   '/terms': '2026-01-05',
   '/cookies': '2026-09-27',
+  '/dmca': '2026-10-06',
 }
 
 function staticEntry(
@@ -145,5 +146,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     staticEntry('/privacy', 'monthly', 0.3),
     staticEntry('/terms', 'monthly', 0.3),
     staticEntry('/cookies', 'monthly', 0.3),
+    staticEntry('/dmca', 'monthly', 0.3),
   ]
 }
