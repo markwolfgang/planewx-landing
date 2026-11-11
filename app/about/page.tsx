@@ -17,14 +17,16 @@ import {
   GA_CUSTOMS_APP_STORE_URL,
 } from "@/lib/planewx-family-apps"
 
+const TITLE = "About PlaneWX: Decision Support for GA Pilots"
+const DESCRIPTION =
+  "PlaneWX is decision support for general aviation. Founded by Navy veteran and GA pilot Mark Wolfgang. Free plan with no end date. See the story and the product."
+
 export const metadata: Metadata = {
-  title: "About PlaneWX | Aviation Decision Support for General Aviation",
-  description:
-    "PlaneWX is the first aviation decision support system focused on general aviation. Free Plan, No End Date. Founded by Navy veteran and GA pilot Mark Wolfgang.",
+  title: { absolute: TITLE },
+  description: DESCRIPTION,
   openGraph: {
-    title: "About PlaneWX | Aviation Decision Support for General Aviation",
-    description:
-      "PlaneWX is the first aviation decision support system focused on general aviation. Free Plan, No End Date. Founded by Navy veteran and GA pilot Mark Wolfgang.",
+    title: TITLE,
+    description: DESCRIPTION,
     type: "website",
     url: "https://www.planewx.ai/about",
   },

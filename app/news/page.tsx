@@ -3,17 +3,19 @@ import Link from "next/link"
 import { NewsNav } from "@/components/news-nav"
 import { getPublishedNewsItems } from "./news-data"
 
+const TITLE = "PlaneWX Newsroom: Press and Product Updates"
+const DESCRIPTION =
+  "Press releases, product news and partnership announcements from PlaneWX, the decision support system that helps general aviation pilots brief and decide."
+
 export const metadata: Metadata = {
-  title: "Newsroom — PlaneWX Press Releases & Announcements",
-  description:
-    "Press releases, product news, and partnership announcements from PlaneWX, the pilot's decision support system.",
+  title: { absolute: TITLE },
+  description: DESCRIPTION,
   alternates: { canonical: "https://www.planewx.ai/news" },
   openGraph: {
     type: "website",
     url: "https://www.planewx.ai/news",
-    title: "PlaneWX Newsroom",
-    description:
-      "Press releases, product news, and partnership announcements from PlaneWX.",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 }
 

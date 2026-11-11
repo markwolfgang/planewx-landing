@@ -10,26 +10,27 @@ import {
 import { MAIN_HTML } from "./content"
 import "../aw-hub.css"
 
-const TITLE = "Mountain Wave and Mountain Weather: Lee Waves, Rotors, and Downslope Winds"
-const DESCRIPTION = "When mountain waves form, how propagating and trapped lee waves differ, the clouds that mark them, rotor and downslope wind hazards, and how to plan a mountain crossing."
+const TITLE = "Mountain Wave Turbulence: Lee Waves and Rotors"
+const DESCRIPTION =
+  "When mountain waves form, how trapped and propagating lee waves differ, the clouds that mark them, rotor hazards, and how pilots plan a mountain crossing."
 const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/mountain-wave"
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: CANONICAL },
   robots: hubPageRobots(),
   openGraph: {
     type: "article",
     url: CANONICAL,
-    title: "Mountain Wave and Mountain Weather: Lee Waves, Rotors, and Downslope Winds",
-    description: "When mountain waves form, how propagating and trapped lee waves differ, the clouds that mark them, rotor and downslope wind hazards, and how to plan a mountain crossing.",
+    title: TITLE,
+    description: DESCRIPTION,
     siteName: "PlaneWX",
   },
   twitter: {
     card: "summary",
-    title: "Mountain Wave and Mountain Weather: Lee Waves, Rotors, and Downslope Winds",
-    description: "When mountain waves form, how propagating and trapped lee waves differ, the clouds that mark them, rotor and downslope wind hazards, and how to plan a mountain crossing.",
+    title: TITLE,
+    description: DESCRIPTION,
     creator: "@planewxai",
   },
 }

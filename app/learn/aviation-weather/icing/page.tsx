@@ -10,26 +10,27 @@ import {
 import { MAIN_HTML } from "./content"
 import "../aw-hub.css"
 
-const TITLE = "Icing Forecasts: CIP, FIP, Freezing Level, and Icing Intensity"
-const DESCRIPTION = "What the CIP and FIP icing products show, how to find the freezing level, what trace, light, moderate, heavy, and severe icing mean, and where icing forecasts fall short."
+const TITLE = "Icing Probability: CIP Analysis, FIP, Intensity"
+const DESCRIPTION =
+  "What CIP current icing analysis and FIP forecasts show, how to find the freezing level, what icing intensity labels mean, and where icing guidance falls short."
 const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/icing"
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: CANONICAL },
   robots: hubPageRobots(),
   openGraph: {
     type: "article",
     url: CANONICAL,
-    title: "Icing Forecasts: CIP, FIP, Freezing Level, and Icing Intensity",
-    description: "What the CIP and FIP icing products show, how to find the freezing level, what trace, light, moderate, heavy, and severe icing mean, and where icing forecasts fall short.",
+    title: TITLE,
+    description: DESCRIPTION,
     siteName: "PlaneWX",
   },
   twitter: {
     card: "summary",
-    title: "Icing Forecasts: CIP, FIP, Freezing Level, and Icing Intensity",
-    description: "What the CIP and FIP icing products show, how to find the freezing level, what trace, light, moderate, heavy, and severe icing mean, and where icing forecasts fall short.",
+    title: TITLE,
+    description: DESCRIPTION,
     creator: "@planewxai",
   },
 }

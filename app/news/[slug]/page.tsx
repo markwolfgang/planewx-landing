@@ -21,23 +21,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = getNewsItem(slug)
   if (!item) return {}
 
+  const description = item.seoDescription ?? item.excerpt
+  const ogTitle = item.seoTitle ?? item.title
+
   return {
-    title: `${item.title} — PlaneWX Newsroom`,
-    description: item.excerpt,
+    title: item.seoTitle
+      ? { absolute: item.seoTitle }
+      : `${item.title} — PlaneWX Newsroom`,
+    description,
     alternates: { canonical: `https://www.planewx.ai/news/${slug}` },
     ...(item.draft ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       type: "article",
       url: `https://www.planewx.ai/news/${slug}`,
-      title: item.title,
-      description: item.excerpt,
+      title: ogTitle,
+      description,
       publishedTime: item.isoDate,
       siteName: "PlaneWX",
     },
     twitter: {
       card: "summary_large_image",
-      title: item.title,
-      description: item.excerpt,
+      title: ogTitle,
+      description,
       creator: "@planewxai",
     },
   }

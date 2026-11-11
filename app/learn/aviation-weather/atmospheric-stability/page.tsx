@@ -10,12 +10,13 @@ import {
 import { MAIN_HTML } from "./content"
 import "../aw-hub.css"
 
-const TITLE = "Atmospheric Stability for Pilots: Lapse Rates, Inversions, and Convection"
-const DESCRIPTION = "What absolute, conditional, and neutral stability mean, how lapse rates and lifting shape clouds and turbulence, what inversions do, and how LI and CAPE show up in convective planning."
+const TITLE = "Atmospheric Stability for Pilots: Lapse Rates"
+const DESCRIPTION =
+  "What absolute, conditional and neutral stability mean, how lapse rates and lifting shape clouds and turbulence, what inversions do, and how LI and CAPE show up."
 const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/atmospheric-stability"
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: CANONICAL },
   robots: hubPageRobots(),
