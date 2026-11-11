@@ -311,6 +311,10 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           "NBM: Who makes it: MDL. How: nationally consistent and skillful suite of calibrated forecast guidance; starting point for NDFD grids. Run times: every hour. Range: out to 264 hr (NBH 1 to 25 hr; NBS 6 to 72 hr; NBE 24 to 192 hr; NBX 204 to 264 hr). Ceiling and visibility: NBH and NBS yes; NBE no. Stations: over 9,000 land and marine. Official or guidance: guidance.",
         ],
       },
+      {
+        type: "paragraph",
+        text: "For how these products fit a 3 to 14 day trip plan, including GFS/ECMWF, CPC outlooks, confidence by lead time, and a day-by-day timeline, see [Long-Range Flight Weather Planning](/learn/long-range-flight-weather-planning).",
+      },
     ],
     puttingItIntoPractice: {
       heading: "Using TAF, MOS, LAMP, and NBM in practice",
@@ -2285,6 +2289,13 @@ export const DECISION_MAKING_HUB_PAGES: readonly AviationWeatherHubPage[] = [
     summary:
       "The four-step risk management loop for general aviation pilots, step by step in FAA terms: PAVE, IMSAFE, the FRAT, 3P, DECIDE, and the post-flight debrief.",
     lastReviewed: "2026-10-21",
+  },
+  {
+    href: "/learn/long-range-flight-weather-planning",
+    title: "Long-Range Flight Weather Planning: 3 to 14 Days Out",
+    summary:
+      "How to plan a GA flight days before TAFs: TAF, MOS, LAMP, NBM, GFS/ECMWF, CPC outlooks, confidence by lead time, a day-by-day timeline, and PlaneWX WX Score.",
+    lastReviewed: "2026-11-11",
   },
   {
     href: "/learn/flight-risk-assessment-tool",

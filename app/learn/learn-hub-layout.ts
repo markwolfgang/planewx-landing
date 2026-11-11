@@ -15,6 +15,7 @@ export type HubGroup = {
 
 export const START_HERE_HREFS: string[] = [
   "/learn/risk-management-loop",
+  "/learn/long-range-flight-weather-planning",
   "/learn/aviation-weather/weather-briefings",
   "/learn/flight-risk-assessment-tool",
   "/learn/risk-stacking",
@@ -65,6 +66,7 @@ export const WEATHER_GROUPS: HubGroup[] = [
     title: "Preflight planning: briefings, weather risk, density altitude",
     description: "Briefing types, weather risk and what heat and altitude do to climb.",
     hrefs: [
+      "/learn/long-range-flight-weather-planning",
       "/learn/aviation-weather/weather-briefings",
       "/learn/aviation-weather/weather-risk",
       "/learn/aviation-weather/density-altitude",

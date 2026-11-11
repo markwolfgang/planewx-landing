@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { getSoroArticles } from "@/lib/soro"
 import { LOCAL_BLOG_POSTS } from "@/lib/blog-posts"
+import { isLongRangeRedirectSlug } from "@/lib/long-range-planning-consolidation"
 
 export const revalidate = 3600 // re-fetch article list every hour
 
@@ -32,8 +33,12 @@ export default async function BlogPage() {
     image: "",
   }))
   const articles = [
-    ...localArticles,
-    ...soroArticles.filter((a) => !LOCAL_BLOG_POSTS.some((p) => p.slug === a.slug)),
+    ...localArticles.filter((a) => !isLongRangeRedirectSlug(a.slug)),
+    ...soroArticles.filter(
+      (a) =>
+        !LOCAL_BLOG_POSTS.some((p) => p.slug === a.slug) &&
+        !isLongRangeRedirectSlug(a.slug),
+    ),
   ]
 
   return (
