@@ -96,7 +96,7 @@ export const LONG_RANGE_KEEP_APPEND_SLUGS = [
   "weekend-flying-weather-outlook",
   "what-causes-route-forecast-uncertainty",
   "what-forecast-confidence-means-for-pilots",
-  "when-do-aviation-forecasts-stabilize",
+  // when-do-aviation-forecasts-stabilize already links the hub in its body override
   "when-should-pilots-delay-travel-commitments",
   "when-should-pilots-trust-long-range-forecasts",
   "will-winds-change-before-departure",
