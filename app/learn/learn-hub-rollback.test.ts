@@ -17,10 +17,10 @@ const HUB_PAGE_FILES = [
     const slug = p.href.replace("/learn/aviation-weather/", "")
     return join("app/learn/aviation-weather", slug, "page.tsx")
   }),
-  join("app/learn/flight-risk-assessment-tool/page.tsx"),
-  join("app/learn/imsafe-checklist/page.tsx"),
-  join("app/learn/controlled-flight-into-terrain/page.tsx"),
-  join("app/learn/risk-management-loop/page.tsx"),
+  ...DECISION_MAKING_HUB_PAGES.map((p) => {
+    const slug = p.href.replace("/learn/", "")
+    return join("app/learn", slug, "page.tsx")
+  }),
 ]
 
 describe("learn hub LEARN_PUBLIC rollback gating", () => {
@@ -28,7 +28,7 @@ describe("learn hub LEARN_PUBLIC rollback gating", () => {
     expect(HUB_PAGE_FILES).toHaveLength(
       AVIATION_WEATHER_HUB_PAGES.length + DECISION_MAKING_HUB_PAGES.length
     )
-    expect(HUB_PAGE_FILES).toHaveLength(23)
+    expect(HUB_PAGE_FILES).toHaveLength(24)
   })
 
   it("each hub page derives robots and JSON-LD from LEARN_PUBLIC helpers", () => {
@@ -82,5 +82,8 @@ describe("learn hub LEARN_PUBLIC rollback gating", () => {
       "/learn/deadly-disorientation",
       "/learn/faulty-assumptions",
     ])
+    expect(getLearnSitemapPaths(true)).toContain(
+      "/learn/long-range-flight-weather-planning",
+    )
   })
 })

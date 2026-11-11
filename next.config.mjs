@@ -32,6 +32,47 @@ const nextConfig = {
         destination: "/learn/risk-management-loop",
         permanent: true,
       },
+      // Thin long-range / multi-day planning blog hubs → canonical learn hub
+      {
+        source: "/blog/can-pilots-plan-trips-three-days-ahead",
+        destination: "/learn/long-range-flight-weather-planning",
+        permanent: true,
+      },
+      {
+        source: "/blog/general-aviation-weather-planning-guide",
+        destination: "/learn/long-range-flight-weather-planning",
+        permanent: true,
+      },
+      {
+        source: "/blog/guide-to-planning-flights-days-ahead",
+        destination: "/learn/long-range-flight-weather-planning",
+        permanent: true,
+      },
+      {
+        source: "/blog/how-to-brief-multi-day-flights",
+        destination: "/learn/long-range-flight-weather-planning",
+        permanent: true,
+      },
+      {
+        source: "/blog/how-to-plan-flights-before-tafs",
+        destination: "/learn/long-range-flight-weather-planning",
+        permanent: true,
+      },
+      {
+        source: "/blog/how-to-plan-flights-with-uncertain-weather",
+        destination: "/learn/long-range-flight-weather-planning",
+        permanent: true,
+      },
+      {
+        source: "/blog/long-range-aviation-weather-forecasts",
+        destination: "/learn/long-range-flight-weather-planning",
+        permanent: true,
+      },
+      {
+        source: "/blog/multi-day-flight-planning-that-holds-up",
+        destination: "/learn/long-range-flight-weather-planning",
+        permanent: true,
+      },
     ]
   },
   async rewrites() {
