@@ -10,9 +10,9 @@ import {
 import { MAIN_HTML } from "./content"
 import "../aw-hub.css"
 
-const TITLE = "Icing Probability Forecasts: CIP, FIP, Intensity"
+const TITLE = "Icing Probability: CIP Analysis, FIP, Intensity"
 const DESCRIPTION =
-  "What CIP and FIP icing probability forecasts show, how to find the freezing level, what icing intensity labels mean, and where icing guidance falls short."
+  "What CIP current icing analysis and FIP forecasts show, how to find the freezing level, what icing intensity labels mean, and where icing guidance falls short."
 const CANONICAL = "https://www.planewx.ai/learn/aviation-weather/icing"
 
 export const metadata: Metadata = {
