@@ -82,7 +82,7 @@ export default async function BlogPage() {
       {/* Article list */}
       <main className="mx-auto max-w-5xl px-6 pb-24">
         {articles.length === 0 ? (
-          <p className="text-center text-white/40 py-16">No articles yet. Check back soon.</p>
+          <p className="text-center text-white/40 py-16">No articles yet.</p>
         ) : (
           <div className="flex flex-col gap-6">
             {articles.map((article) => (

@@ -14,7 +14,7 @@ const COPY: Record<
     heading: "Aviation weather library",
     intro:
       "Plain-language guides to the weather products, hazards, and decision tools in the PlaneWX Learning Center.",
-    learnLabel: "Browse the Learning Center",
+    learnLabel: "All Learning Center guides",
   },
   "blog-index": {
     heading: "Aviation weather library",
