@@ -61,7 +61,7 @@ function staticEntry(
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const localSlugs = new Set(LOCAL_BLOG_POSTS.map((p) => p.slug))
+  const seenBlogSlugs = new Set(LOCAL_BLOG_POSTS.map((p) => p.slug))
 
   const articles = await getSoroArticles()
   const blogPosts: MetadataRoute.Sitemap = LOCAL_BLOG_POSTS.map((p) => ({
@@ -71,7 +71,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
   for (const a of articles) {
-    if (localSlugs.has(a.slug)) continue
+    // Dedupe local posts and any duplicate Soro list entries.
+    if (seenBlogSlugs.has(a.slug)) continue
+    seenBlogSlugs.add(a.slug)
     blogPosts.push({
       url: `${BASE_URL}/blog/${a.slug}`,
       lastModified: new Date(a.isoDate),

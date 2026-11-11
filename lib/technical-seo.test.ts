@@ -59,7 +59,8 @@ describe("technical SEO guards", () => {
     const sitemap = read("app/sitemap.ts")
     expect(sitemap).not.toContain("/llms.txt")
     expect(sitemap).not.toMatch(/lastModified:\s*new Date\(\)/)
-    expect(sitemap).toContain("if (localSlugs.has(a.slug)) continue")
+    expect(sitemap).toContain("if (seenBlogSlugs.has(a.slug)) continue")
+    expect(sitemap).toContain("seenBlogSlugs.add(a.slug)")
     expect(sitemap).toContain("STATIC_LASTMOD")
     // Partner funnel rewrite, not a distinct indexable page.
     expect(sitemap).not.toMatch(/url:.*\/runway/)
