@@ -10,6 +10,13 @@ export interface NewsItem {
   category: NewsCategory
   title: string
   excerpt: string
+  /**
+   * Optional SERP-only title. When set, generateMetadata uses it (absolute)
+   * instead of `${title} — PlaneWX Newsroom`. On-page H1 stays `title`.
+   */
+  seoTitle?: string
+  /** Optional SERP-only meta description. Defaults to `excerpt`. */
+  seoDescription?: string
   date: string // human-readable, e.g. "August 17, 2026"
   isoDate: string // e.g. "2026-08-17"
   location?: string
@@ -289,6 +296,9 @@ export const NEWS_ITEMS: NewsItem[] = [
     title: "Self Debrief Is Now on Every Plan, Free Included",
     excerpt:
       "Self Debrief, the look back after you land, is now on every PlaneWX plan, Free included. Start one from the post-flight email or the bell, or find it under My Flights. Safety isn't premium.",
+    seoTitle: "PlaneWX Self Debrief Now Free on Every Plan",
+    seoDescription:
+      "Self Debrief, the look back after you land, is now on every PlaneWX plan including Free. Start from the post-flight email, the bell, or My Flights today.",
     date: "October 2, 2026",
     isoDate: "2026-10-02",
     location: "St. Petersburg, Florida",

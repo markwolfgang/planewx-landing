@@ -10,15 +10,14 @@ import {
 import { MAIN_HTML } from "./content"
 import "../aviation-weather/aw-hub.css"
 
-const TITLE =
-  "FAA FRAT: What the Flight Risk Assessment Tool Is and How to Use One"
+const TITLE = "Flight Risk Assessment Tool (FRAT) for Pilots"
 const DESCRIPTION =
-  "FAA FRAT means Flight Risk Assessment Tool. How the FAA form, checklist, and online tool work, what green, yellow, and red mean, and how an eFRAT fits."
+  "What an FAA FRAT is, how the form and checklist work, what green yellow and red mean, and how an electronic FRAT fits the PAVE risk picture before you fly."
 const CANONICAL =
   "https://www.planewx.ai/learn/flight-risk-assessment-tool"
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: CANONICAL },
   robots: hubPageRobots(),

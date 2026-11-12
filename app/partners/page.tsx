@@ -6,22 +6,23 @@ import { PartnerInquiryForm } from "@/components/partners/inquiry-form"
 import { BrandLogo } from "@/components/shared/brand-logo"
 import { SiteFooter } from "@/components/shared/site-footer"
 
+const TITLE = "PlaneWX Partners: Insurance, Fuel and Clubs"
+const DESCRIPTION =
+  "Meet the companies, clubs and brands partnering with PlaneWX to help pilots fly with professional-grade tools and habits, from insurance to fuel programs."
+
 export const metadata: Metadata = {
-  title: "Partners",
-  description:
-    "Partners who help pilots fly like professionals. Companies, clubs, and brands working with PlaneWX.",
+  title: { absolute: TITLE },
+  description: DESCRIPTION,
   openGraph: {
-    title: "Partners | PlaneWX",
-    description:
-      "Partners who help pilots fly like professionals. Companies, clubs, and brands working with PlaneWX.",
+    title: TITLE,
+    description: DESCRIPTION,
     type: "website",
     url: "https://www.planewx.ai/partners",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Partners | PlaneWX",
-    description:
-      "Partners who help pilots fly like professionals. Companies, clubs, and brands working with PlaneWX.",
+    title: TITLE,
+    description: DESCRIPTION,
   },
   alternates: {
     canonical: "https://www.planewx.ai/partners",
