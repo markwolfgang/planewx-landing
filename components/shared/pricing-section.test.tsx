@@ -109,7 +109,7 @@ describe("pricing-section Pro Plus AI Connector", () => {
     ).toBeTruthy()
 
     const askAcross = screen.getByRole("link", {
-      name: "See it combine your ForeFlight logbook and PlaneWX trips",
+      name: "See your AI assistant combine your ForeFlight logbook and PlaneWX trips",
     })
     expect(askAcross.getAttribute("href")).toBe(
       "/news/new-beta-planewx-in-claude-and-grok",
