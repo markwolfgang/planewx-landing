@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react"
 export const metadata = {
   title: "Cookie Policy | PlaneWX",
   description: "Cookie and tracking preferences for PlaneWX.",
+  alternates: { canonical: "https://www.planewx.ai/cookies" },
 }
 
 const EFFECTIVE_DATE = "September 27, 2026"
