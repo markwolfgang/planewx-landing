@@ -63,7 +63,7 @@ export function RelatedWeatherGuides({
       <p className="mt-4">
         <Link
           href="/learn"
-          className="text-xs text-white/40 hover:text-sky-400 underline underline-offset-4 transition-colors"
+          className="text-xs text-sky-400 hover:text-sky-300 underline underline-offset-4 transition-colors"
         >
           More in the Learning Center
         </Link>
