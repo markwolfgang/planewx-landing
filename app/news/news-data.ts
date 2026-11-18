@@ -76,7 +76,6 @@ export const NEWS_ITEMS: NewsItem[] = [
     date: "November 18, 2026",
     isoDate: "2026-11-18",
     location: "St. Petersburg, Florida",
-    draft: true,
     heroImage: {
       src: "/news/obstacles-route-map.webp",
       alt: "PlaneWX full route map from KOWD to KBED with the Charted obstacles layer on, three tower pins near the route, and the obstacle legend box",
@@ -85,15 +84,13 @@ export const NEWS_ITEMS: NewsItem[] = [
       caption: "The full route map with the Charted obstacles layer on and the legend box open.",
     },
     body: `
-<p><strong>DRAFT FOR REVIEW. Not listed in the public Newsroom.</strong></p>
-
 <p><strong>St. Petersburg, Florida. November 18, 2026.</strong> PlaneWX briefings now show charted obstacles from the FAA Digital Obstacle File and airport airspace facts from FAA Class Airspace data. Both are facts only. They add 0 WX Score points and 0 FRAT points, and the WX Score and the FRAT total are the same with these rows shown or hidden.</p>
 
 <h2>Where you see it in the briefing</h2>
 <p>Charted obstacles and airport airspace facts show up in four places.</p>
 <ol>
 <li><strong>Route map.</strong> On the full route map, the <strong>Charted obstacles</strong> layer plots the obstacles from the Gotchas line below. It starts on, and you can turn it off in the layer list. Each pin sits on the charted position and carries the height above ground. Tap a pin for its type, height in ft AGL, top in ft MSL, where it sits along the route, lighting and FAA accuracy. A ring shows the charted position accuracy. The legend names the FAA Digital Obstacle File edition in use.</li>
-<li><strong>Gotchas.</strong> A line headed <strong>Potential obstacle hazard en route</strong> lists charted obstacles within 4 NM of the route whose top is within 1,000 ft of your planned altitude or higher, or within 2,000 ft over a mountainous segment. In the climb and descent it checks against a 200 ft/NM climb path and a 3 degree descent path. Each obstacle shows its distance along the route, which side of the route it is on, whether it is lit, and how far its top is below or above your altitude or path.</li>
+<li><strong>Gotchas.</strong> A line headed <strong>Potential obstacle hazard en route</strong> counts charted obstacles 200 ft AGL and taller within 4 NM of the route. With a planned altitude below 18,000 ft, it lists those whose top is within 1,000 ft of your planned altitude or higher, or within 2,000 ft over a mountainous segment. With no planned altitude, or a planned altitude of 18,000 ft or higher, the line shows tops only and does not compare them with your planned altitude. In the climb and descent it checks against a 200 ft/NM climb path and a 3 degree descent path. Each obstacle shows its distance along the route, which side of the route it is on, whether it is lit, and how far its top is below or above your altitude or path.</li>
 <li><strong>Departure and Arrival cards.</strong> Each airport card now ends with two rows. <strong>Airport airspace facts</strong> joins the facts that apply: towered or no tower, a Class D top, the nearest Class B surface area or shelf with its floor and distance, and inside Mode C veil. <strong>Charted obstacles</strong> with the airport identifier names the lead flagged obstacle near the field and how many more there are. Tap Show for the full list.</li>
 <li><strong>Charted obstacles along the route.</strong> A strip below the airport cards covers the route between the airports. It lists the same obstacles as the Gotchas line and the map pins.</li>
 </ol>

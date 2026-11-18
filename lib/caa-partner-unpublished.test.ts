@@ -103,9 +103,15 @@ describe("CAA press release published in NEWS_ITEMS", () => {
     expect(item!.body).not.toMatch(/\bbeta\b/i)
 
     const published = getPublishedNewsItems()
-    expect(published[0]?.slug).toBe(SLUG)
     expect(published.some((n) => n.slug === SLUG)).toBe(true)
-    expect(NEWS_ITEMS.find((n) => !n.draft)?.slug).toBe(SLUG)
+    expect(published.findIndex((n) => n.slug === SLUG)).toBeLessThan(3)
+    expect(NEWS_ITEMS.find((n) => n.slug === SLUG)?.draft).toBeFalsy()
+    const obstacles = published.find(
+      (n) => n.slug === "charted-obstacles-airport-airspace-facts",
+    )
+    expect(obstacles?.draft).toBeFalsy()
+    expect(obstacles?.isoDate).toBe("2026-11-18")
+    expect(obstacles?.body).not.toMatch(/DRAFT FOR REVIEW/i)
   })
 
   it("scopes coBrand logoClassName to CAA only; article page keeps default fallback", () => {
