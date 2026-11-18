@@ -105,7 +105,7 @@ describe("CAA press release published in NEWS_ITEMS", () => {
     const published = getPublishedNewsItems()
     expect(published[0]?.slug).toBe(SLUG)
     expect(published.some((n) => n.slug === SLUG)).toBe(true)
-    expect(NEWS_ITEMS[0]?.slug).toBe(SLUG)
+    expect(NEWS_ITEMS.find((n) => !n.draft)?.slug).toBe(SLUG)
   })
 
   it("scopes coBrand logoClassName to CAA only; article page keeps default fallback", () => {

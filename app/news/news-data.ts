@@ -65,6 +65,54 @@ export interface NewsItem {
 
 export const NEWS_ITEMS: NewsItem[] = [
   {
+    slug: "charted-obstacles-airport-airspace-facts",
+    category: "Product",
+    title: "Charted Obstacles and Airport Airspace Facts Now in the PlaneWX Briefing",
+    excerpt:
+      "FAA charted obstacles and airport airspace facts now show up in four places in your PlaneWX briefing. Facts only: they add no WX Score points and no FRAT points.",
+    seoTitle: "PlaneWX Adds Charted Obstacles and Airport Airspace Facts",
+    seoDescription:
+      "PlaneWX briefings now show FAA charted obstacles and airport airspace facts on the route map, in Gotchas, and on the Departure and Arrival cards.",
+    date: "November 18, 2026",
+    isoDate: "2026-11-18",
+    location: "St. Petersburg, Florida",
+    draft: true,
+    heroImage: {
+      src: "/news/obstacles-route-map.webp",
+      alt: "PlaneWX full route map from KOWD to KBED with the Charted obstacles layer on, three tower pins near the route, and the obstacle legend box",
+      width: 1824,
+      height: 1448,
+      caption: "The full route map with the Charted obstacles layer on and the legend box open.",
+    },
+    body: `
+<p><strong>DRAFT FOR REVIEW. Not listed in the public Newsroom.</strong></p>
+
+<p><strong>St. Petersburg, Florida. November 18, 2026.</strong> PlaneWX briefings now show charted obstacles from the FAA Digital Obstacle File and airport airspace facts from FAA Class Airspace data. Both are facts only. They add 0 WX Score points and 0 FRAT points, and the WX Score and the FRAT total are the same with these rows shown or hidden.</p>
+
+<h2>Where you see it in the briefing</h2>
+<p>Charted obstacles and airport airspace facts show up in four places.</p>
+<ol>
+<li><strong>Route map.</strong> On the full route map, the <strong>Charted obstacles</strong> layer plots the obstacles from the Gotchas line below. It starts on, and you can turn it off in the layer list. Each pin sits on the charted position and carries the height above ground. Tap a pin for its type, height in ft AGL, top in ft MSL, where it sits along the route, lighting and FAA accuracy. A ring shows the charted position accuracy. The legend names the FAA Digital Obstacle File edition in use.</li>
+<li><strong>Gotchas.</strong> A line headed <strong>Potential obstacle hazard en route</strong> lists charted obstacles within 4 NM of the route whose top is within 1,000 ft of your planned altitude or higher, or within 2,000 ft over a mountainous segment. In the climb and descent it checks against a 200 ft/NM climb path and a 3 degree descent path. Each obstacle shows its distance along the route, which side of the route it is on, whether it is lit, and how far its top is below or above your altitude or path.</li>
+<li><strong>Departure and Arrival cards.</strong> Each airport card now ends with two rows. <strong>Airport airspace facts</strong> joins the facts that apply: towered or no tower, a Class D top, the nearest Class B surface area or shelf with its floor and distance, and inside Mode C veil. <strong>Charted obstacles</strong> with the airport identifier names the lead flagged obstacle near the field and how many more there are. Tap Show for the full list.</li>
+<li><strong>Charted obstacles along the route.</strong> A strip below the airport cards covers the route between the airports. It lists the same obstacles as the Gotchas line and the map pins.</li>
+</ol>
+
+<h2>What it covers</h2>
+<p>The FAA Digital Obstacle File lists charted man-made objects such as towers, poles, windmills and buildings in the U.S. and Puerto Rico, 100 ft AGL and taller. It is not a complete list of obstacles. Objects built after the release, objects not yet charted, terrain and trees are not in it. A missing line is not a statement that nothing is there.</p>
+
+<p>PlaneWX shows facts, not a clearance statement. It does not state a margin over an obstacle. Charts and ForeFlight remain the source of truth, and the pilot in command makes the call.</p>
+
+<p>The full guide, including how to read the FAA accuracy codes and each airspace fact, is at <a href="https://app.planewx.ai/help/obstacles">app.planewx.ai/help/obstacles</a>.</p>
+
+<h2>About PlaneWX</h2>
+<p>Fly like it's your job. PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and builds professional-grade habits that make flying safer. The loop is WX Score, FRAT, GO / NO-GO and Self Debrief (early access). PlaneWX never recommends GO or NO-GO. The pilot makes the call.</p>
+
+<h2>Media contact</h2>
+<p>Mark Wolfgang, PlaneWX<br/><a href="mailto:hello@planewx.ai">hello@planewx.ai</a><br/><a href="https://www.planewx.ai">www.planewx.ai</a></p>
+`,
+  },
+  {
     slug: "caa-fuel-provider-partner",
     category: "Partnerships",
     title:
