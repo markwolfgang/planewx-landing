@@ -1,36 +1,14 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { ArrowRight, Check } from "lucide-react"
 import { STATS } from "@/components/shared/landing-data"
 import { buildAppSignupUrlWithLp } from "@/lib/app-signup-url"
-import { getLocalStorage } from "@/lib/cookie-prefs"
+import { useSignupHref } from "@/lib/use-signup-href"
 
 export function FooterCTA({ variant }: { variant: string }) {
   const baseUrl = buildAppSignupUrlWithLp(variant)
-  const [href, setHref] = useState(baseUrl)
+  const href = useSignupHref(baseUrl)
 
-  useEffect(() => {
-    const storage = getLocalStorage()
-    const refParam = new URLSearchParams(window.location.search).get("ref")
-    if (refParam) {
-      const code = refParam.trim().toUpperCase()
-      try {
-        storage?.setItem("planewx_referral", code)
-      } catch {
-        /* ignore blocked storage */
-      }
-      setHref(`${baseUrl}&ref=${code}`)
-    } else {
-      let stored: string | null = null
-      try {
-        stored = storage?.getItem("planewx_referral") ?? null
-      } catch {
-        stored = null
-      }
-      if (stored) setHref(`${baseUrl}&ref=${stored}`)
-    }
-  }, [baseUrl])
 
   return (
     <section className="relative py-24 px-4 bg-gradient-to-b from-transparent via-sky-950/30 to-transparent">

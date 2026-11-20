@@ -1,9 +1,10 @@
 "use client"
 
-import { useEffect, useState, type ReactNode } from "react"
+import { useState, type ReactNode } from "react"
 import { Check, Crown, Plane, Shield } from "lucide-react"
 import { FiveX5SeesNote } from "@/components/shared/five-x-five-sees-note"
 import { APP_ORIGIN, buildAppSignupUrlWithLp } from "@/lib/app-signup-url"
+import { useSignupHref } from "@/lib/use-signup-href"
 
 const APP_HELP = APP_ORIGIN
 
@@ -106,28 +107,9 @@ function AutoRenewNote({
 
 export function PricingSection({ variant }: { variant: string }) {
   const baseUrl = buildAppSignupUrlWithLp(variant)
-  const [appUrl, setAppUrl] = useState(baseUrl)
+  const appUrl = useSignupHref(baseUrl)
   const [plusPlan, setPlusPlan] = useState<"monthly" | "annual">("annual")
 
-  useEffect(() => {
-    const refParam = new URLSearchParams(window.location.search).get("ref")
-    if (refParam) {
-      const code = refParam.toUpperCase()
-      try {
-        localStorage.setItem("planewx_referral", code)
-      } catch {
-        // Fail silently if localStorage is blocked or full
-      }
-      setAppUrl(`${baseUrl}&ref=${code}`)
-    } else {
-      try {
-        const stored = localStorage.getItem("planewx_referral")
-        if (stored) setAppUrl(`${baseUrl}&ref=${stored}`)
-      } catch {
-        // Fail silently if localStorage is blocked
-      }
-    }
-  }, [baseUrl])
 
   return (
     <section id="pricing" className="relative py-24 px-4">

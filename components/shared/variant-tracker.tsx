@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 import { partnerCodeFromPathname } from "@/lib/partner-paths"
+import { CAMPAIGN_VISIT_LOGGED_EVENT } from "@/lib/signup-attribution"
 import {
   GTAG_READY_EVENT,
   META_READY_EVENT,
@@ -51,6 +52,9 @@ export function VariantTracker({
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ code, lp: variant }),
           }).catch(() => {})
+          window.dispatchEvent(
+            new CustomEvent(CAMPAIGN_VISIT_LOGGED_EVENT, { detail: { code } }),
+          )
         }
       } catch {
         /* ignore */
