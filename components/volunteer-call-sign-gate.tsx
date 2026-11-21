@@ -10,6 +10,7 @@ import {
   isBareVolunteerGate,
   normalizeVolunteerCallSignForPage,
   resolveVolunteerOrg,
+  VOLUNTEER_ORG_CALL_SIGN_REGISTRY,
   VOLUNTEER_CAMPAIGN_CODE,
   VOLUNTEER_LP,
   VOLUNTEER_PREVIEW_SIGNUP_NOTICE,
@@ -64,6 +65,7 @@ export function VolunteerCallSignGate({
             resolveVolunteerOrg(VOLUNTEER_CAMPAIGN_CODE).storageKey,
             resolveVolunteerOrg("ANGELFLIGHT").storageKey,
             resolveVolunteerOrg("SKYHOPE").storageKey,
+            VOLUNTEER_ORG_CALL_SIGN_REGISTRY.HRF.storageKey,
           ]
         : [pageOrg.storageKey]
       for (const key of keys) {

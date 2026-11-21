@@ -301,7 +301,7 @@ const leakedAca = buildVolunteerSignupHrefForOrg({
 assert.equal(leakedAca, "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA")
 
 // bare_ngf_accepted_attributes_aca
-assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.source, "^(CMF|NGF|SYH)\\d{1,4}$")
+assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.source, "^(CMF|NGF|SYH|HRF)\\d{1,4}$")
 assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.flags, "i")
 assert.equal(isBareVolunteerGate(null), true, "bare_ngf_accepted_attributes_aca")
 assert.equal(isBareVolunteerGate("ACA"), true, "bare_ngf_accepted_attributes_aca")

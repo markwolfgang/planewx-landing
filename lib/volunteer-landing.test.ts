@@ -41,7 +41,7 @@ describe("ACA / CMF and SkyHope / SYH", () => {
     expect(sky.storageKey).toBe("planewx_syh_call_sign")
     expect(sky.pattern.source).toBe("^SYH\\d{1,4}$")
     expect(BARE_VOLUNTEER_CALL_SIGN_PATTERN.source).toBe(
-      "^(CMF|NGF|SYH)\\d{1,4}$"
+      "^(CMF|NGF|SYH|HRF)\\d{1,4}$"
     )
     expect(BARE_VOLUNTEER_CALL_SIGN_ERROR).toBe(aca.error)
   })

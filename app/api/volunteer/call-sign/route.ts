@@ -12,7 +12,7 @@ import {
  *
  * Validates the call sign for the active page gate, then stores it when possible.
  * - SkyHope (ref=SKYHOPE): SYH + 1-4 digits only.
- * - Bare / ACA / ANGELFLIGHT: CMF, NGF, or SYH (/^(CMF|NGF|SYH)\d{1,4}$/i).
+ * - Bare / ACA / ANGELFLIGHT: CMF, NGF, SYH, or HRF (/^(CMF|NGF|SYH|HRF)\d{1,4}$/i).
  *   SYH attributes to SKYHOPE. NGF attributes to ANGELFLIGHT only when that
  *   ref is on the request; otherwise NGF attributes to ACA. CMF uses cmf=.
  * Membership for the discount is confirmed in the app after signup.

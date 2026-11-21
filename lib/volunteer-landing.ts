@@ -11,7 +11,7 @@
  *
  * SkyHope (ref=SKYHOPE) uses its own SYH call-sign gate.
  * Bare /volunteer, ?ref=ACA, and ?ref=ANGELFLIGHT share one generic gate that
- * accepts CMF, NGF, or SYH. Visible copy names CMF or NGF only; SYH is accepted
+ * accepts CMF, NGF, SYH, or HRF. Visible copy names CMF or NGF only; SYH is accepted
  * silently and still routes to ref=SKYHOPE + callsign= (same as main).
  * NGF is shared across multiple orgs, so NGF alone never implies Angel Flight.
  * ref=ANGELFLIGHT still attributes tracking and signup when that ref is present.
@@ -172,6 +172,21 @@ export const VOLUNTEER_ORG_CALL_SIGN_REGISTRY: Record<
     storageKey: "planewx_ngf_call_sign",
     signupParam: "callsign",
   },
+  /**
+   * HRF: accepted on the generic gate only (no ref of its own). Attributes to
+   * ACA, or ANGELFLIGHT when that ref is on the page, like NGF. Same shape as
+   * the app rule: HRF + 1-4 digits. Visible copy is unchanged (no org name).
+   */
+  HRF: {
+    ref: VOLUNTEER_CAMPAIGN_CODE,
+    prefix: "HRF",
+    /** ONE-LINE EDIT: HRF format (prefix + 1-4 digits). */
+    pattern: /^HRF\d{1,4}$/i,
+    ...GENERIC_VOLUNTEER_CALL_SIGN_COPY,
+    placeholder: "WWW",
+    storageKey: "planewx_hrf_call_sign",
+    signupParam: "callsign",
+  },
 }
 
 /** @deprecated Prefer org.storageKey from the registry. Kept for existing ACA key name. */
@@ -229,11 +244,11 @@ export function isAngelFlightRef(ref?: string | null): boolean {
 
 /**
  * Bare /volunteer, ?ref=ACA, and ?ref=ANGELFLIGHT accept CMF, NGF, or SYH:
- * /^(CMF|NGF|SYH)\d{1,4}$/i
+ * /^(CMF|NGF|SYH|HRF)\d{1,4}$/i
  * Visible copy names CMF or NGF only. SYH is accepted silently and routes to
  * SKYHOPE. NGF does not imply Angel Flight; ref=ANGELFLIGHT only when on the URL.
  */
-export const BARE_VOLUNTEER_CALL_SIGN_PATTERN = /^(CMF|NGF|SYH)\d{1,4}$/i
+export const BARE_VOLUNTEER_CALL_SIGN_PATTERN = /^(CMF|NGF|SYH|HRF)\d{1,4}$/i
 
 export const BARE_VOLUNTEER_CALL_SIGN_ERROR =
   VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ACA.error
@@ -256,6 +271,9 @@ export function resolveVolunteerOrgFromCallSign(
   }
   if (/^CMF\d{1,4}$/i.test(cleaned)) {
     return VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ACA
+  }
+  if (/^HRF\d{1,4}$/i.test(cleaned)) {
+    return VOLUNTEER_ORG_CALL_SIGN_REGISTRY.HRF
   }
   return null
 }
@@ -319,6 +337,14 @@ export function normalizeVolunteerCallSignForPage(
     return {
       callSign: cleaned,
       org: { ...ngf, ref: trackingRef },
+    }
+  }
+
+  if (/^HRF\d{1,4}$/i.test(cleaned)) {
+    const hrf = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.HRF
+    return {
+      callSign: cleaned,
+      org: { ...hrf, ref: trackingRef },
     }
   }
 
