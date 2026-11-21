@@ -30,11 +30,11 @@ type VolunteerPageProps = {
 const ACA_METADATA: Metadata = {
   title: "Volunteer Pilots | PlaneWX",
   description:
-    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your CMF or NGF call sign from your volunteer pilot organization, start a 2-week Pro Plus trial, and get 30% off the annual plan for each year you're an active volunteer pilot.",
+    "PlaneWX supports pilots who fly volunteer missions for people and animals in need. Enter your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization, start a 2-week Pro Plus trial, and get 30% off the annual plan for each year you're an active volunteer pilot.",
   openGraph: {
     title: "Welcome volunteer pilots | PlaneWX",
     description:
-      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your CMF or NGF call sign from your volunteer pilot organization and start a 2-week Pro Plus trial.",
+      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization and start a 2-week Pro Plus trial.",
     type: "website",
     url: "https://www.planewx.ai/volunteer",
   },
@@ -42,7 +42,7 @@ const ACA_METADATA: Metadata = {
     card: "summary_large_image",
     title: "Welcome volunteer pilots | PlaneWX",
     description:
-      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your CMF or NGF call sign from your volunteer pilot organization and start a 2-week Pro Plus trial.",
+      "Decision support for volunteer missions moving people and animals. Highest discount PlaneWX has offered. Enter your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization and start a 2-week Pro Plus trial.",
   },
   alternates: {
     canonical: "https://www.planewx.ai/volunteer",
@@ -120,7 +120,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
       {/*
         Default campaign: ACA (migrations/20260922_aca_volunteer_campaign_code.sql).
         Call signs: migrations/20260922_volunteer_call_signs.sql
-        Generic gate accepts CMF, NGF, or SYH. Visible copy names CMF or NGF.
+        Generic gate accepts CMF, NGF, or SYH. Visible copy names CMF, SYH, NGF or HRF.
         SYH routes silently to SKYHOPE. Discount membership is confirmed in the app.
         SkyHope: ?ref=SKYHOPE, SYH gate (lib/volunteer-landing.ts registry).
         ?ref=ANGELFLIGHT: same generic gate; ref kept for tracking.
@@ -270,7 +270,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                 <strong className="text-white font-semibold">
                   30% off the annual plan for each year you&apos;re an active volunteer pilot
                 </strong>
-                . Enter your CMF or NGF call sign from your volunteer pilot organization below. Safer
+                . Enter your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization below. Safer
                 decisions on missions like yours are exactly why we built this.
               </p>
             </>
@@ -338,7 +338,7 @@ export default async function VolunteerPage({ searchParams }: VolunteerPageProps
                 <p className="text-white/60 leading-relaxed text-sm sm:text-base">
                   {isSkyHope
                     ? "Use your SkyHope (SYH) call sign. We validate it before signup unlocks."
-                    : "Use your CMF or NGF call sign from your volunteer pilot organization. We validate it before signup unlocks."}
+                    : "Use your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization. We validate it before signup unlocks."}
                 </p>
               </div>
             </li>

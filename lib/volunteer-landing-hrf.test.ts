@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest"
 import {
+  BARE_VOLUNTEER_CALL_SIGN_ERROR,
   BARE_VOLUNTEER_CALL_SIGN_PATTERN,
   buildVolunteerSignupHrefForOrg,
   normalizeVolunteerCallSignForPage,
@@ -51,5 +52,28 @@ describe("HRF on the generic volunteer gate (HRF + 1-4 digits)", () => {
     expect(normalizeVolunteerCallSignForPage("CMF12345", null)).toBeNull()
     expect(normalizeVolunteerCallSignForPage("NGF1A", null)).toBeNull()
     expect(normalizeVolunteerCallSignForPage("SYH12345", null)).toBeNull()
+  })
+})
+
+describe("visible volunteer gate copy names all four orgs", () => {
+  const NAMES = "CMF, SYH, NGF or HRF"
+  it("generic gate hint, error, locked hint and sr hint", () => {
+    for (const key of ["ACA", "ANGELFLIGHT", "HRF"]) {
+      const org = VOLUNTEER_ORG_CALL_SIGN_REGISTRY[key]
+      expect(org.hint).toContain(`Enter your ${NAMES} call sign`)
+      expect(org.error).toContain(`Use your ${NAMES} call sign`)
+      expect(org.lockedHint).toContain(`Enter your ${NAMES} call sign`)
+      expect(org.srHint).toBe(
+        `Enter your ${NAMES} call sign from your volunteer pilot organization.`
+      )
+      expect(org.hint).not.toContain("CMF or NGF")
+    }
+    expect(BARE_VOLUNTEER_CALL_SIGN_ERROR).toContain(NAMES)
+  })
+  it("leaves SkyHope copy unchanged", () => {
+    const sky = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.SKYHOPE
+    expect(sky.hint).toBe(
+      "Enter your SkyHope call sign. We'll validate it, then unlock signup."
+    )
   })
 })

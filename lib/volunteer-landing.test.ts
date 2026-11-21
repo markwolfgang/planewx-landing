@@ -18,9 +18,9 @@ import {
 } from "./volunteer-landing"
 
 const GENERIC_HINT =
-  "Enter your CMF or NGF call sign from your volunteer pilot organization. We'll validate it, then unlock signup."
+  "Enter your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization. We'll validate it, then unlock signup."
 const GENERIC_ERROR =
-  "That doesn't look like a valid volunteer call sign. Use your CMF or NGF call sign from your volunteer pilot organization."
+  "That doesn't look like a valid volunteer call sign. Use your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization."
 
 describe("ACA / CMF and SkyHope / SYH", () => {
   const aca = VOLUNTEER_ORG_CALL_SIGN_REGISTRY.ACA
@@ -35,7 +35,6 @@ describe("ACA / CMF and SkyHope / SYH", () => {
     expect(aca.pattern.source).toBe("^CMF\\d{1,4}$")
     expect(aca.hint).toBe(GENERIC_HINT)
     expect(aca.error).toBe(GENERIC_ERROR)
-    expect(aca.hint.includes("SYH")).toBe(false)
     expect(sky.prefix).toBe("SYH")
     expect(sky.signupParam).toBe("callsign")
     expect(sky.storageKey).toBe("planewx_syh_call_sign")
