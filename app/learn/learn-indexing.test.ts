@@ -94,7 +94,7 @@ describe("learn production indexing allow list", () => {
     )
   })
 
-  it("ships all twenty-three hub pages in the sitemap set", () => {
+  it("ships all twenty-four hub pages in the sitemap set", () => {
     const hrefs = getIndexableLearnHubPages().map((p) => p.href)
     expect(hrefs).toEqual([
       "/learn/aviation-weather/taf",
@@ -117,15 +117,17 @@ describe("learn production indexing allow list", () => {
       "/learn/aviation-weather/weather-briefings",
       "/learn/aviation-weather/weather-risk",
       "/learn/risk-management-loop",
+      "/learn/long-range-flight-weather-planning",
       "/learn/flight-risk-assessment-tool",
       "/learn/imsafe-checklist",
       "/learn/controlled-flight-into-terrain",
     ])
   })
 
-  it("includes exactly 40 learn URLs in the sitemap path set", () => {
+  it("includes exactly 41 learn URLs in the sitemap path set", () => {
     const paths = getLearnSitemapPaths()
-    expect(paths).toHaveLength(40)
+    expect(paths).toHaveLength(41)
+    expect(paths).toContain("/learn/long-range-flight-weather-planning")
     expect(paths).toContain("/learn/trapped-in-ice")
     expect(paths[0]).toBe("/learn")
     expect(paths).toContain("/learn/aviation-weather/thunderstorms")

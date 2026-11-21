@@ -7,6 +7,7 @@ import {
   getIndexableLearnHubPages,
   shouldIndexLearnHub,
 } from '@/app/learn/learn-data'
+import { isLongRangeRedirectSlug } from '@/lib/long-range-planning-consolidation'
 
 export const revalidate = 3600
 
@@ -14,13 +15,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://www.planewx.ai'
 
   const articles = await getSoroArticles()
-  const blogPosts: MetadataRoute.Sitemap = articles.map((a) => ({
-    url: `${baseUrl}/blog/${a.slug}`,
-    lastModified: new Date(a.isoDate),
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }))
+  const blogPosts: MetadataRoute.Sitemap = articles
+    .filter((a) => !isLongRangeRedirectSlug(a.slug))
+    .map((a) => ({
+      url: `${baseUrl}/blog/${a.slug}`,
+      lastModified: new Date(a.isoDate),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
   for (const p of LOCAL_BLOG_POSTS) {
+    if (isLongRangeRedirectSlug(p.slug)) continue
     blogPosts.unshift({
       url: `${baseUrl}/blog/${p.slug}`,
       lastModified: new Date(p.isoDate),

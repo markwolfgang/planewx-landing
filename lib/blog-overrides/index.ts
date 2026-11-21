@@ -1,6 +1,10 @@
 import * as forecastsStabilize from "./when-do-aviation-forecasts-stabilize"
 import * as paveRiskAssessmentWeather from "./pave-risk-assessment-weather"
 import * as bestPilotWeatherApps from "./best-pilot-weather-apps"
+import {
+  LONG_RANGE_HUB_APPEND_HTML,
+  LONG_RANGE_KEEP_APPEND_SLUGS,
+} from "@/lib/long-range-planning-consolidation"
 
 export interface BlogOverride {
   html: string
@@ -19,10 +23,23 @@ export const BLOG_OVERRIDES: Record<string, BlogOverride> = {
  * Slug to HTML appended after the Soro body, for cross-links that should not
  * replace or retune the original post.
  */
-export const BLOG_APPENDS: Record<string, string> = {
+const MANUAL_BLOG_APPENDS: Record<string, string> = {
   "advanced-pilot-weather-briefing":
     '<p><strong>Related:</strong> <a href="/blog/cross-check-pilot-weather-briefing">Why and how to cross-check your pilot weather briefing</a></p>',
 }
+
+function buildBlogAppends(): Record<string, string> {
+  const appends: Record<string, string> = {}
+  for (const slug of LONG_RANGE_KEEP_APPEND_SLUGS) {
+    appends[slug] = LONG_RANGE_HUB_APPEND_HTML
+  }
+  for (const [slug, html] of Object.entries(MANUAL_BLOG_APPENDS)) {
+    appends[slug] = appends[slug] ? `${html}\n${appends[slug]}` : html
+  }
+  return appends
+}
+
+export const BLOG_APPENDS: Record<string, string> = buildBlogAppends()
 
 export interface BlogMetaOverride {
   /** Full <title>, rendered as-is (no " | PlaneWX" template suffix). Max 60 chars. */
