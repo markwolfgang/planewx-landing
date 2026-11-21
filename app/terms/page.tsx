@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react"
 export const metadata = {
   title: "Terms of Service | PlaneWX",
   description: "Terms of Service for using PlaneWX.",
+  alternates: { canonical: "https://www.planewx.ai/terms" },
 }
 
 const EFFECTIVE_DATE = "January 5, 2026"

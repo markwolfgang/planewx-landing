@@ -10,7 +10,8 @@
     "test": "vitest run && node scripts/check-wx-score-copy.mjs && node scripts/check-volunteer-org-registry.mjs && node scripts/check-hub-content.mjs",
     "test:hub": "node scripts/check-hub-content.mjs",
     "test:unit": "vitest run",
-    "build:aopa-ad": "node scripts/build-aopa-ad.mjs"
+    "build:aopa-ad": "node scripts/build-aopa-ad.mjs",
+    "indexnow": "node scripts/indexnow-ping.mjs"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.1.4",

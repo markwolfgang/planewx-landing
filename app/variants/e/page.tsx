@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   title: "PlaneWX: For the Pilot Who Wants to Do Everything in Their Power to Come Home",
   description:
     "Built by a pilot who felt the full weight of the left seat. Weather intelligence, PAVE risk assessment, and a mentor network, for the pilot who holds themselves to a higher standard.",
+  // A/B variant: canonicalize to the homepage, not /variants/e.
+  alternates: { canonical: "/" },
   openGraph: {
     title: "PlaneWX: For the Pilot Who Takes the Left Seat Seriously",
     description:

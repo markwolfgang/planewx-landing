@@ -14,6 +14,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
+  alternates: { canonical: "https://www.planewx.ai/research/turbulence-safety" },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,

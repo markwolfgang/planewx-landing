@@ -9,6 +9,7 @@ import {
 export const metadata: Metadata = {
   title: "Multi-Model Icing & Turbulence Analysis: Weather Intelligence for Pilots",
   description: "PlaneWX queries three independent weather models (HRRR, GFS, ECMWF), builds consensus with confidence scoring, and corroborates with PIREPs and AIRMETs. Pilots get altitude-specific icing and turbulence intelligence for the route they plan to fly.",
+  alternates: { canonical: "https://www.planewx.ai/multi-model-analysis" },
 }
 
 export default function MultiModelAnalysis() {

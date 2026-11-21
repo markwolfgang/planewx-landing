@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react"
 export const metadata = {
   title: "DMCA / Copyright | PlaneWX",
   description: "Designated copyright agent and DMCA notice process for PlaneWX.",
+  alternates: { canonical: "https://www.planewx.ai/dmca" },
 }
 
 export default function DmcaPage() {

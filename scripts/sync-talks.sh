@@ -39,6 +39,14 @@ text = text.replace('/talk/remote.html', '/talks/remote.html')
 old = "location.pathname.startsWith('/talk')"
 new = "location.pathname.startsWith('/talks') || location.pathname.startsWith('/talk')"
 text = text.replace(old, new)
+canonical = '<link rel="canonical" href="https://www.planewx.ai/talks/eaa983" />'
+if 'rel="canonical"' not in text:
+    import re
+    m = re.search(r'<meta\s+name="viewport"[^>]*>', text)
+    if m:
+        text = text[:m.end()] + '\n' + canonical + text[m.end():]
+    else:
+        text = text.replace('</title>', '</title>\n' + canonical, 1)
 dest.write_text(text)
 print(f"Synced → {dest}")
 PY

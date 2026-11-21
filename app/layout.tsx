@@ -5,7 +5,6 @@ import { OshBanner } from "@/components/osh-banner"
 import { PartnerGreetingBanner } from "@/components/partner-greeting-banner"
 import { TrackingScripts } from "@/components/tracking-scripts"
 import { WebVercelMetrics } from "@/components/web-vercel-metrics"
-import { FAQS, faqAnswerToPlainText } from "@/components/shared/landing-data"
 import { SiteJsonLd } from "@/components/site-json-ld"
 import "./globals.css"
 
@@ -13,16 +12,8 @@ import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
 
-const faqPageMainEntity = FAQS.map((faq) => ({
-  "@type": "Question",
-  name: faq.q,
-  acceptedAnswer: {
-    "@type": "Answer",
-    text: faqAnswerToPlainText(faq.a),
-  },
-}))
-
-// Structured Data (JSON-LD) for SEO
+// Structured Data (JSON-LD) for SEO — site-wide graph only.
+// Page-level FAQPage that matches visible FAQ content stays on /learn and /blog pages.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -34,17 +25,12 @@ const jsonLd = {
       "description": "PlaneWX is the decision support system for general aviation. It gives pilots professional-grade tools and instills professional-grade habits that make flying safer. The risk-management loop for pilots without a dispatcher. Beyond the weather briefing.",
       "publisher": {
         "@id": "https://www.planewx.ai/#organization"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.planewx.ai/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
       }
     },
     {
       "@type": "Organization",
       "@id": "https://www.planewx.ai/#organization",
-      "name": "PlaneWX, LLC",
+      "name": "PlaneWX",
       "url": "https://www.planewx.ai",
       "logo": {
         "@type": "ImageObject",
@@ -53,8 +39,16 @@ const jsonLd = {
         "height": 512
       },
       "sameAs": [
-        "https://x.com/planewxai"
+        "https://instagram.com/plane_wx",
+        "https://facebook.com/planewxai",
+        "https://x.com/planewxai",
+        "https://tiktok.com/@planewx",
+        "https://youtube.com/@planewx"
       ],
+      "founder": {
+        "@type": "Person",
+        "name": "Mark Wolfgang"
+      },
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
@@ -87,10 +81,6 @@ const jsonLd = {
         "Peer mentoring system",
         "Trip Crew sharing"
       ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": faqPageMainEntity
     }
   ]
 }
@@ -157,9 +147,8 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL("https://www.planewx.ai"),
-  alternates: {
-    canonical: "/",
-  },
+  // Do not set a site-wide canonical here. Every page must declare its own
+  // self-referencing canonical (homepage via HOME_MARKDOWN_ALTERNATES).
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -243,4 +232,3 @@ export default function RootLayout({
     </html>
   )
 }
-
