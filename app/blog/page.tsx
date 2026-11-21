@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
+import { WeatherLibrarySection } from "@/components/weather-library-section"
 import { getSoroArticles } from "@/lib/soro"
 import { LOCAL_BLOG_POSTS } from "@/lib/blog-posts"
 
@@ -81,7 +82,7 @@ export default async function BlogPage() {
       {/* Article list */}
       <main className="mx-auto max-w-5xl px-6 pb-24">
         {articles.length === 0 ? (
-          <p className="text-center text-white/40 py-16">No articles yet — check back soon.</p>
+          <p className="text-center text-white/40 py-16">No articles yet.</p>
         ) : (
           <div className="flex flex-col gap-6">
             {articles.map((article) => (
@@ -117,6 +118,10 @@ export default async function BlogPage() {
             ))}
           </div>
         )}
+
+        <div className="mt-16">
+          <WeatherLibrarySection variant="blog-index" />
+        </div>
       </main>
     </div>
   )

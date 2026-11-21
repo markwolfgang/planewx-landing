@@ -150,6 +150,10 @@ describe("llms.txt and llms-full.txt", () => {
     expect(llms).toContain(
       "Fuel Advisor (paid plans) for fuel planning with weather on every leg",
     )
+    expect(llms).toContain("## Learning Center weather hubs")
+    expect(llms).toContain("https://www.planewx.ai/learn/aviation-weather/taf")
+    expect(llms).toContain("https://www.planewx.ai/learn/mos-vs-nbm-vs-taf")
+    expect(llms).toContain("https://www.planewx.ai/learn/risk-management-loop")
     expect(llms).toContain("## Markdown versions")
     for (const page of MARKDOWN_PAGES) {
       expect(llms).toContain(markdownUrl(page.mdPath))

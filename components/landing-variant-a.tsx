@@ -36,6 +36,7 @@ import {
   HOW_IT_WORKS_WHY,
 } from "./shared"
 import { HomepagePartnerLogos } from "@/components/shared/homepage-partner-logos"
+import { WeatherLibrarySection } from "@/components/weather-library-section"
 import { YouTubeFacade } from "./shared/youtube-facade"
 import { HeroExplainerVideo } from "./shared/hero-explainer-video"
 import { LandingVariantANav } from "./landing-variant-a-nav"
@@ -671,6 +672,7 @@ export function LandingVariantA() {
         </div>
       </section>
 
+      <WeatherLibrarySection variant="homepage" />
 
       <PricingSection variant={VARIANT} />
       <FaqSection variant={VARIANT} />
