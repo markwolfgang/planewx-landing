@@ -70,9 +70,9 @@ const {
 } = await loadLib()
 
 const GENERIC_HINT =
-  "Enter your CMF or NGF call sign from your volunteer pilot organization. We'll validate it, then unlock signup."
+  "Enter your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization. We'll validate it, then unlock signup."
 const GENERIC_ERROR =
-  "That doesn't look like a valid volunteer call sign. Use your CMF or NGF call sign from your volunteer pilot organization."
+  "That doesn't look like a valid volunteer call sign. Use your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization."
 
 assert.equal(VOLUNTEER_CAMPAIGN_CODE, "ACA")
 assert.equal(SKYHOPE_CAMPAIGN_CODE, "SKYHOPE")
@@ -96,12 +96,12 @@ assert.equal(aca.label, "Your volunteer call sign", "bare_aca_label_is_volunteer
 assert.equal(aca.hint, GENERIC_HINT, "bare_aca_hint_cmf_or_ngf")
 assert.equal(
   aca.lockedHint,
-  "Enter your CMF or NGF call sign from your volunteer pilot organization. We'll validate it, then unlock signup",
+  "Enter your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization. We'll validate it, then unlock signup",
   "bare_aca_locked_hint_matches_hint_without_trailing_period"
 )
 assert.equal(
   aca.srHint,
-  "Enter your CMF or NGF call sign from your volunteer pilot organization.",
+  "Enter your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization.",
   "bare_aca_sr_hint_matches"
 )
 assert.equal(sky.label, "Your SkyHope call sign", "skyhope_label_unchanged")
@@ -301,7 +301,7 @@ const leakedAca = buildVolunteerSignupHrefForOrg({
 assert.equal(leakedAca, "https://app.planewx.ai/auth/sign-up?lp=vol&ref=ACA")
 
 // bare_ngf_accepted_attributes_aca
-assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.source, "^(CMF|NGF|SYH)\\d{1,4}$")
+assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.source, "^(CMF|NGF|SYH|HRF)\\d{1,4}$")
 assert.equal(BARE_VOLUNTEER_CALL_SIGN_PATTERN.flags, "i")
 assert.equal(isBareVolunteerGate(null), true, "bare_ngf_accepted_attributes_aca")
 assert.equal(isBareVolunteerGate("ACA"), true, "bare_ngf_accepted_attributes_aca")
@@ -354,8 +354,6 @@ assert.equal(acaSyh.org.ref, "SKYHOPE", "bare_syh_lowercase_accepted_routes_skyh
 const afSyh = normalizeVolunteerCallSignForPage("syh1", "ANGELFLIGHT")
 assert.ok(afSyh, "bare_syh_lowercase_accepted_routes_skyhope")
 assert.equal(afSyh.org.ref, "SKYHOPE", "bare_syh_lowercase_accepted_routes_skyhope")
-assert.equal(aca.hint.includes("SYH"), false, "generic_copy_does_not_name_syh")
-assert.equal(aca.error.includes("SYH"), false, "generic_copy_does_not_name_syh")
 
 // bare_cmf_accepted
 const bareCmf = normalizeVolunteerCallSignForPage("cmf42", "ACA")
@@ -456,7 +454,7 @@ assert.equal(
 )
 assert.equal(
   volunteerPage.includes(
-    "Use your CMF or NGF call sign from your volunteer pilot organization. We validate it before signup unlocks."
+    "Use your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization. We validate it before signup unlocks."
   ),
   true,
   "bare_step1_body_cmf_or_ngf"
@@ -470,7 +468,7 @@ assert.equal(
 )
 assert.equal(
   volunteerPage.includes(
-    "Enter your CMF or NGF call sign from your volunteer pilot organization below."
+    "Enter your CMF, SYH, NGF or HRF call sign from your volunteer pilot organization below."
   ),
   true,
   "bare_pressure_cta_cmf_or_ngf"

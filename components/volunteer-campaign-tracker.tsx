@@ -7,6 +7,7 @@ import {
   isBareVolunteerGate,
   normalizeVolunteerCallSignForPage,
   resolveVolunteerOrg,
+  VOLUNTEER_ORG_CALL_SIGN_REGISTRY,
   ANGEL_FLIGHT_CAMPAIGN_CODE,
   SKYHOPE_CAMPAIGN_CODE,
   VOLUNTEER_CAMPAIGN_CODE,
@@ -78,6 +79,7 @@ function resolveCallSignForGate(gateOrgRef?: string): string | null {
           resolveVolunteerOrg(VOLUNTEER_CAMPAIGN_CODE).storageKey,
           resolveVolunteerOrg(ANGEL_FLIGHT_CAMPAIGN_CODE).storageKey,
           resolveVolunteerOrg(SKYHOPE_CAMPAIGN_CODE).storageKey,
+          VOLUNTEER_ORG_CALL_SIGN_REGISTRY.HRF.storageKey,
         ]
       : [resolveVolunteerOrg(pageRef).storageKey]
     for (const key of keys) {

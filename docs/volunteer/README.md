@@ -5,7 +5,7 @@ Founder welcome video on `/volunteer` defaults to YouTube ID `6QOZJUoMlLA`
 
 ## Call sign flow
 
-Pilots enter a CMF or NGF call sign from their volunteer pilot organization
+Pilots enter a CMF, SYH, NGF or HRF call sign from their volunteer pilot organization
 on the page. SYH is also accepted silently on the generic gate and routes to
 SkyHope (`?ref=SKYHOPE` remains the dedicated SkyHope page). The page validates
 the sign before unlock. Discount membership is confirmed in the app after signup.
